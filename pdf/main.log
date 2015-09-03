@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.11)  3 SEP 2015 13:49
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.11)  3 SEP 2015 20:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -796,19 +796,19 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
  (pdf/main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 37.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 38.
 
 (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -953,28 +953,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 82--86
 
 LaTeX Warning: Command \textquoteright invalid in math mode on input line 176.
 
-[6] [7] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 349--353
+[6] [7]
+Underfull \hbox (badness 10000) in paragraph at lines 261--265
 
  []
 
-[9]
-Overfull \hbox (4.88045pt too wide) in paragraph at lines 375--380
+[8] [9]
+Underfull \hbox (badness 10000) in paragraph at lines 380--384
+
+ []
+
+
+Overfull \hbox (4.88045pt too wide) in paragraph at lines 406--411
 \T1/lmr/m/n/12 Um uns von der zwei-ten In-klu-si-on zu über-zeu-gen reicht es z
 u zei-gen, dass $\OML/lmm/m/it/12 L\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 S[]\OT1/lm
 r/m/n/12 )\OMS/lmsy/m/n/12 n\OML/lmm/m/it/12 ET\OT1/lmr/m/n/12 (\OML/lmm/m/it/1
 2 S[]\OT1/lmr/m/n/12 ) \OMS/lmsy/m/n/12 ^^R
  []
 
-[10]) (pdf/main.bbl [11]) [12
+[10] [11]) (pdf/main.bbl [12]) [13
 
 
 ] (pdf/main.aux) ) 
 Here is how much of TeX's memory you used:
- 14289 strings out of 493304
- 265717 string characters out of 6139871
- 375252 words of memory out of 5000000
- 17407 multiletter control sequences out of 15000+600000
+ 14295 strings out of 493304
+ 265789 string characters out of 6139871
+ 375310 words of memory out of 5000000
+ 17413 multiletter control sequences out of 15000+600000
  46318 words of font info for 44 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  65i,21n,71p,435b,1087s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -992,10 +997,10 @@ pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/
 type1/public/lm/lmro12.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb
 ></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/typ
 e1/public/lm/lmsy6.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb>
-Output written on pdf/main.pdf (12 pages, 269527 bytes).
+Output written on pdf/main.pdf (13 pages, 275699 bytes).
 PDF statistics:
- 117 PDF objects out of 1000 (max. 8388607)
- 86 compressed objects within 1 object stream
+ 121 PDF objects out of 1000 (max. 8388607)
+ 89 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

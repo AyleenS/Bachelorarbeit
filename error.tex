@@ -252,12 +252,43 @@ fehlt.
   %TODO
 \end{proof}
 
+\begin{kor}
+  \label{korPraekongruenz}
+  $\sqsubseteq _E$ ist eine Präkongruenz.
+\end{kor}
+
+\begin{proof}
+  Es muss gezeigt werden, dass wenn $S_1\sqsubseteq _E S_2$ gilt, dass auch
+  $S_3\|S_1\sqsubseteq S_3\|S_1$ gilt. D.h.\ es ist zu zeigen, dass aus
+  $ET_1\subseteq ET_2$ und $EL_1\subseteq EL_2$ folgt, $ET(S_3\|S_1)\subseteq
+  ET(S_3\|S_2)$ und $EL(S_3\|S_1)\subseteq EL(S_3\|S_2)$.\\
+  \begin{itemize}
+    \item $\begin{aligned}[t]
+        ET(S_3\|S_1) &\overset{\ref{satzErrorSemanik}~1.}{=}
+      cont(prune((ET_3\|EL_1)\cup (EL_3\|ET_1)))\\
+      &\overset{ET_1\subseteq
+    ET_2}{\overset{\mathrm{und}}{\overset{EL_1\subseteq EL_2}{\subseteq}}}
+    cont(prune((ET_3\|EL_2)\cup (EL_3\|ET_2)))\\
+      &\overset{\ref{satzErrorSemanik}~1.}{=} ET(S_3\|S_2)
+    \end{aligned}$
+    \item $\begin{aligned}[t]
+        EL(S_3\|S_1) &\overset{\ref{satzErrorSemanik}~2.}{=} (EL_3\|EL_1)\cup
+        E_{31}\\
+      &\overset{EL_1\subseteq
+      EL_2}{\overset{\mathrm{und}}{\overset{ET_{31}\subseteq
+      ET_{32}}{\subseteq}}} (EL_3\|EL_2)\cup ET_{32}\\
+      &\overset{\ref{satzErrorSemanik}~2.}{=} EL(S_3\|S_2)
+    \end{aligned}$
+  \end{itemize}
+\end{proof}
+
 In~\cite{Vogler2014EIO} wurde auch die Verfeinerung von EIOs als Relation betrachtet
 mit Spezifikation und Implementierung. Hier soll ebenfalls eine
 Verfeinerungsrelation über EIOs betrachtet werden, jedoch im Zusammenhang mit
 den Definitionen von oben und Satz~\ref{satzErrorSemanik}.
 
 \begin{lem}[Verfeinerung mit Errors]
+  \label{lemVerfeinerung}
   Gegeben sind zwei EIOs $S_1, S_2$ mit der gleichen Signatur. Wenn
   für alle EIOs $U$ gilt, $S_2$ und $U$ kommunizieren gut, folgt $S_1$
   und $U$ kommunizieren gut, dann verfeinert $S_1$ $S_2$. Diese Verfeinerung
@@ -449,12 +480,42 @@ den Definitionen von oben und Satz~\ref{satzErrorSemanik}.
 \end{proof}
 
 \begin{satz}[Full Abstractness für lokale Error Semanik]
+  \label{satzFullAbstractness}
   Seien $S_1, S_2$ zwei EIOs mit derselben Signatur. Dann gilt $S_1\sqsubseteq
   _E^C S_2\Leftrightarrow S_1\sqsubseteq _E S_2$, insbesondere $\sqsubseteq _E$
   ist eine Präkongruenz.
 \end{satz}
 
 \begin{proof}
-  TODO
+  Wie bereits in~\ref{korPraekongruenz} festgehalten, ist $\sqsubseteq _E$ eine
+  Präkongruenz.
+
+  ``$\Leftarrow$'': Im Beweis von~\ref{lemVerfeinerung} wurde bereits festgestellt wenn
+      $\varepsilon\in ET(S)$ gilt, dass ein Error lokal erreichbar ist in
+      $S$.Somit impliziert $S_1\sqsubseteq _E S_2$, dass $\varepsilon\in
+      ET(S_2)$ gilt, wenn $\varepsilon\in ET(S_1)$. Dadurch folgt auch, dass
+      ebenfalls $S_1\sqsubseteq _E^B S_2$ gilt. Somit folgt aus $S_1\sqsubseteq
+      _E S_2$ der relationale Zusammenhang $S_1\sqsubseteq _E^C S_2$.
+
+  ``$\Rightarrow$'': Durch die Definition von $\sqsubseteq _E^C$ folgt aus
+  $S_1\sqsubseteq _E^C S_2$ $U\|S_1\subseteq U\|S_2$ für alle EIOs $U$, die mit
+  $S_1$ komponierbar sind. Somit folgt auch die Gültigkeit von
+  $U\|S_1\sqsubseteq _E^B U\|S_2$ für alle diese EIOs $U$. Mit
+  Lemma~\ref{lemVerfeinerung} ergibt sich dann $S_1\sqsubseteq _E S_2$.
 \end{proof}
 
+\begin{kor}
+  Ein EIO $S_1$ verfeinert einen EIO $S_2$ genau dann wenn für alle EIOs $U$
+  für die gilt $S_2$ kommuniziert gut mit $U$ folgt $S_1$ kommuniziert
+  ebenfalls gut mit $U$.\\
+  Dies lässt sich formal wie folgt ausdürcken: $S_1\sqsubseteq _E S_2
+  \Leftrightarrow U\|S_1\sqsubseteq U\|S_2$ für alle Partner $U$.
+\end{kor}
+
+\begin{proof}
+  ``$\Rightarrow$'': Diese Richtung folgt aus dem Beweis von
+  Satz~\ref{satzFullAbstractness}.
+
+  ``$\Leftarrow$'': Diese Richtung folgt wurde in Lemma~\ref{lemVerfeinerung}
+  bewiesen.
+\end{proof}
