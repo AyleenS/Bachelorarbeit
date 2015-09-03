@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.11)  1 SEP 2015 18:06
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.11)  3 SEP 2015 13:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -945,13 +945,13 @@ Kapitel 2.
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 83--87
+Underfull \hbox (badness 10000) in paragraph at lines 82--86
 
  []
 
 [5]
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 177.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 176.
 
 [6] [7] [8]
 Underfull \hbox (badness 10000) in paragraph at lines 349--353

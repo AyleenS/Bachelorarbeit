@@ -10,7 +10,7 @@ als Inputs der Parallelkomposition übernommen.
 \section{Error-IO-Transitionssystem}
 Die hier betrachteten EIOs sind Systeme, deren Übergänge mit Inputs und Outputs
 beschriftet sind. Ebenfalls zulässig ist eine Kantenbeschriftung mit einem
-$\tau$, dass dann eine interne, unbeobachtbare Aktion darstellt, die also keine Interaktion mit
+$\tau$, das dann eine interne, unbeobachtbare Aktion darstellt, die also keine Interaktion mit
 der Umwelt darstellt, sondern meist dafür steht, dass die Inputs und Outputs
 dieses Übergangs verborgen wurden.
 
@@ -19,7 +19,7 @@ dieses Übergangs verborgen wurden.
   als Tupel $S=(Q,I,O,\delta, q_0, E)$ definiert, mit:
   \begin{itemize}
     \item $Q$ $-$ die Menge der Zustände
-    \item $I,O$ $-$ die disjunkte Mengen der (sichtbaren) Input- und Outputaktionen
+    \item $I,O$ $-$ die disjunkten Mengen der (sichtbaren) Input- und Outputaktionen
     \item $\delta\subseteq Q\times (I\cup U\cup\{\tau\})\times Q$ $-$ die
       Übergangsrelation
     \item $q_0\in Q$ $-$ der Startzustand
@@ -32,7 +32,7 @@ $Sig(S)=(I,O)$.\\
 Um in graphischen Veranschaulichungen Inputs und Outputs zu kennzeichnet wird
 folgende Notation verwendet: $x?$ für den Input $x$ und $x!$ für den Output
 $x$.\\
-Um die Komponenten einzelner Automaten, diesen zuordnen zu können werden für
+Um die Komponenten einzelner Automaten zuzuordnen, werden für
 die Komponenten die gleichen Indizes wie für ihre zugehörigen Automaten
 verwendet.\\
 Die Elemente der Übergangsrelation $\delta$ werden wir wie folgt notieren:
@@ -59,9 +59,9 @@ beiden zusammengesetzten Komponenten (geerbte Errors) und den Outputs zusammen, 
 anderen Komponente nicht angenommen werden können (neue Errors).
 
 \begin{Def}[Parallelkomposition]
-  Zwei EIOs $S_1, S_2$ sind komponierbar falls
-  $O_1\cap O_2=\emptyset$ gilt. Die Parallelkomposition sind dann als
-  $S_1\|S_2=(Q,I,O,\delta ,q_0,E)$ mit:
+  Zwei EIOs $S_1, S_2$ sind komponierbar, falls
+  $O_1\cap O_2=\emptyset$ gilt. Die Parallelkomposition ist dann als
+  $S_1\|S_2=(Q,I,O,\delta ,q_0,E)$ mit folgendem definiert:
   \begin{itemize}
     \item $Q=Q_1\times Q_2$
     \item $I=(I_1\backslash O_2)\cup(I_2\backslash O_1)$
@@ -84,14 +84,14 @@ q_1\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\wedge
 q_2\overset{a}{\rightarrow}\}
   \end{aligned}$
   \end{itemize}
-  definiert. Dabei werden die synchronisierten Handlungen $Synch(S_1,
+  Dabei werden die synchronisierten Handlungen $Synch(S_1,
   S_2)=(I_1\cap O_2)\cup(I_2\cap O_1)$ nicht versteckt.
 \end{Def}
 
 \begin{Def}[Parallelkomposition auf Traces]
   Gegeben zwei EIOs $S_1, S_2,
   w_1\in\Sigma _1, w_2\in\Sigma _2, W_1\subseteq\Sigma _1^*, W_2\subseteq\Sigma
-  _2^*$, definieren wir:
+  _2^*$, wird definiert:
   \begin{itemize}
     \item $w_1\| w_2=\{w\in (\Sigma _1\cup\Sigma _2)^*\mid w|_{\Sigma _1}=w_1\wedge
       w|_{\Sigma _2}=w_2\}$
@@ -100,8 +100,8 @@ q_2\overset{a}{\rightarrow}\}
 \end{Def}
 
 Die Semantik der späteren Kapitel basiert darauf die jeweiligen Zustände, die
-zu Problemen führen mit ihren Traces zu betrachten. Um dies besser umsetzten zu
-können definieren wir eine prune-Funktion, die alle Outputs von dem Endzustand
+zu Problemen führen, mit ihren Traces zu betrachten. Um dies besser umsetzten zu
+können, definieren wir eine prune-Funktion, die alle Outputs von dem Endzustand
 eines Traces entfernt. Zusätzlich wird auch noch eine Funktion definiert, die
 die Traces beliebig fortsetzt.
 
