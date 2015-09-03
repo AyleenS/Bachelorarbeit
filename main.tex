@@ -1,0 +1,61 @@
+\documentclass[12pt,a4paper,oneside,ngerman]{scrbook}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath,amssymb,amsthm}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows, automata, calc}
+
+\usepackage{cite}
+
+\usepackage{lmodern}
+
+\newtheoremstyle{mythmstyle}% name of the style to be used
+  {5pt}% measure of space to leave above the theorem. E.g.: 3pt
+  {4pt}% measure of space to leave below the theorem. E.g.: 3pt
+  {\itshape}% name of font to use in the body of the theorem
+  {}% measure of space to indent
+  {\bfseries}% name of head font
+  {.}% punctuation between head and body
+  {0.5em}% space after theorem head; " " = normal interword space
+{\textbf{\thmname{#1}\thmnumber{ #2}\thmnote{ (\textit{#3})}}}% Manually specify head
+\theoremstyle{mythmstyle}
+\newtheorem{Def}{Definition}[chapter]
+\newtheorem{satz}[Def]{Satz}
+\newtheorem{bsp}[Def]{Beispiel}
+\newtheorem{lem}[Def]{Lemma}
+
+\newcommand{\oBdA}{oBdA}
+
+\begin{document}
+
+% \frontmatter
+
+% \input{titlepage.tex}
+
+% \tableofcontents{}
+
+% \mainmatter{}
+
+% \input{einleitung.tex}
+
+\input{definitionen.tex}
+
+\input{error.tex}
+
+% \input{quiescents.tex}
+
+% \input{divergenz.tex}
+
+\bibliographystyle{amsalphagar}
+\bibliography{literatur}
+
+\end{document}
+
