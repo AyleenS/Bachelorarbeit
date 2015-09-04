@@ -1,28 +1,27 @@
 \chapter{Verfeinerung über Errortraces}
 
-\section{Präkongruenz für lokale Errors}
-In diesem Kapitel wählen wir einen optimistischen Ansatz für die Fehlererreichbarkeit. Ein Error gilt hier somit als erreichbar, wenn er lokal
+In diesem Kapitel wählen wir einen optimistischen Ansatz für die
+Fehlererreichbarkeit. Ein Error gilt hier als erreichbar, wenn er lokal
 erreicht werden kann, d.h.\ durch lokale Aktionen. Die Menge bestehend aus der
-internen Aktion $\tau$ und den Outputaktionen, die wir hier als lokale Aktionen
-bezeichnet. Alle Elemente aus dieser Menge können ausgeführt werden ohne
+internen Aktion $\tau$ und den Outputaktionen bezeichnen wir hier als lokale Aktionen. Alle Elemente aus dieser Menge können ausgeführt werden ohne
 weiteres Zutun von außen, somit kann auch nicht beeinflusst werden ob diese
 Übergänge genommen werden oder nicht. Es besteht also die Möglichkeit, dass
-der EIO einen Error-Zustand erreicht, sobald dieser lokal erreichbar ist. Diese
-Art der Erreichbarkeit von Fehler wird in Kapitel 3 von~\cite{Vogler2014EIO}
+der EIO einen Error-Zustand übergeht, sobald dieser lokal erreichbar ist. Diese
+Art der Erreichbarkeit von Fehler wird auch in Kapitel 3 von~\cite{Vogler2014EIO}
 dargestellt.
 
 \begin{Def}[lokal errorfreie Kommunikation]
   Ein Error ist lokal erreichbar in einem EIO $S$, wenn $\exists w\in O^*: q_0
   \overset{w}{\Rightarrow} q\in E$.\\
   Zwei EIOs $S_1, S_2$ kommunizieren gut, wenn keine lokalen Errors erreicht
-  werden können in $S_1\| S_2$.
+  werden können in ihrer Parallelkomposition $S_1\| S_2$.
 \end{Def}
 
 Über der lokalen Erreichbarkeit von Fehlern können wir eine
 Verfeinerungsrelation definieren.
 
 \begin{Def}[lokale Basisrelation]
-  Für EIOs $S_1, S_2$ mit der gleichen Signatur schreiben wir $S_1\sqsubseteq
+  Für EIOs $S_1$ und $S_2$ mit der gleichen Signatur schreiben wir $S_1\sqsubseteq
   _E^ B S_2$, wenn ein Error in $S_1$ nur dann lokal erreichbar ist, wenn er
   auch in $S_2$ lokal erreichbar ist.\\
   $\sqsubseteq _E^C$ bezeichnet die vollständig abstrakte Präkongruenz von
@@ -44,10 +43,10 @@ fehlt.
   Folgende Trace-Mengen sind definiert für einen EIO $S$:
   \begin{itemize}
     \item strikte Errortraces: $StT(S)=\{w\in\Sigma
-      ^*\mid q_0\overset{w}{\Rightarrow}\in E\}$
+      ^*\mid q_0\overset{w}{\Rightarrow}q\in E\}$
     \item gekürzte Errortraces: $PrT(S)=\{prune(w)\mid w\in StT(S)\}$
     \item fehlende Input-Traces: $MIT(S)=\{wa\in\Sigma ^*\mid 
-      q_0\overset{w}{\Rightarrow}\wedge a\in I\wedge
+      q_0\overset{w}{\Rightarrow}q\wedge a\in I\wedge
     q\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\}$
   \end{itemize}
 \end{Def}
@@ -56,7 +55,7 @@ fehlt.
   \label{DefETEL}
   Sei $S$ ein EIO.
   \begin{itemize}
-    \item Die Menge der Errortraces von $S$ ist $ET(S)=cont(Prt(S))\cup
+    \item Die Menge der Errortraces von $S$ ist $ET(S)=cont(PrT(S))\cup
       cont(MIT(S))$.
     \item Die geflutete Sprache von $S$ ist $EL(S)=L(S)\cup ET(S)$.
   \end{itemize}
@@ -79,7 +78,7 @@ fehlt.
   \begin{enumerate}
     \item ``$\subseteq$'':
   \end{enumerate}
-  Da beide Seiten der Gleichung unter $cont$ abgeschlossen sind, genügt es ein
+  Da beide Seiten der Gleichung unter der Vortsetzung $cont$ abgeschlossen sind, genügt es ein
   präfix-minimales Element $w$ von $ET_{12}$ zu betrachten. Dieses Element ist
   nach der Definition der Menge der Errortraces entweder in $MIT_{12}$ oder in
   $PrT_{12}$ enthalten.\\
@@ -105,14 +104,14 @@ fehlt.
   Damit folgt $w\in (x_1\|x_2)\cdot\{a\}\subseteq x_1a\|x_2a\subseteq
   ET_1\|ET_2\subseteq (ET_1\|EL_2)\cup(EL_1\|ET_2)$, und somit ist $w$ in der
   rechten Seite der Gleichung enthalten.
-\item Fall 1b) ($a\in (I_1\cup I_2)\backslash(I_1\cap I_2)$): \oBdA{} gilt
+\item Fall 1b) ($a\in (I_1\cup I_2)\backslash(I_1\cap I_2)$): \OBdA{} gilt
       $a\in I_1$. Durch Projektion erhalten wir:
       $q_{01}\overset{x_1}{\Rightarrow} q_1
       \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ und
       $q_{02}\overset{x_2}{\Rightarrow} q_2$ mit $x\in x_1\|x_2$. Daraus folgt
       $x_1a\in cont(MIT_1)\subseteq ET_1$ und $x_2\in L_2\subseteq EL_2$. Somit
-      gilt $w\in (x_1\| x_2)\cdot\{a\}\subseteq x_1a\|x_2\subseteq ET_1\|EL_2$,
-      welche eine Teilmenge der rechten Seite der Gleichung ist.
+      gilt $w\in (x_1\| x_2)\cdot\{a\}\subseteq x_1a\|x_2\subseteq ET_1\|EL_2$.
+      Dies ist eine Teilmenge der rechten Seite der Gleichung.
   \end{itemize}
     \item Fall 2 ($w\in PrT_{12}$): Durch die Definition von $PrT$ und $prune$
       wissen wir, dass es ein $v\in O_{12}^*$ gibt, so dass $(q_{01},q_{02})
@@ -127,7 +126,7 @@ fehlt.
       entstanden ist eine synchronisierte Handlung auszuführen, da der Input
       nicht möglich war und es sich somit um einen neuen Fehler handelt.
       \begin{itemize}
-        \item Fall 2a) (geerbter Error): \oBdA{} $q_1'\in E_1$. Daraus folgt
+        \item Fall 2a) (geerbter Error): \OBdA{} $q_1'\in E_1$. Daraus folgt
           $w_1v_1\in StT_1\subseteq cont(PrT_1)\subseteq ET_1$. Da gilt
           $q_{02}\overset{w_2v_2}{\Rightarrow}$, erhalten wir $w_2v_2\in
           L_2\subseteq EL_2$. Dadurch ergibt sich $wv\in ET_1\|EL_2$ mit
@@ -148,7 +147,7 @@ fehlt.
   betrachten wir auch in diesem Fall nur ein präfix-minimales Element $x\in
   prune((ET_1\|EL_2)\cup (EL_1\|ET_2))$. Da $x$ durch die Anwendung der
   $prune$-Funktion entstanden ist, existiert ein $y\in O_{12}$ mit
-  $xy\in(ET_1\|EL_2)\cup (EL_1\|ET_2)$. OBdA gehen wir davon aus, dass
+  $xy\in(ET_1\|EL_2)\cup (EL_1\|ET_2)$. \OBdA{} gehen wir davon aus, dass
   $xy\in ET_1\|EL_2$ gilt, d.h.\ es gibt $w_1\in ET_1$ und $w_2\in EL_2$ mit
   $xy\in w_1\|w_2$.\\
   Weiterführend werden wir für alle Fälle von $xy$ zeigen, dass es ein $v\in
@@ -176,14 +175,14 @@ fehlt.
       und $MIT$ endet $v_1$ auf ein $a\in I_1$, d.h.\ $v_1=v_1’a$. $v'$ sei das
       Präfix von $xy$, das mit der letzten Aktion von $v_1$ endet, d.h.\ mit
       $a$, und $v_2'=v'|_{\Sigma _{2}}$. Falls $v_2\in L_2$, dann ist
-      $v_2'$ ein Präfix von $v_2$, da kein Fehler möglich ist in der
+      $v_2'$ ein Präfix von $v_2$, da in diesem Fall kein Fehler möglich ist in der
       Parallelkomposition und somit maximal das gesamte Wort $v_2$ bereits in
       $v'$ enthalten sein kann durch Projektion auf $\Sigma _2$. Falls $v_2\in
       PrT_2\cup MIT_2$ gilt, dann ist durch die Annahme, dass $v_2$ nicht vor
       $v_1$ endet, $v_2'$ ein Präfix von $v_2$. Im Fall $v_2\in MIT_2$ können
       wir sogar schließen, dass $v_2'$ ein echtes Präfix von $v_2$ ist, da
       $v_2$ auf $b\in I_2$ endet und somit der letzte Input $b$ noch nicht der
-      fehlende sein kann.
+      fehlende sein kann, da auch $v_1$ auf einen Input endet.
   \end{itemize}
   In allen Fällen erhalten wir $q_{02}\overset{v_2'}{\Rightarrow}$ (*) und
   desweiteren ist $v_2'=v'|_{\Sigma _2}$ ein Präfix von $v_2$ und $v'\in v_1\|
@@ -206,14 +205,14 @@ fehlt.
           \overset{v''}{\Rightarrow} (q_1,q_2)$ mit $q_1
           \overset{a}{\not{\hspace{-0.1cm}\rightarrow}},a\in I_1, q_2
           \overset{a}{\rightarrow},a\in O_2$, somit gilt $(q_1,q_2)\in
-          E_{12}$. Wir wählen $v:=prune(v'')\in PrR(S_1\|S_2)$.
+          E_{12}$. Wir wählen $v:=prune(v'')\in PrT(S_1\|S_2)$.
       \end{itemize}
   \item Fall 2 ($v_1\in PrT_1$): $\exists u_1\in O_1^*:q_{01}
     \overset{v_1}{\Rightarrow} q_1 \overset{u_1}{\Rightarrow} q_1'$ mit
     $q_1'\in E_1$. Es gilt $q_{02} \overset{v_2'}{\Rightarrow}q_2$ mit
     $(q_{01},q_{02}) \overset{v'}{\Rightarrow}(q_1,q_2)$.
     \begin{itemize}
-      \item Fall 2a) ($u_2\in (O_1\cap I_2)*, c\in (O_1\cap I_2)$, sodass
+      \item Fall 2a) ($u_2\in (O_1\cap I_2)^*, c\in (O_1\cap I_2)$, sodass
         $u_2c$ Präfix von $u_1|_{I_2}$ mit $q_2 \overset{u_2}{\Rightarrow} q_2'
         \overset{c}{\not{\hspace{-0.1cm}\rightarrow}}$): Für das Präfix $u_1'c$
         von $u_1$ mit $u_1'c|_{I_2}=u_2c$ wissen wir, dass $q_1
@@ -252,7 +251,7 @@ fehlt.
   %TODO
 \end{proof}
 
-\begin{kor}
+\begin{kor}[Präkongruenz]
   \label{korPraekongruenz}
   $\sqsubseteq _E$ ist eine Präkongruenz.
 \end{kor}
@@ -284,12 +283,12 @@ fehlt.
 
 In~\cite{Vogler2014EIO} wurde auch die Verfeinerung von EIOs als Relation betrachtet
 mit Spezifikation und Implementierung. Hier soll ebenfalls eine
-Verfeinerungsrelation über EIOs betrachtet werden, jedoch im Zusammenhang mit
-den Definitionen von oben und Satz~\ref{satzErrorSemanik}.
+Verfeinerungsrelation über EIOs betrachtet werden, jedoch in leicht
+abgewandelter Form.
 
 \begin{lem}[Verfeinerung mit Errors]
   \label{lemVerfeinerung}
-  Gegeben sind zwei EIOs $S_1, S_2$ mit der gleichen Signatur. Wenn
+  Gegeben sind zwei EIOs $S_1$ und $S_2$ mit der gleichen Signatur. Wenn
   für alle EIOs $U$ gilt, $S_2$ und $U$ kommunizieren gut, folgt $S_1$
   und $U$ kommunizieren gut, dann verfeinert $S_1$ $S_2$. Diese Verfeinerung
   entspricht der Relation $\sqsubseteq _E$ von oben, die hier dann wie folgt
@@ -301,25 +300,26 @@ den Definitionen von oben und Satz~\ref{satzErrorSemanik}.
   Da $S_1$ und $S_2$ die gleichen Signaturen haben, definieren wir:
   $I:=I_1=I_2$ und $O:=O_1=O_2$. Für jeden der Partner $U$ gilt $I_U=O$ und
   $O_U=I$.\\
-  Um zu zeigen, dass $S_1\sqsubseteq S_2$ müssen wir zeigen, dass gilt:
+  Um zu zeigen, dass $S_1\sqsubseteq _E S_2$ müssen wir zeigen, dass gilt:
   \begin{itemize}
     \item $ET(S_1)\subseteq ET(S_2)$
-    \item $EL(S_1)\subseteq EL(S_2)$
+    \item $EL(S_1)\subseteq EL(S_2)$.
   \end{itemize}
   Wir wählen ein präfix-minimales Element $w\in ET(S_1)$ und müssen dann
   zeigen, dass dieses $w$ oder eines seiner Präfixe in $ET(S_2)$ enthalten ist,
   um
   die erste Inklusion zu zeigen.
   \begin{itemize}
-    \item Fall 1 ($w=\varepsilon$): Es ist ein Error lokal erreichbar in $S_1$.
+    \item Fall 1 ($w=\varepsilon$): Es handelt sich um einen lokal erreichbaren
+      Error in $S_1$.
       Wir nehmen für $U$ einen Automaten, der nur aus dem Startzustand und
       einer Schleife für alle $x\in I_U$ besteht. Somit kann $S_1$ die gleichen
       Error-Zustände lokal erreichen wie $U\|S_1$. Daraus folgt, dass auch
       $U\|S_2$ einen lokal erreichbaren Error-Zustand haben muss. Durch unsere
       Definition von $U$ kann dieser Fehler nur geerbt werden von $S_2$. Es
       muss also in $S_2$ ein Error-Zustand durch interne Handlungen und Outputs
-      erreichbar sein, d.h. $\varepsilon\in PrT(S_2)$.
-    \item Fall 2 ($w=x_1\dots x_n x_{n+1})\in\Sigma ^+$ mit $n\geq 0$ und
+      erreichbar sein, d.h. es gilt $\varepsilon\in PrT(S_2)$.
+    \item Fall 2 ($w=x_1\dots x_n x_{n+1}\in\Sigma ^+$ mit $n\geq 0$ und
       $x_{n+1}\in I$): Wir betrachten die folgenden Partner $U$, siehe auch
       Abbildung~\ref{UohneE}:
       \begin{itemize}
@@ -374,7 +374,7 @@ den Definitionen von oben und Satz~\ref{satzErrorSemanik}.
           E_1$. Daraus folgt $(q_{n+1},q')\in E_{U\|S_1}$ und somit $wu\in
           StT(U\|S_1)$. Da alle Handlungen aus $w$ synchronisiert werden gilt
           $x_1,\dots ,x_n,x_{n+1}\in O_{U\|S_1}$ und da $u\in O^*$ folgt
-          daraus $u\in O_{U\|S_1}^*$. Somit ergibt sich $\varepsilon\in
+          $u\in O_{U\|S_1}^*$. Somit ergibt sich $\varepsilon\in
           PrT(U\|S_1)$.
       \end{itemize}
       Da wir wissen, dass $\varepsilon\in StT(U\|S_1)$ gilt, können wir durch
@@ -399,13 +399,13 @@ den Definitionen von oben und Satz~\ref{satzErrorSemanik}.
           Durch dies hat $S_2$ einen Zustand in $E_2$ erreicht, da von $U$
           keine Fehler geerbt werden können. Es gilt dann $prune(x_1\dots
           x_iu)=prune(x_1\dots x_i)\in PrT(S_2)\subseteq ET(S_2)$. Da $x_1\dots
-          x_i$ ein Präfix von $w$ ist, für auch in diesem Fall ein Präfix von
+          x_i$ ein Präfix von $w$ ist, führt auch in diesem Fall ein Präfix von
           $w$ zu einem Error.
       \end{itemize}
   \end{itemize}
   Um uns von der zweiten Inklusion zu überzeugen reicht es zu zeigen, dass
   $L(S_1)\backslash ET(S_1)\subseteq EL(S_2)$ gilt, da wir die erste Inklusion
-  bereits bewiesen haben und wegen der Definition von $EL$.\\
+  bereits bewiesen haben und die Definition von $EL$ gilt.\\
   Wir nehmen uns dafür ein beliebieges $w\in L(S_1)\backslash ET(S_1)$ und
   zeigen, dass es in $EL(S_2)$ enthalten ist.
   \begin{itemize}
@@ -451,8 +451,8 @@ den Definitionen von oben und Satz~\ref{satzErrorSemanik}.
         \label{UmitE}
       \end{center}
       \end{figure}
-      Da $q_{01} \overset{w}{\Rightarrow} q$ gilt, wissen wir, dass $U|S_1$
-      einen lokal erreichbaren Error hat. Somit muss $U|S_2$ ebenfalls einen
+      Da $q_{01} \overset{w}{\Rightarrow} q$ gilt, wissen wir, dass $U\|S_1$
+      einen lokal erreichbaren Error hat. Somit muss $U\|S_2$ ebenfalls einen
       lokal erreichbaren Error haben.
       \begin{itemize}
         \item Fall 2a) (neuer Error aufgrund von $x_i\in O_U$ und $q_{02}
@@ -481,9 +481,9 @@ den Definitionen von oben und Satz~\ref{satzErrorSemanik}.
 
 \begin{satz}[Full Abstractness für lokale Error Semanik]
   \label{satzFullAbstractness}
-  Seien $S_1, S_2$ zwei EIOs mit derselben Signatur. Dann gilt $S_1\sqsubseteq
-  _E^C S_2\Leftrightarrow S_1\sqsubseteq _E S_2$, insbesondere $\sqsubseteq _E$
-  ist eine Präkongruenz.
+  Seien $S_1$ und $S_2$ zwei EIOs mit derselben Signatur. Dann gilt $S_1\sqsubseteq
+  _E^C S_2\Leftrightarrow S_1\sqsubseteq _E S_2$, insbesondere ist $\sqsubseteq _E$
+  eine Präkongruenz.
 \end{satz}
 
 \begin{proof}
@@ -492,13 +492,13 @@ den Definitionen von oben und Satz~\ref{satzErrorSemanik}.
 
   ``$\Leftarrow$'': Im Beweis von~\ref{lemVerfeinerung} wurde bereits festgestellt wenn
       $\varepsilon\in ET(S)$ gilt, dass ein Error lokal erreichbar ist in
-      $S$.Somit impliziert $S_1\sqsubseteq _E S_2$, dass $\varepsilon\in
+      $S$. Somit impliziert $S_1\sqsubseteq _E S_2$, dass $\varepsilon\in
       ET(S_2)$ gilt, wenn $\varepsilon\in ET(S_1)$. Dadurch folgt auch, dass
       ebenfalls $S_1\sqsubseteq _E^B S_2$ gilt. Somit folgt aus $S_1\sqsubseteq
       _E S_2$ der relationale Zusammenhang $S_1\sqsubseteq _E^C S_2$.
 
   ``$\Rightarrow$'': Durch die Definition von $\sqsubseteq _E^C$ folgt aus
-  $S_1\sqsubseteq _E^C S_2$ $U\|S_1\subseteq U\|S_2$ für alle EIOs $U$, die mit
+  $S_1\sqsubseteq _E^C S_2$, dass $U\|S_1\subseteq U\|S_2$ gilt für alle EIOs $U$, die mit
   $S_1$ komponierbar sind. Somit folgt auch die Gültigkeit von
   $U\|S_1\sqsubseteq _E^B U\|S_2$ für alle diese EIOs $U$. Mit
   Lemma~\ref{lemVerfeinerung} ergibt sich dann $S_1\sqsubseteq _E S_2$.
@@ -509,13 +509,13 @@ den Definitionen von oben und Satz~\ref{satzErrorSemanik}.
   für die gilt $S_2$ kommuniziert gut mit $U$ folgt $S_1$ kommuniziert
   ebenfalls gut mit $U$.\\
   Dies lässt sich formal wie folgt ausdürcken: $S_1\sqsubseteq _E S_2
-  \Leftrightarrow U\|S_1\sqsubseteq U\|S_2$ für alle Partner $U$.
+  \Leftrightarrow U\|S_1\sqsubseteq _E^B U\|S_2$ für alle Partner $U$.
 \end{kor}
 
 \begin{proof}
   ``$\Rightarrow$'': Diese Richtung folgt aus dem Beweis von
   Satz~\ref{satzFullAbstractness}.
 
-  ``$\Leftarrow$'': Diese Richtung folgt wurde in Lemma~\ref{lemVerfeinerung}
+  ``$\Leftarrow$'': Diese Richtung wurde in Lemma~\ref{lemVerfeinerung}
   bewiesen.
 \end{proof}

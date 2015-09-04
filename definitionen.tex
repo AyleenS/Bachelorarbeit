@@ -1,53 +1,63 @@
 \chapter{Definitionen und Notationen}
 
 Die Definitionen dieses Kapitels sind größtenteils aus~\cite{Vogler2014EIO}
-übernommen. Hierbei handelt es sich um die Grundlagen der Automaten mit denen
+übernommen. Hierbei handelt es sich um die Grundlagen der Transitionssysteme mit denen
 hier gearbeitet werden soll. Es wurde jedoch angepasst, dass für die
 Parallelkomposition die Inputaktionen der EIOs nicht disjunkt sein müssen. Dies
-wäre eine unnötige Einschränkung. Die Inputs der zu komponierenden EIOs werden
-als Inputs der Parallelkomposition übernommen.
+wäre eine unnötige Einschränkung. Die nicht synchronisierten Inputs der zu komponierenden EIOs werden
+als Inputs der Parallelkomposition übernommen. Zusätzlich verzichten wir hier
+auf das verbergen der synchronisierten Handlungen.
 
 \section{Error-IO-Transitionssystem}
 Die hier betrachteten EIOs sind Systeme, deren Übergänge mit Inputs und Outputs
 beschriftet sind. Ebenfalls zulässig ist eine Kantenbeschriftung mit einem
-$\tau$, das dann eine interne, unbeobachtbare Aktion darstellt, die also keine Interaktion mit
-der Umwelt darstellt, sondern meist dafür steht, dass die Inputs und Outputs
-dieses Übergangs verborgen wurden.
+$\tau$, das dann eine interne, unbeobachtbare Aktion darstellt. Diese interne
+Aktion lässt also keine Interaktion mit
+der Umwelt zu. In vielen Fällen wird sie dafür verwendet, dass die Inputs und Outputs
+dieses Übergangs verborgen wurden, da diese in einer Komposition synchronisiert
+wurden.
 
 \begin{Def}[Error-IO-Transitionssystem]
   Ein Error-IO-Transitionssystem (EIO) ist
-  als Tupel $S=(Q,I,O,\delta, q_0, E)$ definiert, mit:
+  als Tupel $S=(Q,I,O,\delta, q_0, E)$ definiert, mit den Komponenten:
   \begin{itemize}
     \item $Q$ $-$ die Menge der Zustände
     \item $I,O$ $-$ die disjunkten Mengen der (sichtbaren) Input- und Outputaktionen
     \item $\delta\subseteq Q\times (I\cup U\cup\{\tau\})\times Q$ $-$ die
       Übergangsrelation
     \item $q_0\in Q$ $-$ der Startzustand
-    \item $E\subseteq Q$ $-$ die Menge der Error-Zustände
+    \item $E\subseteq Q$ $-$ die Menge der Error-Zustände.
   \end{itemize}
 \end{Def}
 
-Die Handlungen von $S$ sind $\Sigma = I\cup U$ und die Signatur
+Die Handlungsmenge eines EIOs $S$ ist $\Sigma = I\cup U$ und die Signatur
 $Sig(S)=(I,O)$.\\
 Um in graphischen Veranschaulichungen Inputs und Outputs zu kennzeichnet wird
 folgende Notation verwendet: $x?$ für den Input $x$ und $x!$ für den Output
 $x$.\\
-Um die Komponenten einzelner Automaten zuzuordnen, werden für
+Um die Komponenten den entsprechenden Automaten zuzuordnen, werden für
 die Komponenten die gleichen Indizes wie für ihre zugehörigen Automaten
-verwendet.\\
+verwendet, z.B.\ für die Inputmenge des Automaten $S_1$ schreiben wir $I_1$.
+Diese Notation verwenden wir später auch analog für die Sprachen, die einem
+Automaten zugeordnet sind.\\
 Die Elemente der Übergangsrelation $\delta$ werden wir wie folgt notieren:
 \begin{itemize}
   \item $p\overset{a}{\rightarrow} q$ für $(p,a,q)\in\delta$
   \item $p\overset{a}{\rightarrow}$ für $\exists p: (p,a,q)\in\delta$
-  \item diese Notation kann analog auf Wörter $w\in(\Sigma\cup\{\tau\})^*$
-    erweitert werden
+  \item $p\overset{w}{\rightarrow} q$ für $p \overset{a_1}{\rightarrow} p_1
+    \overset{a_2}{\rightarrow} p_2\dots \overset{a_n}{\rightarrow} q$ mit $w\in
+    (\Sigma\cup\{\tau\})^*, w=a_1a_2\dots a_n$
+  \item $p\overset{w}{\rightarrow}$ für $p \overset{a_1}{\rightarrow}
+    \overset{a_2}{\rightarrow} \dots \overset{a_n}{\rightarrow}$ mit $w\in
+    (\Sigma\cup\{\tau\})^*, w=a_1a_2\dots a_n$
   \item $w|_B$ steht für die Zeichenfolge, die aus $w$ entsteht durch löschen
     aller Zeichen, die nicht in $B\subseteq\Sigma$ enthalten sind, d.h.\ es
     bezeichnet die Projektion von $w$ auf die Menge $B$
   \item $p\overset{w}{\Rightarrow} q$ für $w\in\Sigma^*$ mit $\exists
     w'\in(\Sigma\cup\{\tau\})^*:w'|_{\Sigma}=w\wedge p\overset{w'}{\rightarrow}
     q$
-  \item $p\overset{w}{\Rightarrow}$ für $\exists q:p\overset{w}{\Rightarrow} q$
+  \item $p\overset{w}{\Rightarrow}$ für $\exists q:p\overset{w}{\Rightarrow}
+    q$.
 \end{itemize}
 Die Sprache von $S$ ist
 $L(S)=\{w\in\Sigma^*\mid q_0\overset{w}{\Rightarrow}\}$.
@@ -56,7 +66,7 @@ $L(S)=\{w\in\Sigma^*\mid q_0\overset{w}{\Rightarrow}\}$.
 Zwei EIOs sind komponierbar, wenn ihre Outputaktionsmengen disjunkt sind. Die
 Error-Zustände der Parallelkomposition setzten sich aus den Error-Zuständen der
 beiden zusammengesetzten Komponenten (geerbte Errors) und den Outputs zusammen, die von der
-anderen Komponente nicht angenommen werden können (neue Errors).
+anderen Komponente nicht als Inputs angenommen werden können (neue Errors).
 
 \begin{Def}[Parallelkomposition]
   Zwei EIOs $S_1, S_2$ sind komponierbar, falls
@@ -76,16 +86,19 @@ anderen Komponente nicht angenommen werden können (neue Errors).
       _1, (q_2,\alpha ,p_2)\in\delta _2, \alpha\in Synch(S_1,S_2)\}
   \end{aligned}$
     \item $\begin{aligned}[t]
-    E=&(Q_1\times E_2)\cup (E_1\times Q_2)\cup\\
+        E=&(Q_1\times E_2)\cup (E_1\times Q_2)\cup
+        &&\phantom{neue}\mathrm{geerbte}~\mathrm{Errors}\\
       &\{(q_1,q_2)\mid \exists a\in O_1\cap I_2: q_1\overset{a}{\rightarrow}\wedge
-  q_2\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\}\cup\\
+      q_2\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\}\cup
+      &&\phantom{neue}\mathrm{neue}~\mathrm{Errors}\\
   &\{(q_1,q_2)\mid \exists a\in I_1\cap O_2:
 q_1\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\wedge
 q_2\overset{a}{\rightarrow}\}
   \end{aligned}$
   \end{itemize}
   Dabei werden die synchronisierten Handlungen $Synch(S_1,
-  S_2)=(I_1\cap O_2)\cup(I_2\cap O_1)$ nicht versteckt.
+  S_2)=(I_1\cap O_2)\cup(I_2\cap O_1)$ nicht versteckt, sondern als Outputs der
+  Komposition beibehalten.
 \end{Def}
 
 \begin{Def}[Parallelkomposition auf Traces]
@@ -117,13 +130,13 @@ die Traces beliebig fortsetzt.
   \end{itemize}
 \end{Def}
 
-Für zwei komponierbare EIOs $S_1, S_2$ ist ein Ausführungsweg ihrer
+Für zwei komponierbare EIOs $S_1, S_2$ ist ein Ablauf ihrer
 Parallelkomposition $S_1\| S_2$ eine Transitionsfolge der Form $(q_1,q_2)
-\overset{w}{\Rightarrow}$ für ein $w\in\Sigma_{12}^*$. So ein Ausführungsweg
-kann auf Wege von $S_1$ und $S_2$ projiziert werden. Diese projizierten
-Ausführungswege erfüllen $q_i \overset{w_i}{\Rightarrow} p_i$ mit $w|_{\Sigma
-_i}=w_i$ für $i=1,2$. Umgekehrt sind zwei Ausführungswege von $S_1$ und $S_2$,
-die wie oben aufgebaut sind, Projektionen von genau einem Ausführungsweg
+\overset{w}{\Rightarrow} (p_1,p_2)$ für ein $w\in\Sigma_{12}^*$. So ein Ablauf
+kann auf Abläufe von $S_1$ und $S_2$ projiziert werden. Diese projizierten
+Läufe erfüllen $q_i \overset{w_i}{\Rightarrow} p_i$ mit $w|_{\Sigma
+_i}=w_i$ für $i=1,2$. Umgekehrt sind zwei Abläufe von $S_1$ und $S_2$,
+die wie oben aufgebaut sind, Projektionen von genau einem Ablauf
 $S_1\|S_2$, der ebenfalls wie oben aufgebaut ist. Daraus folgt die Behauptung
 des folgenden Lemmas.
 

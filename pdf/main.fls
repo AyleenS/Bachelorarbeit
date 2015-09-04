@@ -247,10 +247,10 @@ INPUT error.tex
 INPUT pdf/main.bbl
 INPUT pdf/main.bbl
 INPUT pdf/main.aux
-INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc
 INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc
-INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc
 INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc
+INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc
+INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc
 INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb

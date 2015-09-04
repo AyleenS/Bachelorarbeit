@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.11)  3 SEP 2015 20:38
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.11)  4 SEP 2015 16:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -796,19 +796,19 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
  (pdf/main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 38.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 39.
 
 (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -880,63 +880,63 @@ LaTeX Font Info:    Try loading font information for T1+lmss on input line 1.
 (/usr/share/texmf/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 13.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 14.
 
 (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 13.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 14.
 
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 13.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 14.
 
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 13.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 14.
 
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 13.
+(Font)              <12> on input line 14.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 13.
+(Font)              <8> on input line 14.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 13.
-LaTeX Font Info:    Try loading font information for U+msa on input line 13.
+(Font)              <6> on input line 14.
+LaTeX Font Info:    Try loading font information for U+msa on input line 14.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 13.
+LaTeX Font Info:    Try loading font information for U+msb on input line 14.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (20.53574pt too wide) in paragraph at lines 18--20
+Overfull \hbox (20.53574pt too wide) in paragraph at lines 21--23
 []\T1/lmr/bx/n/12 Definition 1.1 (\T1/lmr/bx/it/12 Er-ror-IO-Tran-si-ti-ons-sys
 -tem\T1/lmr/bx/n/12 ). []\T1/lmr/m/it/12 Ein Error-IO-Transitionssystem (EIO)
  []
 
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 21.
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 24.
 (/usr/share/texmf/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/it' in size <12> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 21.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 24.
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 40.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 45.
  [1
 
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-LaTeX Font Info:    Try loading font information for U+euf on input line 113.
+LaTeX Font Info:    Try loading font information for U+euf on input line 126.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 )) (./error.tex [3]
@@ -945,25 +945,25 @@ Kapitel 2.
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 82--86
+Underfull \hbox (badness 10000) in paragraph at lines 81--85
 
  []
 
 [5]
 
-LaTeX Warning: Command \textquoteright invalid in math mode on input line 176.
+LaTeX Warning: Command \textquoteright invalid in math mode on input line 175.
 
-[6] [7]
-Underfull \hbox (badness 10000) in paragraph at lines 261--265
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 260--264
 
  []
 
-[8] [9]
+[7] [8]
 Underfull \hbox (badness 10000) in paragraph at lines 380--384
 
  []
 
-
+[9]
 Overfull \hbox (4.88045pt too wide) in paragraph at lines 406--411
 \T1/lmr/m/n/12 Um uns von der zwei-ten In-klu-si-on zu über-zeu-gen reicht es z
 u zei-gen, dass $\OML/lmm/m/it/12 L\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 S[]\OT1/lm
@@ -971,21 +971,21 @@ r/m/n/12 )\OMS/lmsy/m/n/12 n\OML/lmm/m/it/12 ET\OT1/lmr/m/n/12 (\OML/lmm/m/it/1
 2 S[]\OT1/lmr/m/n/12 ) \OMS/lmsy/m/n/12 ^^R
  []
 
-[10] [11]) (pdf/main.bbl [12]) [13
+[10]) (pdf/main.bbl [11]) [12
 
 
 ] (pdf/main.aux) ) 
 Here is how much of TeX's memory you used:
- 14295 strings out of 493304
- 265789 string characters out of 6139871
- 375310 words of memory out of 5000000
- 17413 multiletter control sequences out of 15000+600000
+ 14296 strings out of 493304
+ 265793 string characters out of 6139871
+ 375316 words of memory out of 5000000
+ 17414 multiletter control sequences out of 15000+600000
  46318 words of font info for 44 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  65i,21n,71p,435b,1087s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/shar
-e/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/l
-m-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/f
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/shar
+e/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/l
+m-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/f
 onts/enc/dvips/lm/lm-ec.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/euler/eufm10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></u
 sr/share/texmf/fonts/type1/public/lm/lmbxi10.pfb></usr/share/texmf/fonts/type1/
@@ -997,10 +997,10 @@ pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/
 type1/public/lm/lmro12.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb
 ></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/typ
 e1/public/lm/lmsy6.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb>
-Output written on pdf/main.pdf (13 pages, 275699 bytes).
+Output written on pdf/main.pdf (12 pages, 275510 bytes).
 PDF statistics:
- 121 PDF objects out of 1000 (max. 8388607)
- 89 compressed objects within 1 object stream
+ 117 PDF objects out of 1000 (max. 8388607)
+ 86 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
