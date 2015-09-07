@@ -28,26 +28,27 @@ Verfeinerungsrelation definieren.
   $\sqsubseteq _E^B$ bezüglich $\|$.
 \end{Def}
 
-Um nun die gröbsten Präkongruenz finden zu können, müssen wir bestimmte Traces
+Um uns nun näher mit den Präkongruenzen auseinandersetzen zu können, müssen wir bestimmte Traces
 aus unseren Automaten hervorheben. Die strikten Errortraces sind Wege, die
 direkt vom Startzustand zu einem Zustand in $E$ führen. Da Outputs Aktionen
 sind, die von außen nicht verhindert werden können, benötigen wir auch noch die
 Menge der Traces, die zu einem Zustand führen, von dem aus mit lokalen Aktionen
-ein Error erreicht werden kann. Zusätzlich ich auch noch die Menge der Traces
-interessant, denen am Ende ein möglicher Input fehlt. Diese führen zwar nicht
+ein Error erreicht werden kann. Zusätzlich ist auch noch die Menge der Traces
+interessant, für die es einen Input $a\in I$ gibt, durch den sie nicht
+vorgesetzt werden können. Diese führen zwar nicht
 direkt zu einem Fehler, jedoch in Komposition mit einem anderen Automaten sind
 dies gefährdete Stellen für neue Errors, da für die Synchronisation dieser Input
 fehlt.
 
 \begin{Def}[Errortraces]
-  Folgende Trace-Mengen sind definiert für einen EIO $S$:
+  Sei $S$ ein EIO und definiere:
   \begin{itemize}
     \item strikte Errortraces: $StT(S)=\{w\in\Sigma
-      ^*\mid q_0\overset{w}{\Rightarrow}q\in E\}$
-    \item gekürzte Errortraces: $PrT(S)=\{prune(w)\mid w\in StT(S)\}$
-    \item fehlende Input-Traces: $MIT(S)=\{wa\in\Sigma ^*\mid 
+      ^*\mid q_0\overset{w}{\Rightarrow}q\in E\}$,
+    \item gekürzte Errortraces: $PrT(S)=\{prune(w)\mid w\in StT(S)\}$,
+    \item fehlende Input-Traces: $MIT(S)=\{wa\in\Sigma ^*\mid
       q_0\overset{w}{\Rightarrow}q\wedge a\in I\wedge
-    q\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\}$
+    q\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\}$.
   \end{itemize}
 \end{Def}
 
