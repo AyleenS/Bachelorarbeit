@@ -141,13 +141,13 @@ die Traces beliebig fortsetzen.
 \end{Def}
 
 Für zwei komponierbare EIOs $S_1, S_2$ ist ein Ablauf ihrer
-Parallelkomposition $S_1\| S_2$ eine Transitionsfolge der Form $(p_1,p_2)
+Parallelkomposition $S_{12}=S_1\| S_2$ eine Transitionsfolge der Form $(p_1,p_2)
 \overset{w}{\Rightarrow} (q_1,q_2)$ für ein $w\in\Sigma_{12}^*$. So ein Ablauf
 kann auf Abläufe von $S_1$ und $S_2$ projiziert werden. Diese Projektion
 erfüllen $p_i \overset{w_i}{\Rightarrow} q_i$ mit $w|_{\Sigma
 _i}=w_i$ für $i=1,2$. Umgekehrt sind zwei Abläufe von $S_1$ und $S_2$,
 die wie oben aufgebaut sind, Projektionen von genau einem Ablauf
-$S_1\|S_2$, der ebenfalls wie oben aufgebaut ist. Formuliert ist dies in
+$S_{12}$, der ebenfalls wie oben aufgebaut ist. Formuliert ist dies in
 folgendem Lemma.
 
 \begin{lem}[Sprache der Parallelkomposition]

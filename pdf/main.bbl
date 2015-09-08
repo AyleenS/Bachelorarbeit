@@ -5,10 +5,14 @@
   \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
 }
 \providecommand{\href}[2]{#2}
-\begin{thebibliography}{BV14}
+\begin{thebibliography}{CJK13}
 
 \bibitem[BV14]{Vogler2014EIO}
 Ferenc Bujtor und Walter Vogler, \emph{Error-pruning in interface automata},
   Tech. report, Universität Augsburg, 2014.
+
+\bibitem[CJK13]{Chilton2013}
+Chris Chilton, Bengt Jonsson, und Marta~Z. Kwiatkowska, \emph{An algebraic
+  theory of interface automata}, Tech. report, University of Oxford, 2013.
 
 \end{thebibliography}

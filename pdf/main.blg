@@ -3,44 +3,44 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: amsalphagar.bst
 Database file #1: literatur.bib
-You've used 1 entry,
+You've used 2 entries,
             2624 wiz_defined-function locations,
-            563 strings with 4479 characters,
-and the built_in function-call counts, 357 in all, are:
-= -- 30
-> -- 19
+            569 strings with 4622 characters,
+and the built_in function-call counts, 716 in all, are:
+= -- 63
+> -- 44
 < -- 0
-+ -- 6
-- -- 6
-* -- 24
-:= -- 69
-add.period$ -- 1
-call.type$ -- 1
-change.case$ -- 7
-chr.to.int$ -- 1
-cite$ -- 1
-duplicate$ -- 14
-empty$ -- 22
-format.name$ -- 7
-if$ -- 64
++ -- 16
+- -- 15
+* -- 52
+:= -- 134
+add.period$ -- 2
+call.type$ -- 2
+change.case$ -- 15
+chr.to.int$ -- 2
+cite$ -- 2
+duplicate$ -- 28
+empty$ -- 43
+format.name$ -- 17
+if$ -- 132
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 1
-newline$ -- 13
-num.names$ -- 3
-pop$ -- 6
+missing$ -- 2
+newline$ -- 16
+num.names$ -- 6
+pop$ -- 13
 preamble$ -- 1
-purify$ -- 7
+purify$ -- 15
 quote$ -- 0
-skip$ -- 12
+skip$ -- 22
 stack$ -- 0
-substring$ -- 7
-swap$ -- 1
+substring$ -- 15
+swap$ -- 2
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 8
+type$ -- 16
 warning$ -- 0
-while$ -- 3
-width$ -- 2
-write$ -- 20
+while$ -- 6
+width$ -- 3
+write$ -- 31
