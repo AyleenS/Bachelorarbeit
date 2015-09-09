@@ -244,8 +244,6 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/euler/eufm10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/euler/eufm7.tfm
 INPUT error.tex
 INPUT error.tex
-INPUT quiescents.tex
-INPUT quiescents.tex
 INPUT pdf/main.bbl
 INPUT pdf/main.bbl
 INPUT pdf/main.aux
