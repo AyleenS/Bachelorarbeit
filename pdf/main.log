@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.11)  9 SEP 2015 14:39
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.8.11)  11 SEP 2015 15:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -972,15 +972,38 @@ r/m/n/12 )\OMS/lmsy/m/n/12 n\OML/lmm/m/it/12 ET\OT1/lmr/m/n/12 (\OML/lmm/m/it/1
 2 S[]\OT1/lmr/m/n/12 ) \OMS/lmsy/m/n/12 ^^R
  []
 
-[10]) (pdf/main.bbl [11]) [12
+[10]) (./quiescents.tex [11]
+Kapitel 3.
+
+Overfull \hbox (0.61093pt too wide) in paragraph at lines 57--60
+\T1/lmr/m/it/12 Für zwei EI-Os $\OML/lmm/m/it/12 S[]; S[]$ \T1/lmr/m/it/12 mit 
+der glei-chen Si-gna-tur schrei-ben wir $\OML/lmm/m/it/12 S[] \OMS/lmsy/m/n/12 
+v[] \OML/lmm/m/it/12 S[]$\T1/lmr/m/it/12 , wenn $\OML/lmm/m/it/12 ET\OT1/lmr/m/
+n/12 (\OML/lmm/m/it/12 S[]\OT1/lmr/m/n/12 ) \OMS/lmsy/m/n/12 ^^R
+ []
+
+[12
+
+
+]
+Overfull \hbox (13.47963pt too wide) in paragraph at lines 96--116
+\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 QL[]\OMS/lmsy/m/n/12 k\OML/lmm/m/it/12 QT[]\O
+T1/lmr/m/n/12 ))$\T1/lmr/m/n/12 . So-mit kön-nen wir schlie-ÿen, dass es ein $\
+OML/lmm/m/it/12 y \OMS/lmsy/m/n/12 2 \OML/lmm/m/it/12 Q[]$ \T1/lmr/m/n/12 gibt,
+ so-dass $\OML/lmm/m/it/12 xy \OMS/lmsy/m/n/12 2 \OT1/lmr/m/n/12 (\OML/lmm/m/it
+/12 QT[]\OMS/lmsy/m/n/12 k\OML/lmm/m/it/12 QL[]\OT1/lmr/m/n/12 ) \OMS/lmsy/m/n/
+12 [
+ []
+
+[13]) (pdf/main.bbl [14]) [15
 
 
 ] (pdf/main.aux) ) 
 Here is how much of TeX's memory you used:
- 14303 strings out of 493304
- 265888 string characters out of 6139871
- 374358 words of memory out of 5000000
- 17421 multiletter control sequences out of 15000+600000
+ 14312 strings out of 493304
+ 266034 string characters out of 6139871
+ 376387 words of memory out of 5000000
+ 17427 multiletter control sequences out of 15000+600000
  46778 words of font info for 44 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  65i,21n,71p,435b,1087s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -998,10 +1021,10 @@ pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/
 type1/public/lm/lmro12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb><
 /usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb></usr/share/texmf/fonts/type1/
 public/lm/lmsy8.pfb>
-Output written on pdf/main.pdf (12 pages, 254965 bytes).
+Output written on pdf/main.pdf (15 pages, 267999 bytes).
 PDF statistics:
- 113 PDF objects out of 1000 (max. 8388607)
- 83 compressed objects within 1 object stream
+ 123 PDF objects out of 1000 (max. 8388607)
+ 90 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
