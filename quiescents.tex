@@ -38,9 +38,9 @@ optimistischen Ansatz der lokalen Erreichbarkeit.
   \begin{itemize}
     \item die Traces bezüglich Errors entsprechen denen
       aus~\ref{DefErrortraces},
-    \item strickte Quiescenttraces: $StQ(S) = \{w\in\Sigma ^*\mid q_0
+    \item strickte Quiescenttraces: $StQT(S) = \{w\in\Sigma ^*\mid q_0
       \overset{w}{\Rightarrow} q\in Qui\}$,
-    \item gekürzte Quiescenttraces: $PrQ(S) = \{prune(w)\mid w\in StQ(S)\}$.
+    \item gekürzte Quiescenttraces: $PrQT(S) = \{prune(w)\mid w\in StQT(S)\}$.
   \end{itemize}
 \end{Def}
 
@@ -49,7 +49,7 @@ optimistischen Ansatz der lokalen Erreichbarkeit.
   Sei $S$ ein EIO.
   \begin{itemize}
     \item Die Menge der Errortraces ist wie in~\ref{DefETEL} definiert.
-    \item Die Menge der Quiescenttraces von $S$ ist $QT(S) = cont(PrQ(S))$.
+    \item Die Menge der Quiescenttraces von $S$ ist $QT(S) = cont(PrQT(S))$.
     \item Die geflutete Sprache von $S$ ist $QL(S)=L(S)\cup ET(S)\cup QT(S)$
       und unterscheidet sich somit von der gefluteten Sprache $EL(S)$
       in~\ref{DefETEL}.
@@ -79,7 +79,7 @@ optimistischen Ansatz der lokalen Erreichbarkeit.
 
   2. ``$\subseteq$'':\\
   Da hier beide Seiten unter $cont$ abgeschlossen sind, genügt es ein
-  präfix-minimales Element $w\in PrQ_{12}$ zu betrachten und dessen
+  präfix-minimales Element $w\in PrQT_{12}$ zu betrachten und dessen
   Zugehörigkeit zur rechten Menge zu zeigen. Aufgrund von
   Definition~\ref{DefQuiescenttraces} wissen wir es gibt ein $v\in O_{12}^*$,
   sodass $(q_{01},q_{02}) \overset{w}{\Rightarrow} (q_1,q_2)
@@ -89,35 +89,38 @@ optimistischen Ansatz der lokalen Erreichbarkeit.
   \overset{w_2}{\Rightarrow} q_2 \overset{v_2}{\Rightarrow} q_2'$ mit $w\in
   w_1\|w_2$ und $v\in v_1\|v_2$. Aus $(q_1',q_2')\in Qui_{12}$ können wir
   folgern, dass bereits $q_1'\in Qui_1$ und $q_2'\in Qui_2$ gilt. Somit gilt
-  $w_1v_1\in StQ_1\subseteq QT_1\subseteq QL_1$ und $w_2v_2\in StQ_2\subseteq
+  $w_1v_1\in StQT_1\subseteq QT_1\subseteq QL_1$ und $w_2v_2\in StQT_2\subseteq
   QT_2\subseteq QL_2$. Daraus folgt dann $wv\in QT_1\|QL_2$ mit $w\in
   prune(wv)$ und somit ist $w$ in der rechten Seiten der Gleichung enthalten.
 
   2. ``$\supseteq$'':\\
   Wegen der Abgeschlossenheit beider Seiten der Gleichung gegenüber $cont$
-  betrachten wir auch in diesem Fall nur ein präfix-minimales Element$x\in
+  betrachten wir auch in diesem Fall nur ein präfix-minimales Element $x\in
   prune((QT_1\|QL_2)\cup (QL_1\|QT_2))$. Somit können wir schließen, dass es
-  ein $y\in Q_{12}^*$ gibt, sodass $xy\in (QT_1\|QL_2)\cup (QL_1\|QT_2)$. \OBdA
-  gilt $xy\in QT_1\|QL_2$, d.h.\ es existieren $w_1\in QT_1$ und $w_2\in QL_2$
-  mit $xy\in w_1\| w_2$.\\
+  ein $y\in Q_{12}^*$ gibt, sodass $xy\in (QT_1\|QL_2)\cup (QL_1\|QT_2)$.
+  \OBdA{} gilt $xy\in QT_1\|QL_2$, d.h.\ es existieren $w_1\in QT_1$ und
+  $w_2\in QL_2$ mit $xy\in w_1\| w_2$.\\
   Im weiteren werden wir für alle Fälle von $xy$ zeigen, dass es ein $v\in
-  PrQ_{12}$ gibt, das ein Präfix von $xy$ ist und $v$ entweder auf einen Input
+  PrQT_{12}$ gibt, das ein Präfix von $xy$ ist und $v$ entweder auf einen Input
   aus $I_{12}$ endet oder $v=\varepsilon$. Da $v$ entweder leer ist oder auf
   einen Input endet, muss $v$ ein Präfix von $x$ sein mit der gleichen
   Begründung wie im Beweis zu Satz~\ref{satzErrorSemanik}. Somit gilt durch die
   Existenz dieses Präfixes von $x$, dass $x\in QT_{12}$ gilt. Sei $v_1$ das
-  kürzeste Präfix von $w_1$ in $PrQ_1$. Falls $w_2\in L_2$, so sei $v_2=w_2$,
-  sonst soll $v_2$ das kürzeste Präfix von $w_2$ in $PrQ_2$ sein. Jede Aktion
+  kürzeste Präfix von $w_1$ in $PrQT_1$. Falls $w_2\in L_2$, so sei $v_2=w_2$,
+  sonst soll $v_2$ das kürzeste Präfix von $w_2$ in $PrQT_2$ sein. Jede Aktion
   in $v_1$ und $v_2$ hängt mit einer aus $xy$ zusammen. Wir gehen nun davon
   aus, dass entweder $v_2=w_2\in L_2$ gilt oder die letzte Aktion von $v_1$
   findet vor oder gleichzeitig mit der letzten Aktion von $v_2$ statt.
-  Ansonsten endet $v_2\in PrQ_2$ vor $v_1$ und somit ist dieser Fall analog zu
+  Ansonsten endet $v_2\in PrQT_2$ vor $v_1$ und somit ist dieser Fall analog zu
   $v_1$ endet vor $v_2$.
   \begin{itemize}
-    \item Fall 1 ($v_1=\varepsilon$): Somit gilt $\varepsilon\in PrQ_1$ und es
+    \item Fall 1 ($v_1=\varepsilon$): Somit gilt $\varepsilon\in PrQT_1$ und es
       ist deshalb bereits ein Quiescent-Zustand in $S_1$ erreichbar. Wir wählen
       $v_2'=v'=\varepsilon$, somit ist $v_2'$ ein Präfix von $v_2$.
-    \item Fall 2 ($v_1\neq \varepsilon$):
+    \item Fall 2 ($v_1\neq \varepsilon$): Aufgrund der Definition von $PrQT$
+      endet $v_1$ auf ein $a\in I_1$, d.h.\ $v_1=v_1'a$. $v'$ sei das Präfix
+      von $xy$, das mit der letzten Aktion von $v_1$ endet, d.h.\ mit $a$, und
+      $v_2'=v'|_{\Sigma _2}$. Falls 
   \end{itemize}
   %TODO Beweis!!!
 

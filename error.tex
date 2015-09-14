@@ -45,9 +45,9 @@ fehlt.
   \label{DefErrortraces}
   Sei $S$ ein EIO und definiere:
   \begin{itemize}
-    \item strikte Errortraces: $StT(S)=\{w\in\Sigma
+    \item strikte Errortraces: $StET(S)=\{w\in\Sigma
       ^*\mid q_0\overset{w}{\Rightarrow}q\in E\}$,
-    \item gekürzte Errortraces: $PrT(S)=\{prune(w)\mid w\in StT(S)\}$,
+    \item gekürzte Errortraces: $PrET(S)=\{prune(w)\mid w\in StET(S)\}$,
     \item fehlende Input-Traces: $MIT(S)=\{wa\in\Sigma ^*\mid
       q_0\overset{w}{\Rightarrow}q\wedge a\in I\wedge
     q\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\}$.
@@ -58,7 +58,7 @@ fehlt.
   \label{DefETEL}
   Sei $S$ ein EIO.
   \begin{itemize}
-    \item Die Menge der Errortraces von $S$ ist $ET(S):=cont(PrT(S))\cup
+    \item Die Menge der Errortraces von $S$ ist $ET(S):=cont(PrET(S))\cup
       cont(MIT(S))$.
     \item Die geflutete Sprache von $S$ ist $EL(S):=L(S)\cup ET(S)$.
   \end{itemize}
@@ -84,7 +84,7 @@ fehlt.
   Da beide Seiten der Gleichung unter der Fortsetzung $cont$ abgeschlossen sind, genügt es ein
   präfix-minimales Element $w$ von $ET_{12}$ zu betrachten. Dieses Element ist
   nach der Definition der Menge der Errortraces entweder in $MIT_{12}$ oder in
-  $PrT_{12}$ enthalten.\\
+  $PrET_{12}$ enthalten.\\
   \begin{itemize}
     \item Fall 1 ($w\in MIT_{12}$): Aus der Definition von $MIT$ folgt, dass es eine
   Aufteilung $w=xa$ gibt mit
@@ -116,7 +116,7 @@ fehlt.
       gilt $w\in (x_1\| x_2)\cdot\{a\}\subseteq (x_1a)\|x_2\subseteq ET_1\|EL_2$.
       Dies ist eine Teilmenge der rechten Seite der Gleichung.
   \end{itemize}
-    \item Fall 2 ($w\in PrT_{12}$): Durch die Definition von $PrT$ und $prune$
+    \item Fall 2 ($w\in PrET_{12}$): Durch die Definition von $PrET$ und $prune$
       wissen wir, dass es ein $v\in O_{12}^*$ gibt, so dass $(q_{01},q_{02})
       \overset{w}{\Rightarrow} (q_1,q_2) \overset{v}{\Rightarrow} (q_1',q_2')$
       gilt mit $(q_1',q_2')\in E_{12}$ und $w=prune(wv)$. Durch Projektion
@@ -130,12 +130,12 @@ fehlt.
       somit um einen neuen Fehler handelt.
       \begin{itemize}
         \item Fall 2a) (geerbter Error): \OBdA{} $q_1'\in E_1$. Daraus folgt
-          $w_1v_1\in StT_1\subseteq cont(PrT_1)\subseteq ET_1$. Da gilt
+          $w_1v_1\in StET_1\subseteq cont(PrET_1)\subseteq ET_1$. Da gilt
           $q_{02}\overset{w_2v_2}{\Rightarrow}$, erhalten wir $w_2v_2\in
           L_2\subseteq EL_2$. Dadurch ergibt sich $wv\in ET_1\|EL_2$ mit
           $w=prune(wu)$ und somit ist $w$ in der rechten Seite der Gleichung
           enthalten.
-        \item Fall 2b) (neuer Error): \oBdA{} $a\in I_1\cap O_2$ mit
+        \item Fall 2b) (neuer Error): \OBdA{} $a\in I_1\cap O_2$ mit
           $q_1'\overset{a}{\not{\hspace{-0.1cm}\rightarrow}} \wedge q_2'
           \overset{a}{\rightarrow}$. Daraus folgt $w_1v_1a\in MIT_1\subseteq
           ET_1$ und $w_2v_2a\in L_2\subseteq EL_2$. Damit ergibt sich $wva\in
@@ -154,34 +154,34 @@ fehlt.
   $xy\in ET_1\|EL_2$ gilt, d.h.\ es gibt $w_1\in ET_1$ und $w_2\in EL_2$ mit
   $xy\in w_1\|w_2$.\\
   Weiterführend werden wir für alle Fälle von $xy$ zeigen, dass es ein $v\in
-  PrT(S_1\|S_2)\cup MIT(S_1\|S_2)$ gibt, das ein Präfix von $xy$ ist und $v$
+  PrET(S_1\|S_2)\cup MIT(S_1\|S_2)$ gibt, das ein Präfix von $xy$ ist und $v$
   entweder auf ein Input aus $I_{12}$ endet oder $v = \varepsilon$. Da $v$
   entweder leer ist oder auf einen Input endet, muss $v$ ein Präfix von $x$
   sein. $\varepsilon$ ist Präfix von jedem Wort und sobald $x$ mindestens einen
   Buchstaben enthält, kann $y$ durch die Definition von $prune$ nur aus Outputs
   besteht und somit muss das Ende von $v$ vor dem Anfang von $y$ liegen. $x$
-  hat dadurch ein Präfix in $PrT(S_1\|S_2)\cup MIT(S_1\|S_2)$, dann ist $x$ in
+  hat dadurch ein Präfix in $PrET(S_1\|S_2)\cup MIT(S_1\|S_2)$, dann ist $x$ in
   der Fortsetzung dieser Menge enthalten und somit gilt $x\in ET_{12}$.\\
-  Sei $v_1$ das kürzeste Präfix von $w_1$ in $PrT_1\cup MIT_1$. Falls
+  Sei $v_1$ das kürzeste Präfix von $w_1$ in $PrET_1\cup MIT_1$. Falls
   $w_2\in L_2$, so sei $v_2=w_2$, sonst soll $v_2$ das kürzeste Präfix von
-  $w_2$ in $PrT_2\cup MIT_2$ sein. Jede Aktion in $v_1$ und $v_2$ hängt mit
+  $w_2$ in $PrET_2\cup MIT_2$ sein. Jede Aktion in $v_1$ und $v_2$ hängt mit
   einer aus $xy$ zusammen. Wir gehen nun davon aus, dass entweder
   $v_2=w_2\in L_2$ gilt oder die letzte Aktion von $v_1$ findet vor oder
   gleichzeitig mit der letzten Aktion von $v_2$ statt. Ansonsten endet
-  $v_2\in PrT_2\cup MIT_2$ vor $v_1$ und somit ist dieser Fall analog zu $v_1$
+  $v_2\in PrET_2\cup MIT_2$ vor $v_1$ und somit ist dieser Fall analog zu $v_1$
   endet vor $v_2$.
   \begin{itemize}
-    \item Fall 1 ($v_1=\varepsilon$): Dadurch dass $\varepsilon\in PrT_1\cup
+    \item Fall 1 ($v_1=\varepsilon$): Dadurch dass $\varepsilon\in PrET_1\cup
       MIT_1$, ist bereits in $S_1$ ein Error lokal erreichbar. Wir wähle
       $v_2'=v'=\varepsilon$, somit ist $v_2'$ ein Präfix von $v_2$.
-    \item Fall 2 ($v_1\neq\varepsilon$): Aufgrund der Definitionen von $PrT$
+    \item Fall 2 ($v_1\neq\varepsilon$): Aufgrund der Definitionen von $PrET$
       und $MIT$ endet $v_1$ auf ein $a\in I_1$, d.h.\ $v_1=v_1’a$. $v'$ sei das
       Präfix von $xy$, das mit der letzten Aktion von $v_1$ endet, d.h.\ mit
       $a$, und $v_2'=v'|_{\Sigma _{2}}$. Falls $v_2\in L_2$, dann ist
       $v_2'$ ein Präfix von $v_2$, da in diesem Fall in der
       Parallelkomposition kein Fehler möglich ist und somit maximal das gesamte Wort $v_2$ bereits in
       $v'$ enthalten sein kann. Falls $v_2\in
-      PrT_2\cup MIT_2$ gilt, dann ist durch die Annahme, dass $v_2$ nicht vor
+      PrET_2\cup MIT_2$ gilt, dann ist durch die Annahme, dass $v_2$ nicht vor
       $v_1$ endet, $v_2'$ ein Präfix von $v_2$. Im Fall $v_2\in MIT_2$ können
       wir sogar schließen, dass $v_2'$ ein echtes Präfix von $v_2$ ist, da
       $v_2$ auf $b\in I_2$ endet und somit der letzte Input $b$ noch nicht der
@@ -208,9 +208,9 @@ fehlt.
           \overset{v''}{\Rightarrow} (q_1,q_2)$ mit $q_1
           \overset{a}{\not{\hspace{-0.1cm}\rightarrow}},a\in I_1, q_2
           \overset{a}{\rightarrow},a\in O_2$, somit gilt $(q_1,q_2)\in
-          E_{12}$. Wir wählen $v:=prune(v'')\in PrT(S_1\|S_2)$.
+          E_{12}$. Wir wählen $v:=prune(v'')\in PrET(S_1\|S_2)$.
       \end{itemize}
-  \item Fall 2 ($v_1\in PrT_1$): $\exists u_1\in O_1^*:q_{01}
+  \item Fall 2 ($v_1\in PrET_1$): $\exists u_1\in O_1^*:q_{01}
     \overset{v_1}{\Rightarrow} q_1 \overset{u_1}{\Rightarrow} q_1'$ mit
     $q_1'\in E_1$. Es gilt $q_{02} \overset{v_2'}{\Rightarrow}q_2$ mit
     $(q_{01},q_{02}) \overset{v'}{\Rightarrow}(q_1,q_2)$.
@@ -223,13 +223,13 @@ fehlt.
         $u_1'\in u_1'\|u_2$ und $(q_1,q_2) \overset{u_1'}{\Rightarrow}
         (q_1'',q_2')\in E_{12}$, da für $S_2$ der entsprechende Input fehlt,
         der mit dem $c$ Output von $S_1$ zu koppeln wäre, es handelt sich also
-        um einen neuen Error. Wir wählen $v:=prune(v'u_1')\in PrT(S_1\| S_2)$,
+        um einen neuen Error. Wir wählen $v:=prune(v'u_1')\in PrET(S_1\| S_2)$,
         dies ist ein Präfix von $v'$, da $u_1\in O_1^*$.
       \item Fall 2b) ($q_{02} \overset{u_2}{\Rightarrow} q_2'$ mit
         $u_2=u_1|_{I_2}$): Somit ist $u_1\in u_1\|u_2$ und $(q_1,q_2)
         \overset{u_1}{\Rightarrow} (q_1',q_2')\in E_{12}$, da $q_1'\in E_1$ und
         somit handelt es sich um einen geerbten Error. Wir wählen nun $v:=prune
-        (v'u_1)\in PrT(S_1\|S_2)$, das wiederum ein Präfix von $v'$ ist.
+        (v'u_1)\in PrET(S_1\|S_2)$, das wiederum ein Präfix von $v'$ ist.
     \end{itemize}
   \end{itemize}
 
@@ -321,7 +321,7 @@ abgewandelter Form.
       $U\|S_2$ einen lokal erreichbaren Error-Zustand haben muss. Durch unsere
       Definition von $U$ kann dieser Fehler nur geerbt werden von $S_2$. Es
       muss also in $S_2$ ein Error-Zustand durch interne Handlungen und Outputs
-      erreichbar sein, d.h.\ es gilt $\varepsilon\in PrT(S_2)$.
+      erreichbar sein, d.h.\ es gilt $\varepsilon\in PrET(S_2)$.
     \item Fall 2 ($w=x_1\dots x_n x_{n+1}\in\Sigma ^+$ mit $n\geq 0$ und
       $x_{n+1}\in I$): Wir betrachten die folgenden Partner $U$, siehe auch
       Abbildung~\ref{UohneE}:
@@ -362,25 +362,25 @@ abgewandelter Form.
       \end{center}
       \end{figure}
       Wir können für $w$ zwei Fälle unterscheiden. Beide führen zu
-      $\varepsilon\in PrT(U\|S_1)$.
+      $\varepsilon\in PrET(U\|S_1)$.
       \begin{itemize}
         \item Fall 2a) ($w\in MIT(S_1)$): In $U\|S_1$ erhalten wir
           $(q_0,q_{01}) \overset{x_1\dots x_n}{\Rightarrow} (q_n,q')$ mit
           $q' \overset{x_{n+1}}{\not{\hspace{-0.1cm}\rightarrow}}$ und $q_n
           \overset{x_{n+1}}{\rightarrow}$. Deshalb gilt $(q_n,q')\in
-          E_{U\|S_1}$ und $x_1\dots x_n\in StT(U\|S_1)$. Da alle Aktionen aus
+          E_{U\|S_1}$ und $x_1\dots x_n\in StET(U\|S_1)$. Da alle Aktionen aus
           $w$ bis auf $x_{n+1}$ synchronisiert werden gilt $x_1,\dots ,x_n\in
-          O_{U\|S_1}$. Daraus ergibt sich dann $\varepsilon\in PrT(U\|S_1)$.
-        \item Fall 2b) ($w\in PrT(S_1)$): In $U\|S_1$ erhalten wir
+          O_{U\|S_1}$. Daraus ergibt sich dann $\varepsilon\in PrET(U\|S_1)$.
+        \item Fall 2b) ($w\in PrET(S_1)$): In $U\|S_1$ erhalten wir
           $(q_0,q_{01}) \overset{w}{\Rightarrow} (q_{n+1},q'')
           \overset{u}{\Rightarrow} (q_{n+1},q')$ für $u\in O^*$ und $q'\in
           E_1$. Daraus folgt $(q_{n+1},q')\in E_{U\|S_1}$ und somit $wu\in
-          StT(U\|S_1)$. Da alle Handlungen aus $w$ synchronisiert werden gilt
+          StET(U\|S_1)$. Da alle Handlungen aus $w$ synchronisiert werden gilt
           $x_1,\dots ,x_n,x_{n+1}\in O_{U\|S_1}$ und da $u\in O^*$ folgt
           $u\in O_{U\|S_1}^*$. Somit ergibt sich $\varepsilon\in
-          PrT(U\|S_1)$.
+          PrET(U\|S_1)$.
       \end{itemize}
-      Da wir wissen, dass $\varepsilon\in StT(U\|S_1)$ gilt, können wir durch
+      Da wir wissen, dass $\varepsilon\in StET(U\|S_1)$ gilt, können wir durch
       $U\|S_1\sqsubseteq _E^B U\|S_2$ schießen, dass auch in $U\|S_2$ ein Error
       lokal erreichbar sein muss.\\
       Dieser Error kann geerbt oder neu sein.\\
@@ -401,7 +401,7 @@ abgewandelter Form.
           mit $u\in I_U^*=O^*$ und ebenso hat $S_2$ diesen Weg ausgeführt.
           Durch dies hat $S_2$ einen Zustand in $E_2$ erreicht, da von $U$
           keine Fehler geerbt werden können. Es gilt dann $prune(x_1\dots
-          x_iu)=prune(x_1\dots x_i)\in PrT(S_2)\subseteq ET(S_2)$. Da $x_1\dots
+          x_iu)=prune(x_1\dots x_i)\in PrET(S_2)\subseteq ET(S_2)$. Da $x_1\dots
           x_i$ ein Präfix von $w$ ist, führt auch in diesem Fall ein Präfix von
           $w$ zu einem Error.
       \end{itemize}
@@ -475,8 +475,8 @@ abgewandelter Form.
           diesem Fall gilt wie im letzten $w\in L(S_2)\subseteq EL(S_2)$.
         \item Fall 2d) (geerbter Error von $S_2$): Es gilt dann $q_{02}
           \overset{x_1\dots x_iu}{\Rightarrow} q'\in E_2$ für $i\geq 0$ und
-          $u\in O^*$. Somit ist $x_1\dots x_iu\in StT(S_2)$ und damit
-          $prune(x_1\dots x_iu)=prune(x_1\dots x_i)\in PrT(S_2)\subseteq
+          $u\in O^*$. Somit ist $x_1\dots x_iu\in StET(S_2)$ und damit
+          $prune(x_1\dots x_iu)=prune(x_1\dots x_i)\in PrET(S_2)\subseteq
           EL(S_2)$. Damit gilt $w\in EL(S_2)$.
       \end{itemize}
   \end{itemize}
