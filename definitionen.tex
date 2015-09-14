@@ -82,19 +82,19 @@ anderen Komponente nicht als Inputs angenommen werden können (neue Errors).
     \item $q_0=(q_{01},q_{02})$,
     \item $\begin{aligned}[t]
     \delta =&\{((q_1,q_2),\alpha ,(p_1,q_2))\mid (q_1,\alpha ,p_1)\in\delta
-      _1,\alpha\in(\Sigma _1\cup\{\tau\})\backslash Synch(S_1,S_2)\}\cup\\
-      &\{((q_1,q_2),\alpha ,(q_1,p_2))\mid (q_2,\alpha ,p_2)\in\delta
-      _2,\alpha\in(\Sigma _2\cup\{\tau\})\backslash Synch(S_1,S_2)\}\cup\\
-      &\{((q_1,q_2),\alpha ,(p_1,p_2))\mid (q_1,\alpha ,p_1)\in\delta
+      _1,\alpha\in(\Sigma _1\cup\{\tau\})\backslash Synch(S_1,S_2)\}\\
+      &\cup\{((q_1,q_2),\alpha ,(q_1,p_2))\mid (q_2,\alpha ,p_2)\in\delta
+      _2,\alpha\in(\Sigma _2\cup\{\tau\})\backslash Synch(S_1,S_2)\}\\
+      &\cup\{((q_1,q_2),\alpha ,(p_1,p_2))\mid (q_1,\alpha ,p_1)\in\delta
       _1, (q_2,\alpha ,p_2)\in\delta _2, \alpha\in Synch(S_1,S_2)\},
   \end{aligned}$
     \item $\begin{aligned}[t]
-        E=&(Q_1\times E_2)\cup (E_1\times Q_2)\cup
+        E=&(Q_1\times E_2)\cup (E_1\times Q_2)
         &&\phantom{neue}\mathrm{geerbte}~\mathrm{Errors}\\
         &\left.\begin{aligned}
-        &\{(q_1,q_2)\mid \exists a\in O_1\cap I_2: q_1\overset{a}{\rightarrow}\wedge
-      q_2\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\}\cup\\
-      &\{(q_1,q_2)\mid \exists a\in I_1\cap O_2:
+        &\cup\{(q_1,q_2)\mid \exists a\in O_1\cap I_2: q_1\overset{a}{\rightarrow}\wedge
+      q_2\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\}\\
+      &\cup\{(q_1,q_2)\mid \exists a\in I_1\cap O_2:
 q_1\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\wedge
 q_2\overset{a}{\rightarrow}\}
 \end{aligned}\hspace{1cm}\right\}
