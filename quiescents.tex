@@ -65,6 +65,7 @@ Definition von $QL$ aufgenommen werden und trotzdem ist jeder Traces, der in
 $QT$ möglich ist auch in der gefluteten Sprache enthalten.
 
 \begin{satz}[Lokale Error und Quiescent Semantik für Parallelkompositonen]
+  \label{satzQuiSemantik}
   Für zwei komponierbare EIOs $S_1, S_2$ und $S_{12} = S_1\|S_2$ gilt:
   \begin{enumerate}
     \item $ET_{12} = cont(prune((ET_1\|QL_2)\cup (QL_1\|ET_2)))$,
@@ -114,3 +115,43 @@ $QT$ möglich ist auch in der gefluteten Sprache enthalten.
 $QT_{12}$ ist hier in $QL_{12}$ enthalten, da wie wir bereits oben festgestellt
 haben $QT_i\subseteq QL_i$ für $i=1,2$ gilt. Somit gilt auch
 $(QT_1\|QT_2)\subseteq (QL_1\|QL_2)$.
+
+\begin{prop}[Präkongruenz]
+  $\sqsubseteq _{Qui}$ ist eine Präkongruenz.
+\end{prop}
+
+\begin{proof}
+  Es muss gezeigt werden, wenn $S_1\sqsubseteq _{Qui} S_2$ gilt,  für   jedes $
+  S_3$ auch $S_3\|S_1\sqsubseteq _{Qui} S_3\|S_2$ gilt. D.h.\ es ist zu zeigen,
+  dass aus $ET_1\subseteq ET_2$, $QT_1\subseteq QT_2$ und $QL_1\subseteq QL_2$
+  folgt, $ET_{31}\subseteq ET_{32}$, $QT_{31}\subseteq QT_{32}$ und
+  $QL_{31}\subseteq QL_{32}$.
+  \begin{itemize}
+    \item $\begin{aligned}[t]
+        ET_{31} \overset{\mathrm{Beweis}~\ref{korPraekongruenz}
+        ~\mathrm{Punkt}~1}{\subseteq} ET_{32}
+    \end{aligned}$
+    \item $\begin{aligned}[t]
+        QT_{31} &\overset{\ref{satzQuiSemantik}~2.}{=} (QT_3\|QT_1)\\
+                &\hspace{-0.3cm}\overset{QT_1\subseteq QT_2}{\subseteq} (QT_3\|QT_2)\\
+                &\overset{\ref{satzQuiSemantik}~2.}{=} QT_{32}
+    \end{aligned}$
+    \item $\begin{aligned}[t]
+        QL_{31} \overset{\mathrm{Beweis}~\ref{korPraekongruenz}
+        ~\mathrm{Punkt}~2}{\subseteq} QL_{32}
+    \end{aligned}$
+  \end{itemize}
+\end{proof}
+
+\begin{lem}[Verfeinerung mit Quiescents]
+  Gegeben sind zwei EIOs $S_1$ und $S_2$ mit der gleichen Signatur. Wenn alle
+  EIOs $U$ für die $S_2$ und $U$ gut kommunizieren auch $S_1$ und $U$ gut
+  kommunizieren, dann verfeinert $S_1$ den EIO $S_2$. Diese Verfeinerung
+  entspricht der Relation $\sqsubseteq _{Qui}$ von oben: Wenn
+  $U\|S_1\sqsubseteq _{Qui}^B U\|S_2$ für alle $U$, dann gilt $S_1\sqsubseteq
+  _{Qui} S_2$.
+\end{lem}
+
+\begin{proof}
+  
+\end{proof}
