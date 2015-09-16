@@ -215,7 +215,10 @@ zu~\cite{Vogler2014EIO} erwähnt.
   \begin{itemize}
     \item Fall I ($v_1\in MIT_1$ und $v_1\neq\varepsilon$): Es gibt $q_{01}
       \overset{v_1'}{\Rightarrow}q_1
-      \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ und sei $v'=v''a$.
+      \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ und sei $v'=v''a$. Bei der
+      folgenden Fallunterscheidung müssen wir bezüglich~\cite{Vogler2014EIO}
+      einen weiteren Fall einfügen, da es zulässsig ist, das $a$ sowohl ein in
+      $I_1$, wie auch in $I_2$ enthalten ist.
       \begin{itemize}
         \item Fall Ia) ($a\notin Synch(S_1,S_2)$): Es folgt $a\notin
           \Sigma _2$ und durch (*) folgt $q_{02} \overset{v_2'}{\Rightarrow}
@@ -223,14 +226,22 @@ zu~\cite{Vogler2014EIO} erwähnt.
           wir $(q_{01},q_{02}) \overset{v''}{\Rightarrow} (q_1,q_2)
           \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ mit $a\in I_{12}$.
           Somit können wir wählen $v:=v''a=v'\in MIT(S_1\|S_2)$.
-        \item Fall Ib) ($a\in\Sigma _2$): Es folgt $a\in O_2$ und
-          $v_2'=v_2''a$. Durch (*) erhalten wir $q_{02}
-          \overset{v_2''}{\Rightarrow} q_2 \overset{a}{\rightarrow}$ mit
-          $v''\in v_1'\|v_2'$. Daraus ergibt sich $(q_{01},q_{02})
-          \overset{v''}{\Rightarrow} (q_1,q_2)$ mit $q_1
-          \overset{a}{\not{\hspace{-0.1cm}\rightarrow}},a\in I_1, q_2
-          \overset{a}{\rightarrow},a\in O_2$, somit gilt $(q_1,q_2)\in
-          E_{12}$. Wir wählen $v:=prune(v'')\in PrET(S_1\|S_2)$.
+        \item Fall Ib) ($a\in O_2$): Es gilt $v_2'=v_2''a$. Durch (*) erhalten
+          wir $q_{02} \overset{v_2''}{\Rightarrow} q_2
+          \overset{a}{\rightarrow}$ mit $v''\in v_1'\|v_2'$. Daraus ergibt sich
+          $(q_{01},q_{02}) \overset{v''}{\Rightarrow} (q_1,q_2)$ mit $q_1
+          \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}, a\in I_1, q_2 \overset
+          {a}{\rightarrow}, a\in O_2$, somit gilt $(q_1,q_2)\in E_{12}$. Wir
+          wählen $v:=prune (v'')\in PrET(S_1\|S_2)$.
+        \item Fall Ic) ($a\in I_2$):
+        % \item Fall Ib) ($a\in\Sigma _2$): Es folgt $a\in O_2$ und%TODO ausbessern kann auch a\in I_2 gelelten
+        %   $v_2'=v_2''a$. Durch (*) erhalten wir $q_{02}
+        %   \overset{v_2''}{\Rightarrow} q_2 \overset{a}{\rightarrow}$ mit
+        %   $v''\in v_1'\|v_2'$. Daraus ergibt sich $(q_{01},q_{02})
+        %   \overset{v''}{\Rightarrow} (q_1,q_2)$ mit $q_1
+        %   \overset{a}{\not{\hspace{-0.1cm}\rightarrow}},a\in I_1, q_2
+        %   \overset{a}{\rightarrow},a\in O_2$, somit gilt $(q_1,q_2)\in
+        %   E_{12}$. Wir wählen $v:=prune(v'')\in PrET(S_1\|S_2)$.
       \end{itemize}
   \item Fall II ($v_1\in PrET_1$): $\exists u_1\in O_1^*:q_{01}
     \overset{v_1}{\Rightarrow} q_1 \overset{u_1}{\Rightarrow} q_1'$ mit
@@ -247,7 +258,7 @@ zu~\cite{Vogler2014EIO} erwähnt.
         der mit dem $c$ Output von $S_1$ zu koppeln wäre. Es handelt sich also
         um einen neuen Error. Wir wählen $v:=prune(v'u_1')\in PrET(S_1\| S_2)$,
         dies ist ein Präfix von $v'$, da $u_1\in O_1^*$.
-      \item Fall IIb) ($q_{02} \overset{u_2}{\Rightarrow} q_2'$ mit
+      \item Fall IIb) ($q_2 \overset{u_2}{\Rightarrow} q_2'$ mit
         $u_2=u_1|_{I_2}$): Somit ist $u_1\in u_1\|u_2$ und $(q_1,q_2)
         \overset{u_1}{\Rightarrow} (q_1',q_2')\in E_{12}$, da $q_1'\in E_1$ und
         somit handelt es sich um einen geerbten Error. Wir wählen nun $v:=prune
