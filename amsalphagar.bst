@@ -404,7 +404,7 @@ FUNCTION {format.nonauthor.editors}
 FUNCTION {format.title}
 { title empty$
     { "" }
-    { title "t" change.case$ emphasize }
+    { title emphasize }
   if$
 }
 

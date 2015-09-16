@@ -1,7 +1,6 @@
 \chapter{Verfeinerung über Errortraces}
 
-In diesem Kapitel wählen wir einen optimistischen Ansatz %TODO optimistisch gegenüber anderen Ansätzen abgrenzen
-für die
+In diesem Kapitel wählen wir einen optimistischen Ansatz für die
 Fehlererreichbarkeit. Ein Error gilt hier als erreichbar, wenn er lokal
 erreicht werden kann, d.h.\ durch lokale Aktionen. Die Menge, bestehend aus der
 internen Aktion $\tau$ und den Outputaktionen, bezeichnen wir hier als lokale
@@ -10,7 +9,20 @@ weiteres Zutun von außen aufgeführt werden. Somit kann nicht beeinflusst werde
 Übergänge genommen werden oder nicht. Es besteht also die Möglichkeit, dass
 der EIO in einen Error-Zustand übergeht, sobald dieser lokal erreichbar ist. Diese
 Art der Erreichbarkeit von Fehler wird auch in Kapitel 3 von~\cite{Vogler2014EIO}
-dargestellt.
+dargestellt.\\
+Neben dem hier betrachteten optimistischen Ansatz gibt es noch zwei weitere
+Ansätze in~\cite{Vogler2014EIO}. Einen hyper-optimistischen Ansatz, bei dem ein
+Fehler als erreichbar gilt, wenn er durch interne Aktionen erreicht werden
+kann, und einen pessimistischen Ansatz, bei dem ein Error als erreichbar gilt,
+sobald es eine Folge an Inputs und Outputs gibt, mit denen ein Error-Zustand
+vom Startzustand aus erreicht werden kann.\\
+Die gleiche Betrachtung wurde bereits in~\cite{Schlosser2012BA} gewählt, somit
+stimmen die Ergebnisse überein. Jedoch wurden alle Beweise unabhängig von
+dieser Arbeit neu geführt.\\
+Da es in dieser Arbeit vor allem und die Erreichbarkeit und die Kommunikation
+zwischen EIOs geht, wurden die nächsten beiden Definitionen explizit getrennt
+und erweitert zu denen in~\cite{Vogler2014EIO}. Ebenfalls wurde die
+Parallelkomposition geändert, wie in~\cite{Schlosser2012BA}.
 
 \begin{Def}[lokal errorfreie Kommunikation]
   Ein Error ist lokal erreichbar in einem EIO $S$, wenn $\exists w\in O^*: q_0
@@ -40,7 +52,8 @@ interessant, für die es einen Input $a\in I$ gibt, durch den sie nicht
 fortgesetzt werden können. Diese führen zwar nicht
 direkt zu einem Fehler, jedoch in Komposition mit einem anderen Automaten sind
 dies gefährdete Stellen. Sie führen zu einem neuen Error, sobald dieser Input
-für die Synchronisation fehlt.
+für die Synchronisation fehlt. Die folgenden beiden Definitionen wurden
+aus~\cite{Vogler2014EIO} übernommen.
 
 \begin{Def}[Errortraces]
   \label{DefErrortraces}
@@ -68,6 +81,12 @@ für die Synchronisation fehlt.
   $EL(S_1)\subseteq EL(S_2)$ gilt.
 \end{Def}
 
+Der folgende Satz wurde in~\cite{Vogler2014EIO} nur für die Parallelkomposition
+mit verborgenen synchronisierten Handlungen formuliert, jedoch entspricht er dem
+analogen Satz aus~\cite{Schlosser2012BA}. Da der Beweis jedoch ohne Beachtung
+von~\cite{Schlosser2012BA} neu geführt wurde, werden hier nur die Unterschiede
+zu~\cite{Vogler2014EIO} erwähnt.
+
 \begin{satz}[Lokale Error Semanik für Parallelkompositionen]
   \label{satzErrorSemanik}
   Für zwei komponierbare EIOs $S_1, S_2$ und $S_{12}=S_1\|S_2$, gilt:
@@ -94,7 +113,9 @@ für die Synchronisation fehlt.
   $I_{12}\overset{\mathrm{Def}}{=}(I_1\backslash O_2)\cup (I_2\backslash O_1)=(I_1\cup
   I_2)\backslash (O_1\cup O_2)$ ist $a\in (I_1\cup I_2)$ und $a\notin (O_1\cup
   O_2)$. Somit müssen wir unterscheiden, ob $a\in (I_1\cap I_2)$ oder $a\in
-  (I_1\cup I_2)\backslash (I_1\cap I_2)$ ist.
+  (I_1\cup I_2)\backslash (I_1\cap I_2)$ ist. Diese Unterscheidung ist
+  in~\cite{Vogler2014EIO} nicht nötig, da dort $I_1\cap I_2=\emptyset$ gilt,
+  somit gibt es dort nur den Fall 1b).
   \begin{itemize}
     \item Fall 1a) ($a\in (I_1\cap I_2)$): Nun können wir den Ablauf der Komposition
   auf die Automaten projizieren und erhalten dann:
@@ -142,10 +163,10 @@ für die Synchronisation fehlt.
           ET_1$ und $w_2v_2a\in L_2\subseteq EL_2$. Damit ergibt sich $wva\in
           ET_1\|EL_2$, da $a\in O_2\subseteq O_{12}$ gilt $w=prune(wva)$ und
           somit ist $w$ in der rechten Seite der Gleichung enthalten.
-          %letztes Argument???
       \end{itemize}
   \end{itemize}
 
+  %TODO ab hier weiter
   1. \glqq $\supseteq$\grqq :\\
   Wegen der Abgeschlossenheit beider Seiten der Gleichung gegenüber $cont$
   betrachten wir auch in diesem Fall nur ein präfix-minimales Element $x\in
