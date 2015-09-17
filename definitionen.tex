@@ -76,7 +76,10 @@ Die nächste Definition ist noch analog zu~\cite{Vogler2014EIO}, nur wird hier
 darauf verzichtet die Inputmengen als disjunkt anzunehmen und er zweite
 Definitionsteil über das verbergen der synchronisierten Handlungen wird
 komplett weg gelassen. Das verzichten auf die analogen Definitionen für das
-Verbergen wird sich auch bei den folgenden Definitionen zeigen.
+Verbergen wird sich auch bei den folgenden Definitionen zeigen. Zusätzlich
+nehmen wir in der folgenden Definition eine Änderung an der Menge der
+synchronisierten Handlungen vor, da nun nicht mehr $I_1\cap I_2 =\emptyset$
+gelten muss, werden wir diese gemeinsamen Inputs synchronisieren.
 
 \begin{Def}[Parallelkomposition]
   Zwei EIOs $S_1, S_2$ sind komponierbar, falls
@@ -109,7 +112,7 @@ q_2\overset{a}{\rightarrow}\}
   \end{aligned}$
   \end{itemize}
   Dabei werden die synchronisierten Handlungen $Synch(S_1,
-  S_2)=(I_1\cap O_2)\cup(O_1\cap I_2)$ nicht versteckt, sondern als Outputs der
+  S_2)=(I_1\cap O_2)\cup(O_1\cap I_2)\cup (I_1\cap I_2)$ nicht versteckt, sondern als Outputs der
   Komposition beibehalten.
 \end{Def}
 

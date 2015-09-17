@@ -117,19 +117,19 @@ zu~\cite{Vogler2014EIO} erwähnt.
   in~\cite{Vogler2014EIO} nicht nötig, da dort $I_1\cap I_2=\emptyset$ gilt,
   somit gibt es dort nur den Fall 1b).
   \begin{itemize}
-    \item Fall 1a) ($a\in (I_1\cap I_2)$): Nun können wir den Ablauf der Komposition
-  auf die Automaten projizieren und erhalten dann:
-  $q_{01}\overset{x_1}{\Rightarrow} q_1
-  \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ und
-  $q_{02}\overset{x_2}{\Rightarrow} q_2
-  \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ mit $x\in x_1\|x_2$, sobald einer der Automaten
-  einen Übergang für $a$ machen könnte, wäre dies auch für die Komposition der
-  beiden möglich. Daraus können wir $x_1a\in cont(MIT_1)\subseteq ET_1\subseteq
-  EL_1$ und $x_2\in cont(MIT_2)\subseteq ET_2\subseteq EL_2$ folgern.
-  Damit folgt $w\in (x_1\|x_2)\cdot\{a\}\subseteq (x_1a)\|(x_2a)\subseteq
-  ET_1\|ET_2\subseteq (ET_1\|EL_2)\cup(EL_1\|ET_2)$, und somit ist $w$ in der
-  rechten Seite der Gleichung enthalten.
-\item Fall 1b) ($a\in (I_1\cup I_2)\backslash(I_1\cap I_2)$): \OBdA{} gilt
+    \item Fall 1a) ($a\in (I_1\cap I_2)$): Nun können wir den Ablauf der
+      Komposition auf die Automaten projizieren und erhalten dann: \oBdA{}
+      $q_{01}\overset{x_1}{\Rightarrow} q_1
+      \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ und
+      $q_{02}\overset{x_2}{\Rightarrow} q_2
+      \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ oder
+      $q_{02}\overset{x_2}{\Rightarrow} q_2 \overset{a}{\rightarrow}$ mit $x\in
+      x_1\|x_2$. Daraus können wir $x_1a\in cont(MIT_1)\subseteq ET_1\subseteq
+      EL_1$ und $x_2\in cont(MIT_2)\subseteq ET_2\subseteq EL_2$ oder $x_2\in
+      EL_2$ folgern. Damit folgt $w\in (x_1\|x_2)\cdot\{a\}\subseteq
+      (x_1a)\|(x_2a)\subseteq ET_1\|EL_2$, und somit ist $w$ in der rechten
+      Seite der Gleichung enthalten.
+  \item Fall 1b) ($a\in (I_1\cup I_2)\backslash(I_1\cap I_2)$): \OBdA{} gilt
       $a\in I_1$. Durch Projektion erhalten wir:
       $q_{01}\overset{x_1}{\Rightarrow} q_1
       \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ und
@@ -220,28 +220,32 @@ zu~\cite{Vogler2014EIO} erwähnt.
       einen weiteren Fall einfügen, da es zulässsig ist, das $a$ sowohl ein in
       $I_1$, wie auch in $I_2$ enthalten ist.
       \begin{itemize}
-        \item Fall Ia) ($a\notin Synch(S_1,S_2)$): Es folgt $a\notin
-          \Sigma _2$ und durch (*) folgt $q_{02} \overset{v_2'}{\Rightarrow}
-          q_2$ mit $v''\in v_1'\|v_2'$. Dadurch erhalten
+        \item Fall Ia) ($a\notin\Sigma _2$): Durch (*) folgt $q_{02}
+          \overset{v_2'}{\Rightarrow} q_2$ mit $v''\in v_1'\|v_2'$. Dadurch erhalten
           wir $(q_{01},q_{02}) \overset{v''}{\Rightarrow} (q_1,q_2)
           \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ mit $a\in I_{12}$.
           Somit können wir wählen $v:=v''a=v'\in MIT(S_1\|S_2)$.
-        \item Fall Ib) ($a\in O_2$): Es gilt $v_2'=v_2''a$. Durch (*) erhalten
-          wir $q_{02} \overset{v_2''}{\Rightarrow} q_2
-          \overset{a}{\rightarrow}$ mit $v''\in v_1'\|v_2'$. Daraus ergibt sich
-          $(q_{01},q_{02}) \overset{v''}{\Rightarrow} (q_1,q_2)$ mit $q_1
-          \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}, a\in I_1, q_2 \overset
-          {a}{\rightarrow}, a\in O_2$, somit gilt $(q_1,q_2)\in E_{12}$. Wir
-          wählen $v:=prune (v'')\in PrET(S_1\|S_2)$.
-        \item Fall Ic) ($a\in I_2$):
-        % \item Fall Ib) ($a\in\Sigma _2$): Es folgt $a\in O_2$ und%TODO ausbessern kann auch a\in I_2 gelelten
-        %   $v_2'=v_2''a$. Durch (*) erhalten wir $q_{02}
-        %   \overset{v_2''}{\Rightarrow} q_2 \overset{a}{\rightarrow}$ mit
-        %   $v''\in v_1'\|v_2'$. Daraus ergibt sich $(q_{01},q_{02})
-        %   \overset{v''}{\Rightarrow} (q_1,q_2)$ mit $q_1
-        %   \overset{a}{\not{\hspace{-0.1cm}\rightarrow}},a\in I_1, q_2
-        %   \overset{a}{\rightarrow},a\in O_2$, somit gilt $(q_1,q_2)\in
-        %   E_{12}$. Wir wählen $v:=prune(v'')\in PrET(S_1\|S_2)$.
+        \item Fall Ib) ($a\in I_2$): Es gilt $v_2'=v_2''a$ mit $q_{02}
+          \overset{v_2''}{\Rightarrow}$ und $v''\in v_1'\|v_2''$, wegen (*). In
+          diesem Fall kann entweder gelten $q_2 \overset{a}{\rightarrow}$ oder $q_2
+          \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$. Falls die zweite
+          Möglichkeit gilt, ist $v_2'\in MIT_2$ und $a$ ist für $S_2$
+          ebenfalls ein fehlender Input. Da jedoch für beide Möglichkeiten
+          gilt, dass $a\in Synch(S_1,S_2)$ liegt, da die Menge der
+          synchonisierten Handlungen bezüglich~\cite{Vogler2014EIO} erweiter
+          wurde, reicht schon, wenn für einen der beiden Automaten der Input
+          nicht möglich ist. Da also $q_1
+          \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ gilt, können wir
+          schließen, dass $(q_1,q_2)
+          \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ gilt. Wir könnnen also
+          hier wählen $v:=v''a=v'\in MIT_{12}$.
+        \item Fall Ic) ($a\in O_2$): Es gilt $v_2'=v_2''a$. Durch (*) erhalten wir $q_{02}
+          \overset{v_2''}{\Rightarrow} q_2 \overset{a}{\rightarrow}$ mit
+          $v''\in v_1'\|v_2''$. Daraus ergibt sich $(q_{01},q_{02})
+          \overset{v''}{\Rightarrow} (q_1,q_2)$ mit $q_1
+          \overset{a}{\not{\hspace{-0.1cm}\rightarrow}},a\in I_1, q_2
+          \overset{a}{\rightarrow},a\in O_2$, somit gilt $(q_1,q_2)\in
+          E_{12}$. Wir wählen $v:=prune(v'')\in PrET(S_1\|S_2)$.
       \end{itemize}
   \item Fall II ($v_1\in PrET_1$): $\exists u_1\in O_1^*:q_{01}
     \overset{v_1}{\Rightarrow} q_1 \overset{u_1}{\Rightarrow} q_1'$ mit
@@ -286,6 +290,10 @@ zu~\cite{Vogler2014EIO} erwähnt.
   \end{align*}
 \end{proof}
 
+Die folgende Proposition wurde hier noch explizit mit Beweis eingefügt im
+Gegensatz zu den Ausführungen in~\cite{Vogler2014EIO}, in denen diese
+Präkongruenz nur als Resultat aus dem letzten Satz erwähnt wird.
+
 \begin{prop}[Präkongruenz]
   \label{korPraekongruenz}
   $\sqsubseteq _E$ ist eine Präkongruenz.
@@ -320,7 +328,8 @@ zu~\cite{Vogler2014EIO} erwähnt.
 In~\cite{Vogler2014EIO} wurde auch die Verfeinerung von EIOs als Relation betrachtet
 mit Spezifikation und Implementierung. Hier soll ebenfalls eine
 Verfeinerungsrelation über EIOs betrachtet werden, jedoch in leicht
-abgewandelter Form.
+abgewandelter Form, da die synchronisierten Aktionen nicht verborgen werden
+sollen. Dadurch ändern sich natürlich auch Teile des Beweises.
 
 \begin{lem}[Verfeinerung mit Errors]
   \label{lemVerfeinerung}
@@ -392,7 +401,10 @@ abgewandelter Form.
       \end{center}
       \end{figure}
       Wir können für $w$ zwei Fälle unterscheiden. Beide führen zu
-      $\varepsilon\in PrET(U\|S_1)$.
+      $\varepsilon\in PrET(U\|S_1)$. Dieses Resultat unterscheidet sich von dem
+      in~\cite{Vogler2014EIO}, da hier die synchronisierten Aktionen als Outputs
+      vorhanden bleiben und somit kann nicht $\varepsilon\in StET(U\|S_1)$
+      gelten.
       \begin{itemize}
         \item Fall 2a) ($w\in MIT(S_1)$): In $U\|S_1$ erhalten wir
           $(q_0,q_{01}) \overset{x_1\dots x_n}{\Rightarrow} (q_n,q')$ mit
@@ -410,7 +422,7 @@ abgewandelter Form.
           $u\in O_{U\|S_1}^*$. Somit ergibt sich $\varepsilon\in
           PrET(U\|S_1)$.
       \end{itemize}
-      Da wir wissen, dass $\varepsilon\in StET(U\|S_1)$ gilt, können wir durch
+      Da wir wissen, dass $\varepsilon\in PrET(U\|S_1)$ gilt, können wir durch
       $U\|S_1\sqsubseteq _E^B U\|S_2$ schließen, dass auch in $U\|S_2$ ein Error
       lokal erreichbar sein muss.\\
       Dieser Error kann geerbt oder neu sein.\\
