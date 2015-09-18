@@ -16,7 +16,7 @@ Fehler als erreichbar gilt, wenn er durch interne Aktionen erreicht werden
 kann, und einen pessimistischen Ansatz, bei dem ein Error als erreichbar gilt,
 sobald es eine Folge an Inputs und Outputs gibt, mit denen ein Error-Zustand
 vom Startzustand aus erreicht werden kann.\\
-Die gleiche Betrachtung wurde bereits in~\cite{Schlosser2012BA} gewählt, somit
+Die gleiche Betrachtung wie hier wurde bereits in~\cite{Schlosser2012BA} gewählt, somit
 stimmen die Ergebnisse überein. Jedoch wurden alle Beweise unabhängig von
 dieser Arbeit neu geführt.\\
 Da es in dieser Arbeit vor allem und die Erreichbarkeit und die Kommunikation
@@ -44,7 +44,7 @@ Verfeinerungsrelation definieren.
 
 Um uns nun näher mit den Präkongruenzen auseinandersetzen zu können, müssen wir bestimmte Traces
 aus unseren Automaten hervorheben. Die strikten Errortraces sind Wege, die
-direkt vom Startzustand zu einem Zustand in $E$ führen. Da Outputs Aktionen
+direkt vom Startzustand zu einem Zustand in der Menge $E$ führen. Da Outputs Aktionen
 sind, die von außen nicht verhindert werden können, benötigen wir auch noch die
 Menge der Traces, die zu einem Zustand führen, von dem aus mit lokalen Aktionen
 ein Error erreicht werden kann. Zusätzlich ist auch noch die Menge der Traces
@@ -103,7 +103,7 @@ zu~\cite{Vogler2014EIO} erwähnt.
   \end{enumerate}
   Da beide Seiten der Gleichung unter der Fortsetzung $cont$ abgeschlossen sind, genügt es ein
   präfix-minimales Element $w$ von $ET_{12}$ zu betrachten. Dieses Element ist
-  nach der Definition der Menge der Errortraces entweder in $MIT_{12}$ oder in
+  aufgrund der Definition der Menge der Errortraces entweder in $MIT_{12}$ oder in
   $PrET_{12}$ enthalten.\\
   \begin{itemize}
     \item Fall 1 ($w\in MIT_{12}$): Aus der Definition von $MIT$ folgt, dass es eine
@@ -118,17 +118,16 @@ zu~\cite{Vogler2014EIO} erwähnt.
   somit gibt es dort nur den Fall 1b).
   \begin{itemize}
     \item Fall 1a) ($a\in (I_1\cap I_2)$): Nun können wir den Ablauf der
-      Komposition auf die Automaten projizieren und erhalten dann: \oBdA{}
+      Komposition auf die Automaten projizieren und erhalten dann \oBdA{}
       $q_{01}\overset{x_1}{\Rightarrow} q_1
       \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ und
       $q_{02}\overset{x_2}{\Rightarrow} q_2
       \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ oder
       $q_{02}\overset{x_2}{\Rightarrow} q_2 \overset{a}{\rightarrow}$ mit $x\in
       x_1\|x_2$. Daraus können wir $x_1a\in cont(MIT_1)\subseteq ET_1\subseteq
-      EL_1$ und $x_2\in cont(MIT_2)\subseteq ET_2\subseteq EL_2$ oder $x_2\in
-      EL_2$ folgern. Damit folgt $w\in (x_1\|x_2)\cdot\{a\}\subseteq
-      (x_1a)\|(x_2a)\subseteq ET_1\|EL_2$, und somit ist $w$ in der rechten
-      Seite der Gleichung enthalten.
+      EL_1$ und $x_2\in EL_2$ folgern. Damit folgt $w\in
+      (x_1\|x_2)\cdot\{a\}\subseteq (x_1a)\|(x_2a)\subseteq ET_1\|EL_2$, und
+      somit ist $w$ in der rechten Seite der Gleichung enthalten.
   \item Fall 1b) ($a\in (I_1\cup I_2)\backslash(I_1\cap I_2)$): \OBdA{} gilt
       $a\in I_1$. Durch Projektion erhalten wir:
       $q_{01}\overset{x_1}{\Rightarrow} q_1
@@ -193,7 +192,9 @@ zu~\cite{Vogler2014EIO} erwähnt.
   endet vor $v_2$.
   \begin{itemize}
     \item Fall 1 ($v_1=\varepsilon$): Dadurch dass $\varepsilon\in PrET_1\cup
-      MIT_1$, ist bereits in $S_1$ ein Error lokal erreichbar. Wir wähle
+      MIT_1$, ist bereits in $S_1$ ein Error lokal erreichbar. $\varepsilon\in
+      MIT_1$ ist nicht möglich, da jedes Element aus $MIT$ nach Definition
+      mindestens die Länge $1$ haben muss. Wir wähle
       $v_2'=v'=\varepsilon$, somit ist $v_2'$ ein Präfix von $v_2$.
     \item Fall 2 ($v_1\neq\varepsilon$): Aufgrund der Definitionen von $PrET$
       und $MIT$ endet $v_1$ auf ein $a\in I_1$, d.h.\ $v_1=v_1’a$. $v'$ sei das
@@ -211,13 +212,12 @@ zu~\cite{Vogler2014EIO} erwähnt.
   In allen Fällen erhalten wir $q_{02}\overset{v_2'}{\Rightarrow}$ (*) und
   desweiteren ist $v_2'=v'|_{\Sigma _2}$ ein Präfix von $v_2$ und $v'\in v_1\|
   v_2'$ ist ein Präfix von $xy$.
-  %TODO ab hier weiter
   \begin{itemize}
     \item Fall I ($v_1\in MIT_1$ und $v_1\neq\varepsilon$): Es gibt $q_{01}
       \overset{v_1'}{\Rightarrow}q_1
       \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ und sei $v'=v''a$. Bei der
       folgenden Fallunterscheidung müssen wir bezüglich~\cite{Vogler2014EIO}
-      einen weiteren Fall einfügen, da es zulässsig ist, das $a$ sowohl ein in
+      einen weiteren Fall (Ib)) einfügen, da es zulässig ist, das $a$ sowohl ein in
       $I_1$, wie auch in $I_2$ enthalten ist.
       \begin{itemize}
         \item Fall Ia) ($a\notin\Sigma _2$): Durch (*) folgt $q_{02}
@@ -232,12 +232,12 @@ zu~\cite{Vogler2014EIO} erwähnt.
           Möglichkeit gilt, ist $v_2'\in MIT_2$ und $a$ ist für $S_2$
           ebenfalls ein fehlender Input. Da jedoch für beide Möglichkeiten
           gilt, dass $a\in Synch(S_1,S_2)$ liegt, da die Menge der
-          synchonisierten Handlungen bezüglich~\cite{Vogler2014EIO} erweiter
+          synchronisierten Handlungen bezüglich~\cite{Vogler2014EIO} erweitert
           wurde, reicht schon, wenn für einen der beiden Automaten der Input
           nicht möglich ist. Da also $q_1
           \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ gilt, können wir
           schließen, dass $(q_1,q_2)
-          \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ gilt. Wir könnnen also
+          \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ gilt. Wir können also
           hier wählen $v:=v''a=v'\in MIT_{12}$.
         \item Fall Ic) ($a\in O_2$): Es gilt $v_2'=v_2''a$. Durch (*) erhalten wir $q_{02}
           \overset{v_2''}{\Rightarrow} q_2 \overset{a}{\rightarrow}$ mit
@@ -355,11 +355,11 @@ sollen. Dadurch ändern sich natürlich auch Teile des Beweises.
     \item Fall 1 ($w=\varepsilon$): Es handelt sich um einen lokal erreichbaren
       Error in $S_1$.
       Wir nehmen für $U$ einen Automaten, der nur aus dem Startzustand und
-      einer Schleife für alle $x\in I_U$ besteht. Somit kann $S_1$ die gleichen
+      einer Schleife für alle Inputs $x\in I_U$ besteht. Somit kann $S_1$ die gleichen
       Error-Zustände lokal erreichen wie $U\|S_1$. Daraus folgt, dass auch
       $U\|S_2$ einen lokal erreichbaren Error-Zustand haben muss. Durch unsere
       Definition von $U$ kann dieser Fehler nur von $S_2$ geerbt werden. Es
-      muss also in $S_2$ ein Error-Zustand durch interne Handlungen und Outputs
+      muss also in $S_2$ ein Error-Zustand durch interne Aktionen und Outputs
       erreichbar sein, d.h.\ es gilt $\varepsilon\in PrET(S_2)$.
     \item Fall 2 ($w=x_1\dots x_n x_{n+1}\in\Sigma ^+$ mit $n\geq 0$ und
       $x_{n+1}\in I$): Wir betrachten die folgenden Partner $U$ (siehe auch
@@ -425,7 +425,7 @@ sollen. Dadurch ändern sich natürlich auch Teile des Beweises.
       Da wir wissen, dass $\varepsilon\in PrET(U\|S_1)$ gilt, können wir durch
       $U\|S_1\sqsubseteq _E^B U\|S_2$ schließen, dass auch in $U\|S_2$ ein Error
       lokal erreichbar sein muss.\\
-      Dieser Error kann geerbt oder neu sein.\\
+      Dieser Error kann geerbt oder neu sein.
       \begin{itemize}
         \item Fall 2i) (neuer Error): Da jeder Zustand von $U$ alle Inputs $x\in
           O=I_U$ zulässt, muss ein lokal erreichbarer Error einer sein, bei dem
@@ -496,12 +496,12 @@ sollen. Dadurch ändern sich natürlich auch Teile des Beweises.
         \label{UmitE}
       \end{center}
       \end{figure}
-      Da $q_{01} \overset{w}{\Rightarrow} q$ gilt, wissen wir, dass $U\|S_1$
+      Da $q_{01} \overset{w}{\Rightarrow} q'$ gilt, wissen wir, dass $U\|S_1$
       einen lokal erreichbaren Error hat. Somit muss $U\|S_2$ ebenfalls einen
       lokal erreichbaren Error haben.
       \begin{itemize}
         \item Fall 2a) (neuer Error aufgrund von $x_i\in O_U$ und $q_{02}
-          \overset{x_1\dots x_{i-1}}{\Rightarrow} q'
+          \overset{x_1\dots x_{i-1}}{\Rightarrow} q''
           \overset{x_i}{\not{\hspace{-0.1cm}\rightarrow}}$): Es gilt $x_1\dots
           x_i\in MIT(S_2)$ und somit $w\in EL(S_2)$. Anzumerken ist, dass nur
           auf diesem Weg Outputs von $U$ möglich sind, deshalb gibt es keine
@@ -519,7 +519,7 @@ sollen. Dadurch ändern sich natürlich auch Teile des Beweises.
           \overset{x_1\dots x_iu}{\Rightarrow} q'\in E_2$ für $i\geq 0$ und
           $u\in O^*$. Somit ist $x_1\dots x_iu\in StET(S_2)$ und damit
           $prune(x_1\dots x_iu)=prune(x_1\dots x_i)\in PrET(S_2)\subseteq
-          EL(S_2)$. Damit gilt $w\in EL(S_2)$.
+          EL(S_2)$. Somit gilt $w\in EL(S_2)$.
       \end{itemize}
   \end{itemize}
 \end{proof}
@@ -550,7 +550,7 @@ sollen. Dadurch ändern sich natürlich auch Teile des Beweises.
   Lemma~\ref{lemVerfeinerung} folgt dann $S_1\sqsubseteq _E S_2$.
 \end{proof}
 
-Aus Satz~\ref{satzFullAbstractness} und Lemme~\ref{lemVerfeinerung} erhalten
+Aus Satz~\ref{satzFullAbstractness} und Lemma~\ref{lemVerfeinerung} erhalten
 wir das folgende Korollar.
 
 \begin{kor}
