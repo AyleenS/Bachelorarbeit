@@ -153,5 +153,16 @@ $(QT_1\|QT_2)\subseteq (QL_1\|QL_2)$.
 \end{lem}
 
 \begin{proof}
-  
+  Da wir davon ausgehen, dass $S_1$ und $S_2$ die gleiche Signatur haben,
+  definieren wir $I:=I_1=I_2$ und $O:=O_1=O_2$. Für jeden Partner $U$ gilt
+  $I_U=O$ und $O_U=I$.\\
+  Um zu zeigen, dass die Relation $S_1\sqsubseteq _{Qui}$ gilt, müssen wir die
+  folgenden Punkte nachweisen:
+  \begin{itemize}
+    \item $ET(S_1)\subseteq ET(S_2)$,
+    \item $QT(S_1)\subseteq QT(S_2)$,
+    \item $QL(S_1)\subseteq QL(S_2)$.
+  \end{itemize}
+  Der erste und der letzte Punkt wurden bereits in Lemma~\ref{lemVerfeinerung}
+  gezeigt. So bleibt uns nur noch die Inklusion $QT_1\subseteq QT_2$ zu zeigen.
 \end{proof}
