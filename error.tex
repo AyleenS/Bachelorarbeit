@@ -348,7 +348,8 @@ In~\cite{Vogler2014EIO} wurde auch die Verfeinerung von EIOs als Relation betrac
 mit Spezifikation und Implementierung. Hier soll ebenfalls eine
 Verfeinerungsrelation über EIOs betrachtet werden, jedoch in leicht
 abgewandelter Form, da die synchronisierten Aktionen nicht verborgen werden
-sollen. Dadurch ändern sich natürlich auch Teile des Beweises. Dieses Lemma
+sollen. Dadurch ändern sich natürlich auch Teile des Beweises, vor allem muss
+statt mit $StET$ mit der Menge $PrET$ argumentiert werden. Dieses Lemma
 existiert in dieser Form nicht in~\cite{Schlosser2012BA}, da es dort mit der
 Aussage von Satz~\ref{satzFullAbstractness} kombiniert wurde. Jedoch ist die
 Aussage diese Lemmas trotzdem Teil dessen, was gezeigt wird und somit finden
@@ -374,6 +375,7 @@ sich die Teile dieses Beweises auch dort wieder.
   \end{itemize}
   Wir wählen ein präfix-minimales Element $w\in ET(S_1)$ und
   zeigen, dass dieses $w$ oder eines seiner Präfixe in $ET(S_2)$ enthalten ist.
+  Dies ist möglich, da beide Mengen durch $cont$ abgeschlossen sind.
   \begin{itemize}
     \item Fall 1 ($w=\varepsilon$): Es handelt sich um einen lokal erreichbaren
       Error in $S_1$.
