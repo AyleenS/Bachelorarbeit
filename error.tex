@@ -17,7 +17,7 @@ kann, und einen pessimistischen Ansatz, bei dem ein Error als erreichbar gilt,
 sobald es eine Folge an Inputs und Outputs gibt, mit denen ein Error-Zustand
 vom Startzustand aus erreicht werden kann.\\
 Die gleiche Betrachtung wie hier wurde bereits in~\cite{Schlosser2012BA} gewählt, somit
-stimmen die Ergebnisse überein. Jedoch wurden alle Beweise unabhängig von
+stimmen die Definitionen und Ergebnisse überein. Jedoch wurden alle Beweise unabhängig von
 dieser Arbeit neu geführt.\\
 Da es in dieser Arbeit vor allem und die Erreichbarkeit und die Kommunikation
 zwischen EIOs geht, wurden die nächsten beiden Definitionen explizit getrennt
@@ -84,8 +84,8 @@ aus~\cite{Vogler2014EIO} übernommen.
 Der folgende Satz wurde in~\cite{Vogler2014EIO} nur für die Parallelkomposition
 mit verborgenen synchronisierten Handlungen formuliert, jedoch entspricht er dem
 analogen Satz aus~\cite{Schlosser2012BA}. Da der Beweis jedoch ohne Beachtung
-von~\cite{Schlosser2012BA} neu geführt wurde, werden hier nur die Unterschiede
-zu~\cite{Vogler2014EIO} erwähnt.
+von~\cite{Schlosser2012BA} neu geführt wurde, werden hier eher auf die
+Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} wert gelegt.
 
 \begin{satz}[Lokale Error Semanik für Parallelkompositionen]
   \label{satzErrorSemanik}
@@ -115,7 +115,8 @@ zu~\cite{Vogler2014EIO} erwähnt.
   O_2)$. Somit müssen wir unterscheiden, ob $a\in (I_1\cap I_2)$ oder $a\in
   (I_1\cup I_2)\backslash (I_1\cap I_2)$ ist. Diese Unterscheidung ist
   in~\cite{Vogler2014EIO} nicht nötig, da dort $I_1\cap I_2=\emptyset$ gilt,
-  somit gibt es dort nur den Fall 1b).
+  somit gibt es dort nur den Fall 1b). Der Fall 1a) wir auch
+  in~\cite{Schlosser2012BA} behandelt.
   \begin{itemize}
     \item Fall 1a) ($a\in (I_1\cap I_2)$): Nun können wir den Ablauf der
       Komposition auf die Automaten projizieren und erhalten dann \oBdA{}
@@ -125,7 +126,7 @@ zu~\cite{Vogler2014EIO} erwähnt.
       \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ oder
       $q_{02}\overset{x_2}{\Rightarrow} q_2 \overset{a}{\rightarrow}$ mit $x\in
       x_1\|x_2$. Daraus können wir $x_1a\in cont(MIT_1)\subseteq ET_1\subseteq
-      EL_1$ und $x_2\in EL_2$ folgern. Damit folgt $w\in
+      EL_1$ und $x_2a\in EL_2$ ($x_2a\in MIT_2$ oder $x_2a\in L_2$) folgern. Damit folgt $w\in
       (x_1\|x_2)\cdot\{a\}\subseteq (x_1a)\|(x_2a)\subseteq ET_1\|EL_2$, und
       somit ist $w$ in der rechten Seite der Gleichung enthalten.
   \item Fall 1b) ($a\in (I_1\cup I_2)\backslash(I_1\cap I_2)$): \OBdA{} gilt
@@ -172,7 +173,11 @@ zu~\cite{Vogler2014EIO} erwähnt.
   $prune$-Funktion entstanden ist, existiert ein $y\in O_{12}^*$ mit
   $xy\in(ET_1\|EL_2)\cup (EL_1\|ET_2)$. \OBdA{} gehen wir davon aus, dass
   $xy\in ET_1\|EL_2$ gilt, d.h.\ es gibt $w_1\in ET_1$ und $w_2\in EL_2$ mit
-  $xy\in w_1\|w_2$.\\
+  $xy\in w_1\|w_2$. In dem Punkt, dass wir das präfix-minimale Element noch mit
+  Outputs fortsetzten können, unterscheidet sich dieser Beweis von dem
+  in~\cite{Schlosser2012BA}. Dort wird nicht weiter darauf eingegangen, dass
+  die $prune$-Funktion hier noch zur Anwendung kommt, da wir jedoch später nur
+  Präfixe von $x$ betrachten werden, ist dieser Unterschied irrelevant.\\
   Im Folgenden werden wir für alle Fälle von $xy$ zeigen, dass es ein $v\in
   PrET(S_1\|S_2)\cup MIT(S_1\|S_2)$ gibt, das ein Präfix von $xy$ ist und $v$
   entweder auf ein Input aus $I_{12}$ endet oder $v = \varepsilon$. Da $v$
@@ -205,41 +210,45 @@ zu~\cite{Vogler2014EIO} erwähnt.
       $v'$ enthalten sein kann. Falls $v_2\in
       PrET_2\cup MIT_2$ gilt, dann ist durch die Annahme, dass $v_2$ nicht vor
       $v_1$ endet, $v_2'$ ein Präfix von $v_2$. Im Fall $v_2\in MIT_2$ können
-      wir sogar schließen, dass $v_2'$ ein echtes Präfix von $v_2$ ist, da
-      $v_2$ auf $b\in I_2$ endet und somit der letzte Input $b$ noch nicht der
-      fehlende sein kann, da auch $v_1$ auf einen Input endet.
+      wir durch die gleiche Argumentation ebenfalls schließen, dass $v_2'$ ein
+      Präfix von $v_2$ ist. Wir wissen jedoch zusätzlich, dass $v_2$ auf $b\in
+      I_2$ endet, jedoch muss nicht mehr wie in~\cite{Vogler2014EIO} $b\neq a$
+      gelten. Wir können also keine Aussage mehr darüber treffen, ob es sich um
+      fein echtes Präfix handelt.
   \end{itemize}
-  In allen Fällen erhalten wir $q_{02}\overset{v_2'}{\Rightarrow}$ (*) und
-  desweiteren ist $v_2'=v'|_{\Sigma _2}$ ein Präfix von $v_2$ und $v'\in v_1\|
-  v_2'$ ist ein Präfix von $xy$.
+  In allen Fällen erhalten wir $v_2'=v'|_{\Sigma _2}$ ist ein Präfix von $v_2$
+  und $v'\in v_1\| v_2'$ ist ein Präfix von $xy$. Da nicht mehr $b\neq a$
+  gelten muss, können wir nicht mehr für alle Fälle
+  $q_{02}\overset{v_2'}{\Rightarrow}$ folgern, wie das in~\cite{Vogler2014EIO}
+  möglich war. Dies wurde auch bereits in~\cite{Schlosser2012BA} festgestellt.
   \begin{itemize}
     \item Fall I ($v_1\in MIT_1$ und $v_1\neq\varepsilon$): Es gibt $q_{01}
       \overset{v_1'}{\Rightarrow}q_1
       \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ und sei $v'=v''a$. Bei der
       folgenden Fallunterscheidung müssen wir bezüglich~\cite{Vogler2014EIO}
-      einen weiteren Fall (Ib)) einfügen, da es zulässig ist, das $a$ sowohl ein in
+      einen weiteren Fall (Ib)) einfügen, da es zulässig ist, das $a$ sowohl in
       $I_1$, wie auch in $I_2$ enthalten ist.
       \begin{itemize}
-        \item Fall Ia) ($a\notin\Sigma _2$): Durch (*) folgt $q_{02}
+        \item Fall Ia) ($a\notin\Sigma _2$): Es gilt $q_{02}
           \overset{v_2'}{\Rightarrow} q_2$ mit $v''\in v_1'\|v_2'$. Dadurch erhalten
           wir $(q_{01},q_{02}) \overset{v''}{\Rightarrow} (q_1,q_2)
           \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ mit $a\in I_{12}$.
           Somit können wir wählen $v:=v''a=v'\in MIT(S_1\|S_2)$.
         \item Fall Ib) ($a\in I_2$): Es gilt $v_2'=v_2''a$ mit $q_{02}
-          \overset{v_2''}{\Rightarrow}$ und $v''\in v_1'\|v_2''$, wegen (*). In
+          \overset{v_2''}{\Rightarrow} q_2$ und $v''\in v_1'\|v_2''$. In
           diesem Fall kann entweder gelten $q_2 \overset{a}{\rightarrow}$ oder $q_2
           \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$. Falls die zweite
           Möglichkeit gilt, ist $v_2'\in MIT_2$ und $a$ ist für $S_2$
-          ebenfalls ein fehlender Input. Da jedoch für beide Möglichkeiten
-          gilt, dass $a\in Synch(S_1,S_2)$ liegt, da die Menge der
-          synchronisierten Handlungen bezüglich~\cite{Vogler2014EIO} erweitert
-          wurde, reicht schon, wenn für einen der beiden Automaten der Input
-          nicht möglich ist. Da also $q_1
-          \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ gilt, können wir
-          schließen, dass $(q_1,q_2)
-          \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ gilt. Wir können also
-          hier wählen $v:=v''a=v'\in MIT_{12}$.
-        \item Fall Ic) ($a\in O_2$): Es gilt $v_2'=v_2''a$. Durch (*) erhalten wir $q_{02}
+          ebenfalls ein fehlender Input. Jedoch gilt für beide Möglichkeiten,
+          dass $a\in Synch(S_1,S_2)$ liegt, da die Menge der synchronisierten
+          Handlungen bezüglich~\cite{Vogler2014EIO} erweitert wurde, somit
+          reicht schon, wenn für einen der beiden Automaten der Input nicht
+          möglich ist. Da $q_1 \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$
+          gilt, können wir schließen, dass $(q_1,q_2)
+          \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ folgt. Somit können
+          wir hier $v:=v''a=v'\in MIT_{12}$ wählen.
+        \item Fall Ic) ($a\in O_2$): Es gilt $v_2'=v_2''a$ und $q_{02}
+          \overset{v_2'}{\Rightarrow}$. Wir erhalten also $q_{02}
           \overset{v_2''}{\Rightarrow} q_2 \overset{a}{\rightarrow}$ mit
           $v''\in v_1'\|v_2''$. Daraus ergibt sich $(q_{01},q_{02})
           \overset{v''}{\Rightarrow} (q_1,q_2)$ mit $q_1
@@ -249,7 +258,13 @@ zu~\cite{Vogler2014EIO} erwähnt.
       \end{itemize}
   \item Fall II ($v_1\in PrET_1$): $\exists u_1\in O_1^*:q_{01}
     \overset{v_1}{\Rightarrow} q_1 \overset{u_1}{\Rightarrow} q_1'$ mit
-    $q_1'\in E_1$. Es gilt $q_{02} \overset{v_2'}{\Rightarrow}q_2$ mit
+    $q_1'\in E_1$. Da wir hier keine disjunkten Inputmengen mehr haben, kann
+    das $a$, auf das $v_1$ endet ebenfalls der letzte Buchstabe von $v_2$
+    sein. Im Fall von $v_2\in MIT_2$ kann somit $a=b$ gelten und somit wäre
+    $v_2=v_2'$. Dieser Fall verläuft jedoch analog zu Fall I und wird somit
+    hier nicht weiter betrachtet. Dieser Unterschied zu~\cite{Vogler2014EIO}
+    wurde auch bereits in~\cite{Schlosser2012BA} angemerkt. Es gilt somit für
+    alle anderen Fälle hier $q_{02} \overset{v_2'}{\Rightarrow}q_2$ mit
     $(q_{01},q_{02}) \overset{v'}{\Rightarrow}(q_1,q_2)$.
     \begin{itemize}
       \item Fall IIa) ($u_2\in (O_1\cap I_2)^*, c\in (O_1\cap I_2)$, sodass
@@ -271,6 +286,10 @@ zu~\cite{Vogler2014EIO} erwähnt.
   \end{itemize}
 
   2.:\\
+  Der Beweis für diesen Punkt musste bezüglich~\cite{Vogler2014EIO} nicht
+  verändert werden, bis auf die Ersetzung der Zeichen der Parallelkomposition.
+  Somit entspricht dieser Beweis dem aus~\cite{Vogler2014EIO} und dem
+  aus~\cite{Schlosser2012BA}.\\
   Es ist durch die Definition klar, dass gilt $L_i\subseteq EL_i$ und
   $ET_i\subseteq EL_i$. Wir beginnen mit der Argumentation von der rechten
   Seite der Gleichung aus:
@@ -329,7 +348,11 @@ In~\cite{Vogler2014EIO} wurde auch die Verfeinerung von EIOs als Relation betrac
 mit Spezifikation und Implementierung. Hier soll ebenfalls eine
 Verfeinerungsrelation über EIOs betrachtet werden, jedoch in leicht
 abgewandelter Form, da die synchronisierten Aktionen nicht verborgen werden
-sollen. Dadurch ändern sich natürlich auch Teile des Beweises.
+sollen. Dadurch ändern sich natürlich auch Teile des Beweises. Dieses Lemma
+existiert in dieser Form nicht in~\cite{Schlosser2012BA}, da es dort mit der
+Aussage von Satz~\ref{satzFullAbstractness} kombiniert wurde. Jedoch ist die
+Aussage diese Lemmas trotzdem Teil dessen, was gezeigt wird und somit finden
+sich die Teile dieses Beweises auch dort wieder.
 
 \begin{lem}[Verfeinerung mit Errors]
   \label{lemVerfeinerung}
