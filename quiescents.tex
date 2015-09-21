@@ -39,7 +39,8 @@ optimistischen Ansatz der lokalen Erreichbarkeit.
     \item die Traces bezüglich Errors entsprechen denen
       aus~\ref{DefErrortraces},
     \item strickte Quiescenttraces: $StQT(S) := \{w\in\Sigma ^*\mid q_0
-      \overset{w}{\Rightarrow} q\in Qui\}$.
+      \overset{w}{\Rightarrow} q\in Qui\}$,
+    \item gekürzte Quiescenttraces: $PrQT(S) :=\{prune(w)\mid w\in StQT(S)\}$.
   \end{itemize}
 \end{Def}
 
@@ -48,9 +49,9 @@ optimistischen Ansatz der lokalen Erreichbarkeit.
   Sei $S$ ein EIO.
   \begin{itemize}
     \item Die Menge der Errortraces ist wie in~\ref{DefETEL} definiert.
-    \item Die Menge der Quiescenttraces von $S$ ist $QT(S) := StQT(S)$.
-    \item Die geflutete Sprache von $S$ ist $QL(S):=L(S)\cup ET(S)$
-      und entspricht somit der gefluteten Sprache $EL(S)$
+    \item Die Menge der Quiescenttraces von $S$ ist $QT(S) := cont(PrQT(S))$.
+    \item Die geflutete Sprache von $S$ ist $QL(S):=L(S)\cup ET(S)\cup QT(S)$
+      und unterscheidet sich somit von der gefluteten Sprache $EL(S)$
       in~\ref{DefETEL}.
   \end{itemize}
   Für zwei EIOs $S_1, S_2$ mit der gleichen Signatur schreiben wir
@@ -58,19 +59,13 @@ optimistischen Ansatz der lokalen Erreichbarkeit.
   $QT(S_1)\subseteq QT(S_2)$ und $QL(S_1)\subseteq QL(S_2)$ gilt.
 \end{Def}
 
-Da $QT$ nur die strickten Quiescenttraces enthält, also die Traces, die im
-Automaten vorhanden sind und zu einem Quiescent-Zustand führen, gilt
-$QT\subseteq L\subseteq QL$. Somit musste $QT$ nicht mehr explizit in die
-Definition von $QL$ aufgenommen werden und trotzdem ist jeder Traces, der in
-$QT$ möglich ist auch in der gefluteten Sprache enthalten.
-
 \begin{satz}[Lokale Error und Quiescent Semantik für Parallelkompositonen]
   \label{satzQuiSemantik}
   Für zwei komponierbare EIOs $S_1, S_2$ und $S_{12} = S_1\|S_2$ gilt:
   \begin{enumerate}
     \item $ET_{12} = cont(prune((ET_1\|QL_2)\cup (QL_1\|ET_2)))$,
-    \item $QT_{12} = (QT_1\|QT_2)$,%TODO???
-    \item $QL_{12} = (QL_1\|QL_2)\cup ET_{12}$.%TODO???
+    \item $QT_{12} = cont(prune(QT_1\|QT_2))$,%TODO???
+    \item $QL_{12} = (QL_1\|QL_2)\cup ET_{12}\cup QT_{12}$.%TODO???
   \end{enumerate}
 \end{satz}
 
@@ -84,37 +79,63 @@ $QT$ möglich ist auch in der gefluteten Sprache enthalten.
   Satz~\ref{satzErrorSemanik}.
 
   2. ``$\subseteq$'':\\
-  Wir betrachten $w\in StQT_{12}$ und versuchen dessen
+  Wegen der Abgeschlossenheit beider Seiten der Gleichung gegenüber $cont$
+  betrachten wir ein präfix-minimales Element $w\in PrQT_{12}$ und versuchen dessen
   Zugehörigkeit zur rechten Menge zu zeigen. Aufgrund von
-  Definition~\ref{DefQuiescenttraces} wissen wir es gibt gilt $(q_{01},q_{02})
-  \overset{w}{\Rightarrow} (q_1,q_2)$ mit $(q_1,q_2)\in Qui_{12}$. Durch
-  Projektion erhalten wir $q_{01} \overset{w_1}{\Rightarrow} q_1$ und $q_{02}
-  \overset{w_2}{\Rightarrow} q_2$ mit $w\in w_1\|w_2$. Aus $(q_1,q_2)\in
-  Qui_{12}$ können wir folgern, dass bereits $q_1\in Qui_1$ und $q_2\in
-  Qui_2$ gilt. Somit gilt $w_1\in StQT_1\subseteq QT_1$ und $w_2\in
-  StQT_2\subseteq QT_2$. Daraus folgt dann $w\in QT_1\|QT_2$ und somit ist $w$
+  Definition~\ref{DefQuiescenttraces} wissen wir es gibt $v\in Q_{12}^*$,
+  sodass gilt $(q_{01},q_{02}) \overset{w}{\Rightarrow} (q_1,q_2)
+  \overset{v}{\Rightarrow} (q_1'q_2')$ mit $(q_1',q_2')\in Qui_{12}$. Durch
+  Projektion erhalten wir $q_{01} \overset{w_1}{\Rightarrow} q_1
+  \overset{v_1}{\Rightarrow} q_1'$ und $q_{02} \overset{w_2}{\Rightarrow} q_2
+  \overset{v_2} q_2'$ mit $w\in w_1\|w_2$ und $v\in v_1\|v_2$. Aus
+  $(q_1',q_2')\in Qui_{12}$ können wir folgern, dass bereits $q_1'\in Qui_1$
+  und $q_2'\in Qui_2$ gilt. Somit gilt, wegen $w_1=prune(w_1v_1)$ und
+  $w_2=prune(w_2v_2)$, $w_1\in PrQT_1\subseteq QT_1$ und $w_2\in
+  PrQT_2\subseteq QT_2$. Daraus folgt dann $w\in QT_1\|QT_2$ und somit ist $w$
   in der rechten Seiten der Gleichung enthalten.
 
   2. ``$\supseteq$'':\\
-  Für diese Inklusionsrichtung betrachten wir ein Element $w\in QT_1\|QT_2$ und
-  zeigen, dass es in der linken Menge enthalten ist. Da $QT_i = StQT_i$ gilt,
-  existieren $w_1$ und $w_2$ für die gilt $q_{01} \overset{w_1}{\Rightarrow}
-  q_1\in Qui_1$ und $q_{02} \overset{w_2}{\Rightarrow} q_2\in Qui_2$ mit $w\in
-  w_1\| w_2$. Da für die Zustände $q_1$ und $q_2$ die Zugehörigkeit zur
-  Quiescent Menge gilt, können wir folgern, dass der aus ihnen zusammengesetzte
-  Zustand in der Parallelkomposition ebenfalls keine Outputs zulässt. Somit
-  gilt also für die Komposition $(q_{01},q_{02}) \overset{w}{\Rightarrow}
-  (q_1,q_2)\in Qui_{12}$ und dadurch ist $w$ in der linken Seite der Gleichung
-  enthalten.
+  Für diese Inklusionsrichtung betrachten wir, wegen der Abgeschlossenheit
+  gegenüber $cont$, ein präfix-minimales Element $x\in prune(QT_1\|QT_2)$ und
+  zeigen, dass es in der linken Menge enthalten ist. Da $x$ durch die
+  $prune$-Funktion entstanden ist, existiert ein $x\in O_{12}^*$ mit $xy\in
+  QT_1\|QT_2$. Somit existieren $w_1\in QT_1$ und $w_2\in QT_2$ mit $xy\in
+  w_1\|w_2$. Es gilt also $q_{01} \overset{w_1}{\Rightarrow}
+  q_1\in Qui_1$ und $q_{02} \overset{w_2}{\Rightarrow} q_2\in Qui_2$. Da für
+  die Zustände $q_1$ und $q_2$ die Zugehörigkeit zur Quiescent Menge gilt,
+  können wir folgern, dass der aus ihnen zusammengesetzte Zustand in der
+  Parallelkomposition ebenfalls keine Outputs zulässt. Somit gilt also für die
+  Komposition $(q_{01},q_{02}) \overset{xy}{\Rightarrow} (q_1,q_2)\in Qui_{12}$
+  und dadurch ist $x$ in der linken Seite der Gleichung enthalten, da
+  $x=prune(xý)$ ist.
 
   3.:\\
-  Der Beweis diese Punktes entspricht dem Beweis von Punkt 2.\ im Beweis von
-  Satz~\ref{satzErrorSemanik}.
+  Es ist durch die Definition klar, dass gilt $L_i\subseteq QL_i$,
+  $ET_i\subseteq QL_i$ und $QT_i\subseteq QL_i$. Wir beginnen mit der
+  Argumentation von der rechten Seite der Gleichung aus:
+  \begin{align*}
+    &(QL_1\| QL_2)\cup ET_{12}\cup QT_{12}\\
+    &\overset{\ref{DefQTQL}}{=}(L_1\cup ET_1\cup QT_1)\|(L_2\cup ET_2\cup
+    QT_2)\cup ET_{12}\cup QT_{12}\\
+    &=(L_1\|L_2) \cup
+    \underset{\overset{1.}{\subseteq} ET_{12}}{\underset{\subseteq
+    (EL_1\|ET_2)}{\underbrace{(L_1\|ET_2)}}} \cup
+    \underset{?}{\underbrace{(L_1\|QT_2)}} \cup
+    \underset{\overset{1.}{\subseteq} ET_{12}}{\underset{\subseteq
+    (ET_1\|EL_2)}{\underbrace{(ET_1\|L_2)}}} \cup
+    \underset{\overset{1.}{\subseteq}
+    ET_{12}}{\underset{\subseteq (EL_1\|ET_2)}{\underbrace{(ET_1\|ET_2)}}} \cup
+    \underset{?}{\underbrace{(ET_1\|QT_2)}}\\
+    &\hspace{0.6cm}\cup\underset{?}{\underbrace{(QT_1\|L_2)}} \cup
+    \underset{?}{\underbrace{(QT_1\|ET_2)}} \cup
+    \underset{\overset{2.}{\subseteq}
+    QT_{12}}{\underbrace{(QT_1\|QT_2)}} \cup
+    ET_{12}\cup QT_{12}\\
+    &=(L_1\|L_2) \cup ET_{12}\cup QT_{12}\\
+    &\overset{\ref{LemmaSprache}}{=}L_{12}\cup ET_{12}\cup QT_{12}\\
+    &\overset{\ref{DefQTQL}}{=}QL_{12}
+  \end{align*}
 \end{proof}
-
-$QT_{12}$ ist hier in $QL_{12}$ enthalten, da wie wir bereits oben festgestellt
-haben $QT_i\subseteq QL_i$ für $i=1,2$ gilt. Somit gilt auch
-$(QT_1\|QT_2)\subseteq (QL_1\|QL_2)$.
 
 \begin{prop}[Präkongruenz]
   $\sqsubseteq _{Qui}$ ist eine Präkongruenz.
@@ -132,13 +153,18 @@ $(QT_1\|QT_2)\subseteq (QL_1\|QL_2)$.
         ~\mathrm{Punkt}~1}{\subseteq} ET_{32}
     \end{aligned}$
     \item $\begin{aligned}[t]
-        QT_{31} &\overset{\ref{satzQuiSemantik}~2.}{=} (QT_3\|QT_1)\\
-                &\hspace{-0.3cm}\overset{QT_1\subseteq QT_2}{\subseteq} (QT_3\|QT_2)\\
+        QT_{31} &\overset{\ref{satzQuiSemantik}~2.}{=} cont(prune(QT_3\|QT_1))\\
+                &\hspace{-0.3cm}\overset{QT_1\subseteq QT_2}{\subseteq}
+        cont(prune(QT_3\|QT_2))\\
                 &\overset{\ref{satzQuiSemantik}~2.}{=} QT_{32}
     \end{aligned}$
     \item $\begin{aligned}[t]
-        QL_{31} \overset{\mathrm{Beweis}~\ref{korPraekongruenz}
-        ~\mathrm{Punkt}~2}{\subseteq} QL_{32}
+        QL_{31} &\overset{\ref{satzQuiSemantik}~3.}{=} (QL_3\|QL_1)\cup EL_{31}
+          \cup QL_{31}\\
+        &\overset{QL_1 \subseteq QL_2,}{\overset{EL_{31}\subseteq
+          EL_{32}}{\overset{\mathrm{und}}{\overset{QT_{31}\subseteq
+          QT_{32}}{\subseteq}}}} (QL_3\|QL_2)\cup EL_{32}\cup QT_{32}
+        &\overset{\ref{satzQuiSemantik}~3.}{=} QL_{32}
     \end{aligned}$
   \end{itemize}
 \end{proof}
@@ -163,6 +189,5 @@ $(QT_1\|QT_2)\subseteq (QL_1\|QL_2)$.
     \item $QT(S_1)\subseteq QT(S_2)$,
     \item $QL(S_1)\subseteq QL(S_2)$.
   \end{itemize}
-  Der erste und der letzte Punkt wurden bereits in Lemma~\ref{lemVerfeinerung}
-  gezeigt. So bleibt uns nur noch die Inklusion $QT_1\subseteq QT_2$ zu zeigen.
+  Der erste wurde bereits in Lemma~\ref{lemVerfeinerung} gezeigt.
 \end{proof}
