@@ -214,7 +214,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} wert gelegt.
       Präfix von $v_2$ ist. Wir wissen jedoch zusätzlich, dass $v_2$ auf $b\in
       I_2$ endet, jedoch muss nicht mehr wie in~\cite{Vogler2014EIO} $b\neq a$
       gelten. Wir können also keine Aussage mehr darüber treffen, ob es sich um
-      fein echtes Präfix handelt.
+      ein echtes Präfix handelt.
   \end{itemize}
   In allen Fällen erhalten wir $v_2'=v'|_{\Sigma _2}$ ist ein Präfix von $v_2$
   und $v'\in v_1\| v_2'$ ist ein Präfix von $xy$. Da nicht mehr $b\neq a$
@@ -230,10 +230,11 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} wert gelegt.
       $I_1$, wie auch in $I_2$ enthalten ist.
       \begin{itemize}
         \item Fall Ia) ($a\notin\Sigma _2$): Es gilt $q_{02}
-          \overset{v_2'}{\Rightarrow} q_2$ mit $v''\in v_1'\|v_2'$. Dadurch erhalten
+          \overset{v_2'}{\Rightarrow} q_2$ mit $v''\in v_1'\|v_2'$, da $v_2'$
+          nicht auf $a$ enden kann. Dadurch erhalten
           wir $(q_{01},q_{02}) \overset{v''}{\Rightarrow} (q_1,q_2)
           \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ mit $a\in I_{12}$.
-          Somit können wir wählen $v:=v''a=v'\in MIT(S_1\|S_2)$.
+          Somit können wir wählen $v:=v''a=v'\in MIT_{12}$.
         \item Fall Ib) ($a\in I_2$): Es gilt $v_2'=v_2''a$ mit $q_{02}
           \overset{v_2''}{\Rightarrow} q_2$ und $v''\in v_1'\|v_2''$. In
           diesem Fall kann entweder gelten $q_2 \overset{a}{\rightarrow}$ oder $q_2
@@ -254,7 +255,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} wert gelegt.
           \overset{v''}{\Rightarrow} (q_1,q_2)$ mit $q_1
           \overset{a}{\not{\hspace{-0.1cm}\rightarrow}},a\in I_1, q_2
           \overset{a}{\rightarrow},a\in O_2$, somit gilt $(q_1,q_2)\in
-          E_{12}$. Wir wählen $v:=prune(v'')\in PrET(S_1\|S_2)$.
+          E_{12}$. Wir wählen $v:=prune(v'')\in PrET_{12}$.
       \end{itemize}
   \item Fall II ($v_1\in PrET_1$): $\exists u_1\in O_1^*:q_{01}
     \overset{v_1}{\Rightarrow} q_1 \overset{u_1}{\Rightarrow} q_1'$ mit
