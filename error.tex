@@ -211,7 +211,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} wert gelegt.
       PrET_2\cup MIT_2$ gilt, dann ist durch die Annahme, dass $v_2$ nicht vor
       $v_1$ endet, $v_2'$ ein Präfix von $v_2$. Im Fall $v_2\in MIT_2$ können
       wir durch die gleiche Argumentation ebenfalls schließen, dass $v_2'$ ein
-      Präfix von $v_2$ ist. Wir wissen jedoch zusätzlich, dass $v_2$ auf $b\in
+      Präfix von $v_2$ ist. Wir wissen zusätzlich, dass $v_2$ auf $b\in
       I_2$ endet, jedoch muss nicht mehr wie in~\cite{Vogler2014EIO} $b\neq a$
       gelten. Wir können also keine Aussage mehr darüber treffen, ob es sich um
       ein echtes Präfix handelt.
@@ -231,25 +231,29 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} wert gelegt.
       \begin{itemize}
         \item Fall Ia) ($a\notin\Sigma _2$): Es gilt $q_{02}
           \overset{v_2'}{\Rightarrow} q_2$ mit $v''\in v_1'\|v_2'$, da $v_2'$
-          nicht auf $a$ enden kann. Dadurch erhalten
+          und $v_2$ nicht auf $a$ enden können. Dadurch erhalten
           wir $(q_{01},q_{02}) \overset{v''}{\Rightarrow} (q_1,q_2)
           \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ mit $a\in I_{12}$.
           Somit können wir wählen $v:=v''a=v'\in MIT_{12}$.
-        \item Fall Ib) ($a\in I_2$): Es gilt $v_2'=v_2''a$ mit $q_{02}
-          \overset{v_2''}{\Rightarrow} q_2$ und $v''\in v_1'\|v_2''$. In
-          diesem Fall kann entweder gelten $q_2 \overset{a}{\rightarrow}$ oder $q_2
-          \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$. Falls die zweite
-          Möglichkeit gilt, ist $v_2'\in MIT_2$ und $a$ ist für $S_2$
-          ebenfalls ein fehlender Input. Jedoch gilt für beide Möglichkeiten,
-          dass $a\in Synch(S_1,S_2)$ liegt, da die Menge der synchronisierten
-          Handlungen bezüglich~\cite{Vogler2014EIO} erweitert wurde, somit
-          reicht schon, wenn für einen der beiden Automaten der Input nicht
-          möglich ist. Da $q_1 \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$
-          gilt, können wir schließen, dass $(q_1,q_2)
-          \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ folgt. Somit können
-          wir hier $v:=v''a=v'\in MIT_{12}$ wählen.
-        \item Fall Ic) ($a\in O_2$): Es gilt $v_2'=v_2''a$ und $q_{02}
-          \overset{v_2'}{\Rightarrow}$. Wir erhalten also $q_{02}
+        \item Fall Ib) ($a\in I_2$ und $v_2'\in MIT_2$): Es gilt $v_2'=v_2''a$
+          mit $q_{02} \overset{v_2''}{\Rightarrow} q_2
+          \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ und $v''\in
+          v_1'\|v_2''$. $a$ ist  für $S_2$, ebenso wie für $S_1$, ein fehlender
+          Input. Wir können somit schließen, dass $(q_1,q_2)
+          \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ gilt. Wir wählen
+          $v:=v''a=v'\in MIT_{12}$.
+        \item Fall Ic) ($a\in I_2$ und $v_2'\in L_2$): Es gilt $q_{02}
+          \overset{v_2''}{\Rightarrow} q_2 \overset{a}{\rightarrow}$ mit
+          $v_2'=v_2''a$. Da jedoch $a\in Synch(S_1,S_2)$ liegt, da die Menge
+          der synchronisierten Handlungen bezüglich~\cite{Vogler2014EIO}
+          erweitert wurde, somit reicht schon, dass $q_1
+          \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ gilt, um folgendes
+          schließen zu können $(q_1,q_2)
+          \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$. Somit können wir hier
+          $v:=v''a=v'\in MIT_{12}$ wählen.
+        \item Fall Id) ($a\in O_2$): Es gilt $v_2'=v_2''a$ und $q_{02}
+          \overset{v_2'}{\Rightarrow}$, da der Input $b$ von $v_2$ hier nicht
+          dem $a$ entsprechen kann. Wir erhalten also $q_{02}
           \overset{v_2''}{\Rightarrow} q_2 \overset{a}{\rightarrow}$ mit
           $v''\in v_1'\|v_2''$. Daraus ergibt sich $(q_{01},q_{02})
           \overset{v''}{\Rightarrow} (q_1,q_2)$ mit $q_1
@@ -262,7 +266,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} wert gelegt.
     $q_1'\in E_1$. Da wir hier keine disjunkten Inputmengen mehr haben, kann
     das $a$, auf das $v_1$ endet ebenfalls der letzte Buchstabe von $v_2$
     sein. Im Fall von $v_2\in MIT_2$ kann somit $a=b$ gelten und somit wäre
-    $v_2=v_2'$. Dieser Fall verläuft jedoch analog zu Fall I und wird somit
+    $v_2=v_2'$. Dieser Fall verläuft jedoch analog zu Fall Ic) und wird somit
     hier nicht weiter betrachtet. Dieser Unterschied zu~\cite{Vogler2014EIO}
     wurde auch bereits in~\cite{Schlosser2012BA} angemerkt. Es gilt somit für
     alle anderen Fälle hier $q_{02} \overset{v_2'}{\Rightarrow}q_2$ mit
