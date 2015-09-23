@@ -7,10 +7,10 @@ jedoch halten wir uns als Quelle an~\cite{Chilton2013}. Darin werden ähnliche K
 beschrieben, jedoch aus Sicht der Traces.
 
 \begin{Def}[Quiescent]
-  Ein Quiescent-Zustand ist ein Zustand in einem EIO der keine Outputs besitzt
+  Ein Quiescent-Zustand ist ein Zustand in einem \EIO{} der keine Outputs besitzt
   oder ein Zustand, von dem aus über eine interne Handlung $\tau$ ein Zustand
   erreicht werden kann, der keine Outputs zulässt.\\
-  Somit ist die Menge der Quiescent-Zustände in einem EIO wie folgt formal
+  Somit ist die Menge der Quiescent-Zustände in einem \EIO{} wie folgt formal
   definiert: $Qui=\{q\in Q\mid q\in K\vee \exists p\in Q:
   q\overset{\tau}{\Rightarrow} p\in K\}$ mit $K=\{q\in Q\mid \forall a\in O:
   q\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\}$.
@@ -20,51 +20,51 @@ Für die Erreichbarkeit verwenden wir wie im letzten Kapitel wieder den
 optimistischen Ansatz der lokalen Erreichbarkeit.
 
 \begin{Def}[lokal error- und quiescentfreie Kommunikation]
-  Zwei EIOs $S_1$ und $S_2$ kommunizieren gut, wenn keine Errors und Quiescents
+  Zwei \EIO{}s $S_1$ und $S_2$ kommunizieren gut, wenn keine Errors und Quiescents
   lokal erreichbar sind in ihrer Parallelkomposition $S_1\| S_2$
 \end{Def}
 
 \begin{Def}[lokale Basisrelation]
-  Für EIOs $S_1$ und $S_2$ mit der gleichen Signatur schreiben wir
-  $S_1\sqsubseteq _{Qui}^B S_2$, wenn ein Error oder Quiescent in $S_1$ nur
+  Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur schreiben wir
+  $S_1\QBRel S_2$, wenn ein Error oder Quiescent in $S_1$ nur
   dann lokal erreichbar ist, wenn er auch in $S_2$ lokal erreichbar ist.\\
-  $\sqsubseteq _{Qui}^C$ bezeichnet die vollständig abstrakte Präkongruenz von
-  $\sqsubseteq  _{Qui}^ B$ bezüglich $\|$.
+  \QCRel{} bezeichnet die vollständig abstrakte Präkongruenz von \QBRel{}
+  bezüglich $\cdot\|\cdot$.
 \end{Def}
 
 \begin{Def}[Error und Quiescenttraces]
   \label{DefQuiescenttraces}
-  Sei $S$ ein EIO und definiere:
+  Sei $S$ ein \EIO{} und definiere:
   \begin{itemize}
     \item die Traces bezüglich Errors entsprechen denen
       aus~\ref{DefErrortraces},
-    \item strickte Quiescenttraces: $StQT(S) = \{w\in\Sigma ^*\mid q_0
+    \item strickte Quiescenttraces: $\StQT{}(S) = \{w\in\Sigma ^*\mid q_0
       \overset{w}{\Rightarrow} q\in Qui\}$,
-    \item gekürzte Quiescenttraces: $PrQT(S) = \{prune(w)\mid w\in StQT(S)\}$.
+    \item gekürzte Quiescenttraces: $\PrQT{}(S) = \{prune(w)\mid w\in \StQT{}(S)\}$.
   \end{itemize}
 \end{Def}
 
 \begin{Def}[Lokale Error und Quiescent Semantik]
   \label{DefQTQL}
-  Sei $S$ ein EIO.
+  Sei $S$ ein \EIO{}.
   \begin{itemize}
     \item Die Menge der Errortraces ist wie in~\ref{DefETEL} definiert.
-    \item Die Menge der Quiescenttraces von $S$ ist $QT(S) = cont(PrQT(S))$.
-    \item Die geflutete Sprache von $S$ ist $QL(S)=L(S)\cup ET(S)\cup QT(S)$
+    \item Die Menge der Quiescenttraces von $S$ ist $\QT{}(S) = cont(\PrQT{}(S))$.
+    \item Die geflutete Sprache von $S$ ist $\QL{}(S)=L(S)\cup ET(S)\cup \QT{}(S)$
       und unterscheidet sich somit von der gefluteten Sprache $EL(S)$
       in~\ref{DefETEL}.
   \end{itemize}
-  Für zwei EIOs $S_1, S_2$ mit der gleichen Signatur schreiben wir
-  $S_1\sqsubseteq _{Qui} S_2$, wenn $ET(S_1)\subseteq ET(S_2)$,
-  $QT(S_1)\subseteq QT(S_2)$ und $QL(S_1)\subseteq QL(S_2)$ gilt.
+  Für zwei \EIO{}s $S_1, S_2$ mit der gleichen Signatur schreiben wir
+  $S_1\QRel S_2$, wenn $ET(S_1)\subseteq ET(S_2)$,
+  $\QT{}(S_1)\subseteq \QT{}(S_2)$ und $\QL{}(S_1)\subseteq \QL{}(S_2)$ gilt.
 \end{Def}
 
 \begin{satz}[Lokale Error und Quiescent Semantik für Parallelkompositonen]
-  Für zwei komponierbare EIOs $S_1, S_2$ und $S_{12} = S_1\|S_2$ gilt:
+  Für zwei komponierbare \EIO{}s $S_1, S_2$ und $S_{12} = S_1\|S_2$ gilt:
   \begin{enumerate}
-    \item $ET_{12} = cont(prune((ET_1\|QL_2)\cup (QL_1\|ET_2)))$
-    \item $QT_{12} = cont(prune((QT_1\|QL_2)\cup (QL_1\|QT_2)))$%TODO???
-    \item $QL_{12} = (QL_1\|QL_2)\cup ET_{12}\cup QT_{12}$%TODO???
+    \item $ET_{12} = cont(prune((ET_1\|\QL{}_2)\cup (\QL{}_1\|ET_2)))$
+    \item $\QT{}_{12} = cont(prune((\QT{}_1\|\QL{}_2)\cup (\QL{}_1\|\QT{}_2)))$%TODO???
+    \item $\QL{}_{12} = (\QL{}_1\|\QL{}_2)\cup ET_{12}\cup \QT{}_{12}$%TODO???
   \end{enumerate}
 \end{satz}
 
@@ -79,7 +79,7 @@ optimistischen Ansatz der lokalen Erreichbarkeit.
 
   2. ``$\subseteq$'':\\
   Da hier beide Seiten unter $cont$ abgeschlossen sind, genügt es ein
-  präfix-minimales Element $w\in PrQT_{12}$ zu betrachten und dessen
+  präfix-minimales Element $w\in \PrQT{}_{12}$ zu betrachten und dessen
   Zugehörigkeit zur rechten Menge zu zeigen. Aufgrund von
   Definition~\ref{DefQuiescenttraces} wissen wir es gibt ein $v\in O_{12}^*$,
   sodass $(q_{01},q_{02}) \overset{w}{\Rightarrow} (q_1,q_2)
@@ -89,35 +89,35 @@ optimistischen Ansatz der lokalen Erreichbarkeit.
   \overset{w_2}{\Rightarrow} q_2 \overset{v_2}{\Rightarrow} q_2'$ mit $w\in
   w_1\|w_2$ und $v\in v_1\|v_2$. Aus $(q_1',q_2')\in Qui_{12}$ können wir
   folgern, dass bereits $q_1'\in Qui_1$ und $q_2'\in Qui_2$ gilt. Somit gilt
-  $w_1v_1\in StQT_1\subseteq QT_1\subseteq QL_1$ und $w_2v_2\in StQT_2\subseteq
-  QT_2\subseteq QL_2$. Daraus folgt dann $wv\in QT_1\|QL_2$ mit $w\in
+  $w_1v_1\in \StQT{}_1\subseteq \QT{}_1\subseteq \QL{}_1$ und $w_2v_2\in \StQT{}_2\subseteq
+  \QT{}_2\subseteq \QL{}_2$. Daraus folgt dann $wv\in \QT{}_1\|\QL{}_2$ mit $w\in
   prune(wv)$ und somit ist $w$ in der rechten Seiten der Gleichung enthalten.
 
   2. ``$\supseteq$'':\\
   Wegen der Abgeschlossenheit beider Seiten der Gleichung gegenüber $cont$
   betrachten wir auch in diesem Fall nur ein präfix-minimales Element $x\in
-  prune((QT_1\|QL_2)\cup (QL_1\|QT_2))$. Somit können wir schließen, dass es
-  ein $y\in Q_{12}^*$ gibt, sodass $xy\in (QT_1\|QL_2)\cup (QL_1\|QT_2)$.
-  \OBdA{} gilt $xy\in QT_1\|QL_2$, d.h.\ es existieren $w_1\in QT_1$ und
-  $w_2\in QL_2$ mit $xy\in w_1\| w_2$.\\
+  prune((\QT{}_1\|\QL{}_2)\cup (\QL{}_1\|\QT{}_2))$. Somit können wir schließen, dass es
+  ein $y\in Q_{12}^*$ gibt, sodass $xy\in (\QT{}_1\|\QL{}_2)\cup (\QL{}_1\|\QT{}_2)$.
+  \OBdA{} gilt $xy\in \QT{}_1\|\QL{}_2$, d.h.\ es existieren $w_1\in \QT{}_1$ und
+  $w_2\in \QL{}_2$ mit $xy\in w_1\| w_2$.\\
   Im weiteren werden wir für alle Fälle von $xy$ zeigen, dass es ein $v\in
-  PrQT_{12}$ gibt, das ein Präfix von $xy$ ist und $v$ entweder auf einen Input
+  \PrQT{}_{12}$ gibt, das ein Präfix von $xy$ ist und $v$ entweder auf einen Input
   aus $I_{12}$ endet oder $v=\varepsilon$. Da $v$ entweder leer ist oder auf
   einen Input endet, muss $v$ ein Präfix von $x$ sein mit der gleichen
   Begründung wie im Beweis zu Satz~\ref{satzErrorSemanik}. Somit gilt durch die
-  Existenz dieses Präfixes von $x$, dass $x\in QT_{12}$ gilt. Sei $v_1$ das
-  kürzeste Präfix von $w_1$ in $PrQT_1$. Falls $w_2\in L_2$, so sei $v_2=w_2$,
-  sonst soll $v_2$ das kürzeste Präfix von $w_2$ in $PrQT_2$ sein. Jede Aktion
+  Existenz dieses Präfixes von $x$, dass $x\in \QT{}_{12}$ gilt. Sei $v_1$ das
+  kürzeste Präfix von $w_1$ in $\PrQT{}_1$. Falls $w_2\in L_2$, so sei $v_2=w_2$,
+  sonst soll $v_2$ das kürzeste Präfix von $w_2$ in $\PrQT{}_2$ sein. Jede Aktion
   in $v_1$ und $v_2$ hängt mit einer aus $xy$ zusammen. Wir gehen nun davon
   aus, dass entweder $v_2=w_2\in L_2$ gilt oder die letzte Aktion von $v_1$
   findet vor oder gleichzeitig mit der letzten Aktion von $v_2$ statt.
-  Ansonsten endet $v_2\in PrQT_2$ vor $v_1$ und somit ist dieser Fall analog zu
+  Ansonsten endet $v_2\in \PrQT{}_2$ vor $v_1$ und somit ist dieser Fall analog zu
   $v_1$ endet vor $v_2$.
   \begin{itemize}
-    \item Fall 1 ($v_1=\varepsilon$): Somit gilt $\varepsilon\in PrQT_1$ und es
+    \item Fall 1 ($v_1=\varepsilon$): Somit gilt $\varepsilon\in \PrQT{}_1$ und es
       ist deshalb bereits ein Quiescent-Zustand in $S_1$ erreichbar. Wir wählen
       $v_2'=v'=\varepsilon$, somit ist $v_2'$ ein Präfix von $v_2$.
-    \item Fall 2 ($v_1\neq \varepsilon$): Aufgrund der Definition von $PrQT$
+    \item Fall 2 ($v_1\neq \varepsilon$): Aufgrund der Definition von $\PrQT{}$
       endet $v_1$ auf ein $a\in I_1$, d.h.\ $v_1=v_1'a$. $v'$ sei das Präfix
       von $xy$, das mit der letzten Aktion von $v_1$ endet, d.h.\ mit $a$, und
       $v_2'=v'|_{\Sigma _2}$.\\
@@ -126,34 +126,34 @@ optimistischen Ansatz der lokalen Erreichbarkeit.
   %TODO Beweis!!!
 
   3.:\\
-  Es ist durch die Definition klar, dass gilt $L_i\subseteq QL_i$,
-  $ET_i\subseteq QL_i$ und $QT_i\subseteq QL_i$. Wir beginnen mit der
+  Es ist durch die Definition klar, dass gilt $L_i\subseteq \QL{}_i$,
+  $ET_i\subseteq \QL{}_i$ und $\QT{}_i\subseteq \QL{}_i$. Wir beginnen mit der
   Argumentation von der rechten Seite der Gleichung aus:
   \begin{align*}
-    &(QL_1\| QL_2)\cup ET_{12}\cup QT_{12}\\
-    &\overset{\ref{DefQTQL}}{=}(L_1\cup ET_1\cup QT_1)\|(L_2\cup ET_2\cup
-    QT_2)\cup ET_{12}\cup QT_{12}\\
+    &(\QL{}_1\| \QL{}_2)\cup ET_{12}\cup \QT{}_{12}\\
+    &\overset{\ref{DefQTQL}}{=}(L_1\cup ET_1\cup \QT{}_1)\|(L_2\cup ET_2\cup
+    \QT{}_2)\cup ET_{12}\cup \QT{}_{12}\\
     &=(L_1\|L_2)\cup
     \underset{\overset{1.}{\subseteq} ET_{12}}{\underset{\subseteq
-    (QL_1\|ET_2)}{\underbrace{(L_1\|ET_2)}}} \cup
-    \underset{\overset{2.}{\subseteq} QT_{12}}{\underset{\subseteq
-    (QL_1\|QT_2)}{\underbrace{(L_1\|QT_2)}}} \cup
+    (\QL{}_1\|ET_2)}{\underbrace{(L_1\|ET_2)}}} \cup
+    \underset{\overset{2.}{\subseteq} \QT{}_{12}}{\underset{\subseteq
+    (\QL{}_1\|\QT{}_2)}{\underbrace{(L_1\|\QT{}_2)}}} \cup
     \underset{\overset{1.}{\subseteq} ET_{12}}{\underset{\subseteq
-    (ET_1\|QL_2)}{\underbrace{(ET_1\|L_2)}}} \cup
+    (ET_1\|\QL{}_2)}{\underbrace{(ET_1\|L_2)}}} \cup
     \underset{\overset{1.}{\subseteq} ET_{12}}{\underset{\subseteq
-    (QL_1\|ET_2)}{\underbrace{(ET_1\|ET_2)}}} \cup
-    \underset{\overset{2.}{\subseteq} QT_{12}}{\underset{\subseteq
-    (QL_1\|QT_2)}{\underbrace{(ET_1\|QT_2)}}}\\
-    &\phantom{=}\;\cup\underset{\overset{2.}{\subseteq} QT_{12}}{\underset{\subseteq
-    (QT_1\|QL_2)}{\underbrace{(QT_1\|L_2)}}} \cup
-    \underset{\overset{2.}{\subseteq} QT_{12}}{\underset{\subseteq
-    (QT_1\|QL_2)}{\underbrace{(QT_1\|ET_2)}}} \cup
-    \underset{\overset{2.}{\subseteq} QT_{12}}{\underset{\subseteq
-    (QL_1\|QT_2)}{\underbrace{(QT_1\|QT_2)}}} \cup
-    ET_{12} \cup QT_{12}\\
-    &=(L_1\|L_2) \cup ET_{12} \cup QT_{12}\\
-    &\overset{\ref{LemmaSprache}}{=}L_{12}\cup ET_{12}\cup QT_{12}\\
-    &\overset{\ref{DefQTQL}}{=}QL_{12}
+    (\QL{}_1\|ET_2)}{\underbrace{(ET_1\|ET_2)}}} \cup
+    \underset{\overset{2.}{\subseteq} \QT{}_{12}}{\underset{\subseteq
+    (\QL{}_1\|\QT{}_2)}{\underbrace{(ET_1\|\QT{}_2)}}}\\
+    &\phantom{=}\;\cup\underset{\overset{2.}{\subseteq} \QT{}_{12}}{\underset{\subseteq
+    (\QT{}_1\|\QL{}_2)}{\underbrace{(\QT{}_1\|L_2)}}} \cup
+    \underset{\overset{2.}{\subseteq} \QT{}_{12}}{\underset{\subseteq
+    (\QT{}_1\|\QL{}_2)}{\underbrace{(\QT{}_1\|ET_2)}}} \cup
+    \underset{\overset{2.}{\subseteq} \QT{}_{12}}{\underset{\subseteq
+    (\QL{}_1\|\QT{}_2)}{\underbrace{(\QT{}_1\|\QT{}_2)}}} \cup
+    ET_{12} \cup \QT{}_{12}\\
+    &=(L_1\|L_2) \cup ET_{12} \cup \QT{}_{12}\\
+    &\overset{\ref{LemmaSprache}}{=}L_{12}\cup ET_{12}\cup \QT{}_{12}\\
+    &\overset{\ref{DefQTQL}}{=}\QL{}_{12}
   \end{align*}
   %TODO anpassen
 \end{proof}

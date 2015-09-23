@@ -642,6 +642,28 @@ FUNCTION {format.tr.number}
   if$
 }
 
+FUNCTION {format.pr.number}
+{ type empty$
+    { "preprint" }
+    'type
+  if$
+  number empty$
+    { "t" change.case$ }
+    { number tie.or.space.connect }
+  if$
+}
+
+FUNCTION {format.ba.number}
+{ type empty$
+    { "Bachelorarbeit" }
+    'type
+  if$
+  number empty$
+    { "t" change.case$ }
+    { number tie.or.space.connect }
+  if$
+}
+
 % The format.crossref functions haven't been paid much attention
 % at the present time (June 1990) und could probably use some
 % work.  MJD
@@ -964,6 +986,30 @@ FUNCTION {techreport}
   format.authors "author" output.check
   format.title "title" output.check
   format.tr.number output.nonnull
+  institution "institution" output.check
+  address output
+  format.date "year" output.check
+  note output
+  fin.entry
+}
+
+FUNCTION {preprint}
+{ output.bibitem
+  format.authors "author" output.check
+  format.title "title" output.check
+  format.pr.number output.nonnull
+  institution "institution" output.check
+  address output
+  format.date "year" output.check
+  note output
+  fin.entry
+}
+
+FUNCTION {Bachelorsthesis}
+{ output.bibitem
+  format.authors "author" output.check
+  format.title "title" output.check
+  format.ba.number output.nonnull
   institution "institution" output.check
   address output
   format.date "year" output.check

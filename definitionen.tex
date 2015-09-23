@@ -3,17 +3,17 @@
 Die Definitionen dieses Kapitels sind größtenteils aus~\cite{Vogler2014EIO}
 übernommen. Hierbei handelt es sich um die Grundlagen der Transitionssysteme mit denen
 hier gearbeitet werden soll. Jedoch wurde angepasst, dass für die
-Parallelkomposition die Inputaktionen der Error-IO-Transitionssysteme (EIOs) nicht disjunkt sein müssen. Dies
-wäre eine unnötige Einschränkung. Die nicht synchronisierten Inputs der zu komponierenden EIOs werden
+Parallelkomposition die Input-Aktionen der Error-IO-Transitionssysteme (\EIO{}s) nicht disjunkt sein müssen. Dies
+wäre eine unnötige Einschränkung. Die nicht synchronisierten Inputs der zu komponierenden \EIO{}s werden
 als Inputs der Parallelkomposition übernommen. Zusätzlich verzichten wir hier
-auf das verbergen der synchronisierten Handlungen. Die gleiche
+auf das verbergen der synchronisierten Aktionen. Die gleiche
 Betrachtungsweise wurde bereits in~\cite{Schlosser2012BA} gewählt, deshalb
 stimmen die Definitionen in diesem Kapitel mit denen aus~\cite{Schlosser2012BA}
 überein, jedoch wurde diese Arbeit
 nicht als direkte Quelle verwendet.
 
 \section{Error-IO-Transitionssystem}
-Die hier betrachteten EIOs sind Systeme, deren Übergänge mit Inputs und Outputs
+Die hier betrachteten \EIO{}s sind Systeme, deren Übergänge mit Inputs und Outputs
 beschriftet sind. Jeder Übergang ist dabei mit einem Input oder einem Output
 versehen. Ebenfalls zulässig ist eine Kantenbeschriftung mit $\tau$, einer
 internen, unbeobachtbaren Aktion. Diese interne
@@ -23,30 +23,30 @@ dieses Übergangs, da diese in einer Komposition synchronisiert
 wurden.
 
 \begin{Def}[Error-IO-Transitionssystem]
-  Ein Error-IO-Transitionssystem \linebreak (EIO) ist
+  Ein Error-IO-Transitionssystem \linebreak (\EIO{}) ist
   ein Tupel $S=(Q,I,O,\delta, q_0, E)$, mit den Komponenten:
   \begin{itemize}
     \item $Q$ $-$ die Menge der Zustände,
     \item $I,O$ $-$ die disjunkten Mengen der (sichtbaren) Input- und
       Outputaktionen,
-    \item $\delta\subseteq Q\times (I\cup U\cup\{\tau\})\times Q$ $-$ die
+    \item $\delta\subseteq Q\times (I\cup O\cup\{\tau\})\times Q$ $-$ die
       Übergangsrelation,
     \item $q_0\in Q$ $-$ der Startzustand,
     \item $E\subseteq Q$ $-$ die Menge der Error-Zustände.
   \end{itemize}
 \end{Def}
 
-Die Handlungsmenge eines EIOs $S$ ist $\Sigma = I\cup U$ und die Signatur
+Die Aktionsmenge eines \EIO{}s $S$ ist $\Sigma = I\cup O$ und die Signatur
 $Sig(S)=(I,O)$.\\
 Um in graphischen Veranschaulichungen Inputs und Outputs zu unterscheiden wird
 folgende Notation verwendet: $x?$ für den Input $x$ und $x!$ für den Output
 $x$. Falls ein $x$ ohne $?$ oder $!$ verwendet wird, steht dies für eine
-Handlung, bei der nicht festgelegt ist, ob sie ein Input oder ein Output ist.\\
-Um die Komponenten den entsprechenden Automaten zuzuordnen, werden für
-die Komponenten die gleichen Indizes wie für ihre zugehörigen Automaten
-verwendet, z.B.\ für die Inputmenge des Automaten $S_1$ schreiben wir $I_1$.
-Diese Notation verwenden wir später analog für die Sprachen, die einem
-Automaten zugeordnet sind.\\
+Aktion, bei der nicht festgelegt ist, ob sie ein Input oder ein Output ist.\\
+Um die Komponenten der entsprechenden Struktur zuzuordnen, werden für
+die Komponenten die gleichen Indizes wie für ihre zugehörigen Struktur
+verwendet, z.B.\ für die Inputmenge des Transitionssystem $S_1$ schreiben wir $I_1$.
+Diese Notation verwenden wir später analog für die Sprachen, die einer Struktur
+zugeordnet sind.\\
 Die Elemente der Übergangsrelation $\delta$ werden wir wie folgt notieren:
 \begin{itemize}
   \item $p\overset{a}{\rightarrow} q$ für $(p,a,q)\in\delta$,
@@ -70,21 +70,21 @@ Die Sprache von $S$ ist
 $L(S)=\{w\in\Sigma^*\mid q_0\overset{w}{\Rightarrow}\}$.
 
 \section{Parallelkomposition}
-Zwei EIOs sind komponierbar, wenn ihre Outputaktionsmengen disjunkt sind. Die
+Zwei \EIO{}s sind komponierbar, wenn ihre Outputaktionsmengen disjunkt sind. Die
 Error-Zustände der Parallelkomposition setzten sich aus den Error-Zuständen der
 beiden zusammengesetzten Komponenten (geerbte Errors) und den Outputs zusammen, die von der
 anderen Komponente nicht als Inputs angenommen werden können (neue Errors).\\
 Die nächste Definition ist noch analog zu~\cite{Vogler2014EIO}, nur wird hier
 darauf verzichtet die Inputmengen als disjunkt anzunehmen und der zweite
-Definitionsteil über das verbergen der synchronisierten Handlungen wird
+Definitionsteil über das verbergen der synchronisierten Aktionen wird
 komplett weg gelassen. Das verzichten auf die analogen Definitionen für das
 Verbergen wird sich auch bei den folgenden Definitionen zeigen. Zusätzlich
 nehmen wir in der folgenden Definition eine Änderung an der Menge der
-synchronisierten Handlungen vor, da nun nicht mehr $I_1\cap I_2 =\emptyset$
+synchronisierten Aktionen vor, da nun nicht mehr $I_1\cap I_2 =\emptyset$
 gelten muss, werden wir diese gemeinsamen Inputs synchronisieren.
 
 \begin{Def}[Parallelkomposition]
-  Zwei EIOs $S_1, S_2$ sind komponierbar, falls
+  Zwei \EIO{}s $S_1, S_2$ sind komponierbar, falls
   $O_1\cap O_2=\emptyset$ gilt. Die Parallelkomposition ist
   $S_1\|S_2=(Q,I,O,\delta ,q_0,E)$ mit den Komponenten:
   \begin{itemize}
@@ -113,18 +113,18 @@ q_2\overset{a}{\rightarrow}\}
       &&\phantom{neue}\mathrm{neue}~\mathrm{Errors}.\\
   \end{aligned}$
   \end{itemize}
-  Dabei werden die synchronisierten Handlungen $Synch(S_1,
+  Dabei werden die synchronisierten Aktionen $Synch(S_1,
   S_2)=(I_1\cap O_2)\cup(O_1\cap I_2)\cup (I_1\cap I_2)$ nicht versteckt, sondern als Outputs der
   Komposition beibehalten.
 \end{Def}
 
 Nun werden wir drauf eingehen, dass eine Parallelkomposition nicht nur für
-Automaten betrachtet werden kann, sondern auch über Transitionsfolgen. Ein
+Transitionssysteme betrachtet werden kann, sondern auch über Transitionsfolgen. Ein
 \emph{Trace} ist dann das Wort, das aus den Inputs und Outputs besteht, mit denen die
 Übergängen beschriftet sind.
 
 \begin{Def}[Parallelkomposition auf Traces]
-  Gegeben zwei EIOs $S_1$ und $S_2,
+  Gegeben zwei \EIO{}s $S_1$ und $S_2,
   w_1\in\Sigma _1, w_2\in\Sigma _2, W_1\subseteq\Sigma _1^*, W_2\subseteq\Sigma
   _2^*$:
   \begin{itemize}
@@ -136,23 +136,23 @@ Automaten betrachtet werden kann, sondern auch über Transitionsfolgen. Ein
 
 Die Semantik der späteren Kapitel basiert darauf die jeweiligen Zustände, die
 zu Problemen führen, mit ihren Traces zu betrachten. Um dies besser umsetzten zu
-können, definieren wir eine $prune$-Funktion, die alle Outputs am Ende
+können, definieren wir eine $\prune{}$-Funktion, die alle Outputs am Ende
 eines Traces entfernt. Zusätzlich werden Funktionen definiert, die
 die Traces beliebig fortsetzen.
 
 \begin{Def}[Pruning und Fortsetzungs Funktionen]
-  Für einen EIO $S$ definieren wir:
+  Für einen \EIO{} $S$ definieren wir:
   \begin{itemize}
-    \item $prune:\Sigma ^*\rightarrow\Sigma ^*, w\mapsto u$, mit $w=uv,
+    \item $\prune{}:\Sigma ^*\rightarrow\Sigma ^*, w\mapsto u$, mit $w=uv,
       u=\varepsilon\vee u\in\Sigma ^*\cdot I$ und $v\in O^*$,
-    \item $cont:\Sigma ^*\rightarrow\mathfrak{P}(\Sigma ^*),
+    \item $\cont{}:\Sigma ^*\rightarrow\mathfrak{P}(\Sigma ^*),
       w\mapsto\{wu\mid u\in\Sigma ^*\}$,
-    \item $cont:\mathfrak{P}(\Sigma ^*)\rightarrow\mathfrak{P}(\Sigma ^*),
-      L\mapsto\bigcup\hspace{1pt}\{cont(w)\mid w\in L\}$.
+    \item $\cont{}:\mathfrak{P}(\Sigma ^*)\rightarrow\mathfrak{P}(\Sigma ^*),
+      L\mapsto\bigcup\hspace{1pt}\{\cont{}(w)\mid w\in L\}$.
   \end{itemize}
 \end{Def}
 
-Für zwei komponierbare EIOs $S_1$ und $S_2$ ist ein Ablauf ihrer
+Für zwei komponierbare \EIO{}s $S_1$ und $S_2$ ist ein Ablauf ihrer
 Parallelkomposition $S_{12}=S_1\| S_2$ eine Transitionsfolge der Form $(p_1,p_2)
 \overset{w}{\Rightarrow} (q_1,q_2)$ für ein $w\in\Sigma_{12}^*$. So ein Ablauf
 kann auf Abläufe von $S_1$ und $S_2$ projiziert werden. Diese Projektion
@@ -165,7 +165,7 @@ unsynchronisierten Aktionen verändern können. Daraus folgt das folgende Lemma.
 
 \begin{lem}[Sprache der Parallelkomposition]
   \label{LemmaSprache}
-  Für zwei komponierbare EIOs $S_1$ und $S_2$ gilt: \[L_{12} := L(S_1\|S_2) =
+  Für zwei komponierbare \EIO{}s $S_1$ und $S_2$ gilt: \[L_{12} := L(S_1\|S_2) =
   L(S_1)\|L(S_2).\]
 \end{lem}
 
