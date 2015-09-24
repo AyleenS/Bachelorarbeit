@@ -3,27 +3,27 @@
 Die Definitionen dieses Kapitels sind größtenteils aus~\cite{Vogler2014EIO}
 übernommen. Hierbei handelt es sich um die Grundlagen der Transitionssysteme mit denen
 hier gearbeitet werden soll. Jedoch wurde angepasst, dass für die
-Parallelkomposition die Input-Aktionen der Error-IO-Transitionssysteme (\EIO{}s) nicht disjunkt sein müssen. Dies
-wäre eine unnötige Einschränkung. Die nicht synchronisierten Inputs der zu komponierenden \EIO{}s werden
-als Inputs der Parallelkomposition übernommen. Zusätzlich verzichten wir hier
-auf das verbergen der synchronisierten Aktionen. Die gleiche
-Betrachtungsweise wurde bereits in~\cite{Schlosser2012BA} gewählt, deshalb
-stimmen die Definitionen in diesem Kapitel mit denen aus~\cite{Schlosser2012BA}
-überein, jedoch wurde diese Arbeit
-nicht als direkte Quelle verwendet.
+Parallelkomposition die Input-Aktionen der Error-IO-Transitionssysteme
+(\EIO{}s) nicht disjunkt sein müssen. Dies wäre eine unnötige Einschränkung.
+Die nicht synchronisierten Inputs der zu komponierenden \EIO{}s werden als
+Inputs der Parallelkomposition übernommen. Zusätzlich verzichten wir hier auf
+das verbergen der synchronisierten Aktionen. Die gleiche Betrachtungsweise
+wurde bereits in~\cite{Schlosser2012BA} gewählt, deshalb stimmen die
+Definitionen in diesem Kapitel mit denen aus~\cite{Schlosser2012BA} überein,
+jedoch wurde diese Arbeit nicht als direkte Quelle verwendet.
 
 \section{Error-IO-Transitionssystem}
 Die hier betrachteten \EIO{}s sind Systeme, deren Übergänge mit Inputs und Outputs
 beschriftet sind. Jeder Übergang ist dabei mit einem Input oder einem Output
 versehen. Ebenfalls zulässig ist eine Kantenbeschriftung mit $\tau$, einer
-internen, unbeobachtbaren Aktion. Diese interne
+\emph{internen}, unbeobachtbaren \emph{Aktion}. Diese interne
 Aktion lässt also keine Interaktion mit
 der Umwelt zu. In vielen Fällen entstehen sie durch das Verbergen der Inputs und Outputs
 dieses Übergangs, da diese in einer Komposition synchronisiert
 wurden.
 
 \begin{Def}[Error-IO-Transitionssystem]
-  Ein Error-IO-Transitionssystem \linebreak (\EIO{}) ist
+  Ein \emph{Error-IO-Transitionssystem \linebreak (\EIO{})} ist
   ein Tupel $S=(Q,I,O,\delta, q_0, E)$, mit den Komponenten:
   \begin{itemize}
     \item $Q$ $-$ die Menge der Zustände,
@@ -36,8 +36,8 @@ wurden.
   \end{itemize}
 \end{Def}
 
-Die Aktionsmenge eines \EIO{}s $S$ ist $\Sigma = I\cup O$ und die Signatur
-$Sig(S)=(I,O)$.\\
+Die \emph{Aktionsmenge} eines \EIO{}s $S$ ist $\Sigma = I\cup O$ und die
+\emph{Signatur} $Sig(S)=(I,O)$.\\
 Um in graphischen Veranschaulichungen Inputs und Outputs zu unterscheiden wird
 folgende Notation verwendet: $x?$ für den Input $x$ und $x!$ für den Output
 $x$. Falls ein $x$ ohne $?$ oder $!$ verwendet wird, steht dies für eine
@@ -66,7 +66,7 @@ Die Elemente der Übergangsrelation $\delta$ werden wir wie folgt notieren:
   \item $p\overset{w}{\Rightarrow}$ für $\exists q:p\overset{w}{\Rightarrow}
     q$.
 \end{itemize}
-Die Sprache von $S$ ist
+Die \emph{Sprache} von $S$ ist
 $L(S)=\{w\in\Sigma^*\mid q_0\overset{w}{\Rightarrow}\}$.
 
 \section{Parallelkomposition}
@@ -84,8 +84,8 @@ synchronisierten Aktionen vor, da nun nicht mehr $I_1\cap I_2 =\emptyset$
 gelten muss, werden wir diese gemeinsamen Inputs synchronisieren.
 
 \begin{Def}[Parallelkomposition]
-  Zwei \EIO{}s $S_1, S_2$ sind komponierbar, falls
-  $O_1\cap O_2=\emptyset$ gilt. Die Parallelkomposition ist
+  Zwei \EIO{}s $S_1, S_2$ sind \emph{komponierbar}, falls
+  $O_1\cap O_2=\emptyset$ gilt. Die \emph{Parallelkomposition} ist
   $S_1\|S_2=(Q,I,O,\delta ,q_0,E)$ mit den Komponenten:
   \begin{itemize}
     \item $Q=Q_1\times Q_2$,
@@ -113,7 +113,7 @@ q_2\overset{a}{\rightarrow}\}
       &&\phantom{neue}\mathrm{neue}~\mathrm{Errors}.\\
   \end{aligned}$
   \end{itemize}
-  Dabei werden die synchronisierten Aktionen $Synch(S_1,
+  Dabei werden die \emph{synchronisierten Aktionen} $Synch(S_1,
   S_2)=(I_1\cap O_2)\cup(O_1\cap I_2)\cup (I_1\cap I_2)$ nicht versteckt, sondern als Outputs der
   Komposition beibehalten.
 \end{Def}

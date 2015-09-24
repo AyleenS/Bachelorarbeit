@@ -7,7 +7,7 @@ jedoch halten wir uns als Quelle an~\cite{Chilton2013}. Darin werden ähnliche K
 beschrieben, jedoch aus Sicht der Traces.
 
 \begin{Def}[Quiescent]
-  Ein Quiescent-Zustand ist ein Zustand in einem \\EIO{}{} der keine Outputs besitzt
+  Ein \emph{Quiescent-Zustand} ist ein Zustand in einem \EIO{} der keine Outputs besitzt
   oder ein Zustand, von dem aus über eine interne Handlung $\tau$ ein Zustand
   erreicht werden kann, der keine Outputs zulässt.\\
   Somit ist die Menge der Quiescent-Zustände in einem \EIO{} wie folgt formal
@@ -20,40 +20,39 @@ Für die Erreichbarkeit verwenden wir wie im letzten Kapitel wieder den
 optimistischen Ansatz der lokalen Erreichbarkeit.
 
 \begin{Def}[lokal error- und quiescentfreie Kommunikation]
-  Zwei \\EIO{}{}s $S_1$ und $S_2$ kommunizieren gut, wenn keine Errors und Quiescents
+  Zwei \EIO{}s $S_1$ und $S_2$ \emph{kommunizieren gut}, wenn keine Errors und Quiescents
   lokal erreichbar sind in ihrer Parallelkomposition $S_1\| S_2$
 \end{Def}
 
 \begin{Def}[lokale Basisrelation]
-  Für \\EIO{}{}s $S_1$ und $S_2$ mit der gleichen Signatur schreiben wir
+  Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur schreiben wir
   $S_1\QBRel S_2$, wenn ein Error oder Quiescent in $S_1$ nur
   dann lokal erreichbar ist, wenn er auch in $S_2$ lokal erreichbar ist.\\
-  \QCRel{} bezeichnet die vollständig abstrakte Präkongruenz von \QBRel{}
+  \QCRel{} bezeichnet die \emph{vollständig abstrakte Präkongruenz} von \QBRel{}
   bezüglich $\cdot\|\cdot$.
 \end{Def}
 
 \begin{Def}[Error und Quiescenttraces]
   \label{DefQuiescenttraces}
-  Sei $S$ ein \\EIO{}{} und definiere:
+  Sei $S$ ein \EIO{} und definiere:
   \begin{itemize}
     \item die Traces bezüglich Errors entsprechen denen
       aus~\ref{DefErrortraces},
-    \item strickte Quiescenttraces: $\StQT{}(S) := \{w\in\Sigma ^*\mid q_0
+    \item \emph{strickte Quiescenttraces}: $\StQT{}(S) := \{w\in\Sigma ^*\mid q_0
       \overset{w}{\Rightarrow} q\in Qui\}$.
   \end{itemize}
 \end{Def}
 
 \begin{Def}[Lokale Error und Quiescent Semantik]
   \label{DefQTQL}
-  Sei $S$ ein \\EIO{}{}.
+  Sei $S$ ein \EIO{}.
   \begin{itemize}
-    \item Die Menge der Errortraces ist wie in~\ref{DefETEL} definiert.
-    \item Die Menge der Quiescenttraces von $S$ ist $\QT{}(S) := \StQT{}(S)$.
-    \item Die geflutete Sprache von $S$ ist $\QL{}(S):=L(S)\cup \ET{}(S)$
-      und entspricht somit der gefluteten Sprache $\EL{}(S)$
-      in~\ref{DefETEL}.
+    \item Die Menge der \emph{Errortraces} ist wie in~\ref{DefETEL} definiert.
+    \item Die Menge der \emph{Quiescenttraces} von $S$ ist $\QT{}(S) := \StQT{}(S)$.
+    \item Die \emph{geflutete Sprache} von $S$ ist $\QL{}(S):=L(S)\cup \ET{}(S)$
+      und entspricht somit der gefluteten Sprache $\EL{}(S)$ in~\ref{DefETEL}.
   \end{itemize}
-  Für zwei \\EIO{}{}s $S_1, S_2$ mit der gleichen Signatur schreiben wir
+  Für zwei \EIO{}s $S_1, S_2$ mit der gleichen Signatur schreiben wir
   $S_1\QRel S_2$, wenn $\ET{}(S_1)\subseteq \ET{}(S_2)$,
   $\QT{}(S_1)\subseteq \QT{}(S_2)$ und $\QL{}(S_1)\subseteq \QL{}(S_2)$ gilt.
 \end{Def}
