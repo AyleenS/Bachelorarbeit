@@ -1,12 +1,13 @@
 \chapter{Definitionen und Notationen}
 
 Die Definitionen dieses Kapitels sind größtenteils aus~\cite{Vogler2014EIO}
-übernommen. Hierbei handelt es sich um die Grundlagen der Transitionssysteme mit denen
+übernommen. Hierbei handelt es sich um die Grundlagen der Transitionssysteme, mit denen
 hier gearbeitet werden soll. Jedoch wurde angepasst, dass für die
 Parallelkomposition die Input-Aktionen der Error-IO-Transitionssysteme
 (\EIO{}s) nicht disjunkt sein müssen. Dies wäre eine unnötige Einschränkung.
-Die nicht synchronisierten Inputs der zu komponierenden \EIO{}s werden als
-Inputs der Parallelkomposition übernommen. Zusätzlich verzichten wir hier auf
+Die nicht mit den entsprechenden Outputs synchronisierten Inputs der zu komponierenden \EIO{}s werden als
+Inputs der Parallelkomposition übernommen. Zusätzlich verzichten wir hier im
+Gegensatz zu~\cite{Vogler2014EIO} auf
 das verbergen der synchronisierten Aktionen. Die gleiche Betrachtungsweise
 wurde bereits in~\cite{Schlosser2012BA} gewählt, deshalb stimmen die
 Definitionen in diesem Kapitel mit denen aus~\cite{Schlosser2012BA} überein,
@@ -15,12 +16,14 @@ jedoch wurde diese Arbeit nicht als direkte Quelle verwendet.
 \section{Error-IO-Transitionssystem}
 Die hier betrachteten \EIO{}s sind Systeme, deren Übergänge mit Inputs und Outputs
 beschriftet sind. Jeder Übergang ist dabei mit einem Input oder einem Output
-versehen. Ebenfalls zulässig ist eine Kantenbeschriftung mit $\tau$, einer
+versehen. Ebenfalls zulässig ist eine Transitionsbeschriftung mit $\tau$, einer
 \emph{internen}, unbeobachtbaren \emph{Aktion}. Diese interne
 Aktion lässt also keine Interaktion mit
-der Umwelt zu. In vielen Fällen entstehen sie durch das Verbergen der Inputs und Outputs
-dieses Übergangs, da diese in einer Komposition synchronisiert
-wurden.
+der Umwelt zu. In~\cite{Vogler2014EIO} entsteht das $\tau$ in vielen Fällen
+durch das Verbergen der Inputs und Outputs dieses Übergangs, da diese in einer
+Komposition synchronisiert wurden. Hier werden diese Aktionen jedoch nicht
+verborgen. Jedoch werden wir im weiteren Verlauf noch das Hiding betrachten, in
+dem Outputs durch interne Aktionen ersetzt werden.
 
 \begin{Def}[Error-IO-Transitionssystem]
   Ein \emph{Error-IO-Transitionssystem \linebreak (\EIO{})} ist
@@ -44,20 +47,21 @@ $x$. Falls ein $x$ ohne $?$ oder $!$ verwendet wird, steht dies für eine
 Aktion, bei der nicht festgelegt ist, ob sie ein Input oder ein Output ist.\\
 Um die Komponenten der entsprechenden Struktur zuzuordnen, werden für
 die Komponenten die gleichen Indizes wie für ihre zugehörigen Struktur
-verwendet, z.B.\ für die Inputmenge des Transitionssystem $S_1$ schreiben wir $I_1$.
+verwendet, z.B.\ schreiben wir $I_1$ für die Inputmenge des Transitionssystem $S_1$.
 Diese Notation verwenden wir später analog für die Sprachen, die einer Struktur
 zugeordnet sind.\\
 Die Elemente der Übergangsrelation $\delta$ werden wir wie folgt notieren:
 \begin{itemize}
-  \item $p\overset{a}{\rightarrow} q$ für $(p,a,q)\in\delta$,
-  \item $p\overset{a}{\rightarrow}$ für $\exists q: (p,a,q)\in\delta$,
-  \item $p\overset{w}{\rightarrow} q$ für $p \overset{a_1}{\rightarrow} p_1
-    \overset{a_2}{\rightarrow} p_2\dots \overset{a_n}{\rightarrow} q$ mit $w\in
-    (\Sigma\cup\{\tau\})^*, w=a_1a_2\dots a_n$,
-  \item $p\overset{w}{\rightarrow}$ für $p \overset{a_1}{\rightarrow}
-    \overset{a_2}{\rightarrow} \dots \overset{a_n}{\rightarrow}$ mit $w\in
-    (\Sigma\cup\{\tau\})^*, w=a_1a_2\dots a_n$,
-  \item $w|_B$ steht für die Zeichenfolge, die aus $w$ entsteht durch löschen
+  \item $p\overset{\alpha}{\rightarrow} q$ für $(p,\alpha ,q)\in\delta$,
+  \item $p\overset{\alpha}{\rightarrow}$ für $\exists q: (p,\alpha ,q)\in\delta$,
+  \item $p\overset{w}{\rightarrow} q$ für $p \overset{\alpha _1}{\rightarrow}
+    p_1 \overset{\alpha _2}{\rightarrow} p_2\dots \overset{\alpha
+    _n}{\rightarrow} q$ mit $w\in (\Sigma\cup\{\tau\})^*, w=\alpha _1\alpha
+    _2\dots \alpha _n$,
+  \item $p\overset{w}{\rightarrow}$ für $p \overset{\alpha _1}{\rightarrow}
+    \overset{\alpha _2}{\rightarrow} \dots \overset{\alpha _n}{\rightarrow}$
+    mit $w\in (\Sigma\cup\{\tau\})^*, w=\alpha _1\alpha _2\dots \alpha _n$,
+  \item $w|_B$ steht für die Zeichenfolge, die aus $w$ entsteht durch Löschen
     aller Zeichen, die nicht in $B\subseteq\Sigma$ enthalten sind, d.h.\ es
     bezeichnet die Projektion von $w$ auf die Menge $B$,
   \item $p\overset{w}{\Rightarrow} q$ für $w\in\Sigma^*$ mit $\exists
@@ -70,10 +74,10 @@ Die \emph{Sprache} von $S$ ist
 $L(S)=\{w\in\Sigma^*\mid q_0\overset{w}{\Rightarrow}\}$.
 
 \section{Parallelkomposition}
-Zwei \EIO{}s sind komponierbar, wenn ihre Outputaktionsmengen disjunkt sind. Die
+Zwei \EIO{}s sind komponierbar, wenn ihre Outputmengen disjunkt sind. Die
 Error-Zustände der Parallelkomposition setzten sich aus den Error-Zuständen der
-beiden zusammengesetzten Komponenten (geerbte Errors) und den Outputs zusammen, die von der
-anderen Komponente nicht als Inputs angenommen werden können (neue Errors).\\
+beiden zusammengesetzten Komponenten (geerbte Errors) und den
+unsynchronisierbaren Outputs (neue Errors) zusammen.\\
 Die nächste Definition ist noch analog zu~\cite{Vogler2014EIO}, nur wird hier
 darauf verzichtet die Inputmengen als disjunkt anzunehmen und der zweite
 Definitionsteil über das verbergen der synchronisierten Aktionen wird
@@ -81,7 +85,8 @@ komplett weg gelassen. Das verzichten auf die analogen Definitionen für das
 Verbergen wird sich auch bei den folgenden Definitionen zeigen. Zusätzlich
 nehmen wir in der folgenden Definition eine Änderung an der Menge der
 synchronisierten Aktionen vor, da nun nicht mehr $I_1\cap I_2 =\emptyset$
-gelten muss, werden wir diese gemeinsamen Inputs synchronisieren.
+gelten muss, werden wir diese gemeinsamen Inputs synchronisieren. %TODO: lieber
+%ein mal in Einleitung erwähnen und dann nicht mehr
 
 \begin{Def}[Parallelkomposition]
   Zwei \EIO{}s $S_1, S_2$ sind \emph{komponierbar}, falls
@@ -118,10 +123,10 @@ q_2\overset{a}{\rightarrow}\}
   Komposition beibehalten.
 \end{Def}
 
-Nun werden wir drauf eingehen, dass eine Parallelkomposition nicht nur für
-Transitionssysteme betrachtet werden kann, sondern auch über Transitionsfolgen. Ein
-\emph{Trace} ist dann das Wort, das aus den Inputs und Outputs besteht, mit denen die
-Übergängen beschriftet sind.
+Die Parallelkomposition kann nicht nur für Transitionssysteme betrachtet
+werden, sondern auch über Aktionsfolgen. \emph{Traces} sind die möglichen Wege des
+Systems, während ein bestimmtes Wort verarbeitet wird. Dieses Wort besteht aus
+Inputs und Outputs, mit denen die Folge ab $q_0$ beschriftet ist.
 
 \begin{Def}[Parallelkomposition auf Traces]
   Gegeben zwei \EIO{}s $S_1$ und $S_2,
@@ -135,13 +140,14 @@ Transitionssysteme betrachtet werden kann, sondern auch über Transitionsfolgen.
 \end{Def}
 
 Die Semantik der späteren Kapitel basiert darauf die jeweiligen Zustände, die
-zu Problemen führen, mit ihren Traces zu betrachten. Um dies besser umsetzten zu
+zu Problemen führen, mit den Traces zu betrachten, mit denen man zu diesem
+Zuständen gelangen kann. Um dies besser umsetzten zu
 können, definieren wir eine $\prune{}$-Funktion, die alle Outputs am Ende
 eines Traces entfernt. Zusätzlich werden Funktionen definiert, die
 die Traces beliebig fortsetzen.
 
-\begin{Def}[Pruning und Fortsetzungs Funktionen]
-  Für einen \EIO{} $S$ definieren wir:
+\begin{Def}[Pruning- und Fortsetzungs-Funktion]
+  Für ein \EIO{} $S$ definieren wir:
   \begin{itemize}
     \item $\prune{}:\Sigma ^*\rightarrow\Sigma ^*, w\mapsto u$, mit $w=uv,
       u=\varepsilon\vee u\in\Sigma ^*\cdot I$ und $v\in O^*$,
@@ -155,13 +161,16 @@ die Traces beliebig fortsetzen.
 Für zwei komponierbare \EIO{}s $S_1$ und $S_2$ ist ein Ablauf ihrer
 Parallelkomposition $S_{12}=S_1\| S_2$ eine Transitionsfolge der Form $(p_1,p_2)
 \overset{w}{\Rightarrow} (q_1,q_2)$ für ein $w\in\Sigma_{12}^*$. So ein Ablauf
-kann auf Abläufe von $S_1$ und $S_2$ projiziert werden. Diese Projektion
+kann auf Abläufe von $S_1$ und $S_2$ projiziert werden. Diese Projektionen
 erfüllen $p_i \overset{w_i}{\Rightarrow} q_i$ mit $w|_{\Sigma
-_i}=w_i$ für $i=1,2$. Umgekehrt sind zwei Abläufe von $S_1$ und $S_2$,
-die wie oben aufgebaut sind, Projektionen von Abläufen in
-$S_{12}$, die ebenfalls wie oben aufgebaut sind. Wir können nicht garantieren,
-dass es in $S_{12}$ genau einen Ablauf gibt, da wir die Reihenfolge der
-unsynchronisierten Aktionen verändern können. Daraus folgt das folgende Lemma.
+_i}=w_i$ für $i=1,2$. Umgekehrt sind zwei Abläufe von $S_1$ und $S_2$ der Form
+$p_i \overset{w_i}{\Rightarrow} q_i$ mit $w| _{\Sigma _i}= w_i$ für $i=1,2$,
+Projektionen von genau einem Ablauf in $S_{12}$ der Form $(p_1,p_2)
+\overset{w}{\Rightarrow} (q_1.q_2)$. Es ist dafür nötig, dass die Abläufe der
+beiden Systeme und die Systeme selbst komponierbar sind. Dadurch, dass wir dann
+ein $w$ wählen, dass projiziert auf die einzelnen Alphabete das jeweilige Wort
+ergibt, können wir auch sagen, dass nur ein Ablauf möglich ist. Daraus folgt
+das folgende Lemma.
 
 \begin{lem}[Sprache der Parallelkomposition]
   \label{LemmaSprache}
@@ -169,6 +178,5 @@ unsynchronisierten Aktionen verändern können. Daraus folgt das folgende Lemma.
   L(S_1)\|L(S_2).\]
 \end{lem}
 
-Dieses Lemma ist bereits in~\cite{Vogler2014EIO} enthalten. Hier wurde jedoch
-noch die Benennung der Sprache explizit definiert und es wurde keine Sprache
-für die Parallelkomposition mit Verbergen erwähnt.
+Dieses Lemma ist bereits in~\cite{Vogler2014EIO} enthalten. Hier wird jedoch
+keine Sprache für die Parallelkomposition mit Verbergen erwähnt.

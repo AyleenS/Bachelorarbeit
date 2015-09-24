@@ -7,9 +7,9 @@ internen Aktion $\tau$ und den Outputaktionen, bezeichnen wir hier als lokale
 Aktionen. Alle Elemente aus dieser Menge können ohne
 weiteres Zutun von außen aufgeführt werden. Somit kann nicht beeinflusst werden ob diese
 Übergänge genommen werden oder nicht. Es besteht also die Möglichkeit, dass
-der \EIO{} in einen Error-Zustand übergeht, sobald dieser lokal erreichbar ist. Diese
-Art der Erreichbarkeit von Fehler wird auch in Kapitel 3 von~\cite{Vogler2014EIO}
-dargestellt.\\
+das \EIO{} in einen Error-Zustand übergeht, sobald dieser lokal erreichbar ist. Diese
+Art der Erreichbarkeit von Fehlern wird auch in Kapitel 3 von~\cite{Vogler2014EIO}
+behandelt.\\
 Neben dem hier betrachteten optimistischen Ansatz gibt es noch zwei weitere
 Ansätze in~\cite{Vogler2014EIO}. Einen hyper-optimistischen Ansatz, bei dem ein
 Fehler als erreichbar gilt, wenn er durch interne Aktionen erreicht werden
@@ -24,17 +24,17 @@ zwischen \EIO{}s geht, wurden die nächsten beiden Definitionen explizit getrenn
 und erweitert zu denen in~\cite{Vogler2014EIO}. Ebenfalls wurde die
 Parallelkomposition geändert, wie in~\cite{Schlosser2012BA}.
 
-\begin{Def}[lokal errorfreie Kommunikation]
+\begin{Def}[error-freie Kommunikation]
   Ein Error ist \emph{lokal erreichbar} in einem \EIO{} $S$, wenn $\exists w\in O^*: q_0
   \overset{w}{\Rightarrow} q\in E$.\\
-  Zwei \EIO{}s $S_1$ und $S_2$ \emph{kommunizieren gut}, wenn in ihrer
+  Zwei \EIO{}s $S_1$ und $S_2$ \emph{kommunizieren error-frei}, wenn in ihrer
   Parallelkomposition $S_1\| S_2$ keine lokalen Errors erreicht werden können.
 \end{Def}
 
 Über der lokalen Erreichbarkeit von Fehlern können wir eine
 Verfeinerungsrelation definieren.
 
-\begin{Def}[lokale Basisrelation]
+\begin{Def}[Error Basisrelation]
   Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur schreiben wir
   $S_1\EBRel S_2$, wenn ein Error in $S_1$ nur dann lokal erreichbar ist, wenn er
   auch in $S_2$ lokal erreichbar ist.\\
@@ -43,12 +43,12 @@ Verfeinerungsrelation definieren.
 \end{Def}
 
 Um uns nun näher mit den Präkongruenzen auseinandersetzen zu können, müssen wir bestimmte Traces
-aus unser Struktur hervorheben. Die strikten Errortraces sind Wege, die
+aus unser Struktur hervorheben. Die strikten Errortraces entsprechen Wege, die
 direkt vom Startzustand zu einem Zustand in der Menge $E$ führen. Da Outputs Aktionen
 sind, die von außen nicht verhindert werden können, benötigen wir auch noch die
 Menge der Traces, die zu einem Zustand führen, von dem aus mit lokalen Aktionen
 ein Error erreicht werden kann. Zusätzlich ist auch noch die Menge der Traces
-interessant, für die es einen Input $a\in I$ gibt, durch den sie nicht
+interessant, für die es einen Input $a\in I$ gibt, durch den sie möglicherweise nicht
 fortgesetzt werden können. Diese führen zwar nicht
 direkt zu einem Fehler, jedoch in Komposition mit einem anderen
 Transitionssystem sind
@@ -76,13 +76,13 @@ die geflutete Sprache, in der wir die Informationen aus der Sprache und den
 Errortraces vereinen und somit bei der Inklusion dann nicht mehr explizit
 unterscheiden.
 
-\begin{Def}[Lokale Error Semantik]
+\begin{Def}[Error Semantik]
   \label{DefETEL}
   Sei $S$ ein \EIO{}.
   \begin{itemize}
     \item Die Menge der \emph{Errortraces} von $S$ ist $\ET{}(S):=\cont{}(\PrET{}(S))\cup
       \cont{}(\MIT{}(S))$.
-    \item Die \emph{geflutete Sprache} von $S$ ist $\EL{}(S):=L(S)\cup \ET{}(S)$.
+    \item Die \emph{error-geflutete Sprache} von $S$ ist $\EL{}(S):=L(S)\cup \ET{}(S)$.
   \end{itemize}
   Für zwei \EIO{}s $S_1, S_2$ mit der gleichen Signatur schreiben wir
   $S_1\ERel S_2$, wenn $\ET{}(S_1)\subseteq \ET{}(S_2)$ und
@@ -95,7 +95,7 @@ analogen Satz aus~\cite{Schlosser2012BA}. Da der Beweis jedoch ohne Beachtung
 von~\cite{Schlosser2012BA} neu geführt wurde, werden hier eher auf die
 Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} wert gelegt.
 
-\begin{satz}[Lokale Error Semanik für Parallelkompositionen]
+\begin{satz}[Error Semanik für Parallelkompositionen]
   \label{satzErrorSemanik}
   Für zwei komponierbare \EIO{}s $S_1, S_2$ und $S_{12}=S_1\|S_2$, gilt:
   \begin{enumerate}
@@ -163,10 +163,10 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} wert gelegt.
           $w_1v_1\in \StET{}_1\subseteq \cont{}(\PrET{}_1)\subseteq \ET{}_1$. Da gilt
           $q_{02}\overset{w_2v_2}{\Rightarrow}$, erhalten wir $w_2v_2\in
           L_2\subseteq \EL{}_2$. Dadurch ergibt sich $wv\in \ET{}_1\|\EL{}_2$ mit
-          $w=\prune{}(wu)$ und somit ist $w$ in der rechten Seite der Gleichung
+          $w=\prune{}(wv)$ und somit ist $w$ in der rechten Seite der Gleichung
           enthalten.
         \item Fall 2b) (neuer Error): \OBdA{} $a\in I_1\cap O_2$ mit
-          $q_1'\overset{a}{\not{\hspace{-0.1cm}\rightarrow}} \wedge q_2'
+          $q_1'\overset{a}{\not{\hspace{-0.1cm}\rightarrow}} \wedge \; q_2'
           \overset{a}{\rightarrow}$. Daraus folgt $w_1v_1a\in \MIT{}_1\subseteq
           \ET{}_1$ und $w_2v_2a\in L_2\subseteq \EL{}_2$. Damit ergibt sich $wva\in
           \ET{}_1\|\EL{}_2$, da $a\in O_2\subseteq O_{12}$ gilt $w=\prune{}(wva)$ und
@@ -188,7 +188,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} wert gelegt.
   Präfixe von $x$ betrachten werden, ist dieser Unterschied irrelevant.\\
   Im Folgenden werden wir für alle Fälle von $xy$ zeigen, dass es ein $v\in
   \PrET{}(S_1\|S_2)\cup \MIT{}(S_1\|S_2)$ gibt, das ein Präfix von $xy$ ist und $v$
-  entweder auf ein Input aus $I_{12}$ endet oder $v = \varepsilon$. Da $v$
+  entweder auf einen Input aus $I_{12}$ endet oder $v = \varepsilon$. Da $v$
   entweder leer ist oder auf einen Input endet, muss $v$ ein Präfix von $x$
   sein. $\varepsilon$ ist Präfix von jedem Wort und sobald $x$ mindestens einen
   Buchstaben enthält, kann $y$ durch die Definition von $\prune{}$ nur aus Outputs
