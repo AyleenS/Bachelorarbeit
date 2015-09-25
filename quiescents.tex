@@ -1,10 +1,13 @@
 \chapter{Verfeinerung über Error- und Quiescenttraces}
 
-In diesem Kapitel werden wir und nicht nur um die Erreichbarkeit von
+In diesem Kapitel werden wir uns nicht nur um die Erreichbarkeit von
 Error-Zuständen kümmern, sondern auch um die Erreichbarkeit von
 Quiescent-Zuständen. Wir werden dabei ähnlich vorgehen wie im letzten Kapitel,
 jedoch halten wir uns als Quelle an~\cite{Chilton2013}. Darin werden ähnliche Konzepte
-beschrieben, jedoch aus Sicht der Traces.
+beschrieben, jedoch aus Sicht der Traces.\\
+Wir sehen nicht nur die Zustände, die keine Outputs haben als Quiescents an,
+sondern auch die, die eine $\tau$-Transition zu so einem machen können, da wir
+diese Zustände auf Trace-Ebene nicht unterscheiden können.
 
 \begin{Def}[Quiescent]
   Ein \emph{Quiescent-Zustand} ist ein Zustand in einem \EIO{} der keine Outputs besitzt
@@ -17,19 +20,25 @@ beschrieben, jedoch aus Sicht der Traces.
 \end{Def}
 
 Für die Erreichbarkeit verwenden wir wie im letzten Kapitel wieder den
-optimistischen Ansatz der lokalen Erreichbarkeit.
+optimistischen Ansatz der lokalen Erreichbarkeit für die Errors. Da die
+Quiescents jedoch keine unabwendbaren Fehler sein, sondern durch einen Input
+reparierbar sind, sagen wir, dass diese erst erreichbar sind, wenn sie durch
+eine interne Handlung zu erreichen sind. Also eher einen hyper-optimistischen
+Erreichbarkeitsbegriff.
 
 \begin{Def}[lokal error- und quiescentfreie Kommunikation]
-  Zwei \EIO{}s $S_1$ und $S_2$ \emph{kommunizieren gut}, wenn keine Errors und Quiescents
-  lokal erreichbar sind in ihrer Parallelkomposition $S_1\| S_2$
+  Zwei \EIO{}s $S_1$ und $S_2$ \emph{kommunizieren gut}, wenn keine Errors
+  lokal und keine Quiescents durch interne Handlungen
+  erreichbar sind in ihrer Parallelkomposition $S_1\| S_2$.
 \end{Def}
 
 \begin{Def}[lokale Basisrelation]
   Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur schreiben wir
-  $S_1\QBRel S_2$, wenn ein Error oder Quiescent in $S_1$ nur
-  dann lokal erreichbar ist, wenn er auch in $S_2$ lokal erreichbar ist.\\
-  \QCRel{} bezeichnet die \emph{vollständig abstrakte Präkongruenz} von \QBRel{}
-  bezüglich $\cdot\|\cdot$.
+  $S_1\QBRel S_2$, wenn ein Error oder Quiescent in $S_1$ nur dann lokal bzw.\
+  durch ein $\tau$ erreichbar ist, wenn er auch in $S_2$ lokal erreichbar
+  ist.\\
+  \QCRel{} bezeichnet die \emph{vollständig abstrakte Präkongruenz} von
+  \QBRel{} bezüglich $\cdot\|\cdot$.
 \end{Def}
 
 \begin{Def}[Error und Quiescenttraces]
@@ -143,11 +152,11 @@ $(\QT{}_1\|\QT{}_2)\subseteq (\QL{}_1\|\QL{}_2)$.
 \end{proof}
 
 \begin{lem}[Verfeinerung mit Quiescents]
-  Gegeben sind zwei \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur. Wenn alle
-  \EIO{}s $U$ für die $S_2$ und $U$ gut kommunizieren auch $S_1$ und $U$ gut
-  kommunizieren, dann verfeinert $S_1$ den \EIO{} $S_2$. Diese Verfeinerung
-  entspricht der Relation \QRel{} von oben: Wenn
-  $U\|S_1\QBRel U\|S_2$ für alle $U$, dann gilt $S_1\QRel S_2$.
+  Gegeben sind zwei \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur. Wenn
+  alle Partner \EIO{}s $U$, die mit $S_2$  gut kommunizieren, auch mit $S_1$
+  gut kommunizieren, dann verfeinert $S_1$ den \EIO{} $S_2$. Diese Verfeinerung
+  entspricht der Relation \QRel{} von oben: Wenn $U\|S_1\QBRel U\|S_2$ für alle
+  Partner $U$, dann gilt $S_1\QRel S_2$.
 \end{lem}
 
 \begin{proof}

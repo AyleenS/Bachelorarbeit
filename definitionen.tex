@@ -13,7 +13,14 @@ wurde bereits in~\cite{Schlosser2012BA} gewählt, deshalb stimmen die
 Definitionen in diesem Kapitel mit denen aus~\cite{Schlosser2012BA} überein,
 jedoch wurde diese Arbeit nicht als direkte Quelle verwendet. Auch das Kapitel
 Verfeinerung über Errortraces wurde bereits in~\cite{Schlosser2012BA}
-behandelt, jedoch wurden alle Beweise unabhängig davon neu geführt.
+behandelt, jedoch wurden alle Beweise unabhängig davon neu geführt.\\
+Dadurch das die synchronisierten Aktionen nicht verborgen werden, haben wir hier
+ein Modell, mit dem nicht nur zwei Systeme miteinander kommunizieren können
+sondern viele. Ein Output eines Systems ist somit ein Art Multicast. Jedes
+System, dass diesen Output als Input haben kann, empfängt ihn somit auch, da
+bei der Output bei jeder Komposition weitergeleitet wird an andere Systeme.
+Systeme, die jedoch den Output nicht als Input haben, werden von dieser
+Nachricht nicht beeinträchtigt.
 
 \section{Error-IO-Transitionssystem}
 Die hier betrachteten \EIO{}s sind Systeme, deren Übergänge mit Inputs und Outputs
@@ -121,8 +128,11 @@ q_2\overset{a}{\rightarrow}\}
   \end{aligned}$
   \end{itemize}
   Dabei werden die \emph{synchronisierten Aktionen} $Synch(S_1,
-  S_2)=(I_1\cap O_2)\cup(O_1\cap I_2)\cup (I_1\cap I_2)$ nicht versteckt, sondern als Outputs der
-  Komposition beibehalten.
+  S_2)=(I_1\cap O_2)\cup(O_1\cap I_2)\cup (I_1\cap I_2)$ nicht versteckt,
+  sondern als Outputs der Komposition beibehalten.\\
+  Wir nennen $S_1$ einen \emph{Partner} von $S_2$, wenn ihre
+  Parallelkomposition geschlossen ist, d.h.\ wenn sie duale Signaturen haben
+  $Sig(S_1)=(I,O)$ und $Sig(S_2)=(O,I)$.
 \end{Def}
 
 Die Parallelkomposition kann nicht nur für Transitionssysteme betrachtet
