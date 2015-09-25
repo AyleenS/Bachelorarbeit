@@ -1,1 +1,19 @@
 \chapter{Einleitung}
+
+Wir wählen in dieser Arbeit einen optimistischen Ansatz für die
+Erreichbarkeit von Zuständen, die wir in den jeweiligen Kapiteln betrachten
+werden. Ein Zustand gilt hier als erreichbar, wenn er lokal
+erreicht werden kann, d.h.\ durch lokale Aktionen. Die Menge, bestehend aus der
+internen Aktion $\tau$ und den Outputaktionen, bezeichnen wir hier als lokale
+Aktionen. Alle Elemente aus dieser Menge können ohne
+weiteres Zutun von außen aufgeführt werden. Somit kann nicht beeinflusst werden ob diese
+Übergänge genommen werden oder nicht. Es besteht also die Möglichkeit, dass
+das \EIO{} in einen dieser bestimmten Zustände übergeht, sobald dieser lokal erreichbar ist. Diese
+Art der Erreichbarkeit von Zuständen wird auch in Kapitel 3 von~\cite{Vogler2014EIO}
+behandelt.\\
+Neben dem hier betrachteten optimistischen Ansatz gibt es noch zwei weitere
+Ansätze in~\cite{Vogler2014EIO}. Einen hyper-optimistischen Ansatz, bei dem ein
+Zustand als erreichbar gilt, wenn er durch interne Aktionen erreicht werden
+kann, und einen pessimistischen Ansatz, bei dem ein Zustand als erreichbar gilt,
+sobald es eine Folge an Inputs und Outputs gibt, mit denen einer dieser
+bestimmten Zustände vom Startzustand aus erreicht werden kann.\\

@@ -1,25 +1,6 @@
 \chapter{Verfeinerung über Errortraces}
 
-In diesem Kapitel wählen wir einen optimistischen Ansatz für die
-Fehlererreichbarkeit. Ein Error gilt hier als erreichbar, wenn er lokal
-erreicht werden kann, d.h.\ durch lokale Aktionen. Die Menge, bestehend aus der
-internen Aktion $\tau$ und den Outputaktionen, bezeichnen wir hier als lokale
-Aktionen. Alle Elemente aus dieser Menge können ohne
-weiteres Zutun von außen aufgeführt werden. Somit kann nicht beeinflusst werden ob diese
-Übergänge genommen werden oder nicht. Es besteht also die Möglichkeit, dass
-das \EIO{} in einen Error-Zustand übergeht, sobald dieser lokal erreichbar ist. Diese
-Art der Erreichbarkeit von Fehlern wird auch in Kapitel 3 von~\cite{Vogler2014EIO}
-behandelt.\\
-Neben dem hier betrachteten optimistischen Ansatz gibt es noch zwei weitere
-Ansätze in~\cite{Vogler2014EIO}. Einen hyper-optimistischen Ansatz, bei dem ein
-Fehler als erreichbar gilt, wenn er durch interne Aktionen erreicht werden
-kann, und einen pessimistischen Ansatz, bei dem ein Error als erreichbar gilt,
-sobald es eine Folge an Inputs und Outputs gibt, mit denen ein Error-Zustand
-vom Startzustand aus erreicht werden kann.\\
-Die gleiche Betrachtung wie hier wurde bereits in~\cite{Schlosser2012BA} gewählt, somit
-stimmen die Definitionen und Ergebnisse überein. Jedoch wurden alle Beweise unabhängig von
-dieser Arbeit neu geführt.\\
-Da es in dieser Arbeit vor allem und die Erreichbarkeit und die Kommunikation
+Da es in dieser Arbeit vor allem um die Erreichbarkeit und die Kommunikation
 zwischen \EIO{}s geht, wurden die nächsten beiden Definitionen explizit getrennt
 und erweitert zu denen in~\cite{Vogler2014EIO}. Ebenfalls wurde die
 Parallelkomposition geändert, wie in~\cite{Schlosser2012BA}.
@@ -31,7 +12,7 @@ Parallelkomposition geändert, wie in~\cite{Schlosser2012BA}.
   Parallelkomposition $S_1\| S_2$ keine lokalen Errors erreicht werden können.
 \end{Def}
 
-Über der lokalen Erreichbarkeit von Fehlern können wir eine
+Mittels der lokalen Erreichbarkeit von Fehlern können wir eine
 Verfeinerungsrelation definieren.
 
 \begin{Def}[Error Basisrelation]
@@ -53,12 +34,11 @@ fortgesetzt werden können. Diese führen zwar nicht
 direkt zu einem Fehler, jedoch in Komposition mit einem anderen
 Transitionssystem sind
 dies gefährdete Stellen. Sie führen zu einem neuen Error, sobald dieser Input
-für die Synchronisation fehlt. Die folgenden beiden Definitionen wurden
-aus~\cite{Vogler2014EIO} übernommen.
+für die Synchronisation fehlt.
 
 \begin{Def}[Errortraces]
   \label{DefErrortraces}
-  Sei $S$ ein \EIO{} und definiere:
+  Für ein \EIO{} $S$ definieren wir:
   \begin{itemize}
     \item \emph{strikte Errortraces}: $\StET{}(S)=\{w\in\Sigma
       ^*\mid q_0\overset{w}{\Rightarrow}q\in E\}$,
@@ -76,7 +56,7 @@ die geflutete Sprache, in der wir die Informationen aus der Sprache und den
 Errortraces vereinen und somit bei der Inklusion dann nicht mehr explizit
 unterscheiden.
 
-\begin{Def}[Error Semantik]
+\begin{Def}[Error-Semantik]
   \label{DefETEL}
   Sei $S$ ein \EIO{}.
   \begin{itemize}
@@ -95,7 +75,7 @@ analogen Satz aus~\cite{Schlosser2012BA}. Da der Beweis jedoch ohne Beachtung
 von~\cite{Schlosser2012BA} neu geführt wurde, werden hier eher auf die
 Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} wert gelegt.
 
-\begin{satz}[Error Semanik für Parallelkompositionen]
+\begin{satz}[Error-Semanik für Parallelkompositionen]
   \label{satzErrorSemanik}
   Für zwei komponierbare \EIO{}s $S_1, S_2$ und $S_{12}=S_1\|S_2$, gilt:
   \begin{enumerate}
@@ -120,11 +100,10 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} wert gelegt.
   (q_1,q_2)\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$. Da
   $I_{12}\overset{\mathrm{Def}}{=}(I_1\backslash O_2)\cup (I_2\backslash O_1)=(I_1\cup
   I_2)\backslash (O_1\cup O_2)$ ist $a\in (I_1\cup I_2)$ und $a\notin (O_1\cup
-  O_2)$. Somit müssen wir unterscheiden, ob $a\in (I_1\cap I_2)$ oder $a\in
+  O_2)$. Wir unterscheiden, ob $a\in (I_1\cap I_2)$ oder $a\in
   (I_1\cup I_2)\backslash (I_1\cap I_2)$ ist. Diese Unterscheidung ist
   in~\cite{Vogler2014EIO} nicht nötig, da dort $I_1\cap I_2=\emptyset$ gilt,
-  somit gibt es dort nur den Fall 1b). Der Fall 1a) wir auch
-  in~\cite{Schlosser2012BA} behandelt.
+  somit gibt es dort nur den Fall 1b).
   \begin{itemize}
     \item Fall 1a) ($a\in (I_1\cap I_2)$): Nun können wir den Ablauf der
       Komposition auf die Transitionssysteme projizieren und erhalten dann \oBdA{}
@@ -190,10 +169,10 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} wert gelegt.
   \PrET{}(S_1\|S_2)\cup \MIT{}(S_1\|S_2)$ gibt, das ein Präfix von $xy$ ist und $v$
   entweder auf einen Input aus $I_{12}$ endet oder $v = \varepsilon$. Da $v$
   entweder leer ist oder auf einen Input endet, muss $v$ ein Präfix von $x$
-  sein. $\varepsilon$ ist Präfix von jedem Wort und sobald $x$ mindestens einen
-  Buchstaben enthält, kann $y$ durch die Definition von $\prune{}$ nur aus Outputs
-  besteht und somit muss das Ende von $v$ vor dem Anfang von $y$ liegen. $x$
-  hat dadurch ein Präfix in $\PrET{}(S_1\|S_2)\cup \MIT{}(S_1\|S_2)$, dann ist $x$ in
+  sein. $\varepsilon$ ist Präfix von jedem Wort und sobald $v$ mindestens einen
+  Buchstaben enthält, muss das Ende von $v$ vor dem Anfang von $y\in O_{12}^*$
+  liegen. Dadurch hat $x$ ein Präfix in $\PrET{}(S_1\|S_2)\cup
+  \MIT{}(S_1\|S_2)$, damit ist $x$ in
   der Fortsetzung dieser Menge enthalten und somit gilt $x\in \ET{}_{12}$.\\
   Sei $v_1$ das kürzeste Präfix von $w_1$ in $\PrET{}_1\cup \MIT{}_1$. Falls
   $w_2\in L_2$, so sei $v_2=w_2$, sonst soll $v_2$ das kürzeste Präfix von
@@ -212,10 +191,8 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} wert gelegt.
     \item Fall 2 ($v_1\neq\varepsilon$): Aufgrund der Definitionen von $\PrET{}$
       und $MIT$ endet $v_1$ auf ein $a\in I_1$, d.h.\ $v_1=v_1’a$. $v'$ sei das
       Präfix von $xy$, das mit der letzten Aktion von $v_1$ endet, d.h.\ mit
-      $a$, und $v_2'=v'|_{\Sigma _{2}}$. Falls $v_2\in L_2$, dann ist
-      $v_2'$ ein Präfix von $v_2$, da in diesem Fall in der
-      Parallelkomposition kein Fehler möglich ist und somit maximal das gesamte Wort $v_2$ bereits in
-      $v'$ enthalten sein kann. Falls $v_2\in
+      $a$, und $v_2'=v'|_{\Sigma _{2}}$. Falls $v_2 = w_2\in L_2$, dann ist
+      $v_2'$ ein Präfix von $v_2$. Falls $v_2\in
       \PrET{}_2\cup \MIT{}_2$ gilt, dann ist durch die Annahme, dass $v_2$ nicht vor
       $v_1$ endet, $v_2'$ ein Präfix von $v_2$. Im Fall $v_2\in \MIT{}_2$ können
       wir durch die gleiche Argumentation ebenfalls schließen, dass $v_2'$ ein
@@ -228,14 +205,14 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} wert gelegt.
   und $v'\in v_1\| v_2'$ ist ein Präfix von $xy$. Da nicht mehr $b\neq a$
   gelten muss, können wir nicht mehr für alle Fälle
   $q_{02}\overset{v_2'}{\Rightarrow}$ folgern, wie das in~\cite{Vogler2014EIO}
-  möglich war. Dies wurde auch bereits in~\cite{Schlosser2012BA} festgestellt.
+  möglich war.
   \begin{itemize}
     \item Fall I ($v_1\in \MIT{}_1$ und $v_1\neq\varepsilon$): Es gibt $q_{01}
       \overset{v_1'}{\Rightarrow}q_1
       \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ und sei $v'=v''a$. Bei der
       folgenden Fallunterscheidung müssen wir bezüglich~\cite{Vogler2014EIO}
       einen weiteren Fall (Ib)) einfügen, da es zulässig ist, das $a$ sowohl in
-      $I_1$, wie auch in $I_2$ enthalten ist.
+      $I_1$ wie auch in $I_2$ enthalten ist.
       \begin{itemize}
         \item Fall Ia) ($a\notin\Sigma _2$): Es gilt $q_{02}
           \overset{v_2'}{\Rightarrow} q_2$ mit $v''\in v_1'\|v_2'$, da $v_2'$
@@ -252,7 +229,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} wert gelegt.
           $v:=v''a=v'\in \MIT{}_{12}$.
         \item Fall Ic) ($a\in I_2$ und $v_2'\in L_2$): Es gilt $q_{02}
           \overset{v_2''}{\Rightarrow} q_2 \overset{a}{\rightarrow}$ mit
-          $v_2'=v_2''a$. Da jedoch $a\in Synch(S_1,S_2)$ liegt, da die Menge
+          $v_2'=v_2''a$. Da jedoch $a$ in $Synch(S_1,S_2)$ liegt, da die Menge
           der synchronisierten Aktionen bezüglich~\cite{Vogler2014EIO}
           erweitert wurde, somit reicht schon, dass $q_1
           \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ gilt, um folgendes
@@ -271,12 +248,12 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} wert gelegt.
       \end{itemize}
   \item Fall II ($v_1\in \PrET{}_1$): $\exists u_1\in O_1^*:q_{01}
     \overset{v_1}{\Rightarrow} q_1 \overset{u_1}{\Rightarrow} q_1'$ mit
-    $q_1'\in E_1$. Da wir hier keine disjunkten Inputmengen mehr haben, kann
+    $q_1'\in E_1$. Da wir hier keine disjunkten Inputmengen, wie
+    in~\cite{Vogler2014EIO}, haben, kann
     das $a$, auf das $v_1$ endet ebenfalls der letzte Buchstabe von $v_2$
     sein. Im Fall von $v_2\in \MIT{}_2$ kann somit $a=b$ gelten und somit wäre
     $v_2=v_2'$. Dieser Fall verläuft jedoch analog zu Fall Ic) und wird somit
-    hier nicht weiter betrachtet. Dieser Unterschied zu~\cite{Vogler2014EIO}
-    wurde auch bereits in~\cite{Schlosser2012BA} angemerkt. Es gilt somit für
+    hier nicht weiter betrachtet. Es gilt somit für
     alle anderen Fälle hier $q_{02} \overset{v_2'}{\Rightarrow}q_2$ mit
     $(q_{01},q_{02}) \overset{v'}{\Rightarrow}(q_1,q_2)$.
     \begin{itemize}
@@ -301,8 +278,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} wert gelegt.
   2.:\\
   Der Beweis für diesen Punkt musste bezüglich~\cite{Vogler2014EIO} nicht
   verändert werden, bis auf die Ersetzung der Zeichen der Parallelkomposition.
-  Somit entspricht dieser Beweis dem aus~\cite{Vogler2014EIO} und dem
-  aus~\cite{Schlosser2012BA}.\\
+  Somit entspricht dieser Beweis dem aus~\cite{Vogler2014EIO}.\\
   Es ist durch die Definition klar, dass gilt $L_i\subseteq \EL{}_i$ und
   $\ET{}_i\subseteq \EL{}_i$. Wir beginnen mit der Argumentation von der rechten
   Seite der Gleichung aus:
@@ -324,7 +300,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} wert gelegt.
 
 Die folgende Proposition wurde hier noch explizit mit Beweis eingefügt im
 Gegensatz zu den Ausführungen in~\cite{Vogler2014EIO}, in denen diese
-Präkongruenz nur als Resultat aus dem letzten Satz erwähnt wird.
+Präkongruenz nur als Folgerung aus dem letzten Satz erwähnt wird.
 
 \begin{prop}[Präkongruenz]
   \label{korPraekongruenz}
@@ -332,11 +308,12 @@ Präkongruenz nur als Resultat aus dem letzten Satz erwähnt wird.
 \end{prop}
 
 \begin{proof}
-  Es muss gezeigt werden, wenn $S_1\ERel S_2$ gilt, für jedes
-  $S_3$ auch
-  $S_3\|S_1\ERel S_3\|S_1$ gilt. D.h.\ es ist zu zeigen, dass aus
-  $\ET{}_1\subseteq \ET{}_2$ und $\EL{}_1\subseteq \EL{}_2$ folgt, $\ET{}(S_3\|S_1)\subseteq
-  \ET{}(S_3\|S_2)$ und $\EL{}(S_3\|S_1)\subseteq \EL{}(S_3\|S_2)$.\\
+  Es muss gezeigt werden: Wenn $S_1\ERel S_2$ gilt, dann für jedes
+  komponierbare $S_3$ auch $S_3\|S_1\ERel S_3\|S_1$. D.h.\ es ist zu zeigen,
+  dass aus $\ET{}_1\subseteq \ET{}_2$ und $\EL{}_1\subseteq \EL{}_2$ folgt,
+  $\ET{}(S_3\|S_1)\subseteq \ET{}(S_3\|S_2)$ und $\EL{}(S_3\|S_1)\subseteq
+  \EL{}(S_3\|S_2)$. Dies ergibt sich aus der Monotonie von \cont{}, \prune{}
+  und $\|$ auf Sprachen wie folgt:\\
   \begin{itemize}
     \item $\begin{aligned}[t]
         \ET{}(S_3\|S_1) &\overset{\ref{satzErrorSemanik}~1.}{=}
@@ -359,20 +336,20 @@ Präkongruenz nur als Resultat aus dem letzten Satz erwähnt wird.
 
 In~\cite{Vogler2014EIO} wurde auch die Verfeinerung von \EIO{}s als Relation betrachtet
 mit Spezifikation und Implementierung. Hier soll ebenfalls eine
-Verfeinerungsrelation über \EIO{}s betrachtet werden, jedoch in leicht
-abgewandelter Form, da die synchronisierten Aktionen nicht verborgen werden
-sollen. Dadurch ändern sich natürlich auch Teile des Beweises, vor allem muss
-statt mit $\StET{}$ mit der Menge $\PrET{}$ argumentiert werden. Dieses Lemma
-existiert in dieser Form nicht in~\cite{Schlosser2012BA}, da es dort mit der
-Aussage von Satz~\ref{satzFullAbstractness} kombiniert wurde. Jedoch ist die
-Aussage diese Lemmas trotzdem Teil dessen, was gezeigt wird und somit finden
-sich die Teile dieses Beweises auch dort wieder.
+Verfeinerungsrelation über \EIO{}s betrachtet werden, jedoch sollen die
+synchronisierten Aktionen nicht verborgen werden. Dadurch ändern sich natürlich
+auch Teile des Beweises, vor allem muss statt mit $\StET{}$ mit der Menge
+$\PrET{}$ argumentiert werden. Dieses Lemma existiert in dieser Form nicht
+in~\cite{Schlosser2012BA}, da es dort mit der Aussage von
+Satz~\ref{satzFullAbstractness} kombiniert wurde. Jedoch ist die Aussage diese
+Lemmas trotzdem Teil dessen, was gezeigt wird und somit finden sich die Teile
+dieses Beweises auch dort wieder.
 
 \begin{lem}[Verfeinerung mit Errors]
   \label{lemVerfeinerung}
   Gegeben sind zwei \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur. Wenn alle
-  \EIO{}s $U$, für die $S_2$ und $U$ gut kommunizieren auch $S_1$
-  und $U$ gut kommunizieren, dann verfeinert $S_1$ den \EIO{} $S_2$. Diese Verfeinerung
+  \EIO{}s $U$, für die $S_2$ und $U$ gut kommunizieren, auch mit $S_1$ gut
+  kommunizieren, dann verfeinert $S_1$ den \EIO{} $S_2$. Diese Verfeinerung
   entspricht der Relation \ERel{} von oben: Wenn $U\|S_1 \EBRel U\|S_2$ für alle
   $U$, dann gilt $S_1\ERel S_2$.
 \end{lem}
@@ -380,8 +357,8 @@ sich die Teile dieses Beweises auch dort wieder.
 \begin{proof}
   Da $S_1$ und $S_2$ die gleichen Signaturen haben, definieren wir:
   $I:=I_1=I_2$ und $O:=O_1=O_2$. Für jeden der Partner $U$ gilt $I_U=O$ und
-  $O_U=I$.\\
-  Um zu zeigen, dass $S_1\ERel S_2$ wird nachgeprüft, dass gilt:
+  $O_U=I$.\\%TODO Partner definieren
+  Um $S_1\ERel S_2$ zu zeigen, wird nachgeprüft, dass gilt:
   \begin{itemize}
     \item $\ET{}(S_1)\subseteq \ET{}(S_2)$,
     \item $\EL{}(S_1)\subseteq \EL{}(S_2)$.
@@ -400,7 +377,7 @@ sich die Teile dieses Beweises auch dort wieder.
       muss also in $S_2$ ein Error-Zustand durch interne Aktionen und Outputs
       erreichbar sein, d.h.\ es gilt $\varepsilon\in \PrET{}(S_2)$.
     \item Fall 2 ($w=x_1\dots x_n x_{n+1}\in\Sigma ^+$ mit $n\geq 0$ und
-      $x_{n+1}\in I$): Wir betrachten die folgenden Partner $U$ (siehe auch
+      $x_{n+1}\in I$): Wir betrachten den folgenden Partner $U$ (siehe auch
       Abbildung~\ref{UohneE}):
       \begin{itemize}
         \item $Q_U=\{q_0,q_1,\dots ,q_{n+1}\}$
@@ -570,12 +547,11 @@ sich die Teile dieses Beweises auch dort wieder.
 \end{satz}
 
 \begin{proof}
-  Wie bereits in Korollar~\ref{korPraekongruenz} festgehalten, ist \ERel{} eine
+  Wie bereits in Proposition~\ref{korPraekongruenz} festgehalten, ist \ERel{} eine
   Präkongruenz.
 
-  \glqq $\Leftarrow$\grqq : Im Beweis von Lemma~\ref{lemVerfeinerung} wurde
-  bereits festgestellt, wenn
-      $\varepsilon\in \ET{}(S)$ gilt, ist ein Error lokal erreichbar in $S$.
+  \glqq $\Leftarrow$\grqq : Nach Definition gilt, wenn
+      $\varepsilon\in \ET{}(S)$, ist ein Error lokal erreichbar in $S$.
       Somit impliziert $S_1\ERel S_2$, dass $\varepsilon\in
       \ET{}(S_2)$ gilt, wenn $\varepsilon\in \ET{}(S_1)$. Dadurch folgt ebenfalls,
       dass $S_1\EBRel S_2$ gilt. Somit folgt aus $S_1\ERel S_2$ der relationale
@@ -598,3 +574,5 @@ wir das folgende Korollar.
   Dies lässt sich formal wie folgt ausdrücken: $S_1\ERel S_2
   \Leftrightarrow U\|S_1\EBRel U\|S_2$ für alle Partner $U$.
 \end{kor}
+
+%TODO Ringschlussanmerkung einbinden
