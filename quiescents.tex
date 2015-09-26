@@ -171,5 +171,27 @@ $(\QT{}_1\|\QT{}_2)\subseteq (\QL{}_1\|\QL{}_2)$.
     \item $\QL{}(S_1)\subseteq \QL{}(S_2)$.
   \end{itemize}
   Der erste und der letzte Punkt wurden bereits in Lemma~\ref{lemVerfeinerung}
-  gezeigt. So bleibt uns nur noch die Inklusion $\QT{}_1\subseteq \QT{}_2$ zu zeigen.
+  gezeigt. So bleibt uns nur noch die Inklusion $\QT{}_1\subseteq \QT{}_2$ zu
+  zeigen.\\
+  Wir wählen ein $w\in QT(S_1)$ und zeigen, dass es auch in $QT(S_2)$ enthalten
+  ist.
+  \begin{itemize}
+    \item Fall 1 ($w=\varepsilon$): Somit ist der Startzustand von $S_1$ ein
+      Quiescent-Zustand. Sobald der Startzustand eines Partners $U$ nicht
+      quiescent ist, können wir nichts für $S_2$ schließen. Somit wählen wir
+      für $U$ ein Transitionssystem, dass nur aus dem Startzustand und einer
+      Schliefe für alle Inputs $x\in I_U$ besteht. Somit ist der Startzustand
+      von $U$ auch quiescent. Daraus folgt, dass auch der Startzustand der
+      Komposition $U\|S_1$ ein Quiescent-Zustand ist. Dadurch muss auch
+      $U\|S_2$ als Startzustand einen Quiescent-Zustand haben. Da dieser aber
+      nur entstehen kann, wenn für beide Teilsysteme bereits $\varepsilon$ in
+      den jeweiligen Quiescenttraces liegt, somit gilt $\varepsilon\in
+      QT(S_2)$.
+    \item Fall 2 ($w=x_1\dots x_n\in\Sigma ^+$ mit $n\geq 0$): Wir betrachten
+      den Partner $U$, bei dem mit $w$ ebenfalls ein Zustand erreicht wird, der
+      Quiescent ist. Somit ist in der Komposition die Komposition dieser
+      beiden Zustände ebenfalls ein Quiescent-Zustand. Es folgt, dass ein
+      Quiescent-Zustand auch in $U\|S_2$ durch $w$ erreichbar sein und somit
+      auch in $S_2$. Daraus folgt, dass gilt $w\in QT(S_2)$.
+  \end{itemize}
 \end{proof}
