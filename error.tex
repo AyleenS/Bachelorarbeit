@@ -13,7 +13,10 @@ Parallelkomposition geändert, wie in~\cite{Schlosser2012BA}.
 \end{Def}
 
 Mittels der lokalen Erreichbarkeit von Fehlern können wir eine
-Verfeinerungsrelation definieren.
+Verfeinerungsrelation definieren. Zusätzlich definieren wir uns bereits die
+gröbste Präkongruenz, die wir suchen wollen. Somit können wir überprüfen, ob
+eine andere Präkongruenz, die wir finden auch die Eigenschaft erfüllt die
+größte zu sein.
 
 \begin{Def}[Error Basisrelation]
   Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur schreiben wir
@@ -301,7 +304,10 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} wert gelegt.
 
 Die folgende Proposition wurde hier noch explizit mit Beweis eingefügt im
 Gegensatz zu den Ausführungen in~\cite{Vogler2014EIO}, in denen diese
-Präkongruenz nur als Folgerung aus dem letzten Satz erwähnt wird.
+Präkongruenz nur als Folgerung aus dem letzten Satz erwähnt wird. Die
+Feststellung, dass es sich um eine Präkongruenz handelt, ist wichtig, da wir
+dann die erste Eigenschaft erfüllt haben um eine Präkongruenz zu finden, die
+äquivalent ist zu der vollständig abstrakten Präkongruenz \ECRel{}.
 
 \begin{prop}[Präkongruenz]
   \label{korPraekongruenz}
@@ -540,7 +546,11 @@ dieses Beweises auch dort wieder.
   \end{itemize}
 \end{proof}
 
-\begin{satz}[Full Abstractness für lokale Error Semanik]
+Der folgende Satz sagt aus, dass \ERel{} die gröbste Präkongruenz ist, die wir
+gesucht haben und somit mit äquivalent ist zur vollständig abstrakten
+Präkongruenz \ECRel{}.
+
+\begin{satz}[Full Abstractness für Error-Semanik]
   \label{satzFullAbstractness}
   Seien $S_1$ und $S_2$ zwei \EIO{}s mit derselben Signatur. Dann gilt
   $S_1\ECRel S_2\Leftrightarrow S_1\ERel S_2$, insbesondere ist \ERel{}
