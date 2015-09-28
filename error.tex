@@ -322,7 +322,7 @@ dann die erste Eigenschaft erfüllt haben um eine Präkongruenz zu finden, die
   dass aus $\ET{}_1\subseteq \ET{}_2$ und $\EL{}_1\subseteq \EL{}_2$ folgt,
   $\ET{}(S_3\|S_1)\subseteq \ET{}(S_3\|S_2)$ und $\EL{}(S_3\|S_1)\subseteq
   \EL{}(S_3\|S_2)$. Dies ergibt sich aus der Monotonie von \cont{}, \prune{}
-  und $\|$ auf Sprachen wie folgt:\\
+  und $\cdot \|\cdot$ auf Sprachen wie folgt:\\
   \begin{itemize}
     \item $\begin{aligned}[t]
         \ET{}(S_3\|S_1) &\overset{\ref{satzErrorSemanik}~1.}{=}
@@ -608,7 +608,7 @@ deshalb an~\cite{Schlosser2012BA} als Quelle halten.
 \begin{Def}[Internalisierungsoperator]
   Für ein \EIO{} $S=(Q,I,O,\delta ,q_0.E)$ ist $S/\{x_1,x_2,\dots ,x_n\}$, mit
   dem \emph{Internalisierungsoperator} $\cdot /\cdot$, definiert als
-  $S'=(Q,I,O',\delta ',q_0,E)$ mit:
+  $S'=(Q,I,O',\linebreak\delta ',q_0,E)$ mit:
   \begin{itemize}
     \item $O'=O\backslash \{x_1,x_2,\dots ,x_n\}$
     \item $\delta '=\delta\backslash \{(q,x,q')\mid x\in(\{x_1,x_2,\dots
@@ -647,15 +647,45 @@ Parallelkomposition einen Input in der Menge hinter dem Operator stehen haben.
 \end{satz}
 
 \begin{proof}
-  %TODO
+  Da $S_1\ERel S_2$ gilt, wissen wir, dass $\ET{}_1\subseteq \ET{}_2$ und
+  $\EL{}_1\subseteq \EL{}_2$ gilt. Da für Elemente aus $X:=\{x_1,x_2,\dots
+  ,x_n\}$ die nicht in $O$ enthalten sind nichts passiert bei der
+  Internalisierung, gehen wir davon aus, das $X\subseteq O$ gilt. Wir wählen
+  einen Traces $w=a_1a_2\dots a_m\in \ET{}_1$. Solang $w$ nicht nur aus Outputs
+  besteht, gibt es also einen Ablauf $q_0 \overset{w'}{\Rightarrow}$ mit
+  $w'=a_1a_2\dots a_k$, so dass $a_k\in I$, $k\leq m$ und $w'\in \MIT{}_1$ oder
+  $w'\in \PrET{}_1$ gilt. Nach der Internalisierung bleiben von dem Ablauf nur
+  noch die Aktionen übrig, die nicht gleichzeitig ein Output und ein Element
+  aus $X$ sind. Der Traces reduziert sich also auf $w''=w|_{\Sigma\backslash
+  (O\cap X)}$. Diese $w''$ hat einen zu $w'$ analoges Präfix, da der Input
+  $a_k$ erhalten beleibt. Dieses Präfix von $w''$ ist dann in $\MIT{}(S_1/X)$
+  oder in $\PrET{}(S_1/X)$ enthalten und somit ist $w''$ in $\ET{}(S_1/X)$
+  enthalten. Diese Argumentation funktioniert jedoch nicht für $w$s, die nur
+  aus Outputs bestehen. Da Elemente, aus $\cont{}(\MIT{}_1)$ mindestens einen
+  Input enthalten müssen, muss so ein $w$ aus $\cont{}(\PrET{}_1)$ sein. Somit
+  ergibt sich ohne die \cont{}-Funktion das Element $\varepsilon\in\PrET{}_1$.
+  Da es in diesem Wort keine Elemente aus $X$ gibt, werden in diesem Wort auch
+  keine Aktionen verborgen und somit gilt $\varepsilon\in\PrET{}(S_1/X)$.\\
+  Nach Voraussetzung gilt $w\in\ET{}_2$. Nach analoger Argumentation gilt dann
+  auch $w''\in\ET{}(S_2/X)$.\\
+  Somit bleibt jetzt nur noch zu zeigen, dass $L(S_1/X)\backslash \ET{}(S_1/X)
+  \subseteq EL(S_2/X)$ gilt. Die Argumentation, wieso nur diese Inklusion zu
+  zeigen ist, kann dem Beweis zu Lemma~\ref{lemVerfeinerung} entnommen werden.
+  Da wir bereits $L_1\backslash\ET{}_1\subseteq\EL{}_2$ wissen, können wir
+  schließen, dass alle relevanten Traces bereits in $\EL{}_2$ enthalten sind
+  und die Modifikation durch den Internalisierungsoperator wie oben keine
+  Auswirkungen hat, dass die Traces mit verborgenen Aktionen nicht mehr
+  enthalten sind.
 \end{proof}
+
+Wenn wir die Menge $X$ aus dem vorangegangen Satz entsprechend wählen, dann
+erhalten wir die folgende Proposition.
 
 \begin{prop}[Präkongurenz bzgl. Interalisierung]
   \label{propIntrPrae}
-  Seien $S_1$ und $S_2$ zwei \EIO{}s   für   die   gilt $  S_1\  ERel   S_2$
-  und sei $X:=\{x_1,x_2,\dots ,x_n\}= O_1 = O_2$, dann gilt auch
-  $(S_1/X)\ERel (S_2/X)$. Somit ist also \ERel{} eine Präkongruenz bezüglich
-  $\cdot /\cdot$.
+  Seien $S_1$ und $S_2$ zwei \EIO{}s für die gilt $S_1\ERel S_2$ und sei
+  $X:=\{x_1,x_2,\dots ,x_n\}= O_1 = O_2$, dann gilt auch $(S_1/X)\ERel
+  (S_2/X)$. Somit ist also \ERel{} eine Präkongruenz bezüglich $\cdot /\cdot$.
 \end{prop}
 
 In~\cite{Vogler2014EIO} wurden die Parallelkomposition nur mit Verbergen der
@@ -676,5 +706,5 @@ Definition~\ref{defIntParal} die Parallelkomposition mit Internalisierung nur
 aus diesen Operatoren zusammensetzt, erhalten wir das folgende Korollar.
 
 \begin{kor}[Präkongurenz bzgl. Präkongurenz mit Internalisierung]
-  \ERel{} ist eine Präkongruenz bezüglich $|$.
+  \ERel{} ist eine Präkongruenz bezüglich $\cdot|\cdot$.
 \end{kor}
