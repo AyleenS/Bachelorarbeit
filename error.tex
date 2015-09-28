@@ -1,5 +1,7 @@
 \chapter{Verfeinerung über Errortraces}
 
+\section{Präkongruenz für Error}
+
 Da es in dieser Arbeit vor allem um die Erreichbarkeit und die Kommunikation
 zwischen \EIO{}s geht, wurden die nächsten beiden Definitionen explizit getrennt
 und erweitert zu denen in~\cite{Vogler2014EIO}. Ebenfalls wurde die
@@ -310,7 +312,7 @@ dann die erste Eigenschaft erfüllt haben um eine Präkongruenz zu finden, die
 äquivalent ist zu der vollständig abstrakten Präkongruenz \ECRel{}.
 
 \begin{prop}[Präkongruenz]
-  \label{korPraekongruenz}
+  \label{propPraekongruenz}
   \ERel{} ist eine Präkongruenz.
 \end{prop}
 
@@ -558,7 +560,7 @@ Präkongruenz \ECRel{}.
 \end{satz}
 
 \begin{proof}
-  Wie bereits in Proposition~\ref{korPraekongruenz} festgehalten, ist \ERel{} eine
+  Wie bereits in Proposition~\ref{propPraekongruenz} festgehalten, ist \ERel{} eine
   Präkongruenz.
 
   \glqq $\Leftarrow$\grqq : Nach Definition gilt, wenn
@@ -587,3 +589,92 @@ wir das folgende Korollar.
 \end{kor}
 
 %TODO Ringschlussanmerkung einbinden
+
+\section{Hiding für Error}
+
+Hiding wurde bereist in~\cite{Chilton2013} auf Traces betrachtet. Da wir hier
+aber unsere Betrachtungsweise von Transitionssystemen aus gestartet haben, werden
+wir auch Hiding aus der Sicht dieser Systeme definieren, wie
+in~\cite{Schlosser2012BA}. Das Hiding wir durch einen Internalisierungsoperator
+umgesetzt. Es sollen dadurch Aktionen versteckt werden können, d.h.\ durch
+$\tau$s ersetzt werden. In~\cite{Chilton2013} ist es in der Definition des
+Hidings möglich Outputs und Inputs zu verstecken. Durch das verstecken von
+Outputs sind diese nur nicht mehr nach Außen sichtbar. Werden jedoch Inputs
+versteckt, sind alle Traces, die diesen Input benötigen nicht mehr ausführbar.
+Sie sind dann ab dem versteckten Input nicht mehr weiterführbar. Somit werden
+wir in unserer Definition nur die Internalisierung von Outputs erlauben und uns
+deshalb an~\cite{Schlosser2012BA} als Quelle halten.
+
+\begin{Def}[Internalisierungsoperator]
+  Für ein \EIO{} $S=(Q,I,O,\delta ,q_0.E)$ ist $S/\{x_1,x_2,\dots ,x_n\}$, mit
+  dem \emph{Internalisierungsoperator} $\cdot /\cdot$, definiert als
+  $S'=(Q,I,O',\delta ',q_0,E)$ mit:
+  \begin{itemize}
+    \item $O'=O\backslash \{x_1,x_2,\dots ,x_n\}$
+    \item $\delta '=\delta\backslash \{(q,x,q')\mid x\in(\{x_1,x_2,\dots
+      ,x_n\}\cap O)\}\cup\{(q,\tau ,q')\mid (q,x,q')\in\delta ,
+      x\in(\{x_1,x_2,\dots ,x_n\}\cap O)\}$
+  \end{itemize}
+\end{Def}
+
+Die Menge hinter dem Internalisierungsoperator ist nicht auf Outputs
+beschränkt, so sind dort ebenfalls Inputs zulässig. Jedoch hat ein Input in
+dieser Menge keine Auswirkungen auf den das System auf das es angewendet wird.
+Da wir jedoch uns im weiteren Verlauf dieses Kapitels auf Gedanken um die
+Auswirkungen dieses Operators auf unsere Verfeinerungsrelationen machen
+möchten, werden wir auch Systeme betrachten müssen, die vor der Anwendung der
+Parallelkomposition einen Input in der Menge hinter dem Operator stehen haben.
+
+\begin{prop}[Error Basisrelation bzgl. Internalisierungsoperator]
+  Wenn $S_1\EBRel S_2$ gilt, dann folgt daraus, dass auch $(S_1/\{x_1,x_2,\dots
+  ,x_n\})\EBRel (S_2/\{x_1,x_2,\dots ,x_n\})$ gilt.
+\end{prop}
+
+\begin{proof}
+  Da die Definition der lokalen Erreichbarkeit auf lokalen Aktionen beruht, die
+  aus den Outputs und der internen Aktion besteht, ändert sich durch das
+  verbergen von Outputs nichts an der Fehlererreichbarkeit. Somit ist jeder
+  Fehler, der in $S_i$ lokal Erreichbar ist über einen Traces, der einen
+  Outputs aus $\{x_1,x_2,\dots ,x_n\}$ enthält auch in $S_i/\{x_1,x_2,\dots
+  ,x_n\}$ erreichbar, jedoch enthält der Traces nicht mehr diesen Output. Alle
+  Traces, die keinen Outputs aus der Menge hinter dem Internalisierungsoperator
+  enthalten bleiben unverändert erhalten. Somit folgt aus die Behauptung.
+\end{proof}
+
+\begin{satz}[Präkongurenz bzgl. Interalisierungsoperator]
+  Seinen $S_1$ und $S_2$ zwei \EIO{}s für die $S_1\ERel S_2$ gilt, somit gilt
+  auch $(S_1/\{x_1,x_2,\dots ,x_n\})\ERel (S_2/\{x_1,x_2,\dots ,x_n\})$.
+\end{satz}
+
+\begin{proof}
+  %TODO
+\end{proof}
+
+\begin{prop}[Präkongurenz bzgl. Interalisierung]
+  \label{propIntrPrae}
+  Seien $S_1$ und $S_2$ zwei \EIO{}s   für   die   gilt $  S_1\  ERel   S_2$
+  und sei $X:=\{x_1,x_2,\dots ,x_n\}= O_1 = O_2$, dann gilt auch
+  $(S_1/X)\ERel (S_2/X)$. Somit ist also \ERel{} eine Präkongruenz bezüglich
+  $\cdot /\cdot$.
+\end{prop}
+
+In~\cite{Vogler2014EIO} wurden die Parallelkomposition nur mit Verbergen der
+synchronisierten Aktionen betrachtet. Diese Parallelkomposition können wir nun
+mit dem Internalisierungsoperator durch Hiding der synchronisierten Aktionen
+nachbilden.
+
+\begin{Def}[Parallelkomposition mit Internalisierung]
+  \label{defIntParal}
+  Seinen $S_1$ und $S_2$ komponierbare \EIO{}s, dann ist
+  $S_1|S_2=(S_1\|S_2)/Synch(S_1,S_2)$.
+\end{Def}
+
+Wir wissen aus~\ref{propPraekongruenz}, dass \ERel{} eine Präkongruenz
+bezüglich $\cdot\|\cdot$ ist, und aus~\ref{propIntrPrae}, dass \ERel{} auch eine
+Präkongruenz bezüglich $\cdot/\cdot$ ist. Da sich nach
+Definition~\ref{defIntParal} die Parallelkomposition mit Internalisierung nur
+aus diesen Operatoren zusammensetzt, erhalten wir das folgende Korollar.
+
+\begin{kor}[Präkongurenz bzgl. Präkongurenz mit Internalisierung]
+  \ERel{} ist eine Präkongruenz bezüglich $|$.
+\end{kor}
