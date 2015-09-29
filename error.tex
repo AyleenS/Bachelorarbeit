@@ -313,7 +313,7 @@ dann die erste Eigenschaft erfüllt haben um eine Präkongruenz zu finden, die
 
 \begin{prop}[Präkongruenz]
   \label{propPraekongruenz}
-  \ERel{} ist eine Präkongruenz.
+  \ERel{} ist eine Präkongruenz bezüglich $\cdot\|\cdot$.
 \end{prop}
 
 \begin{proof}
@@ -366,7 +366,7 @@ dieses Beweises auch dort wieder.
 \begin{proof}
   Da $S_1$ und $S_2$ die gleichen Signaturen haben, definieren wir:
   $I:=I_1=I_2$ und $O:=O_1=O_2$. Für jeden der Partner $U$ gilt $I_U=O$ und
-  $O_U=I$.\\%TODO Partner definieren
+  $O_U=I$.\\
   Um $S_1\ERel S_2$ zu zeigen, wird nachgeprüft, dass gilt:
   \begin{itemize}
     \item $\ET{}(S_1)\subseteq \ET{}(S_2)$,
@@ -577,6 +577,29 @@ Präkongruenz \ECRel{}.
   Lemma~\ref{lemVerfeinerung} folgt dann $S_1\ERel S_2$.
 \end{proof}
 
+Wir haben somit jetzt eine Kette an Folgerungen gezeigt, die dann sich zu einem
+Ring schließen. Dies ist in Abbildung~\ref{Folgerungskette} dargestellt.
+
+\begin{figure}[h!tbp]
+  \begin{center}
+    \begin{tikzpicture}
+      \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]{
+        S_1\ERel S_2 & S_1\ECRel S_2 \\
+        \forall~\mathrm{Partner}~U:U\|S_1\EBRel U\|S_2 &
+        \forall~\mathrm{komponierbare}~U:U\|S_1\EBRel U\|S_2 \\};
+        \path[-stealth]
+          (m-1-1) edge [double] node [above] {\glqq{}$\Leftarrow$\grqq{} von
+            Satz~\ref{satzFullAbstractness}} (m-1-2)
+          (m-1-2) edge [double] node [right] {\glqq{}$\Rightarrow$\grqq{} von
+            Satz~\ref{satzFullAbstractness}} (m-2-2)
+          (m-2-1) edge [double] node [left] {Lemma~\ref{lemVerfeinerung}} (m-1-1)
+          (m-2-2) edge [double] node [below] {$U$ Partner $\Rightarrow U$ kombonierbar} (m-2-1);
+    \end{tikzpicture}
+    \caption{Folgerungskette}
+    \label{Folgerungskette}
+  \end{center}
+\end{figure}
+
 Aus Satz~\ref{satzFullAbstractness} und Lemma~\ref{lemVerfeinerung} erhalten
 wir das folgende Korollar.
 
@@ -587,8 +610,6 @@ wir das folgende Korollar.
   Dies lässt sich formal wie folgt ausdrücken: $S_1\ERel S_2
   \Leftrightarrow U\|S_1\EBRel U\|S_2$ für alle Partner $U$.
 \end{kor}
-
-%TODO Ringschlussanmerkung einbinden
 
 \section{Hiding für Error}
 

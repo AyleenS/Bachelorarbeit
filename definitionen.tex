@@ -57,8 +57,7 @@ Aktion, bei der nicht festgelegt ist, ob sie ein Input oder ein Output ist.\\
 Um die Komponenten der entsprechenden Struktur zuzuordnen, werden für
 die Komponenten die gleichen Indizes wie für ihre zugehörigen Struktur
 verwendet, z.B.\ schreiben wir $I_1$ für die Inputmenge des Transitionssystem $S_1$.
-Diese Notation verwenden wir später analog für die Sprachen, die einer Struktur
-zugeordnet sind.\\
+Diese Notation verwenden wir später analog für die Sprachen einer Struktur.\\
 Die Elemente der Übergangsrelation $\delta$ werden wir wie folgt notieren:
 \begin{itemize}
   \item $p\overset{\alpha}{\rightarrow} q$ für $(p,\alpha ,q)\in\delta$,
@@ -141,9 +140,8 @@ Systems, während ein bestimmtes Wort verarbeitet wird. Dieses Wort besteht aus
 Inputs und Outputs, mit denen die Folge ab $q_0$ beschriftet ist.
 
 \begin{Def}[Parallelkomposition auf Traces]
-  Gegeben zwei \EIO{}s $S_1$ und $S_2,
-  w_1\in\Sigma _1, w_2\in\Sigma _2, W_1\subseteq\Sigma _1^*, W_2\subseteq\Sigma
-  _2^*$:
+  Gegeben zwei \EIO{}s $S_1$ und $S_2$, sowie $w_1\in\Sigma _1, w_2\in\Sigma
+  _2, W_1\subseteq\Sigma _1^*, W_2\subseteq\Sigma _2^*$:
   \begin{itemize}
     \item $w_1\| w_2:=\{w\in (\Sigma _1\cup\Sigma _2)^*\mid w|_{\Sigma _1}=w_1\wedge
       w|_{\Sigma _2}=w_2\}$,
