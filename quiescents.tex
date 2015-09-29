@@ -1,5 +1,7 @@
 \chapter{Verfeinerung über Error- und Quiescenttraces}
 
+\section{Präkongruenz für Quiescent}
+
 In diesem Kapitel werden wir uns nicht nur um die Erreichbarkeit von
 Error-Zuständen kümmern, sondern auch um die Erreichbarkeit von
 Quiescent-Zuständen. Wir werden dabei ähnlich vorgehen wie im letzten Kapitel,
@@ -26,17 +28,17 @@ reparierbar sind, sagen wir, dass diese erst erreichbar sind, wenn sie durch
 eine interne Handlung zu erreichen sind. Also eher einen hyper-optimistischen
 Erreichbarkeitsbegriff.
 
-\begin{Def}[lokal error- und quiescentfreie Kommunikation]
+\begin{Def}[error- und quiescentfreie Kommunikation]
   Zwei \EIO{}s $S_1$ und $S_2$ \emph{kommunizieren gut}, wenn keine Errors
   lokal und keine Quiescents durch interne Handlungen
   erreichbar sind in ihrer Parallelkomposition $S_1\| S_2$.
 \end{Def}
 
-\begin{Def}[lokale Basisrelation]
+\begin{Def}[Quiescent Basisrelation]
   Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur schreiben wir
   $S_1\QBRel S_2$, wenn ein Error oder Quiescent in $S_1$ nur dann lokal bzw.\
-  durch ein $\tau$ erreichbar ist, wenn er auch in $S_2$ lokal erreichbar
-  ist.\\
+  durch ein $\tau$ erreichbar ist, wenn er auch in $S_2$ auf die gleiche weise
+  erreichbar ist.\\
   \QCRel{} bezeichnet die \emph{vollständig abstrakte Präkongruenz} von
   \QBRel{} bezüglich $\cdot\|\cdot$.
 \end{Def}
@@ -46,7 +48,7 @@ wir wie im letzten Kapitel die Definition von Traces auf unserer Struktur.
 Dadurch erhalten wir die Möglichkeit die gröbste Präkongruenz finden und
 definieren zu können.
 
-\begin{Def}[Error und Quiescenttraces]
+\begin{Def}[Error- und Quiescenttraces]
   \label{DefQuiescenttraces}
   Sei $S$ ein \EIO{} und definiere:
   \begin{itemize}
@@ -57,7 +59,7 @@ definieren zu können.
   \end{itemize}
 \end{Def}
 
-\begin{Def}[Lokale Error und Quiescent Semantik]
+\begin{Def}[Error- und Quiescent-Semantik]
   \label{DefQTQL}
   Sei $S$ ein \EIO{}.
   \begin{itemize}
@@ -77,7 +79,7 @@ $QT\subseteq L\subseteq QL$. Somit musste $QT$ nicht mehr explizit in die
 Definition von $QL$ aufgenommen werden und trotzdem ist jeder Traces, der in
 $QT$ möglich ist auch in der gefluteten Sprache enthalten.
 
-\begin{satz}[Lokale Error und Quiescent Semantik für Parallelkompositonen]
+\begin{satz}[Error- und Quiescent-Semantik für Parallelkompositonen]
   \label{satzQuiSemantik}
   Für zwei komponierbare \EIO{}s $S_1, S_2$ und $S_{12} = S_1\|S_2$ gilt:
   \begin{enumerate}
@@ -133,7 +135,8 @@ Jedoch ist es eine wichtige Feststellung für die weiteren Verlauf die gröbste
 Präkongruenz finden zu wollen.
 
 \begin{prop}[Präkongruenz]
-  \QRel{} ist eine Präkongruenz.
+  \label{propQuiPrae}
+  \QRel{} ist eine Präkongruenz bezüglich $\cdot\|\cdot$.
 \end{prop}
 
 \begin{proof}
@@ -160,6 +163,7 @@ Präkongruenz finden zu wollen.
 \end{proof}
 
 \begin{lem}[Verfeinerung mit Quiescents]
+  \label{lemQuiVerfeinerung}
   Gegeben sind zwei \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur. Wenn
   alle Partner \EIO{}s $U$, die mit $S_2$  gut kommunizieren, auch mit $S_1$
   gut kommunizieren, dann verfeinert $S_1$ den \EIO{} $S_2$. Diese Verfeinerung
@@ -181,8 +185,8 @@ Präkongruenz finden zu wollen.
   Der erste und der letzte Punkt wurden bereits in Lemma~\ref{lemVerfeinerung}
   gezeigt. So bleibt uns nur noch die Inklusion $\QT{}_1\subseteq \QT{}_2$ zu
   zeigen.\\
-  Wir wählen ein $w\in QT(S_1)$ und zeigen, dass es auch in $QT(S_2)$ enthalten
-  ist.
+  Wir wählen ein $w\in \QT{}(S_1)$ und zeigen, dass es auch in $\QT{}(S_2)$
+  enthalten ist.
   \begin{itemize}
     \item Fall 1 ($w=\varepsilon$): Somit ist der Startzustand von $S_1$ ein
       Quiescent-Zustand. Sobald der Startzustand eines Partners $U$ nicht
@@ -194,12 +198,74 @@ Präkongruenz finden zu wollen.
       $U\|S_2$ als Startzustand einen Quiescent-Zustand haben. Da dieser aber
       nur entstehen kann, wenn für beide Teilsysteme bereits $\varepsilon$ in
       den jeweiligen Quiescenttraces liegt, somit gilt $\varepsilon\in
-      QT(S_2)$.
+      \QT{}(S_2)$.
     \item Fall 2 ($w=x_1\dots x_n\in\Sigma ^+$ mit $n\geq 0$): Wir betrachten
       den Partner $U$, bei dem mit $w$ ebenfalls ein Zustand erreicht wird, der
       Quiescent ist. Somit ist in der Komposition die Komposition dieser
       beiden Zustände ebenfalls ein Quiescent-Zustand. Es folgt, dass ein
       Quiescent-Zustand auch in $U\|S_2$ durch $w$ erreichbar sein und somit
-      auch in $S_2$. Daraus folgt, dass gilt $w\in QT(S_2)$.
+    auch in $S_2$. Daraus folgt, dass gilt $w\in \QT{}(S_2)$.
   \end{itemize}
 \end{proof}
+
+\begin{satz}[Full Abstractness für Quiescent-Semantik]
+  \label{satzQuiFullAbst}
+  Seien $S_1$ und $S_2$ zwei \EIO{}s mit derselben Signatur. Dann gilt
+  $S_1\QCRel S_2\Leftrightarrow S_1\QRel S_2$, insbesondere ist \QRel{} eine
+  Präkongruenz.
+\end{satz}
+
+\begin{proof}
+  Wie bereits in Proposition~\ref{propQuiPrae} festgehalten, ist \QRel{} eine
+  Präkongruenz.
+
+  \glqq{}$\Leftarrow$\grqq{}: Nach Definition gilt, wenn
+  $\varepsilon\in\QT{}(S)$, ist ein Quiescent-Zustand durch ein $\tau$
+  erreichbar in $S$. Somit impliziert $S_1\QRel S_2$, dass
+  $\varepsilon\in\QT{}_2$ gilt, wenn $ \varepsilon\in\QT{}_1$. Dadurch folgt
+  ebenfalls, dass $S_1\QBRel S_2$ gilt. Somit folgt aus $S_1\QRel S_2$ der
+  relationale Zusammenhang $S_1\QCRel S_2$.
+
+  \glqq{}$\Rightarrow$\grqq{}: Durch die Definition von \QCRel{} folgt aus
+  $S_1\QCRel{} S_2$, dass $U\|S_1\QCRel U\|S_2$ für alle EIOs $U$ , die mit
+  $S_1$ komponierbar sind. Somit folgt auch die Gültigkeit von $U\|S_1\EBRel
+  U\|S_2$ für alle diese EIOs $U$. Mit Lemma~\ref{lemQuiVerfeinerung} folgt
+  dann $S_1\QRel{} S_2$.
+\end{proof}
+
+Wir haben somit jetzt eine Kette an Folgerungen gezeigt, die sich zu einem Ring
+schließen. Dies ist in Abbildung~\ref{FolgerungsketteQui} dargestellt.
+
+\begin{figure}[h!tbp]
+  \begin{center}
+    \begin{tikzpicture}
+      \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]{
+        S_1\QRel S_2 & S_1\QCRel S_2 \\
+        \forall~\mathrm{Partner}~U:U\|S_1\QBRel U\|S_2 &
+        \forall~\mathrm{komponierbaren}~U:U\|S_1\QBRel U\|S_2 \\};
+        \path[-stealth]
+          (m-1-1) edge [double,semithick] node [above] {\glqq{}$\Leftarrow$\grqq{} von
+            Satz~\ref{satzQuiFullAbst}} (m-1-2)
+          (m-1-2) edge [double,semithick] node [right] {\glqq{}$\Rightarrow$\grqq{} von
+            Satz~\ref{satzQuiFullAbst}} (m-2-2)
+          (m-2-1) edge [double,semithick] node [left] {Lemma~\ref{lemQuiVerfeinerung}} (m-1-1)
+          (m-2-2) edge [double,semithick] node [below] {$U$ Partner $\Rightarrow U$ komponierbar} (m-2-1);
+    \end{tikzpicture}
+    \caption{Folgerungskette}
+    \label{FolgerungsketteQui}
+  \end{center}
+\end{figure}
+
+Aus Satz~\ref{satzQuiFullAbst} und Lemma~\ref{lemQuiVerfeinerung} erhalten wir
+das folgende Korollar.
+
+\begin{kor}
+  Ein \EIO{} $S_1$ verfeinert einen \EIO{} $S_2$ genau dann, wenn für alle
+  \EIO{}s $U$ für die $S_2$ gut mit $U$ kommuniziert folgt $S_1$ kommuniziert
+  ebenfalls gut mit $U$.\\
+  Dies lässt sich formal wie folgt ausdrücken: $S_1\QRel S_2\Leftrightarrow
+  U\|S_1\QBRel U\|S_2$ für alle Partner $U$.
+\end{kor}
+
+\section{Hiding für Quiescent}
+%TODO
