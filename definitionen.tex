@@ -190,3 +190,38 @@ das folgende Lemma.
 
 Dieses Lemma ist bereits in~\cite{Vogler2014EIO} enthalten. Hier wird jedoch
 keine Sprache für die Parallelkomposition mit Verbergen erwähnt.
+
+\section{Hiding}
+
+Hiding wurde bereist in~\cite{Chilton2013} auf Traces betrachtet. Da wir hier
+aber unsere Betrachtungsweise von Transitionssystemen aus starten, werden
+wir auch Hiding aus der Sicht dieser Systeme definieren, wie
+in~\cite{Schlosser2012BA}. Das Hiding wir durch einen Internalisierungsoperator
+umgesetzt. Es sollen dadurch Aktionen versteckt werden können, d.h.\ durch
+$\tau$s ersetzt werden. In~\cite{Chilton2013} ist es in der Definition des
+Hidings möglich Outputs und Inputs zu verstecken. Durch das verstecken von
+Outputs sind diese nur nicht mehr nach Außen sichtbar. Werden jedoch Inputs
+versteckt, sind alle Traces, die diesen Input benötigen nicht mehr ausführbar.
+Sie sind dann ab dem versteckten Input nicht mehr weiterführbar. Somit werden
+wir in unserer Definition nur die Internalisierung von Outputs erlauben und uns
+deshalb an~\cite{Schlosser2012BA} als Quelle halten.
+
+\begin{Def}[Internalisierungsoperator]
+  Für ein \EIO{} $S=(Q,I,O,\delta ,q_0.E)$ ist $S/\{x_1,x_2,\dots ,x_n\}$, mit
+  dem \emph{Internalisierungsoperator} $\cdot /\cdot$, definiert als
+  $S'=(Q,I,O',\linebreak\delta ',q_0,E)$ mit:
+  \begin{itemize}
+    \item $O'=O\backslash \{x_1,x_2,\dots ,x_n\}$
+    \item $\delta '=\delta\backslash \{(q,x,q')\mid x\in(\{x_1,x_2,\dots
+      ,x_n\}\cap O)\}\cup\{(q,\tau ,q')\mid (q,x,q')\in\delta ,
+      x\in(\{x_1,x_2,\dots ,x_n\}\cap O)\}$
+  \end{itemize}
+\end{Def}
+
+Die Menge hinter dem Internalisierungsoperator ist nicht auf Outputs
+beschränkt, so sind dort ebenfalls Inputs zulässig. Jedoch hat ein Input in
+dieser Menge keine Auswirkungen auf den das System auf das es angewendet wird.
+Da wir jedoch uns im weiteren Verlauf Gedanken um die
+Auswirkungen dieses Operators auf unsere Verfeinerungsrelationen machen
+möchten, werden wir auch Systeme betrachten müssen, die vor der Anwendung der
+Parallelkomposition einen Input in der Menge hinter dem Operator stehen haben.

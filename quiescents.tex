@@ -37,7 +37,7 @@ Erreichbarkeitsbegriff.
 \begin{Def}[Quiescent Basisrelation]
   Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur schreiben wir
   $S_1\QBRel S_2$, wenn ein Error oder Quiescent in $S_1$ nur dann lokal bzw.\
-  durch ein $\tau$ erreichbar ist, wenn er auch in $S_2$ auf die gleiche weise
+  durch ein $\tau$ erreichbar ist, wenn er auch in $S_2$ auf die gleiche Weise
   erreichbar ist.\\
   \QCRel{} bezeichnet die \emph{vollständig abstrakte Präkongruenz} von
   \QBRel{} bezüglich $\cdot\|\cdot$.
@@ -273,4 +273,10 @@ das folgende Korollar.
 \end{kor}
 
 \section{Hiding für Quiescent}
-%TODO
+
+Wir wollen nun auch hier die Auswirkungen der Internalisierung von Aktionen auf
+unsere Verfeinerungsrelationen untersuchen.\\
+Diese Betrachtung ist hier jedoch nicht so einfach wie für Errors, da durch das
+Hiding neue Quiescent-Zustände entstehen können.
+
+
