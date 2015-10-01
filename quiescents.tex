@@ -16,8 +16,8 @@ diese Zustände auf Trace-Ebene nicht unterscheiden können.
   oder ein Zustand, von dem aus über eine interne Handlung $\tau$ ein Zustand
   erreicht werden kann, der keine Outputs zulässt.\\
   Somit ist die Menge der Quiescent-Zustände in einem \EIO{} wie folgt formal
-  definiert: $Qui:=\{q\in Q\mid q\in K\vee \exists p\in Q:
-  q\overset{\tau}{\Rightarrow} p\in K\}$ mit $K:=\{q\in Q\mid \forall a\in O:
+  definiert: $Qui:=\{q\in Q\mid q\in K\vee \exists p\in K:
+  q\overset{\tau}{\Rightarrow} p\}$ mit $K:=\{q\in Q\mid \forall a\in O:
   q\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\}$.
 \end{Def}
 
@@ -277,6 +277,12 @@ das folgende Korollar.
 Wir wollen nun auch hier die Auswirkungen der Internalisierung von Aktionen auf
 unsere Verfeinerungsrelationen untersuchen.\\
 Diese Betrachtung ist hier jedoch nicht so einfach wie für Errors, da durch das
-Hiding neue Quiescent-Zustände entstehen können.
+Hiding neue Quiescent-Zustände entstehen können. Die neue Menge der
+Quiescent-Zustände sieht dann wie folgt aus: $Qui/\{x_1,x_2,\dots ,x_n\} =
+\{q\in Q\mid q\in K/\{x_1,x_2,\dots ,x_n\}\vee \exists p\in K/\{x_1,x_2,\dots
+,x_n\}:q \overset{\tau}{\Rightarrow} p\}$ mit
+$K/\{x_1,x_2,\dots ,x_n\}=\{q\in Q\mid q \overset{x}{\rightarrow}\wedge x\in
+\{x_1,x_2,\dots ,x_n\}\wedge \forall a\in O\backslash\{x_1,x_x,\dots ,x_n\}: q
+\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\}$.
 
 
