@@ -34,11 +34,12 @@ hyper-optimistischen Erreichbarkeitsbegriff.
   interne Aktionen erreichbar sind.
 \end{Def}
 
-\begin{Def}[Quiescent-Basisrelation]
+\begin{Def}[Quiescent-Verfeinerungs-Basisrelation]
   Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur schreiben wir
   $S_1\QBRel S_2$, wenn ein Error oder Quiescent in $S_1$ nur dann lokal bzw.\
   durch ein $\tau$ erreichbar ist, wenn er auch in $S_2$ auf die gleiche Weise
-  erreichbar ist.\\
+  erreichbar ist. Diese \emph{Basisrelation} stellt eine \emph{Verfeinerung}
+  bezüglich \emph{Errors} und \emph{Quiescents} dar.\\
   \QCRel{} bezeichnet die \emph{vollständig abstrakte Präkongruenz} von
   \QBRel{} bezüglich $\cdot\|\cdot$.
 \end{Def}
