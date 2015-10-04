@@ -7,13 +7,7 @@ Parallelkomposition die Input-Aktionen der \EIO{}s nicht disjunkt sein müssen.
 Dies wäre eine unnötige Einschränkung. Die nicht mit den entsprechenden Outputs
 synchronisierten Inputs der zu komponierenden \EIO{}s werden als Inputs der
 Parallelkomposition übernommen. Zusätzlich verzichten wir hier im Gegensatz
-zu~\cite{Vogler2014EIO} auf das verbergen der synchronisierten Aktionen. Die
-gleiche Betrachtungsweise wurde bereits in~\cite{Schlosser2012BA} gewählt,
-deshalb stimmen die Definitionen in diesem Kapitel mit denen
-aus~\cite{Schlosser2012BA} überein, jedoch wurde diese Arbeit nicht als direkte
-Quelle verwendet. Auch das Kapitel Verfeinerung über Errortraces wurde bereits
-in~\cite{Schlosser2012BA} behandelt, jedoch wurden alle Beweise unabhängig
-davon neu geführt.\\
+zu~\cite{Vogler2014EIO} auf das verbergen der synchronisierten Aktionen.\\
 Dadurch das die synchronisierten Aktionen nicht verborgen werden, haben wir hier
 ein Modell, mit dem nicht nur zwei Systeme miteinander kommunizieren können
 sondern beliebig viele. Ein Output eines Systems ist somit ein Art Multicast.
@@ -85,15 +79,10 @@ Zwei \EIO{}s sind komponierbar, wenn ihre Outputmengen disjunkt sind. Die
 Error-Zustän\-de der Parallelkomposition setzten sich aus den Error-Zuständen der
 beiden zusammengesetzten Komponenten (geerbte Errors) und den
 unsynchronisierbaren Outputs (neue Errors) zusammen.\\
-Die nächste Definition ist analog zu~\cite{Vogler2014EIO}, nur wird hier
-darauf verzichtet die Inputmengen als disjunkt anzunehmen und der zweite
-Definitionsteil über das verbergen der synchronisierten Aktionen wird
-komplett weg gelassen. Das verzichten auf die analogen Definitionen für das
-Verbergen wird sich auch bei den folgenden Definitionen zeigen. Zusätzlich
-nehmen wir in der folgenden Definition eine Änderung an der Menge der
-synchronisierten Aktionen vor, da nun nicht mehr $I_1\cap I_2 =\emptyset$
-gelten muss, werden wir diese gemeinsamen Inputs synchronisieren. %TODO: lieber
-%ein mal in Einleitung erwähnen und dann nicht mehr
+In der folgenden Definition müssen wir eine Veränderung
+gegenüber~\cite{Vogler2014EIO} vornehmen an der Menge der synchronisierten
+Aktionen, da nicht mehr $I_1\cap I_2 =\emptyset$ gelten muss, werden wir
+diese gemeinsamen Inputs synchronisieren.
 
 \begin{Def}[Parallelkomposition]
   \label{DefParallelkomposition}
