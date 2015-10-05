@@ -1,45 +1,42 @@
-\chapter{Verfeinerung über Error- und Quiescenttraces}
+\chapter{Verfeinerung über Error- und Ruhetraces}
 
-\section{Präkongruenz für Quiescent}
+\section{Präkongruenz für Ruhe}
 
 In diesem Kapitel werden wir uns nicht nur um die Erreichbarkeit von
 Error-Zuständen kümmern, sondern auch um die Erreichbarkeit von
-Quiescent-Zuständen. Wir werden dabei ähnlich vorgehen wie im letzten Kapitel,
-jedoch halten wir uns als Quelle an~\cite{Chilton2013}. Darin werden ähnliche Konzepte
-beschrieben, jedoch aus Sicht der Traces.\\
-Wir sehen nicht nur die Zustände, die keine Outputs haben als Quiescents an,
-sondern auch die, die eine $\tau$-Transition zu so einem machen können, da wir
-diese Zustände auf Trace-Ebene nicht unterscheiden können.
+Ruhe-Zuständen. Wir werden dabei ähnlich vorgehen wie im letzten Kapitel,
+jedoch halten wir uns als Quelle an~\cite{Chilton2013}. Darin werden ähnliche
+Konzepte beschrieben, jedoch aus Sicht der Traces.\\
+Wir sehen die Zustände, die keine Outputs und keine Transitionsmöglichkeit für
+eine interne Aktion haben als ruhig an.
 
-\begin{Def}[Quiescent]
-  Ein \emph{Quiescent-Zustand} ist ein Zustand in einem \EIO{} der keine Outputs besitzt
-  oder ein Zustand, von dem aus über eine interne Aktion $\tau$ ein Zustand
-  erreicht werden kann, der keine Outputs zulässt.\\
-  Somit ist die Menge der Quiescent-Zustände in einem \EIO{} wie folgt formal
-  definiert: $Qui:=\{q\in Q\mid q\in K\vee \exists p\in K:
-  q\overset{\tau}{\Rightarrow} p\}$ mit $K:=\{q\in Q\mid \forall a\in O:
-  q\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\}$.
+\begin{Def}[Ruhe]
+  Ein \emph{Ruhe-Zustand} ist ein Zustand in einem \EIO{} der keine
+  Outputs zulässt und keine Transitions mit $\tau$ besitzt.\\
+  Somit ist die Menge der Ruhe-Zustände in einem \EIO{} wie folgt formal
+  definiert: $Qui:=\left\{q\in Q\mid \forall \alpha\in (O\cup \{\tau\}): q
+  \overset{\alpha}{\not{\hspace{-0.1cm}\rightarrow}}\right\}$.
 \end{Def}
 
 Für die Erreichbarkeit verwenden wir wie im letzten Kapitel wieder den
-optimistischen Ansatz der lokalen Erreichbarkeit für die Errors. Da die
-Quiescents jedoch keine unabwendbaren Fehler sein müssen, sondern durch einen
+optimistischen Ansatz der lokalen Erreichbarkeit für die Errors. Da Ruhe keine
+unabwendbaren Fehler sein müssen, sondern durch einen
 Input reparierbar sind, sagen wir, dass diese erst erreichbar sind, wenn sie
 durch eine interne Aktion zu erreichen sind. Also eher einen
 hyper-optimistischen Erreichbarkeitsbegriff.
 
-\begin{Def}[error- und quiescentfreie Kommunikation]
+\begin{Def}[error- und ruhefreie Kommunikation]
   Zwei \EIO{}s $S_1$ und $S_2$ \emph{kommunizieren gut}, wenn in ihrer
-  Parallelkomposition $S_1\| S_2$ keine Errors lokal und keine Quiescents durch
-  interne Aktionen erreichbar sind.
+  Parallelkomposition $S_1\| S_2$ keine Errors lokal und keine Ruhe-Zustände
+  durch interne Aktionen erreichbar sind.
 \end{Def}
 
-\begin{Def}[Quiescent-Verfeinerungs-Basisrelation]
+\begin{Def}[Ruhe-Verfeinerungs-Basisrelation]
   Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur schreiben wir
-  $S_1\QBRel S_2$, wenn ein Error oder Quiescent in $S_1$ nur dann lokal bzw.\
-  durch ein $\tau$ erreichbar ist, wenn er auch in $S_2$ auf die gleiche Weise
-  erreichbar ist. Diese \emph{Basisrelation} stellt eine \emph{Verfeinerung}
-  bezüglich \emph{Errors} und \emph{Quiescents} dar.\\
+  $S_1\QBRel S_2$, wenn ein Error oder Ruhe-Zustand in $S_1$ nur dann lokal
+  bzw.\ durch ein $\tau$ erreichbar ist, wenn er auch in $S_2$ auf die gleiche
+  Weise erreichbar ist. Diese \emph{Basisrelation} stellt eine \emph{Verfeinerung}
+  bezüglich \emph{Errors} und \emph{Ruhe-Zustände} dar.\\
   \QCRel{} bezeichnet die \emph{vollständig abstrakte Präkongruenz} von
   \QBRel{} bezüglich $\cdot\|\cdot$.
 \end{Def}
@@ -49,28 +46,28 @@ wir wie im letzten Kapitel die Definition von Traces auf unserer Struktur.
 Dadurch erhalten wir die Möglichkeit die gröbste Präkongruenz finden und
 definieren zu können.
 
-\begin{Def}[Error- und Quiescenttraces]
-  \label{DefQuiescenttraces}
+\begin{Def}[Error- und Ruhetraces]
+  \label{DefRuhetraces}
   Sei $S$ ein \EIO{} und definiere:
   \begin{itemize}
     \item die Traces bezüglich Errors entsprechen denen
       aus Definition~\ref{DefErrortraces},
-    \item \emph{strickte Quiescenttraces}: $\StQT{}(S) := \{w\in\Sigma ^*\mid q_0
+    \item \emph{strickte Ruhetraces}: $\StQT{}(S) := \{w\in\Sigma ^*\mid q_0
       \overset{w}{\Rightarrow} q\in Qui\}$.
   \end{itemize}
 \end{Def}
 
-Da wir für Quiescents keinen lokalen Erreichbarkeitsbegriff verwenden benötigen
-wir keine gekürzten Quiescenttraces bei denen die \prune{}-Funktion zur
+Da wir für Ruhe-Zustände keinen lokalen Erreichbarkeitsbegriff verwenden benötigen
+wir keine gekürzten Ruhetraces bei denen die \prune{}-Funktion zur
 Anwendung käme.
 
-\begin{Def}[Error- und Quiescent-Semantik]
+\begin{Def}[Error- und Ruhe-Semantik]
   \label{DefQTQL}
   Sei $S$ ein \EIO{}.
   \begin{itemize}
     \item Die Menge der \emph{Errortraces} ist wie in~\ref{DefETEL} definiert.
-    \item Die Menge der \emph{Quiescenttraces} von $S$ ist $\QT{}(S) := \StQT{}(S)$.
-    \item Die \emph{quiescent-geflutete Sprache} von $S$ ist
+    \item Die Menge der \emph{Ruhetraces} von $S$ ist $\QT{}(S) := \StQT{}(S)$.
+    \item Die \emph{ruhe-geflutete Sprache} von $S$ ist
       $\QL{}(S):=L(S)\cup \ET{}(S)$ und entspricht somit der error-gefluteten
       Sprache $\EL{}(S)$ in~\ref{DefETEL}.
   \end{itemize}
@@ -83,13 +80,13 @@ Da \QT{} der Menge \StQT{} entspricht, hätten wir die Definition nicht
 unbedingt benötigt, jedoch für eine einheitliche Notation der Kapitel ist die
 neue Bezeichnung sinnvoll. Ebenso bezeichnen wir hier für die bessere
 Unterscheidung in den Kapiteln die Sprache \EL{} mit \QL{}.\\
-Da \QT{} nur die strickten Quiescenttraces enthält, also die Traces, die im
-Automaten vorhanden sind und zu einem Quiescent-Zustand führen, gilt
+Da \QT{} nur die strickten Ruhetraces enthält, also die Traces, die im
+Automaten vorhanden sind und zu einem Ruhe-Zustand führen, gilt
 $\QT{}\subseteq L\subseteq\QL{}$. Somit musste \QT{} nicht mehr explizit in die
 Definition von \QL{} aufgenommen werden und trotzdem ist jeder Traces, der in
 \QT{} möglich ist auch in der gefluteten Sprache enthalten.
 
-\begin{satz}[Error- und Quiescent-Semantik für Parallelkompositonen]
+\begin{satz}[Error- und Ruhe-Semantik für Parallelkompositonen]
   \label{satzQuiSemantik}
   Für zwei komponierbare \EIO{}s $S_1, S_2$ und $S_{12} = S_1\|S_2$ gilt:
   \begin{enumerate}
@@ -111,7 +108,7 @@ Definition von \QL{} aufgenommen werden und trotzdem ist jeder Traces, der in
   2. ``$\subseteq$'':\\
   Wir betrachten $w\in \StQT{}_{12}$ und versuchen dessen
   Zugehörigkeit zur rechten Menge zu zeigen. Aufgrund von
-  Definition~\ref{DefQuiescenttraces} wissen wir es gilt $(q_{01},q_{02})
+  Definition~\ref{DefRuhetraces} wissen wir es gilt $(q_{01},q_{02})
   \overset{w}{\Rightarrow} (q_1,q_2)$ mit $(q_1,q_2)\in Qui_{12}$. Durch
   Projektion erhalten wir $q_{01} \overset{w_1}{\Rightarrow} q_1$ und $q_{02}
   \overset{w_2}{\Rightarrow} q_2$ mit $w\in w_1\|w_2$. Aus $(q_1,q_2)\in
@@ -126,7 +123,7 @@ Definition von \QL{} aufgenommen werden und trotzdem ist jeder Traces, der in
   existieren $w_1$ und $w_2$ für die gilt $q_{01} \overset{w_1}{\Rightarrow}
   q_1\in Qui_1$ und $q_{02} \overset{w_2}{\Rightarrow} q_2\in Qui_2$ mit $w\in
   w_1\| w_2$. Da für die Zustände $q_1$ und $q_2$ die Zugehörigkeit zur
-  Quiescent Menge gilt, können wir folgern, dass der aus ihnen zusammengesetzte
+  Ruhe Menge gilt, können wir folgern, dass der aus ihnen zusammengesetzte
   Zustand in der Parallelkomposition ebenfalls keine Outputs zulässt. Somit
   gilt also für die Komposition $(q_{01},q_{02}) \overset{w}{\Rightarrow}
   (q_1,q_2)\in Qui_{12}$ und dadurch ist $w$ in der linken Seite der Gleichung
@@ -175,7 +172,7 @@ Präkongruenz finden zu wollen.
   \end{itemize}
 \end{proof}
 
-\begin{lem}[Verfeinerung mit Quiescents]
+\begin{lem}[Verfeinerung mit Ruhe-Zuständen]
   \label{lemQuiVerfeinerung}
   Gegeben sind zwei \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur. Wenn
   alle Partner \EIO{}s $U$, die mit $S_2$  gut kommunizieren, auch mit $S_1$
@@ -202,26 +199,26 @@ Präkongruenz finden zu wollen.
   enthalten ist.
   \begin{itemize}
     \item Fall 1 ($w=\varepsilon$): Somit ist der Startzustand von $S_1$ ein
-      Quiescent-Zustand. Sobald der Startzustand eines Partners $U$ nicht
-      quiescent ist, können wir nichts für $S_2$ schließen. Somit wählen wir
+      Ruhe-Zustand. Sobald der Startzustand eines Partners $U$ nicht
+      ruhig ist, können wir nichts für $S_2$ schließen. Somit wählen wir
       für $U$ ein Transitionssystem, dass nur aus dem Startzustand und einer
       Schliefe für alle Inputs $x\in I_U$ besteht. Somit ist der Startzustand
-      von $U$ auch quiescent. Daraus folgt, dass auch der Startzustand der
-      Komposition $U\|S_1$ ein Quiescent-Zustand ist. Dadurch muss auch
-      $U\|S_2$ als Startzustand einen Quiescent-Zustand haben. Da dieser aber
+      von $U$ auch ruhig. Daraus folgt, dass auch der Startzustand der
+      Komposition $U\|S_1$ ein Ruhe-Zustand ist. Dadurch muss auch
+      $U\|S_2$ als Startzustand einen Ruhe-Zustand haben. Da dieser aber
       nur entstehen kann, wenn für beide Teilsysteme bereits $\varepsilon$ in
-      den jeweiligen Quiescenttraces liegt, somit gilt $\varepsilon\in
+      den jeweiligen Ruhetraces liegt, somit gilt $\varepsilon\in
       \QT{}(S_2)$.
     \item Fall 2 ($w=x_1\dots x_n\in\Sigma ^+$ mit $n\geq 0$): Wir betrachten
       den Partner $U$, bei dem mit $w$ ebenfalls ein Zustand erreicht wird, der
-      Quiescent ist. Somit ist in der Komposition die Komposition dieser
-      beiden Zustände ebenfalls ein Quiescent-Zustand. Es folgt, dass ein
-      Quiescent-Zustand auch in $U\|S_2$ durch $w$ erreichbar sein muss und
+      ruhig ist. Somit ist in der Komposition die Komposition dieser
+      beiden Zustände ebenfalls ein Ruhe-Zustand. Es folgt, dass ein
+      Ruhe-Zustand auch in $U\|S_2$ durch $w$ erreichbar sein muss und
       somit auch in $S_2$. Daraus folgt, dass gilt $w\in \QT{}(S_2)$.
   \end{itemize}
 \end{proof}
 
-\begin{satz}[Full Abstractness für Quiescent-Semantik]
+\begin{satz}[Full Abstractness für Ruhe-Semantik]
   \label{satzQuiFullAbst}
   Seien $S_1$ und $S_2$ zwei \EIO{}s mit derselben Signatur. Dann gilt
   $S_1\QCRel S_2\Leftrightarrow S_1\QRel S_2$, insbesondere ist \QRel{} eine
@@ -233,7 +230,7 @@ Präkongruenz finden zu wollen.
   Präkongruenz.
 
   \glqq{}$\Leftarrow$\grqq{}: Nach Definition gilt, wenn
-  $\varepsilon\in\QT{}(S)$, ist ein Quiescent-Zustand durch ein $\tau$
+  $\varepsilon\in\QT{}(S)$, ist ein Ruhe-Zustand durch ein $\tau$
   erreichbar in $S$. Somit impliziert $S_1\QRel S_2$, dass
   $\varepsilon\in\QT{}_2$ gilt, wenn $ \varepsilon\in\QT{}_1$. Dadurch folgt
   ebenfalls, dass $S_1\QBRel S_2$ gilt. Somit folgt aus $S_1\QRel S_2$ der
@@ -286,17 +283,15 @@ das folgende Korollar.
   U\|S_1\QBRel U\|S_2$ für alle Partner $U$.
 \end{kor}
 
-\section{Hiding für Quiescent}
+\section{Hiding für Ruhe}
 
 Wir wollen nun auch hier die Auswirkungen der Internalisierung von Aktionen auf
 unsere Verfeinerungsrelationen untersuchen.\\
 Diese Betrachtung ist hier jedoch nicht so einfach wie für Errors, da durch das
-Hiding neue Quiescent-Zustände entstehen können. Die neue Menge der
-Quiescent-Zustände sieht dann wie folgt aus: $Qui/\{x_1,x_2,\dots ,x_n\} =
-\{q\in Q\mid q\in K/\{x_1,x_2,\dots ,x_n\}\vee \exists p\in K/\{x_1,x_2,\dots
-,x_n\}:q \overset{\tau}{\Rightarrow} p\}$ mit
-$K/\{x_1,x_2,\dots ,x_n\}=\{q\in Q\mid q \overset{x}{\rightarrow}\wedge x\in
-\{x_1,x_2,\dots ,x_n\}\wedge \forall a\in O\backslash\{x_1,x_x,\dots ,x_n\}: q
-\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\}$.
+Hiding neue Ruhe-Zustände entstehen können. Die neue Menge der
+Ruhe-Zustände sieht dann wie folgt aus: $Qui/\{x_1,x_2,\dots ,x_n\}=\{q\in
+  Q\mid q \overset{x}{\rightarrow}\wedge \; x\in \{x_1,x_2,\dots ,x_n\}\wedge
+\forall \alpha\in (O\cup\{\tau\})\backslash\{x_1,x_x,\dots ,x_n\}: q
+\overset{\alpha}{\not{\hspace{-0.1cm}\rightarrow}}\}$.
 
 
