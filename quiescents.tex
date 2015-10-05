@@ -19,11 +19,13 @@ eine interne Aktion haben als ruhig an.
 \end{Def}
 
 Für die Erreichbarkeit verwenden wir wie im letzten Kapitel wieder den
-optimistischen Ansatz der lokalen Erreichbarkeit für die Errors. Da Ruhe keine
-unabwendbaren Fehler sein müssen, sondern durch einen
-Input reparierbar sind, sagen wir, dass diese erst erreichbar sind, wenn sie
-durch eine interne Aktion zu erreichen sind. Also eher einen
-hyper-optimistischen Erreichbarkeitsbegriff.
+optimistischen Ansatz der lokalen Erreichbarkeit für die Errors. Ruhe ist kein
+unabwendbaren Fehler, sondern durch einen Input reparierbar werden. Somit ist
+ein Ruhe-Zustand als nicht so schlimmer Fehler anzusehen wie ein Error und
+deshalb können wir unseren Erreichbarkeitsbegriff für Ruhe weiter einschränken,
+so dass die Ruhe-Zustände erst erreichbar sind, wenn sie durch eine interne
+Aktion zu erreichen sind. Also eher einen hyper-optimistischen
+Erreichbarkeitsbegriff.
 
 \begin{Def}[error- und ruhefreie Kommunikation]
   Zwei \EIO{}s $S_1$ und $S_2$ \emph{kommunizieren gut}, wenn in ihrer
