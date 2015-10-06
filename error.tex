@@ -640,9 +640,11 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   das Verbergen von Outputs neue Errors entstehen. Somit folgt die Behauptung.
 \end{proof}
 
-\begin{satz}[Präkongurenz bzgl. Interalisierungsoperator]
+\begin{satz}[Präkongurenz bzgl. Interalisierung]
+  \label{satzPraeInternalisierung}
   Seinen $S_1$ und $S_2$ zwei \EIO{}s für die $S_1\ERel S_2$ gilt, somit gilt
-  auch $(S_1/\{x_1,x_2,\dots ,x_n\})\ERel (S_2/\{x_1,x_2,\dots ,x_n\})$.
+  auch $(S_1/\{x_1,x_2,\dots ,x_n\})\ERel (S_2/\{x_1,x_2,\dots ,x_n\})$. Somit
+  ist also \ERel{} eine Präkongruenz bezüglich $\cdot /\cdot$.
 \end{satz}
 
 \begin{proof}
@@ -688,8 +690,8 @@ nachbilden.
 \end{Def}
 
 Wir wissen aus~\ref{propPraekongruenz}, dass \ERel{} eine Präkongruenz
-bezüglich $\cdot\|\cdot$ ist, und aus~\ref{propIntrPrae}, dass \ERel{} auch eine
-Präkongruenz bezüglich $\cdot/\cdot$ ist. Da sich nach
+bezüglich $\cdot\|\cdot$ ist, und aus~\ref{satzPraeInternalisierung}, dass
+\ERel{} auch eine Präkongruenz bezüglich $\cdot/\cdot$ ist. Da sich nach
 Definition~\ref{defIntParal} die Parallelkomposition mit Internalisierung nur
 aus diesen Operatoren zusammensetzt, erhalten wir das folgende Korollar.
 

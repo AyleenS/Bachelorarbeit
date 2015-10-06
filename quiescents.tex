@@ -14,8 +14,8 @@ eine interne Aktion haben als ruhig an.
   Ein \emph{Ruhe-Zustand} ist ein Zustand in einem \EIO{} der keine
   Outputs zulässt und keine Transitions mit $\tau$ besitzt.\\
   Somit ist die Menge der Ruhe-Zustände in einem \EIO{} wie folgt formal
-  definiert: $Qui:=\left\{q\in Q\mid \forall \alpha\in (O\cup \{\tau\}): q
-  \overset{\alpha}{\not{\hspace{-0.1cm}\rightarrow}}\right\}$.
+  definiert: $Qui:=\big\{q\in Q\mid \forall \alpha\in (O\cup \{\tau\}): q
+  \overset{\alpha}{\not{\hspace{-0.1cm}\rightarrow}}\big\}$.
 \end{Def}
 
 Für die Erreichbarkeit verwenden wir wie im letzten Kapitel wieder den
@@ -68,14 +68,13 @@ Anwendung käme.
   Sei $S$ ein \EIO{}.
   \begin{itemize}
     \item Die Menge der \emph{Errortraces} ist wie in~\ref{DefETEL} definiert.
-    \item Die Menge der \emph{Ruhetraces} von $S$ ist $\QT{}(S) := \StQT{}(S)$.
+    \item Die Menge der \emph{Ruhetraces} von $S$ ist $\QT{}(S) :=
+      \StQT{}(S)\cup \ET{}(S)$.
     \item Die \emph{ruhe-geflutete Sprache} von $S$ ist
-      $\QL{}(S):=L(S)\cup \ET{}(S)$ und entspricht somit der error-gefluteten
-      Sprache $\EL{}(S)$ in~\ref{DefETEL}.
+      $\QL{}(S):=L(S)\cup \ET{}(S)\cup \QT{}(S)$.
   \end{itemize}
   Für zwei \EIO{}s $S_1, S_2$ mit der gleichen Signatur schreiben wir
-  $S_1\QRel S_2$, wenn $\ET{}(S_1)\subseteq \ET{}(S_2)$,
-  $\QT{}(S_1)\subseteq \QT{}(S_2)$ und $\QL{}(S_1)\subseteq \QL{}(S_2)$ gilt.
+  $S_1\QRel S_2$, wenn $S_1\ERel S_2$ und $\QL{}(S_1)\subseteq \QL{}(S_2)$ gilt.
 \end{Def}
 
 Da \QT{} der Menge \StQT{} entspricht, hätten wir die Definition nicht
