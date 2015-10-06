@@ -79,21 +79,16 @@ Anwendung käme.
 
 Da \QT{} der Menge \StQT{} entspricht, hätten wir die Definition nicht
 unbedingt benötigt, jedoch für eine einheitliche Notation der Kapitel ist die
-neue Bezeichnung sinnvoll. Ebenso bezeichnen wir hier für die bessere
-Unterscheidung in den Kapiteln die Sprache \EL{} mit \QL{}.\\
-Da \QT{} nur die strickten Ruhetraces enthält, also die Traces, die im
-Automaten vorhanden sind und zu einem Ruhe-Zustand führen, gilt
-$\QT{}\subseteq L\subseteq\QL{}$. Somit musste \QT{} nicht mehr explizit in die
-Definition von \QL{} aufgenommen werden und trotzdem ist jeder Traces, der in
-\QT{} möglich ist auch in der gefluteten Sprache enthalten.
+neue Bezeichnung sinnvoll. Da die Flutung der Informationsvermischung dient,
+hat sich hier die Sprache \QL{} bezüglich der Sprache \EL{} um \QT{} erweitert.\\
 
 \begin{satz}[Error- und Ruhe-Semantik für Parallelkompositonen]
   \label{satzQuiSemantik}
   Für zwei komponierbare \EIO{}s $S_1, S_2$ und $S_{12} = S_1\|S_2$ gilt:
   \begin{enumerate}
     \item $\ET{}_{12} = \cont{}(\prune{}((\ET{}_1\|\QL{}_2)\cup (\QL{}_1\|\ET{}_2)))$,
-    \item $\QT{}_{12} = (\QT{}_1\|\QT{}_2)$,
-    \item $\QL{}_{12} = (\QL{}_1\|\QL{}_2)\cup \ET{}_{12}$.
+    \item $\QT{}_{12} = (\QT{}_1\|\QT{}_2)\cup \ET{}_{12}$,
+    \item $\QL{}_{12} = (\QL{}_1\|\QL{}_2)\cup \ET{}_{12}\cup \QT{}_{12}$.
   \end{enumerate}
 \end{satz}
 
@@ -107,38 +102,37 @@ Definition von \QL{} aufgenommen werden und trotzdem ist jeder Traces, der in
   Satz~\ref{satzErrorSemanik}.
 
   2. ``$\subseteq$'':\\
-  Wir betrachten $w\in \StQT{}_{12}$ und versuchen dessen
-  Zugehörigkeit zur rechten Menge zu zeigen. Aufgrund von
-  Definition~\ref{DefRuhetraces} wissen wir es gilt $(q_{01},q_{02})
-  \overset{w}{\Rightarrow} (q_1,q_2)$ mit $(q_1,q_2)\in Qui_{12}$. Durch
-  Projektion erhalten wir $q_{01} \overset{w_1}{\Rightarrow} q_1$ und $q_{02}
-  \overset{w_2}{\Rightarrow} q_2$ mit $w\in w_1\|w_2$. Aus $(q_1,q_2)\in
-  Qui_{12}$ können wir folgern, dass bereits $q_1\in Qui_1$ und $q_2\in
-  Qui_2$ gilt. Somit gilt $w_1\in \StQT{}_1\subseteq \QT{}_1$ und $w_2\in
-  \StQT{}_2\subseteq \QT{}_2$. Daraus folgt dann $w\in \QT{}_1\|\QT{}_2$ und somit ist $w$
-  in der rechten Seiten der Gleichung enthalten.
-
-  2. ``$\supseteq$'':\\
-  Für diese Inklusionsrichtung betrachten wir ein Element $w\in \QT{}_1\|\QT{}_2$ und
-  zeigen, dass es in der linken Menge enthalten ist. Da $\QT{}_i = \StQT{}_i$ gilt,
-  existieren $w_1$ und $w_2$ für die gilt $q_{01} \overset{w_1}{\Rightarrow}
-  q_1\in Qui_1$ und $q_{02} \overset{w_2}{\Rightarrow} q_2\in Qui_2$ mit $w\in
-  w_1\| w_2$. Da für die Zustände $q_1$ und $q_2$ die Zugehörigkeit zur
-  Ruhe Menge gilt, können wir folgern, dass der aus ihnen zusammengesetzte
-  Zustand in der Parallelkomposition ebenfalls keine Outputs zulässt. Somit
-  gilt also für die Komposition $(q_{01},q_{02}) \overset{w}{\Rightarrow}
-  (q_1,q_2)\in Qui_{12}$ und dadurch ist $w$ in der linken Seite der Gleichung
+  Falls wir als $w$ in der linken Menge eines aus $\ET{}_{12}$ wählen, ist
+  diese auf jeden Fall in der rechten Menge enthalten. Somit betrachten wir ein
+  $w\in \StQT{}_{12}$ und versuchen dessen Zugehörigkeit zur rechten Menge zu
+  zeigen. Aufgrund von Definition~\ref{DefRuhetraces} wissen wir es gilt
+  $(q_{01},q_{02}) \overset{w}{\Rightarrow} (q_1,q_2)$ mit $(q_1,q_2)\in
+  Qui_{12}$. Durch Projektion erhalten wir $q_{01} \overset{w_1}{\Rightarrow}
+  q_1$ und $q_{02} \overset{w_2}{\Rightarrow} q_2$ mit $w\in w_1\|w_2$. Aus
+  $(q_1,q_2)\in Qui_{12}$ können wir folgern, dass bereits $q_1\in Qui_1$ und
+  $q_2\in Qui_2$ gilt. Somit gilt $w_1\in \StQT{}_1\subseteq \QT{}_1$ und
+  $w_2\in \StQT{}_2\subseteq \QT{}_2$. Daraus folgt dann $w\in
+  \QT{}_1\|\QT{}_2$ und somit ist $w$ in der rechten Seiten der Gleichung
   enthalten.
 
+  2. ``$\supseteq$'':\\
+  Hier ist wie bei der anderen anderen Inklusionsrichtung ein $w\in \ET{}_{12}$
+  trivialer weise in der linken Menge enthalten. Somit betrachten wir für diese
+  Inklusionsrichtung ein Element $w\in \QT{}_1\|\QT{}_2$ und zeigen, dass es in
+  der linken Menge enthalten ist. Da $\QT{}_i = \StQT{}_i$ gilt, existieren
+  $w_1$ und $w_2$ für die gilt $q_{01} \overset{w_1}{\Rightarrow} q_1\in Qui_1$
+  und $q_{02} \overset{w_2}{\Rightarrow} q_2\in Qui_2$ mit $w\in w_1\| w_2$. Da
+  für die Zustände $q_1$ und $q_2$ die Zugehörigkeit zur Ruhe Menge gilt,
+  können wir folgern, dass der aus ihnen zusammengesetzte Zustand in der
+  Parallelkomposition ebenfalls keine Outputs zulässt. Somit gilt also für die
+  Komposition $(q_{01},q_{02}) \overset{w}{\Rightarrow} (q_1,q_2)\in Qui_{12}$
+  und dadurch ist $w$ in der linken Seite der Gleichung enthalten.
+
   3.:\\
-  Der Beweis diese Punktes entspricht dem Beweis von Punkt 2.\ im Beweis von
-  Satz~\ref{satzErrorSemanik}, da \QL{} der error-gefluteten Sprache \EL{}
-  entspricht.
+  Dieser Beweis ist so nicht möglich, siehe dazu anderen Branch. %TODO in
+  %diesen Branch schreiben (möglicherweise QT\subseteq L\cup ET
 \end{proof}
 
-$\QT{}_{12}$ ist hier in $\QL{}_{12}$ enthalten, da wie wir bereits oben festgestellt
-haben $\QT{}_i\subseteq \QL{}_i$ für $i=1,2$ gilt. Somit gilt auch
-$(\QT{}_1\|\QT{}_2)\subseteq (\QL{}_1\|\QL{}_2)$.\\
 Die folgende Proposition ist eine direkte Folgerung aus dem letzten Satz.
 Jedoch ist es eine wichtige Feststellung für die weiteren Verlauf die gröbste
 Präkongruenz finden zu wollen.
