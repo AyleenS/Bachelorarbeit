@@ -212,4 +212,15 @@ deshalb an~\cite{Schlosser2012BA} als Quelle halten.
 
 Die Menge hinter dem Internalisierungsoperator ist nicht auf Outputs
 beschränkt. Jedoch hat jedes Element, das in dieser Menge enthalten ist und
-kein Output des Systems ist, keine Auswirkungen auf das neue Transitionssystem.
+kein Output des Systems ist, keine Auswirkungen auf das neue
+Transitionssystem.\\
+In~\cite{Vogler2014EIO} wurden die Parallelkomposition nur mit Verbergen der
+synchronisierten Aktionen betrachtet. Diese Parallelkomposition können wir nun
+mit dem Internalisierungsoperator durch Hiding der synchronisierten Aktionen
+nachbilden.
+
+\begin{Def}[Parallelkomposition mit Internalisierung]
+  \label{defIntParal}
+  Seinen $S_1$ und $S_2$ komponierbare \EIO{}s, dann ist
+  $S_1|S_2=(S_1\|S_2)/Synch(S_1,S_2)$.
+\end{Def}

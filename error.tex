@@ -623,7 +623,7 @@ wir das folgende Korollar.
 Wir wollen nun untersuchen, was für Auswirkungen Hiding auf unsere
 Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
 
-\begin{prop}[Error Basisrelation bzgl. Internalisierungsoperator]
+\begin{prop}[Error-Basisrelation bzgl. Internalisierung]
   Wenn $S_1\EBRel S_2$ gilt, dann folgt daraus, dass auch $(S_1/\{x_1,x_2,\dots
   ,x_n\})\EBRel (S_2/\{x_1,x_2,\dots ,x_n\})$ gilt.
 \end{prop}
@@ -678,23 +678,12 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   Auswirkungen auf die Teilmengenbeziehung hat.
 \end{proof}
 
-In~\cite{Vogler2014EIO} wurden die Parallelkomposition nur mit Verbergen der
-synchronisierten Aktionen betrachtet. Diese Parallelkomposition können wir nun
-mit dem Internalisierungsoperator durch Hiding der synchronisierten Aktionen
-nachbilden.
-
-\begin{Def}[Parallelkomposition mit Internalisierung]
-  \label{defIntParal}
-  Seinen $S_1$ und $S_2$ komponierbare \EIO{}s, dann ist
-  $S_1|S_2=(S_1\|S_2)/Synch(S_1,S_2)$.
-\end{Def}
-
 Wir wissen aus~\ref{propPraekongruenz}, dass \ERel{} eine Präkongruenz
 bezüglich $\cdot\|\cdot$ ist, und aus~\ref{satzPraeInternalisierung}, dass
 \ERel{} auch eine Präkongruenz bezüglich $\cdot/\cdot$ ist. Da sich nach
 Definition~\ref{defIntParal} die Parallelkomposition mit Internalisierung nur
 aus diesen Operatoren zusammensetzt, erhalten wir das folgende Korollar.
 
-\begin{kor}[Präkongurenz bzgl. Präkongurenz mit Internalisierung]
+\begin{kor}[Präkongurenz mit Internalisierung]
   \ERel{} ist eine Präkongruenz bezüglich $\cdot|\cdot$.
 \end{kor}
