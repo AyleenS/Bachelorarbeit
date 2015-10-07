@@ -307,16 +307,17 @@ Wir wollen nun auch hier die Auswirkungen der Internalisierung von Aktionen auf
 unsere Verfeinerungsrelationen untersuchen. Es werden Outputs in interne
 Handlungen umgewandelt. Da wir jedoch bei unseren Ruhe-Zuständen auch $\tau$
 Übergänge verboten haben, verändert sich nichts an der Menge der ruhigen
-Zustände.\\
-
-\begin{prop}[Ruhe-Basisrelation bzgl. Internalisierung]
-  Wenn $S_1 \QBRel S_2$ gilt, dann folgt daraus, dass auch
-  $(S_1/\{x_1,x_x,\dots ,x_n\})\QBRel (S_2/\{x_1,x_x,\dots ,x_n\})$.
-\end{prop}
-
-\begin{proof}
-  %TODO
-\end{proof}
+Zustände. Da wir die Erreichbarkeit von Ruhe-Zuständen nur mittels interner
+Aktionen betrachten, können durch das verbergen von Outputs neue erreichbare
+Ruhe-Zustände hinzu kommen. Somit ist es nicht möglich hier eine analoge
+Proposition zu~\ref{propErBaIn} zu formulieren. Wir können zwar daraus
+schließen, dass ale Ruhe-Zustände die vor dem Hiding zu erreichen waren mit
+$\tau$s auch danach noch erreichbar sind, jedoch können durch die
+Internalisierung neue erreicht werden, die möglicherweise in dem anderen
+Transitionssystem nicht erreicht werden können.\\
+Da wir jedoch für die Präkongruenz \QRel{} noch wissen über die
+Teilmengenbeziehungen der Traces haben, können wir einen Satz analog
+zu~\ref{satzPraeInternalisierung} formulieren.
 
 \begin{satz}[Präkongurenz bzgl. Internalisierung]
   \label{satzPraeInterQui}
@@ -326,7 +327,24 @@ Zustände.\\
 \end{satz}
 
 \begin{proof}
-  %TODO
+  Da $S_1\QRel S_2$ gilt, wissen wir, dass $S_1\ERel S_2$ und $\QT{}_1\subseteq
+  \QT{}_2$ gilt. Wir wissen bereits aufgrund von
+  Satz~\ref{satzPraeInternalisierung}, dass daraus $(S_1/\{x_1,x_x,\dots
+  ,x_n\})\ERel (S_2/\{x_1,x_x,\dots ,x_n\})$ folgt. Ebenso wie im Beweis zu
+  Satz~\ref{satzPraeInternalisierung} gehen wir hier davon aus, dass
+  $X\subseteq O$ gilt. Für jeden Trace aus $\QT{}_1$ können wir einen passenden in
+  $\QT{}(S_1/X)$ finden und ebenso für das Transitionssystem $S_2$. Die
+  Argumentation läuft hierfür analog zum Beweis von
+  Satz~\ref{satzPraeInternalisierung}. Das oben erwähnte Problem mit der neuen
+  Erreichbarkeit von Ruhe-Zuständen ist damit auch bereits behandelt. Es
+  entstehen keine neuen ruhigen Zustände, sondern durch das verbergen eines
+  Outputs, der direkt zu einem Ruhe-Zustand führt, wird von dem ursprünglichen
+  Zustand der Ruhe-Zustand durch ein $\tau$ erreichbar. Somit wir der
+  Ruhetrace nur um den zu verbergenden Output gekürzt, was bereits dem
+  entspricht einen passenden Trace dafür in $\QT{}(S_i/X)$ zu finden. Somit gilt
+  also auch $\QT{}(S_1/X)\subseteq \QT{}(S_2/X)$. Daraus folgt dann, dass die
+  Relation \QRel{} trotz Hiding erhalten ist und somit das Hiding bezüglich
+  dieser Relation eine Präkongruenz ist.
 \end{proof}
 
 In Definition~\ref{defIntParal} wurde mit Hilfe des Internalisierungsoperator
