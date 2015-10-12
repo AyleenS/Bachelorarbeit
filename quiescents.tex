@@ -20,12 +20,11 @@ eine interne Aktion haben als ruhig an.
 
 Für die Erreichbarkeit verwenden wir wie im letzten Kapitel wieder den
 optimistischen Ansatz der lokalen Erreichbarkeit für die Errors. Ruhe ist kein
-unabwendbaren Fehler, sondern durch einen Input reparierbar werden. Somit ist
-ein Ruhe-Zustand als nicht so schlimmer Fehler anzusehen wie ein Error und
+unabwendbaren Fehler, sondern kann durch einen Input reparierbar werden. Somit ist
+ein Ruhe-Zustand als nicht so \glqq{}schlimmer\grqq{} Fehler anzusehen wie ein Error und
 deshalb können wir unseren Erreichbarkeitsbegriff für Ruhe weiter einschränken,
 so dass die Ruhe-Zustände erst erreichbar sind, wenn sie durch eine interne
-Aktion zu erreichen sind. Also eher einen hyper-optimistischen
-Erreichbarkeitsbegriff.
+Aktion zu erreichen sind.
 
 \begin{Def}[error- und ruhefreie Kommunikation]
   Zwei \EIO{}s $S_1$ und $S_2$ \emph{kommunizieren gut}, wenn in ihrer
@@ -311,7 +310,7 @@ Zustände. Da wir die Erreichbarkeit von Ruhe-Zuständen nur mittels interner
 Aktionen betrachten, können durch das verbergen von Outputs neue erreichbare
 Ruhe-Zustände hinzu kommen. Somit ist es nicht möglich hier eine analoge
 Proposition zu~\ref{propErBaIn} zu formulieren. Wir können zwar daraus
-schließen, dass ale Ruhe-Zustände die vor dem Hiding zu erreichen waren mit
+schließen, dass alle Ruhe-Zustände die vor dem Hiding zu erreichen waren mit
 $\tau$s auch danach noch erreichbar sind, jedoch können durch die
 Internalisierung neue erreicht werden, die möglicherweise in dem anderen
 Transitionssystem nicht erreicht werden können.\\

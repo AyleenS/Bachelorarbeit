@@ -4,13 +4,21 @@ Der Anfang dieser Arbeit orientiert sich sehr stark an~\cite{Vogler2014EIO}.
 Jedoch wird hier darauf verzichtet die Inputmengen Der
 Error-IO-Transitionssysteme (\EIO{}s) als disjunkt anzunehmen und alle
 Definitionen und Sätze werden erst einmal ohne das verbergen der
-synchronisierten Aktionen betrachtet. Anschießend, wird jedoch die Auswirkung
-von Hiding auf unsere Struktur untersucht und somit das Verbergen nachgebildet.
-Diese Art der Betrachtung der \EIO{}s wurde auch bereits
-in~\cite{Schlosser2012BA} gewählt, jedoch wurde dieser Arbeit nicht als direkte
-Quelle genutzt, bis auf den Abschnitt des Hidings. Die Feststellungen in dem
-Definitions-Kapitel und der Kapitel über Errors stimmen somit überein, jedoch
-wurden alle Beweise unabhängig davon neu geführt.\\
+synchronisierten Aktionen betrachtet.\\
+Dadurch das die synchronisierten Aktionen nicht verborgen werden, haben wir hier
+ein Modell, mit dem nicht nur zwei Systeme miteinander kommunizieren können
+sondern beliebig viele. Ein Output eines Systems ist somit ein Art Multicast.
+Jedes System, dass diesen Output als Input haben kann, empfängt ihn somit auch,
+da bei jeder Komposition der Output weitergeleitet wird an andere Systeme.
+Systeme, die jedoch den Output nicht als Input haben können, werden von dieser
+Nachricht nicht beeinträchtigt.\\
+Anschießend, wird jedoch die Auswirkung von Hiding auf unsere Struktur
+untersucht und somit das Verbergen nachgebildet. Diese Art der Betrachtung der
+\EIO{}s wurde auch bereits in~\cite{Schlosser2012BA} gewählt, jedoch wurde
+dieser Arbeit nicht als direkte Quelle genutzt, bis auf den Abschnitt des
+Hidings. Die Feststellungen in dem Definitions-Kapitel und dem Kapitel über
+Errors stimmen somit überein, jedoch wurden alle Beweise unabhängig davon neu
+geführt.\\
 Wir wählen in dieser Arbeit einen optimistischen Ansatz für die
 Erreichbarkeit von Error-Zuständen. Ein Error gilt hier als erreichbar, wenn er
 lokal erreicht werden kann, d.h.\ durch lokale Aktionen. Die Menge, bestehend
@@ -28,9 +36,9 @@ kann, und einen pessimistischen Ansatz, bei dem ein Zustand als erreichbar gilt,
 sobald es eine Folge an Inputs und Outputs gibt, mit denen der Zustand vom
 Startzustand aus erreicht werden kann. Der hyper-optimistische Ansatz wird in
 dieser Arbeit für die Erreichbarkeit von Quiescents verwendet.\\
-Wir versuche bei allen Ansätzen eine gröbste Präkongruenz zu finden, die in der
-jeweiligen Basisrelation enthalten ist und die eine Präkongruenz bezüglich der
-Parallelkomposition ist.
+Wir versuche bei allen betrachteten Zustandsmengen eine gröbste Präkongruenz zu
+finden, die in der jeweiligen Basisrelation enthalten ist und die eine
+Präkongruenz bezüglich der Parallelkomposition ist.
 
 \scriptsize\textcolor{lgray}{TODO: erweitern/umformulieren (bis jetzt nur Teile aus anderen
 Kapitel in Einleitung verschoben)}

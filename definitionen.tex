@@ -1,20 +1,10 @@
 \chapter{Definitionen und Notationen}
 
 Die Definitionen dieses Kapitels sind größtenteils aus~\cite{Vogler2014EIO}
-übernommen. Hierbei handelt es sich um die Grundlagen der Transitionssysteme,
-mit denen hier gearbeitet werden soll. Jedoch wurde angepasst, dass für die
-Parallelkomposition die Input-Aktionen der \EIO{}s nicht disjunkt sein müssen.
-Dies wäre eine unnötige Einschränkung. Die nicht mit den entsprechenden Outputs
-synchronisierten Inputs der zu komponierenden \EIO{}s werden als Inputs der
-Parallelkomposition übernommen. Zusätzlich verzichten wir hier im Gegensatz
-zu~\cite{Vogler2014EIO} auf das verbergen der synchronisierten Aktionen.\\
-Dadurch das die synchronisierten Aktionen nicht verborgen werden, haben wir hier
-ein Modell, mit dem nicht nur zwei Systeme miteinander kommunizieren können
-sondern beliebig viele. Ein Output eines Systems ist somit ein Art Multicast.
-Jedes System, dass diesen Output als Input haben kann, empfängt ihn somit auch,
-da bei jeder Komposition der Output weitergeleitet wird an andere Systeme.
-Systeme, die jedoch den Output nicht als Input haben können, werden von dieser
-Nachricht nicht beeinträchtigt.
+übernommen mit den in der Einleitung erwähnten Abänderungen. Hierbei handelt es
+sich um die Grundlagen der Transitionssysteme, mit denen hier gearbeitet werden
+soll. Die nicht mit den entsprechenden Outputs synchronisierten Inputs der zu
+komponierenden \EIO{}s werden als Inputs der Parallelkomposition übernommen.
 
 \section{Error-IO-Transitionssystem}
 Die hier betrachteten \EIO{}s sind Systeme, deren Übergänge mit Inputs und
@@ -166,7 +156,7 @@ _i}=w_i$ für $i=1,2$. Umgekehrt sind zwei Abläufe von $S_1$ und $S_2$ der Form
 $p_i \overset{w_i}{\Rightarrow} q_i$ mit $w| _{\Sigma _i}= w_i$ für $i=1,2$,
 Projektionen von genau einem Ablauf in $S_{12}$ der Form $(p_1,p_2)
 \overset{w}{\Rightarrow} (q_1.q_2)$. Es ist dafür nötig, dass die Abläufe der
-beiden Systeme und die Systeme selbst komponierbar sind. Dadurch, dass wir dann
+beiden Systeme und die Systeme selbst komponierbar sind. Dadurch, dass wir
 ein $w$ wählen, dass projiziert auf die einzelnen Alphabete die jeweiligen
 Wörter ergibt, können wir auch sagen, dass nur ein Ablauf möglich ist. Daraus
 ergibt sich das folgende Lemma.
@@ -177,9 +167,6 @@ ergibt sich das folgende Lemma.
   L(S_1)\|L(S_2).\]
 \end{lem}
 
-Dieses Lemma ist bereits in~\cite{Vogler2014EIO} enthalten. Hier benötigen wir
-jedoch keine Erwähnung der Sprache für die Parallelkomposition mit Verbergen.
-
 \section{Hiding}
 
 Hiding wurde bereist in~\cite{Chilton2013} auf Traces betrachtet. Da wir hier
@@ -188,7 +175,7 @@ wir auch Hiding aus der Sicht dieser Systeme definieren, wie
 in~\cite{Schlosser2012BA}. Eine ähnliche Betrachtung für Hiding bei \EIO{}s
 wurde auch bereits in~\cite{Lynch1996} umgesetzt. Dort werden nur Output
 Aktionen internalisiert, jedoch gibt es eine Menge an internen Aktionen und
-nicht nur eine. Das Hiding wir durch einen Internalisierungsoperator
+nicht nur eine. Das Hiding wird durch einen Internalisierungsoperator
 umgesetzt. Es sollen dadurch Aktionen versteckt werden können, d.h.\ durch
 $\tau$s ersetzt werden. In~\cite{Chilton2013} ist es in der Definition des
 Hidings möglich Outputs und Inputs zu verstecken. Durch das verstecken von
@@ -200,9 +187,10 @@ deshalb an~\cite{Schlosser2012BA} als Quelle halten.
 
 \begin{Def}[Internalisierungsoperator]
   Für ein \EIO{} $S=(Q,I,O,\delta ,q_0.E)$ ist $S/\{x_1,x_2,\dots ,x_n\}$, mit
-  $x_1,x_2, \dots , x_n\in O\cup\mathrm{andere}~\mathrm{Aktionen}\backslash
-  (\Sigma\cup \tau)$ und dem \emph{Internalisierungsoperator} $\cdot /\cdot$,
-  definiert als $S'=(Q,I,O',\delta ',q_0,E)$ mit:
+  %$x_1,x_2, \dots , x_n\in O\cup\mathrm{andere}~\mathrm{Aktionen}\backslash
+  %(\Sigma\cup \tau)$ und
+  dem \emph{Internalisierungsoperator} $\cdot /\cdot$,
+  definiert als $S'=(Q,I,O',\delta ',\linebreak q_0,E)$ mit:
   \begin{itemize}
     \item $O'=O\backslash \{x_1,x_2,\dots ,x_n\}$
     \item $\delta '=(\delta\cup\{(q,\tau ,q')\mid (q,x,q')\in\delta
@@ -218,7 +206,9 @@ Transitionssystem.\\
 In~\cite{Vogler2014EIO} wurden die Parallelkomposition nur mit Verbergen der
 synchronisierten Aktionen betrachtet. Diese Parallelkomposition können wir nun
 mit dem Internalisierungsoperator durch Hiding der synchronisierten Aktionen
-nachbilden.
+nachbilden. Da diese synchronisierten Aktionen in der Parallelkomposition dieser
+Arbeit als Outputs des Gesamtsystems übernommen werden, werden dadurch auch
+alle synchronisierten Aktionen verborgen.
 
 \begin{Def}[Parallelkomposition mit Internalisierung]
   \label{defIntParal}
