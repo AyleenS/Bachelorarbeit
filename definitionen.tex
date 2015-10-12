@@ -187,22 +187,23 @@ deshalb an~\cite{Schlosser2012BA} als Quelle halten.
 
 \begin{Def}[Internalisierungsoperator]
   Für ein \EIO{} $S=(Q,I,O,\delta ,q_0.E)$ ist $S/\{x_1,x_2,\dots ,x_n\}$, mit
-  %$x_1,x_2, \dots , x_n\in O\cup\mathrm{andere}~\mathrm{Aktionen}\backslash
-  %(\Sigma\cup \tau)$ und
   dem \emph{Internalisierungsoperator} $\cdot /\cdot$,
   definiert als $S'=(Q,I,O',\delta ',\linebreak q_0,E)$ mit:
   \begin{itemize}
-    \item $O'=O\backslash \{x_1,x_2,\dots ,x_n\}$
+    \item $O'=O\backslash \{x_1,x_2,\dots ,x_n\}$,
     \item $\delta '=(\delta\cup\{(q,\tau ,q')\mid (q,x,q')\in\delta
       ,x\in(\{x_1,x_2,\dots ,x_n\}\cap O)\})\backslash \{(q,x,q')\mid
-      x\in(\{x_1,x_2,\dots ,x_n\}\cap O)\}$
+      x\in(\{x_1,x_2,\dots ,x_n\}\cap O)\}$,
+    \item $x_i\neq\tau\forall i\in\{1,2,\dots n\}$.
   \end{itemize}
 \end{Def}
 
 Die Menge hinter dem Internalisierungsoperator ist nicht auf Outputs
 beschränkt. Jedoch hat jedes Element, das in dieser Menge enthalten ist und
 kein Output des Systems ist, keine Auswirkungen auf das neue
-Transitionssystem.\\
+Transitionssystem. Jedoch kann es sinnvoll sein die Möglichkeit zu haben dort
+Aktionen aufnehmen zu können, die nicht in den Aktionen das betrachteten
+Systems enthalten sind.\\
 In~\cite{Vogler2014EIO} wurden die Parallelkomposition nur mit Verbergen der
 synchronisierten Aktionen betrachtet. Diese Parallelkomposition können wir nun
 mit dem Internalisierungsoperator durch Hiding der synchronisierten Aktionen
