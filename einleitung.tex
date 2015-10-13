@@ -10,37 +10,37 @@ ein Modell, mit dem nicht nur zwei Systeme miteinander kommunizieren können
 sondern beliebig viele. Ein Output eines Systems ist somit ein Art Multicast.
 Jedes System, dass diesen Output als Input haben kann, empfängt ihn somit auch,
 da bei jeder Komposition der Output weitergeleitet wird an andere Systeme.
-Systeme, die jedoch den Output nicht als Input haben können, werden von dieser
-Nachricht nicht beeinträchtigt.\\
-Anschießend, wird jedoch die Auswirkung von Hiding auf unsere Struktur
-untersucht und somit das Verbergen nachgebildet. Diese Art der Betrachtung der
+Kann jedoch ein System den Output nicht als Input haben, wird dieses System von
+der Nachricht nicht beeinträchtigt.\\
+Anschießend, wird die Auswirkung von Hiding auf unsere Struktur
+untersucht und somit das Verbergen nachgebildet.\\
+Diese Art der Betrachtung der
 \EIO{}s wurde auch bereits in~\cite{Schlosser2012BA} gewählt, jedoch wurde
 dieser Arbeit nicht als direkte Quelle genutzt, bis auf den Abschnitt des
 Hidings. Die Feststellungen in dem Definitions-Kapitel und dem Kapitel über
 Errors stimmen somit überein, jedoch wurden alle Beweise unabhängig davon neu
 geführt.\\
-Wir wählen in dieser Arbeit einen optimistischen Ansatz für die
-Erreichbarkeit von Error-Zuständen. Ein Error gilt hier als erreichbar, wenn er
-lokal erreicht werden kann, d.h.\ durch lokale Aktionen. Die Menge, bestehend
-aus der internen Aktion $\tau$ und den Outputaktionen, bezeichnen wir hier als
-lokale Aktionen. Alle Elemente aus dieser Menge können ohne weiteres Zutun von
-außen ausgeführt werden. Somit kann nicht beeinflusst werden ob diese Übergänge
-genommen werden oder nicht. Es besteht also die Möglichkeit, dass das
-\EIO{} in einen Error-Zustände übergeht, sobald dieser lokal erreichbar ist.
-Diese Art der Erreichbarkeit von Zuständen wird auch in Kapitel 3
-von~\cite{Vogler2014EIO} behandelt.\\
+Wir wählen in dieser Arbeit einen optimistischen Ansatz für die Erreichbarkeit
+der jeweils betrachteten Zustände. Ein Zustand gilt hier als erreichbar, wenn
+er lokal erreicht werden kann, d.h.\ durch lokale Aktionen. Die Menge,
+bestehend aus der internen Aktion $\tau$ und den Outputaktionen, bezeichnen wir
+hier als lokale Aktionen. Alle Elemente aus dieser Menge können ohne weiteres
+Zutun von außen ausgeführt werden. Somit kann nicht beeinflusst werden ob diese
+Übergänge genommen werden oder nicht. Es besteht also die Möglichkeit, dass das
+\EIO{} in einen der betrachteten Zustände übergeht, sobald dieser lokal
+erreichbar ist. Diese Art der Erreichbarkeit von Zuständen wird auch in Kapitel
+3 von~\cite{Vogler2014EIO} behandelt.\\
 Neben dem hier betrachteten optimistischen Ansatz gibt es noch zwei weitere
 Ansätze in~\cite{Vogler2014EIO}. Einen hyper-optimistischen Ansatz, bei dem ein
 Zustand als erreichbar gilt, wenn er durch interne Aktionen erreicht werden
 kann, und einen pessimistischen Ansatz, bei dem ein Zustand als erreichbar gilt,
 sobald es eine Folge an Inputs und Outputs gibt, mit denen der Zustand vom
-Startzustand aus erreicht werden kann. Der hyper-optimistische Ansatz wird in
-dieser Arbeit für die Erreichbarkeit von Quiescents verwendet.\\
+Startzustand aus erreicht werden kann.\\
 Wir versuche bei allen betrachteten Zustandsmengen eine gröbste Präkongruenz zu
 finden, die in der jeweiligen Basisrelation enthalten ist und die eine
 Präkongruenz bezüglich der Parallelkomposition ist.
 
-\scriptsize\textcolor{lgray}{TODO: erweitern/umformulieren (bis jetzt nur Teile aus anderen
-Kapitel in Einleitung verschoben)}
+\scriptsize\textcolor{lgray}{TODO: erweitern/umformulieren (bis jetzt nur Teile
+aus anderen Kapitel in Einleitung verschoben)}
 
 \normalsize

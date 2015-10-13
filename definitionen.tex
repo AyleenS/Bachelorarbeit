@@ -132,14 +132,18 @@ beschriftet ist.
 Die Semantik der späteren Kapitel basiert darauf die jeweiligen Zustände, die
 zu Problemen führen, mit den Traces zu betrachten, mit denen man diesem
 Zustände erreicht. Um dies besser umsetzten zu können, definieren wir eine
-$\prune{}$-Funktion, die alle Outputs am Ende eines Traces entfernt. Zusätzlich
-werden Funktionen definiert, die die Traces beliebig fortsetzen.
+$\prune{}$-Funktion, die alle Outputs am Ende eines Traces entfernt. Da wir
+jedoch auch die Möglichkeit haben wollen nur gezielt einzelne Outputs am Ende
+eines Traces abzuscheiden, definieren mir noch eine \prunenew{}-Funktion
+Zusätzlich werden Funktionen definiert, die die Traces beliebig fortsetzen.
 
 \begin{Def}[Pruning- und Fortsetzungs-Funktion]
   Für ein \EIO{} $S$ definieren wir:
   \begin{itemize}
     \item $\prune{}:\Sigma ^*\rightarrow\Sigma ^*, w\mapsto u$, mit $w=uv,
       u=\varepsilon\vee u\in\Sigma ^*\cdot I$ und $v\in O^*$,
+    \item $\prunenew{}:\Sigma ^*\rightarrow\mathfrak{P}(\Sigma ^*), w\mapsto
+      \{u\mid \exists v\in O^*: w=uv\}$
     \item $\cont{}:\Sigma ^*\rightarrow\mathfrak{P}(\Sigma ^*),
       w\mapsto\{wu\mid u\in\Sigma ^*\}$,
     \item $\cont{}:\mathfrak{P}(\Sigma ^*)\rightarrow\mathfrak{P}(\Sigma ^*),
@@ -194,7 +198,7 @@ deshalb an~\cite{Schlosser2012BA} als Quelle halten.
     \item $\delta '=(\delta\cup\{(q,\tau ,q')\mid (q,x,q')\in\delta
       ,x\in(\{x_1,x_2,\dots ,x_n\}\cap O)\})\backslash \{(q,x,q')\mid
       x\in(\{x_1,x_2,\dots ,x_n\}\cap O)\}$,
-    \item $x_i\neq\tau\forall i\in\{1,2,\dots n\}$.
+    \item $x_i\neq\tau\;\forall i\in\{1,2,\dots n\}$.
   \end{itemize}
 \end{Def}
 

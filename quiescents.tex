@@ -19,17 +19,18 @@ eine interne Aktion haben als ruhig an.
 \end{Def}
 
 Für die Erreichbarkeit verwenden wir wie im letzten Kapitel wieder den
-optimistischen Ansatz der lokalen Erreichbarkeit für die Errors. Ruhe ist kein
-unabwendbaren Fehler, sondern kann durch einen Input reparierbar werden. Somit ist
-ein Ruhe-Zustand als nicht so \glqq{}schlimmer\grqq{} Fehler anzusehen wie ein Error und
-deshalb können wir unseren Erreichbarkeitsbegriff für Ruhe weiter einschränken,
-so dass die Ruhe-Zustände erst erreichbar sind, wenn sie durch eine interne
-Aktion zu erreichen sind.
+optimistischen Ansatz der lokalen Erreichbarkeit. Ruhe ist kein
+unabwendbaren Fehler, sondern kann durch einen Input reparierbar werden. Somit
+ist ein Ruhe-Zustand als nicht so \glqq{}schlimmer\grqq{} Fehler anzusehen wie
+ein Error. Somit ist für uns ein Ruhe-Zustand zwar ebenso wie ein Error-Zustand
+erreichbar sobald er durch Outputs und $\tau$s erreicht werden kann, jedoch ist
+nicht jede beliebige Fortsetzung eines Traces, der diese Eigenschaft erfüllt
+ein Ruhe-Trace.
 
 \begin{Def}[error- und ruhefreie Kommunikation]
   Zwei \EIO{}s $S_1$ und $S_2$ \emph{kommunizieren gut}, wenn in ihrer
-  Parallelkomposition $S_1\| S_2$ keine Errors lokal und keine Ruhe-Zustände
-  durch interne Aktionen erreichbar sind.
+  Parallelkomposition $S_1\| S_2$ keine Errors und keine Ruhe-Zustände lokal
+  erreichbar sind.
 \end{Def}
 
 \begin{Def}[Ruhe-Verfeinerungs-Basisrelation]
@@ -84,7 +85,7 @@ bereits existierende Präkongruenz \ERel{} ein.
   \begin{enumerate}
     \item $\ET{}_{12} = \cont{}(\prune{}((\ET{}_1\|\EL{}_2)\cup (\EL{}_1\|\ET{}_2)))$,
     \item $\QT{}_{12} = (\QT{}_1\|\QT{}_2)\cup \ET{}_{12}$,
-    \item $\QL{}_{12} = (\EL{}_1\|\EL{}_2)\cup \ET{}_{12}$.
+    \item $\EL{}_{12} = (\EL{}_1\|\EL{}_2)\cup \ET{}_{12}$.
   \end{enumerate}
 \end{satz}
 
