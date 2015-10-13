@@ -47,12 +47,10 @@ wir wie im letzten Kapitel die Definition von Traces auf unserer Struktur.
 Dadurch erhalten wir die Möglichkeit die gröbste Präkongruenz finden und
 definieren zu können.
 
-\begin{Def}[Error- und Ruhetraces]
+\begin{Def}[Ruhetraces]
   \label{DefRuhetraces}
   Sei $S$ ein \EIO{} und definiere:
   \begin{itemize}
-    \item die Traces bezüglich Errors entsprechen denen
-      aus Definition~\ref{DefErrortraces},
     \item \emph{strickte Ruhetraces}: $\StQT{}(S) := \{w\in\Sigma ^*\mid q_0
       \overset{w}{\Rightarrow} q\in Qui\}$.
   \end{itemize}
@@ -62,32 +60,31 @@ Da wir für Ruhe-Zustände keinen lokalen Erreichbarkeitsbegriff verwenden benö
 wir keine gekürzten Ruhetraces bei denen die \prune{}-Funktion zur
 Anwendung käme.
 
-\begin{Def}[Error- und Ruhe-Semantik]
+\begin{Def}[Ruhe-Semantik]
   \label{DefQTQL}
   Sei $S$ ein \EIO{}.
   \begin{itemize}
-    \item Die Menge der \emph{Errortraces} ist wie in~\ref{DefETEL} definiert.
     \item Die Menge der \emph{Ruhetraces} von $S$ ist $\QT{}(S) :=
-      \StQT{}(S)$.
-    \item Die \emph{ruhe-geflutete Sprache} von $S$ ist
-      $\QL{}(S):=L(S)\cup \ET{}(S)\cup \QT{}(S)$.
+      \StQT{}(S)\cup \ET{}(S)$.
   \end{itemize}
   Für zwei \EIO{}s $S_1, S_2$ mit der gleichen Signatur schreiben wir
   $S_1\QRel S_2$, wenn $S_1\ERel S_2$ und $\QT{}(S_1)\subseteq \QT{}(S_2)$ gilt.
 \end{Def}
 
-Da \QT{} der Menge \StQT{} entspricht, hätten wir die Definition nicht
-unbedingt benötigt, jedoch für eine einheitliche Notation der Kapitel ist die
-neue Bezeichnung sinnvoll. Da die Flutung der Informationsvermischung dient,
-hat sich hier die Sprache \QL{} bezüglich der Sprache \EL{} um \QT{} erweitert.\\
+Für die Menge der Ruhetraces \QT{} haben wir auch eine Informationsvermischung
+mit den Errortraces vorgenommen wie beim fluten der Sprache \EL{}. Da jedoch
+durch die Ruhetraces keine neuen Traces entstehen, die nicht bereits in der
+gefluteten Sprache \EL{} enthalten wären, müssen wir hier keine neue Flutung
+hier für vornehmen. Wir schränken also durch die Relation \QRel{} nur die
+bereits existierende Präkongruenz \ERel{} ein.
 
 \begin{satz}[Error- und Ruhe-Semantik für Parallelkompositonen]
   \label{satzQuiSemantik}
   Für zwei komponierbare \EIO{}s $S_1, S_2$ und $S_{12} = S_1\|S_2$ gilt:
   \begin{enumerate}
-    \item $\ET{}_{12} = \cont{}(\prune{}((\ET{}_1\|\QL{}_2)\cup (\QL{}_1\|\ET{}_2)))$,
-    \item $\QT{}_{12} = (\QT{}_1\|\QT{}_2)$,
-    \item $\QL{}_{12} = (\QL{}_1\|\QL{}_2)\cup \ET{}_{12}\cup \QT{}_{12}$.
+    \item $\ET{}_{12} = \cont{}(\prune{}((\ET{}_1\|\EL{}_2)\cup (\EL{}_1\|\ET{}_2)))$,
+    \item $\QT{}_{12} = (\QT{}_1\|\QT{}_2)\cup \ET{}_{12}$,
+    \item $\QL{}_{12} = (\EL{}_1\|\EL{}_2)\cup \ET{}_{12}$.
   \end{enumerate}
 \end{satz}
 
@@ -98,13 +95,12 @@ hat sich hier die Sprache \QL{} bezüglich der Sprache \EL{} um \QT{} erweitert.
   \end{enumerate}
   \vspace{-0.3cm}
   Der Beweis diese Punktes entspricht dem Beweis von Punkt 1.\ im Beweis von
-  Satz~\ref{satzErrorSemanik}. Da ein $w\in \QT{}_i$ entweder ein Element aus
-  $\StQT{}_i$, existiert ein Traces vom Startzustand $q_0$ zu einem Zustand in
-  der Rune-Menge, der mit $w$ beschriftet ist. Somit ist dieses $w$ in $L_i$
-  enthalten.
+  Satz~\ref{satzErrorSemanik}.
 
   2. ``$\subseteq$'':\\
-  Wir betrachten ein
+  Hier müssen wir unterscheiden ob wir ein $w\in\StQT{}_{12}$ betrachten oder
+  ein $w\in \ET{}_{12}$. Im zweiten Fall ist das $w$ in der rechten Seite
+  enthalten. Somit betrachten wir ab jetzt ein
   $w\in \StQT{}_{12}$ und versuchen dessen Zugehörigkeit zur rechten Menge zu
   zeigen. Aufgrund von Definition~\ref{DefRuhetraces} wissen wir es gilt
   $(q_{01},q_{02}) \overset{w}{\Rightarrow} (q_1,q_2)$ mit $(q_1,q_2)\in
@@ -117,48 +113,35 @@ hat sich hier die Sprache \QL{} bezüglich der Sprache \EL{} um \QT{} erweitert.
   enthalten.
 
   2. ``$\supseteq$'':\\
-  Wir betrachten für diese
+  Wir müssen nun wieder unterscheiden, nach dem aus welcher Menge unser
+  betrachtetes Element stammt. Falls $w\in \ET{}_{12}$ gilt, so können wir die
+  Zugehörigkeit zur linken Seite direkt folgern. Deshalb betrachten wir für den
+  weiteren Beweis dieser
   Inklusionsrichtung ein Element $w\in \QT{}_1\|\QT{}_2$ und zeigen, dass es in
-  der linken Menge enthalten ist. Da $\QT{}_i = \StQT{}_i$ gilt, existieren
-  $w_1$ und $w_2$ für die gilt $q_{01} \overset{w_1}{\Rightarrow} q_1\in Qui_1$
-  und $q_{02} \overset{w_2}{\Rightarrow} q_2\in Qui_2$ mit $w\in w_1\| w_2$. Da
-  für die Zustände $q_1$ und $q_2$ die Zugehörigkeit zur Ruhe Menge gilt,
-  können wir folgern, dass der aus ihnen zusammengesetzte Zustand in der
-  Parallelkomposition ebenfalls keine Outputs zulässt. Somit gilt also für die
-  Komposition $(q_{01},q_{02}) \overset{w}{\Rightarrow} (q_1,q_2)\in Qui_{12}$
-  und dadurch ist $w$ in der linken Seite der Gleichung enthalten.
+  der linken Menge enthalten ist. Da $\QT{}_i = \StQT{}_i\cup \ET{}_i$ gilt,
+  existieren für $w_1$ und $w_2$ mit $w\in w_1\| w_2$ unterschiedliche
+  Möglichkeiten:
+  \begin{itemize}
+    \item Fall 1 ($w_1\in \StQT{}_1\wedge w_2\in \StQT{}_2$): Es gilt in diesem
+      Fall $q_{01} \overset{w_1}{\Rightarrow} q_1\in Qui_1$ und $q_{02}
+      \overset{w_2}{\Rightarrow} q_2\in Qui_2$. Da $q_1$ und $q_2$ in der
+      Ruhe-Menge enthalten sind, ist auch der Zustand, der aus ihnen
+      zusammengesetzt ist in der Parallelkomposition ruhig und lässt keine
+      Outputs und $\tau$-Transitionen zu. Es gilt also für die Komposition
+      $(q_{01},q_{02}) \overset{w}{\Rightarrow} (q_1,q_2)\in Qui_{12}$ und
+      dadurch ist $w$ in der linken Seite der Gleichung enthalten, da $w\in
+      \StQT{}_{12}\subseteq \QT{}_{12}$ gilt.
+    \item Fall 2 ($w_1\in \ET{}_1\vee w_2\in \ET{}_2$): \OBdA{} gilt $w_1\in
+      \ET{}_1$. Nun kann $w_2\in \StQT{}_2\subseteq L_2$ gelten oder $w_2\in
+      \ET{}_2$ und somit gilt auf jeden Fall $w_2\in \EL{}_2$. Daraus können
+      wir dann mit dem ersten Punkt von Satz~\ref{satzErrorSemanik} folgern,
+      dass $w\in \ET{}_{12}$ gilt und somit in der linken Seite der Gleichung
+      enthalten ist.
+  \end{itemize}
 
   3.:\\
-  Durch die Definition ergeben sich die Teilmengenbeziehungen $L_i\subseteq
-  \QL{}_i$, $\ET{}_i\subseteq \QL{}_i$ und $\QT{}_i\subseteq \QL{}_i$.
-  Zusätzlich benötigen wir noch die Feststellung, dass $\QT{}_i \subseteq L_i$
-  gilt. Wir beginnen von der rechten Seite der
-  Gleichung und argumentieren, dass diese der linken entspricht:
-  \begin{align*}
-    &(\QL{}_1\| \QL{}_2)\cup \ET{}_{12}\cup \QT{}_{12}\\
-    &\overset{\ref{DefQTQL}}{=}(L_1\cup \ET{}_1\cup \QT{}_1)\|(L_2\cup
-    \ET{}_2\cup \QT{}_2)\cup \ET{}_{12}\cup \QT{}_{12}\\
-    &=(L_1\|L_2)
-    \cup \underset{\overset{1.}{\subseteq} \ET{}_{12}}{\underset{\subseteq
-    (\QL{}_1\|\ET{}_2)}{\underbrace{(L_1\|\ET{}_2)}}}
-    \cup \underset{\subseteq (L_1\|L_2)}{\underbrace{(L_1\|\QT{}_2)}}
-    \cup \underset{\overset{1.}{\subseteq} \ET{}_{12}}{\underset{\subseteq
-    (\ET{}_1\|\QL{}_2)}{\underbrace{(\ET{}_1\|L_2)}}}
-    \cup \underset{\overset{1.}{\subseteq} \ET{}_{12}}{\underset{\subseteq
-    (\QL{}_1\|\ET{}_2)}{\underbrace{(\ET{}_1\|\ET{}_2)}}}
-    \cup \underset{\overset{1.}{\subseteq} \ET{}_{12}}{\underset{\subseteq
-    (\ET{}_1\|\QL{}_2)}{\underbrace{(\ET{}_1\|\QT{}_2)}}}\\
-    &\phantom{=}\cup \underset{\subseteq
-    (L_1\|L_2)}{\underbrace{(\QT{}_1\|L_2)}}
-    \cup \underset{\overset{1.}{\subseteq} \ET{}_{12}}{\underset{\subseteq
-    (\QL{}_1\|\ET{}_2)}{\underbrace{(\QT{}_1\|\ET{}_2)}}}
-    \cup \underset{\overset{2.}{\subseteq}
-    \QT{}_{12}}{\underbrace{(\QT{}_1\|\QT{}_2)}}
-    \cup \ET{}_{12}\cup \QT_{12}\\
-    &=(L_1\|L_2) \cup \ET{}_{12}\cup \QT_{12}\\
-    &\overset{\ref{LemmaSprache}}{=}L_{12}\cup \ET{}_{12}\cup \QT_{12}\\
-    &\overset{\ref{DefQTQL}}{=}\QL{}_{12}
-  \end{align*}
+  Der Beweis diese Punktes entspricht dem Beweis von Punkt 2.\ im Beweis von
+  Satz~\ref{satzErrorSemanik}.
 \end{proof}
 
 Die folgende Proposition ist eine direkte Folgerung aus dem letzten Satz.
@@ -182,9 +165,11 @@ Präkongruenz finden zu wollen.
         S_{31} \overset{\mathrm{Beweis}~\ref{propPraekongruenz}}{\ERel} S_{32}
     \end{aligned}$
     \item $\begin{aligned}[t]
-        \QT{}_{31} &\overset{\ref{satzQuiSemantik}~2.}{=} (\QT{}_3\|\QT{}_1)\\
-        &\hspace{-0.5cm}\overset{\QT{}_1\subseteq \QT{}_2}{\subseteq}
-        (\QT{}_3\|\QT{}_2)\\
+        \QT{}_{31} &\overset{\ref{satzQuiSemantik}~2.}{=}
+        (\QT{}_3\|\QT{}_1)\cup \ET{}_{31}\\
+        &\hspace{-0.5cm}\overset{\ET{}_{31}\subseteq
+      \ET{}_{32}}{\overset{\mathrm{und}}{\overset{\QT{}_1\subseteq
+      \QT{}_2}{\subseteq}}} (\QT{}_3\|\QT{}_2) \cup \ET{}_{32}\\
         &\overset{\ref{satzQuiSemantik}~2.}{=} \QT{}_{32}
     \end{aligned}$
   \end{itemize}
@@ -211,8 +196,11 @@ Präkongruenz finden zu wollen.
   \end{itemize}
   Der erste Punkt wurde bereits in Lemma~\ref{lemVerfeinerung}
   gezeigt. So bleibt uns nur noch die Inklusion $\QT{}_1\subseteq \QT{}_2$ zu
-  zeigen.\\
-  Wir wählen ein $w\in \QT{}(S_1)$ und zeigen, dass es auch in $\QT{}(S_2)$
+  zeigen. Diese Inklusion können wir jedoch noch anlog zum Beweis der Inklusion
+  der geflutteten Sprachen in Lemma~\ref{lemVerfeinerung} weiter einschränken.
+  Da wir bereits wissen, dass $\ET{}_1\subseteq\ET{}_2$ gilt, müssen wir nur
+  noch $\StQT{}_1\subseteq \QT{}_2$ zeigen.\\
+  Wir wählen ein $w\in \StQT{}(S_1)$ und zeigen, dass es auch in $\QT{}(S_2)$
   enthalten ist.
   \begin{itemize}
     \item Fall 1 ($w=\varepsilon$): Somit ist der Startzustand von $S_1$ ein
@@ -222,16 +210,17 @@ Präkongruenz finden zu wollen.
       Schliefe für alle Inputs $x\in I_U$ besteht. Somit ist der Startzustand
       von $U$ auch ruhig. Daraus folgt, dass auch der Startzustand der
       Komposition $U\|S_1$ ein Ruhe-Zustand ist. Dadurch muss auch
-      $U\|S_2$ als Startzustand einen Ruhe-Zustand haben. Da dieser aber
+      $U\|S_2$ einen Ruhe-Zustand als Startzustand haben. Da dieser aber
       nur entstehen kann, wenn für beide Teilsysteme bereits $\varepsilon$ in
-      den jeweiligen Ruhetraces liegt, somit gilt $\varepsilon\in
-      \QT{}(S_2)$.
+      den jeweiligen strikten Ruhetraces liegt, gilt somit $\varepsilon\in
+      \StQT{}(S_2)\subseteq \QT{}(S_2)$.
     \item Fall 2 ($w=x_1\dots x_n\in\Sigma ^+$ mit $n\geq 0$): Wir betrachten
       den Partner $U$, bei dem mit $w$ ebenfalls ein Zustand erreicht wird, der
       ruhig ist. Somit ist in der Komposition die Komposition dieser
       beiden Zustände ebenfalls ein Ruhe-Zustand. Es folgt, dass ein
       Ruhe-Zustand auch in $U\|S_2$ durch $w$ erreichbar sein muss und
-      somit auch in $S_2$. Daraus folgt, dass gilt $w\in \QT{}(S_2)$.
+      somit auch in $S_2$. Daraus folgt, dass gilt $w\in \StQT{}(S_2)\subseteq
+      \QT{}(S_2)$.
   \end{itemize}
 \end{proof}
 
@@ -247,11 +236,11 @@ Präkongruenz finden zu wollen.
   Präkongruenz.
 
   \glqq{}$\Leftarrow$\grqq{}: Nach Definition gilt, wenn
-  $\varepsilon\in\QT{}(S)$, ist ein Ruhe-Zustand durch ein $\tau$
-  erreichbar in $S$. Somit impliziert $S_1\QRel S_2$, dass
-  $\varepsilon\in\QT{}_2$ gilt, wenn $ \varepsilon\in\QT{}_1$. Dadurch folgt
-  ebenfalls, dass $S_1\QBRel S_2$ gilt. Somit folgt aus $S_1\QRel S_2$ der
-  relationale Zusammenhang $S_1\QCRel S_2$.
+  $\varepsilon\in\QT{}(S)$, ist in $S$ ein Ruhe-Zustand durch ein $\tau$
+  erreichbar oder ein Error-Zustand lokal erreichbar. Somit impliziert
+  $S_1\QRel S_2$, dass $\varepsilon\in\QT{}_2$ gilt, wenn
+  $\varepsilon\in\QT{}_1$. Daraus folgt ebenfalls, dass $S_1\QBRel S_2$ gilt.
+  Somit folgt aus $S_1\QRel S_2$ der relationale Zusammenhang $S_1\QCRel S_2$.
 
   \glqq{}$\Rightarrow$\grqq{}: Durch die Definition von \QCRel{} folgt aus
   $S_1\QCRel{} S_2$, dass $U\|S_1\QCRel U\|S_2$ für alle EIOs $U$ , die mit
