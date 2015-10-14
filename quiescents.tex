@@ -36,9 +36,9 @@ ein Ruhe-Trace.
 \begin{Def}[Ruhe-Verfeinerungs-Basisrelation]
   Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur schreiben wir
   $S_1\QBRel S_2$, wenn ein Error oder Ruhe-Zustand in $S_1$ nur dann lokal
-  bzw.\ durch ein $\tau$ erreichbar ist, wenn er auch in $S_2$ auf die gleiche
-  Weise erreichbar ist. Diese \emph{Basisrelation} stellt eine \emph{Verfeinerung}
-  bezüglich \emph{Errors} und \emph{Ruhe-Zustände} dar.\\
+  erreichbar ist, wenn er auch in $S_2$ lokal erreichbar ist. Diese
+  \emph{Basisrelation} stellt eine \emph{Verfeinerung} bezüglich \emph{Errors}
+  und \emph{Ruhe-Zustände} dar.\\
   \QCRel{} bezeichnet die \emph{vollständig abstrakte Präkongruenz} von
   \QBRel{} bezüglich $\cdot\|\cdot$.
 \end{Def}
@@ -53,20 +53,18 @@ definieren zu können.
   Sei $S$ ein \EIO{} und definiere:
   \begin{itemize}
     \item \emph{strickte Ruhetraces}: $\StQT{}(S) := \{w\in\Sigma ^*\mid q_0
-      \overset{w}{\Rightarrow} q\in Qui\}$.
+      \overset{w}{\Rightarrow} q\in Qui\}$,
+    \item \emph{gekürzte Ruhetraces}: $\PrQT{}(S) := \bigcup\{\prunenew(w)\mid
+      w\in \StQT{}(S)\}$.
   \end{itemize}
 \end{Def}
-
-Da wir für Ruhe-Zustände keinen lokalen Erreichbarkeitsbegriff verwenden benötigen
-wir keine gekürzten Ruhetraces bei denen die \prune{}-Funktion zur
-Anwendung käme.
 
 \begin{Def}[Ruhe-Semantik]
   \label{DefQTQL}
   Sei $S$ ein \EIO{}.
   \begin{itemize}
     \item Die Menge der \emph{Ruhetraces} von $S$ ist $\QT{}(S) :=
-      \StQT{}(S)\cup \ET{}(S)$.
+      \PrQT{}(S)\cup \ET{}(S)$.
   \end{itemize}
   Für zwei \EIO{}s $S_1, S_2$ mit der gleichen Signatur schreiben wir
   $S_1\QRel S_2$, wenn $S_1\ERel S_2$ und $\QT{}(S_1)\subseteq \QT{}(S_2)$ gilt.
@@ -76,7 +74,7 @@ Für die Menge der Ruhetraces \QT{} haben wir auch eine Informationsvermischung
 mit den Errortraces vorgenommen wie beim fluten der Sprache \EL{}. Da jedoch
 durch die Ruhetraces keine neuen Traces entstehen, die nicht bereits in der
 gefluteten Sprache \EL{} enthalten wären, müssen wir hier keine neue Flutung
-hier für vornehmen. Wir schränken also durch die Relation \QRel{} nur die
+dafür vornehmen. Wir schränken also durch die Relation \QRel{} nur die
 bereits existierende Präkongruenz \ERel{} ein.
 
 \begin{satz}[Error- und Ruhe-Semantik für Parallelkompositonen]
@@ -84,7 +82,7 @@ bereits existierende Präkongruenz \ERel{} ein.
   Für zwei komponierbare \EIO{}s $S_1, S_2$ und $S_{12} = S_1\|S_2$ gilt:
   \begin{enumerate}
     \item $\ET{}_{12} = \cont{}(\prune{}((\ET{}_1\|\EL{}_2)\cup (\EL{}_1\|\ET{}_2)))$,
-    \item $\QT{}_{12} = (\QT{}_1\|\QT{}_2)\cup \ET{}_{12}$,
+    \item $\QT{}_{12} = \prunenew(\QT{}_1\|\QT{}_2)\cup \ET{}_{12}$,
     \item $\EL{}_{12} = (\EL{}_1\|\EL{}_2)\cup \ET{}_{12}$.
   \end{enumerate}
 \end{satz}
@@ -99,18 +97,20 @@ bereits existierende Präkongruenz \ERel{} ein.
   Satz~\ref{satzErrorSemanik}.
 
   2. ``$\subseteq$'':\\
-  Hier müssen wir unterscheiden ob wir ein $w\in\StQT{}_{12}$ betrachten oder
+  Hier müssen wir unterscheiden ob wir ein $w\in\PrQT{}_{12}$ betrachten oder
   ein $w\in \ET{}_{12}$. Im zweiten Fall ist das $w$ in der rechten Seite
   enthalten. Somit betrachten wir ab jetzt ein
-  $w\in \StQT{}_{12}$ und versuchen dessen Zugehörigkeit zur rechten Menge zu
-  zeigen. Aufgrund von Definition~\ref{DefRuhetraces} wissen wir es gilt
-  $(q_{01},q_{02}) \overset{w}{\Rightarrow} (q_1,q_2)$ mit $(q_1,q_2)\in
-  Qui_{12}$. Durch Projektion erhalten wir $q_{01} \overset{w_1}{\Rightarrow}
-  q_1$ und $q_{02} \overset{w_2}{\Rightarrow} q_2$ mit $w\in w_1\|w_2$. Aus
+  $w\in \PrQT{}_{12}$ und versuchen dessen Zugehörigkeit zur rechten Menge zu
+  zeigen. Aufgrund von Definition~\ref{DefRuhetraces} wissen wir es gibt ein
+  $v\in O_{12}^*$, so dass gilt
+  $(q_{01},q_{02}) \overset{wv}{\Rightarrow} (q_1,q_2)$ mit $(q_1,q_2)\in
+  Qui_{12}$. Durch Projektion erhalten wir $q_{01} \overset{w_1v_1}{\Rightarrow}
+  q_1$ und $q_{02} \overset{w_2v_2}{\Rightarrow} q_2$ mit $w\in w_1\|w_2$ und
+  $v\in v_1\|v_2$. Aus
   $(q_1,q_2)\in Qui_{12}$ können wir folgern, dass bereits $q_1\in Qui_1$ und
-  $q_2\in Qui_2$ gilt. Somit gilt $w_1\in \StQT{}_1\subseteq \QT{}_1$ und
-  $w_2\in \StQT{}_2\subseteq \QT{}_2$. Daraus folgt dann $w\in
-  \QT{}_1\|\QT{}_2$ und somit ist $w$ in der rechten Seiten der Gleichung
+  $q_2\in Qui_2$ gilt. Somit gilt $w_1v_1\in \StQT{}_1\subseteq \QT{}_1$ und
+  $w_2v_2\in \StQT{}_2\subseteq \QT{}_2$. Daraus folgt dann $wv\in
+  \QT{}_1\|\QT{}_2$ und somit ist $wv$ in der rechten Seiten der Gleichung
   enthalten.
 
   2. ``$\supseteq$'':\\
