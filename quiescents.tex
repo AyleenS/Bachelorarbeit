@@ -288,22 +288,27 @@ das folgende Korollar.
 
 \section{Hiding für Ruhe}
 
-  %TODO ab hier anderen Erreichbarkeitsbegriff
 Wir wollen nun auch hier die Auswirkungen der Internalisierung von Aktionen auf
 unsere Verfeinerungsrelationen untersuchen. Es werden Outputs in interne
 Handlungen umgewandelt. Da wir jedoch bei unseren Ruhe-Zuständen auch $\tau$
 Übergänge verboten haben, verändert sich nichts an der Menge der ruhigen
-Zustände. Da wir die Erreichbarkeit von Ruhe-Zuständen nur mittels interner
-Aktionen betrachten, können durch das verbergen von Outputs neue erreichbare
-Ruhe-Zustände hinzu kommen. Somit ist es nicht möglich hier eine analoge
-Proposition zu~\ref{propErBaIn} zu formulieren. Wir können zwar daraus
-schließen, dass alle Ruhe-Zustände die vor dem Hiding zu erreichen waren mit
-$\tau$s auch danach noch erreichbar sind, jedoch können durch die
-Internalisierung neue erreicht werden, die möglicherweise in dem anderen
-Transitionssystem nicht erreicht werden können.\\
-Da wir jedoch für die Präkongruenz \QRel{} noch wissen über die
-Teilmengenbeziehungen der Traces haben, können wir einen Satz analog
-zu~\ref{satzPraeInternalisierung} formulieren.
+Zustände. Da wir die Erreichbarkeit von Ruhe-Zuständen mittels lokaler Aktionen
+betrachten, kann sich auch nichts an der Erreichbarkeit der Ruhe-Zustände
+ändern. Somit können wir eine analoge Proposition zu~\ref{propErBaIn}
+formulieren.
+
+\begin{prop}[Ruhe-Basisrelation bzgl. Interlaisierung]
+  Wenn $S_1\QBRel S_2$ gilt, dann folgt daraus, dass auch
+  $(S_1/\{x_1,x_2,\dots, x_n\})\QBRel (S_2/\{x_1,x_2,\dots, x_n\})$ gilt.
+\end{prop}
+
+\begin{proof}
+  Dass die Error-Erreichbarkeit unverändert bleibt unter Hiding wurde bereits
+  im Beweis zur Proposition~\ref{propErBaIn} gezeigt. Mit der analogen
+  Argumentation folgt auch, dass sich nicht an der Erreichbarkeit der
+  Ruhe-Zustände ändert. Es können durch Hiding nämlich nur Outputs verborgen
+  werden, die bereits in der Menge der lokalen Handlungen enthalten sind.
+\end{proof}
 
 \begin{satz}[Präkongurenz bzgl. Internalisierung]
   \label{satzPraeInterQui}
@@ -321,13 +326,7 @@ zu~\ref{satzPraeInternalisierung} formulieren.
   $X\subseteq O$ gilt. Für jeden Trace aus $\QT{}_1$ können wir einen passenden in
   $\QT{}(S_1/X)$ finden und ebenso für das Transitionssystem $S_2$. Die
   Argumentation läuft hierfür analog zum Beweis von
-  Satz~\ref{satzPraeInternalisierung}. Das oben erwähnte Problem mit der neuen
-  Erreichbarkeit von Ruhe-Zuständen ist damit auch bereits behandelt. Es
-  entstehen keine neuen ruhigen Zustände, sondern durch das verbergen eines
-  Outputs, der direkt zu einem Ruhe-Zustand führt, wird von dem ursprünglichen
-  Zustand der Ruhe-Zustand durch ein $\tau$ erreichbar. Somit wir der
-  Ruhetrace nur um den zu verbergenden Output gekürzt, was bereits dem
-  entspricht einen passenden Trace dafür in $\QT{}(S_i/X)$ zu finden. Somit gilt
+  Satz~\ref{satzPraeInternalisierung}. Somit gilt
   also auch $\QT{}(S_1/X)\subseteq \QT{}(S_2/X)$. Daraus folgt dann, dass die
   Relation \QRel{} trotz Hiding erhalten ist und somit das Hiding bezüglich
   dieser Relation eine Präkongruenz ist.
