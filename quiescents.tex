@@ -109,35 +109,40 @@ bereits existierende Präkongruenz \ERel{} ein.
   $v\in v_1\|v_2$. Aus
   $(q_1,q_2)\in Qui_{12}$ können wir folgern, dass bereits $q_1\in Qui_1$ und
   $q_2\in Qui_2$ gilt. Somit gilt $w_1v_1\in \StQT{}_1\subseteq \QT{}_1$ und
-  $w_2v_2\in \StQT{}_2\subseteq \QT{}_2$. Daraus folgt dann $wv\in
-  \QT{}_1\|\QT{}_2$ und somit ist $wv$ in der rechten Seiten der Gleichung
-  enthalten.
+  $w_2v_2\in \StQT{}_2\subseteq \QT{}_2$. Jedoch können wir nicht $w_i\in
+  \PrQT{}_i$ für $i\in\{1,2\}$ folgern, da die Outputs in $v$ erst durch die
+  Parallelkomposition entstehen können und somit nicht $v_i\in O_i$ gelten
+  muss. Wir können jedoch trotzdem folgern, dass $wv\in \QT{}_1\|\QT{}_2$ gilt
+  und somit $w\in\prunenew (\QT{}_1\|\QT{}_2)$. Es ist also $w$ in der rechten
+  Seiten der Gleichung enthalten.
 
   2. ``$\supseteq$'':\\
   Wir müssen nun wieder unterscheiden, nach dem aus welcher Menge unser
   betrachtetes Element stammt. Falls $w\in \ET{}_{12}$ gilt, so können wir die
   Zugehörigkeit zur linken Seite direkt folgern. Deshalb betrachten wir für den
   weiteren Beweis dieser
-  Inklusionsrichtung ein Element $w\in \QT{}_1\|\QT{}_2$ und zeigen, dass es in
-  der linken Menge enthalten ist. Da $\QT{}_i = \StQT{}_i\cup \ET{}_i$ gilt,
-  existieren für $w_1$ und $w_2$ mit $w\in w_1\| w_2$ unterschiedliche
-  Möglichkeiten:
+  Inklusionsrichtung ein Element $w\in \prunenew (\QT{}_1\|\QT{}_2)$ und
+  zeigen, dass es in der linken Menge enthalten ist. Durch die Anwendung der
+  \prunenew{}-Funktion wissen wir, dass ein $v\in O_{12}$ existiert, so dass
+  $wv\in \QT{}_1\|\QT{}_2$ gilt. Da $\QT{}_i = \PrQT{}_i\cup \ET{}_i$ gilt,
+  existieren für $w_1v_1$ und $w_2v_2$ mit $w\in w_1\| w_2$ und $v\in v_1\|
+  v_2$ unterschiedliche Möglichkeiten:
   \begin{itemize}
-    \item Fall 1 ($w_1\in \StQT{}_1\wedge w_2\in \StQT{}_2$): Es gilt in diesem
-      Fall $q_{01} \overset{w_1}{\Rightarrow} q_1\in Qui_1$ und $q_{02}
-      \overset{w_2}{\Rightarrow} q_2\in Qui_2$. Da $q_1$ und $q_2$ in der
+    \item Fall 1 ($w_1v_1\in \StQT{}_1\wedge w_2v_2\in \StQT{}_2$): Es gilt in diesem
+      Fall $q_{01} \overset{w_1v_1}{\Rightarrow} q_1\in Qui_1$ und $q_{02}
+      \overset{w_2v_2}{\Rightarrow} q_2\in Qui_2$. Da $q_1$ und $q_2$ in der
       Ruhe-Menge enthalten sind, ist auch der Zustand, der aus ihnen
       zusammengesetzt ist in der Parallelkomposition ruhig und lässt keine
       Outputs und $\tau$-Transitionen zu. Es gilt also für die Komposition
-      $(q_{01},q_{02}) \overset{w}{\Rightarrow} (q_1,q_2)\in Qui_{12}$ und
+      $(q_{01},q_{02}) \overset{wv}{\Rightarrow} (q_1,q_2)\in Qui_{12}$ und
       dadurch ist $w$ in der linken Seite der Gleichung enthalten, da $w\in
-      \StQT{}_{12}\subseteq \QT{}_{12}$ gilt.
-    \item Fall 2 ($w_1\in \ET{}_1\vee w_2\in \ET{}_2$): \OBdA{} gilt $w_1\in
-      \ET{}_1$. Nun kann $w_2\in \StQT{}_2\subseteq L_2$ gelten oder $w_2\in
-      \ET{}_2$ und somit gilt auf jeden Fall $w_2\in \EL{}_2$. Daraus können
-      wir dann mit dem ersten Punkt von Satz~\ref{satzErrorSemanik} folgern,
-      dass $w\in \ET{}_{12}$ gilt und somit in der linken Seite der Gleichung
-      enthalten ist.
+      \PrQT{}_{12}\subseteq \QT{}_{12}$ gilt.
+    \item Fall 2 ($w_1v_1\in \ET{}_1\vee w_2v_2\in \ET{}_2$): \OBdA{} gilt
+      $w_1v_1\in \ET{}_1$. Nun kann $w_2v_2\in \StQT{}_2\subseteq L_2$ gelten
+      oder $w_2v_2\in \ET{}_2$ und somit gilt auf jeden Fall $w_2v_2\in
+      \EL{}_2$. Daraus können wir dann mit dem ersten Punkt von
+      Satz~\ref{satzErrorSemanik} folgern, dass $w\in \ET{}_{12}$ gilt und
+      somit in der linken Seite der Gleichung enthalten ist.
   \end{itemize}
 
   3.:\\
@@ -200,29 +205,20 @@ Präkongruenz finden zu wollen.
   zeigen. Diese Inklusion können wir jedoch noch anlog zum Beweis der Inklusion
   der geflutteten Sprachen in Lemma~\ref{lemVerfeinerung} weiter einschränken.
   Da wir bereits wissen, dass $\ET{}_1\subseteq\ET{}_2$ gilt, müssen wir nur
-  noch $\StQT{}_1\subseteq \QT{}_2$ zeigen.\\
-  Wir wählen ein $w\in \StQT{}(S_1)$ und zeigen, dass es auch in $\QT{}(S_2)$
-  enthalten ist.
-  \begin{itemize}
-    \item Fall 1 ($w=\varepsilon$): Somit ist der Startzustand von $S_1$ ein
-      Ruhe-Zustand. Sobald der Startzustand eines Partners $U$ nicht
-      ruhig ist, können wir nichts für $S_2$ schließen. Somit wählen wir
-      für $U$ ein Transitionssystem, dass nur aus dem Startzustand und einer
-      Schliefe für alle Inputs $x\in I_U$ besteht. Somit ist der Startzustand
-      von $U$ auch ruhig. Daraus folgt, dass auch der Startzustand der
-      Komposition $U\|S_1$ ein Ruhe-Zustand ist. Dadurch muss auch
-      $U\|S_2$ einen Ruhe-Zustand als Startzustand haben. Da dieser aber
-      nur entstehen kann, wenn für beide Teilsysteme bereits $\varepsilon$ in
-      den jeweiligen strikten Ruhetraces liegt, gilt somit $\varepsilon\in
-      \StQT{}(S_2)\subseteq \QT{}(S_2)$.
-    \item Fall 2 ($w=x_1\dots x_n\in\Sigma ^+$ mit $n\geq 0$): Wir betrachten
-      den Partner $U$, bei dem mit $w$ ebenfalls ein Zustand erreicht wird, der
-      ruhig ist. Somit ist in der Komposition die Komposition dieser
-      beiden Zustände ebenfalls ein Ruhe-Zustand. Es folgt, dass ein
-      Ruhe-Zustand auch in $U\|S_2$ durch $w$ erreichbar sein muss und
-      somit auch in $S_2$. Daraus folgt, dass gilt $w\in \StQT{}(S_2)\subseteq
-      \QT{}(S_2)$.
-  \end{itemize}
+  noch $\PrQT{}_1\subseteq \QT{}_2$ zeigen.\\
+  Wir wählen ein $w\in \PrQT{}(S_1)$ und zeigen, dass es auch in $\QT{}(S_2)$
+  enthalten ist.\\
+  Wir finden ein $v\in O_1$, so dass $wv\in \StQT{}_1$ gilt. Es ist also vom
+  Startzustand von $S_1$ durch das Wort $wv$ ein ruhiger Zustand erreichbar.
+  Dies hat keine Auswirkungen auf die Parallelkomposition $U\|S_1$, wenn in $U$
+  kein Ruhe-Zustand durch $wv$ erreicht wird. Somit betrachten wir den Partner
+  $U$ bei dem durch $wv$ ebenfalls ein Ruhe-Zustand erreicht wird. Daraus folgt
+  dann, dass in $U\|S_1$ ein Ruhe-Zustand mit $wv$ erreicht wird und durch die
+  gegebene Relation folgt dann auch, dass in $U\|S_2$ auch ein Ruhe-Zustand
+  durch $wv$ erreicht werden muss. Dies kann nur der Fall sein, wenn in $S_2$
+  bereits ein Ruhe-Zustand durch $wv$ erreicht wird. Somit gilt also $wv\in
+  \StQT{}_2$ und daraus können wir mit $v\in O_1=O_2$ folgern, dass $w\in
+  \PrQT{}_2\subseteq \QT{}_2$ gilt.
 \end{proof}
 
 \begin{satz}[Full Abstractness für Ruhe-Semantik]
@@ -237,11 +233,11 @@ Präkongruenz finden zu wollen.
   Präkongruenz.
 
   \glqq{}$\Leftarrow$\grqq{}: Nach Definition gilt, wenn
-  $\varepsilon\in\QT{}(S)$, ist in $S$ ein Ruhe-Zustand durch ein $\tau$
-  erreichbar oder ein Error-Zustand lokal erreichbar. Somit impliziert
-  $S_1\QRel S_2$, dass $\varepsilon\in\QT{}_2$ gilt, wenn
-  $\varepsilon\in\QT{}_1$. Daraus folgt ebenfalls, dass $S_1\QBRel S_2$ gilt.
-  Somit folgt aus $S_1\QRel S_2$ der relationale Zusammenhang $S_1\QCRel S_2$.
+  $\varepsilon\in\QT{}(S)$, ist in $S$ ein Ruhe-Zustand oder ein Error-Zustand
+  lokal erreichbar. Somit impliziert $S_1\QRel S_2$, dass
+  $\varepsilon\in\QT{}_2$ gilt, wenn $\varepsilon\in\QT{}_1$. Daraus folgt
+  ebenfalls, dass $S_1\QBRel S_2$ gilt. Somit folgt aus $S_1\QRel S_2$ der
+  relationale Zusammenhang $S_1\QCRel S_2$.
 
   \glqq{}$\Rightarrow$\grqq{}: Durch die Definition von \QCRel{} folgt aus
   $S_1\QCRel{} S_2$, dass $U\|S_1\QCRel U\|S_2$ für alle EIOs $U$ , die mit
@@ -292,6 +288,7 @@ das folgende Korollar.
 
 \section{Hiding für Ruhe}
 
+  %TODO ab hier anderen Erreichbarkeitsbegriff
 Wir wollen nun auch hier die Auswirkungen der Internalisierung von Aktionen auf
 unsere Verfeinerungsrelationen untersuchen. Es werden Outputs in interne
 Handlungen umgewandelt. Da wir jedoch bei unseren Ruhe-Zuständen auch $\tau$
