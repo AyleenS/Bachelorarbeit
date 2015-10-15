@@ -6,7 +6,9 @@ In diesem Kapitel werden wir uns nicht nur um die Erreichbarkeit von
 Error-Zuständen kümmern, sondern auch um die Erreichbarkeit von
 Ruhe-Zuständen. Wir werden dabei ähnlich vorgehen wie im letzten Kapitel,
 jedoch halten wir uns als Quelle an~\cite{Chilton2013}. Darin werden ähnliche
-Konzepte beschrieben, jedoch aus Sicht der Traces.\\
+Konzepte beschrieben, jedoch aus Sicht der Traces. Es werden dort zudem
+gleichzeitig auch noch Traces mit Divergenz betrachtet. Diese Zustands Art
+wollen wir hier zunächst nicht betrachten.\\
 Wir sehen die Zustände, die keine Outputs und keine Transitionsmöglichkeit für
 eine interne Aktion haben als ruhig an.
 
@@ -21,7 +23,7 @@ eine interne Aktion haben als ruhig an.
 Für die Erreichbarkeit verwenden wir wie im letzten Kapitel wieder den
 optimistischen Ansatz der lokalen Erreichbarkeit. Ruhe ist kein
 unabwendbaren Fehler, sondern kann durch einen Input reparierbar werden. Somit
-ist ein Ruhe-Zustand als nicht so \glqq{}schlimmer\grqq{} Fehler anzusehen wie
+ist ein Ruhe-Zustand als nicht so \glqq{}schlimmer Fehler\grqq{}  anzusehen wie
 ein Error. Somit ist für uns ein Ruhe-Zustand zwar ebenso wie ein Error-Zustand
 erreichbar sobald er durch Outputs und $\tau$s erreicht werden kann, jedoch ist
 nicht jede beliebige Fortsetzung eines Traces, der diese Eigenschaft erfüllt
@@ -46,7 +48,11 @@ ein Ruhe-Trace.
 Um uns genauer mit den Präkongruenzen auseinandersetzten zu können, brauchen
 wir wie im letzten Kapitel die Definition von Traces auf unserer Struktur.
 Dadurch erhalten wir die Möglichkeit die gröbste Präkongruenz finden und
-definieren zu können.
+definieren zu können.\\
+Wie bereits oben erwähnt, werden wir die lokale Erreichbarkeit nicht auf die
+gleiche Weise umsetzten, wie bei Errortraces, somit verwenden wir eine andere
+Art die Ruhetraces zu kürzen, um sie nur so fortsetzen zu könne wie die
+Transitionsmöglichkeiten in unserem System es zulassen.
 
 \begin{Def}[Ruhetraces]
   \label{DefRuhetraces}
@@ -58,6 +64,10 @@ definieren zu können.
       w\in \StQT{}(S)\}$.
   \end{itemize}
 \end{Def}
+
+Wir definieren nur für die Ruhe eine neue Semantik, die Error-Semantik wir aus
+dem letzten Kapitel übernommen. Somit gelten für \ET{} und \EL{} die
+Definitionen aus dem letzten Kapitel.
 
 \begin{Def}[Ruhe-Semantik]
   \label{DefQTQL}
@@ -75,7 +85,9 @@ mit den Errortraces vorgenommen wie beim fluten der Sprache \EL{}. Da jedoch
 durch die Ruhetraces keine neuen Traces entstehen, die nicht bereits in der
 gefluteten Sprache \EL{} enthalten wären, müssen wir hier keine neue Flutung
 dafür vornehmen. Wir schränken also durch die Relation \QRel{} nur die
-bereits existierende Präkongruenz \ERel{} ein.
+bereits existierende Präkongruenz \ERel{} ein.\\
+In dem Folgenden Satz sind Punkt 1.\ und 3.\ nur zur Vollständigkeit aufgeführt.
+Sie entsprechen Punkt 1.\ und 2.\ aus Satz~\ref{satzErrorSemanik}.
 
 \begin{satz}[Error- und Ruhe-Semantik für Parallelkompositonen]
   \label{satzQuiSemantik}
@@ -290,8 +302,8 @@ das folgende Korollar.
 
 Wir wollen nun auch hier die Auswirkungen der Internalisierung von Aktionen auf
 unsere Verfeinerungsrelationen untersuchen. Es werden Outputs in interne
-Handlungen umgewandelt. Da wir jedoch bei unseren Ruhe-Zuständen auch $\tau$
-Übergänge verboten haben, verändert sich nichts an der Menge der ruhigen
+Aktionen umgewandelt. Da wir jedoch bei unseren Ruhe-Zuständen auch
+$\tau$-Transitionen verboten haben, verändert sich nichts an der Menge der ruhigen
 Zustände. Da wir die Erreichbarkeit von Ruhe-Zuständen mittels lokaler Aktionen
 betrachten, kann sich auch nichts an der Erreichbarkeit der Ruhe-Zustände
 ändern. Somit können wir eine analoge Proposition zu~\ref{propErBaIn}
@@ -307,7 +319,7 @@ formulieren.
   im Beweis zur Proposition~\ref{propErBaIn} gezeigt. Mit der analogen
   Argumentation folgt auch, dass sich nicht an der Erreichbarkeit der
   Ruhe-Zustände ändert. Es können durch Hiding nämlich nur Outputs verborgen
-  werden, die bereits in der Menge der lokalen Handlungen enthalten sind.
+  werden, die bereits in der Menge der lokalen Aktionen enthalten sind.
 \end{proof}
 
 \begin{satz}[Präkongurenz bzgl. Internalisierung]
