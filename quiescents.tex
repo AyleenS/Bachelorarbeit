@@ -29,10 +29,10 @@ erreichbar sobald er durch Outputs und $\tau$s erreicht werden kann, jedoch ist
 nicht jede beliebige Fortsetzung eines Traces, der diese Eigenschaft erfüllt
 ein Ruhe-Trace.
 
-\begin{Def}[error- und ruhefreie Kommunikation]
-  Zwei \EIO{}s $S_1$ und $S_2$ \emph{kommunizieren gut}, wenn in ihrer
-  Parallelkomposition $S_1\| S_2$ keine Errors und keine Ruhe-Zustände lokal
-  erreichbar sind.
+\begin{Def}[error- und ruhe-freie Kommunikation]
+  Zwei \EIO{}s $S_1$ und $S_2$ \emph{kommunizieren error- und ruhe-frei}, wenn
+  in ihrer Parallelkomposition $S_1\| S_2$ keine Errors und keine Ruhe-Zustände
+  lokal erreichbar sind.
 \end{Def}
 
 \begin{Def}[Ruhe-Verfeinerungs-Basisrelation]
@@ -60,7 +60,7 @@ Transitionsmöglichkeiten in unserem System es zulassen.
   \begin{itemize}
     \item \emph{strickte Ruhetraces}: $\StQT{}(S) := \{w\in\Sigma ^*\mid q_0
       \overset{w}{\Rightarrow} q\in Qui\}$,
-    \item \emph{gekürzte Ruhetraces}: $\PrQT{}(S) := \bigcup\{\prunenew(w)\mid
+    \item \emph{Ruhetraces}: $\PrQT{}(S) := \bigcup\{\prunenew(w)\mid
       w\in \StQT{}(S)\}$.
   \end{itemize}
 \end{Def}
@@ -73,25 +73,26 @@ Definitionen aus dem letzten Kapitel.
   \label{DefQTQL}
   Sei $S$ ein \EIO{}.
   \begin{itemize}
-    \item Die Menge der \emph{Ruhetraces} von $S$ ist $\QT{}(S) :=
-      \PrQT{}(S)\cup \ET{}(S)$.
+    \item Die Menge der \emph{error-gefluteten Ruhetraces} von $S$ ist
+      $\QT{}(S) := \PrQT{}(S)\cup \ET{}(S)$.
   \end{itemize}
   Für zwei \EIO{}s $S_1, S_2$ mit der gleichen Signatur schreiben wir
   $S_1\QRel S_2$, wenn $S_1\ERel S_2$ und $\QT{}(S_1)\subseteq \QT{}(S_2)$ gilt.
 \end{Def}
 
-Für die Menge der Ruhetraces \QT{} haben wir auch eine Informationsvermischung
+Für die Menge der error-gefluteten Ruhetraces \QT{} haben wir eine Informationsvermischung
 mit den Errortraces vorgenommen wie beim fluten der Sprache \EL{}. Da jedoch
 durch die Ruhetraces keine neuen Traces entstehen, die nicht bereits in der
 gefluteten Sprache \EL{} enthalten wären, müssen wir hier keine neue Flutung
-dafür vornehmen. Wir schränken also durch die Relation \QRel{} nur die
+vornehmen. Wir schränken also durch die Relation \QRel{} nur die
 bereits existierende Präkongruenz \ERel{} ein.\\
-In dem Folgenden Satz sind Punkt 1.\ und 3.\ nur zur Vollständigkeit aufgeführt.
+In dem folgenden Satz sind Punkt 1.\ und 3.\ nur zur Vollständigkeit aufgeführt.
 Sie entsprechen Punkt 1.\ und 2.\ aus Satz~\ref{satzErrorSemanik}.
 
 \begin{satz}[Error- und Ruhe-Semantik für Parallelkompositonen]
   \label{satzQuiSemantik}
-  Für zwei komponierbare \EIO{}s $S_1, S_2$ und $S_{12} = S_1\|S_2$ gilt:
+  Für zwei komponierbare \EIO{}s $S_1, S_2$ und ihre Komposition $S_{12} =
+  S_1\|S_2$ gilt:
   \begin{enumerate}
     \item $\ET{}_{12} = \cont{}(\prune{}((\ET{}_1\|\EL{}_2)\cup (\EL{}_1\|\ET{}_2)))$,
     \item $\QT{}_{12} = \prunenew(\QT{}_1\|\QT{}_2)\cup \ET{}_{12}$,
@@ -153,8 +154,9 @@ Sie entsprechen Punkt 1.\ und 2.\ aus Satz~\ref{satzErrorSemanik}.
       $w_1v_1\in \ET{}_1$. Nun kann $w_2v_2\in \StQT{}_2\subseteq L_2$ gelten
       oder $w_2v_2\in \ET{}_2$ und somit gilt auf jeden Fall $w_2v_2\in
       \EL{}_2$. Daraus können wir dann mit dem ersten Punkt von
-      Satz~\ref{satzErrorSemanik} folgern, dass $w\in \ET{}_{12}$ gilt und
-      somit in der linken Seite der Gleichung enthalten ist.
+      Satz~\ref{satzErrorSemanik} bzw.\ aus dem ersten Punkt dieses Satzes
+      folgern, dass $w\in \ET{}_{12}$ gilt und somit in der linken Seite der
+      Gleichung enthalten ist.
   \end{itemize}
 
   3.:\\
@@ -220,7 +222,7 @@ Präkongruenz finden zu wollen.
   noch $\PrQT{}_1\subseteq \QT{}_2$ zeigen.\\
   Wir wählen ein $w\in \PrQT{}(S_1)$ und zeigen, dass es auch in $\QT{}(S_2)$
   enthalten ist.\\
-  Wir finden ein $v\in O_1$, so dass $wv\in \StQT{}_1$ gilt. Es ist also vom
+  Wir finden ein $v\in O$, so dass $wv\in \StQT{}_1$ gilt. Es ist also vom
   Startzustand von $S_1$ durch das Wort $wv$ ein ruhiger Zustand erreichbar.
   Dies hat keine Auswirkungen auf die Parallelkomposition $U\|S_1$, wenn in $U$
   kein Ruhe-Zustand durch $wv$ erreicht wird. Somit betrachten wir den Partner
@@ -229,9 +231,13 @@ Präkongruenz finden zu wollen.
   gegebene Relation folgt dann auch, dass in $U\|S_2$ auch ein Ruhe-Zustand
   durch $wv$ erreicht werden muss. Dies kann nur der Fall sein, wenn in $S_2$
   bereits ein Ruhe-Zustand durch $wv$ erreicht wird. Somit gilt also $wv\in
-  \StQT{}_2$ und daraus können wir mit $v\in O_1=O_2$ folgern, dass $w\in
+  \StQT{}_2$ und daraus können wir mit $v\in O$ folgern, dass $w\in
   \PrQT{}_2\subseteq \QT{}_2$ gilt.
 \end{proof}
+
+Mit dem folgenden Satz halten wir fest, dass wir mit \QRel{} die gröbste
+Präkongruenz gefunden haben bezüglich $\cdot\|\cdot$ die in \QBRel{} enthalten
+ist.
 
 \begin{satz}[Full Abstractness für Ruhe-Semantik]
   \label{satzQuiFullAbst}
@@ -315,17 +321,19 @@ formulieren.
 \end{prop}
 
 \begin{proof}
-  Dass die Error-Erreichbarkeit unverändert bleibt unter Hiding wurde bereits
+  Dass die Error-Erreichbarkeit unverändert bleibt unter Hiding, wurde bereits
   im Beweis zur Proposition~\ref{propErBaIn} gezeigt. Mit der analogen
   Argumentation folgt auch, dass sich nicht an der Erreichbarkeit der
   Ruhe-Zustände ändert. Es können durch Hiding nämlich nur Outputs verborgen
-  werden, die bereits in der Menge der lokalen Aktionen enthalten sind.
+  werden, die bereits in der Menge der lokalen Aktionen enthalten sind. Die
+  Menge der Ruhe-Zustände kann sich durch das Internalisieren auch nicht
+  vergrößern oder verkleinern, wie oben bereits festgestellt.
 \end{proof}
 
 \begin{satz}[Präkongurenz bzgl. Internalisierung]
   \label{satzPraeInterQui}
   Seien $S_1$ und $S_2$ zwei \EIO{}s für die $S_1\QRel S_2$ gilt, somit gilt
-  auch $(S_1/\{x_1,x_x,\dots ,x_n\})\QRel (S_2/\{x_1,x_x,\dots ,x_n\})$. Somit
+  auch $(S_1/\{x_1,x_x,\dots ,x_n\})\QRel (S_2/\{x_1,x_x,\dots ,x_n\})$. Es
   ist also \QRel{} eine Präkongruenz bezüglich $\cdot /\cdot$.
 \end{satz}
 
@@ -340,7 +348,7 @@ formulieren.
   Argumentation läuft hierfür analog zum Beweis von
   Satz~\ref{satzPraeInternalisierung}. Somit gilt
   also auch $\QT{}(S_1/X)\subseteq \QT{}(S_2/X)$. Daraus folgt dann, dass die
-  Relation \QRel{} trotz Hiding erhalten ist und somit das Hiding bezüglich
+  Relation \QRel{} trotz Hiding erhalten bleibt und somit das Hiding bezüglich
   dieser Relation eine Präkongruenz ist.
 \end{proof}
 

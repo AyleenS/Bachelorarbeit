@@ -11,7 +11,7 @@ Parallelkomposition geändert, wie in~\cite{Schlosser2012BA}.
   Ein Error ist \emph{lokal erreichbar} in einem \EIO{} $S$, wenn $\exists w\in O^*: q_0
   \overset{w}{\Rightarrow} q\in E$.\\
   Zwei \EIO{}s $S_1$ und $S_2$ \emph{kommunizieren error-frei}, wenn in ihrer
-  Parallelkomposition $S_1\| S_2$ keine lokalen Errors erreicht werden können.
+  Parallelkomposition $S_1\| S_2$ keine Errors lokal erreicht werden können.
 \end{Def}
 
 Mittels der lokalen Erreichbarkeit von Errors können wir eine
@@ -31,7 +31,7 @@ gröbste zu sein.
 \end{Def}
 
 Um uns nun näher mit den Präkongruenzen auseinandersetzen zu können, müssen wir bestimmte Traces
-aus unser Struktur hervorheben. Die strikten Errortraces entsprechen Wege, die
+aus unser Struktur hervorheben. Die strikten Errortraces entsprechen Wegen, die
 direkt vom Startzustand zu einem Zustand in der Menge $E$ führen. Da Outputs Aktionen
 sind, die von außen nicht verhindert werden können, benötigen wir auch noch die
 Menge der Traces, die zu einem Zustand führen, von dem aus mit lokalen Aktionen
@@ -84,7 +84,8 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} wert legen.
 
 \begin{satz}[Error-Semanik für Parallelkompositionen]
   \label{satzErrorSemanik}
-  Für zwei komponierbare \EIO{}s $S_1, S_2$ und $S_{12}=S_1\|S_2$, gilt:
+  Für zwei komponierbare \EIO{}s $S_1, S_2$ und ihre Komposition
+  $S_{12}=S_1\|S_2$, gilt:
   \begin{enumerate}
     \item $\ET{}_{12}=\cont{}(\prune{}((\ET{}_1\|\EL{}_2)\cup(\EL{}_1\|\ET{}_2)))$
     \item $\EL{}_{12}=(\EL{}_1\|\EL{}_2)\cup \ET{}_{12}$
@@ -143,9 +144,10 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} wert legen.
       $q_{02} \overset{w_2}{\Rightarrow} q_2 \overset{v_2}{\Rightarrow} q_2'$
       mit $w\in w_1\|w_2$ und $v\in v_1\|v_2$. Aus $(q_1',q_2')\in E_{12}$
       folgt, dass es sich entweder um einen geerbten oder einen neuen Error
-      handelt. Bei einem geerbten wäre bereits einer der beiden Zustände ein
-      Error-Zustand gewesen. Der neue Error hingegen wäre durch die fehlende
-      Möglichkeit entstanden eine synchronisierte Aktion auszuführen.
+      handelt. Bei einem geerbten wäre bereits einer der beiden Zustände $q_1$
+      bzw. $q_2$ ein Error-Zustand gewesen. Der neue Error hingegen wäre durch
+      die fehlende Möglichkeit entstanden eine synchronisierte Aktion
+      auszuführen.
       \begin{itemize}
         \item Fall 2a) (geerbter Error): \OBdA{} $q_1'\in E_1$. Daraus folgt
           $w_1v_1\in \StET{}_1\subseteq \cont{}(\PrET{}_1)\subseteq \ET{}_1$. Da gilt

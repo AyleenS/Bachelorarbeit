@@ -23,7 +23,7 @@ das Hiding betrachten, in dem Outputs durch interne Aktionen ersetzt werden.
   \begin{itemize}
     \item $Q$ $-$ die Menge der Zustände,
     \item $I,O$ $-$ die disjunkten Mengen der (sichtbaren) Input- und
-      Outputaktionen,
+      Output-Aktionen,
     \item $\delta\subseteq Q\times (I\cup O\cup\{\tau\})\times Q$ $-$ die
       Übergangsrelation,
     \item $q_0\in Q$ $-$ der Startzustand,
@@ -65,7 +65,7 @@ Die \emph{Sprache} von $S$ ist
 $L(S)=\{w\in\Sigma^*\mid q_0\overset{w}{\Rightarrow}\}$.
 
 \section{Parallelkomposition}
-Zwei \EIO{}s sind komponierbar, wenn ihre Outputmengen disjunkt sind. Die
+Zwei \EIO{}s sind komponierbar, wenn ihre Output-Mengen disjunkt sind. Die
 Error-Zustän\-de der Parallelkomposition setzten sich aus den Error-Zuständen der
 beiden zusammengesetzten Komponenten (geerbte Errors) und den
 unsynchronisierbaren Outputs (neue Errors) zusammen.\\
@@ -114,10 +114,10 @@ q_2\overset{a}{\rightarrow}\}
 \end{Def}
 
 Die Parallelkomposition kann nicht nur für Transitionssysteme betrachtet
-werden, sondern auch über Aktionsfolgen. \emph{Traces} sind die möglichen Wege
-des Systems, während ein bestimmtes Wort verarbeitet wird. Dieses Wort besteht
-aus Inputs und Outputs, mit denen die Folge ab dem Startzustand $q_0$
-beschriftet ist.
+werden wie wir das bis jetzt getan haben, sondern auch über Aktionsfolgen.
+\emph{Traces} sind die möglichen Wege des Systems, während ein bestimmtes Wort
+verarbeitet wird. Dieses Wort besteht aus Inputs und Outputs, mit denen die
+Folge ab dem Startzustand $q_0$ beschriftet ist.
 
 \begin{Def}[Parallelkomposition auf Traces]
   Gegeben zwei \EIO{}s $S_1$ und $S_2$, sowie $w_1\in\Sigma _1, w_2\in\Sigma
@@ -134,7 +134,7 @@ zu Problemen führen, mit den Traces zu betrachten, mit denen man diesem
 Zustände erreicht. Um dies besser umsetzten zu können, definieren wir eine
 $\prune{}$-Funktion, die alle Outputs am Ende eines Traces entfernt. Da wir
 jedoch auch die Möglichkeit haben wollen nur gezielt einzelne Outputs am Ende
-eines Traces abzuscheiden, definieren mir noch eine \prunenew{}-Funktion
+eines Traces abzuscheiden, definieren mir noch eine \prunenew{}-Funktion.
 Zusätzlich werden Funktionen definiert, die die Traces beliebig fortsetzen.
 
 \begin{Def}[Pruning- und Fortsetzungs-Funktion]
@@ -213,7 +213,10 @@ synchronisierten Aktionen betrachtet. Diese Parallelkomposition können wir nun
 mit dem Internalisierungsoperator durch Hiding der synchronisierten Aktionen
 nachbilden. Da diese synchronisierten Aktionen in der Parallelkomposition dieser
 Arbeit als Outputs des Gesamtsystems übernommen werden, werden dadurch auch
-alle synchronisierten Aktionen verborgen.
+wirklich alle synchronisierten Aktionen verborgen. Falls das Internalisieren
+vor der Komposition durchgeführt werden würde, wären im Gesamtsystem die
+Aktionen aus $Synch(S_1,S_2)$ als Inputs alle vorhanden, da nur die Outputs
+versteckt wurden.
 
 \begin{Def}[Parallelkomposition mit Internalisierung]
   \label{defIntParal}
