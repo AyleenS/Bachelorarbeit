@@ -7,8 +7,8 @@ soll. Die nicht mit den entsprechenden Outputs synchronisierten Inputs der zu
 komponierenden \EIO{}s werden als Inputs der Parallelkomposition übernommen.
 
 \section{Error-IO-Transitionssystem}
-Die hier betrachteten \EIO{}s sind Systeme, deren Übergänge mit Inputs und
-Outputs beschriftet sind. Jeder Übergang ist dabei mit einem Input oder einem
+Die hier betrachteten \EIO{}s sind Systeme, deren Transitionen mit Inputs und
+Outputs beschriftet sind. Jeder Transition ist dabei mit einem Input oder einem
 Output versehen. Ebenfalls zulässig ist eine Transitionsbeschriftung mit
 $\tau$, einer \emph{internen}, unbeobachtbaren \emph{Aktion}. Diese interne
 Aktion lässt also keine Interaktion mit der Umwelt zu. In~\cite{Vogler2014EIO}
@@ -25,7 +25,7 @@ das Hiding betrachten, in dem Outputs durch interne Aktionen ersetzt werden.
     \item $I,O$ $-$ die disjunkten Mengen der (sichtbaren) Input- und
       Output-Aktionen,
     \item $\delta\subseteq Q\times (I\cup O\cup\{\tau\})\times Q$ $-$ die
-      Übergangsrelation,
+      Transitionsrelation,
     \item $q_0\in Q$ $-$ der Startzustand,
     \item $E\subseteq Q$ $-$ die Menge der Error-Zustände.
   \end{itemize}
@@ -41,7 +41,7 @@ Um die Komponenten der entsprechenden Transitionssystem zuzuordnen, werden für
 die Komponenten die gleichen Indizes wie für ihr zugehöriges System verwendet,
 z.B.\ schreiben wir $I_1$ für die Inputmenge des Transitionssystem $S_1$. Diese
 Notation verwenden wir später analog für die Sprachen eines Systems.\\
-Die Elemente der Übergangsrelation $\delta$ werden wir wie folgt notieren:
+Die Elemente der Transitionsrelation $\delta$ werden wir wie folgt notieren:
 \begin{itemize}
   \item $p\overset{\alpha}{\rightarrow} q$ für $(p,\alpha ,q)\in\delta$,
   \item $p\overset{\alpha}{\rightarrow}$ für $\exists q: (p,\alpha ,q)\in\delta$,
