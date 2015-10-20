@@ -1,1 +1,84 @@
-\chapter{Verfeinerung auf Error-, Quiescent- und Divergententraces}
+\chapter{Verfeinerung auf Error-, Ruhe- und Divergenztraces}
+
+\section{Präkongruenz für Divergenz}
+
+In diesem Kapitel wollen wir die Menge der betrachteten Zustände noch einmal
+erweitern. Somit betrachten wir dann Errors, Ruhe-Zustände und
+Divergente-Zustände. Somit eignet sich~\cite{Chilton2013} hier als Quelle, da
+wir nun auch noch die Divergenz betrachten. Diese wurde dort gleichzeitig mit
+der Ruhe eingeführt und betrachtet. Da es sich nur um eine Erweiterung der
+Präkongruenzen aus den letzten beiden Kapiteln handelt, werden wir dabei
+ähnlich vorgehen wie in den letzten beiden Kapiteln.\\
+Wenn von einem Zustand aus eine unendliche Folge an $\tau$-Transitionen möglich
+ist, nennen wir diesen Zustand divergent.
+
+\begin{Def}[Divergenz]
+  Ein \emph{Divergenz-Zustand} ist ein Zustand in einem \EIO{}, der eine
+  unendliche Folge an $\tau$s ausführen kann.\\
+  Somit ist die Menge der Divergenz-Zustände in einem \EIO{} wie folgt formal
+  definiert: $Div := \{q\in Q\mid \exists q'\in Q': q
+  \overset{\tau}{\Rightarrow} q' \wedge q'~\mathrm{ist}~\infty\mathrm{-oft}
+  ~\mathrm{durch}~\tau ~\mathrm{erreichbar}\}$.
+\end{Def}
+
+Wir verwenden als Erreichbarkeitsbegriff wieder die lokale Erreichbarkeit.
+Jedoch werden wir für Divergenz auch nicht die Methoden wählen, dass die Traces
+beliebig fortsetzbar sind, sondern nur so wie im System bereits möglich. Auf
+die gleiche Art zu Weise wie bei den Ruhe-Zuständen können wir hier auch dem
+Fehler entkommen. Durch einen Input oder einen Output kann das Divergieren des
+Systems verhindert werden und somit ist der Fehler auch als nicht so
+\glqq{}schlimm\grqq{} zu bewerten wie ein Error.
+
+\begin{Def}[error-, ruhe- und divergenz-freie Kommunikation]
+  Zwei \EIO{}s $S_1$ und $S_2$ kommunizieren \emph{error-,ruhe- und
+  divergenz-frei}, wenn in ihre Parallelkomposition $S_1\|S_2$ keine Errors,
+  Ruhe-Zustände und Divergenz-Zustände lokal erreichbar sind.
+\end{Def}
+
+\begin{Def}[Divergenz-Verfeinerungs-Basisrelation]
+Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur schreiben wir $S_1\DBRel
+S_2$, wenn ein Error, Ruhe-Zustand oder Divergenz-Zustand in $S_1$ nur dann
+lokal erreichbar ist, wenn er auch in $S_2$ lokal erreichbar ist. Diese
+\emph{Basisrelation} stellt eine \emph{Verfeinerung} bezüglich \emph{Errors},
+\emph{Ruhe-Zuständen} und \emph{Divergenz-Zuständen} dar.\\
+\DCRel{} bezeichnet die \emph{vollständige abstrakte Präkongruenz} von \DBRel{}
+bezüglich $\cdot\|\cdot$.
+\end{Def}
+
+Da wir nun die grundlegenden Definitionen für Divergenz festgehalten haben,
+können wir uns nun einen Begriff für die Traces von divergenten Zuständen
+bilden.\\
+Wie oben bereits erwähnt, verwenden wir hier die gleiche Technik wie im letzten
+Kapitel um die Traces zu kürzen und nur so fortzusetzen wie es das
+Transitionssystem ermöglicht.
+
+\begin{Def}[Divergenztraces]
+  Sei $S$ ein \EIO{} und definiere:
+  \begin{itemize}
+    \item strickte Divergenztraces: $\StDT{}(S) := \{w\in\Sigma ^*\mid q_0
+      \overset{w}{\Rightarrow} q\in Div\}$,
+    \item Divergenztraces: $\PrDT{}(S) := \bigcup\{\prunenew (w)\mid
+      w\in\StDT{}(S)\}$.
+  \end{itemize}
+\end{Def}
+
+Da in~\cite{Chilton2013} bereits direkt Divergenz mit betrachtet wurde, wir dort
+die Flutung der Traces so vorgenommen, dass $\ET\sqsubseteq \DT\sqsubseteq\QT$
+gilt. Dies möchten wir auch gerne hier in diesem Kapitel erreichen. Somit
+können wir zwar die Semantik aus dem Error-Kapitel übernehmen, benötigen jedoch
+für die Ruhe eine andere Semantik wie im letzten Kapitel.
+
+\begin{Def}[Ruhe- und Divergenz-Semantik]
+  Sei $S$ ein \EIO{}.
+  \begin{itemize}
+    \item Die Menge der \emph{error-gefluteten Divergenztraces} von $S$ ist
+      $\DT{}(S) := \PrDT{}(S)\cup \ET{}(S)$.
+    \item Die Menge der \emph{divergenz-gefluteten Ruhetraces} von $S$ ist
+      $\QT{}(S) := \PrQT{}(S)\cup \DT{}(S)$.
+  \end{itemize}
+  Für zwei \EIO{}s $S_1, S_2$ mit der gleichen Signatur schreiben wir $S_1\DRel
+  S_2$, wenn $S_1\ERel S_2$, $\DT{}(S_1)\sqsubseteq \DT{}(S_2)$ und
+  $\QT{}(S_1)\sqsubseteq \QT{}(S_2)$ gilt.
+\end{Def}
+
+\section{Hiding für Divergenz}
