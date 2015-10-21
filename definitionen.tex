@@ -194,29 +194,25 @@ deshalb an~\cite{Schlosser2012BA} als Quelle halten.
   dem \emph{Internalisierungsoperator} $\cdot /\cdot$,
   definiert als $S'=(Q,I,O',\delta ',\linebreak q_0,E)$ mit:
   \begin{itemize}
+    \item $\forall x_i: x_i\in O\wedge x_i\neq\tau$.
     \item $O'=O\backslash \{x_1,x_2,\dots ,x_n\}$,
     \item $\delta '=(\delta\cup\{(q,\tau ,q')\mid (q,x,q')\in\delta
       ,x\in(\{x_1,x_2,\dots ,x_n\}\cap O)\})\backslash \{(q,x,q')\mid
       x\in(\{x_1,x_2,\dots ,x_n\}\cap O)\}$,
-    \item $x_i\neq\tau\;\forall i\in\{1,2,\dots n\}$.
   \end{itemize}
 \end{Def}
 
-Die Menge hinter dem Internalisierungsoperator ist nicht auf Outputs
-beschränkt. Jedoch hat jedes Element, das in dieser Menge enthalten ist und
-kein Output des Systems ist, keine Auswirkungen auf das neue
-Transitionssystem. Jedoch kann es sinnvoll sein die Möglichkeit zu haben dort
-Aktionen aufnehmen zu können, die nicht in den Aktionen das betrachteten
-Systems enthalten sind.\\
+Die Menge hinter dem Internalisierungsoperator ist in dieser Definition auf
+Outputs beschränkt. Diese Einschränkung wurde vorgenommen und die weitere
+Betrachtung zu erleichtern. Jedoch kann es sinnvoll sein die Möglichkeit zu
+haben dort weitere Aktionen aufnehmen zu können. Dies wird jedoch nicht mehr
+Teil dieser Arbeit sein.\\
 In~\cite{Vogler2014EIO} wurden die Parallelkomposition nur mit Verbergen der
 synchronisierten Aktionen betrachtet. Diese Parallelkomposition können wir nun
 mit dem Internalisierungsoperator durch Hiding der synchronisierten Aktionen
 nachbilden. Da diese synchronisierten Aktionen in der Parallelkomposition dieser
 Arbeit als Outputs des Gesamtsystems übernommen werden, werden dadurch auch
-wirklich alle synchronisierten Aktionen verborgen. Falls das Internalisieren
-vor der Komposition durchgeführt werden würde, wären im Gesamtsystem die
-Aktionen aus $Synch(S_1,S_2)$ als Inputs alle vorhanden, da nur die Outputs
-versteckt wurden.
+wirklich alle synchronisierten Aktionen verborgen.
 
 \begin{Def}[Parallelkomposition mit Internalisierung]
   \label{defIntParal}

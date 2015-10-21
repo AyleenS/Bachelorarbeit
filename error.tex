@@ -652,15 +652,15 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
 
 \begin{proof}
   Da $S_1\ERel S_2$ gilt, wissen wir, dass $\ET{}_1\subseteq \ET{}_2$ und
-  $\EL{}_1\subseteq \EL{}_2$ gilt. Da für Elemente aus $X:=\{x_1,x_2,\dots
-  ,x_n\}$ die nicht in $O$ enthalten sind nichts passiert bei der
-  Internalisierung, gehen wir davon aus, das $X\subseteq O$ gilt. Wir wählen
+  $\EL{}_1\subseteq \EL{}_2$ gilt. Es gilt $X:=\{x_1,x_2,\dots ,x_n\}\subseteq
+  O$, da in der Definition des Internalisierungsoperators keine andere $x_i$
+  zulässig sind. Wir wählen
   einen Traces $w=a_1a_2\dots a_m\in \ET{}_1$. Solang $w$ nicht nur aus Outputs
   besteht, gibt es also einen Ablauf $q_0 \overset{w'}{\Rightarrow}$ mit
   $w'=a_1a_2\dots a_k$, so dass $a_k\in I$, $k\leq m$ und $w'\in \MIT{}_1$ oder
   $w'\in \PrET{}_1$ gilt. Nach der Internalisierung bleiben von dem Ablauf nur
-  noch die Aktionen übrig, die nicht gleichzeitig ein Output und ein Element
-  aus $X$ sind. Der Traces reduziert sich also auf $w''=w|_{\Sigma\backslash
+  noch die Aktionen übrig, die nicht Element von $X$ sind. Der Trace reduziert
+  sich also auf $w''=w|_{\Sigma\backslash
   (O\cap X)}$. Diese $w''$ hat einen zu $w'$ analoges Präfix, da der Input
   $a_k$ erhalten beleibt. Dieses Präfix von $w''$ ist dann in $\MIT{}(S_1/X)$
   oder in $\PrET{}(S_1/X)$ enthalten und somit ist $w''$ in $\ET{}(S_1/X)$
