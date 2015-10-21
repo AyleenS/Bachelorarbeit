@@ -81,4 +81,31 @@ für die Ruhe eine andere Semantik wie im letzten Kapitel.
   $\QT{}(S_1)\sqsubseteq \QT{}(S_2)$ gilt.
 \end{Def}
 
+In der letzten Definition wurde wieder durch das Fluten eine
+Informationsvermischung vorgenommen. Im Fall von \DT{} mit den Errortraces und
+im Fall von \QT{} mit den Divergenztraces. Jedoch entstehen hier wie im letzten
+Kapitel keine neuen Traces, die nicht bereits in \EL{} aus den Error-Kapitel
+enthalten wären. Somit können wir die error-geflutete Sprache ohne weitere
+Flutung verwenden. Somit ist die Relation \DRel{} ebenso wie \QRel{} eine
+Einschränkung der Relation \ERel{}.\\
+Ebenso wie in Satz~\ref{satzQuiSemantik} wird im nächsten Satz nur der
+Vollständigkeit halber der erste und letzte Punkt erwähnt der Beweis dazu
+findet sich in Satz~\ref{satzErrorSemanik}.
+
+\begin{satz}[Error-, Ruhe- und Divergenz-Semantik für Parallelkompostionen]
+  Für zwei komponierbare \EIO{}s $S_1, S_2$ und ihre Komposition
+  $S_{12}=S_1\|S_2$ gilt:
+  \begin{enumerate}
+    \item $\ET{}_{12}=\cont (\prune ((\ET{}_1\|\EL{}_2)\cup
+      (\EL{}_1\|\ET{}_2)))$,
+    \item $\DT{}_{12}=\prunenew (\DT{}_1\|\DT{}_2)\cup \ET{}_{12}$,
+    \item $\QT{}_{12}=\prunenew (\QT{}_1\|\QT{}_2)\cup \DT{}_{12}$,
+    \item $\EL{}_{12}=(\EL{}_1\|\EL{}_2)\cup \ET{}_{12}$.
+  \end{enumerate}
+\end{satz}
+
+\begin{proof}
+  
+\end{proof}
+
 \section{Hiding für Divergenz}
