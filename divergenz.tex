@@ -69,6 +69,7 @@ können wir zwar die Semantik aus dem Error-Kapitel übernehmen, benötigen jedo
 für die Ruhe eine andere Semantik wie im letzten Kapitel.
 
 \begin{Def}[Ruhe- und Divergenz-Semantik]
+  \label{DefRuheDivSemantik}
   Sei $S$ ein \EIO{}.
   \begin{itemize}
     \item Die Menge der \emph{error-gefluteten Divergenztraces} von $S$ ist
@@ -98,14 +99,46 @@ findet sich in Satz~\ref{satzErrorSemanik}.
   \begin{enumerate}
     \item $\ET{}_{12}=\cont (\prune ((\ET{}_1\|\EL{}_2)\cup
       (\EL{}_1\|\ET{}_2)))$,
-    \item $\DT{}_{12}=\prunenew (\DT{}_1\|\DT{}_2)\cup \ET{}_{12}$,
+    \item $\DT{}_{12}=\prunenew ((\DT{}_1\|\EL{}_2)\cup (\EL{}_1\|\DT{}_2))\cup
+      \ET{}_{12}$,
     \item $\QT{}_{12}=\prunenew (\QT{}_1\|\QT{}_2)\cup \DT{}_{12}$,
     \item $\EL{}_{12}=(\EL{}_1\|\EL{}_2)\cup \ET{}_{12}$.
   \end{enumerate}
 \end{satz}
 
 \begin{proof}
-  
+  ~
+  \begin{enumerate}
+    \item \hspace{-0.2cm}:
+  \end{enumerate}
+  \vspace{-0.3cm}
+  Der Beweis diese Punktes entspricht dem Beweis von Punkt 1.\ im Beweis von
+  Satz~\ref{satzErrorSemanik}.
+
+  2. ``$\subseteq$'':\\
+  Wir müssen hier unterscheiden, ob wir ein $w\in \PrDT{}_{12}$ oder ein $w\in
+  \ET{}_{12}$ betrachten. Im zweiten Fall ist das $w$ in der rechten Seite der
+  Gleichung enthalten. Deshalb werden wir im weiteren Verlauf dieses Beweises
+  davon ausgehen, dass $w\in \PrDT{}_{12}$ gilt, und wir werden versuchen zu
+  zeigen, dass dieses $w$ ebenfalls in der rechten Seite enthalten ist. Aus der
+  Definition~\ref{DefRuheDivSemantik} wissen wir, dass es ein $v\in O^*_{12}$
+  gibt, so dass $(q_{01},q_{02}) \overset{wv}{\Rightarrow} (q_1,q_2)$ mit
+  $(q_1,q_2)\in Div_{12}$ gilt. Durch die Projektion auf die Transitionssysteme
+  $S_1$ und $S_2$ erhalten wir $q_{01} \overset{w_1v_1}{\Rightarrow} q_1$ und
+  $q_{02} \overset{w_2v_2}{\Rightarrow} q_2$ mit $w\in w_1\|w_2$ und $v\in
+  v_1\|v_2$. Aus $(q_1,q_2)\in Div_{12}$ können wir folgern, dass \oBdA{}
+  $q_1\in Div_1$ gilt. Damit der Zustand $(q_1,q_2)$ in der Parallelkomposition
+  erreicht werden kann, muss dann $w_2v_2\in L_2\subseteq \ET{}_2$ gelten.
+
+  2. ``$\supseteq$'':\\
+
+  3. ``$\subseteq$'':\\
+
+  3. ``$\supseteq$'':\\
+
+  4.:\\
+  Der Beweis diese Punktes entspricht dem Beweis von Punkt 2.\ im Beweis von
+  Satz~\ref{satzErrorSemanik}.
 \end{proof}
 
 \section{Hiding für Divergenz}
