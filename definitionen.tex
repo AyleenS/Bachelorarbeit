@@ -132,18 +132,14 @@ Folge ab dem Startzustand $q_0$ beschriftet ist.
 Die Semantik der späteren Kapitel basiert darauf die jeweiligen Zustände, die
 zu Problemen führen, mit den Traces zu betrachten, mit denen man diesem
 Zustände erreicht. Um dies besser umsetzten zu können, definieren wir eine
-$\prune{}$-Funktion, die alle Outputs am Ende eines Traces entfernt. Da wir
-jedoch auch die Möglichkeit haben wollen nur gezielt einzelne Outputs am Ende
-eines Traces abzuscheiden, definieren mir noch eine \prunenew{}-Funktion.
-Zusätzlich werden Funktionen definiert, die die Traces beliebig fortsetzen.
+$\prune{}$-Funktion, die alle Outputs am Ende eines Traces entfernt. Zusätzlich
+werden Funktionen definiert, die die Traces beliebig fortsetzen.
 
 \begin{Def}[Pruning- und Fortsetzungs-Funktion]
   Für ein \EIO{} $S$ definieren wir:
   \begin{itemize}
     \item $\prune{}:\Sigma ^*\rightarrow\Sigma ^*, w\mapsto u$, mit $w=uv,
       u=\varepsilon\vee u\in\Sigma ^*\cdot I$ und $v\in O^*$,
-    \item $\prunenew{}:\Sigma ^*\rightarrow\mathfrak{P}(\Sigma ^*), w\mapsto
-      \{u\mid \exists v\in O^*: w=uv\}$
     \item $\cont{}:\Sigma ^*\rightarrow\mathfrak{P}(\Sigma ^*),
       w\mapsto\{wu\mid u\in\Sigma ^*\}$,
     \item $\cont{}:\mathfrak{P}(\Sigma ^*)\rightarrow\mathfrak{P}(\Sigma ^*),
@@ -162,8 +158,10 @@ Projektionen von genau einem Ablauf in $S_{12}$ der Form $(p_1,p_2)
 \overset{w}{\Rightarrow} (q_1.q_2)$. Es ist dafür nötig, dass die Abläufe der
 beiden Systeme und die Systeme selbst komponierbar sind. Dadurch, dass wir
 ein $w$ wählen, dass projiziert auf die einzelnen Alphabete die jeweiligen
-Wörter ergibt, können wir auch sagen, dass nur ein Ablauf möglich ist. Daraus
-ergibt sich das folgende Lemma.
+Wörter ergibt, können wir ohne interne Aktionen sagen, dass nur ein Ablauf
+möglich ist. Da jedoch bei uns auch interne Aktionen zulässig sind, sind
+mehrere Abläufe möglich, da nicht klar ist, wann ein $\tau$ in dem Trace
+ausgeführt ist. Daraus ergibt sich das folgende Lemma.
 
 \begin{lem}[Sprache der Parallelkomposition]
   \label{LemmaSprache}

@@ -226,8 +226,6 @@ Mit dem folgenden Satz halten wir fest, dass wir mit \QRel{} die gröbste
 Präkongruenz gefunden haben bezüglich $\cdot\|\cdot$ die in \QBRel{} enthalten
 ist.
 
-%TODO Semantik ändern ab hier
-
 \begin{satz}[Full Abstractness für Ruhe-Semantik]
   \label{satzQuiFullAbst}
   Seien $S_1$ und $S_2$ zwei \EIO{}s mit derselben Signatur. Dann gilt
@@ -240,9 +238,9 @@ ist.
   Präkongruenz.
 
   \glqq{}$\Leftarrow$\grqq{}: Nach Definition gilt, wenn
-  $\varepsilon\in\QT{}(S)$, ist in $S$ ein Ruhe-Zustand oder ein Error-Zustand
-  lokal erreichbar. Somit impliziert $S_1\QRel S_2$, dass
-  $\varepsilon\in\QT{}_2$ gilt, wenn $\varepsilon\in\QT{}_1$. Daraus folgt
+  $\varepsilon\in\QT{}(S)$, ist in $S$ ein Ruhe-Zustand durch interne Aktionen
+  oder ein Error-Zustand lokal erreichbar. Somit impliziert $S_1\QRel S_2$,
+  dass $\varepsilon\in\QT{}_2$ gilt, wenn $\varepsilon\in\QT{}_1$. Daraus folgt
   ebenfalls, dass $S_1\QBRel S_2$ gilt. Somit folgt aus $S_1\QRel S_2$ der
   relationale Zusammenhang $S_1\QCRel S_2$.
 
@@ -299,25 +297,16 @@ Wir wollen nun auch hier die Auswirkungen der Internalisierung von Aktionen auf
 unsere Verfeinerungsrelationen untersuchen. Es werden Outputs in interne
 Aktionen umgewandelt. Da wir jedoch bei unseren Ruhe-Zuständen auch
 $\tau$-Transitionen verboten haben, verändert sich nichts an der Menge der ruhigen
-Zustände. Da wir die Erreichbarkeit von Ruhe-Zuständen mittels lokaler Aktionen
-betrachten, kann sich auch nichts an der Erreichbarkeit der Ruhe-Zustände
-ändern. Somit können wir eine analoge Proposition zu~\ref{propErBaIn}
-formulieren.
-
-\begin{prop}[Ruhe-Basisrelation bzgl. Interlaisierung]
-  Wenn $S_1\QBRel S_2$ gilt, dann folgt daraus, dass auch
-  $(S_1/\{x_1,x_2,\dots, x_n\})\QBRel (S_2/\{x_1,x_2,\dots, x_n\})$ gilt.
-\end{prop}
-
-\begin{proof}
-  Dass die Error-Erreichbarkeit unverändert bleibt unter Hiding, wurde bereits
-  im Beweis zur Proposition~\ref{propErBaIn} gezeigt. Mit der analogen
-  Argumentation folgt auch, dass sich nicht an der Erreichbarkeit der
-  Ruhe-Zustände ändert. Es können durch Hiding nämlich nur Outputs verborgen
-  werden, die bereits in der Menge der lokalen Aktionen enthalten sind. Die
-  Menge der Ruhe-Zustände kann sich durch das Internalisieren auch nicht
-  vergrößern oder verkleinern, wie oben bereits festgestellt.
-\end{proof}
+Zustände. Da wir die Erreichbarkeit von Ruhe-Zuständen mittels interner Aktionen
+betrachten, können durch das verbergen von Outputs neue erreichbare
+Ruhe-Zustände hinzu kommen. Somit ist es nicht möglich hier eine analoge
+Proposition zu~\ref{propErBaIn} zu formulieren. Wir können zwar daraus
+schließen, dass alle Ruhe-Zustände, die vor dem Hiding zu erreichen waren mit
+$\tau$s auch danach noch erreichbar sind, jedoch können durch die
+Internalisierung neue erreicht werden , die möglicherweise in dem anderen
+Transitionssystem nicht erreicht werden können. Da wir jedoch für die
+Präkongruenz \QRel{} noch Wissen über die Teilmengenbeziehung der Traces haben,
+können wir einen Satz analog zu~\ref{satzPraeInternalisierung} formulieren.
 
 \begin{satz}[Präkongurenz bzgl. Internalisierung]
   \label{satzPraeInterQui}
