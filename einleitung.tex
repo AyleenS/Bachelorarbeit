@@ -22,21 +22,26 @@ Hidings. Die Feststellungen in dem Definitions-Kapitel und dem Kapitel über
 Errors stimmen somit überein, jedoch wurden alle Beweise unabhängig davon neu
 geführt.\\
 Wir wählen in dieser Arbeit einen optimistischen Ansatz für die Erreichbarkeit
-der jeweils in den Kapitel betrachteten Zustände. Ein Zustand gilt hier als erreichbar, wenn
-er lokal erreicht werden kann, d.h.\ durch lokale Aktionen. Die Menge,
-bestehend aus der internen Aktion $\tau$ und den Output-Aktionen, bezeichnen wir
-hier als lokale Aktionen. Alle Elemente aus dieser Menge können ohne weiteres
-Zutun von außen ausgeführt werden. Somit kann nicht beeinflusst werden ob diese
-Transitionen genommen werden oder nicht. Es besteht also die Möglichkeit, dass das
-\EIO{} in einen der betrachteten Zustände übergeht, sobald dieser lokal
-erreichbar ist. Diese Art der Erreichbarkeit von Zuständen wird auch in Kapitel
-3 von~\cite{Vogler2014EIO} für Errors behandelt.\\
+der Error-Zustände. Ein Error gilt hier als erreichbar, wenn er lokal erreicht
+werden kann, d.h.\ durch lokale Aktionen. Die Menge, bestehend aus der internen
+Aktion $\tau$ und den Output-Aktionen, bezeichnen wir hier als lokale Aktionen.
+Alle Elemente aus dieser Menge können ohne weiteres Zutun von außen ausgeführt
+werden. Somit kann nicht beeinflusst werden ob diese Transitionen genommen
+werden oder nicht. Es besteht also die Möglichkeit, dass das \EIO{} in einen
+Error-Zustand übergeht, sobald dieser lokal erreichbar ist. Diese Art der
+Erreichbarkeit von Zuständen wird auch in Kapitel 3 von~\cite{Vogler2014EIO}
+behandelt.\\
 Neben dem hier betrachteten optimistischen Ansatz gibt es noch zwei weitere
-Ansätze in~\cite{Vogler2014EIO}. Einen hyper-optimistischen Ansatz, bei dem ein
-Zustand als erreichbar gilt, wenn er durch interne Aktionen erreicht werden
-kann, und einen pessimistischen Ansatz, bei dem ein Zustand als erreichbar gilt,
-sobald es eine Folge an Inputs und Outputs gibt, mit denen der Zustand vom
-Startzustand aus erreicht werden kann.\\
+Ansätze in~\cite{Vogler2014EIO} für die Erreichbarkeit von Error-Zuständen.
+Einen hyper-optimistischen Ansatz, bei dem ein Error als erreichbar gilt, wenn
+er durch interne Aktionen erreicht werden kann, und einen pessimistischen
+Ansatz, bei dem ein Error als erreichbar gilt, sobald es eine Folge an Inputs
+und Outputs gibt, mit denen der Error-Zustand vom Startzustand aus erreicht
+werden kann.\\
+Im Kapitel über die Ruhe-Zuständen werden wir für die Erreichbarkeit einen
+hyper-optimistischen Ansatz wählen, da man den Ruhe-Zuständen durch einen Input
+entrinnen kann und sie somit als nicht so \glqq{}schlimm\grqq{} anzusehen sind
+wie Errors.\\
 Wir versuche bei allen betrachteten Zustandsmengen eine gröbste Präkongruenz zu
 finden, die in der jeweiligen Basisrelation enthalten ist und die eine
 Präkongruenz bezüglich der Parallelkomposition ist.

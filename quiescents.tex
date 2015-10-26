@@ -106,7 +106,7 @@ Sie entsprechen Punkt 1.\ und 2.\ aus Satz~\ref{satzErrorSemanik}.
   Der Beweis diese Punktes entspricht dem Beweis von Punkt 1.\ im Beweis von
   Satz~\ref{satzErrorSemanik}.
 
-  2. ``$\subseteq$'':\\
+  2. \glqq $\subseteq$\grqq :\\
   Hier müssen wir unterscheiden ob wir ein $w\in\StQT{}_{12}$ betrachten oder
   ein $w\in \ET{}_{12}$. Im zweiten Fall ist das $w$ in der rechten Seite
   enthalten. Somit betrachten wir ab jetzt ein
@@ -121,7 +121,7 @@ Sie entsprechen Punkt 1.\ und 2.\ aus Satz~\ref{satzErrorSemanik}.
   \QT{}_1\|\QT{}_2$ und somit ist $w$ in der rechten Seiten der Gleichung
   enthalten.
 
-  2. ``$\supseteq$'':\\
+  2. \glqq $\supseteq$\grqq :\\
   Wir müssen nun wieder unterscheiden, nach dem aus welcher Menge unser
   betrachtetes Element stammt. Falls $w\in \ET{}_{12}$ gilt, so können wir die
   Zugehörigkeit zur linken Seite direkt folgern. Deshalb betrachten wir für den
@@ -340,3 +340,45 @@ Proposition~\ref{propQuiPrae} und dem Satz~\ref{satzPraeInterQui} schließen.
 \begin{kor}[Präkongruenz mit Internalisierung]
   \QRel{} ist eine Präkongruenz bezüglich $\cdot |\cdot$.
 \end{kor}
+
+\section{Diskussion für andere Semantik}
+
+Es währe hier auch denkbar, dass man auch für die Ruhe-Zustände einen lokalen
+Erreichbarkeitsbegriff verwendet. Es könnte dadurch sogar möglich sein eine
+noch gröbere Präkongruenz zu erhalten. Dies wurde hier jedoch nicht gemacht, da
+es bei den denkbaren Umsetzung eines solchen Erreichbarkeitsbegriffes zu
+Problemen kommt, so dass wir nicht mehr alle Inklusionen erreichen können, die
+wir in unseren Sätzen gefordert haben.\\
+Die Umsetzung des lokalen Erreichbarkeitsbegriffes wie im letzten Kapitel, mit
+abschneiden der Outputs und beliebigem Fortsetzten der Traces, würde zu einem
+Problem in Satz~\ref{satzQuiSemantik} in Punkt 2.\ führen. Zusätzlich könnte
+man nicht die \EL{} als geflutete Sprache beibehalten sondern müsste noch
+zusätzlich mit den Ruhetraces fluten, da sonst nicht mehr alle
+Informationen, die in Ruhetraces enthalten auch in der gefluteten Sprache
+enthalten wäre. Durch diese Abänderung käme es zusätzlich noch zu einem Problem
+in Punkt 3.\ bei Satz~\ref{satzQuiSemantik}. Durch die Anwendung der Definition
+der gefluteten Sprachen würden Terme entstehen, in denen Ruhetraces und Traces
+aus der Sprache $L$ in Parallelkomposition gesetzt würden. Da die Ruhetraces
+nicht mehr Teil der Sprache sind, kann nicht mehr gelten, dass die Teil von
+$L_1\|L_2$ ist. Es kann auch nicht Teil der Ruhetraces sein, da Ruhetraces nur
+aus Kombination von zwei Ruhetraces entstehen können oder in dem sie
+Errortraces sind, was beides hier nicht der Fall ist.\\ %TODO Probleme mit Punkt 2.
+Man muss jedoch nicht an dieser Umsetzung für die lokale Erreichbarkeit
+festhalten. Man könnte sich auch eine Umsetzung denken, in dem man die
+Ruhetraces zwar um die Outputs kürzt, jedoch dann nur Fortsetzungen zulässt,
+die bereits im Transitionssystem möglich sind. Somit benötigt man keine weitere
+Flutung der gefluteten Sprache \EL{}, da weiterhin alle Ruhetraces in der
+Sprache $L$ enthalten sind. Jedoch stoßen wir hier wieder bei Punkt 2.\ von
+Satz~\ref{satzQuiSemantik} an Probleme. Hierzu müssen wir davon ausgehen, dass
+wir uns eine neue \prune{}-Funktion definiert haben bzw.\ eine neue
+\cont{}-Funktion, wie z.B. $\prunenew{}: \Sigma ^*\rightarrow
+\mathfrak{P}(\Sigma ^*), w\mapsto \{u\mid \exists v\in O^*:w=uv\}$. Somit würde
+sich unsere Definition der Ruhetraces entsprechend abändern. So das statt
+\StQT{} ein entsprechendes \PrQT{} enthalten wäre, dass durch die Anwendung
+unserer \prunenew{} Funktion entstanden wäre. Somit wäre Punkte 2.\ von
+Satz~\ref{satzQuiSemantik} entsprechend auch leicht abgewandelt und müsste
+$\QT{}_{12}=\prunenew (\QT{}_1\|\QT{}_2)\cup \ET{}_{12}$ lauten. Das Problem
+würde nun auftauchen wenn man die Inklusionsrichtung $\supseteq$ zu beweisen
+versucht. Hierzu gibt es jedoch folgendes Gegenbeispiel, dass die Behauptung
+gar nicht stimmen kann. %TODO Gegenbeispiel (Outputfortführung mit Outputs aus
+%Synch, für die die passenden Inputs vorhanden sind)
