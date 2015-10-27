@@ -303,7 +303,7 @@ Ruhe-Zustände hinzu kommen. Somit ist es nicht möglich hier eine analoge
 Proposition zu~\ref{propErBaIn} zu formulieren. Wir können zwar daraus
 schließen, dass alle Ruhe-Zustände, die vor dem Hiding zu erreichen waren mit
 $\tau$s auch danach noch erreichbar sind, jedoch können durch die
-Internalisierung neue erreicht werden , die möglicherweise in dem anderen
+Internalisierung neue erreicht werden, die möglicherweise in dem anderen
 Transitionssystem nicht erreicht werden können. Da wir jedoch für die
 Präkongruenz \QRel{} noch Wissen über die Teilmengenbeziehung der Traces haben,
 können wir einen Satz analog zu~\ref{satzPraeInternalisierung} formulieren.
@@ -321,10 +321,16 @@ können wir einen Satz analog zu~\ref{satzPraeInternalisierung} formulieren.
   Satz~\ref{satzPraeInternalisierung}, dass daraus $(S_1/\{x_1,x_x,\dots
   ,x_n\})\ERel (S_2/\{x_1,x_x,\dots ,x_n\})$ folgt. Ebenso wie im Beweis zu
   Satz~\ref{satzPraeInternalisierung} können wir hier davon ausgehen, dass
-  $X\subseteq O$ gilt. Für jeden Trace aus $\QT{}_1$ können wir einen passenden in
-  $\QT{}(S_1/X)$ finden und ebenso für das Transitionssystem $S_2$. Die
+  $X\subseteq O$ gilt. Für jeden Trace aus $\QT{}_1$ können wir einen passenden
+  in $\QT{}(S_1/X)$ finden und ebenso für das Transitionssystem $S_2$. Die
   Argumentation läuft hierfür analog zum Beweis von
-  Satz~\ref{satzPraeInternalisierung}. Somit gilt
+  Satz~\ref{satzPraeInternalisierung}. Wir haben hier auch kein Problem, dass
+  neue Zustände hinzu kommen, von denen aus durch $\tau$s Ruhe-Zustände
+  erreichbar sind, da diese $\tau$s aus Outputs entstanden sind, die verborgen
+  wurden. Es war also bereits ein Trace in $\QT{}_i$ vorhanden, der nur aus
+  Outputs aus $X$ bestanden hat und der dann durch das Hiding zu einem $\tau$
+  wurde, was aber der passende Trace ist, den man zu dem ursprünglichen in
+  $\QT{}(S_i/X)$ findet. Somit gilt
   also auch $\QT{}(S_1/X)\subseteq \QT{}(S_2/X)$. Daraus folgt dann, dass die
   Relation \QRel{} trotz Hiding erhalten bleibt und somit das Hiding bezüglich
   dieser Relation eine Präkongruenz ist.
@@ -341,7 +347,7 @@ Proposition~\ref{propQuiPrae} und dem Satz~\ref{satzPraeInterQui} schließen.
   \QRel{} ist eine Präkongruenz bezüglich $\cdot |\cdot$.
 \end{kor}
 
-\section{Diskussion für andere Semantik}
+\section{Diskussion für Veränderungen an Semantik oder anderen Definitionen}
 
 Es währe hier auch denkbar, dass man auch für die Ruhe-Zustände einen lokalen
 Erreichbarkeitsbegriff verwendet. Es könnte dadurch sogar möglich sein eine
@@ -351,7 +357,8 @@ Problemen kommt, so dass wir nicht mehr alle Inklusionen erreichen können, die
 wir in unseren Sätzen gefordert haben.\\
 Die Umsetzung des lokalen Erreichbarkeitsbegriffes wie im letzten Kapitel, mit
 abschneiden der Outputs und beliebigem Fortsetzten der Traces, würde zu einem
-Problem in Satz~\ref{satzQuiSemantik} in Punkt 2.\ führen. Zusätzlich könnte
+Problem in Satz~\ref{satzQuiSemantik} in Punkt 2.\ führen, dass analog zu dem
+Problem währe in der Semantik, die als nächstes beschrieben wird. Zusätzlich könnte
 man nicht die \EL{} als geflutete Sprache beibehalten sondern müsste noch
 zusätzlich mit den Ruhetraces fluten, da sonst nicht mehr alle
 Informationen, die in Ruhetraces enthalten auch in der gefluteten Sprache
@@ -362,7 +369,7 @@ aus der Sprache $L$ in Parallelkomposition gesetzt würden. Da die Ruhetraces
 nicht mehr Teil der Sprache sind, kann nicht mehr gelten, dass die Teil von
 $L_1\|L_2$ ist. Es kann auch nicht Teil der Ruhetraces sein, da Ruhetraces nur
 aus Kombination von zwei Ruhetraces entstehen können oder in dem sie
-Errortraces sind, was beides hier nicht der Fall ist.\\ %TODO Probleme mit Punkt 2.
+Errortraces sind, was beides hier nicht der Fall ist.\\
 Man muss jedoch nicht an dieser Umsetzung für die lokale Erreichbarkeit
 festhalten. Man könnte sich auch eine Umsetzung denken, in dem man die
 Ruhetraces zwar um die Outputs kürzt, jedoch dann nur Fortsetzungen zulässt,
@@ -380,5 +387,116 @@ Satz~\ref{satzQuiSemantik} entsprechend auch leicht abgewandelt und müsste
 $\QT{}_{12}=\prunenew (\QT{}_1\|\QT{}_2)\cup \ET{}_{12}$ lauten. Das Problem
 würde nun auftauchen wenn man die Inklusionsrichtung $\supseteq$ zu beweisen
 versucht. Hierzu gibt es jedoch folgendes Gegenbeispiel, dass die Behauptung
-gar nicht stimmen kann. %TODO Gegenbeispiel (Outputfortführung mit Outputs aus
-%Synch, für die die passenden Inputs vorhanden sind)
+gar nicht stimmen kann.\\
+Für $S_1$ verwenden wir das folgende Transitionssystem (siehe dazu auch
+Abbildung~\ref{S1}):
+\begin{itemize}
+  \item $Q_1=\{q_{01}, q_{11}\}$
+  \item $I_1=\emptyset$
+  \item $O_1=\{a\}$
+  \item $\delta _1 = \{(q_{01},a,q_{11})\}$
+  \item $E_1=\emptyset$
+  \item $Qui_1=\{q_{11}\}$
+\end{itemize}
+\begin{figure} [h!tbp]
+\begin{center}
+  \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
+
+    \node (0) {$q_{01}$};
+    \node (1) [right of=0, rectangle, draw] {$q_{11}\in Qui_1$};
+
+    \path (0) edge node {$a!$} (1);
+  \end{tikzpicture}
+  \caption{$S_1$}
+  \label{S1}
+\end{center}
+\end{figure}
+Für $S_2$ verwenden wir das folgende Transitionssystem (siehe dazu auch
+Abbildung~\ref{S2}):
+\begin{itemize}
+  \item $Q_2=\{q_{02}, q_{12}, q_{22}\}$
+  \item $I_2=\{a\}$
+  \item $O_2=\{b\}$
+  \item $\delta _2 = \{(q_{02},a,q_{22}), (q_{02},b,q_{12}), (q_{12},a,q_{22}),
+    (q_{22},b,q_{22})\}$
+  \item $E_2=\emptyset$
+  \item $Qui_2=\{q_{12}\}$
+\end{itemize}
+\begin{figure} [h!tbp]
+\begin{center}
+  \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
+
+    \node (0) {$q_{02}$};
+    \node (1) [right of=0, rectangle, draw] {$q_{12}\in Qui_2$};
+    \node (2) at ($(0)!0.5!(1) + (0,-2)$){$q_{22}$};
+
+    \path (0) edge node {$b!$} (1)
+              edge [below left] node {$a?$} (2)
+          (1) edge node {$a?$} (2)
+          (2) edge [loop below] node {$b!$} (2);
+  \end{tikzpicture}
+  \caption{$S_2$}
+  \label{S2}
+\end{center}
+\end{figure}
+Somit ergibt sich für die Parallelkomposition $S_{12} = S_1\| S_2$ das folgende
+Transitionssystem, bei dem bereits unerreichbare Zustände weggelassen sind
+(siehe dazu auch Abbildung~\ref{S12}):
+\begin{itemize}
+  \item $Q_{12}=\{(q_{01},q_{02}), (q_{01},q_{12}), (q_{11},q_{22})\}$
+  \item $I_{12}=\emptyset$
+  \item $O_{12}=\{a,b\}$
+  \item $\begin{aligned}[t]
+      \delta _{12} = \{&((q_{01},q_{02)},a,(q_{11},q_{22})),
+      ((q_{01},q_{12}),a,(q_{11},q_{22})),
+    ((q_{01},q_{02}),b,(q_{01},q_{12})),\\
+  &((q_{11},q_{22}),b,(q_{11},q_{22}))\}
+        \end{aligned}$
+  \item $E_{12}=\emptyset$
+  \item $Qui_{12}=\emptyset$
+\end{itemize}
+\begin{figure} [h!tbp]
+\begin{center}
+  \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
+
+    \node (0) {$(q_{01},q_{02})$};
+    \node (1) [right of=0] {$(q_{01},q_{12})$};
+    \node (2) at ($(0)!0.5!(1) + (0,-2)$){$(q_{11},q_{22})$};
+
+    \path (0) edge node {$b!$} (1)
+              edge [below left] node {$a!$} (2)
+          (1) edge node {$a!$} (2)
+          (2) edge [loop below] node {$b!$} (2);
+  \end{tikzpicture}
+  \caption{$S_{12}$}
+  \label{S12}
+\end{center}
+\end{figure}
+
+Es wäre möglich gewesen, die Menge der Ruhe-Zustände bereits anders zu
+definieren. Dadurch, dass wir die $\tau$-Transitionen verboten haben, sind wir
+einer Fallunterscheidung entgangen. Da jedoch Quiescents als Deadlock-Zustände
+anzusehen sind, aus denen das System ohne Hilfe nicht mehr heraus kommt,
+müssten wir hier eigentlich darauf achten, wohin die $\tau$-Transitionen führen
+und dann möglicherweise die Zustände trotz dieser Transitionen in unsere Menge
+aufnehmen. Ein Zustand, der keine Outputs machen kann und als einzige
+$\tau$-Transition eine Schlinge auf sich selbst hat, kann ebenfalls nicht ohne
+Inputs sich aus diesem Zustand heraus bewegen. Dieser Zustand wir jedoch nach
+unserer Definition nicht als ruhig angesehen. Jedoch ist so ein Zustand
+divergent, da er eine unendliche Folge an internen Aktionen ausführen kann.
+Dies wurde in~\cite{Chilton2013} mit untersucht. Auch bei anderen
+Divergenz-Möglichkeiten eines Zustandes, bei denen nicht die Möglichkeit
+besteht von einem durch $\tau$ erreichbaren Zustand aus einen Output zu machen,
+sollte der Zustand als ruhig angesehen werden. Die passende Definition würde
+dann wie folgt lauten.
+
+\begin{Def}[Ruhe Alternative]
+  Ein Ruhe-Zustand ist ein Zustand in einem \EIO{}, der keine Möglichkeit hat
+  ohne einen Input von außen je wieder einen Output zu machen.\\
+  Somit ist die Menge der Ruhe-Zustände in einem \EIO{} wie folgt formal
+  definiert: $Qui:=\left\{q\in Q\mid \forall a\in O: q
+  \overset{a}{\not{\hspace{-0.1cm}\Rightarrow}}\right\}$.
+\end{Def}
+
+Diese Art der Definition hätte jedoch die Betrachtung deutlich aufwendiger
+gemacht und soll deshalb hier nicht behandelt werden.
