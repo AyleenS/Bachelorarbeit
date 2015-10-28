@@ -21,6 +21,7 @@ eine andere Präkongruenz, die wir finden auch die Eigenschaft erfüllt die
 gröbste zu sein.
 
 \begin{Def}[Error-Verfeinerungs-Basisrelation]
+  \label{DefErrorBasisrel}
   Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur schreiben wir
   $S_1\EBRel S_2$, wenn ein Error in $S_1$ nur dann lokal erreichbar ist, wenn er
   auch in $S_2$ lokal erreichbar ist. Es handelt sich dabei um eine
@@ -569,10 +570,17 @@ Präkongruenz \ECRel{}.
 
   \glqq $\Leftarrow$\grqq : Nach Definition gilt, wenn
       $\varepsilon\in \ET{}(S)$, ist ein Error lokal erreichbar in $S$.
-      Somit impliziert $S_1\ERel S_2$, dass $\varepsilon\in
-      \ET{}(S_2)$ gilt, wenn $\varepsilon\in \ET{}(S_1)$. Dadurch folgt ebenfalls,
-      dass $S_1\EBRel S_2$ gilt. Somit folgt aus $S_1\ERel S_2$ der relationale
-      Zusammenhang $S_1\ECRel S_2$.
+      $S_1\ERel S_2$ impliziert, dass $\varepsilon\in
+      \ET{}(S_2)$ gilt, wenn $\varepsilon\in \ET{}(S_1)$. Dadurch folgt, dass
+      $S_1\EBRel S_2$ gilt, da \EBRel{} in Definition~\ref{DefErrorBasisrel}
+      über die lokale Erreichbarkeit definiert wurde. Da \ECRel{} die gröbste
+      Präkongurenz bezüglich $\cdot\|\cdot$ ist, die in \EBRel{} entahlten ist,
+      muss für alle $S_1\ECRel{} S_2$ gelten, dass auch $S_1\|U\ECRel S_2\|U$
+      gilt. Wenn $U$ nun das Transitionssystem ist, dass nur aus dem
+      Startzustand besteht, der ein Error-Zustand ist, dann gilt für
+      $\varepsilon\in S_i\|U$. Somit können wir also auch aus $S_1\ERel S_2$
+      den relationalen Zusammenhang $S_1\ECRel S_2$ folgern. %TODO noch mal
+      %drüber nachdenken
 
       \glqq $\Rightarrow$\grqq : Durch die Definition von \ECRel{} folgt aus
   $S_1\ECRel S_2$, dass $U\|S_1\ECRel U\|S_2$ für alle \EIO{}s $U$, die mit
@@ -678,7 +686,8 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   Da wir bereits $L_1\backslash\ET{}_1\subseteq\EL{}_2$ wissen, können wir
   schließen, dass alle relevanten Traces bereits in $\EL{}_2$ enthalten sind
   und die Modifikation durch den Internalisierungsoperator wie oben keine
-  Auswirkungen auf die Teilmengenbeziehung hat.
+  Auswirkungen auf die Teilmengenbeziehung hat. %TODO ET(S/X) und EL(S/X)!!!
+  %und daraus resultierende Abänderungen
 \end{proof}
 
 Wir wissen aus~\ref{propPraekongruenz}, dass \ERel{} eine Präkongruenz

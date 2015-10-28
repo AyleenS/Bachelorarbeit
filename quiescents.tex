@@ -83,6 +83,62 @@ durch die Ruhetraces keine neuen Traces entstehen, die nicht bereits in der
 gefluteten Sprache \EL{} enthalten wären, müssen wir hier keine neue Flutung
 vornehmen. Wir schränken also durch die Relation \QRel{} nur die
 bereits existierende Präkongruenz \ERel{} ein.\\
+Das folgende Lemma soll explizit festhalten, wie Ruhezustände sich unter der
+Parallelkomposition verhalten. Dies ist vor allem in dem danach folgenden Satz
+relevant.
+
+\begin{lem}[Ruhe-Zustände unter Parallelkomposition]
+  Ein Zustand $(q_1,q_2)$ aus der Parallelkomposition $S_{12}=S_1\|S_2$ ist
+  genau dann ruhig, wenn es auch die Zustände $q_1$ und $q_2$ in $S_1$ bzw.\
+  $S_2$ sind.
+\end{lem}
+
+\begin{proof}
+  \glqq{}$\Rightarrow$\grqq{}: Es gilt $(q_1,q_2)\in Qui_{12}$, somit hat
+  dieser Zustand maximal die Möglichkeit Transitionen für Inputs auszuführen.
+  Da durch die Parallelkomposition von Outputs mit anderen Aktionen keine
+  Inputs entstehen können, können die beiden Zustände $q_1$ und $q_2$, aus
+  denen $(q_1,q_2)$ durch Parallelkomposition entstanden ist, keine
+  Transitionsmöglichkeit für Outputs besitzen. Falls einer der beiden Zustände
+  eine Transitionsmöglichkeit für ein $\tau$ gehabt hätte, müsste dies auch der
+  zusammen gesetzte Zustand haben und könnte somit nach unserer Definition
+  nicht ruhig sein. Es folgt also, dass $q_1$ und $q_2$ ebenso maximal
+  Transitionen mit Inputs ausführen können. Es gilt also $q_1\in Qui_1$ und
+  $q_2\in Qui_2$. %TODO über MIT nachdenken
+
+  \glqq{}$\Leftarrow$\grqq{}: Da $q_1\in Qui_1$ und $q_2\in Qui_2$ gilt, haben
+  diese beiden Zustände jeweils höchstens die Möglichkeiten Transitionen
+  auszuführen, die mit Inputs beschriftet sind. Jedoch keine Möglichkeiten für
+  Outputs oder $\tau$s. Der Zustand, der durch Parallelkomposition aus diesen
+  beiden Zuständen entsteht hat die Transitionsmöglichkeiten dieser Zustände
+  die parallel ausgeführt werden. Es gibt somit drei unterschiedliche
+  Möglichkeiten:
+  \begin{itemize}
+    \item Fall 1 ($a\in I_i\backslash Synch(S_1,S_2)\wedge q_i
+      \overset{a}{\rightarrow}$ für ein $i\in \{1,2\}$): Da $a$ ein
+      unsynchronisierter Input ist, wird dieser unabhängig ausgeführt, somit hat
+      $(q_1,q_2)$ ebenfalls die Möglichkeit eine Transition mit $a$ als Input
+      auszuführen.
+    \item Fall 2 ($a\in I_1\cap I_2\wedge q_i \overset{a}{\rightarrow}$ für
+      beide $i\in \{1,2\}$): Da beide Zustände den gleichen Input ausführen
+      können, der zu synchronisieren ist, gilt somit $(q_1,q_2)
+      \overset{a}{\rightarrow}$. Wobei $a\in I_{12}$ gilt.
+    \item Fall 3 ($a\in I_i\cap Synch(S_1,S_2)\wedge q_i
+      \overset{a}{\rightarrow}$ für ein $i\in \{1,2\}$): Hier handelt es sich
+      um eine Transition, die für $(q_1,q_2)$ nicht ausführbar ist, da es keine
+      passende Transition für das andere System gibt, mit dem diese Aktion
+      synchronisiert werden könnte. Da wir hier jedoch den Input der zu
+      synchronisierenden Aktion haben, handelt es sich hier auch nicht um einen
+      neu entstanden Fehler sondern einfach um eine Transition, die nicht
+      genommen werden kann, weil der passende Output nicht vorhanden ist.
+  \end{itemize}
+  Dies sind alle Fälle, die auftreten können für die Parallelkomposition der
+  Transitionsmöglichkeiten. Bei keinen dieser Möglichkeiten ist ein Output oder
+  ein $\tau$ entstanden und somit hat der Zustand $(q_1,q_2)$ auch keine
+  Möglichkeiten solche Transitionen auszuführen. Daraus folgt also, dass
+  $(q_1,q_2)\in Qui_{12}$ gilt.
+\end{proof}
+
 In dem folgenden Satz sind Punkt 1.\ und 3.\ nur zur Vollständigkeit aufgeführt.
 Sie entsprechen Punkt 1.\ und 2.\ aus Satz~\ref{satzErrorSemanik}.
 
@@ -130,7 +186,7 @@ Sie entsprechen Punkt 1.\ und 2.\ aus Satz~\ref{satzErrorSemanik}.
   $\QT{}_i = \StQT{}_i\cup \ET{}_i$ gilt, existieren für $w_1$ und $w_2$ mit
   $w\in w_1\| w_2$ unterschiedliche Möglichkeiten:
   \begin{itemize}
-    \item Fall 1 ($w_1v_1\in \StQT{}_1\wedge w_2v_2\in \StQT{}_2$): Es gilt in
+    \item Fall 1 ($w_1\in \StQT{}_1\wedge w_2\in \StQT{}_2$): Es gilt in
       diesem Fall $q_{01} \overset{w_1}{\Rightarrow} q_1\in Qui_1$ und $q_{02}
       \overset{w_2}{\Rightarrow} q_2\in Qui_2$. Da $q_1$ und $q_2$ in der
       Ruhe-Menge enthalten sind, ist auch der Zustand, der aus ihnen
