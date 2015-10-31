@@ -184,15 +184,16 @@ Sie entsprechen Punkt 1.\ und 2.\ aus Satz~\ref{satzErrorSemanik}.
   Satz~\ref{satzErrorSemanik}.
 
   2. \glqq $\subseteq$\grqq :\\
-  Hier müssen wir unterscheiden ob wir ein $w\in\StQT{}_{12}$ betrachten oder
-  ein $w\in \ET{}_{12}$. Im zweiten Fall ist das $w$ in der rechten Seite
-  enthalten. Somit betrachten wir ab jetzt ein
-  $w\in \StQT{}_{12}$ und versuchen dessen Zugehörigkeit zur rechten Menge zu
-  zeigen. Aufgrund von Definition~\ref{DefRuhetraces} wissen wir, dass
-  $(q_{01},q_{02}) \overset{w}{\Rightarrow} (q_1,q_2)$ gilt mit $(q_1,q_2)\in
-  Qui_{12}$. Durch Projektion erhalten wir $q_{01} \overset{w_1}{\Rightarrow}
-  q_1$ und $q_{02} \overset{w_2}{\Rightarrow} q_2$ mit $w\in w_1\|w_2$. Aus
-  $(q_1,q_2)\in Qui_{12}$ können wir folgern, dass bereits $q_1\in Qui_1$ und
+  Hier müssen wir unterscheiden ob wir ein $w\in\StQT{}_{12}\backslash
+  \ET{}_{12}$ betrachten oder ein $w\in \ET{}_{12}$. Im zweiten Fall ist das
+  $w$ in der rechten Seite enthalten. Somit betrachten wir ab jetzt ein $w\in
+  \StQT{}_{12}\backslash \ET{}_{12}$ und versuchen dessen Zugehörigkeit zur
+  rechten Menge zu zeigen. Aufgrund von Definition~\ref{DefRuhetraces} wissen
+  wir, dass $(q_{01},q_{02}) \overset{w}{\Rightarrow} (q_1,q_2)$ gilt mit
+  $(q_1,q_2)\in Qui_{12}$. Durch Projektion erhalten wir $q_{01}
+  \overset{w_1}{\Rightarrow} q_1$ und $q_{02} \overset{w_2}{\Rightarrow} q_2$
+  mit $w\in w_1\|w_2$. Aus $(q_1,q_2)\in Qui_{12}$ können wir mit Punkt 2.\ von
+  Lemma~\ref{lemRuheParallelkomp} folgern, dass bereits $q_1\in Qui_1$ und
   $q_2\in Qui_2$ gilt. Somit gilt $w_1\in \StQT{}_1\subseteq \QT{}_1$ und
   $w_2\in \StQT{}_2\subseteq \QT{}_2$. Daraus folgt dann $w\in
   \QT{}_1\|\QT{}_2$ und somit ist $w$ in der rechten Seiten der Gleichung
@@ -212,10 +213,11 @@ Sie entsprechen Punkt 1.\ und 2.\ aus Satz~\ref{satzErrorSemanik}.
       \overset{w_2}{\Rightarrow} q_2\in Qui_2$. Da $q_1$ und $q_2$ in der
       Ruhe-Menge enthalten sind, ist auch der Zustand, der aus ihnen
       zusammengesetzt ist in der Parallelkomposition ruhig und lässt keine
-      $\tau$-Transitionen zu. Es gilt also für die Komposition $(q_{01},q_{02})
-      \overset{w}{\Rightarrow} (q_1,q_2)\in Qui_{12}$ und dadurch ist $w$ in
-      der linken Seite der Gleichung enthalten, da $w\in \StQT{}_{12}\subseteq
-      \QT{}_{12}$ gilt.
+      $\tau$-Transitionen zu, wie bereits in Punkt 1.\ von
+      Lemma~\ref{lemRuheParallelkomp} gezeigt. Es gilt also für die Komposition
+      $(q_{01},q_{02}) \overset{w}{\Rightarrow} (q_1,q_2)\in Qui_{12}$ und
+      dadurch ist $w$ in der linken Seite der Gleichung enthalten, da $w\in
+      \StQT{}_{12}\subseteq \QT{}_{12}$ gilt.
     \item Fall 2 ($w_1\in \ET{}_1\vee w_2\in \ET{}_2$): \OBdA{} gilt
       $w_1\in \ET{}_1$. Nun kann $w_2\in \StQT{}_2\subseteq L_2$ gelten
       oder $w_2\in \ET{}_2$ und somit gilt auf jeden Fall $w_2\in
@@ -267,7 +269,8 @@ Präkongruenz finden zu wollen.
   alle Partner \EIO{}s $U$, die mit $S_2$  gut kommunizieren, auch mit $S_1$
   gut kommunizieren, dann verfeinert $S_1$ das \EIO{} $S_2$. Diese Verfeinerung
   entspricht der Relation \QRel{} von oben: Wenn $U\|S_1\QBRel U\|S_2$ für alle
-  Partner $U$, dann gilt $S_1\QRel S_2$.
+  Partner $U$, dann gilt $S_1\QRel S_2$. %TODO nachdenken, wieso 3.7 nicht
+  %anwendbar bzw. andere Voraussetzungen
 \end{lem}
 
 \begin{proof}

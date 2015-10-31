@@ -662,22 +662,34 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   Da $S_1\ERel S_2$ gilt, wissen wir, dass $\ET{}_1\subseteq \ET{}_2$ und
   $\EL{}_1\subseteq \EL{}_2$ gilt. Es gilt $X:=\{x_1,x_2,\dots ,x_n\}\subseteq
   O$, da in der Definition des Internalisierungsoperators keine andere $x_i$
-  zulässig sind. Wir wählen
-  einen Traces $w=a_1a_2\dots a_m\in \ET{}_1$. Solang $w$ nicht nur aus Outputs
-  besteht, gibt es also einen Ablauf $q_0 \overset{w'}{\Rightarrow}$ mit
-  $w'=a_1a_2\dots a_k$, so dass $a_k\in I$, $k\leq m$ und $w'\in \MIT{}_1$ oder
-  $w'\in \PrET{}_1$ gilt. Nach der Internalisierung bleiben von dem Ablauf nur
-  noch die Aktionen übrig, die nicht Element von $X$ sind. Der Trace reduziert
-  sich also auf $w''=w|_{\Sigma\backslash
-  (O\cap X)}$. Diese $w''$ hat einen zu $w'$ analoges Präfix, da der Input
-  $a_k$ erhalten beleibt. Dieses Präfix von $w''$ ist dann in $\MIT{}(S_1/X)$
-  oder in $\PrET{}(S_1/X)$ enthalten und somit ist $w''$ in $\ET{}(S_1/X)$
-  enthalten. Diese Argumentation funktioniert jedoch nicht für $w$s, die nur
-  aus Outputs bestehen. Da Elemente, aus $\cont{}(\MIT{}_1)$ mindestens einen
-  Input enthalten müssen, muss so ein $w$ aus $\cont{}(\PrET{}_1)$ sein. Somit
-  ergibt sich ohne die \cont{}-Funktion das Element $\varepsilon\in\PrET{}_1$.
-  Da es in diesem Wort keine Elemente aus $X$ gibt, werden in diesem Wort auch
-  keine Aktionen verborgen und somit gilt $\varepsilon\in\PrET{}(S_1/X)$.\\
+  zulässig sind. Um uns eine genauere Vorstellung davon machen zu können, was
+  das Hiding für die Systeme bedeutet, definieren wir hier zunächst einmal die
+  neuen Errortraces und die neue geflutete Sprache. Es gilt $\ET{}(S/X) =
+  \cont{}(\PrET{}(S/X))\cup \cont{}(\MIT{}(S/X))$ mit $\StET{}(S/X) = \{w\in
+  (\Sigma\backslash (X\cap O))^*\mid \exists w'\in \StET{}(S):
+  w'|_{\Sigma\backslash (X\cap O)} = w\}$, $\PrET{}(S/X) = \{\prune (w)\mid
+  w\in\StET{}(S/X)\}$ und $\MIT{}(S/X) = \{w\in (\Sigma\backslash (X\cap
+  O))^*\mid \exists w'\in \MIT{}(S): w'|_{\Sigma\backslash (X\cap O)} = w\}$.
+  Die error-geflutete Sprache \EL{} wird nun analog dazu definiert als
+  $\EL{}(S/X) = L(S/X)\cup \ET{}(S/X)$ mit $L(S/X) = \{w\in (\Sigma\backslash
+  (X\cap O))^*\mid \exists w'\in L(S): w'|_{\Sigma\backslash (X\cap O)} =
+  w\}$.\\
+  Wir wählen einen Trace $w=a_1a_2\dots a_m\in \ET{}_1$. Solang $w$ nicht nur
+  aus Outputs besteht, gibt es also einen Ablauf $q_0
+  \overset{w'}{\Rightarrow}$ mit $w'=a_1a_2\dots a_k$, so dass $a_k\in I$,
+  $k\leq m$ und $w'\in \MIT{}_1$ oder $w'\in \PrET{}_1$ gilt. Nach der
+  Internalisierung bleiben von dem Ablauf nur noch die Aktionen übrig, die
+  nicht Element von $X$ sind. Der Trace reduziert sich also auf
+  $w''=w|_{\Sigma\backslash (O\cap X)}$. Diese $w''$ hat einen zu $w'$ analoges
+  Präfix, da der Input $a_k$ erhalten beleibt. Dieses Präfix von $w''$ ist dann
+  in $\MIT{}(S_1/X)$ oder in $\PrET{}(S_1/X)$ enthalten und somit ist $w''$ in
+  $\ET{}(S_1/X)$ enthalten. Diese Argumentation funktioniert jedoch nicht für
+  $w$s, die nur aus Outputs bestehen. Da Elemente, aus $\cont{}(\MIT{}_1)$
+  mindestens einen Input enthalten müssen, muss so ein $w$ aus
+  $\cont{}(\PrET{}_1)$ sein. Somit ergibt sich ohne die \cont{}-Funktion das
+  Element $\varepsilon\in\PrET{}_1$. Da es in diesem Wort keine Elemente aus
+  $X$ gibt, werden in diesem Wort auch keine Aktionen verborgen und somit gilt
+  $\varepsilon\in\PrET{}(S_1/X)$.\\
   Nach Voraussetzung gilt $w\in\ET{}_2$. Nach analoger Argumentation gilt dann
   auch $w''\in\ET{}(S_2/X)$.\\
   Somit bleibt jetzt nur noch zu zeigen, dass $L(S_1/X)\backslash \ET{}(S_1/X)
@@ -686,8 +698,8 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   Da wir bereits $L_1\backslash\ET{}_1\subseteq\EL{}_2$ wissen, können wir
   schließen, dass alle relevanten Traces bereits in $\EL{}_2$ enthalten sind
   und die Modifikation durch den Internalisierungsoperator wie oben keine
-  Auswirkungen auf die Teilmengenbeziehung hat. %TODO ET(S/X) und EL(S/X)!!!
-  %und daraus resultierende Abänderungen
+  Auswirkungen auf die Teilmengenbeziehung hat. %TODO überlegen ob die beliebe
+  %Fortsetzung problematisch ist
 \end{proof}
 
 Wir wissen aus~\ref{propPraekongruenz}, dass \ERel{} eine Präkongruenz
