@@ -573,14 +573,11 @@ Präkongruenz \ECRel{}.
       $S_1\ERel S_2$ impliziert, dass $\varepsilon\in
       \ET{}(S_2)$ gilt, wenn $\varepsilon\in \ET{}(S_1)$. Dadurch folgt, dass
       $S_1\EBRel S_2$ gilt, da \EBRel{} in Definition~\ref{DefErrorBasisrel}
-      über die lokale Erreichbarkeit definiert wurde. Da \ECRel{} die gröbste
-      Präkongurenz bezüglich $\cdot\|\cdot$ ist, die in \EBRel{} entahlten ist,
-      muss für alle $S_1\ECRel{} S_2$ gelten, dass auch $S_1\|U\ECRel S_2\|U$
-      gilt. Wenn $U$ nun das Transitionssystem ist, dass nur aus dem
-      Startzustand besteht, der ein Error-Zustand ist, dann gilt für
-      $\varepsilon\in S_i\|U$. Somit können wir also auch aus $S_1\ERel S_2$
-      den relationalen Zusammenhang $S_1\ECRel S_2$ folgern. %TODO noch mal
-      %drüber nachdenken
+      über die lokale Erreichbarkeit der Error-Zustände definiert wurde. Somit
+      ist $S_1\ERel S_2$ eine Präkongurenz, die in \EBRel{} enthalten ist. Da
+      \ECRel{} die gröbste Präkongurenz bezüglich $\cdot\|\cdot$ ist, die in
+      \EBRel{} entahlten ist, muss \ERel{} in \ECRel{} enthalten sein. Es folgt
+      also aus $S_1\ERel S_2$, dass auch $S_1\ECRel{} S_2$ gilt.
 
       \glqq $\Rightarrow$\grqq : Durch die Definition von \ECRel{} folgt aus
   $S_1\ECRel S_2$, dass $U\|S_1\ECRel U\|S_2$ für alle \EIO{}s $U$, die mit
@@ -699,7 +696,8 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   schließen, dass alle relevanten Traces bereits in $\EL{}_2$ enthalten sind
   und die Modifikation durch den Internalisierungsoperator wie oben keine
   Auswirkungen auf die Teilmengenbeziehung hat. %TODO überlegen ob die beliebe
-  %Fortsetzung problematisch ist
+  %Fortsetzung problematisch ist (nicht problematisch, sollte aber explizit mit
+  %ausformuliert werden)
 \end{proof}
 
 Wir wissen aus~\ref{propPraekongruenz}, dass \ERel{} eine Präkongruenz

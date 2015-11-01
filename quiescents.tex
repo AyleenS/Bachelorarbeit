@@ -93,7 +93,7 @@ relevant.
     \item Ein Zustand $(q_1,q_2)$ aus der Parallelkomposition $S_{12}=S_1\|S_2$
       ist ruhig, wenn es auch die Zustände $q_1$ und $q_2$ in $S_1$ bzw.\ $S_2$
       sind.
-    \item Wenn der Zustand $(q_1,q_2)$ ruhig ist und nicht in $\ET{}_{12}$
+    \item Wenn der Zustand $(q_1,q_2)$ ruhig ist und nicht in $E_{12}$
       enthalten ist, dann sind auch die auf die Teilsysteme projizierten
       Zustände $q_1$ und $q_2$ ruhig.
   \end{enumerate}
@@ -140,9 +140,9 @@ relevant.
   2.:\\
   Es gilt $(q_1,q_2)\in Qui_{12}\backslash E_{12}$, somit hat
   dieser Zustand maximal die Möglichkeit Transitionen für Inputs auszuführen.
-  Diese Transitionen für Inputs können nur entstehen aus Inputs, die nicht
-  in der Menge der synchronisierten Handlungen enthalten sind oder aus der
-  Synchronisation von zwei Inputs aus der Menge $I_1\cup I_2$. Durch die
+  Diese Transitionen für Inputs können nur aus Inputs, die nicht in der Menge
+  der synchronisierten Handlungen enthalten sind oder aus der Synchronisation
+  von zwei Inputs aus der Menge $I_1\cup I_2$ enstehen. Durch die
   Parallelkomposition von Outputs mit anderen Aktionen können keine Inputs
   entstehen und in unserer Definition der Parallelkomposition auch keine
   $\tau$s. Outputs, die nicht in der Menge $Synch(S_1,S_2)$ enthalten sind,
@@ -154,8 +154,8 @@ relevant.
   und somit ein neuer Error entsteht. Dieser Fall wird jedoch durch die
   zusätzliche Einschränkung ausgeschlossen. Falls einer der beiden Zustände
   eine Transitionsmöglichkeit für ein $\tau$ gehabt hätte, müsste dies auch der
-  zusammen gesetzte Zustand haben und könnte somit nach unserer Definition
-  nicht ruhig sein. Es folgt also, dass $q_1$ und $q_2$ ebenso maximal
+  zusammengesetzte Zustand haben und könnte somit nach unserer Definition
+  nicht ruhig sein. Es folgt also, dass $q_1$ und $q_2$ ebenso nur
   Transitionen mit Inputs ausführen können. Es gilt also $q_1\in Qui_1$ und
   $q_2\in Qui_2$.
 \end{proof}
