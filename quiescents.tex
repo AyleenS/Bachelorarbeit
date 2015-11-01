@@ -2,15 +2,15 @@
 
 \section{Präkongruenz für Ruhe}
 
-In diesem Kapitel werden wir uns nicht nur um die Erreichbarkeit von
-Error-Zuständen kümmern, sondern auch um die Erreichbarkeit von
-Ruhe-Zuständen. Wir werden dabei ähnlich vorgehen wie im letzten Kapitel,
-jedoch halten wir uns als Quelle an~\cite{Chilton2013}. Darin werden ähnliche
+In diesem Kapitel wird es nicht mehr nur um die Erreichbarkeit von
+Error-Zuständen gehen, sondern auch um die Erreichbarkeit von
+Ruhe-Zuständen. Es wird dabei ein ähnlich vorgehen wie im letzten Kapitel
+angewandt, jedoch wird~\cite{Chilton2013} als Quelle verwendet. Darin werden ähnliche
 Konzepte beschrieben, jedoch aus Sicht der Traces. Es werden dort zudem
 gleichzeitig auch noch Traces mit Divergenz betrachtet. Diese Zustands Art
-wollen wir hier zunächst nicht betrachten.\\
-Wir sehen die Zustände, die keine Outputs und keine Transitionsmöglichkeit für
-eine interne Aktion haben als ruhig an.
+wird hier zunächst nicht betrachten.\\
+Die Zustände, die keine Outputs und keine Transitionsmöglichkeit für
+eine interne Aktion haben werden als ruhig angesehen.
 
 \begin{Def}[Ruhe]
   Ein \emph{Ruhe-Zustand} ist ein Zustand in einem \EIO{} der keine
@@ -20,11 +20,11 @@ eine interne Aktion haben als ruhig an.
   \overset{\alpha}{\not{\hspace{-0.1cm}\rightarrow}}\big\}$.
 \end{Def}
 
-Für die Erreichbarkeit verwenden wir wie im letzten Kapitel wieder den
+Für die Erreichbarkeit wird wie im letzten Kapitel wieder der
 optimistischen Ansatz der lokalen Erreichbarkeit für die Error-Zustände
-verwenden. Ruhe ist kein unabwendbaren Fehler, sondern kann durch einen Input
+verwendet. Ruhe ist kein unabwendbaren Fehler, sondern kann durch einen Input
 reparierbar werden. Somit ist ein Ruhe-Zustand als nicht so \glqq{}schlimmer
-Fehler\grqq{} anzusehen wie ein Error. Somit ist für uns ein Ruhe-Zustand im
+Fehler\grqq{} anzusehen wie ein Error. Somit ist ein Ruhe-Zustand im
 Gegensatz zu ein Error-Zustand erst dann erreichbar wenn er durch $\tau$s
 erreicht werden kann.
 
@@ -35,8 +35,8 @@ erreicht werden kann.
 \end{Def}
 
 \begin{Def}[Ruhe-Verfeinerungs-Basisrelation]
-  Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur schreiben wir
-  $S_1\QBRel S_2$, wenn ein Error oder Ruhe-Zustand in $S_1$ nur dann lokal
+  Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur wird
+  $S_1\QBRel S_2$ geschrieben, wenn ein Error oder Ruhe-Zustand in $S_1$ nur dann lokal
   bzw.\ durch eine interne Aktion erreichbar ist, wenn er auch in $S_2$ lokal
   bzw.\ durch eine interne erreichbar ist. Diese \emph{Basisrelation} stellt
   eine \emph{Verfeinerung} bezüglich \emph{Errors} und \emph{Ruhe-Zustände}
@@ -45,13 +45,13 @@ erreicht werden kann.
   \QBRel{} bezüglich $\cdot\|\cdot$.
 \end{Def}
 
-Um uns genauer mit den Präkongruenzen auseinandersetzten zu können, brauchen
-wir wie im letzten Kapitel die Definition von Traces auf unserer Struktur.
-Dadurch erhalten wir die Möglichkeit die gröbste Präkongruenz finden und
+Um eine genauer Auseinandersetzung mit den Präkongruenzen zu ermöglichen,
+benötigt man wie im letzten Kapitel die Definition von Traces auf der Struktur.
+Dadurch erhält man die Möglichkeit die gröbste Präkongruenz finden und
 definieren zu können.\\
-Wie bereits oben erwähnt, werden wir die Erreichbarkeit der Ruhe-Zustände nicht
-auf die gleiche Weise umsetzten, wie bei Errortraces, somit benötigen wir keine
-gekürzten Ruhetraces bei der die \prune{}-Funktion zur Anwendung käme.
+Wie bereits oben erwähnt, wird die Erreichbarkeit der Ruhe-Zustände nicht
+auf die gleiche Weise umsetzten, wie bei Errortraces, somit werden keine
+gekürzten Ruhetraces benötigt, bei der die \prune{}-Funktion zur Anwendung käme.
 
 \begin{Def}[Ruhetraces]
   \label{DefRuhetraces}
@@ -62,7 +62,7 @@ gekürzten Ruhetraces bei der die \prune{}-Funktion zur Anwendung käme.
   \end{itemize}
 \end{Def}
 
-Wir definieren nur für die Ruhe eine neue Semantik, die Error-Semantik wird aus
+Nur für die Ruhe wird eine neue Semantik definiert, die Error-Semantik wird aus
 dem letzten Kapitel übernommen. Somit gelten für \ET{} und \EL{} die
 Definitionen aus dem letzten Kapitel.
 
@@ -73,16 +73,16 @@ Definitionen aus dem letzten Kapitel.
     \item Die Menge der \emph{error-gefluteten Ruhetraces} von $S$ ist
       $\QT{}(S) := \StQT{}(S)\cup \ET{}(S)$.
   \end{itemize}
-  Für zwei \EIO{}s $S_1, S_2$ mit der gleichen Signatur schreiben wir
-  $S_1\QRel S_2$, wenn $S_1\ERel S_2$ und $\QT{}(S_1)\subseteq \QT{}(S_2)$ gilt.
+  Für zwei \EIO{}s $S_1, S_2$ mit der gleichen Signatur wird
+  $S_1\QRel S_2$ geschrieben, wenn $S_1\ERel S_2$ und $\QT{}(S_1)\subseteq \QT{}(S_2)$ gilt.
 \end{Def}
 
-Für die Menge der error-gefluteten Ruhetraces \QT{} haben wir eine Informationsvermischung
+Für die Menge der error-gefluteten Ruhetraces \QT{} wurde eine Informationsvermischung
 mit den Errortraces vorgenommen wie beim fluten der Sprache \EL{}. Da jedoch
 durch die Ruhetraces keine neuen Traces entstehen, die nicht bereits in der
-gefluteten Sprache \EL{} enthalten wären, müssen wir hier keine neue Flutung
-vornehmen. Wir schränken also durch die Relation \QRel{} nur die
-bereits existierende Präkongruenz \ERel{} ein.\\
+gefluteten Sprache \EL{} enthalten wären, muss hier keine neue Flutung
+vornehmen werden. Es wird also durch die Relation \QRel{} nur die
+bereits existierende Präkongruenz \ERel{} eingeschränkt.\\
 Das folgende Lemma soll explizit festhalten, wie Ruhezustände sich unter der
 Parallelkomposition verhalten. Dies ist vor allem in dem danach folgenden Satz
 relevant.
@@ -126,9 +126,9 @@ relevant.
       \overset{a}{\rightarrow}$ für ein $i\in \{1,2\}$): Hier handelt es sich
       um eine Transition, die für $(q_1,q_2)$ nicht ausführbar ist, da es keine
       passende Transition für das andere System gibt, mit dem diese Aktion
-      synchronisiert werden könnte. Da wir hier jedoch den Input der zu
-      synchronisierenden Aktion haben, handelt es sich hier auch nicht um einen
-      neu entstanden Fehler sondern einfach um eine Transition, die nicht
+      synchronisiert werden könnte. Da es sich hier jedoch um den Input der zu
+      synchronisierenden Aktion handelt, entsteht daraus auch kein
+      neu Fehler, sondern einfach nur eine Transition, die nicht
       genommen werden kann, weil der passende Output nicht vorhanden ist.
   \end{itemize}
   Dies sind alle Fälle, die auftreten können für die Parallelkomposition der
@@ -144,17 +144,17 @@ relevant.
   der synchronisierten Handlungen enthalten sind oder aus der Synchronisation
   von zwei Inputs aus der Menge $I_1\cup I_2$ enstehen. Durch die
   Parallelkomposition von Outputs mit anderen Aktionen können keine Inputs
-  entstehen und in unserer Definition der Parallelkomposition auch keine
+  entstehen und in der Definition der Parallelkomposition auch keine
   $\tau$s. Outputs, die nicht in der Menge $Synch(S_1,S_2)$ enthalten sind,
   würden als Outputs des zusammengesetzten Zustandes übernommen werden und
-  können somit weder bei $q_1$ noch bei $q_2$ vorhanden sein. Falls wir jedoch
-  $(q_1,q_2)\in E_{12}$ zulassen würden, wäre es möglich, dass einer der beiden
+  können somit weder bei $q_1$ noch bei $q_2$ vorhanden sein. Falls jedoch
+  $(q_1,q_2)\in E_{12}$ zulassen wäre, wäre es möglich, dass einer der beiden
   Zustände $q_i$ eine Transitionsmöglichkeit für einen Output hat, der aufgrund
   eines fehlenden Inputs des anderen Zustandes nicht synchronisiert werden kann
   und somit ein neuer Error entsteht. Dieser Fall wird jedoch durch die
   zusätzliche Einschränkung ausgeschlossen. Falls einer der beiden Zustände
   eine Transitionsmöglichkeit für ein $\tau$ gehabt hätte, müsste dies auch der
-  zusammengesetzte Zustand haben und könnte somit nach unserer Definition
+  zusammengesetzte Zustand haben und könnte somit nach Definition
   nicht ruhig sein. Es folgt also, dass $q_1$ und $q_2$ ebenso nur
   Transitionen mit Inputs ausführen können. Es gilt also $q_1\in Qui_1$ und
   $q_2\in Qui_2$.
@@ -184,27 +184,27 @@ Sie entsprechen Punkt 1.\ und 2.\ aus Satz~\ref{satzErrorSemanik}.
   Satz~\ref{satzErrorSemanik}.
 
   2. \glqq $\subseteq$\grqq :\\
-  Hier müssen wir unterscheiden ob wir ein $w\in\StQT{}_{12}\backslash
-  \ET{}_{12}$ betrachten oder ein $w\in \ET{}_{12}$. Im zweiten Fall ist das
-  $w$ in der rechten Seite enthalten. Somit betrachten wir ab jetzt ein $w\in
-  \StQT{}_{12}\backslash \ET{}_{12}$ und versuchen dessen Zugehörigkeit zur
-  rechten Menge zu zeigen. Aufgrund von Definition~\ref{DefRuhetraces} wissen
-  wir, dass $(q_{01},q_{02}) \overset{w}{\Rightarrow} (q_1,q_2)$ gilt mit
-  $(q_1,q_2)\in Qui_{12}$. Durch Projektion erhalten wir $q_{01}
+  Hier muss unterscheiden werden ob ein $w\in\StQT{}_{12}\backslash
+  \ET{}_{12}$ oder ein $w\in \ET{}_{12}$ betrachtet wird. Im zweiten Fall ist das
+  $w$ in der rechten Seite enthalten. Somit wird ab jetzt ein $w\in
+  \StQT{}_{12}\backslash \ET{}_{12}$ betrachtet und dessen Zugehörigkeit zur
+  rechten Menge versucht zu zeigen. Aufgrund von Definition~\ref{DefRuhetraces}
+  weiß man, dass $(q_{01},q_{02}) \overset{w}{\Rightarrow} (q_1,q_2)$ gilt mit
+  $(q_1,q_2)\in Qui_{12}$. Durch Projektion erhält man $q_{01}
   \overset{w_1}{\Rightarrow} q_1$ und $q_{02} \overset{w_2}{\Rightarrow} q_2$
-  mit $w\in w_1\|w_2$. Aus $(q_1,q_2)\in Qui_{12}$ können wir mit Punkt 2.\ von
-  Lemma~\ref{lemRuheParallelkomp} folgern, dass bereits $q_1\in Qui_1$ und
+  mit $w\in w_1\|w_2$. Aus $(q_1,q_2)\in Qui_{12}$ kann mit Punkt 2.\ von
+  Lemma~\ref{lemRuheParallelkomp} folgert werden, dass bereits $q_1\in Qui_1$ und
   $q_2\in Qui_2$ gilt. Somit gilt $w_1\in \StQT{}_1\subseteq \QT{}_1$ und
   $w_2\in \StQT{}_2\subseteq \QT{}_2$. Daraus folgt dann $w\in
   \QT{}_1\|\QT{}_2$ und somit ist $w$ in der rechten Seiten der Gleichung
   enthalten.
 
   2. \glqq $\supseteq$\grqq :\\
-  Wir müssen nun wieder unterscheiden, nach dem aus welcher Menge unser
-  betrachtetes Element stammt. Falls $w\in \ET{}_{12}$ gilt, so können wir die
-  Zugehörigkeit zur linken Seite direkt folgern. Deshalb betrachten wir für den
+  Es muss wieder danach unterschieden werden aus welcher Menge das betrachtete
+  Element stammt. Falls $w\in \ET{}_{12}$ gilt, so kann die
+  Zugehörigkeit zur linken Seite direkt folgert werden. Wird für den
   weiteren Beweis dieser Inklusionsrichtung ein Element $w\in
-  (\QT{}_1\|\QT{}_2)$ und zeigen, dass es in der linken Menge enthalten ist. Da
+  (\QT{}_1\|\QT{}_2)$ betrachtet und gezeigt, dass es in der linken Menge enthalten ist. Da
   $\QT{}_i = \StQT{}_i\cup \ET{}_i$ gilt, existieren für $w_1$ und $w_2$ mit
   $w\in w_1\| w_2$ unterschiedliche Möglichkeiten:
   \begin{itemize}
@@ -221,9 +221,9 @@ Sie entsprechen Punkt 1.\ und 2.\ aus Satz~\ref{satzErrorSemanik}.
     \item Fall 2 ($w_1\in \ET{}_1\vee w_2\in \ET{}_2$): \OBdA{} gilt
       $w_1\in \ET{}_1$. Nun kann $w_2\in \StQT{}_2\subseteq L_2$ gelten
       oder $w_2\in \ET{}_2$ und somit gilt auf jeden Fall $w_2\in
-      \EL{}_2$. Daraus können wir dann mit dem ersten Punkt von
+      \EL{}_2$. Daraus kann dann mit dem ersten Punkt von
       Satz~\ref{satzErrorSemanik} bzw.\ aus dem ersten Punkt dieses Satzes
-      folgern, dass $w\in \ET{}_{12}$ gilt und somit in der linken Seite der
+      gefolgert werden, dass $w\in \ET{}_{12}$ gilt und somit in der linken Seite der
       Gleichung enthalten ist.
   \end{itemize}
 
@@ -274,27 +274,27 @@ Präkongruenz finden zu wollen.
 \end{lem}
 
 \begin{proof}
-  Da wir davon ausgehen, dass $S_1$ und $S_2$ die gleiche Signatur haben,
-  definieren wir $I:=I_1=I_2$ und $O:=O_1=O_2$. Für jeden Partner $U$ gilt
+  Da davon ausgehen wird, dass $S_1$ und $S_2$ die gleiche Signatur haben,
+  definiert man $I:=I_1=I_2$ und $O:=O_1=O_2$. Für jeden Partner $U$ gilt
   $I_U=O$ und $O_U=I$.\\
-  Um zu zeigen, dass die Relation $S_1\QRel S_2$ gilt, müssen wir die
-  folgenden Punkte nachweisen:
+  Um zu zeigen, dass die Relation $S_1\QRel S_2$ gilt, müssen die
+  folgenden Punkte nachweisen werden:
   \begin{itemize}
     \item $S_1\ERel S_2$,
     \item $\QT{}(S_1)\subseteq \QT{}(S_2)$.
   \end{itemize}
   Der erste Punkt wurde bereits in Lemma~\ref{lemVerfeinerung}
-  gezeigt. So bleibt uns nur noch die Inklusion $\QT{}_1\subseteq \QT{}_2$ zu
-  zeigen. Diese Inklusion können wir jedoch noch anlog zum Beweis der Inklusion
+  gezeigt. So bleibt nur noch die Inklusion $\QT{}_1\subseteq \QT{}_2$ zu
+  zeigen. Diese Inklusion kann jedoch noch anlog zum Beweis der Inklusion
   der gefluteten Sprachen in Lemma~\ref{lemVerfeinerung} weiter einschränken.
-  Da wir bereits wissen, dass $\ET{}_1\subseteq\ET{}_2$ gilt, müssen wir nur
-  noch $\StQT{}_1\subseteq \QT{}_2$ zeigen.\\
-  Wir wählen ein $w\in \StQT{}(S_1)$ und zeigen, dass es auch in $\QT{}(S_2)$
+  Da bereits bekannt ist, dass $\ET{}_1\subseteq\ET{}_2$ gilt, muss nur
+  noch $\StQT{}_1\subseteq \QT{}_2$ gezeigt werden.\\
+  Es wird ein $w\in \StQT{}(S_1)$ gewählt und gezeigt, dass es auch in $\QT{}(S_2)$
   enthalten ist.\\
   Es ist vom Startzustand von $S_1$ durch das Wort $w$ ein ruhiger Zustand
   erreichbar. Dies hat keine Auswirkungen auf die Parallelkomposition $U\|S_1$,
-  wenn in $U$ kein Ruhe-Zustand durch $w$ erreicht wird. Somit betrachten wir
-  den Partner $U$ bei dem durch $w$ ebenfalls ein Ruhe-Zustand erreicht wird.
+  wenn in $U$ kein Ruhe-Zustand durch $w$ erreicht wird. Somit wird
+  den Partner $U$ betrachtet bei dem durch $w$ ebenfalls ein Ruhe-Zustand erreicht wird.
   Daraus folgt dann, dass in $U\|S_1$ ein Ruhe-Zustand mit $w$ erreicht wird
   und durch die gegebene Relation folgt dann auch, dass in $U\|S_2$ auch ein
   Ruhe-Zustand durch $w$ erreicht werden muss. Dies kann nur der Fall sein,
@@ -302,8 +302,8 @@ Präkongruenz finden zu wollen.
   also $w\in \StQT{}_2$.
 \end{proof}
 
-Mit dem folgenden Satz halten wir fest, dass wir mit \QRel{} die gröbste
-Präkongruenz gefunden haben bezüglich $\cdot\|\cdot$ die in \QBRel{} enthalten
+Mit dem folgenden Satz wird festgehalten, dass mit \QRel{} die gröbste
+Präkongruenz gefunden wurde bezüglich $\cdot\|\cdot$ die in \QBRel{} enthalten
 ist.
 
 \begin{satz}[Full Abstractness für Ruhe-Semantik]
@@ -331,7 +331,7 @@ ist.
   dann $S_1\QRel{} S_2$.
 \end{proof}
 
-Wir haben somit, wie im letzten Kapitel, eine Kette an Folgerungen gezeigt, die
+Es wurde somit, wie im letzten Kapitel, eine Kette an Folgerungen gezeigt, die
 sich zu einem Ring schließen. Dies ist in Abbildung~\ref{FolgerungsketteQui}
 dargestellt.
 
@@ -360,8 +360,8 @@ dargestellt.
   \end{center}
 \end{figure}
 
-Aus Satz~\ref{satzQuiFullAbst} und Lemma~\ref{lemQuiVerfeinerung} erhalten wir
-das folgende Korollar.
+Aus Satz~\ref{satzQuiFullAbst} und Lemma~\ref{lemQuiVerfeinerung} erhält man
+das folgende Korollar:
 
 \begin{kor}
   Ein \EIO{} $S_1$ verfeinert einen \EIO{} $S_2$ genau dann, wenn für alle
@@ -373,20 +373,20 @@ das folgende Korollar.
 
 \section{Hiding für Ruhe}
 
-Wir wollen nun auch hier die Auswirkungen der Internalisierung von Aktionen auf
-unsere Verfeinerungsrelationen untersuchen. Es werden Outputs in interne
-Aktionen umgewandelt. Da wir jedoch bei unseren Ruhe-Zuständen auch
-$\tau$-Transitionen verboten haben, verändert sich nichts an der Menge der ruhigen
-Zustände. Da wir die Erreichbarkeit von Ruhe-Zuständen mittels interner Aktionen
-betrachten, können durch das verbergen von Outputs neue erreichbare
+Es soll nun auch hier die Auswirkungen der Internalisierung von Aktionen auf
+die Verfeinerungsrelationen untersucht werden. Es werden Outputs in interne
+Aktionen umgewandelt. Da jedoch bei den Ruhe-Zuständen auch
+$\tau$-Transitionen verboten wurden, verändert sich nichts an der Menge der ruhigen
+Zustände. Da die Erreichbarkeit von Ruhe-Zuständen mittels interner Aktionen
+betrachtet wurde, können durch das verbergen von Outputs neue erreichbare
 Ruhe-Zustände hinzu kommen. Somit ist es nicht möglich hier eine analoge
-Proposition zu~\ref{propErBaIn} zu formulieren. Wir können zwar daraus
-schließen, dass alle Ruhe-Zustände, die vor dem Hiding zu erreichen waren mit
+Proposition zu~\ref{propErBaIn} zu formulieren. Es kann zwar daraus
+geschlossen werden, dass alle Ruhe-Zustände, die vor dem Hiding zu erreichen waren mit
 $\tau$s auch danach noch erreichbar sind, jedoch können durch die
 Internalisierung neue erreicht werden, die möglicherweise in dem anderen
-Transitionssystem nicht erreicht werden können. Da wir jedoch für die
-Präkongruenz \QRel{} noch Wissen über die Teilmengenbeziehung der Traces haben,
-können wir einen Satz analog zu~\ref{satzPraeInternalisierung} formulieren.
+Transitionssystem nicht erreicht werden können. Da jedoch für die
+Präkongruenz \QRel{} noch Wissen über die Teilmengenbeziehung der Traces
+existiert, kann einen Satz analog zu~\ref{satzPraeInternalisierung} formulieren.
 
 \begin{satz}[Präkongurenz bzgl. Internalisierung]
   \label{satzPraeInterQui}
@@ -396,15 +396,15 @@ können wir einen Satz analog zu~\ref{satzPraeInternalisierung} formulieren.
 \end{satz}
 
 \begin{proof}
-  Da $S_1\QRel S_2$ gilt, wissen wir, dass $S_1\ERel S_2$ und $\QT{}_1\subseteq
-  \QT{}_2$ gilt. Wir wissen bereits aufgrund von
-  Satz~\ref{satzPraeInternalisierung}, dass daraus $(S_1/\{x_1,x_x,\dots
+  Da $S_1\QRel S_2$ gilt, kann geschlossen werden, dass $S_1\ERel S_2$ und $\QT{}_1\subseteq
+  \QT{}_2$ gilt. Aufgrund von
+  Satz~\ref{satzPraeInternalisierung} ist bekannt, dass daraus $(S_1/\{x_1,x_x,\dots
   ,x_n\})\ERel (S_2/\{x_1,x_x,\dots ,x_n\})$ folgt. Ebenso wie im Beweis zu
-  Satz~\ref{satzPraeInternalisierung} können wir hier davon ausgehen, dass
-  $X\subseteq O$ gilt. Für jeden Trace aus $\QT{}_1$ können wir einen passenden
-  in $\QT{}(S_1/X)$ finden und ebenso für das Transitionssystem $S_2$. Die
+  Satz~\ref{satzPraeInternalisierung} kann hier davon ausgehen werden, dass
+  $X\subseteq O$ gilt. Für jeden Trace aus $\QT{}_1$ kann ein passender
+  in $\QT{}(S_1/X)$ gefunden werden und ebenso für das Transitionssystem $S_2$. Die
   Argumentation läuft hierfür analog zum Beweis von
-  Satz~\ref{satzPraeInternalisierung}. Wir haben hier auch kein Problem, dass
+  Satz~\ref{satzPraeInternalisierung}. Es ist hier auch kein Problem, dass
   neue Zustände hinzu kommen, von denen aus durch $\tau$s Ruhe-Zustände
   erreichbar sind, da diese $\tau$s aus Outputs entstanden sind, die verborgen
   wurden. Es war also bereits ein Trace in $\QT{}_i$ vorhanden, der nur aus
@@ -418,10 +418,11 @@ können wir einen Satz analog zu~\ref{satzPraeInternalisierung} formulieren.
 
 In Definition~\ref{defIntParal} wurde mit Hilfe des Internalisierungsoperator
 aus der Parallelkomposition ohne Verbergen die Parallelkomposition mit
-Verbergen der synchronisierten Aktionen nachgebildet. Wir können deren
+Verbergen der synchronisierten Aktionen nachgebildet. Es kann deren
 Eigenschaft als Präkongruenz aus den Präkongruenz-Eigenschaften von
 $\cdot\|\cdot$ und $\cdot /\cdot$ bezüglich \QRel{} aus der
-Proposition~\ref{propQuiPrae} und dem Satz~\ref{satzPraeInterQui} schließen.
+Proposition~\ref{propQuiPrae} und dem Satz~\ref{satzPraeInterQui} geschlossen
+werden.
 
 \begin{kor}[Präkongruenz mit Internalisierung]
   \QRel{} ist eine Präkongruenz bezüglich $\cdot |\cdot$.
@@ -433,8 +434,8 @@ Es währe hier auch denkbar, dass man auch für die Ruhe-Zustände einen lokalen
 Erreichbarkeitsbegriff verwendet. Es könnte dadurch sogar möglich sein eine
 noch gröbere Präkongruenz zu erhalten. Dies wurde hier jedoch nicht gemacht, da
 es bei den denkbaren Umsetzung eines solchen Erreichbarkeitsbegriffes zu
-Problemen kommt, so dass wir nicht mehr alle Inklusionen erreichen können, die
-wir in unseren Sätzen gefordert haben.\\
+Problemen kommt, so dass nicht mehr alle Inklusionen erreichen können, die in
+deb Sätzen gefordert wurden.\\
 Die Umsetzung des lokalen Erreichbarkeitsbegriffes wie im letzten Kapitel, mit
 abschneiden der Outputs und beliebigem Fortsetzten der Traces, würde zu einem
 Problem in Satz~\ref{satzQuiSemantik} in Punkt 2.\ führen, dass analog zu dem
@@ -455,20 +456,20 @@ festhalten. Man könnte sich auch eine Umsetzung denken, in dem man die
 Ruhetraces zwar um die Outputs kürzt, jedoch dann nur Fortsetzungen zulässt,
 die bereits im Transitionssystem möglich sind. Somit benötigt man keine weitere
 Flutung der gefluteten Sprache \EL{}, da weiterhin alle Ruhetraces in der
-Sprache $L$ enthalten sind. Jedoch stoßen wir hier wieder bei Punkt 2.\ von
-Satz~\ref{satzQuiSemantik} an Probleme. Hierzu müssen wir davon ausgehen, dass
-wir uns eine neue \prune{}-Funktion definiert haben bzw.\ eine neue
+Sprache $L$ enthalten sind. Jedoch stoßt man hier wieder bei Punkt 2.\ von
+Satz~\ref{satzQuiSemantik} an Probleme. Hierzu muss davon ausgegangen werden,
+dass eine neue \prune{}-Funktion definiert wurde bzw.\ eine neue
 \cont{}-Funktion, wie z.B. $\prunenew{}: \Sigma ^*\rightarrow
 \mathfrak{P}(\Sigma ^*), w\mapsto \{u\mid \exists v\in O^*:w=uv\}$. Somit würde
-sich unsere Definition der Ruhetraces entsprechend abändern. So das statt
+sich die Definition der Ruhetraces entsprechend abändern. So das statt
 \StQT{} ein entsprechendes \PrQT{} enthalten wäre, dass durch die Anwendung
-unserer \prunenew{} Funktion entstanden wäre. Somit wäre Punkte 2.\ von
+der \prunenew{}-Funktion entstanden wäre. Somit wäre Punkte 2.\ von
 Satz~\ref{satzQuiSemantik} entsprechend auch leicht abgewandelt und müsste
 $\QT{}_{12}=\prunenew (\QT{}_1\|\QT{}_2)\cup \ET{}_{12}$ lauten. Das Problem
 würde nun auftauchen wenn man die Inklusionsrichtung $\supseteq$ zu beweisen
 versucht. Hierzu gibt es jedoch folgendes Gegenbeispiel, dass die Behauptung
 gar nicht stimmen kann.\\
-Für $S_1$ verwenden wir das folgende Transitionssystem (siehe dazu auch
+Für $S_1$ wird das folgende Transitionssystem verwendet (siehe dazu auch
 Abbildung~\ref{S1}):
 \begin{itemize}
   \item $Q_1=\{q_{01}, q_{11}\}$
@@ -491,7 +492,7 @@ Abbildung~\ref{S1}):
   \label{S1}
 \end{center}
 \end{figure}
-Für $S_2$ verwenden wir das folgende Transitionssystem (siehe dazu auch
+Für $S_2$ wird das folgende Transitionssystem verwendet (siehe dazu auch
 Abbildung~\ref{S2}):
 \begin{itemize}
   \item $Q_2=\{q_{02}, q_{12}, q_{22}\}$
@@ -554,15 +555,15 @@ Transitionssystem, bei dem bereits unerreichbare Zustände weggelassen sind
 \end{figure}
 
 Es wäre möglich gewesen, die Menge der Ruhe-Zustände bereits anders zu
-definieren. Dadurch, dass wir die $\tau$-Transitionen verboten haben, sind wir
+definieren. Dadurch, dass die $\tau$-Transitionen verboten wurden, ist man
 einer Fallunterscheidung entgangen. Da jedoch Quiescents als Deadlock-Zustände
 anzusehen sind, aus denen das System ohne Hilfe nicht mehr heraus kommt,
-müssten wir hier eigentlich darauf achten, wohin die $\tau$-Transitionen führen
-und dann möglicherweise die Zustände trotz dieser Transitionen in unsere Menge
+müsste hier eigentlich darauf achten, wohin die $\tau$-Transitionen führen
+und dann möglicherweise die Zustände trotz dieser Transitionen in Menge
 aufnehmen. Ein Zustand, der keine Outputs machen kann und als einzige
 $\tau$-Transition eine Schlinge auf sich selbst hat, kann ebenfalls nicht ohne
-Inputs sich aus diesem Zustand heraus bewegen. Dieser Zustand wir jedoch nach
-unserer Definition nicht als ruhig angesehen. Jedoch ist so ein Zustand
+Inputs sich aus diesem Zustand heraus bewegen. Dieser Zustand wird jedoch nach
+der Definition nicht als ruhig angesehen. Jedoch ist so ein Zustand
 divergent, da er eine unendliche Folge an internen Aktionen ausführen kann.
 Dies wurde in~\cite{Chilton2013} mit untersucht. Auch bei anderen
 Divergenz-Möglichkeiten eines Zustandes, bei denen nicht die Möglichkeit

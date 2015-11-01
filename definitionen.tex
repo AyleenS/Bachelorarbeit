@@ -1,7 +1,7 @@
 \chapter{Definitionen und Notationen}
 
 Die Definitionen dieses Kapitels sind größtenteils aus~\cite{Vogler2014EIO}
-übernommen mit den in der Einleitung erwähnten Abänderungen. Hierbei handelt es
+übernommen, mit den in der Einleitung erwähnten Abänderungen. Hierbei handelt es
 sich um die Grundlagen der Transitionssysteme, mit denen hier gearbeitet werden
 soll. Die nicht mit den entsprechenden Outputs synchronisierten Inputs der zu
 komponierenden \EIO{}s werden als Inputs der Parallelkomposition übernommen.
@@ -14,7 +14,7 @@ $\tau$, einer \emph{internen}, unbeobachtbaren \emph{Aktion}. Diese interne
 Aktion lässt also keine Interaktion mit der Umwelt zu. In~\cite{Vogler2014EIO}
 entsteht das $\tau$ in vielen Fällen durch das Verbergen der Inputs und
 Outputs, da diese in einer Komposition synchronisiert wurden. Hier werden diese
-Aktionen hingegen nicht verborgen. Jedoch werden wir im weiteren Verlauf noch
+Aktionen hingegen nicht verborgen. Jedoch wird im weiteren Verlauf noch
 das Hiding betrachten, in dem Outputs durch interne Aktionen ersetzt werden.
 
 \begin{Def}[Error-IO-Transitionssystem]
@@ -33,15 +33,15 @@ das Hiding betrachten, in dem Outputs durch interne Aktionen ersetzt werden.
 
 Die \emph{Aktionsmenge} eines \EIO{}s $S$ ist $\Sigma = I\cup O$ und die
 \emph{Signatur} $Sig(S)=(I,O)$.\\
-Um in graphischen Veranschaulichungen Inputs und Outputs zu unterscheiden wird
+Um in graphischen Veranschaulichungen Inputs und Outputs zu unterscheiden, wird
 folgende Notation verwendet: $x?$ für den Input $x$ und $x!$ für den Output
 $x$. Falls ein $x$ ohne $?$ oder $!$ verwendet wird, steht dies für eine
 Aktion, bei der nicht festgelegt ist, ob sie ein Input oder ein Output ist.\\
 Um die Komponenten der entsprechenden Transitionssystem zuzuordnen, werden für
 die Komponenten die gleichen Indizes wie für ihr zugehöriges System verwendet,
-z.B.\ schreiben wir $I_1$ für die Inputmenge des Transitionssystem $S_1$. Diese
-Notation verwenden wir später analog für die Sprachen eines Systems.\\
-Die Elemente der Transitionsrelation $\delta$ werden wir wie folgt notieren:
+z.B.\ wird $I_1$ für die Inputmenge des Transitionssystem $S_1$ geschrieben. Diese
+Notation wird später analog für die Sprachen eines Systems verwendet.\\
+Die Elemente der Transitionsrelation $\delta$ werden wie folgt notieren:
 \begin{itemize}
   \item $p\overset{\alpha}{\rightarrow} q$ für $(p,\alpha ,q)\in\delta$,
   \item $p\overset{\alpha}{\rightarrow}$ für $\exists q: (p,\alpha ,q)\in\delta$,
@@ -69,10 +69,10 @@ Zwei \EIO{}s sind komponierbar, wenn ihre Output-Mengen disjunkt sind. Die
 Error-Zustän\-de der Parallelkomposition setzten sich aus den Error-Zuständen der
 beiden zusammengesetzten Komponenten (geerbte Errors) und den
 unsynchronisierbaren Outputs (neue Errors) zusammen.\\
-In der folgenden Definition müssen wir eine Veränderung
-gegenüber~\cite{Vogler2014EIO} vornehmen an der Menge der synchronisierten
-Aktionen, da nicht mehr $I_1\cap I_2 =\emptyset$ gelten muss, werden wir
-diese gemeinsamen Inputs synchronisieren.
+In der folgenden Definition muss eine Veränderung
+gegenüber~\cite{Vogler2014EIO} an der Menge der synchronisierten
+Aktionen vorgenommen werden, da nicht mehr $I_1\cap I_2 =\emptyset$ gelten
+muss, werden diese gemeinsamen Inputs synchronisiert.
 
 \begin{Def}[Parallelkomposition]
   \label{DefParallelkomposition}
@@ -108,13 +108,13 @@ q_2\overset{a}{\rightarrow}\}
   Dabei werden die \emph{synchronisierten Aktionen} $Synch(S_1,
   S_2)=(I_1\cap O_2)\cup(O_1\cap I_2)\cup (I_1\cap I_2)$ nicht versteckt,
   sondern als Outputs der Komposition beibehalten.\\
-  Wir nennen $S_1$ einen \emph{Partner} von $S_2$, wenn ihre
-  Parallelkomposition geschlossen ist, d.h.\ wenn sie duale Signaturen haben
-  $Sig(S_1)=(I,O)$ und $Sig(S_2)=(O,I)$.
+  $S_1$ wird einen \emph{Partner} von $S_2$, wenn ihre
+  Parallelkomposition geschlossen ist, d.h.\ wenn sie duale Signaturen
+  $Sig(S_1)=(I,O)$ und $Sig(S_2)=(O,I)$ haben.
 \end{Def}
 
 Die Parallelkomposition kann nicht nur für Transitionssysteme betrachtet
-werden wie wir das bis jetzt getan haben, sondern auch über Aktionsfolgen.
+werden, wie bisher in dieser Arbeit, sondern auch über Aktionsfolgen.
 \emph{Traces} sind die möglichen Wege des Systems, während ein bestimmtes Wort
 verarbeitet wird. Dieses Wort besteht aus Inputs und Outputs, mit denen die
 Folge ab dem Startzustand $q_0$ beschriftet ist.
@@ -130,13 +130,13 @@ Folge ab dem Startzustand $q_0$ beschriftet ist.
 \end{Def}
 
 Die Semantik der späteren Kapitel basiert darauf die jeweiligen Zustände, die
-zu Problemen führen, mit den Traces zu betrachten, mit denen man diesem
-Zustände erreicht. Um dies besser umsetzten zu können, definieren wir eine
-$\prune{}$-Funktion, die alle Outputs am Ende eines Traces entfernt. Zusätzlich
+zu Problemen führen, mit den Traces zu betrachten, mit denen man diese
+Zustände erreicht. Um dies besser umsetzten zu können, wird eine
+$\prune{}$-Funktion definiert, die alle Outputs am Ende eines Traces entfernt. Zusätzlich
 werden Funktionen definiert, die die Traces beliebig fortsetzen.
 
 \begin{Def}[Pruning- und Fortsetzungs-Funktion]
-  Für ein \EIO{} $S$ definieren wir:
+  Für ein \EIO{} $S$ wird definiert:
   \begin{itemize}
     \item $\prune{}:\Sigma ^*\rightarrow\Sigma ^*, w\mapsto u$, mit $w=uv,
       u=\varepsilon\vee u\in\Sigma ^*\cdot I$ und $v\in O^*$,
@@ -156,12 +156,12 @@ _i}=w_i$ für $i=1,2$. Umgekehrt sind zwei Abläufe von $S_1$ und $S_2$ der Form
 $p_i \overset{w_i}{\Rightarrow} q_i$ mit $w| _{\Sigma _i}= w_i$ für $i=1,2$,
 Projektionen von genau einem Ablauf in $S_{12}$ der Form $(p_1,p_2)
 \overset{w}{\Rightarrow} (q_1.q_2)$. Es ist dafür nötig, dass die Abläufe der
-beiden Systeme und die Systeme selbst komponierbar sind. Dadurch, dass wir
-ein $w$ wählen, dass projiziert auf die einzelnen Alphabete die jeweiligen
-Wörter ergibt, können wir ohne interne Aktionen sagen, dass nur ein Ablauf
-möglich ist. Da jedoch bei uns auch interne Aktionen zulässig sind, sind
+beiden Systeme und die Systeme selbst komponierbar sind. Dadurch, dass $w$ so
+gewählt wurde, dass die Projektion auf die einzelnen Alphabete die jeweiligen
+Wörter ergibt, kann ohne interne Aktionen gesagt werden, dass nur ein Ablauf
+möglich ist. Da jedoch auch interne Aktionen zulässig sind, sind
 mehrere Abläufe möglich, da nicht klar ist, wann ein $\tau$ in dem Trace
-ausgeführt ist. Daraus ergibt sich das folgende Lemma.
+ausgeführt wird. Daraus ergibt sich das folgende Lemma.
 
 \begin{lem}[Sprache der Parallelkomposition]
   \label{LemmaSprache}
@@ -171,21 +171,22 @@ ausgeführt ist. Daraus ergibt sich das folgende Lemma.
 
 \section{Hiding}
 
-Hiding wurde bereist in~\cite{Chilton2013} auf Traces betrachtet. Da wir hier
-aber unsere Betrachtungsweise von Transitionssystemen aus starten, werden
-wir auch Hiding aus der Sicht dieser Systeme definieren, wie
+Hiding wurde bereits in~\cite{Chilton2013} auf Traces betrachtet. Da hier
+die Betrachtungsweise von Transitionssystemen aus startet, wird auch Hiding aus
+der Sicht dieser Systeme definieren, wie
 in~\cite{Schlosser2012BA}. Eine ähnliche Betrachtung für Hiding bei \EIO{}s
-wurde auch bereits in~\cite{Lynch1996} umgesetzt. Dort werden nur Output
-Aktionen internalisiert, jedoch gibt es eine Menge an internen Aktionen und
+wurde auch bereits in~\cite{Lynch1996} umgesetzt. Dort werden nur
+Output-Aktionen internalisiert, jedoch gibt es eine Menge an internen Aktionen
+und
 nicht nur eine. Das Hiding wird durch einen Internalisierungsoperator
 umgesetzt. Es sollen dadurch Aktionen versteckt werden können, d.h.\ durch
 $\tau$s ersetzt werden. In~\cite{Chilton2013} ist es in der Definition des
-Hidings möglich Outputs und Inputs zu verstecken. Durch das verstecken von
-Outputs sind diese nur nicht mehr nach Außen sichtbar. Werden jedoch Inputs
-versteckt, sind alle Traces, die diesen Input benötigen nicht mehr ausführbar.
+Hidings möglich Outputs und Inputs zu verstecken. Durch das Verstecken von
+Outputs sind diese nicht mehr nach außen sichtbar. Werden jedoch Inputs
+versteckt sind alle Traces, die diesen Input benötigen, nicht mehr ausführbar.
 Sie sind dann ab dem versteckten Input nicht mehr weiterführbar. Somit werden
-wir in unserer Definition nur die Internalisierung von Outputs erlauben und uns
-deshalb an~\cite{Schlosser2012BA} als Quelle halten.
+in der folgenden Definition nur die Internalisierung von Outputs erlaubt,
+entsprechend Quelle~\cite{Schlosser2012BA}.
 
 \begin{Def}[Internalisierungsoperator]
   Für ein \EIO{} $S=(Q,I,O,\delta ,q_0.E)$ ist $S/\{x_1,x_2,\dots ,x_n\}$, mit
@@ -205,12 +206,12 @@ Outputs beschränkt. Diese Einschränkung wurde vorgenommen und die weitere
 Betrachtung zu erleichtern. Jedoch kann es sinnvoll sein die Möglichkeit zu
 haben dort weitere Aktionen aufnehmen zu können. Dies wird jedoch nicht mehr
 Teil dieser Arbeit sein.\\
-In~\cite{Vogler2014EIO} wurden die Parallelkomposition nur mit Verbergen der
-synchronisierten Aktionen betrachtet. Diese Parallelkomposition können wir nun
+In~\cite{Vogler2014EIO} wird die Parallelkomposition nur mit Verbergen der
+synchronisierten Aktionen betrachtet. Diese Parallelkomposition kann nun
 mit dem Internalisierungsoperator durch Hiding der synchronisierten Aktionen
-nachbilden. Da diese synchronisierten Aktionen in der Parallelkomposition dieser
-Arbeit als Outputs des Gesamtsystems übernommen werden, werden dadurch auch
-wirklich alle synchronisierten Aktionen verborgen.
+nachbildet werden. Da diese synchronisierten Aktionen in der Parallelkomposition dieser
+Arbeit als Outputs des Gesamtsystems übernommen werden, können dadurch auch
+wirklich alle synchronisierten Aktionen verborgen werden.
 
 \begin{Def}[Parallelkomposition mit Internalisierung]
   \label{defIntParal}
