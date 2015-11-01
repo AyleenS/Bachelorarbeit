@@ -663,45 +663,55 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   Da $S_1\ERel S_2$ gilt, weiß man, dass $\ET{}_1\subseteq \ET{}_2$ und
   $\EL{}_1\subseteq \EL{}_2$ gilt. Es gilt $X:=\{x_1,x_2,\dots ,x_n\}\subseteq
   O$, da in der Definition des Internalisierungsoperators keine andere $x_i$
-  zulässig sind. Eine genauere Vorstellung davon zu bekommen, was
+  zulässig sind. Um eine genauere Vorstellung davon zu bekommen, was
   das Hiding für die Systeme bedeutet, werden hier zunächst einmal die
-  neuen Errortraces und die neue error-geflutete Sprache definiert. Es gilt $\ET{}(S/X) =
-  \cont{}(\PrET{}(S/X))\cup \cont{}(\MIT{}(S/X))$ mit $\StET{}(S/X) = \{w\in
-  (\Sigma\backslash (X\cap O))^*\mid \exists w'\in \StET{}(S):
-  w'|_{\Sigma\backslash (X\cap O)} = w\}$, $\PrET{}(S/X) = \{\prune (w)\mid
-  w\in\StET{}(S/X)\}$ und $\MIT{}(S/X) = \{w\in (\Sigma\backslash (X\cap
-  O))^*\mid \exists w'\in \MIT{}(S): w'|_{\Sigma\backslash (X\cap O)} = w\}$.
-  Die error-geflutete Sprache \EL{} wird nun analog dazu definiert als
-  $\EL{}(S/X) = L(S/X)\cup \ET{}(S/X)$ mit $L(S/X) = \{w\in (\Sigma\backslash
-  (X\cap O))^*\mid \exists w'\in L(S): w'|_{\Sigma\backslash (X\cap O)} =
-  w\}$.\\
-  Es wird einen Trace $w=a_1a_2\dots a_m\in \ET{}_1$ gewählt. Solang $w$ nicht nur
-  aus Outputs besteht, gibt es also einen Ablauf $q_0
-  \overset{w'}{\Rightarrow}$ mit $w'=a_1a_2\dots a_k$, so dass $a_k\in I$,
-  $k\leq m$ und $w'\in \MIT{}_1$ oder $w'\in \PrET{}_1$ gilt. Nach der
-  Internalisierung bleiben von dem Ablauf nur noch die Aktionen übrig, die
-  nicht Element von $X$ sind. Der Trace reduziert sich also auf
-  $w''=w|_{\Sigma\backslash (O\cap X)}$. Diese $w''$ hat einen zu $w'$ analoges
-  Präfix, da der Input $a_k$ erhalten bleibt. Dieses Präfix von $w''$ ist dann
-  in $\MIT{}(S_1/X)$ oder in $\PrET{}(S_1/X)$ enthalten und somit ist $w''$ in
-  $\ET{}(S_1/X)$ enthalten. Diese Argumentation funktioniert jedoch nicht für
-  $w$s, die nur aus Outputs bestehen. Da Elemente aus $\cont{}(\MIT{}_1)$
-  mindestens einen Input enthalten, muss so ein $w$ aus
-  $\cont{}(\PrET{}_1)$ sein. Somit ergibt sich ohne die \cont{}-Funktion das
-  Element $\varepsilon\in\PrET{}_1$. Da es in diesem Wort keine Elemente aus
-  $X$ gibt, werden in diesem Zusammenhang auch keine Aktionen verborgen und somit gilt
-  $\varepsilon\in\PrET{}(S_1/X)$.\\
+  neuen Errortraces und die neue error-geflutete Sprache definiert. Es gilt:
+  \begin{itemize}
+    \item $\StET{}(S/X) = \{w\in (\Sigma\backslash (X\cap O))^*\mid \exists
+      w'\in \StET{}(S): w'|_{\Sigma\backslash (X\cap O)} = w\}$,
+    \item $\PrET{}(S/X) = \{\prune (w)\mid w\in\StET{}(S/X)\}$,
+    \item $\MIT{}(S/X) = \{w\in (\Sigma\backslash (X\cap O))^*\mid \exists
+      w'\in \MIT{}(S): w'|_{\Sigma\backslash (X\cap O)} = w\}$,
+    \item $\ET{}(S/X) = \cont{}(\PrET{}(S/X))\cup \cont{}(\MIT{}(S/X))$,
+    \item $L(S/X) = \{w\in (\Sigma\backslash (X\cap O))^*\mid \exists w'\in
+      L(S): w'|_{\Sigma\backslash (X\cap O)} = w\}$,
+    \item $\EL{}(S/X) = L(S/X)\cup \ET{}(S/X)$.
+  \end{itemize}
+  Es wird einen präfix-minimaler Traces $w=a_1a_2\dots a_m\in \ET{}_1$ gewählt.
+  Daraus folgt, dass  ein Ablauf $q_0 \overset{w}{\Rightarrow} q$ existiert mit
+  $q\in E$ oder $q$ hat nicht für alle Inputs eine Transitionsmöglichkeit. Es
+  gilt also entweder $w\in \PrET{}_1$ oder $w\in \MIT{}_1$. An diesem Punkt
+  muss unterschieden werden, ob es sich hier um einen Traces handelt, der aus
+  dem leeren Wort besteht oder um einen Traces, für den $m\geq 1$ gilt.
+  \begin{itemize}
+    \item Fall 1 ($w=\varepsilon$): Da Elemente aus $\MIT{}_1$ mindestens die
+      Länge 1 haben müssen, gilt hier $w\in \PrET{}_1$. Da es in diesem Wort
+      keine Aktionen aus $X$ gibt, werden in diesem Zusammenhang auch keine
+      Aktionen verborgen und somit gilt $\varepsilon\in\PrET{}(S_1/X)$. In
+      $\ET{}(S_1/X)$ sind somit alle beliebigen Kombinationen von Aktionen aus
+      $\Sigma$ enthalten, genau so wie in $\ET{}_1$.\\
+    \item Fall 2 ($m\geq 1$): Nach der Internalisierung bleiben von dem Ablauf
+      nur noch die Aktionen übrig, die nicht Element von $X\cap O$ sind. Da
+      hier ein präfix-minimales Element aus $\ET{}_1$ betrachtet wird, muss
+      $a_m\in I$ gelten. Der Trace reduziert sich also auf
+      $w'=w|_{\Sigma\backslash (O\cap X)}$. Dabei bleibt der Input $a_m$
+      erhalten. $w'$ ist dann in $\MIT{}(S_1/X)$ oder in $\PrET{}(S_1/X)$
+      enthalten und somit ist $w'$ und alle seine Verlängerungen durch die
+      \cont{}-Funktion in $\ET{}(S_1/X)$ enthalten.
+  \end{itemize}
   Nach Voraussetzung gilt $w\in\ET{}_2$. Nach analoger Argumentation gilt dann
-  auch $w''\in\ET{}(S_2/X)$.\\
+  auch $w'\in\ET{}(S_2/X)$.\\
   Somit bleibt jetzt nur noch zu zeigen, dass $L(S_1/X)\backslash \ET{}(S_1/X)
   \subseteq EL(S_2/X)$ gilt. Die Argumentation wieso nur diese Inklusion zu
   zeigen ist, kann dem Beweis zu Lemma~\ref{lemVerfeinerung} entnommen werden.
   Da bereits bekannt ist, dass $L_1\backslash\ET{}_1\subseteq\EL{}_2$ gilt,
-  kann geschlossen werden, dass alle relevanten Traces bereits in $\EL{}_2$ enthalten sind
-  und die Modifikation durch den Internalisierungsoperator wie oben keine
-  Auswirkungen auf die Teilmengenbeziehung hat. %TODO überlegen ob die beliebe
-  %Fortsetzung problematisch ist (nicht problematisch, sollte aber explizit mit
-  %ausformuliert werden)
+  kann geschlossen werden, dass alle relevanten Traces bereits in $\EL{}_2$
+  enthalten sind und die Modifikation durch den Internalisierungsoperator wie
+  oben keine Auswirkungen auf die Teilmengenbeziehung hat. Es ist hier nur noch
+  wichtig festzuhalten, dass für einen Trace aus $L_1$ keine beliebigen
+  Verlängerungen zulässig sind, genauso wie für $L(S_1/X)$. Jedoch kann immer
+  ein passender Trace in $L(S_1/X)$ zu jedem Trace aus $L_1$ gefunden werden
+  durch weglassen der Aktionen aus $X\cap O$.
 \end{proof}
 
 Aus~\ref{propPraekongruenz} ist bekannt, dass \ERel{} eine Präkongruenz
