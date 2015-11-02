@@ -1,11 +1,11 @@
-\chapter{Verfeinerung über Errortraces}
+\chapter{Verfeinerung und Error-Freiheit}
 
 \section{Präkongruenz für Error}
 
 Da es in dieser Arbeit vor allem um die Erreichbarkeit und die Kommunikation
-zwischen \EIO{}s geht, wurden die nächsten beiden Definitionen explizit getrennt
-und erweitert zu denen in~\cite{Vogler2014EIO}. Ebenfalls wurde die
-Parallelkomposition geändert, wie in~\cite{Schlosser2012BA}.
+zwischen \EIO{}s geht, wurden die nächsten beiden Definitionen explizit
+getrennt und erweitert im Vergleich zu denen in~\cite{Vogler2014EIO}. Ebenfalls
+wurde die Parallelkomposition geändert, wie in~\cite{Schlosser2012BA}.
 
 \begin{Def}[error-freie Kommunikation]
   Ein Error ist \emph{lokal erreichbar} in einem \EIO{} $S$, wenn $\exists w\in O^*: q_0
@@ -16,9 +16,7 @@ Parallelkomposition geändert, wie in~\cite{Schlosser2012BA}.
 
 Mittels der lokalen Erreichbarkeit von Errors kann ein
 Verfeinerungsrelation definiert werden. Zusätzlich wird bereits die
-gröbste Präkongruenz definiert, die gesucht werden soll. Somit kann überprüft
-werden, ob eine andere gefundene Präkongruenz auch die Eigenschaft erfüllt die
-gröbste zu sein.
+gröbste Präkongruenz definiert, die gesucht werden soll.
 
 \begin{Def}[Error-Verfeinerungs-Basisrelation]
   \label{DefErrorBasisrel}
@@ -28,19 +26,18 @@ gröbste zu sein.
   \emph{Basisrelation} für die \emph{Verfeinerung} im Bezug auf \emph{Errors}.\\
   \ECRel{} bezeichnet die \emph{vollständig abstrakte Präkongruenz} von \EBRel{}
   bezüglich $\cdot\|\cdot$, d.h.\ die gröbste Präkongruenz bezüglich
-  $\cdot\|\cdot$ die in \EBRel{} enthalten ist.
+  $\cdot\|\cdot$, die in \EBRel{} enthalten ist.
 \end{Def}
 
 Um sich näher mit den Präkongruenzen auseinandersetzen zu können, müssen bestimmte Traces
 aus der Struktur hervor gehoben werden. Die strikten Errortraces entsprechen Wegen, die
 direkt vom Startzustand zu einem Zustand in der Menge $E$ führen. Da Outputs Aktionen
 sind, die von außen nicht verhindert werden können, wird auch noch die
-Menge der Traces benötigt, die zu einem Zustand führen, von dem aus mit lokalen Aktionen
+Menge der Traces benötigt, die zu einem Zustand führen können, von dem aus mit lokalen Aktionen
 ein Error erreicht werden kann. Zusätzlich ist auch noch die Menge der Traces
 interessant, für die es einen Input $a\in I$ gibt, durch den sie möglicherweise nicht
-fortgesetzt werden können. Diese führen zwar nicht
-direkt zu einem Error, jedoch in Komposition mit einem anderen
-Transitionssystem sind
+fortgesetzt werden können. Diese führen zwar nicht direkt zu einem Error,
+jedoch in Komposition mit einem anderen Transitionssystem sind
 dies gefährdete Stellen. Sie führen zu einem neuen Error, sobald dieser Input
 für die Synchronisation fehlt.
 
@@ -51,16 +48,15 @@ für die Synchronisation fehlt.
     \item \emph{strikte Errortraces}: $\StET{}(S)=\{w\in\Sigma
       ^*\mid q_0\overset{w}{\Rightarrow}q\in E\}$,
     \item \emph{gekürzte Errortraces}: $\PrET{}(S)=\{\prune{}(w)\mid w\in \StET{}(S)\}$,
-    \item \emph{fehlende Input-Traces}: $\MIT{}(S)=\{wa\in\Sigma ^*\mid
+    \item \emph{Input-kritische Traces}: $\MIT{}(S)=\{wa\in\Sigma ^*\mid
       q_0\overset{w}{\Rightarrow}q\wedge a\in I\wedge
     q\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\}$.
   \end{itemize}
 \end{Def}
 
 In der folgenden Definition wird festgehalten, was als Errortraces auffasst
-wird.
-Diese Menge ist dadurch, dass sie die fortgesetzten Traces aus $\PrET{}$ enthält
-deutlich allgemeiner wie die Menge $\StET{}$. Zusätzlich wird auch noch
+wird. Diese Menge ist dadurch, dass sie die fortgesetzten Traces aus $\PrET{}$
+enthält, deutlich allgemeiner als die Menge $\StET{}$. Zusätzlich wird auch noch
 die geflutete Sprache definiert, in der die Informationen aus der Sprache und den
 Errortraces vereint werden und somit bei der Inklusion nicht mehr explizit
 unterscheiden werden.
@@ -148,7 +144,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
       folgt, dass es sich entweder um einen geerbten oder einen neuen Error
       handelt. Bei einem geerbten wäre bereits einer der beiden Zustände $q_1$
       bzw. $q_2$ ein Error-Zustand gewesen. Der neue Error hingegen wäre durch
-      die fehlende Möglichkeit entstanden eine synchronisierte Aktion
+      die fehlende Möglichkeit entstanden, eine synchronisierte Aktion
       auszuführen.
       \begin{itemize}
         \item Fall 2a) (geerbter Error): \OBdA{} $q_1'\in E_1$. Daraus folgt
@@ -197,7 +193,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
   $v_2\in \PrET{}_2\cup \MIT{}_2$ vor $v_1$ und somit ist dieser Fall analog zu $v_1$
   endet vor $v_2$.
   \begin{itemize}
-    \item Fall 1 ($v_1=\varepsilon$): Dadurch dass $\varepsilon\in \PrET{}_1\cup
+    \item Fall 1 ($v_1=\varepsilon$): Da $\varepsilon\in \PrET{}_1\cup
       \MIT{}_1$, ist bereits in $S_1$ ein Error lokal erreichbar. $\varepsilon\in
       \MIT{}_1$ ist nicht möglich, da jedes Element aus $MIT$ nach Definition
       mindestens die Länge $1$ haben muss. Mit der Wahl
@@ -215,11 +211,11 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
       gelten. Es kann also keine Aussage mehr darüber getroffen, ob es sich um
       ein echtes Präfix handelt.
   \end{itemize}
-  In allen Fällen erhält man $v_2'=v'|_{\Sigma _2}$ ist ein Präfix von $v_2$
+  In allen Fällen erhält man: $v_2'=v'|_{\Sigma _2}$ ist ein Präfix von $v_2$
   und $v'\in v_1\| v_2'$ ist ein Präfix von $xy$. Da nicht mehr $b\neq a$
-  gelten muss, kann nicht mehr für alle Fälle
-  $q_{02}\overset{v_2'}{\Rightarrow}$ gefolgert werden, wie das in~\cite{Vogler2014EIO}
-  möglich war.
+  gelten muss, kann nicht mehr für alle Fälle $q_{02}
+  \overset{v_2'}{\Rightarrow}$ gefolgert werden, wie das
+  in~\cite{Vogler2014EIO} möglich war, sondern nur wenn $a\notin I_2$ gilt.
   \begin{itemize}
     \item Fall I ($v_1\in \MIT{}_1$ und $v_1\neq\varepsilon$): Es gibt $q_{01}
       \overset{v_1'}{\Rightarrow}q_1
@@ -229,8 +225,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
       sowohl in $I_1$ wie auch in $I_2$ enthalten ist.
       \begin{itemize}
         \item Fall Ia) ($a\notin\Sigma _2$): Es gilt $q_{02}
-          \overset{v_2'}{\Rightarrow} q_2$ mit $v''\in v_1'\|v_2'$, da $v_2'$
-          und $v_2$ nicht auf $a$ enden können. Dadurch erhält man
+          \overset{v_2'}{\Rightarrow} q_2$ mit $v''\in v_1'\|v_2'$. Dadurch erhält man
           $(q_{01},q_{02}) \overset{v''}{\Rightarrow} (q_1,q_2)
           \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ mit $a\in I_{12}$.
           Somit wird $v:=v''a=v'\in \MIT{}_{12}$ gewählt.
@@ -249,10 +244,10 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
           \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ gilt, um Folgendes
           schließen zu können $(q_1,q_2)
           \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$. Somit kann hier
-          $v:=v''a=v'\in \MIT{}_{12}$ gewählt werden.
+          $v:=v''a=v'\in \MIT{}_{12}$ gewählt werden. %TODO zu diesem Fall
+          %Korrektur kapieren und einarbeiten
         \item Fall Id) ($a\in O_2$): Es gilt $v_2'=v_2''a$ und $q_{02}
-          \overset{v_2'}{\Rightarrow}$, da der Input $b$ von $v_2$ hier nicht
-          dem $a$ entsprechen kann. Man erhält also $q_{02}
+          \overset{v_2'}{\Rightarrow}$. Man erhält also $q_{02}
           \overset{v_2''}{\Rightarrow} q_2 \overset{a}{\rightarrow}$ mit
           $v''\in v_1'\|v_2''$. Daraus ergibt sich $(q_{01},q_{02})
           \overset{v''}{\Rightarrow} (q_1,q_2)$ mit $q_1
@@ -262,9 +257,9 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
       \end{itemize}
   \item Fall II ($v_1\in \PrET{}_1$): $\exists u_1\in O_1^*:q_{01}
     \overset{v_1}{\Rightarrow} q_1 \overset{u_1}{\Rightarrow} q_1'$ mit
-    $q_1'\in E_1$. Da es hier keine disjunkten Inputmengen, wie
-    in~\cite{Vogler2014EIO} gibt, kann
-    das $a$, auf das $v_1$ endet ebenfalls der letzte Buchstabe von $v_2$
+    $q_1'\in E_1$. Da es hier keine disjunkten Inputmengen wie
+    in~\cite{Vogler2014EIO} gibt kann das $a$, auf das $v_1$ im Fall $v_1\neq
+    \varepsilon$ endet, ebenfalls der letzte Buchstabe von $v_2$
     sein. Im Fall von $v_2\in \MIT{}_2$ kann somit $a=b$ gelten und somit wäre
     $v_2=v_2'$. Dieser Fall verläuft jedoch analog zu Fall Ic) und wird somit
     hier nicht weiter betrachtet. Es gilt somit für
@@ -316,8 +311,8 @@ Die folgende Proposition wurde hier noch explizit mit Beweis eingefügt im
 Gegensatz zu den Ausführungen in~\cite{Vogler2014EIO}, in denen diese
 Präkongruenz nur als Folgerung aus dem letzten Satz erwähnt wird. Die
 Feststellung, dass es sich um eine Präkongruenz handelt, ist wichtig, da
-dann die erste Eigenschaft erfüllt ist, um eine Präkongruenz zu finden, die
-äquivalent ist zu der vollständig abstrakten Präkongruenz \ECRel{}.
+dann die erste Eigenschaft erfüllt ist, um eine operationale Beschreibung der
+vollständig abstrakten Präkongruenz \ECRel{} zu erhalten.
 
 \begin{prop}[Präkongruenz]
   \label{propPraekongruenz}
@@ -361,6 +356,9 @@ in~\cite{Schlosser2012BA}, da es dort mit der Aussage von
 Satz~\ref{satzFullAbstractness} kombiniert wurde. Jedoch ist die Aussage dieses
 Lemmas trotzdem Teil dessen, was gezeigt wird und somit finden sich die Teile
 dieses Beweises auch dort wieder.
+
+%TODO "gut kommunizieren" als Interpretation in Text-Form, Definition nur mit
+%Verfeinerung (siehe dazu Korrektur)
 
 \begin{lem}[Verfeinerung mit Errors]
   \label{lemVerfeinerung}
@@ -480,8 +478,8 @@ dieses Beweises auch dort wieder.
           $w$ zu einem Error.
       \end{itemize}
   \end{itemize}
-  Um die zweiten Inklusion zu beweisen reicht es aufgrund der ersten
-  Inklusion und der Definition von $\EL{}$ aus, zu zeigen, dass
+  Um die zweiten Inklusion zu beweisen, reicht es aufgrund der ersten
+  Inklusion und der Definition von $\EL{}$ aus zu zeigen, dass
   $L(S_1)\backslash \ET{}(S_1)\subseteq \EL{}(S_2)$ gilt.\\
   Es wird dafür ein beliebiges $w\in L(S_1)\backslash \ET{}(S_1)$ gewählt und
   gezeigt, dass es in $\EL{}(S_2)$ enthalten ist.
@@ -529,7 +527,7 @@ dieses Beweises auch dort wieder.
       \end{center}
       \end{figure}
       Da $q_{01} \overset{w}{\Rightarrow} q'$ gilt, kann man schließen, dass $U\|S_1$
-      einen lokal erreichbaren Error hat. Somit muss $U\|S_2$ ebenfalls einen
+      einen lokal erreichbaren geerbten Error hat. Somit muss $U\|S_2$ ebenfalls einen
       lokal erreichbaren Error haben.
       \begin{itemize}
         \item Fall 2a) (neuer Error aufgrund von $x_i\in O_U$ und $q_{02}
@@ -538,6 +536,7 @@ dieses Beweises auch dort wieder.
           x_i\in \MIT{}(S_2)$ und somit $w\in \EL{}(S_2)$. Anzumerken ist, dass nur
           auf diesem Weg Outputs von $U$ möglich sind, deshalb gibt es keine
           anderen Outputs von $U$, die zu einem neuen Error führen können.
+          %TODO ab hier Korrektur einarbeiten
         \item Fall 2b) (neuer Error aufgrund von $a\in O_2$): Der einzige
           Zustand, in dem $U$ nicht alle Inputs erlaubt sind, ist $q_n$, der
           bereits ein Error-Zustand ist. Falls dieser Zustand erreichbar ist in
