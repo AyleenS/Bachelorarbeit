@@ -189,15 +189,14 @@ in der folgenden Definition nur die Internalisierung von Outputs erlaubt,
 entsprechend Quelle~\cite{Schlosser2012BA}.
 
 \begin{Def}[Internalisierungsoperator]
-  Für ein \EIO{} $S=(Q,I,O,\delta ,q_0.E)$ ist $S/\{x_1,x_2,\dots ,x_n\}$, mit
+  Für ein \EIO{} $S=(Q,I,O,\delta ,q_0.E)$ ist $S/X$, mit
   dem \emph{Internalisierungsoperator} $\cdot /\cdot$,
   definiert als $S'=(Q,I,O',\delta ',\linebreak q_0,E)$ mit:
   \begin{itemize}
-    \item $\forall x_i: x_i\in O\wedge x_i\neq\tau$.
-    \item $O'=O\backslash \{x_1,x_2,\dots ,x_n\}$,
+    \item $\forall x\in X: x\in O\wedge x\neq\tau$.
+    \item $O'=O\backslash X$,
     \item $\delta '=(\delta\cup\{(q,\tau ,q')\mid (q,x,q')\in\delta
-      ,x\in(\{x_1,x_2,\dots ,x_n\}\cap O)\})\backslash \{(q,x,q')\mid
-      x\in(\{x_1,x_2,\dots ,x_n\}\cap O)\}$,
+      ,x\in X\})\backslash \{(q,x,q')\mid x\in X\cap O)\}$,
   \end{itemize}
 \end{Def}
 

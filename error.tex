@@ -568,19 +568,19 @@ Präkongruenz \ECRel{}.
 \end{satz}
 
 \begin{proof}
-  Wie bereits in Proposition~\ref{propPraekongruenz} festgehalten, ist \ERel{} eine
-  Präkongruenz.
-
-  \glqq $\Leftarrow$\grqq : Nach Definition gilt, wenn
+  \glqq $\Leftarrow$\grqq : Nach Definition gilt, genau dann wenn
       $\varepsilon\in \ET{}(S)$, ist ein Error lokal erreichbar in $S$.
       $S_1\ERel S_2$ impliziert, dass $\varepsilon\in
-      \ET{}(S_2)$ gilt, wenn $\varepsilon\in \ET{}(S_1)$. Dadurch folgt, dass
-      $S_1\EBRel S_2$ gilt, da \EBRel{} in Definition~\ref{DefErrorBasisrel}
-      über die lokale Erreichbarkeit der Error-Zustände definiert wurde. Somit
-      ist $S_1\ERel S_2$ eine Präkongruenz, die in \EBRel{} enthalten ist. Da
-      \ECRel{} die gröbste Präkongruenz bezüglich $\cdot\|\cdot$ ist, die in
-      \EBRel{} enthalten ist, muss \ERel{} in \ECRel{} enthalten sein. Es folgt
-      also aus $S_1\ERel S_2$, dass auch $S_1\ECRel{} S_2$ gilt.
+      \ET{}(S_2)$ gilt, wenn $\varepsilon\in \ET{}(S_1)$. Somit ist ein Error
+      in $S_1$ nur dann lokal erreichbar, wenn dieser auch in $S_2$ erreichbar
+      ist. Dadurch folgt, dass $S_1\EBRel S_2$ gilt, da \EBRel{} in
+      Definition~\ref{DefErrorBasisrel} über die lokale Erreichbarkeit der
+      Error-Zustände definiert wurde. Somit ist \ERel{} in \EBRel{} enthalten.
+      Wie in Proposition~\ref{propPraekongruenz} gezeigt, ist \ERel{} eine
+      Präkongruenz. Da \ECRel{} die gröbste Präkongruenz bezüglich
+      $\cdot\|\cdot$ ist, die in \EBRel{} enthalten ist, muss \ERel{} in
+      \ECRel{} enthalten sein. Es folgt also aus $S_1\ERel S_2$, dass auch
+      $S_1\ECRel{} S_2$ gilt.
 
       \glqq $\Rightarrow$\grqq : Durch die Definition von \ECRel{} folgt aus
   $S_1\ECRel S_2$, dass $U\|S_1\ECRel U\|S_2$ für alle \EIO{}s $U$, die mit
@@ -635,8 +635,8 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
 
 \begin{prop}[Error-Basisrelation bzgl. Internalisierung]
   \label{propErBaIn}
-  Wenn $S_1\EBRel S_2$ gilt, dann folgt daraus, dass auch $(S_1/\{x_1,x_2,\dots
-  ,x_n\})\EBRel (S_2/\{x_1,x_2,\dots ,x_n\})$ gilt.
+  Wenn $S_1\EBRel S_2$ gilt, dann folgt daraus, dass auch $(S_1/X)\EBRel
+  (S_2/X)$ gilt.
 \end{prop}
 
 \begin{proof}
@@ -644,41 +644,36 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   aus den Outputs und der internen Aktion besteht, ändert sich durch das
   Verbergen von Outputs nichts an der Error-Erreichbarkeit. Somit ist jeder
   Error, der in $S_i$ lokal erreichbar ist über einen Trace, der einen
-  Outputs aus $\{x_1,x_2,\dots ,x_n\}$ enthält, auch in $S_i/\{x_1,x_2,\dots
-  ,x_n\}$ erreichbar, jedoch enthält der Trace nicht mehr diesen Output. Alle
-  Traces, die keine Outputs aus der Menge hinter dem Internalisierungsoperator
-  enthalten, bleiben unverändert erhalten. Es ist auch nicht möglich, dass durch
-  das Verbergen von Outputs neue Errors entstehen. Somit folgt die Behauptung.
+  Outputs aus $X$ enthält, auch in $S_i/X$ erreichbar, jedoch enthält der Trace
+  nicht mehr diesen Output. Alle Traces, die keine Outputs aus der Menge hinter
+  dem Internalisierungsoperator enthalten, bleiben unverändert erhalten. Es ist
+  auch nicht möglich, dass durch das Verbergen von Outputs neue Errors
+  entstehen. Somit folgt die Behauptung.
 \end{proof}
 
 \begin{satz}[Präkongurenz bzgl. Interalisierung]
   \label{satzPraeInternalisierung}
   Seinen $S_1$ und $S_2$ zwei \EIO{}s für die $S_1\ERel S_2$ gilt, somit gilt
-  auch $(S_1/\{x_1,x_2,\dots ,x_n\})\ERel (S_2/\{x_1,x_2,\dots ,x_n\})$. Daraus
-  folgt insbesondere, dass \ERel{} eine Präkongruenz bezüglich $\cdot /\cdot$
-  ist.
+  auch $(S_1/X)\ERel (S_2/X)$. Daraus folgt insbesondere, dass \ERel{} eine
+  Präkongruenz bezüglich $\cdot /\cdot$ ist.
 \end{satz}
 
 \begin{proof}
   Da $S_1\ERel S_2$ gilt, weiß man, dass $\ET{}_1\subseteq \ET{}_2$ und
-  $\EL{}_1\subseteq \EL{}_2$ gilt. Es gilt $X:=\{x_1,x_2,\dots ,x_n\}\subseteq
-  O$, da in der Definition des Internalisierungsoperators keine andere $x_i$
-  zulässig sind. Um eine genauere Vorstellung davon zu bekommen, was
-  das Hiding für die Systeme bedeutet, werden hier zunächst einmal die
-  neuen Errortraces und die neue error-geflutete Sprache definiert. Es gilt:
+  $\EL{}_1\subseteq \EL{}_2$ gilt. Um eine genauere Vorstellung davon zu
+  bekommen, was das Hiding für die Systeme bedeutet, werden hier zunächst
+  einmal die neuen Errortraces und die neue error-geflutete Sprache definiert.
+  Es gilt:
   \begin{itemize}
-    \item $\StET{}(S/X) = \{w\in (\Sigma\backslash (X\cap O))^*\mid \exists
-      w'\in \StET{}(S): w'|_{\Sigma\backslash (X\cap O)} = w\}$,
-    \item $\PrET{}(S/X) = \{\prune (w)\mid w\in\StET{}(S/X)\}$,
-    \item $\MIT{}(S/X) = \{w\in (\Sigma\backslash (X\cap O))^*\mid \exists
-      w'\in \MIT{}(S): w'|_{\Sigma\backslash (X\cap O)} = w\}$,
-    \item $\ET{}(S/X) = \cont{}(\PrET{}(S/X))\cup \cont{}(\MIT{}(S/X))$,
-    \item $L(S/X) = \{w\in (\Sigma\backslash (X\cap O))^*\mid \exists w'\in
-      L(S): w'|_{\Sigma\backslash (X\cap O)} = w\}$,
-    \item $\EL{}(S/X) = L(S/X)\cup \ET{}(S/X)$.
+    \item $\ET{}(S/X) = \{w\in (\Sigma\backslash (X\cap O))^*\mid \exists
+      w'\in \ET{}(S): w'|_{\Sigma\backslash (X\cap O)} = w\}$,
+    \item $\EL{}(S/X) = \{w\in (\Sigma\backslash (X\cap O))^*\mid \exists w'\in
+      \EL(S): w'|_{\Sigma\backslash (X\cap O)} = w\}$.
   \end{itemize}
+  %TODO umformulieren bzgl. der neuen ET und EL Definitionen und Abläufe
+  %explizit einarbeiten (beliebige Verlängerungen möglich?)
   Es wird einen präfix-minimaler Traces $w=a_1a_2\dots a_m\in \ET{}_1$ gewählt.
-  Daraus folgt, dass  ein Ablauf $q_0 \overset{w}{\Rightarrow} q$ existiert mit
+  Daraus folgt, dass ein Ablauf $q_0 \overset{w}{\Rightarrow} q$ existiert mit
   $q\in E$ oder $q$ hat nicht für alle Inputs eine Transitionsmöglichkeit. Es
   gilt also entweder $w\in \PrET{}_1$ oder $w\in \MIT{}_1$. An diesem Punkt
   muss unterschieden werden, ob es sich hier um einen Traces handelt, der aus
