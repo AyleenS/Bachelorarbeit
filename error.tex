@@ -536,16 +536,15 @@ dieses Beweises auch dort wieder.
           x_i\in \MIT{}(S_2)$ und somit $w\in \EL{}(S_2)$. Anzumerken ist, dass nur
           auf diesem Weg Outputs von $U$ möglich sind, deshalb gibt es keine
           anderen Outputs von $U$, die zu einem neuen Error führen können.
-          %TODO ab hier Korrektur einarbeiten
         \item Fall 2b) (neuer Error aufgrund von $a\in O_2$): Der einzige
           Zustand, in dem $U$ nicht alle Inputs erlaubt sind, ist $q_n$, der
           bereits ein Error-Zustand ist. Falls dieser Zustand erreichbar ist in
-          $U\|S_2$, dann besitzt der komponierte \EIO{} einen geerbten Error und
-          es gilt $w\in L(S_2)\subseteq \EL{}(S_2)$.
+          $U\|S_2$, dann besitzt das komponierte \EIO{} einen geerbten Error und
+          es gilt $w\in L(S_2)\subseteq \EL{}(S_2)$, wegen Fall 2c).
         \item Fall 2c) (geerbter Error von $U$): Da der einzige Zustand aus
           $E_U$ $q_n$ ist und alle Aktionen synchronisiert sind, ist dies nur
           möglich, wenn gilt $q_{02} \overset{x_1\dots x_n}{\Rightarrow}$. In
-          diesem Fall gilt, wie im oben, $w\in L(S_2)\subseteq \EL{}(S_2)$.
+          diesem Fall gilt, $w\in L(S_2)\subseteq \EL{}(S_2)$.
         \item Fall 2d) (geerbter Error von $S_2$): Es gilt dann $q_{02}
           \overset{x_1\dots x_iu}{\Rightarrow} q'\in E_2$ für $i\geq 0$ und
           $u\in O^*$. Somit ist $x_1\dots x_iu\in \StET{}(S_2)$ und damit
@@ -555,8 +554,8 @@ dieses Beweises auch dort wieder.
   \end{itemize}
 \end{proof}
 
-Der folgende Satz sagt aus, dass \ERel{} die gröbste Präkongruenz ist, die gesucht
-wurde und somit äquivalent ist zur vollständig abstrakten
+Der folgende Satz sagt aus, dass \ERel{} die gröbste Präkongruenz ist, die
+charakterisiert werden soll, also gleich der vollständig abstrakten
 Präkongruenz \ECRel{}.
 
 \begin{satz}[Full Abstractness für Error-Semanik]
@@ -581,11 +580,13 @@ Präkongruenz \ECRel{}.
       \ECRel{} enthalten sein. Es folgt also aus $S_1\ERel S_2$, dass auch
       $S_1\ECRel{} S_2$ gilt.
 
-      \glqq $\Rightarrow$\grqq : Durch die Definition von \ECRel{} folgt aus
-  $S_1\ECRel S_2$, dass $U\|S_1\ECRel U\|S_2$ für alle \EIO{}s $U$, die mit
-  $S_1$ komponierbar sind. Somit folgt auch die Gültigkeit von
-  $U\|S_1\EBRel U\|S_2$ für alle diese \EIO{}s $U$. Mit
-  Lemma~\ref{lemVerfeinerung} folgt dann $S_1\ERel S_2$.
+      \glqq $\Rightarrow$\grqq : Durch die Definition von \ECRel{} als
+      Präkongruenz in~\ref{DefErrorBasisrel} folgt aus $S_1\ECRel S_2$, dass
+      $U\|S_1\ECRel U\|S_2$ für alle \EIO{}s $U$, die mit $S_1$ komponierbar
+      sind. Da \ECRel{} nach Definition auch in \EBRel{} enthalten sein soll
+      folgt aus $U\|S_1\ECRel U\|S_2$ auch die Gültigkeit von $U\|S_1\EBRel
+      U\|S_2$ für alle diese \EIO{}s $U$. Mit Lemma~\ref{lemVerfeinerung} folgt
+      dann $S_1\ERel S_2$.
 \end{proof}
 
 Es wurde somit jetzt eine Kette an Folgerungen gezeigt, die sich zu einem
@@ -602,8 +603,8 @@ Ring schließt. Dies ist in Abbildung~\ref{Folgerungskette} dargestellt.
           (m-1-1) -- node [above] {\glqq{}$\Leftarrow$\grqq{} von
             Satz~\ref{satzFullAbstractness}} (m-1-2);
         \draw[-implies, double, double distance=1mm]
-          (m-1-2) -- node [right] {\glqq{}$\Rightarrow$\grqq{} von
-            Satz~\ref{satzFullAbstractness}} (m-2-2);
+          (m-1-2) -- node [right] {Definition von \ECRel{}
+          in~\ref{DefErrorBasisrel}} (m-2-2);
         \draw[-implies, double, double distance=1mm]
           (m-2-1) -- node [left]
           {Lemma~\ref{lemVerfeinerung}} (m-1-1);
@@ -620,14 +621,15 @@ Aus Satz~\ref{satzFullAbstractness} und Lemma~\ref{lemVerfeinerung} ergibt sich
 das folgende Korollar:
 
 \begin{kor}
-  Ein \EIO{} $S_1$ verfeinert einen \EIO{} $S_2$ genau dann, wenn für alle \EIO{}s $U$
+  Ein \EIO{} $S_1$ verfeinert ein \EIO{} $S_2$ genau dann, wenn für alle \EIO{}s $U$
   für die $S_2$ gut mit $U$ kommuniziert, folgt $S_1$ kommuniziert
   ebenfalls gut mit $U$.\\
   Dies lässt sich formal wie folgt ausdrücken: $S_1\ERel S_2
   \Leftrightarrow U\|S_1\EBRel U\|S_2$ für alle Partner $U$.
+  %TODO gut kommunizieren und verfeinern analog zu Lemma 3.7 ersetzten
 \end{kor}
 
-\section{Hiding für Error}
+\section{Hiding und Error-Freiheit}
 
 Es soll nun untersucht werden, was für Auswirkungen Hiding auf die
 Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
@@ -642,8 +644,8 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   Da die Definition der lokalen Erreichbarkeit auf lokalen Aktionen beruht, die
   aus den Outputs und der internen Aktion besteht, ändert sich durch das
   Verbergen von Outputs nichts an der Error-Erreichbarkeit. Somit ist jeder
-  Error, der in $S_i$ lokal erreichbar ist über einen Trace, der einen
-  Outputs aus $X$ enthält, auch in $S_i/X$ erreichbar, jedoch enthält der Trace
+  Error, der in $S_i$ lokal erreichbar ist über ein Trace, das Outputs aus $X$
+  enthält, auch in $S_i/X$ erreichbar, jedoch enthält das Trace
   nicht mehr diesen Output. Alle Traces, die keine Outputs aus der Menge hinter
   dem Internalisierungsoperator enthalten, bleiben unverändert erhalten. Es ist
   auch nicht möglich, dass durch das Verbergen von Outputs neue Errors
@@ -675,8 +677,8 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   Daraus folgt, dass ein Ablauf $q_0 \overset{w}{\Rightarrow} q$ existiert mit
   $q\in E$ oder $q$ hat nicht für alle Inputs eine Transitionsmöglichkeit. Es
   gilt also entweder $w\in \PrET{}_1$ oder $w\in \MIT{}_1$. An diesem Punkt
-  muss unterschieden werden, ob es sich hier um einen Traces handelt, der aus
-  dem leeren Wort besteht oder um einen Traces, für den $m\geq 1$ gilt.
+  muss unterschieden werden, ob es sich hier um ein Trace handelt, der aus
+  dem leeren Wort besteht oder um ein Trace, für den $m\geq 1$ gilt.
   \begin{itemize}
     \item Fall 1 ($w=\varepsilon$): Da Elemente aus $\MIT{}_1$ mindestens die
       Länge 1 haben müssen, gilt hier $w\in \PrET{}_1$. Da es in diesem Wort
@@ -687,7 +689,7 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
     \item Fall 2 ($m\geq 1$): Nach der Internalisierung bleiben von dem Ablauf
       nur noch die Aktionen übrig, die nicht Element von $X\cap O$ sind. Da
       hier ein präfix-minimales Element aus $\ET{}_1$ betrachtet wird, muss
-      $a_m\in I$ gelten. Der Trace reduziert sich also auf
+      $a_m\in I$ gelten. Das Trace reduziert sich also auf
       $w'=w|_{\Sigma\backslash (O\cap X)}$. Dabei bleibt der Input $a_m$
       erhalten. $w'$ ist dann in $\MIT{}(S_1/X)$ oder in $\PrET{}(S_1/X)$
       enthalten und somit ist $w'$ und alle seine Verlängerungen durch die
@@ -702,7 +704,7 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   kann geschlossen werden, dass alle relevanten Traces bereits in $\EL{}_2$
   enthalten sind und die Modifikation durch den Internalisierungsoperator wie
   oben keine Auswirkungen auf die Teilmengenbeziehung hat. Es ist hier nur noch
-  wichtig festzuhalten, dass für einen Trace aus $L_1$ keine beliebigen
+  wichtig festzuhalten, dass für ein Trace aus $L_1$ keine beliebigen
   Verlängerungen zulässig sind, genauso wie für $L(S_1/X)$. Jedoch kann immer
   ein passender Trace in $L(S_1/X)$ zu jedem Trace aus $L_1$ gefunden werden
   durch weglassen der Aktionen aus $X\cap O$.
