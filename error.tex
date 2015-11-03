@@ -238,14 +238,12 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
           $v:=v''a=v'\in \MIT{}_{12}$ gewählt.
         \item Fall Ic) ($a\in I_2$ und $v_2'\in L_2$): Es gilt $q_{02}
           \overset{v_2''}{\Rightarrow} q_2 \overset{a}{\rightarrow}$ mit
-          $v_2'=v_2''a$. Da jedoch $a$ in $Synch(S_1,S_2)$ liegt, wurde die Menge
-          der synchronisierten Aktionen bezüglich~\cite{Vogler2014EIO}
-          erweitert, somit reicht schon, dass $q_1
-          \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ gilt, um Folgendes
-          schließen zu können $(q_1,q_2)
+          $v_2'=v_2''a$. Da jedoch die Menge der synchronisierten Aktionen
+          bezüglich~\cite{Vogler2014EIO} erweitert wurde liegt $a$ in
+          $Synch(S_1,S_2)$, also folgt $(q_1,q_2)
+          \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ schon aus $q_1
           \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$. Somit kann hier
-          $v:=v''a=v'\in \MIT{}_{12}$ gewählt werden. %TODO zu diesem Fall
-          %Korrektur kapieren und einarbeiten
+          $v:=v''a=v'\in \MIT{}_{12}$ gewählt werden.
         \item Fall Id) ($a\in O_2$): Es gilt $v_2'=v_2''a$ und $q_{02}
           \overset{v_2'}{\Rightarrow}$. Man erhält also $q_{02}
           \overset{v_2''}{\Rightarrow} q_2 \overset{a}{\rightarrow}$ mit
@@ -346,8 +344,8 @@ vollständig abstrakten Präkongruenz \ECRel{} zu erhalten.
   \end{itemize}
 \end{proof}
 
-In~\cite{Vogler2014EIO} wurde auch die Verfeinerung von \EIO{}s als Relation betrachtet
-mit Spezifikation und Implementierung. Hier soll ebenfalls eine
+In~\cite{Vogler2014EIO} wurde auch die Verfeinerung von \EIO{}s als Relation
+betrachtet mit Spezifikation und Implementierung. Hier soll ebenfalls eine
 Verfeinerungsrelation über \EIO{}s betrachtet werden, jedoch sollen die
 synchronisierten Aktionen nicht verborgen werden. Dadurch ändern sich natürlich
 auch Teile des Beweises, vor allem muss statt mit $\StET{}$ mit der Menge
@@ -355,18 +353,15 @@ $\PrET{}$ argumentiert werden. Dieses Lemma existiert in dieser Form nicht
 in~\cite{Schlosser2012BA}, da es dort mit der Aussage von
 Satz~\ref{satzFullAbstractness} kombiniert wurde. Jedoch ist die Aussage dieses
 Lemmas trotzdem Teil dessen, was gezeigt wird und somit finden sich die Teile
-dieses Beweises auch dort wieder.
-
-%TODO "gut kommunizieren" als Interpretation in Text-Form, Definition nur mit
-%Verfeinerung (siehe dazu Korrektur)
+dieses Beweises auch dort wieder.\\
+Die Verfeinerungsrelation, in dem nächsten Lemma betrachtet werden soll, soll
+über gute Kommunikation im Sinne der error-freien Kommunikation verfeinern.
 
 \begin{lem}[Verfeinerung mit Errors]
   \label{lemVerfeinerung}
   Gegeben sind zwei \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur. Wenn
-  alle Partner \EIO{}s $U$, die mit $S_2$ gut kommunizieren, auch mit $S_1$ gut
-  kommunizieren, dann verfeinert $S_1$ das \EIO{} $S_2$. Diese Verfeinerung
-  entspricht der Relation \ERel{} von oben: Wenn $U\|S_1 \EBRel U\|S_2$ für
-  alle Partner $U$, dann gilt $S_1\ERel S_2$.
+  $U\|S_1 \EBRel U\|S_2$ für alle Partner $U$ gilt, dann folgt daraus $S_1\ERel
+  S_2$.
 \end{lem}
 
 \begin{proof}
@@ -618,15 +613,13 @@ Ring schließt. Dies ist in Abbildung~\ref{Folgerungskette} dargestellt.
 \end{figure}
 
 Aus Satz~\ref{satzFullAbstractness} und Lemma~\ref{lemVerfeinerung} ergibt sich
-das folgende Korollar:
+das folgende Korollar. $S_1$ soll dabei $S_2$ verfeinern, genau dann wenn für
+alle Partner \EIO{}s $U$ für die $S_2$ error-frei mit $U$ kommuniziert, folgt
+$S_1$ kommuniziert ebenfalls error-frei mit $U$.
 
 \begin{kor}
-  Ein \EIO{} $S_1$ verfeinert ein \EIO{} $S_2$ genau dann, wenn für alle \EIO{}s $U$
-  für die $S_2$ gut mit $U$ kommuniziert, folgt $S_1$ kommuniziert
-  ebenfalls gut mit $U$.\\
-  Dies lässt sich formal wie folgt ausdrücken: $S_1\ERel S_2
-  \Leftrightarrow U\|S_1\EBRel U\|S_2$ für alle Partner $U$.
-  %TODO gut kommunizieren und verfeinern analog zu Lemma 3.7 ersetzten
+  Es gilt $S_1\ERel S_2 \Leftrightarrow U\|S_1\EBRel U\|S_2$ für alle Partner
+  $U$.
 \end{kor}
 
 \section{Hiding und Error-Freiheit}
@@ -671,6 +664,11 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
     \item $\EL{}(S/X) = \{w\in (\Sigma\backslash (X\cap O))^*\mid \exists w'\in
       \EL(S): w'|_{\Sigma\backslash (X\cap O)} = w\}$.
   \end{itemize}
+  Diese Definitionen stützen sich nur auf die bereits bekannten Mengen
+  $\ET{}(S)$ und $\EL{}(S)$. Somit ist klar, dass zu jedem Ablauf, des Systems
+  ohne Hiding ein passender in dem System ohne Hiding gefunden werden kann,
+  falls diese Definitionen korrekt sind. Es muss nun also die Korrektheit
+  dieser Definitionen gezeigt werden.\\
   %TODO umformulieren bzgl. der neuen ET und EL Definitionen und Abläufe
   %explizit einarbeiten (beliebige Verlängerungen möglich?)
   Es wird einen präfix-minimaler Traces $w=a_1a_2\dots a_m\in \ET{}_1$ gewählt.

@@ -3,10 +3,7 @@
 Die Definitionen dieses Kapitels sind größtenteils aus~\cite{Vogler2014EIO}
 übernommen, mit den in der Einleitung erwähnten Abänderungen. In diesen
 Definitionen werden die Grundlagen der Transitionssysteme, mit denen hier
-gearbeitet werden soll behandelt.\\
-Die nicht mit den entsprechenden Outputs synchronisierten Inputs der zu
-komponierenden \EIO{}s werden als Inputs der Parallelkomposition übernommen.
-%TODO noch mal über den Satz nachdenken
+gearbeitet werden soll behandelt.
 
 \section{Error-IO-Transitionssystem}
 Die hier betrachteten \EIO{}s sind Systeme, deren Transitionen mit Inputs und
@@ -113,14 +110,16 @@ q_2\overset{a}{\rightarrow}\}
   Komposition beibehalten.\\
   $S_1$ wird einen \emph{Partner} von $S_2$, wenn ihre
   Parallelkomposition geschlossen ist, d.h.\ wenn sie duale Signaturen
-  $Sig(S_1)=(I,O)$ und $Sig(S_2)=(O,I)$ haben. %TODO Trace=Wort?
+  $Sig(S_1)=(I,O)$ und $Sig(S_2)=(O,I)$ haben.
 \end{Def}
 
 Die Parallelkomposition kann nicht nur für Transitionssysteme betrachtet
 werden, wie bisher in dieser Arbeit, sondern auch über Aktionsfolgen.
-\emph{Traces} sind die möglichen Wege des Systems, während ein bestimmtes Wort
-verarbeitet wird. Dieses Wort besteht aus Inputs und Outputs, mit denen die
-Folge ab dem Startzustand $q_0$ beschriftet ist.
+\emph{Traces} sind die möglichen Wege des Systems, mit ihrer
+Transitionsbeschriftung. Diese Transitionsbeschriftung besteht aus Inputs und
+Outputs, mit denen die Folge ab dem Startzustand $q_0$ beschriftet ist. Somit
+kann ein Trace auch als das Wort aufgefasst werden, dass verarbeitet wird
+während des Ablaufs des Systems.
 
 \begin{Def}[Parallelkomposition auf Traces]
   Gegeben zwei \EIO{}s $S_1$ und $S_2$, sowie $w_1\in\Sigma _1, w_2\in\Sigma
@@ -135,8 +134,8 @@ Folge ab dem Startzustand $q_0$ beschriftet ist.
 Die Semantik der späteren Kapitel basiert darauf die jeweiligen Zustände, die
 zu Problemen führen, mit den Traces zu betrachten, mit denen man diese
 Zustände erreicht. Um dies besser umsetzen zu können, wird eine
-$\prune{}$-Funktion definiert, die alle Outputs am Ende eines Traces entfernt. Zusätzlich
-werden Funktionen definiert, die die Traces beliebig fortsetzen.
+$\prune{}$-Funktion definiert, die alle Outputs am Ende eines Traces entfernt.
+Zusätzlich werden Funktionen definiert, die die Traces beliebig fortsetzen.
 
 \begin{Def}[Pruning- und Fortsetzungs-Funktion]
   Für ein \EIO{} $S$ wird definiert:

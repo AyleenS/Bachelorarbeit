@@ -22,17 +22,17 @@ Hidings. Die Feststellungen im Definitionskapitel und dem Kapitel über
 Errors stimmen mit dieser Quelle überein, jedoch wurden alle Beweise davon unabhängig neu
 geführt.\\
 In dieser Arbeit wird ein optimistischer Ansatz für die Erreichbarkeit
-der Error-Zustände verwendet. Ein Error gilt ist nach der Definition in dieser
-Arbeit erreichbar, wenn er lokal erreicht
+der jeweils betrachteten Zuständen verwendet. Ein Zustand gilt nach der Definition in dieser
+Arbeit als erreichbar, wenn er lokal erreicht
 werden kann, d.h.\ durch lokale Aktionen. Die Menge bestehend aus der internen
 Aktion $\tau$ und den Output-Aktionen wird hier als Menge der lokale Aktionen
 bezeichnet.
 Alle Elemente aus dieser Menge können ohne weiteres Zutun von außen ausgeführt
 werden. Somit kann nicht beeinflusst werden, ob diese Transitionen genutzt
 werden oder nicht. Es besteht also die Möglichkeit, dass das \EIO{} in einen
-Error-Zustand übergeht, sobald dieser lokal erreichbar ist. Diese Art der
+der betrachteten Zustände übergeht, sobald dieser lokal erreichbar ist. Diese Art der
 Erreichbarkeit von Zuständen wird auch in Kapitel 3 von~\cite{Vogler2014EIO}
-behandelt.\\
+für Error-Zustände behandelt.\\
 Neben dem hier betrachteten optimistischen Ansatz gibt es noch zwei weitere
 Ansätze in~\cite{Vogler2014EIO} für die Erreichbarkeit von Error-Zuständen:
 einen hyper-optimistischen Ansatz, bei dem ein Error als erreichbar gilt, wenn
@@ -40,17 +40,18 @@ er durch interne Aktionen erreicht werden kann, und einen pessimistischen
 Ansatz, bei dem ein Error als erreichbar gilt, sobald es eine Folge an Inputs
 und Outputs gibt, mit denen der Error-Zustand vom Startzustand aus erreicht
 werden kann.\\
-Im Kapitel über die Ruhe-Zuständen wird für die Erreichbarkeit einen
-hyper-optimistischen Ansatz wählen, da man den Ruhe-Zuständen durch einen Input
-entrinnen kann und sie somit als nicht so \glqq{}schlimm\grqq{} anzusehen sind
-wie Errors.\\
 Es wird versucht bei allen betrachteten Zustandsmengen die gröbste Präkongruenz zu
 finden, die in der jeweiligen Basisrelation enthalten ist und die eine
-Präkongruenz bezüglich der Parallelkomposition ist.
+Präkongruenz bezüglich der Parallelkomposition ist.\\
+Es werden im Verlauf Ruhe-Zustände betrachtet, die keine Outputs und keine
+$\tau$s zulassen. Somit befindet sich das betrachtete Transitionssystem in
+einer Art Verklemmung, wenn es in einem Ruhe-Zustand ist. Das System ist dann
+auf einen Input von Außen angewiesen um sich wieder aus diesem Zustand befreien
+zu können. Es kann ohne diesen Input keinen Fortschritt mehr gehen, in Form von
+Outputs. Da aber auch die $\tau$-Transitionen verboten sind, kann das System
+auch keine interne Aktion zu einem anderen Zustand ausführen.
 
 \scriptsize\textcolor{lgray}{TODO: erweitern/umformulieren (bis jetzt nur Teile
 aus anderen Kapitel in Einleitung verschoben)}
-
-%TODO Verklemmung diskutieren (Quiescents)
 
 \normalsize
