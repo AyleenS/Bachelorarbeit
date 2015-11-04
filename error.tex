@@ -669,32 +669,44 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   ohne Hiding ein passender in dem System ohne Hiding gefunden werden kann,
   falls diese Definitionen korrekt sind. Es muss nun also die Korrektheit
   dieser Definitionen gezeigt werden.\\
-  %TODO umformulieren bzgl. der neuen ET und EL Definitionen und Abläufe
-  %explizit einarbeiten (beliebige Verlängerungen möglich?)
-  Es wird einen präfix-minimaler Traces $w=a_1a_2\dots a_m\in \ET{}_1$ gewählt.
-  Daraus folgt, dass ein Ablauf $q_0 \overset{w}{\Rightarrow} q$ existiert mit
-  $q\in E$ oder $q$ hat nicht für alle Inputs eine Transitionsmöglichkeit. Es
-  gilt also entweder $w\in \PrET{}_1$ oder $w\in \MIT{}_1$. An diesem Punkt
-  muss unterschieden werden, ob es sich hier um ein Trace handelt, der aus
-  dem leeren Wort besteht oder um ein Trace, für den $m\geq 1$ gilt.
+  Es wird einen präfix-minimaler Trace $w=a_1a_2\dots a_m\in \ET{}_1$ gewählt.
+  Daraus folgt, dass ein Ablauf $q_0 \overset{a_1}{\rightarrow} q_1
+  \overset{a_2}{\rightarrow} \dots \overset{a_m}{\rightarrow} q_m$ in $S_1$
+  existiert mit $q_m\in E$ oder $q_m$ hat nicht für alle Inputs eine
+  Transitionsmöglichkeit. Es gilt also entweder $w\in \PrET{}_1$ oder $w\in
+  \MIT{}_1$. An diesem Punkt muss unterschieden werden, ob es sich hier um ein
+  Trace handelt, der aus dem leeren Wort besteht oder um ein Trace, für den
+  $m\geq 1$ gilt.
   \begin{itemize}
-    \item Fall 1 ($w=\varepsilon$): Da Elemente aus $\MIT{}_1$ mindestens die
-      Länge 1 haben müssen, gilt hier $w\in \PrET{}_1$. Da es in diesem Wort
-      keine Aktionen aus $X$ gibt, werden in diesem Zusammenhang auch keine
-      Aktionen verborgen und somit gilt $\varepsilon\in\PrET{}(S_1/X)$. In
-      $\ET{}(S_1/X)$ sind somit alle beliebigen Kombinationen von Aktionen aus
-      $\Sigma$ enthalten, genau so wie in $\ET{}_1$.\\
+    \item Fall 1 ($w=\varepsilon$): Da es in diesem Wort keine Aktionen aus $X$
+      gibt, werden in diesem Zusammenhang auch keine Aktionen verborgen und
+      somit gilt $w\in\ET{}(S_1/X)$. In $\ET{}_1$ sind jedoch auch alle
+      Fortsetzungen eines Traces enthalten, d.h.\ in dem hier betrachteten Fall
+      besteht $\ET{}_1$ aus gesamt $\Sigma ^*$. Im System $S_1/X$ sind jedoch
+      die Aktionen $X\cap O$ nicht erlaubt. Jedoch sind trotzdem zu jedem
+      Trace in $\ET{}(S/X)$ alle beliebigen Fortsetzungen durch zulässige
+      Aktionen ebenfalls in $\ET{}(S/X)$ enthalten. Es gilt also in diesem Fall
+      $\ET{}(S/X) = (\Sigma\backslash (X\cap O))^*$. Man stellt fest, dass in
+      diesen Fall die Definition von oben zutrifft.\\
     \item Fall 2 ($m\geq 1$): Nach der Internalisierung bleiben von dem Ablauf
       nur noch die Aktionen übrig, die nicht Element von $X\cap O$ sind. Da
       hier ein präfix-minimales Element aus $\ET{}_1$ betrachtet wird, muss
-      $a_m\in I$ gelten. Das Trace reduziert sich also auf
-      $w'=w|_{\Sigma\backslash (O\cap X)}$. Dabei bleibt der Input $a_m$
-      erhalten. $w'$ ist dann in $\MIT{}(S_1/X)$ oder in $\PrET{}(S_1/X)$
-      enthalten und somit ist $w'$ und alle seine Verlängerungen durch die
-      \cont{}-Funktion in $\ET{}(S_1/X)$ enthalten.
+      $a_m\in I$ gelten. Der Ablauf reduziert sich also auf
+      $q_0 \overset{\tau~\mathrm{falls}~a_1\in X\cap
+      O}{\overset{\mathrm{sonst}~a_1}{\longrightarrow}} q_1
+      \overset{\tau~\mathrm{falls}~a_2\in X\cap
+      O}{\overset{\mathrm{sonst}~a_2}{\longrightarrow}} \dots
+      \overset{a_m}{\rightarrow} q_m$. Dabei bleibt durch das Hiding von dem
+      $w$ nur noch $w|_{\Sigma\backslash (X\cap O)}$ erhalten. Diese
+      Projektion des Wortes $w$ auf die eingeschränkte Aktionsmenge ist dann
+      in $\ET{}(S_1/X)$ enthalten, da immer noch der selbe Zustand erreicht
+      wird, der bereits in $\ET{}_1$ als Fehler-Zustand erkannt wurde. Es sind
+      auch alle beliebigen Verlängerungen analog zum letzten Fall in den beiden
+      Mengen der Errortraces enthalten.
   \end{itemize}
-  Nach Voraussetzung gilt $w\in\ET{}_2$. Nach analoger Argumentation gilt dann
-  auch $w'\in\ET{}(S_2/X)$.\\
+  Nach Voraussetzung gilt $w\in\ET{}_2$, wenn $w\in\ET{}_1$. Nach analoger
+  Argumentation gilt dann auch $w|_{\Sigma\backslash (X\cap
+  O)}\in\ET{}(S_2/X)$.\\
   Somit bleibt jetzt nur noch zu zeigen, dass $L(S_1/X)\backslash \ET{}(S_1/X)
   \subseteq EL(S_2/X)$ gilt. Die Argumentation wieso nur diese Inklusion zu
   zeigen ist, kann dem Beweis zu Lemma~\ref{lemVerfeinerung} entnommen werden.
