@@ -65,7 +65,7 @@ davon benötigt werden.
   \end{itemize}
 \end{Def}
 
-Nur für die Ruhe wird eine neue Semantik definiert, die Error-Semantik wird aus
+Es wird nur neue Semantik für die Ruhe definiert, die Error-Semantik wird aus
 dem letzten Kapitel übernommen. Somit gelten für \ET{} und \EL{} die
 Definitionen aus dem letzten Kapitel.
 
@@ -77,7 +77,8 @@ Definitionen aus dem letzten Kapitel.
       $\QT{}(S) := \StQT{}(S)\cup \ET{}(S)$.
   \end{itemize}
   Für zwei \EIO{}s $S_1, S_2$ mit der gleichen Signatur wird
-  $S_1\QRel S_2$ geschrieben, wenn $S_1\ERel S_2$ und $\QT{}(S_1)\subseteq \QT{}(S_2)$ gilt.
+  $S_1\QRel S_2$ geschrieben, wenn $S_1\ERel S_2$ und $\QT{}(S_1)\subseteq
+  \QT{}(S_2)$ gilt.
 \end{Def}
 
 Für die Menge der error-gefluteten Ruhetraces \QT{} wurde eine Informationsvermischung
@@ -171,7 +172,8 @@ Sie entsprechen Punkt 1.\ und 2.\ aus Satz~\ref{satzErrorSemanik}.
   Für zwei komponierbare \EIO{}s $S_1, S_2$ und ihre Komposition $S_{12} =
   S_1\|S_2$ gilt:
   \begin{enumerate}
-    \item $\ET{}_{12} = \cont{}(\prune{}((\ET{}_1\|\EL{}_2)\cup (\EL{}_1\|\ET{}_2)))$,
+    \item $\ET{}_{12} = \cont{}(\prune{}((\ET{}_1\|\EL{}_2)\cup
+      (\EL{}_1\|\ET{}_2)))$,
     \item $\QT{}_{12} = (\QT{}_1\|\QT{}_2)\cup \ET{}_{12}$,
     \item $\EL{}_{12} = (\EL{}_1\|\EL{}_2)\cup \ET{}_{12}$.
   \end{enumerate}
@@ -181,27 +183,32 @@ Sie entsprechen Punkt 1.\ und 2.\ aus Satz~\ref{satzErrorSemanik}.
   Wir beweisen nur den 2. Punkt.
 
   \glqq $\subseteq$\grqq :\\
-  Hier muss unterscheiden werden ob ein $w\in\StQT{}_{12}\backslash
-  \ET{}_{12}$ oder ein $w\in \ET{}_{12}$ betrachtet wird. Im zweiten Fall ist das
+  Hier muss unterscheiden werden ob ein $w\in\StQT{}_{12} \ET{}_{12}$ oder ein
+  $w\in \ET{}_{12}$ betrachtet wird. Im zweiten Fall ist das
   $w$ in der rechten Seite enthalten. Somit wird ab jetzt ein $w\in
   \StQT{}_{12}\backslash \ET{}_{12}$ betrachtet und dessen Zugehörigkeit zur
-  rechten Menge versucht zu zeigen. Aufgrund von Definition~\ref{DefRuhetraces}
-  weiß man, dass $(q_{01},q_{02}) \overset{w}{\Rightarrow} (q_1,q_2)$ gilt mit
-  $(q_1,q_2)\in Qui_{12}$. Durch Projektion erhält man $q_{01}
-  \overset{w_1}{\Rightarrow} q_1$ und $q_{02} \overset{w_2}{\Rightarrow} q_2$
-  mit $w\in w_1\|w_2$. Aus $(q_1,q_2)\in Qui_{12}$ kann mit Punkt 2.\ von
-  Lemma~\ref{lemRuheParallelkomp} folgert werden, dass bereits $q_1\in Qui_1$ und
-  $q_2\in Qui_2$ gilt. Somit gilt $w_1\in \StQT{}_1\subseteq \QT{}_1$ und
-  $w_2\in \StQT{}_2\subseteq \QT{}_2$. Daraus folgt dann $w\in
-  \QT{}_1\|\QT{}_2$ und somit ist $w$ in der rechten Seiten der Gleichung
-  enthalten.
+  rechten Menge versucht zu zeigen. Man kann die Menge aus der $w$ stammt noch
+  weiter einschränken, in dem man nicht zulässt, dass es gleichzeitig auch in
+  $\EL{}_{12}$ enthalten ist. Die Begründung, wieso ein $w\in\StQT{}_{12}\cup
+  \ET{}_{12}$ in der rechten Seite enthalten ist, wurde oben bereits mit dem
+  Fall $w\in \ET{}_{12}$ abgehandelt. Diese Einschränkung ist später wichtig um
+  Lemma~\ref{lemRuheParallelkomp} anwenden zu können. Aufgrund von
+  Definition~\ref{DefRuhetraces} weiß man, dass $(q_{01},q_{02})
+  \overset{w}{\Rightarrow} (q_1,q_2)$ gilt mit $(q_1,q_2)\in Qui_{12}$. Durch
+  Projektion erhält man $q_{01} \overset{w_1}{\Rightarrow} q_1$ und $q_{02}
+  \overset{w_2}{\Rightarrow} q_2$ mit $w\in w_1\|w_2$. Aus $(q_1,q_2)\in
+  Qui_{12}$ kann mit Punkt 2.\ von Lemma~\ref{lemRuheParallelkomp} gefolgert
+  werden, dass bereits $q_1\in Qui_1$ und $q_2\in Qui_2$ gilt. Somit gilt
+  $w_1\in \StQT{}_1\subseteq \QT{}_1$ und $w_2\in \StQT{}_2\subseteq \QT{}_2$.
+  Daraus folgt dann $w\in \QT{}_1\|\QT{}_2$ und somit ist $w$ in der rechten
+  Seiten der Gleichung enthalten.
 
   \glqq $\supseteq$\grqq :\\
   Es muss wieder danach unterschieden werden aus welcher Menge das betrachtete
   Element stammt. Falls $w\in \ET{}_{12}$ gilt, so kann die
   Zugehörigkeit zur linken Seite direkt folgert werden. Wird für den
-  weiteren Beweis dieser Inklusionsrichtung ein Element $w\in
-  \QT{}_1\|\QT{}_2$ betrachtet und gezeigt, dass es in der linken Menge enthalten ist. Da
+  weiteren Beweis dieser Inklusionsrichtung ein Element $w\in \QT{}_1\|\QT{}_2$
+  betrachtet und gezeigt, dass es in der linken Menge enthalten ist. Da
   $\QT{}_i = \StQT{}_i\cup \ET{}_i$ gilt, existieren für $w_1$ und $w_2$ mit
   $w\in w_1\| w_2$ unterschiedliche Möglichkeiten:
   \begin{itemize}
@@ -210,8 +217,8 @@ Sie entsprechen Punkt 1.\ und 2.\ aus Satz~\ref{satzErrorSemanik}.
       oder $w_2\in \ET{}_2$ und somit gilt auf jeden Fall $w_2\in
       \EL{}_2$. Daraus kann dann mit dem ersten Punkt von
       Satz~\ref{satzErrorSemanik} bzw.\ aus dem ersten Punkt dieses Satzes
-      gefolgert werden, dass $w\in \ET{}_{12}$ gilt und somit in der linken Seite der
-      Gleichung enthalten ist.
+      gefolgert werden, dass $w\in \ET{}_{12}$ gilt und somit $w$ in der linken
+      Seite der Gleichung enthalten ist.
     \item Fall 1 ($w_1\in \StQT{}_1\wedge w_2\in \StQT{}_2$): Es gilt in
       diesem Fall $q_{01} \overset{w_1}{\Rightarrow} q_1\in Qui_1$ und $q_{02}
       \overset{w_2}{\Rightarrow} q_2\in Qui_2$. Da $q_1$ und $q_2$ in der
@@ -258,15 +265,14 @@ Präkongruenz finden zu wollen.
   \end{itemize}
 \end{proof}
 
+Im nächsten Lemma soll eine Verfeinerungsrelation über guten Kommunikation im
+Sinne von error- und ruhe-freier Kommunikation betrachtet werden.
+
 \begin{lem}[Verfeinerung mit Ruhe-Zuständen]
   \label{lemQuiVerfeinerung}
   Gegeben sind zwei \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur. Wenn
-  alle Partner \EIO{}s $U$, die mit $S_2$  gut kommunizieren, auch mit $S_1$
-  gut kommunizieren, dann verfeinert $S_1$ das \EIO{} $S_2$. Diese Verfeinerung
-  entspricht der Relation \QRel{} von oben: Wenn $U\|S_1\QBRel U\|S_2$ für alle
-  Partner $U$, dann gilt $S_1\QRel S_2$. %TODO nachdenken, wieso 3.7 nicht
-  %anwendbar bzw. andere Voraussetzungen
-  %TODO gut kommunizieren anders formulieren
+  $U\|S_1\QBRel U\|S_2$ für alle Partner $U$ gilt, dann folgt daraus $S_1\QRel
+  S_2$. %TODO nachdenken, wieso 3.7 nicht anwendbar bzw. andere Voraussetzungen
 \end{lem}
 
 \begin{proof}
@@ -359,17 +365,18 @@ dargestellt.
 \end{figure}
 
 Aus Satz~\ref{satzQuiFullAbst} und Lemma~\ref{lemQuiVerfeinerung} erhält man
-das folgende Korollar:
+das folgende Korollar. $S_1$ soll dabei $S_2$ verfeinern, genau dann wenn für
+alle Partner \EIO{}s $U$ für die $S_2$ error- und ruhe-frei mit $U$
+kommuniziert, folgt $S_1$ kommuniziert ebenfalls error- und ruhe-frei mit $U$.
 
 \begin{kor}
-  Ein \EIO{} $S_1$ verfeinert einen \EIO{} $S_2$ genau dann, wenn für alle
-  \EIO{}s $U$ für die $S_2$ gut mit $U$ kommuniziert folgt $S_1$ kommuniziert
-  ebenfalls gut mit $U$.\\
-  Dies lässt sich formal wie folgt ausdrücken: $S_1\QRel S_2\Leftrightarrow
-  U\|S_1\QBRel U\|S_2$ für alle Partner $U$.
+  Es gilt: $S_1\QRel S_2\Leftrightarrow U\|S_1\QBRel U\|S_2$ für alle Partner
+  $U$.
 \end{kor}
 
 \section{Hiding und Ruhe-Freiheit}
+
+%TODO anderer Erreichbarkeitsbegriff
 
 Es soll nun auch hier die Auswirkungen der Internalisierung von Aktionen auf
 die Verfeinerungsrelationen untersucht werden. Es werden Outputs in interne
