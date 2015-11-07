@@ -272,7 +272,7 @@ Sinne von error- und ruhe-freier Kommunikation betrachtet werden.
   \label{lemQuiVerfeinerung}
   Gegeben sind zwei \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur. Wenn
   $U\|S_1\QBRel U\|S_2$ für alle Partner $U$ gilt, dann folgt daraus $S_1\QRel
-  S_2$. %TODO nachdenken, wieso 3.7 nicht anwendbar bzw. andere Voraussetzungen
+  S_2$.
 \end{lem}
 
 \begin{proof}
@@ -287,14 +287,155 @@ Sinne von error- und ruhe-freier Kommunikation betrachtet werden.
     \item $S_1\ERel S_2$,
     \item $\QT{}(S_1)\subseteq \QT{}(S_2)$.
   \end{itemize}
-  Der erste Punkt wurde bereits in Lemma~\ref{lemVerfeinerung}
-  gezeigt. So bleibt nur noch die Inklusion $\QT{}_1\subseteq \QT{}_2$ zu
+  In Lemma~\ref{lemVerfeinerung} wurde bereits etwas ähnliche gezeigt, jedoch
+  wurde dort als Voraussetzung $U\|S_1\EBRel U\|S_2$ für alle Partner $U$
+  verwendet und hier die Basisrelation der Ruhe. Dadurch, dass die hier
+  verwendete Basisrelation nichts über die Art der erreichbaren Fehlers in den
+  Komponenten aussagt, kann der Beweis aus~\ref{lemVerfeinerung} nicht
+  verwendet werden. Es kann also aus der lokalen Erreichbarkeit eines Errors in
+  $S_1$ und dem relationalen Zusammenhang von $S_1\QBRel S_2$ nur geschlossen
+  werden, dass in $S_2$ auch ein Fehler erreichbar ist, jedoch kann dieser
+  Fehler ein Error oder ein Ruhe-Zustand sein. Analog verhält es sich, wenn in
+  $S_1$ ein Ruhe-Zustand lokal Erreichbar ist.\\
+  Es muss also für den ersten Punkt folgendes nachgewiesen werden:
+  \begin{itemize}
+    \item $\ET{}(S_1)\subseteq \ET{}(S_2)$
+    \item $\EL{}(S_1)\subseteq \EL{}(S_2)$
+  \end{itemize}
+  Es wird nur damit begonnen der ersten Unterpunkt des ersten Beweispuktes zu
+  zeigen, d.h.\ es wird unter der Vorraussetzung, dass $U\|S_1\QBRel U\|S_2$
+  gilt gezeigt, dass $\ET{}_1\subseteq \ET{}_2$ gilt. Da beide \ET{}-Mengen
+  unter \cont{} abgeschlossen sind, reicht es ein präfix-minimales Element
+  $w\in\ET{}_1$ zu betrachten und zu zeigen, dass dieses $w$ oder eines seiner
+  Präfixe in $\ET{}_2$ enthalten ist.
+  \begin{itemize}
+    \item Fall 1 ($w=\varepsilon$): Es handelt sich um einen lokal erreichbaren
+      Error in $S_1$. Für $U$ wird ein Transitionssystem verwenet, das nur aus
+      dem Startzustand, einer Schleife für alle Inputs $x\in I_U$ und einer
+      Schleife für $\tau$ besteht. Somit kann $S_1$ die gleichen Error-Zustände
+      lokal erreichen wie $U\|S_1$ und zusätzliche wurde durch die
+      $\tau$-Schlinge sicher gestellt, dass in $U\|S_1$ kleine Ruhe-Zustände
+      vorhanden sind. Es folgt also, dass in $U\|S_2$ ein Fehler lokal
+      erreichbar ist. Es kann sich bei dem Fehler nur um einen Error handlen,
+      da es in der Komposition mit $U$ keine Ruhe-Zustände geben kann. Da $U$
+      keinen Error-Zustand und auch keine fehlenden Input-Möglichkeiten
+      enthält, kann der Error nur von $S_2$ geerbt sein. Somit muss in $S_2$
+      ein Error-Zustand lokal erreichbar sein, d.h.\ es gilt $\varepsilon\in
+      \PrET{}(S_2)\subseteq \ET{}_2$.
+    \item Fall 2 ($w=x_1\dots x_nx_{n+1}\in\Sigma ^+$ mit $n\geq 0$ und
+      $x_{n+1}\in I$): Es wird der folgende Partner $U$ betrachtet (siehe auch
+      Abbildung~\ref{UohneEmitTau}):
+      \begin{itemize}
+        \item $Q_U=\{q_0,q_1,\dots ,q_{n+1}\}$
+        \item $q_{0U}=q_0$
+        \item $E_U=\emptyset$
+        \item $\begin{aligned}[t]
+            \delta _U=&\{(q_i,x_{i+1},q_{i+1})\mid  0\leq i\leq n\}\\
+                      &\cup\{(q_i,x,q_{n+1})\mid  x\in I_U\backslash\{x_{i+1}\},
+          0\leq i\leq n\}\\
+          &\cup\{(q_{n+1},x,q_{n+1})\mid  x\in I_U\}\\
+          &\cup\{(q_i,\tau,q_i)\mid 0\leq i\leq n+1\}
+        \end{aligned}$
+      \end{itemize}
+      \begin{figure} [h!tbp]
+      \begin{center}
+        \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
+          \node (0) {$q_0$};
+          \node (1) [right of=0] {$q_1$};
+          \node (dots) [right of=1] {$\dots$};
+          \node (n) [right of=dots] {$q_n$};
+          \node (n1) at ($(1)!0.5!(dots) + (0,-3)$) {$q_{n+1}$};
+
+          \path ($ (0) + (-1,0) $) edge (0)
+                (0) edge node {$x_1$} (1)
+                    edge [bend right] node [below, sloped] {$x?\neq x_1$} (n1)
+                    edge [loop above] node {$\tau$} (0)
+                (1) edge node {$x_2$} (dots)
+                    edge node [below, sloped] {$x?\neq x_2$} (n1)
+                    edge [loop above] node {$\tau$} (1)
+                (dots) edge node {$x_n$} (n)
+                       edge [dashed] (n1)
+                (n) edge node [above, sloped] {$x?\in I_U$} (n1)
+                    edge [bend left] node [sloped] {$x_{n+1}$!} (n1)
+                    edge [loop above] node {$\tau$} (n)
+                (n1) edge [loop below] node {$x?\in I_U, \tau$} (n1);
+        \end{tikzpicture}
+        \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$}
+        \label{UohneEmitTau}
+      \end{center}
+      \end{figure}
+      Da im Vergleiche zum Transitionssystem in Abbildung~\ref{UohneE} nur die
+      $\tau$-Schlingen ergänzt wurden, ändert sich nichts an den Fällen 2a) und
+      2b). Die Begründungen, wieso in den beiden Fällen $\varepsilon\in
+      \PrET{}(U\|S_1)$ gilt bleibt also analog zum Beweis von
+      Lemma~\ref{lemVerfeinerung}. Durch die $\tau$-Schlingen wurde, genau wie
+      im letzten Fall, nur erreicht, dass in einer Parallelkomposition mit $U$
+      keine Ruhe-Zustände möglich sind. Es kann also auch hier aus der lokalen
+      Erreichbarkeit eines Error-Zustandes in $U\|S_1$ auf die lokale
+      Erreichbarkeit eines Errors in $U\|S_2$ geschlossen werden. Die weitere
+      Argumentation verläuft dann analog zu Fall 2 der selben Inklusion im
+      Beweis zu Lemma~\ref{lemVerfeinerung}. Da $\tau$s nur interne Aktionen
+      eines einzenen Systems sind, verändert sich auch nichts an den Traces,
+      über die argumentiert wird. Es können zwar möglicherweise $\tau$
+      Transitionen ausgeführt werden, die können jedoch werder zu einem Fehler
+      führen noch beeinflussen, dass ein anderer Trace ausgeführt wird.
+  \end{itemize}
+
+  %TODO EL Inklusion zeigen
+      \begin{itemize}
+        \item $Q_U=\{q,q_0,q_1,\dots ,q_n\}$
+        \item $q_{0U}=q_0$
+        \item $E_U={q_n}$
+        \item $\begin{aligned}[t]
+            \delta _U=&\{(q_i,x_{i+1},q_{i+1})\mid 0\leq i< n\}\\
+                      &\cup\{(q_i,x,q)\mid x\in I_U\backslash\{x_{i+1}\},0\leq
+          i\leq n\}\\
+          &\cup\{(q,x,q)\mid x\in I_U\}\\
+          &\cup\{(q_i,\tau ,q_i)\mid 0\leq i\leq n\}\\
+          &\cup\{(q,\tau ,q)\}
+              \end{aligned}$
+      \end{itemize}
+      \begin{figure} [h!tbp]
+      \begin{center}
+        \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
+
+          \node (0) {$q_0$};
+          \node (1) [right of=0] {$q_1$};
+          \node (dots) [right of=1] {$\dots$};
+          \node (n1) [right of=dots] {$q_{n-1}$};
+          \node (n) [right of=n1, rectangle, draw] {$q_n\in E_U$};
+          \node (q) at ($(1)!0.5!(dots) + (0,-3)$) {$q$};
+
+          \path ($ (0) + (-1,0) $) edge (0)
+                (0) edge node {$x_1$} (1)
+                    edge [bend right] node [below, sloped] {$x?\neq x_1$} (q)
+                    edge [loop above] node {$\tau$} (0)
+                (1) edge node {$x_2$} (dots)
+                    edge node [below, sloped] {$x?\neq x_2$} (q)
+                    edge [loop above] node {$\tau$} (1)
+                (dots) edge node {$x_{n-1}$} (n1)
+                       edge [dashed] (q)
+                (n1) edge node {$x_n$} (n)
+                     edge [bend left] node [below, sloped] {$x?\neq x_n$} (q)
+                     edge [loop above] node {$\tau$} (n1)
+                (q) edge [loop below] node {$x?\in I_U, \tau$} (q)
+                (n) edge [loop above] node {$\tau$} (n);
+        \end{tikzpicture}
+        \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$, $q_n$
+          ist der einzige Error-Zustand}
+        \label{UmitEundTau}
+      \end{center}
+      \end{figure}
+  %TODO EL Inklusion zeigen
+
+
+  So bleibt nur noch die Inklusion $\QT{}_1\subseteq \QT{}_2$ zu
   zeigen. Diese Inklusion kann jedoch noch anlog zum Beweis der Inklusion
   der gefluteten Sprachen in Lemma~\ref{lemVerfeinerung} weiter einschränken.
   Da bereits bekannt ist, dass $\ET{}_1\subseteq\ET{}_2$ gilt, muss nur
   noch $\StQT{}_1\subseteq \QT{}_2$ gezeigt werden.\\
-  Es wird ein $w\in \StQT{}(S_1)$ gewählt und gezeigt, dass es auch in $\QT{}(S_2)$
-  enthalten ist.\\
+  Es wird ein $w\in \StQT{}(S_1)\backslash\ET{}(S_1)$ gewählt und gezeigt, dass
+  es auch in $\QT{}(S_2)$ enthalten ist.\\
   Es ist vom Startzustand von $S_1$ durch das Wort $w$ ein ruhiger Zustand
   erreichbar. Dies hat keine Auswirkungen auf die Parallelkomposition $U\|S_1$,
   wenn in $U$ kein Ruhe-Zustand durch $w$ erreicht wird. Somit wird
@@ -303,7 +444,8 @@ Sinne von error- und ruhe-freier Kommunikation betrachtet werden.
   und durch die gegebene Relation folgt dann auch, dass in $U\|S_2$ auch ein
   Ruhe-Zustand durch $w$ erreicht werden muss. Dies kann nur der Fall sein,
   wenn in $S_2$ bereits ein Ruhe-Zustand durch $w$ erreicht wird. Somit gilt
-  also $w\in \StQT{}_2$.
+  also $w\in \StQT{}_2$.%TODO U so abändern, dass in der Komposition keine
+  %Errors entstehen können
 \end{proof}
 
 Mit dem folgenden Satz wird festgehalten, dass mit \QRel{} die gröbste
@@ -376,46 +518,46 @@ kommuniziert, folgt $S_1$ kommuniziert ebenfalls error- und ruhe-frei mit $U$.
 
 \section{Hiding und Ruhe-Freiheit}
 
-%TODO anderer Erreichbarkeitsbegriff
-
 Es soll nun auch hier die Auswirkungen der Internalisierung von Aktionen auf
 die Verfeinerungsrelationen untersucht werden. Es werden Outputs in interne
 Aktionen umgewandelt. Da jedoch bei den Ruhe-Zuständen auch
-$\tau$-Transitionen verboten wurden, verändert sich nichts an der Menge der ruhigen
-Zustände. Da die Erreichbarkeit von Ruhe-Zuständen mittels interner Aktionen
-betrachtet wurde, können durch das verbergen von Outputs neue erreichbare
-Ruhe-Zustände hinzu kommen. Somit ist es nicht möglich hier eine analoge
-Proposition zu~\ref{propErBaIn} zu formulieren. Es kann zwar daraus
-geschlossen werden, dass alle Ruhe-Zustände, die vor dem Hiding zu erreichen waren mit
-$\tau$s auch danach noch erreichbar sind, jedoch können durch die
-Internalisierung neue erreicht werden, die möglicherweise in dem anderen
-Transitionssystem nicht erreicht werden können. Da jedoch für die
-Präkongruenz \QRel{} noch Wissen über die Teilmengenbeziehung der Traces
-existiert, kann einen Satz analog zu~\ref{satzPraeInternalisierung} formulieren.
+$\tau$-Transitionen verboten wurden, verändert sich nichts an der Menge der
+ruhigen Zustände. Da die Erreichbarkeit von Ruhe-Zuständen mittels lokaler
+Aktionen betrachtet wurde, kann sich auch nichts an der Erreichbarkeit der
+Ruhe-Zustände ändern. Somit kann eine analoge Proposition zu~\ref{propErBaIn}
+zu formuliert werden.
+
+\begin{prop}[Ruhe-Basisrelation bzgl. Internalisierung]
+  Wenn $S_1\QBRel S_2$ gilt, dann folgt daraus, dass auch $S_1/X\QBRel S_2/X$
+  gilt.
+\end{prop}
+
+\begin{proof}
+  Dass die Error-Erreichbarkeit unverändert bleibt unter Hiding wurde bereits
+  im Beweis zu Proposition~\ref{propErBaIn} gezeigt. Mit der analogen
+  Argumentation folgt auch, dass sich nichts an der Erreichbarkeit der
+  Ruhe-Zustände ändert. Es können durch Hiding nämlich nur Outputs verborgen
+  werden, die bereits in der Menge der lokalen Aktionen enthalten sind. Die
+  Menge der Ruhe-Zustände kann sich durch das Internalisieren auch nicht
+  vergrößern oder verkleinern, wie oben bereits festgestellt.
+\end{proof}
 
 \begin{satz}[Präkongurenz bzgl. Internalisierung]
   \label{satzPraeInterQui}
   Seien $S_1$ und $S_2$ zwei \EIO{}s für die $S_1\QRel S_2$ gilt, somit gilt
-  auch $(S_1/\{x_1,x_x,\dots ,x_n\})\QRel (S_2/\{x_1,x_x,\dots ,x_n\})$. Es
-  ist also \QRel{} eine Präkongruenz bezüglich $\cdot /\cdot$.
+  auch $S_1/X\QRel S_2/X$. Es ist also \QRel{} eine Präkongruenz bezüglich
+  $\cdot /\cdot$.
 \end{satz}
 
 \begin{proof}
+  %TODO Ausführlichkeit an Beweis aus Error-Kapitel anpassen
   Da $S_1\QRel S_2$ gilt, kann geschlossen werden, dass $S_1\ERel S_2$ und $\QT{}_1\subseteq
   \QT{}_2$ gilt. Aufgrund von
-  Satz~\ref{satzPraeInternalisierung} ist bekannt, dass daraus $(S_1/\{x_1,x_x,\dots
-  ,x_n\})\ERel (S_2/\{x_1,x_x,\dots ,x_n\})$ folgt. Ebenso wie im Beweis zu
-  Satz~\ref{satzPraeInternalisierung} kann hier davon ausgehen werden, dass
-  $X\subseteq O$ gilt. Für jeden Trace aus $\QT{}_1$ kann ein passender
+  Satz~\ref{satzPraeInternalisierung} ist bekannt, dass daraus $(S_1/X)\ERel
+  (S_2/X)$ folgt. Für jeden Trace aus $\QT{}_1$ kann ein passender
   in $\QT{}(S_1/X)$ gefunden werden und ebenso für das Transitionssystem $S_2$. Die
   Argumentation läuft hierfür analog zum Beweis von
-  Satz~\ref{satzPraeInternalisierung}. Es ist hier auch kein Problem, dass
-  neue Zustände hinzu kommen, von denen aus durch $\tau$s Ruhe-Zustände
-  erreichbar sind, da diese $\tau$s aus Outputs entstanden sind, die verborgen
-  wurden. Es war also bereits ein Trace in $\QT{}_i$ vorhanden, der nur aus
-  Outputs aus $X$ bestanden hat und der dann durch das Hiding zu einem $\tau$
-  wurde, was aber das passende Trace ist, den man zu dem ursprünglichen in
-  $\QT{}(S_i/X)$ findet. Somit gilt
+  Satz~\ref{satzPraeInternalisierung}. Somit gilt
   also auch $\QT{}(S_1/X)\subseteq \QT{}(S_2/X)$. Daraus folgt dann, dass die
   Relation \QRel{} trotz Hiding erhalten bleibt und somit das Hiding bezüglich
   dieser Relation eine Präkongruenz ist.
@@ -434,8 +576,6 @@ werden.
 \end{kor}
 
 \section{Diskussion für Veränderungen an Semantik oder anderen Definitionen}
-
-%TODO Divergenz definieren
 
 Es währe hier auch denkbar, dass man auch für die Ruhe-Zustände einen lokalen
 Erreichbarkeitsbegriff verwendet. Es könnte dadurch sogar möglich sein eine
@@ -588,3 +728,20 @@ dann wie folgt lauten.
 
 Diese Art der Definition hätte jedoch die Betrachtung deutlich aufwendiger
 gemacht und soll deshalb hier nicht behandelt werden.
+
+Wie bereits oben erwähnt wurden in~\cite{Chilten2013} auch noch divergente
+Zustände als Fehler-Zustände betrachtet. Um zu klären, was darunter verstanden
+wird, wird nun noch eine Definition für Divergenz gegeben. Ruhe-Zustände wurden
+hier wie eine Verklemmung betrachtet. Analog dazu kann man divergente Zustände
+als Livelocks auffassen. Es ist zwar die ganze Zeit möglich Aktionen
+auszuführen, aber nur interne, so dass keine Kommunikation mit anderen Systemen
+möglich ist.
+
+\begin{Def}[Divergenz]
+  Ein \emph{Divergenz-Zustand} ist ein Zustand in einem \EIO{}, der eine
+  unendliche Folge an $\tau$s ausführen kann.\\
+  Somit ist die Menge der Divergenz-Zustände in einem \EIO{} wie folgt formal
+  definiert: $Div := \{q\in Q\mid \exists q'\in Q': q
+  \overset{\tau}{\Rightarrow} q' \wedge q'~\mathrm{ist}~\infty\mathrm{-oft}
+  ~\mathrm{durch}~\tau ~\mathrm{erreichbar}\}$.
+\end{Def}
