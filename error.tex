@@ -565,8 +565,8 @@ Präkongruenz \ECRel{}.
       $\varepsilon\in \ET{}(S)$, ist ein Error lokal erreichbar in $S$.
       $S_1\ERel S_2$ impliziert, dass $\varepsilon\in
       \ET{}(S_2)$ gilt, wenn $\varepsilon\in \ET{}(S_1)$. Somit ist ein Error
-      in $S_1$ nur dann lokal erreichbar, wenn dieser auch in $S_2$ erreichbar
-      ist. Dadurch folgt, dass $S_1\EBRel S_2$ gilt, da \EBRel{} in
+      in $S_1$ nur dann lokal erreichbar, wenn dieser auch in $S_2$ lokal
+      erreichbar ist. Dadurch folgt, dass $S_1\EBRel S_2$ gilt, da \EBRel{} in
       Definition~\ref{DefErrorBasisrel} über die lokale Erreichbarkeit der
       Error-Zustände definiert wurde. Somit ist \ERel{} in \EBRel{} enthalten.
       Wie in Proposition~\ref{propPraekongruenz} gezeigt, ist \ERel{} eine
@@ -665,8 +665,8 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
       \EL(S): w'|_{\Sigma\backslash (X\cap O)} = w\}$.
   \end{itemize}
   Diese Definitionen stützen sich nur auf die bereits bekannten Mengen
-  $\ET{}(S)$ und $\EL{}(S)$. Somit ist klar, dass zu jedem Ablauf, des Systems
-  ohne Hiding ein passender in dem System ohne Hiding gefunden werden kann,
+  $\ET{}(S)$ und $\EL{}(S)$. Somit ist klar, dass zu jedem Ablauf des Systems
+  ohne Hiding ein passender in dem System mit Hiding gefunden werden kann,
   falls diese Definitionen korrekt sind. Es muss nun also die Korrektheit
   dieser Definitionen gezeigt werden.\\
   Es wird einen präfix-minimaler Trace $w=a_1a_2\dots a_m\in \ET{}_1$ gewählt.
@@ -687,7 +687,7 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
       Trace in $\ET{}(S/X)$ alle beliebigen Fortsetzungen durch zulässige
       Aktionen ebenfalls in $\ET{}(S/X)$ enthalten. Es gilt also in diesem Fall
       $\ET{}(S/X) = (\Sigma\backslash (X\cap O))^*$. Man stellt fest, dass in
-      diesen Fall die Definition von oben zutrifft.\\
+      diesen Fall die Definition von oben zutrifft.
     \item Fall 2 ($m\geq 1$): Nach der Internalisierung bleiben von dem Ablauf
       nur noch die Aktionen übrig, die nicht Element von $X\cap O$ sind. Da
       hier ein präfix-minimales Element aus $\ET{}_1$ betrachtet wird, muss

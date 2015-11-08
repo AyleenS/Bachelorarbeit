@@ -38,6 +38,7 @@ Eigenschaft erfüllt ein Ruhe-Trace.
 \end{Def}
 
 \begin{Def}[Ruhe-Verfeinerungs-Basisrelation]
+  \label{DefQuiBasisrel}
   Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur wird
   $S_1\QBRel S_2$ geschrieben, wenn ein Error oder Ruhe-Zustand in $S_1$ nur
   dann lokal erreichbar ist, wenn ein solcher auch in $S_2$ lokal erreichbar
@@ -548,22 +549,23 @@ ist.
 \end{satz}
 
 \begin{proof}
-  %TODO Ausführlichkeit an Beweis aus Error-Kapitel anpassen
-  Wie bereits in Proposition~\ref{propQuiPrae} festgehalten, ist \QRel{} eine
-  Präkongruenz.
+  \glqq{}$\Leftarrow$\grqq{}: Nach Definition gilt $w\in\QT{}(S)$ mit $w\in
+  O^*$, genau dann wenn in $S$ ein Ruhe-Zustand oder ein Error-Zustand lokal
+  erreichbar ist. $S_1\QRel S_2$ impliziert, dass $w\in\QT{}_2$ gilt, wenn
+  $w\in\QT{}_1$. Somit ist ein Ruhe-Zustand oder ein Error-Zustand nur dann in
+  $S_1$ lokal erreichbar, wenn auch ein solcher in $S_2$ lokal erreichbar ist.
+  Daraus folgt, dass $S_1\QBRel S_2$ gilt. Somit ist \QRel{} in \QBRel{}
+  enthalten. In Proposition~\ref{propQuiPrae} wurde festgestellt, dass \QRel{}
+  eine Präkongurenz ist. Da jedoch \QCRel{} nach Definition die gröbste
+  Präkongurenz bezüglich $\cdot\|\cdot$ ist, die in \QBRel{} enthalten ist,
+  muss \QRel{} in \QCRel{} enthalten sein. Es folgt also aus $S_1\QRel S_2$,
+  dass auch der relationale Zusammenhang $S_1\QCRel S_2$ gilt.
 
-  \glqq{}$\Leftarrow$\grqq{}: Nach Definition gilt, wenn
-  $\varepsilon\in\QT{}(S)$, ist in $S$ ein Ruhe-Zustand durch interne Aktionen
-  oder ein Error-Zustand lokal erreichbar. Somit impliziert $S_1\QRel S_2$,
-  dass $\varepsilon\in\QT{}_2$ gilt, wenn $\varepsilon\in\QT{}_1$. Daraus folgt
-  ebenfalls, dass $S_1\QBRel S_2$ gilt. Somit folgt aus $S_1\QRel S_2$ der
-  relationale Zusammenhang $S_1\QCRel S_2$.
-
-  \glqq{}$\Rightarrow$\grqq{}: Durch die Definition von \QCRel{} folgt aus
-  $S_1\QCRel{} S_2$, dass $U\|S_1\QCRel U\|S_2$ für alle EIOs $U$ , die mit
-  $S_1$ komponierbar sind. Somit folgt auch die Gültigkeit von $U\|S_1\EBRel
-  U\|S_2$ für alle diese EIOs $U$. Mit Lemma~\ref{lemQuiVerfeinerung} folgt
-  dann $S_1\QRel{} S_2$.
+  \glqq{}$\Rightarrow$\grqq{}: Durch die Definition von \QCRel{} als
+  Präkongurenz in~\ref{DefQuiBasisrel} folgt aus $S_1\QCRel{} S_2$, dass
+  $U\|S_1\QCRel U\|S_2$ für alle EIOs $U$, die mit $S_1$ komponierbar sind.
+  Somit folgt auch die Gültigkeit von $U\|S_1\EBRel U\|S_2$ für alle diese EIOs
+  $U$. Mit Lemma~\ref{lemQuiVerfeinerung} folgt dann $S_1\QRel{} S_2$.
 \end{proof}
 
 Es wurde somit, wie im letzten Kapitel, eine Kette an Folgerungen gezeigt, die
@@ -639,17 +641,26 @@ zu formuliert werden.
 \end{satz}
 
 \begin{proof}
-  %TODO Ausführlichkeit an Beweis aus Error-Kapitel anpassen
-  Da $S_1\QRel S_2$ gilt, kann geschlossen werden, dass $S_1\ERel S_2$ und $\QT{}_1\subseteq
-  \QT{}_2$ gilt. Aufgrund von
+  Da $S_1\QRel S_2$ gilt, kann geschlossen werden, dass $S_1\ERel S_2$ und
+  $\QT{}_1\subseteq \QT{}_2$ gilt. Aufgrund von
   Satz~\ref{satzPraeInternalisierung} ist bekannt, dass daraus $(S_1/X)\ERel
-  (S_2/X)$ folgt. Für jeden Trace aus $\QT{}_1$ kann ein passender
-  in $\QT{}(S_1/X)$ gefunden werden und ebenso für das Transitionssystem $S_2$. Die
-  Argumentation läuft hierfür analog zum Beweis von
-  Satz~\ref{satzPraeInternalisierung}. Somit gilt
-  also auch $\QT{}(S_1/X)\subseteq \QT{}(S_2/X)$. Daraus folgt dann, dass die
-  Relation \QRel{} trotz Hiding erhalten bleibt und somit das Hiding bezüglich
-  dieser Relation eine Präkongruenz ist.
+  (S_2/X)$ folgt.\\
+  Es wird hier nur wie im Beweis zu Satz~\ref{satzPraeInternalisierung} erst
+  einmal definiert, wie die neuen Quiescenttraces nach dem Hiding aussehen:
+  \begin{itemize}
+    \item $\QT{}(S/X) = \{w\in (\Sigma\backslash (X\cap O))^*\mid \exists w'\in
+      \QT{}(S):w'|_{\Sigma\backslash (X\cap O)}=w\}$.
+  \end{itemize}
+  Diese Definition stützt sich nur auf die bereits bekannte Menge $\QT{}(S)$.
+  Es kann also zu jedem Ablauf des Systems ohne Hiding ein passender in dem
+  System mit Hiding gefunden werden, falls die Definition korrekt ist.\\
+  Die Korrektheit der Definition kann analog zum Beweis von
+  Satz~\ref{satzPraeInternalisierung} gezeigt werden. Die Internalisierung hat
+  also keine Auswirkung auf die Inklusion der Mengen. Es kann also aus der
+  Gültigkeit von $\QT{}_1\subseteq \QT{}_2$ gefolgert werden, dass auch
+  $\QT{}(S_1/X)\subseteq \QT{}(S_2/X)$ gilt. Daraus folgt dann, dass die Relation
+  \QRel{} trotz Hiding erhalten bleibt und somit das Hiding bezüglich dieser
+  Relation eine Präkongruenz ist.
 \end{proof}
 
 In Definition~\ref{defIntParal} wurde mit Hilfe des Internalisierungsoperator
