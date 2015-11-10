@@ -85,8 +85,9 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
   Für zwei komponierbare \EIO{}s $S_1, S_2$ und ihre Komposition
   $S_{12}=S_1\|S_2$, gilt:
   \begin{enumerate}
-    \item $\ET{}_{12}=\cont{}(\prune{}((\ET{}_1\|\EL{}_2)\cup(\EL{}_1\|\ET{}_2)))$
-    \item $\EL{}_{12}=(\EL{}_1\|\EL{}_2)\cup \ET{}_{12}$
+    \item
+      $\ET{}_{12}=\cont{}(\prune{}((\ET{}_1\|\EL{}_2)\cup(\EL{}_1\|\ET{}_2)))$,
+    \item $\EL{}_{12}=(\EL{}_1\|\EL{}_2)\cup \ET{}_{12}$.
   \end{enumerate}
 \end{satz}
 
@@ -165,10 +166,10 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
   1. \glqq $\supseteq$\grqq :\\
   Wegen der Abgeschlossenheit beider Seiten der Gleichung gegenüber $\cont{}$
   wird auch in diesem Fall nur ein präfix-minimales Element $x\in
-  \prune{}((\ET{}_1\|\EL{}_2)\cup (\EL{}_1\|\ET{}_2))$ bedachtet. Da $x$ durch die Anwendung der
-  $\prune{}$-Funktion entstanden ist, existiert ein $y\in O_{12}^*$ mit
-  $xy\in(\ET{}_1\|\EL{}_2)\cup (\EL{}_1\|\ET{}_2)$. \OBdA{} wird davon
-  ausgegangen, dass
+  \prune{}((\ET{}_1\|\EL{}_2)\cup (\EL{}_1\|\ET{}_2))$ betrachtet. Da $x$ durch
+  die Anwendung der $\prune{}$-Funktion entstanden ist, existiert ein $y\in
+  O_{12}^*$ mit $xy\in(\ET{}_1\|\EL{}_2)\cup (\EL{}_1\|\ET{}_2)$. \OBdA{} wird
+  davon ausgegangen, dass
   $xy\in \ET{}_1\|\EL{}_2$ gilt, d.h.\ es gibt $w_1\in \ET{}_1$ und $w_2\in \EL{}_2$ mit
   $xy\in w_1\|w_2$. In dem Punkt, dass das präfix-minimale Element noch mit
   Outputs fortsetzt werden kann, unterscheidet sich dieser Beweis von dem
@@ -250,7 +251,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
           $v''\in v_1'\|v_2''$. Daraus ergibt sich $(q_{01},q_{02})
           \overset{v''}{\Rightarrow} (q_1,q_2)$ mit $q_1
           \overset{a}{\not{\hspace{-0.1cm}\rightarrow}},a\in I_1, q_2
-          \overset{a}{\rightarrow},a\in O_2$, somit gilt $(q_1,q_2)\in
+          \overset{a}{\rightarrow},$ $a\in O_2$, somit gilt $(q_1,q_2)\in
           E_{12}$. Es wird $v:=\prune{}(v'')\in \PrET{}_{12}$ gewählt.
       \end{itemize}
   \item Fall II ($v_1\in \PrET{}_1$): $\exists u_1\in O_1^*:q_{01}
@@ -285,9 +286,10 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
 
   2.:\\
   Der Beweis für diesen Punkt konnte bezüglich~\cite{Vogler2014EIO} fast
-  unverändert übernommen werden, bis auf die Ersetzung der Zeichen der Parallelkomposition.\\
-  Es ist durch die Definition klar, dass gilt $L_i\subseteq \EL{}_i$ und
-  $\ET{}_i\subseteq \EL{}_i$. Die Argumentation wird von der rechten
+  unverändert übernommen werden, bis auf die Ersetzung der Zeichen der
+  Parallelkomposition.\\
+  Es ist durch die Definition klar, dass $L_i\subseteq \EL{}_i$ und
+  $\ET{}_i\subseteq \EL{}_i$ gilt. Die Argumentation wird von der rechten
   Seite der Gleichung aus begonnen:
   \begin{align*}
     &(\EL{}_1\| \EL{}_2)\cup \ET{}_{12}\\
@@ -301,7 +303,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
     \ET{}_{12}\\
     &=(L_1\|L_2) \cup \ET{}_{12}\\
     &\overset{\ref{LemmaSprache}}{=}L_{12}\cup \ET{}_{12}\\
-    &\overset{\ref{DefETEL}}{=}\EL{}_{12}
+    &\overset{\ref{DefETEL}}{=}\EL{}_{12}.
   \end{align*}
 \end{proof}
 
@@ -312,7 +314,7 @@ Feststellung, dass es sich um eine Präkongruenz handelt, ist wichtig, da
 dann die erste Eigenschaft erfüllt ist, um eine operationale Beschreibung der
 vollständig abstrakten Präkongruenz \ECRel{} zu erhalten.
 
-\begin{prop}[Präkongruenz]
+\begin{prop}[Error-Präkongruenz]
   \label{propPraekongruenz}
   \ERel{} ist eine Präkongruenz bezüglich $\cdot\|\cdot$.
 \end{prop}
@@ -320,10 +322,10 @@ vollständig abstrakten Präkongruenz \ECRel{} zu erhalten.
 \begin{proof}
   Es muss gezeigt werden: Wenn $S_1\ERel S_2$ gilt, dann für jedes
   komponierbare $S_3$ auch $S_3\|S_1\ERel S_3\|S_1$. D.h.\ es ist zu zeigen,
-  dass aus $\ET{}_1\subseteq \ET{}_2$ und $\EL{}_1\subseteq \EL{}_2$ folgt,
+  dass aus $\ET{}_1\subseteq \ET{}_2$ und $\EL{}_1\subseteq \EL{}_2$,
   $\ET{}(S_3\|S_1)\subseteq \ET{}(S_3\|S_2)$ und $\EL{}(S_3\|S_1)\subseteq
-  \EL{}(S_3\|S_2)$. Dies ergibt sich aus der Monotonie von \cont{}, \prune{}
-  und $\cdot \|\cdot$ auf Sprachen wie folgt:\\
+  \EL{}(S_3\|S_2)$ folgt. Dies ergibt sich aus der Monotonie von \cont{},
+  \prune{} und $\cdot \|\cdot$ auf Sprachen wie folgt:\\
   \begin{itemize}
     \item $\begin{aligned}[t]
         \ET{}(S_3\|S_1) &\overset{\ref{satzErrorSemanik}~1.}{=}
@@ -331,7 +333,7 @@ vollständig abstrakten Präkongruenz \ECRel{} zu erhalten.
       &\hspace{-0.3cm}\overset{\ET{}_1\subseteq
     \ET{}_2}{\overset{\mathrm{und}}{\overset{\EL{}_1\subseteq \EL{}_2}{\subseteq}}}
     \cont{}(\prune{}((\ET{}_3\|\EL{}_2)\cup (\EL{}_3\|\ET{}_2)))\\
-      &\overset{\ref{satzErrorSemanik}~1.}{=} \ET{}(S_3\|S_2)
+      &\overset{\ref{satzErrorSemanik}~1.}{=} \ET{}(S_3\|S_2),
     \end{aligned}$
     \item $\begin{aligned}[t]
         \EL{}(S_3\|S_1) &\overset{\ref{satzErrorSemanik}~2.}{=} (\EL{}_3\|\EL{}_1)\cup
@@ -339,7 +341,7 @@ vollständig abstrakten Präkongruenz \ECRel{} zu erhalten.
         &\hspace{-0.4cm}\overset{\EL{}_1\subseteq
       \EL{}_2}{\overset{\mathrm{und}}{\overset{\ET{}_{31}\subseteq
       \ET{}_{32}}{\subseteq}}} (\EL{}_3\|\EL{}_2)\cup \ET{}_{32}\\
-      &\overset{\ref{satzErrorSemanik}~2.}{=} \EL{}(S_3\|S_2)
+      &\overset{\ref{satzErrorSemanik}~2.}{=} \EL{}(S_3\|S_2).
     \end{aligned}$
   \end{itemize}
 \end{proof}
@@ -354,14 +356,14 @@ in~\cite{Schlosser2012BA}, da es dort mit der Aussage von
 Satz~\ref{satzFullAbstractness} kombiniert wurde. Jedoch ist die Aussage dieses
 Lemmas trotzdem Teil dessen, was gezeigt wird und somit finden sich die Teile
 dieses Beweises auch dort wieder.\\
-Die Verfeinerungsrelation, in dem nächsten Lemma betrachtet werden soll, soll
-über gute Kommunikation im Sinne der error-freien Kommunikation verfeinern.
+Die Verfeinerungsrelation, die in dem nächsten Lemma betrachtet werden soll,
+verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
 
 \begin{lem}[Verfeinerung mit Errors]
   \label{lemVerfeinerung}
   Gegeben sind zwei \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur. Wenn
-  $U\|S_1 \EBRel U\|S_2$ für alle Partner $U$ gilt, dann folgt daraus $S_1\ERel
-  S_2$.
+  $U\|S_1 \EBRel U\|S_2$ für alle Partner $U$ gilt, dann folgt daraus die
+  Gültigkeit von $S_1\ERel S_2$.
 \end{lem}
 
 \begin{proof}
@@ -390,14 +392,14 @@ Die Verfeinerungsrelation, in dem nächsten Lemma betrachtet werden soll, soll
       $x_{n+1}\in I$): Es wird der folgenden Partner $U$ bedachtet (siehe auch
       Abbildung~\ref{UohneE}):
       \begin{itemize}
-        \item $Q_U=\{q_0,q_1,\dots ,q_{n+1}\}$
-        \item $q_{0U}=q_0$
-        \item $E_U=\emptyset$
+        \item $Q_U=\{q_0,q_1,\dots ,q_{n+1}\}$,
+        \item $q_{0U}=q_0$,
+        \item $E_U=\emptyset$,
         \item $\begin{aligned}[t]
             \delta _U=&\{(q_i,x_{i+1},q_{i+1})\mid  0\leq i\leq n\}\\
                       &\cup\{(q_i,x,q_{n+1})\mid  x\in I_U\backslash\{x_{i+1}\},
           0\leq i\leq n\}\\
-          &\cup\{(q_{n+1},x,q_{n+1})\mid  x\in I_U\}
+          &\cup\{(q_{n+1},x,q_{n+1})\mid  x\in I_U\}.
         \end{aligned}$
       \end{itemize}
       \begin{figure} [h!tbp]
@@ -484,14 +486,14 @@ Die Verfeinerungsrelation, in dem nächsten Lemma betrachtet werden soll, soll
     \item Fall 2 ($w=x_1\dots x_n$ mit $n\geq 1$): Es wird einen
       Partner $U$ wie folgt konstruiert (siehe dazu auch Abbildung~\ref{UmitE}):
       \begin{itemize}
-        \item $Q_U=\{q,q_0,q_1,\dots ,q_n\}$
-        \item $q_{0U}=q_0$
-        \item $E_U={q_n}$
+        \item $Q_U=\{q,q_0,q_1,\dots ,q_n\}$,
+        \item $q_{0U}=q_0$,
+        \item $E_U=\{q_n\}$,
         \item $\begin{aligned}[t]
             \delta _U=&\{(q_i,x_{i+1},q_{i+1})\mid 0\leq i< n\}\\
                       &\cup\{(q_i,x,q)\mid x\in I_U\backslash\{x_{i+1}\},0\leq
           i\leq n\}\\
-          &\cup\{(q,x,q)\mid x\in I_U\}
+          &\cup\{(q,x,q)\mid x\in I_U\}.
               \end{aligned}$
       \end{itemize}
       \begin{figure} [h!tbp]
@@ -645,10 +647,10 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   entstehen. Somit folgt die Behauptung.
 \end{proof}
 
-\begin{satz}[Präkongurenz bzgl. Interalisierung]
+\begin{satz}[Error-Präkongurenz bzgl. Interalisierung]
   \label{satzPraeInternalisierung}
   Seinen $S_1$ und $S_2$ zwei \EIO{}s für die $S_1\ERel S_2$ gilt, somit gilt
-  auch $(S_1/X)\ERel (S_2/X)$. Daraus folgt insbesondere, dass \ERel{} eine
+  auch $S_1/X\ERel S_2/X$. Daraus folgt insbesondere, dass \ERel{} eine
   Präkongruenz bezüglich $\cdot /\cdot$ ist.
 \end{satz}
 
@@ -673,10 +675,10 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   Daraus folgt, dass ein Ablauf $q_0 \overset{a_1}{\rightarrow} q_1
   \overset{a_2}{\rightarrow} \dots \overset{a_m}{\rightarrow} q_m$ in $S_1$
   existiert mit $q_m\in E$ oder $q_m$ hat nicht für alle Inputs eine
-  Transitionsmöglichkeit. Es gilt also entweder $w\in \PrET{}_1$ oder $w\in
-  \MIT{}_1$. An diesem Punkt muss unterschieden werden, ob es sich hier um ein
-  Trace handelt, der aus dem leeren Wort besteht oder um ein Trace, für den
-  $m\geq 1$ gilt.
+  Transitionsmöglichkeit. Es gilt also $w\in \PrET{}_1$ oder $w\in \MIT{}_1$.
+  An diesem Punkt muss unterschieden werden, ob es sich hier um ein Trace
+  handelt, der aus dem leeren Wort besteht oder um ein Trace, für den $m\geq 1$
+  gilt.
   \begin{itemize}
     \item Fall 1 ($w=\varepsilon$): Da es in diesem Wort keine Aktionen aus $X$
       gibt, werden in diesem Zusammenhang auch keine Aktionen verborgen und
@@ -696,28 +698,30 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
       O}{\overset{\mathrm{sonst}~a_1}{\longrightarrow}} q_1
       \overset{\tau~\mathrm{falls}~a_2\in X\cap
       O}{\overset{\mathrm{sonst}~a_2}{\longrightarrow}} \dots
-      \overset{a_m}{\rightarrow} q_m$. Dabei bleibt durch das Hiding von dem
-      $w$ nur noch $w|_{\Sigma\backslash (X\cap O)}$ erhalten. Diese
-      Projektion des Wortes $w$ auf die eingeschränkte Aktionsmenge ist dann
-      in $\ET{}(S_1/X)$ enthalten, da immer noch der selbe Zustand erreicht
-      wird, der bereits in $\ET{}_1$ als Fehler-Zustand erkannt wurde. Es sind
-      auch alle beliebigen Verlängerungen analog zum letzten Fall in den beiden
-      Mengen der Errortraces enthalten.
+      \overset{a_m}{\rightarrow} q_m$. Dabei bleibt durch das Hiding von
+      Aktionen aus $X$ in $w$ nur noch $w|_{\Sigma\backslash (X\cap O)}$
+      erhalten. Diese Projektion des Wortes $w$ auf die eingeschränkte
+      Aktionsmenge ist dann in $\ET{}(S_1/X)$ enthalten, da immer noch der
+      selbe Zustand erreicht wird, der bereits in $\ET{}_1$ als Fehler-Zustand
+      erkannt wurde. Es sind auch alle beliebigen Verlängerungen analog zum
+      letzten Fall in den beiden Mengen der Errortraces enthalten.
   \end{itemize}
   Nach Voraussetzung gilt $w\in\ET{}_2$, wenn $w\in\ET{}_1$. Nach analoger
-  Argumentation gilt dann auch $w|_{\Sigma\backslash (X\cap
+  Argumentation wie oben gilt dann auch $w|_{\Sigma\backslash (X\cap
   O)}\in\ET{}(S_2/X)$.\\
   Somit bleibt jetzt nur noch zu zeigen, dass $L(S_1/X)\backslash \ET{}(S_1/X)
-  \subseteq EL(S_2/X)$ gilt. Die Argumentation wieso nur diese Inklusion zu
-  zeigen ist, kann dem Beweis zu Lemma~\ref{lemVerfeinerung} entnommen werden.
-  Da bereits bekannt ist, dass $L_1\backslash\ET{}_1\subseteq\EL{}_2$ gilt,
-  kann geschlossen werden, dass alle relevanten Traces bereits in $\EL{}_2$
-  enthalten sind und die Modifikation durch den Internalisierungsoperator wie
-  oben keine Auswirkungen auf die Teilmengenbeziehung hat. Es ist hier nur noch
-  wichtig festzuhalten, dass für ein Trace aus $L_1$ keine beliebigen
-  Verlängerungen zulässig sind, genauso wie für $L(S_1/X)$. Jedoch kann immer
-  ein passender Trace in $L(S_1/X)$ zu jedem Trace aus $L_1$ gefunden werden
-  durch weglassen der Aktionen aus $X\cap O$.
+  \subseteq EL(S_2/X)$ gilt, bzw.\ dass $\EL{}(S/X)$ richtig definiert wurde.
+  Die Argumentation wieso nur diese Inklusion zu zeigen ist, kann dem Beweis zu
+  Lemma~\ref{lemVerfeinerung} entnommen werden. Da bereits bekannt ist, dass
+  $L_1\backslash\ET{}_1\subseteq\EL{}_2$ gilt, kann geschlossen werden, dass
+  alle relevanten Traces bereits in $\EL{}_2$ enthalten sind und die
+  Modifikation durch den Internalisierungsoperator wie oben keine Auswirkungen
+  auf die Teilmengenbeziehung hat. Es ist hier nur noch wichtig festzuhalten,
+  dass für ein Trace aus $L_1$ keine beliebigen Verlängerungen zulässig sind,
+  genauso wie für $L(S_1/X)$. Jedoch kann immer ein passender Trace in
+  $L(S_1/X)$ zu jedem Trace aus $L_1$ gefunden werden durch weglassen der
+  Aktionen aus $X\cap O$ und es werden dadurch immer noch die gleichen Zustände
+  erreicht wie in $S_1$.
 \end{proof}
 
 Aus~\ref{propPraekongruenz} ist bekannt, dass \ERel{} eine Präkongruenz
@@ -726,6 +730,6 @@ bezüglich $\cdot\|\cdot$ ist, und aus~\ref{satzPraeInternalisierung}, dass
 Definition~\ref{defIntParal} die Parallelkomposition mit Internalisierung nur
 aus diesen Operatoren zusammensetzt, erhalten man das folgende Korollar.
 
-\begin{kor}[Präkongurenz mit Internalisierung]
+\begin{kor}[Error-Präkongurenz mit Internalisierung]
   \ERel{} ist eine Präkongruenz bezüglich $\cdot|\cdot$.
 \end{kor}

@@ -10,11 +10,12 @@ Die hier betrachteten \EIO{}s sind Systeme, deren Transitionen mit Inputs und
 Outputs beschriftet sind. Jede Transition ist dabei mit einem Input oder einem
 Output versehen. Ebenfalls zulässig ist eine Transitionsbeschriftung mit
 $\tau$, einer \emph{internen}, unbeobachtbaren \emph{Aktion}. Diese interne
-Aktion lässt also keine Interaktion mit der Umwelt zu. In~\cite{Vogler2014EIO}
-entsteht das $\tau$ in vielen Fällen durch das Verbergen der Inputs und
-Outputs, die in einer Komposition synchronisiert werden. Hier werden diese
-Aktionen hingegen nicht verborgen. Jedoch wird im weiteren Verlauf noch
-das Hiding betrachten, in dem Outputs durch interne Aktionen ersetzt werden.
+Aktion lässt also keine Interaktion mit der Umwelt, d.h.\ mit anderen Systemen,
+zu. In~\cite{Vogler2014EIO} entsteht das $\tau$ in vielen Fällen durch das
+Verbergen der Inputs und Outputs, die in einer Komposition synchronisiert
+werden. Hier werden diese Aktionen hingegen nicht verborgen. Jedoch wird im
+weiteren Verlauf noch das Hiding betrachten, in dem Outputs durch interne
+Aktionen ersetzt werden.
 
 \begin{Def}[Error-IO-Transitionssystem]
   Ein \emph{Error-IO-Transitionssystem \linebreak (\EIO{})} ist
@@ -71,13 +72,21 @@ unsynchronisierbaren Outputs besitzen (neue Errors) zusammen.\\
 In der folgenden Definition muss eine Veränderung
 gegenüber~\cite{Vogler2014EIO} an der Menge der synchronisierten
 Aktionen vorgenommen werden. Da nicht mehr $I_1\cap I_2 =\emptyset$ gelten
-muss, werden die gemeinsamen Inputs synchronisiert.
+muss, werden die gemeinsamen Inputs synchronisiert. Somit handelt es sich in
+der Parallelkomposition bei synchronisierten Aktionen nicht mehr nur um
+Outputs, wie in~\cite{Vogler2014EIO}, sondern im Fall von $I_1\cap I_2$ auch um
+Inputs. Falls es bei Inputs aus $I_1\cap I_2$ zu einem fehlenden Input für die
+Synchronisation kommt, ist die Transition für die Parallelkomposition nicht
+ausführbar, jedoch handelt es sich auch nicht um einen neuen Error, da es
+zwischen den beiden Systemen dadurch nicht zu einem Kommunikations-Fehler
+kommt. Die beiden Transitionssysteme können über die beiden Inputs nicht
+miteinander kommunizieren, sondern nur mit anderen Systemen.
 
 \begin{Def}[Parallelkomposition]
   \label{DefParallelkomposition}
   Zwei \EIO{}s $S_1, S_2$ sind \emph{komponierbar}, falls
   $O_1\cap O_2=\emptyset$ gilt. Die \emph{Parallelkomposition} ist
-  $S_1\|S_2=(Q,I,O,\delta ,q_0,E)$ mit den Komponenten:
+  $S_{12}:=S_1\|S_2=(Q,I,O,\delta ,q_0,E)$ mit den Komponenten:
   \begin{itemize}
     \item $Q=Q_1\times Q_2$,
     \item $I=(I_1\backslash O_2)\cup(I_2\backslash O_1)$,
@@ -164,7 +173,7 @@ gewählt wurde, dass die Projektion auf die einzelnen Alphabete die jeweiligen
 Wörter ergibt. Falls keine interne Aktionen zugelassen wären, würde sogar nur
 genau ein Ablauf möglich sein in $S_{12}$. Da jedoch auch interne Aktionen
 zulässig sind, sind mehrere Abläufe möglich, da nicht klar ist, wann ein $\tau$
-in dem Trace ausgeführt wird. Daraus ergibt sich das folgende Lemma.
+in einem Trace ausgeführt wird. Daraus ergibt sich das folgende Lemma.
 
 \begin{lem}[Sprache der Parallelkomposition]
   \label{LemmaSprache}
@@ -197,13 +206,13 @@ entsprechend Quelle~\cite{Schlosser2012BA}.
 \begin{Def}[Internalisierungsoperator]
   Für ein \EIO{} $S=(Q,I,O,\delta ,q_0.E)$ ist $S/X$, mit
   dem \emph{Internalisierungsoperator} $\cdot /\cdot$,
-  definiert als $S'=(Q,I,O',\delta ',\linebreak q_0,E)$ mit:
+  definiert als $S'=(Q,I,O',\delta ', q_0,E)$ mit:
   \begin{itemize}
-    \item $\tau \notin X$.
-    \item $A\subseteq O$
+    \item $\tau \notin X$,
+    \item $X\subseteq O$,
     \item $O'=O\backslash X$,
     \item $\delta '=(\delta\cup\{(q,\tau ,q')\mid (q,x,q')\in\delta
-      ,x\in X\})\backslash \{(q,x,q')\mid x\in X\cap O)\}$,
+      ,x\in X\})\backslash \{(q,x,q')\mid x\in X\cap O)\}$.
   \end{itemize}
 \end{Def}
 
@@ -215,15 +224,16 @@ Teil dieser Arbeit sein.\\
 In~\cite{Vogler2014EIO} wird die Parallelkomposition nur mit Verbergen der
 synchronisierten Aktionen betrachtet, die durch die Synchronisation von einem
 Input mit einem Output entstehen. Diese Parallelkomposition kann nun mit dem
-Internalisierungsoperator durch Hiding der synchronisierten Aktionen nachbildet
-werden, die in der Parallelkomposition zu Outputs werden. Da in dieser Arbeit
+Internalisierungsoperator durch Hiding der synchronisierten Aktionen, die in
+der Parallelkomposition zu Outputs werden, nachbildet werden. Da in dieser Arbeit
 die Inputmengen der Systeme, die komponiert werden, nicht disjunkt sein müssen,
-ergeben sich auch Inputs aus der Synchronisation von Aktionen, diese können
+ergeben sich auch Inputs aus der Synchronisation von Aktionen. Diese können
 jedoch mit unserer Definition des Internalisierungsoperators nicht verborgen
 werden. Dies wäre auch nicht sinnvoll, da diese Synchronisation von Inputs
-keine Kommunikation zwischen den Systemen war, sondern nur eine Zusammenfügung,
+keine Kommunikation zwischen den Systemen ist, sondern nur eine Zusammenfügung,
 damit die Parallelkomposition über diesen Input mit weiteren Systemen
-kommunizieren kann.
+kommunizieren kann. Somit ergibt sich die folgende Definition, mit der die
+Parallelkomposition aus~\cite{Vogler2014EIO} nachgebildet werden kann.
 
 \begin{Def}[Parallelkomposition mit Internalisierung]
   \label{defIntParal}
