@@ -672,7 +672,7 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   falls diese Definitionen korrekt sind. Es muss nun also die Korrektheit
   dieser Definitionen gezeigt werden.\\
   Es wird einen präfix-minimaler Trace $w=a_1a_2\dots a_m\in \ET{}_1$ gewählt.
-  Daraus folgt, dass ein Ablauf $q_0 \overset{a_1}{\rightarrow} q_1
+  Daraus folgt, dass ein Ablauf $q_{01} \overset{a_1}{\rightarrow} q_1
   \overset{a_2}{\rightarrow} \dots \overset{a_m}{\rightarrow} q_m$ in $S_1$
   existiert mit $q_m\in E$ oder $q_m$ hat nicht für alle Inputs eine
   Transitionsmöglichkeit. Es gilt also $w\in \PrET{}_1$ oder $w\in \MIT{}_1$.
@@ -714,14 +714,30 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   Die Argumentation wieso nur diese Inklusion zu zeigen ist, kann dem Beweis zu
   Lemma~\ref{lemVerfeinerung} entnommen werden. Da bereits bekannt ist, dass
   $L_1\backslash\ET{}_1\subseteq\EL{}_2$ gilt, kann geschlossen werden, dass
-  alle relevanten Traces bereits in $\EL{}_2$ enthalten sind und die
-  Modifikation durch den Internalisierungsoperator wie oben keine Auswirkungen
-  auf die Teilmengenbeziehung hat. Es ist hier nur noch wichtig festzuhalten,
-  dass für ein Trace aus $L_1$ keine beliebigen Verlängerungen zulässig sind,
-  genauso wie für $L(S_1/X)$. Jedoch kann immer ein passender Trace in
-  $L(S_1/X)$ zu jedem Trace aus $L_1$ gefunden werden durch weglassen der
-  Aktionen aus $X\cap O$ und es werden dadurch immer noch die gleichen Zustände
-  erreicht wie in $S_1$.
+  alle relevanten Traces bereits in $\EL{}_2$ enthalten sind. Für einen Trace
+  $w=a_1a_2\dots a_m\in L_1\backslash \ET{}_1$ kann ein entsprechender Ablauf
+  $q_{01} \overset{a_1}{\rightarrow} q_1 \overset{a_2}{\rightarrow} \dots
+  \overset{a_m}{\rightarrow} q_m$ in $S_1$ gefunden werden. Nun kann wieder
+  beobachtet werden, was passiert, wenn man den Internalisierungsoperator
+  anwendet. Der Ablauf aus $S_1$ reduziert sich in $S_1/X$ auf $q_{01}
+  \overset{\tau~\mathrm{falls}~a_1\in X\cap
+  O}{\overset{\mathrm{sonst}~a_1}{\longrightarrow}} q_1
+  \overset{\tau~\mathrm{falls}~a_2\in X\cap
+  O}{\overset{\mathrm{sonst}~a_2}{\longrightarrow}} \dots
+  \overset{\tau~\mathrm{falls}~a_m\in X\cap
+  O}{\overset{\mathrm{sonst}~a_m}{\longrightarrow}} q_m$. Somit ist immer noch
+  das gleiche $q_m$ durch den reduzierten Trace $w|_{\Sigma\backslash (X\cap
+  O)}$ erreichbar. Es gilt also $w|_{\Sigma\backslash (X\cap O)}\in
+  L(S_1/X)\backslash \ET{}(S_1/X)$. Da es sich hier sowohl bei dem Trace aus
+  $S_1$ wie auch bei dem reduzierten Trace um einen aus der Sprache handelt,
+  sind nicht, wie oben, alle beliebigen Verlängerungen ebenfalls in den Mengen
+  enthalten. Auch für den Trace $w$ in $\EL{}_2$ ist der reduzierte Trace mit
+  der analogen Argumentation wie oben in $\EL{}(S_2/X)$ enthalten. Dazu müssen
+  jedoch die Argumentationen für \ET{} und $L\backslash \ET{}$ beachtet werden,
+  da \EL{} eine Vereinigung aus diesen beiden Mengen ist.\\
+  Es folgt also insgesamt, dass die Relation \ERel{} trotz Hiding erhalten
+  bleibt und somit diese Relation bezüglich des Internalisierungsoperator eine
+  Präkongruenz darstellt.
 \end{proof}
 
 Aus~\ref{propPraekongruenz} ist bekannt, dass \ERel{} eine Präkongruenz
