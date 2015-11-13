@@ -121,7 +121,8 @@ relevant.
   \begin{itemize}
     \item Fall 1 ($a\in I_i\backslash Synch(S_1,S_2)\wedge q_i
       \overset{a}{\rightarrow}$ für ein $i\in \{1,2\}$): Da $a$ ein
-      unsynchronisierter Input ist, wird dieser unabhängig ausgeführt, somit hat
+      Input ist, der nicht in der Menge der synchronisierten Aktionen enthalten
+      ist, wird dieser unabhängig ausgeführt, somit hat
       $(q_1,q_2)$ ebenfalls die Möglichkeit eine Transition mit $a$ als Input
       auszuführen.
     \item Fall 2 ($a\in I_1\cap I_2\wedge q_i \overset{a}{\rightarrow}$ für
@@ -148,7 +149,7 @@ relevant.
   Es gilt $(q_1,q_2)\in Qui_{12}\backslash E_{12}$, somit hat
   dieser Zustand maximal die Möglichkeit Transitionen für Inputs auszuführen.
   Diese Transitionen für Inputs können nur aus Inputs, die nicht in der Menge
-  der synchronisierten Handlungen enthalten sind oder aus der Synchronisation
+  der synchronisierten Aktionen enthalten sind oder aus der Synchronisation
   von zwei Inputs aus der Menge $I_1\cap I_2$ enstehen. Durch die
   Parallelkomposition von Outputs mit anderen Aktionen können keine Inputs
   entstehen und in der hier verwendeten Definition der Parallelkomposition auch
@@ -860,7 +861,10 @@ möglich ist.
     möglich (\ref{satzQuiSemantik} 2. $\supseteq$ wegen fortsetzen mit Outputs
     und Synchronisation nicht mehr möglich)
   \item alternative Definition für Ruhe mit $\forall a\in O: q
-    \overset{a}{\not{\hspace{-0.1cm}\Rightarrow}}$
+    \overset{a}{\not{\hspace{-0.1cm}\Rightarrow}}$ (vor allem Veränderungen in
+    Lemma 4.9, dort kann nicht mehr an Partner festgehalten werden, da die
+    $\tau$-Schleifen dann nicht ausreichen, sondern ein Output aus der Menge
+    der nicht synchronisierten Aktionen hinzugefügt werden muss)
 \end{itemize}}
 
 \normalsize

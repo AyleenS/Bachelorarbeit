@@ -68,7 +68,9 @@ $L(S)=\{w\in\Sigma^*\mid q_0\overset{w}{\Rightarrow}\}$.
 Zwei \EIO{}s sind komponierbar, wenn ihre Output-Mengen disjunkt sind. Die
 Error-Zustän\-de der Parallelkomposition setzen sich aus den Errors der
 beiden zusammengesetzten Komponenten (geerbte Errors) und den Zuständen, die
-unsynchronisierbaren Outputs besitzen (neue Errors) zusammen.\\
+Outputs aus der Menge der synchronisierten Aktionen besitzen, für die im zu
+komponierenden System jedoch kein passender Input vorhanden ist, (neue Errors)
+zusammen.\\
 In der folgenden Definition muss eine Veränderung
 gegenüber~\cite{Vogler2014EIO} an der Menge der synchronisierten
 Aktionen vorgenommen werden. Da nicht mehr $I_1\cap I_2 =\emptyset$ gelten
@@ -228,7 +230,7 @@ Internalisierungsoperator durch Hiding der synchronisierten Aktionen, die in
 der Parallelkomposition zu Outputs werden, nachbildet werden. Da in dieser Arbeit
 die Inputmengen der Systeme, die komponiert werden, nicht disjunkt sein müssen,
 ergeben sich auch Inputs aus der Synchronisation von Aktionen. Diese können
-jedoch mit unserer Definition des Internalisierungsoperators nicht verborgen
+jedoch mit der hier verwendeten Definition des Internalisierungsoperators nicht verborgen
 werden. Dies wäre auch nicht sinnvoll, da diese Synchronisation von Inputs
 keine Kommunikation zwischen den Systemen ist, sondern nur eine Zusammenfügung,
 damit die Parallelkomposition über diesen Input mit weiteren Systemen
