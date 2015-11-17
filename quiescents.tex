@@ -249,8 +249,8 @@ Präkongruenz charakterisieren zu wollen.
   auf Sprachen wie folgt:
   \begin{itemize}
     \item $\begin{aligned}[t]
-        S_{31} \overset{\mathrm{Proposition}~
-        \ref{propPraekongruenz}}{\overset{\mathrm{und}}{\overset{S_1\ERel
+        S_{31} \overset{\mathrm{Proposition}
+        ~\ref{propPraekongruenz}}{\overset{\mathrm{und}}{\overset{S_1\ERel
     S_2}{\ERel}}} S_{32},
     \end{aligned}$
     \item $\begin{aligned}[t]
@@ -456,7 +456,8 @@ Sinne von error- und ruhe-freier Kommunikation betrachtet werden.
   Es ist vom Startzustand von $S_1$ durch das Wort $w$ ein ruhiger Zustand
   erreichbar. Dies hätte keine Auswirkungen auf die Parallelkomposition
   $U\|S_1$, wenn in $U$ kein Ruhe-Zustand durch $w$ erreicht wäre.
-  \begin{itemize}
+  \begin{itemize} %TODO Input-Schleifen entfernen, da sonst durch
+      %Synchronisation von dem gewollten Zustand in U||S2 weggelaufen werden kann
     \item Fall 1 ($w=\varepsilon$): Es ist ein Ruhe-Zustand lokal erreichbar in
       $S_1$, da jedoch $\varepsilon\notin \ET{}(S_1)$ gilt, ist kein Error
       lokal erreichbar. Für $U$ wird ein Transitionssystem verwendet, das nur
@@ -577,7 +578,7 @@ dargestellt.
 \begin{figure}[h!tbp]
   \begin{center}
     \begin{tikzpicture}
-      \matrix (m) [matrix of math nodes,row sep=2cm,column sep=4cm]{
+      \matrix (m) [matrix of math nodes,row sep=2cm,column sep=4cm]{%
         S_1\QRel S_2 & S_1\QCRel S_2 \\
         \substack{\forall~\mathrm{Partner}~U:\\U\|S_1\QBRel U\|S_2} &
       \substack{\forall~\mathrm{komponierbaren}~U:\\U\|S_1\QBRel U\|S_2} \\};
@@ -837,20 +838,17 @@ werden.
 
 Wie bereits oben erwähnt wurden in~\cite{Chilton2013} auch noch divergente
 Zustände als Fehler-Zustände betrachtet. Um zu klären, was darunter verstanden
-wird, wird nun noch eine Definition für Divergenz gegeben. Ruhe-Zustände wurden
-hier wie eine Verklemmung betrachtet. Analog dazu kann man divergente Zustände,
-die keine Möglichkeiten für andere Transitionsfolgen wie $\tau$ haben,
-als Livelocks auffassen. Es ist zwar die ganze Zeit möglich Aktionen
-auszuführen, aber nur interne, so dass keine Kommunikation mit anderen Systemen
-möglich ist.
+wird, wird nun noch eine Definition für Divergenz gegeben.
+% Ruhe-Zustände wurden
+% hier wie eine Verklemmung betrachtet. Analog dazu kann man divergente Zustände,
+% die keine Möglichkeiten für andere Transitionsfolgen wie $\tau$ haben,
+% als Livelocks auffassen. Es ist zwar die ganze Zeit möglich Aktionen
+% auszuführen, aber nur interne, so dass keine Kommunikation mit anderen Systemen
+% möglich ist.
 
 \begin{Def}[Divergenz]
   Ein \emph{Divergenz-Zustand} ist ein Zustand in einem \EIO{}, der eine
-  unendliche Folge an $\tau$s ausführen kann.\\
-  Somit ist die Menge der Divergenz-Zustände in einem \EIO{} wie folgt formal
-  definiert: $Div := \{q\in Q\mid \exists q'\in Q': q
-  \overset{\tau}{\Rightarrow} q' \wedge q'~\mathrm{ist}~\infty\mathrm{-oft}
-  ~\mathrm{durch}~\tau ~\mathrm{erreichbar}\}$.
+  unendliche Folge an $\tau$s ausführen kann.
 \end{Def}
 
 \scriptsize\textcolor{lgray}{TODO: Erweiterungsmöglichkeiten:
