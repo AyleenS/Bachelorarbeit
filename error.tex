@@ -705,13 +705,18 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
       da immer noch der selbe Zustand durch das Worte erreicht wird. Es gilt
       also auch für diesen Fall die Aussage über die Sprache $L$.
   \end{itemize}
+  Für ein Wort aus der Sprache $L$ des Transitionssystems $S/X$ existiert wie
+  oben auch ein Ablauf. Hier ist es jedoch wichtig, dass auch
+  $\tau$-Transitionen gemacht werden um dieses Wort auszuführen. In dem dies
+  $\tau$-Transitionen durch Transitionen mit Elementen aus $X\cap O$ ersetzt
+  werden erhält man eine Transition aus der Sprache $L(S)$.
 
   (ii)
-  Es wird einen Trace $w=a_1a_2\dots a_n\in \ET{}$ gewählt. Dieser Traces muss
-  nicht wie bei Punkt (i) einem Ablauf in $S$ entsprechen. Jedoch gibt es einen
-  Ablauf für ein Präfix dieses $w$s, mit dem ein Zustand aus $E$ erreicht wird
-  oder ein Zustand, für den nicht alle Input-Transitionen möglich sind. Der
-  Ablauf hat also die Form $q_0 \overset{a_1}{\rightarrow} q_1
+  Es wird einen Trace $w=a_1a_2\dots a_n\in \ET{}(S)$ gewählt. Dieser Traces
+  muss nicht wie bei Punkt (i) einem Ablauf in $S$ entsprechen. Jedoch gibt es
+  einen Ablauf für ein Präfix dieses $w$s, mit dem ein Zustand aus $E$ erreicht
+  wird oder ein Zustand, für den nicht alle Input-Transitionen möglich sind.
+  Der Ablauf hat also die Form $q_0 \overset{a_1}{\rightarrow} q_1
   \overset{a_2}{\rightarrow} \dots \overset{a_m}{\rightarrow} q_m$ mit $m\leq
   n$. Zusätzlich gilt $a_1a_2\dots a_m\in \StET{}_1$ oder $a_1a_2\dots a_m\in
   \MIT{}_1$. Analog wie im Beweisteil zu (i) wird der Ablauf bis $a_m$ durch
@@ -722,7 +727,14 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   enthalten. Es gilt also $w|_{\Sigma\backslash (X\cap O)}\in \ET{}(S/X)$. Da
   alle Elemente aus $\ET{}(S/X)$ nur Aktionen aus $\Sigma\backslash (X\cap O)$
   enthalten, ist ausgeschlossen, dass das projizierte Präfix mit Aktionen
-  außerhalb dieser Menge vorgesetzt wird.
+  außerhalb dieser Menge vorgesetzt wird.\\
+  Ein Trace $w\in \ET{}(S/X)$ muss wie oben nicht im Transitionssystem
+  enthalten sein. Es kann jedoch ein Präfix von $w$ gefunden werden wie oben,
+  mit dem ein Error-Zustand oder ein Zustand, für den nicht alle
+  Input-Transitionen möglich sind, erreicht werden. Für dieses Präfix von $w$
+  existiert ein Ablauf im Transitionssystem $S/X$, der wie in (i) beschrieben
+  auf einen Ablauf in $S$ erweitert werden kann, durch das ersetzten von
+  $\tau$-Transitionen.%TODO Fortsetzung begründen
 
   (iii)
   Für einen Trace $w=a_1a_2\dots a_n\in \EL{}(S)$ gilt $w\in L(S)$ oder $w\in
