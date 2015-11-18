@@ -713,28 +713,53 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
 
   (ii)
   Es wird einen Trace $w=a_1a_2\dots a_n\in \ET{}(S)$ gewählt. Dieser Traces
-  muss nicht wie bei Punkt (i) einem Ablauf in $S$ entsprechen. Jedoch gibt es
-  einen Ablauf für ein Präfix dieses $w$s, mit dem ein Zustand aus $E$ erreicht
-  wird oder ein Zustand, für den nicht alle Input-Transitionen möglich sind.
-  Der Ablauf hat also die Form $q_0 \overset{a_1}{\rightarrow} q_1
-  \overset{a_2}{\rightarrow} \dots \overset{a_m}{\rightarrow} q_m$ mit $m\leq
-  n$. Zusätzlich gilt $a_1a_2\dots a_m\in \StET{}_1$ oder $a_1a_2\dots a_m\in
-  \MIT{}_1$. Analog wie im Beweisteil zu (i) wird der Ablauf bis $a_m$ durch
-  die Internalisierung reduziert. Somit ist die Projektion des Präfixes von $w$
-  auf jeden Fall in $\ET{}(S/X)$ enthalten. Da \ET{} eine Menge ist, die nach
-  Definition immer unter \cont{} abgeschlossen ist, ist die entsprechende
-  Verlängerung der Projektion des Präfixes von $w$ ebenfalls in $\ET{}(S/X)$
-  enthalten. Es gilt also $w|_{\Sigma\backslash (X\cap O)}\in \ET{}(S/X)$. Da
-  alle Elemente aus $\ET{}(S/X)$ nur Aktionen aus $\Sigma\backslash (X\cap O)$
-  enthalten, ist ausgeschlossen, dass das projizierte Präfix mit Aktionen
-  außerhalb dieser Menge vorgesetzt wird.\\
+  muss nicht wie bei Punkt (i) einem Ablauf in $S$ entsprechen. Jedoch kann ein
+  Präfix von $w$ gefunden werden, dass besondere Eigenschaften erfüllen soll
+  und für dass es einen Ablauf gibt. Hierfür muss jedoch unterschieden werden,
+  aus welchem Grund das $w$ in $\ET{}(S)$ enthalten ist.
+  \begin{itemize}
+    \item Fall 1 ($w\in\cont{}\PrET{}(S)$): In diesem Fall gibt es einen Ablauf
+      für ein Präfix dieses $w$s, der zu einem Ablauf zu einem Zustand aus $E$
+      ergänzt werden kann. Der Ablauf hat also die Form $q_0
+      \overset{a_1}{\Rightarrow} q_1 \overset{a_2}{\Rightarrow} \dots
+      \overset{a_m}{\Rightarrow} q_m \overset{b_1}{\Rightarrow} q_{m+1}
+      \overset{b_2}{\Rightarrow} \dots \overset{b_l}{\Rightarrow} q_{m+l}$ mit
+      $m\leq n$, $l\geq 0$ und $b_i\in O(S)\forall i$. Es gilt dann $a_1a_2\dots
+      a_mb_1b_2\dots b_l\in \StET{}(S)$. Analog wie im Beweisteil zu (i) wird
+      dieser Ablauf durch die Internalisierung reduziert. Somit ist die
+      Projektion von $a_1a_2\dots a_mb_1b_2\dots b_l$ auf die eingeschränkte
+      Aktionenmenge auf jeden Fall in $\StET{}(S/X)\subseteq\ET{}(S/X)$
+      enthalten. Da $b_1b_2\dots b_l\in O(S)^*$ gilt, gilt nach der Projektion
+      auch $(b_1b_2\dots b_l)|_{\Sigma\backslash (X\cap O)}\in O(S/X)^*$. Somit
+      gilt $\prune{}((a_1a_2\dots a_m)|_{\Sigma\backslash (X\cap
+      O)})=\prune{}((a_1a_2\dots a_mb_1b_2\dots b_l)|_{\Sigma\backslash (X\cap
+      O)})$. Da \ET{} eine Menge ist, die nach Definition immer unter \cont{}
+      abgeschlossen ist, sind alle Verlängerung von $(a_1a_2\dots
+      a_m)|_{\Sigma\backslash (X\cap O)}$ ebenfalls in $\ET{}(S/X)$ enthalten.
+      Es gilt also speziell auch $w|_{\Sigma\backslash (X\cap O)}\in
+      \ET{}(S/X)$. Da alle Elemente aus $\ET{}(S/X)$ nur Aktionen aus
+      $\Sigma\backslash (X\cap O)$ enthalten, ist ausgeschlossen, dass das eine
+      Fortsetzung mit Aktionen außerhalb dieser Menge möglich ist.
+    \item Fall 2 ($w\in\cont{}\MIT{}(S)$): In diesem Fall ist bereits für ein
+      Präfix von $w$ ein Ablauf zu einem Zustand möglich, der nicht für alle
+      Inputs eine Transitionsmöglichkeit bietet. Der Ablauf hat also die Form
+      $q_0 \overset{a_1}{\Rightarrow} q_1 \overset{a_2}{\Rightarrow} \dots
+      \overset{a_m}{\Rightarrow} q_m$ mit $m\leq n$ und $a_1a_2\dots a_m\in
+      \MIT{}(S)$. Ab hier Verläuft die Argumentation für diesen Fall analog zu
+      der vom letzten Fall, nur das die \prune{}-Funktion nicht verwendet
+      werden muss, da es hier keine Verlängerungen um Outputs gab.
+  \end{itemize}
   Ein Trace $w\in \ET{}(S/X)$ muss wie oben nicht im Transitionssystem
   enthalten sein. Es kann jedoch ein Präfix von $w$ gefunden werden wie oben,
-  mit dem ein Error-Zustand oder ein Zustand, für den nicht alle
-  Input-Transitionen möglich sind, erreicht werden. Für dieses Präfix von $w$
-  existiert ein Ablauf im Transitionssystem $S/X$, der wie in (i) beschrieben
-  auf einen Ablauf in $S$ erweitert werden kann, durch das ersetzten von
-  $\tau$-Transitionen.%TODO Fortsetzung begründen
+  mit dem ein Error-Zustand, über eine Verlängerung, oder ein Zustand, für den
+  nicht alle Input-Transitionen möglich sind, erreicht werden. Für dieses
+  Präfix von $w$ bzw.\ für das Präfix von $w$ mit der entsprechenden
+  Verlängerung existiert ein Ablauf im Transitionssystem $S/X$, der wie in (i)
+  beschrieben, durch das ersetzen von $\tau$-Transitionen, auf einen Ablauf in
+  $S$ erweitert werden kann. Dieser Ablauf kann dann analog zu den beiden
+  Fällen oben verkürzt und Aufgrund des Abschlusses gegenüber \cont{}
+  verlängert werden, so dass ein $w'\in \ET{}(S)$ entsteht, dass sich von $w$
+  nur durch hinzugefügte Aktionen aus $X$ unterscheidet.
 
   (iii)
   Für einen Trace $w=a_1a_2\dots a_n\in \EL{}(S)$ gilt $w\in L(S)$ oder $w\in
@@ -742,24 +767,15 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   $w|_{\Sigma\backslash (X\cap O)}$ in der entsprechenden Menge des
   Transitionssystems $S/X$ enthalten ist. Da \EL{} als Vereinigung aus den
   Mengen $L$ und \ET{} definiert ist, ist dadurch dann auch gezeigt, dass
-  $w|_{\Sigma\backslash (X\cap O)}\in \EL{}(S/X)$ gilt.
+  $w|_{\Sigma\backslash (X\cap O)}\in \EL{}(S/X)$ gilt.\\
+  Ebenfalls analog zu den beiden vorangegangen Punkten kann auch argumentiert
+  werden, dass zu jedem $w\in \EL{}(S/X)$ durch hinzufügen von Aktionen aus $X$
+  ein $w'\in \EL{}(S)$ gefunden werden kann.
 
   Da $S_1\ERel S_2$ gilt, weiß man, dass $\ET{}_1\subseteq \ET{}_2$ und
-  $\EL{}_1\subseteq \EL{}_2$ gilt.\\
-  Diese Definitionen stützen sich nur auf die bereits bekannten Mengen
-  $\ET{}(S)$ und $\EL{}(S)$. Somit ist klar, dass zu jedem Ablauf des Systems
-  ohne Hiding ein passender in dem System mit Hiding gefunden werden kann,
-  falls diese Definitionen korrekt sind. Es muss nun also die Korrektheit
-  dieser Definitionen gezeigt werden.\\
-  Nach Voraussetzung gilt $w\in\ET{}_2$, wenn $w\in\ET{}_1$. Nach analoger
-  Argumentation wie oben gilt dann auch $w|_{\Sigma\backslash (X\cap
-  O)}\in\ET{}(S_2/X)$.\\
-  Somit bleibt jetzt nur noch zu zeigen, dass $L(S_1/X)\backslash \ET{}(S_1/X)
-  \subseteq EL(S_2/X)$ gilt, bzw.\ dass $\EL{}(S/X)$ richtig definiert wurde.
-  Die Argumentation wieso nur diese Inklusion zu zeigen ist, kann dem Beweis zu
-  Lemma~\ref{lemVerfeinerung} entnommen werden. Da bereits bekannt ist, dass
-  $L_1\backslash\ET{}_1\subseteq\EL{}_2$ gilt, kann geschlossen werden, dass
-  alle relevanten Traces bereits in $\EL{}_2$ enthalten sind.\\
+  $\EL{}_1\subseteq \EL{}_2$ gilt. Durch die Aussagen (i) bis (iii) kann draus
+  direkt gefolgert werden, dass auch $\ET{}(S_1/X)\subseteq \ET{}(S_2/X)$ und
+  $\EL{}(S_1/X)\subseteq \EL{}(S_2/X)$ gilt.\\%TODO überlegen ob besser begründen
   Es folgt also insgesamt, dass die Relation \ERel{} trotz Hiding erhalten
   bleibt und somit diese Relation bezüglich des Internalisierungsoperator eine
   Präkongruenz darstellt.
