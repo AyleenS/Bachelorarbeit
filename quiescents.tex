@@ -492,18 +492,18 @@ werden.
           \node (0) {$q_0$};
           \node (1) [right of=0] {$q_1$};
           \node (dots) [right of=1] {$\dots$};
-          \node (n) [right of=dots] {$q_n$};
+          \node (n) [right of=dots, rectangle, draw] {$q_n\in Qui_U$};
           \node (q) [below of=1] {$q$};
 
           \path ($ (0) + (-1,0) $) edge (0)
                 (0) edge node {$x_1$} (1)
                     edge [loop above] node {$\tau$} (0)
-                    edge node {$x?\neq x_1$} (q)
+                    edge [bend right] node [below, sloped] {$x?\neq x_1$} (q)
                 (1) edge node {$x_2$} (dots)
                     edge [loop above] node {$\tau$} (1)
                     edge node {$x?\neq x_2$} (q)
                 (dots) edge node {$x_n$} (n)
-                       edge [dashed] (q)
+                       edge [dashed, bend left] (q)
                 (q) edge [loop below] node {$x?\in I_U$} (q);
         \end{tikzpicture}
         \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$}
