@@ -1,4 +1,4 @@
-\chapter{Verfeinerung und Error-Freiheit}
+\chapter{Verfeinerung für Error-Freiheit}
 
 \section{Präkongruenz für Error}
 
@@ -92,15 +92,11 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
 \end{satz}
 
 \begin{proof}
-  ~
-  \begin{enumerate}
-    \item \glqq $\subseteq$\grqq :
-  \end{enumerate}
-  \vspace{-0.3cm}
+  1. \glqq{}$\subseteq$\grqq{}:\\
   Da beide Seiten der Gleichung unter der Fortsetzung $\cont{}$ abgeschlossen sind, genügt es ein
   präfix-minimales Element $w$ von $\ET{}_{12}$ zu betrachten. Dieses Element ist
   aufgrund der Definition der Menge der Errortraces entweder in $\MIT{}_{12}$ oder in
-  $\PrET{}_{12}$ enthalten.\\
+  $\PrET{}_{12}$ enthalten.
   \begin{itemize}
     \item Fall 1 ($w\in \MIT{}_{12}$): Aus der Definition von $MIT$ folgt, dass es eine
   Aufteilung $w=xa$ gibt mit $(q_{01},q_{02})
@@ -615,9 +611,10 @@ Ring schließt. Dies ist in Abbildung~\ref{Folgerungskette} dargestellt.
 \end{figure}
 
 Aus Satz~\ref{satzFullAbstractness} und Lemma~\ref{lemVerfeinerung} ergibt sich
-das folgende Korollar. $S_1$ soll dabei $S_2$ verfeinern, genau dann wenn für
-alle Partner \EIO{}s $U$ für die $S_2$ error-frei mit $U$ kommuniziert, folgt
-$S_1$ kommuniziert ebenfalls error-frei mit $U$. %TODO Satz umformulieren
+das folgende Korollar. Angenommen man definiert, dass $S_1$ $S_2$ verfeinern
+soll, genau dann wenn für alle Partner \EIO{}s $U$, für die $S_2$ error-frei
+mit $U$ kommuniziert, folgt, dass $S_1$ ebenfalls error-frei mit $U$
+kommuniziert. Dann wird auch diese Verfeinerung durch \ERel{} charakterisiert.
 
 \begin{kor}
   Es gilt: $S_1\ERel S_2 \Leftrightarrow U\|S_1\EBRel U\|S_2$ für alle Partner
@@ -664,7 +661,6 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
 \end{satz}
 
 \begin{proof}
-  %TODO noch mal durchlesen
   Zuerst wird hier die Richtigkeit der Aussagen (i) bis (iii) gezeigt. Daraus
   kann dann der Rest des Satzes gefolgert werden.
 
@@ -673,11 +669,11 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   Definition $q_0 \overset{w}{\Rightarrow} q$ mit $q\in Q$. Es gibt also zu
   jedem $w = a_1a_2\dots a_n\in L(S)$ ein Ablauf $q_0
   \overset{a_1}{\Rightarrow} q_1 \overset{a_2}{\Rightarrow} \dots
-  \overset{a_n}{\Rightarrow}$. Hier ist wichtig zu beachten, dass die
-  jeweiligen Zustände nicht exakt für eine Transition erreicht werden müssen.
+  \overset{a_n}{\Rightarrow} q_n$ mit $q_n=q$. Hier ist wichtig zu beachten, dass die
+  jeweiligen Zustände nicht exakt über eine Transition erreicht werden müssen.
   Es kann sich hier um eine Transitionsfolge aus beliebig vielen $\tau$s und
   dem jeweiligen $a_i\in\Sigma$ handeln. Dabei ist egal, an welcher Stelle das
-  $a_i$ auftaucht. Dies ist notwendig, das auf Trace-Ebene nicht mehr
+  $a_i$ auftaucht. Dies ist notwendig, da auf Trace-Ebene nicht mehr
   festgehalten wird, wann $\tau$-Transitionen auszuführen sind um mit einer
   bestimmten Transition den Weg fortsetzen zu können. Dies ändert jedoch nichts
   daran, dass alle $a_i$ atomare Aktionen darstellen.
@@ -705,38 +701,38 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   oben auch ein Ablauf. Hier ist es jedoch wichtig, dass auch
   $\tau$-Transitionen gemacht werden um dieses Wort auszuführen. In dem dies
   $\tau$-Transitionen durch Transitionen mit Elementen aus $X\cap O$ ersetzt
-  werden erhält man eine Transition aus der Sprache $L(S)$.
+  werden erhält man ein Trace aus der Sprache $L(S)$.
 
   (ii)
-  Es wird einen Trace $w=a_1a_2\dots a_n\in \ET{}(S)$ gewählt. Dieser Traces
+  Es wird ein Trace $w=a_1a_2\dots a_n\in \ET{}(S)$ gewählt. Dieses Trace
   muss nicht wie bei Punkt (i) einem Ablauf in $S$ entsprechen. Jedoch kann ein
   Präfix von $w$ gefunden werden, dass besondere Eigenschaften erfüllen soll
   und für dass es einen Ablauf gibt. Hierfür muss jedoch unterschieden werden,
   aus welchem Grund das $w$ in $\ET{}(S)$ enthalten ist.
   \begin{itemize}
-    \item Fall 1 ($w\in\cont{}\PrET{}(S)$): In diesem Fall gibt es einen Ablauf
+    \item Fall 1 ($w\in\cont{}(\PrET{}(S))$): In diesem Fall gibt es einen Ablauf
       für ein Präfix dieses $w$s, der zu einem Ablauf zu einem Zustand aus $E$
       ergänzt werden kann. Der Ablauf hat also die Form $q_0
       \overset{a_1}{\Rightarrow} q_1 \overset{a_2}{\Rightarrow} \dots
       \overset{a_m}{\Rightarrow} q_m \overset{b_1}{\Rightarrow} q_{m+1}
       \overset{b_2}{\Rightarrow} \dots \overset{b_l}{\Rightarrow} q_{m+l}$ mit
-      $m\leq n$, $l\geq 0$ und $b_i\in O(S)\forall i$. Es gilt dann $a_1a_2\dots
+      $m\leq n$, $l\geq 0$ und $\forall i\; b_i\in O(S)$. Es gilt dann $a_1a_2\dots
       a_mb_1b_2\dots b_l\in \StET{}(S)$. Analog wie im Beweisteil zu (i) wird
       dieser Ablauf durch die Internalisierung reduziert. Somit ist die
       Projektion von $a_1a_2\dots a_mb_1b_2\dots b_l$ auf die eingeschränkte
       Aktionenmenge auf jeden Fall in $\StET{}(S/X)\subseteq\ET{}(S/X)$
-      enthalten. Da $b_1b_2\dots b_l\in O(S)^*$ gilt, gilt nach der Projektion
-      auch $(b_1b_2\dots b_l)|_{\Sigma\backslash (X\cap O)}\in O(S/X)^*$. Somit
-      gilt $\prune{}((a_1a_2\dots a_m)|_{\Sigma\backslash (X\cap
+      enthalten. Da $b_1b_2\dots b_l\in O(S)^*$, gilt nach der Projektion
+      auch $(b_1b_2\dots b_l)|_{\Sigma\backslash (X\cap O)}\in O(S/X)^*$ und
+      somit $\prune{}((a_1a_2\dots a_m)|_{\Sigma\backslash (X\cap
       O)})=\prune{}((a_1a_2\dots a_mb_1b_2\dots b_l)|_{\Sigma\backslash (X\cap
-      O)})$. Da \ET{} eine Menge ist, die nach Definition immer unter \cont{}
+      O)})$. Da \ET{} eine Menge ist, die nach Definition unter \cont{}
       abgeschlossen ist, sind alle Verlängerung von $(a_1a_2\dots
       a_m)|_{\Sigma\backslash (X\cap O)}$ ebenfalls in $\ET{}(S/X)$ enthalten.
       Es gilt also speziell auch $w|_{\Sigma\backslash (X\cap O)}\in
       \ET{}(S/X)$. Da alle Elemente aus $\ET{}(S/X)$ nur Aktionen aus
       $\Sigma\backslash (X\cap O)$ enthalten, ist ausgeschlossen, dass das eine
       Fortsetzung mit Aktionen außerhalb dieser Menge möglich ist.
-    \item Fall 2 ($w\in\cont{}\MIT{}(S)$): In diesem Fall ist bereits für ein
+    \item Fall 2 ($w\in\cont{}(\MIT{}(S))$): In diesem Fall ist bereits für ein
       Präfix von $w$ ein Ablauf zu einem Zustand möglich, der nicht für alle
       Inputs eine Transitionsmöglichkeit bietet. Der Ablauf hat also die Form
       $q_0 \overset{a_1}{\Rightarrow} q_1 \overset{a_2}{\Rightarrow} \dots
@@ -771,7 +767,9 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   Da $S_1\ERel S_2$ gilt, weiß man, dass $\ET{}_1\subseteq \ET{}_2$ und
   $\EL{}_1\subseteq \EL{}_2$ gilt. Durch die Aussagen (i) bis (iii) kann draus
   direkt gefolgert werden, dass auch $\ET{}(S_1/X)\subseteq \ET{}(S_2/X)$ und
-  $\EL{}(S_1/X)\subseteq \EL{}(S_2/X)$ gilt.\\%TODO überlegen ob besser begründen
+  $\EL{}(S_1/X)\subseteq \EL{}(S_2/X)$ gilt, da zu jedem Trace aus $\ET(S)$
+  bzw.\ $\EL{}(S)$ ein entsprechender Trace aus $\ET(S/X)$ bzw.\ $\EL{}(S/X)$
+  gefunden werden kann und umgekehrt.\\
   Es folgt also insgesamt, dass die Relation \ERel{} trotz Hiding erhalten
   bleibt und somit diese Relation bezüglich des Internalisierungsoperator eine
   Präkongruenz darstellt.
