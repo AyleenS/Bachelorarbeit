@@ -34,12 +34,12 @@ Ruhetrace.
 
 \begin{Def}[error- und ruhe-freie Kommunikation]
   Zwei \EIO{}s $S_1$ und $S_2$ \emph{kommunizieren error- und ruhe-frei}, wenn
-  in ihrer Parallelkomposition $S_1\| S_2$ keine Errors und keine Ruhe-Zustände
+  in ihrer Parallelkomposition $S_{12}$ keine Errors und keine Ruhe-Zustände
   lokal erreichbar sind.
 \end{Def}
 
 \begin{Def}[Ruhe-Verfeinerungs-Basisrelation]
-  \label{DefQuiBasisrel}
+\label{DefQuiBasisrel}
   Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur wird
   $S_1\QBRel S_2$ geschrieben, wenn ein Error oder Ruhe-Zustand in $S_1$ nur
   dann lokal erreichbar ist, wenn ein solcher auch in $S_2$ lokal erreichbar
@@ -58,7 +58,7 @@ zu Errors. Somit werden keine gekürzten Ruhetraces benötigt, bei denen die
 \prune{}-Funktion zur Anwendung käme und auch keine beliebigen Verlängerungen.
 
 \begin{Def}[Ruhetraces]
-  \label{DefRuhetraces}
+\label{DefRuhetraces}
   Sei $S$ ein \EIO{} und definiere:
   \begin{itemize}
     \item \emph{strikte Ruhetraces}: $\StQT{}(S) := \{w\in\Sigma ^*\mid q_0
@@ -71,7 +71,7 @@ dem letzten Kapitel übernommen. Somit gelten für \ET{} und \EL{} die
 Definitionen aus dem letzten Kapitel.
 
 \begin{Def}[Ruhe-Semantik]
-  \label{DefQTQL}
+\label{DefQTQL}
   Sei $S$ ein \EIO{}.
   \begin{itemize}
     \item Die Menge der \emph{error-gefluteten Ruhetraces} von $S$ ist
@@ -93,10 +93,10 @@ Parallelkomposition verhalten. Dies ist vor allem für den danach folgenden Satz
 relevant.
 
 \begin{lem}[Ruhe-Zustände unter Parallelkomposition]
-  \label{lemRuheParallelkomp}
+\label{lemRuheParallelkomp}
   ~
   \begin{enumerate}
-    \item Ein Zustand $(q_1,q_2)$ aus der Parallelkomposition $S_{12}=S_1\|S_2$
+    \item Ein Zustand $(q_1,q_2)$ aus der Parallelkomposition $S_{12}$
       ist ruhig, wenn es auch die Zustände $q_1$ und $q_2$ in $S_1$ bzw.\ $S_2$
       sind.
     \item Wenn der Zustand $(q_1,q_2)$ ruhig ist und nicht in $E_{12}$
@@ -106,73 +106,88 @@ relevant.
 \end{lem}
 
 \begin{proof}
-  %TODO umformulieren, damit sortierter, möglicherweise als Widerspruchsbeweis,
-  %siehe bei 2. auch Anmerkung aus Korrektur
   1.:\\
   Da $q_1\in Qui_1$ und $q_2\in Qui_2$ gilt, haben
   diese beiden Zustände jeweils höchstens die Möglichkeiten Transitionen
   auszuführen, die mit Inputs beschriftet sind, jedoch keine Möglichkeiten, für
-  Outputs oder $\tau$s. Der Zustand, der durch Parallelkomposition aus diesen
-  beiden Zuständen entsteht, hat nur die Transitionsmöglichkeiten dieser
-  Zustände, die parallel ausgeführt werden. Es gibt somit drei unterschiedliche
-  Möglichkeiten:
+  Outputs oder $\tau$s.\\
+  Angenommen der Zustand, der durch Parallelkomposition aus den Zuständen $q_1$
+  und $q_2$ entsteht, ist nicht ruhig, d.h.\ er hat die Möglichkeit für eine
+  Transition mit einem Output oder einem $\tau$.
   \begin{itemize}
-    \item Fall 1 ($a\in I_i\backslash Synch(S_1,S_2)\wedge q_i
-      \overset{a}{\rightarrow}$ für ein $i\in \{1,2\}$): Da $a$ ein
-      Input ist, der nicht in der Menge der synchronisierten Aktionen enthalten
-      ist, wird dieser unabhängig ausgeführt, somit hat
-      $(q_1,q_2)$ ebenfalls die Möglichkeit eine Transition mit $a$ als Input
-      auszuführen.
-    \item Fall 2 ($a\in I_1\cap I_2\wedge q_i \overset{a}{\rightarrow}$ für
-      beide $i\in \{1,2\}$): Da beide Zustände den gleichen Input ausführen
-      können, der zu synchronisieren ist, gilt somit $(q_1,q_2)
-      \overset{a}{\rightarrow}$, wobei $a\in I_{12}$ gilt.
-    \item Fall 3 ($a\in I_i\cap Synch(S_1,S_2)\wedge q_i
-      \overset{a}{\rightarrow}$ für nur ein $i\in \{1,2\}$): Hier handelt es sich
-      um eine Transition, die für $(q_1,q_2)$ nicht ausführbar ist, da es keine
-      passende Transition für das andere System gibt, mit der Input
-      synchronisiert werden könnte. Da es sich hier jedoch um den Input der zu
-      synchronisierenden Aktion handelt, entsteht daraus auch kein
-      neu Fehler, die Transaktion von $q_i$ kann einfach nicht verwendet
-      werden, weil der passende Output bzw.\ Input im anderen System nicht
-      vorhanden ist.
+    \item Fall 1 ($(q_1,q_2) \overset{\tau}{\rightarrow}$): Ein $\tau$ ist eine
+      interne Aktion und kann in dieser Arbeit nicht durch das verbergen von
+      Aktionen bei der Synchronisation entstehen. Ein $\tau$ in der
+      Parallelkomposition ist also nur möglich, wenn dies bereits für einen der
+      beiden Zustände ausführbar war, aus denen der Zustand zusammen gesetzt
+      ist. Jedoch ist eine $\tau$-Transition für $q_1$ und $q_2$
+      ausgeschlossen, deshalb kann auch $(q_1,q_2)$ keine solche Transition
+      ausführen.
+    \item Fall 2 ($(q_1,q_2) \overset{a}{\rightarrow}$ mit $a\in O\backslash
+      Synch(S_1,S_2)$): Da es sich bei $a$ um einen Output handelt, der nicht
+      in $Synch(S_1,S_2)$ enthalten ist, kann dieser nicht aus der
+      Synchronisation von zwei Aktionen entstanden sein, sondern muss bereits
+      für $S_1$ oder $S_2$ ausführbar gewesen sein. Es gilt also \oBdA{} $q_1
+      \overset{a}{\rightarrow}$ mit $a\in O_1$. Dies ist jedoch Aufgrund der
+      Voraussetzungen nicht möglich. Es gilt also, dass die Parallelkomposition
+      diese Transition für $(q_1,q_2)$ nicht ausführen kann.
+    \item Fall 3 ($(q_1,q_2) \overset{a}{\rightarrow}$ mit $a\in O\cap
+      Synch(S_1,S_2)$): Der Output $a$ ist in diesem Fall durch Synchronisation
+      von einem Output mit einem Input entstanden. \OBdA{} gilt $a\in O_1\cap
+      I_2$. Für die einzelnen Systeme muss also gelten, dass $q_1
+      \overset{a}{\rightarrow}$ und $q_2 \overset{a}{\rightarrow}$ gilt. Die
+      Transition für das System $S_1$ ist jedoch in der Voraussetzung
+      ausgeschlossen worden. Somit ist es nicht möglich, dass $S_{12}$ diese
+      Transition für den Zustand $(q_1,q_2)$ ausführen kann.
   \end{itemize}
-  Dies sind alle Fälle, die auftreten können für die Parallelkomposition der
-  Transitionsmöglichkeiten. Bei keiner dieser Möglichkeiten ist ein Output oder
-  ein $\tau$ entstanden und somit hat der Zustand $(q_1,q_2)$ auch keine
-  Möglichkeiten solche Transitionen auszuführen. Daraus folgt also, dass
-  $(q_1,q_2)\in Qui_{12}$ gilt.
+  Da alle diese Fälle zu einem Widerspruch mit der Voraussetzung führen, folgt,
+  dass bereits die Annahme, dass der Zustand $(q_1,q_2)$ nicht ruhig ist,
+  falsch war. Es folgt also $(q_1,q_2)\in Qui_{12}$ gilt.
 
   2.:\\
   Es gilt $(q_1,q_2)\in Qui_{12}\backslash E_{12}$, somit hat
-  dieser Zustand allen falls die Möglichkeit, Transitionen für Inputs auszuführen.
-  Diese Transitionen für Inputs können nur aus Inputs, die nicht in der Menge
-  der synchronisierten Aktionen enthalten sind oder aus der Synchronisation
-  von zwei Inputs aus der Menge $I_1\cap I_2$ enstehen. Durch die
-  Parallelkomposition von Outputs mit anderen Aktionen können keine Inputs
-  entstehen und in der hier verwendeten Definition der Parallelkomposition auch
-  keine $\tau$s. Outputs, die nicht in der Menge $Synch(S_1,S_2)$ enthalten sind,
-  würden als Outputs des zusammengesetzten Zustandes übernommen werden und
-  können somit weder bei $q_1$ noch bei $q_2$ vorhanden sein. Falls jedoch
-  $(q_1,q_2)\in E_{12}$ zulassen wäre, wäre es möglich, dass einer der beiden
-  Zustände $q_i$ eine Transitionsmöglichkeit für einen Output hat, der aufgrund
-  eines fehlenden Inputs des anderen Zustandes nicht synchronisiert werden kann
-  und somit ein neuer Error entsteht. Dieser Fall wird jedoch durch die
-  zusätzliche Einschränkung ausgeschlossen. Falls einer der beiden Zustände
-  eine Transitionsmöglichkeit für ein $\tau$ gehabt hätte, müsste dies auch der
-  zusammengesetzte Zustand haben und könnte somit nach Definition
-  nicht ruhig sein. Es folgt also, dass $q_1$ und $q_2$ ebenso nur
-  Transitionen mit Inputs ausführen können, d.h.\ $q_1\in Qui_1$ und
-  $q_2\in Qui_2$.
+  dieser Zustand allen falls die Möglichkeit, Transitionen für Inputs
+  auszuführen.\\
+  Angenommen $q_1\notin Qui_1$, dann ist für $q_1$ entweder eine
+  $\tau$-Transition oder eine Output-Transition möglich.
+  \begin{itemize}
+    \item Fall 1 ($q_1 \overset{\tau}{\rightarrow}$): Da diese Transition für
+      $S_1$ möglich ist, kann auch $S_{12}$ im Zustand $(q_1,q_2)$ diese
+      Transition ausführen. Dies ist jedoch durch die Voraussetzung verboten.
+      Somit gilt auch $q_1 \overset{\tau}{\not{\hspace{-0.1cm}\rightarrow}}$.
+    \item Fall 2($q_1 \overset{a}{\rightarrow}$ mit $a\in O_1\backslash
+      Synch(S_1,S_2)$): Da es sich bei $a$ um einen Output handelt, der nicht
+      zu synchronisieren ist, wird dieser einfach in die Parallelkomposition
+      übernommen. Es müsste also $(q_1,q_2) \overset{a}{\rightarrow}$ gelten,
+      was jedoch verboten ist. Somit kann die Transition für $S_1$ in diesem
+      Fall auch nicht möglich sein.
+    \item Fall 3($q_1 \overset{a}{\rightarrow}$ mit $a\in O_1\cap
+      Synch(S_1,S_2)$ und $q_2 \overset{a}{\rightarrow}$): In diesem Fall ist
+      die Synchronisation des Outputs $a$ von $S_1$ mit dem Input $a$ von $S_2$
+      möglich, so dass in der Parallelkomposition der Output $a$ als Transition
+      für $(q_1,q_2)$ möglich ist. Diese Transitionsmöglichkeit ist jedoch für
+      $S_{12}$ nach Voraussetzung nicht erlaubt. Es folgt also auch, dass
+      dieser Fall nicht eintreten kann.
+    \item Fall 4($q_1 \overset{a}{\rightarrow}$ mit $a\in O_1\cap
+      Synch(S_1,S_2)$ und $q_2 \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$):
+      Da $S_2$ diese Transition nicht ausführen kann, handelt es sich hier um
+      einen neuen Error, da die Synchronisation an dieser Stelle nicht möglich
+      ist. Es würde also $(q_1,q_2)\in E_{12}$ gelten, dies wurde jedoch in der
+      Voraussetzung bereits ausgeschlossen. Somit ist dieser Fall nicht
+      möglich.
+  \end{itemize}
+  Alle aufgeführten Fälle führen zu einem Widerspruch mit der Voraussetzung,
+  somit folgt, dass die Annahme bereits falsch war und $q_1\in Qui_1$ gelten
+  muss. Analog kann für $q_2$ argumentiert werden, so dass dann auch $q_2\in
+  Qui_2$ folgt.
 \end{proof}
 
 In dem folgenden Satz sind Punkt 1.\ und 3.\ nur zur Vollständigkeit aufgeführt.
 Sie entsprechen Punkt 1.\ und 2.\ aus Satz~\ref{satzErrorSemanik}.
 
 \begin{satz}[Error- und Ruhe-Semantik für Parallelkompositonen]
-  \label{satzQuiSemantik}
-  Für zwei komponierbare \EIO{}s $S_1, S_2$ und ihre Komposition $S_{12} =
-  S_1\|S_2$ gilt:
+\label{satzQuiSemantik}
+  Für zwei komponierbare \EIO{}s $S_1, S_2$ und ihre Komposition $S_{12}$ gilt:
   \begin{enumerate}
     \item $\ET{}_{12} = \cont{}(\prune{}((\ET{}_1\|\EL{}_2)\cup
       (\EL{}_1\|\ET{}_2)))$,
@@ -184,7 +199,7 @@ Sie entsprechen Punkt 1.\ und 2.\ aus Satz~\ref{satzErrorSemanik}.
 \begin{proof}
   Es wird nur der 2. Punkt bewiesen.
 
-  \glqq $\subseteq$\grqq :\\
+  \glqq{}$\subseteq$\grqq{}:\\
   Hier muss unterschieden werden, ob ein $w\in\StQT{}_{12}\backslash \ET{}_{12}$
   oder ein $w\in \ET{}_{12}$ betrachtet wird. Im zweiten Fall ist das
   $w$ in der rechten Seite enthalten. Somit wird ab jetzt ein $w\in
@@ -200,7 +215,7 @@ Sie entsprechen Punkt 1.\ und 2.\ aus Satz~\ref{satzErrorSemanik}.
   Daraus folgt dann $w\in \QT{}_1\|\QT{}_2$ und somit ist $w$ in der rechten
   Seiten der Gleichung enthalten.
 
-  \glqq $\supseteq$\grqq :\\
+  \glqq{}$\supseteq$\grqq{}:\\
   Es muss wieder danach unterschieden werden, aus welcher Menge das betrachtete
   Element stammt. Falls $w\in \ET{}_{12}$ gilt, so kann die
   Zugehörigkeit zur linken Seite direkt gefolgert werden. Somit wird für den
@@ -234,13 +249,13 @@ Relation \QRel{} um die gröbste Präkongruenz handeln könnte, die in diesem
 Kapitel charakterisiert werden soll.
 
 \begin{prop}[Ruhe-Präkongruenz]
-  \label{propQuiPrae}
+\label{propQuiPrae}
   \QRel{} ist eine Präkongruenz bezüglich $\cdot\|\cdot$.
 \end{prop}
 
 \begin{proof}
   Es muss gezeigt werden: Wenn $S_1\QRel S_2$ gilt, so auch
-  $S_3\|S_1\QRel S_3\|S_2$ für jedes $S_3$. D.h.\ es ist zu zeigen, dass aus
+  $S_{31}\QRel S_{32}$ für jedes $S_3$. D.h.\ es ist zu zeigen, dass aus
   $S_1\ERel S_2$ und $\QT{}_1\subseteq \QT{}_2$ sowohl $S_{31}\ERel S_{32}$ als
   auch $\QT{}_{31}\subseteq \QT{}_{32}$ folgt. Dies ergibt sich wie im Beweis
   zu Proposition~\ref{propPraekongruenz} aus der Monotonie von $\cdot\|\cdot$
@@ -267,7 +282,7 @@ mit Partnern im Sinne von error- und ruhe-freier Kommunikation betrachtet
 werden.
 
 \begin{lem}[Verfeinerung mit Ruhe-Zuständen]
-  \label{lemQuiVerfeinerung}
+\label{lemQuiVerfeinerung}
   Gegeben sind zwei \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur. Wenn
   $U\|S_1\QBRel U\|S_2$ für alle Partner $U$ gilt, dann folgt daraus $S_1\QRel
   S_2$.
@@ -318,7 +333,7 @@ werden.
       enthält, kann der Error nur von $S_2$ geerbt sein. Somit muss in $S_2$
       ein Error-Zustand lokal erreichbar sein, d.h.\ es gilt $\varepsilon\in
       \PrET{}_2\subseteq \ET{}_2$.
-    \item Fall 2 ($w=x_1\dots x_nx_{n+1}\in\Sigma ^+$ mit $n\geq 0$ und
+    \item Fall 2 ($w=x_1\dots x_nx_{n+1}\in\Sigma{} ^+$ mit $n\geq 0$ und
       $x_{n+1}\in I$): Es wird der folgende Partner $U$ betrachtet (siehe auch
       Abbildung~\ref{UohneEmitTau}):
       \begin{itemize}
@@ -358,7 +373,7 @@ werden.
                 (n1) edge [loop below] node {$x?\in I_U, \tau$} (n1);
         \end{tikzpicture}
         \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$}
-        \label{UohneEmitTau}
+\label{UohneEmitTau}
       \end{center}
       \end{figure}
       Da im Vergleiche zum Transitionssystem in Abbildung~\ref{UohneE} nur die
@@ -435,7 +450,7 @@ werden.
         \end{tikzpicture}
         \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$, $q_n$
           ist der einzige Error-Zustand}
-        \label{UmitEundTau}
+\label{UmitEundTau}
       \end{center}
       \end{figure}
       Da durch die $\tau$-Schlingen an den Zuständen wie oben vermieden wird,
@@ -506,7 +521,7 @@ werden.
                 (q) edge [loop below] node {$x?\in I_U, \tau$} (q);
         \end{tikzpicture}
         \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$}
-        \label{UohneEmitI}
+\label{UohneEmitI}
       \end{center}
       \end{figure}
       Es gilt somit, dass auch in der Parallelkomposition $U\|S_1$ ein
@@ -553,7 +568,7 @@ Präkongruenz charakterisiert wurde bezüglich $\cdot\|\cdot$, die in \QBRel{}
 enthalten ist.
 
 \begin{satz}[Full Abstractness für Ruhe-Semantik]
-  \label{satzQuiFullAbst}
+\label{satzQuiFullAbst}
   Seien $S_1$ und $S_2$ zwei \EIO{}s mit derselben Signatur. Dann gilt
   $S_1\QCRel S_2\Leftrightarrow S_1\QRel S_2$, insbesondere ist \QRel{} eine
   Präkongruenz.
@@ -604,7 +619,7 @@ dargestellt.
         {$\substack{U~\mathrm{Partner}\\\Downarrow\\U~\mathrm{komponierbar}}$} (m-2-1);
     \end{tikzpicture}
     \caption{Folgerungskette}
-    \label{FolgerungsketteQui}
+\label{FolgerungsketteQui}
   \end{center}
 \end{figure}
 
@@ -649,19 +664,19 @@ $S_2$ und $S_2/X$.
 \end{proof}
 
 \begin{satz}[Ruhe-Präkongurenz bzgl. Internalisierung]
-  \label{satzPraeInterQui}
+\label{satzPraeInterQui}
   Seien $S_1$ und $S_2$ zwei \EIO{}s für die $S_1\QRel S_2$ gilt, somit gilt
   auch $S_1/X\QRel S_2/X$. Es ist also \QRel{} eine Präkongruenz bezüglich
   $\cdot /\cdot$. Es gilt für die Sprachen und Traces:
   \begin{compactenum}[(i)]
-    \item $L(S/X) = \{w\in (\Sigma\backslash(X\cap O))^*\mid \exists
-      w'|_{\Sigma\backslash (X\cap O)} = w\}$,
-    \item $\ET{}(S/X) = \{w\in (\Sigma\backslash (X\cap O))^*\mid \exists
-      w'\in \ET{}(S): w'|_{\Sigma\backslash (X\cap O)} = w\}$,
-    \item $\EL{}(S/X) = \{w\in (\Sigma\backslash (X\cap O))^*\mid \exists w'\in
-      \EL(S): w'|_{\Sigma\backslash (X\cap O)} = w\}$,
-    \item $\QT{}(S/X) = \{w\in (\Sigma\backslash (X\cap O))^*\mid \exists w'\in
-      \QT{}(S):w'|_{\Sigma\backslash (X\cap O)}=w\}$.
+  \item $L(S/X) = \{w\in (\Sigma\backslash X){}^*\mid \exists
+      w'|_{\Sigma\backslash X} = w\}$,
+    \item $\ET{}(S/X) = \{w\in (\Sigma\backslash X){}^*\mid \exists
+      w'\in \ET{}(S): w'|_{\Sigma\backslash X} = w\}$,
+    \item $\EL{}(S/X) = \{w\in (\Sigma\backslash X){}^*\mid \exists w'\in
+      \EL(S): w'|_{\Sigma\backslash X} = w\}$,
+    \item $\QT{}(S/X) = \{w\in (\Sigma\backslash X){}^*\mid \exists w'\in
+      \QT{}(S):w'|_{\Sigma\backslash X}=w\}$.
   \end{compactenum}
 \end{satz}
 
@@ -675,16 +690,16 @@ $S_2$ und $S_2/X$.
   Die Korrektheit dieser Aussage kann analog zum Beweis der Punkte (i) bis
   (iii) im Satz~\ref{satzPraeInternalisierung} gezeigt werden. Für ein $w\in
   \QT{}(S)$ gilt entweder $w\in\ET{}(S)$ oder $w\in\StQT{}(S)\subseteq L(S)$. Es
-  gilt also mit Punkt (i) und (ii), dass $w|_{\Sigma\backslash (X\cap O)}$ in
+  gilt also mit Punkt (i) und (ii), dass $w|_{\Sigma\backslash X}$ in
   $\ET{}(S/X)$ und in $\StQT{}(S/X)$ enthalten ist und somit auch in
   $\QT{}(S/X)$. Für ein $w\in\StQT{}(S)$ ist jedoch anzumerken, dass im Beweis
   zu Punkt (i) durch die Einschränkung des Traces immer noch der gleiche
   Zustand erreicht wird. Es folgt also insgesamt, dass $w _{\Sigma\backslash
-  (X\cap O)}\in \QT{}(S/X)$ gilt.\\
+  X}\in \QT{}(S/X)$ gilt.\\
   Für ein $w\in\QT{}(S/X)$ kann ebenfalls wie im Beweis zu Punkt (i) und (iii)
   durch ersetzen von $\tau$s im jeweiligen Ablauf ein Ablauf gefunden werden,
   der in $S$ enthalten ist. Es gibt also eine Erweiterung von $w$ um Aktionen
-  aus $X\cap O$, sodass diese in $\QT{}(S)$ enthalten ist.
+  aus $X$, sodass diese in $\QT{}(S)$ enthalten ist.
 
   Da $S_1\QRel S_2$ gilt, kann geschlossen werden, dass $S_1\ERel S_2$ und
   $\QT{}_1\subseteq \QT{}_2$ gilt. Aufgrund von
@@ -769,7 +784,7 @@ werden.
 %     \path (0) edge node {$a!$} (1);
 %   \end{tikzpicture}
 %   \caption{$S_1$}
-%   \label{S1}
+%\label{S1}
 % \end{center}
 % \end{figure}
 % Für $S_2$ wird das folgende Transitionssystem verwendet (siehe dazu auch
@@ -797,10 +812,10 @@ werden.
 %           (2) edge [loop below] node {$b!$} (2);
 %   \end{tikzpicture}
 %   \caption{$S_2$}
-%   \label{S2}
+%\label{S2}
 % \end{center}
 % \end{figure}
-% Somit ergibt sich für die Parallelkomposition $S_{12} = S_1\| S_2$ das folgende
+% Somit ergibt sich für die Parallelkomposition $S_{12}$ das folgende
 % Transitionssystem, bei dem bereits unerreichbare Zustände weggelassen sind
 % (siehe dazu auch Abbildung~\ref{S12}):
 % \begin{itemize}
@@ -830,7 +845,7 @@ werden.
 %           (2) edge [loop below] node {$b!$} (2);
 %   \end{tikzpicture}
 %   \caption{$S_{12}$}
-%   \label{S12}
+%\label{S12}
 % \end{center}
 % \end{figure}
 
@@ -867,7 +882,7 @@ werden.
 % Diese Art der Definition hätte jedoch die Betrachtung deutlich aufwendiger
 % gemacht und soll deshalb hier nicht behandelt werden.
 
-\scriptsize\textcolor{lgray}{TODO: Erweiterungsmöglichkeiten:
+\scriptsize\textcolor{lgray}{TODO:\@ Erweiterungsmöglichkeiten:
 \begin{itemize}
   \item Ruhe-Semantik analog zu Error-Semantik (\EL{} würde nicht mehr alle
     Informationen enthalten)

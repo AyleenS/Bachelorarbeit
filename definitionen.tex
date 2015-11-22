@@ -85,7 +85,7 @@ kommt. Die beiden Transitionssysteme können über die beiden Inputs nicht
 miteinander kommunizieren, sondern nur mit anderen Systemen.
 
 \begin{Def}[Parallelkomposition]
-  \label{DefParallelkomposition}
+\label{DefParallelkomposition}
   Zwei \EIO{}s $S_1, S_2$ sind \emph{komponierbar}, falls
   $O_1\cap O_2=\emptyset$ gilt. Die \emph{Parallelkomposition} ist
   $S_{12}:=S_1\|S_2=(Q,I,O,\delta ,q_0,E)$ mit den Komponenten:
@@ -164,7 +164,7 @@ Zusätzlich werden Funktionen definiert, die die Traces beliebig fortsetzen.
 \end{Def}
 
 Für zwei komponierbare \EIO{}s $S_1$ und $S_2$ ist ein Ablauf ihrer
-Parallelkomposition $S_{12}=S_1\| S_2$ eine Transitionsfolge der Form $(p_1,p_2)
+Parallelkomposition $S_{12}$ eine Transitionsfolge der Form $(p_1,p_2)
 \overset{w}{\Rightarrow} (q_1,q_2)$ für ein $w\in\Sigma_{12}^*$. So ein Ablauf
 kann auf Abläufe von $S_1$ und $S_2$ projiziert werden. Diese Projektionen
 erfüllen $p_i \overset{w_i}{\Rightarrow} q_i$ mit $w|_{\Sigma
@@ -181,8 +181,8 @@ zulässig sind, sind mehrere Abläufe möglich, da nicht klar ist, wann ein $\ta
 in einem Trace ausgeführt wird. Daraus ergibt sich das folgende Lemma.
 
 \begin{lem}[Sprache der Parallelkomposition]
-  \label{LemmaSprache}
-  Für zwei komponierbare \EIO{}s $S_1$ und $S_2$ gilt: \[L_{12} := L(S_1\|S_2) =
+\label{LemmaSprache}
+  Für zwei komponierbare \EIO{}s $S_1$ und $S_2$ gilt: \[L_{12} := L(S_{12}) =
   L_1\|L_2.\]
 \end{lem}
 
@@ -217,7 +217,7 @@ entsprechend Quelle~\cite{Schlosser2012BA}.
     \item $X\subseteq O$,
     \item $O'=O\backslash X$,
     \item $\delta '=(\delta\cup\{(q,\tau ,q')\mid (q,x,q')\in\delta
-      ,x\in X\})\backslash \{(q,x,q')\mid x\in X\cap O)\}$.
+      ,x\in X\})\backslash \{(q,x,q')\mid x\in X\}$.
   \end{itemize}
 \end{Def}
 
@@ -241,7 +241,7 @@ kommunizieren kann. Somit ergibt sich die folgende Definition, mit der die
 Parallelkomposition aus~\cite{Vogler2014EIO} nachgebildet werden kann.
 
 \begin{Def}[Parallelkomposition mit Internalisierung]
-  \label{defIntParal}
+\label{defIntParal}
   Seinen $S_1$ und $S_2$ komponierbare \EIO{}s, dann ist
   $S_1|S_2=S_{12}/(Synch(S_1,S_2)\cap O_{12})$.
 \end{Def}

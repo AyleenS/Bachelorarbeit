@@ -11,7 +11,7 @@ wurde die Parallelkomposition geändert, wie in~\cite{Schlosser2012BA}.
   Ein Error ist \emph{lokal erreichbar} in einem \EIO{} $S$, wenn $\exists w\in O^*: q_0
   \overset{w}{\Rightarrow} q\in E$.\\
   Zwei \EIO{}s $S_1$ und $S_2$ \emph{kommunizieren error-frei}, wenn in ihrer
-  Parallelkomposition $S_1\| S_2$ keine Errors lokal erreicht werden können.
+  Parallelkomposition $S_{12}$ keine Errors lokal erreicht werden können.
 \end{Def}
 
 Mittels der lokalen Erreichbarkeit von Errors kann ein
@@ -19,7 +19,7 @@ Verfeinerungsrelation definiert werden. Zusätzlich wird bereits die
 gröbste Präkongruenz definiert, die gesucht werden soll.
 
 \begin{Def}[Error-Verfeinerungs-Basisrelation]
-  \label{DefErrorBasisrel}
+\label{DefErrorBasisrel}
   Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur wird
   $S_1\EBRel S_2$ geschrieben, wenn ein Error in $S_1$ nur dann lokal erreichbar ist, wenn er
   auch in $S_2$ lokal erreichbar ist. Es handelt sich dabei um eine
@@ -42,7 +42,7 @@ dies gefährdete Stellen. Sie führen zu einem neuen Error, sobald dieser Input
 für die Synchronisation fehlt.
 
 \begin{Def}[Errortraces]
-  \label{DefErrortraces}
+\label{DefErrortraces}
   Für ein \EIO{} $S$ wird definiert:
   \begin{itemize}
     \item \emph{strikte Errortraces}: $\StET{}(S)=\{w\in\Sigma
@@ -62,7 +62,7 @@ Errortraces vereint werden und somit bei der Inklusion nicht mehr explizit
 unterscheiden werden.
 
 \begin{Def}[Error-Semantik]
-  \label{DefETEL}
+\label{DefETEL}
   Sei $S$ ein \EIO{}.
   \begin{itemize}
     \item Die Menge der \emph{Errortraces} von $S$ ist $\ET{}(S):=\cont{}(\PrET{}(S))\cup
@@ -81,9 +81,9 @@ von~\cite{Schlosser2012BA} neu geführt wurde, wird hier eher auf die
 Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
 
 \begin{satz}[Error-Semanik für Parallelkompositionen]
-  \label{satzErrorSemanik}
+\label{satzErrorSemanik}
   Für zwei komponierbare \EIO{}s $S_1, S_2$ und ihre Komposition
-  $S_{12}=S_1\|S_2$, gilt:
+  $S_{12}$, gilt:
   \begin{enumerate}
     \item
       $\ET{}_{12}=\cont{}(\prune{}((\ET{}_1\|\EL{}_2)\cup(\EL{}_1\|\ET{}_2)))$,
@@ -159,7 +159,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
       \end{itemize}
   \end{itemize}
 
-  1. \glqq $\supseteq$\grqq :\\
+  1. \glqq{}$\supseteq$\grqq{}:\\
   Wegen der Abgeschlossenheit beider Seiten der Gleichung gegenüber $\cont{}$
   wird auch in diesem Fall nur ein präfix-minimales Element $x\in
   \prune{}((\ET{}_1\|\EL{}_2)\cup (\EL{}_1\|\ET{}_2))$ betrachtet. Da $x$ durch
@@ -246,7 +246,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
           $v''\in v_1'\|v_2''$. Daraus ergibt sich $(q_{01},q_{02})
           \overset{v''}{\Rightarrow} (q_1,q_2)$ mit $q_1
           \overset{a}{\not{\hspace{-0.1cm}\rightarrow}},a\in I_1, q_2
-          \overset{a}{\rightarrow},$ $a\in O_2$, somit gilt $(q_1,q_2)\in
+          \overset{a}{\rightarrow}$, $a\in O_2$, somit gilt $(q_1,q_2)\in
           E_{12}$. Es wird $v:=\prune{}(v'')\in \PrET{}_{12}$ gewählt.
       \end{itemize}
   \item Fall II ($v_1\in \PrET{}_1$): $\exists u_1\in O_1^*:q_{01}
@@ -309,13 +309,13 @@ dann die erste Eigenschaft erfüllt ist, um eine operationale Beschreibung der
 vollständig abstrakten Präkongruenz \ECRel{} zu erhalten.
 
 \begin{prop}[Error-Präkongruenz]
-  \label{propPraekongruenz}
+\label{propPraekongruenz}
   \ERel{} ist eine Präkongruenz bezüglich $\cdot\|\cdot$.
 \end{prop}
 
 \begin{proof}
   Es muss gezeigt werden: Wenn $S_1\ERel S_2$ gilt, dann für jedes
-  komponierbare $S_3$ auch $S_3\|S_1\ERel S_3\|S_1$. D.h.\ es ist zu zeigen,
+  komponierbare $S_3$ auch $S_{31}\ERel S_{32}$. D.h.\ es ist zu zeigen,
   dass aus $\ET{}_1\subseteq \ET{}_2$ und $\EL{}_1\subseteq \EL{}_2$,
   $\ET{}_{31}\subseteq \ET{}_{32}$ und $\EL{}_{31}\subseteq
   \EL{}_{32}$ folgt. Dies ergibt sich aus der Monotonie von \cont{},
@@ -354,7 +354,7 @@ Die Verfeinerungsrelation, die in dem nächsten Lemma betrachtet werden soll,
 verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
 
 \begin{lem}[Verfeinerung mit Errors]
-  \label{lemVerfeinerung}
+\label{lemVerfeinerung}
   Gegeben sind zwei \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur. Wenn
   $U\|S_1 \EBRel U\|S_2$ für alle Partner $U$ gilt, dann folgt daraus die
   Gültigkeit von $S_1\ERel S_2$.
@@ -418,7 +418,7 @@ verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
                 (n1) edge [loop below] node {$x?\in I_U$} (n1);
         \end{tikzpicture}
         \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$}
-        \label{UohneE}
+\label{UohneE}
       \end{center}
       \end{figure}
       Für $w$ können zwei Fälle unterscheiden werden. Beide führen zu
@@ -514,7 +514,7 @@ verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
         \end{tikzpicture}
         \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$, $q_n$
           ist der einzige Error-Zustand}
-        \label{UmitE}
+\label{UmitE}
       \end{center}
       \end{figure}
       Da $q_{01} \overset{w}{\Rightarrow} q'$ gilt, kann man schließen, dass $U\|S_1$
@@ -550,14 +550,14 @@ charakterisiert werden soll, also gleich der vollständig abstrakten
 Präkongruenz \ECRel{}.
 
 \begin{satz}[Full Abstractness für Error-Semanik]
-  \label{satzFullAbstractness}
+\label{satzFullAbstractness}
   Seien $S_1$ und $S_2$ zwei \EIO{}s mit derselben Signatur. Dann gilt
   $S_1\ECRel S_2\Leftrightarrow S_1\ERel S_2$, insbesondere ist \ERel{}
   eine Präkongruenz.
 \end{satz}
 
 \begin{proof}
-  \glqq $\Leftarrow$\grqq : Nach Definition gilt, genau dann wenn
+  \glqq{}$\Leftarrow$\grqq{}: Nach Definition gilt, genau dann wenn
       $\varepsilon\in \ET{}(S)$, ist ein Error lokal erreichbar in $S$.
       $S_1\ERel S_2$ impliziert, dass $\varepsilon\in
       \ET{}_2$ gilt, wenn $\varepsilon\in \ET{}_1$. Somit ist ein Error
@@ -571,7 +571,7 @@ Präkongruenz \ECRel{}.
       \ECRel{} enthalten sein. Es folgt also aus $S_1\ERel S_2$, dass auch
       $S_1\ECRel{} S_2$ gilt.
 
-      \glqq $\Rightarrow$\grqq : Durch die Definition von \ECRel{} als
+      \glqq{}$\Rightarrow$\grqq{}: Durch die Definition von \ECRel{} als
       Präkongruenz in~\ref{DefErrorBasisrel} folgt aus $S_1\ECRel S_2$, dass
       $U\|S_1\ECRel U\|S_2$ für alle \EIO{}s $U$, die mit $S_1$ komponierbar
       sind. Da \ECRel{} nach Definition auch in \EBRel{} enthalten sein soll
@@ -604,7 +604,7 @@ Ring schließt. Dies ist in Abbildung~\ref{Folgerungskette} dargestellt.
           {$\substack{U~\mathrm{Partner}\\\Downarrow\\ U~\mathrm{komponierbar}}$} (m-2-1);
     \end{tikzpicture}
     \caption{Folgerungskette}
-    \label{Folgerungskette}
+\label{Folgerungskette}
   \end{center}
 \end{figure}
 
@@ -625,7 +625,7 @@ Es soll nun untersucht werden, was für Auswirkungen Hiding auf die
 Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
 
 \begin{prop}[Error-Basisrelation bzgl. Internalisierung]
-  \label{propErBaIn}
+\label{propErBaIn}
   Wenn $S_1\EBRel S_2$ gilt, dann folgt daraus, dass auch $(S_1/X)\EBRel
   (S_2/X)$ gilt.
 \end{prop}
@@ -643,18 +643,18 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
 \end{proof}
 
 \begin{satz}[Error-Präkongurenz bzgl. Interalisierung]
-  \label{satzPraeInternalisierung}
+\label{satzPraeInternalisierung}
   Seinen $S_1$ und $S_2$ zwei \EIO{}s für die $S_1\ERel S_2$ gilt, somit gilt
   auch $S_1/X\ERel S_2/X$. Daraus folgt insbesondere, dass \ERel{} eine
   Präkongruenz bezüglich $\cdot /\cdot$ ist.
   Es gilt für die Sprachen und Traces:
   \begin{compactenum}[(i)]
-    \item $L(S/X) = \{w\in (\Sigma\backslash(X\cap O))^*\mid \exists
-      w'|_{\Sigma\backslash (X\cap O)} = w\}$,
-    \item $\ET{}(S/X) = \{w\in (\Sigma\backslash (X\cap O))^*\mid \exists
-      w'\in \ET{}(S): w'|_{\Sigma\backslash (X\cap O)} = w\}$,
-    \item $\EL{}(S/X) = \{w\in (\Sigma\backslash (X\cap O))^*\mid \exists w'\in
-      \EL(S): w'|_{\Sigma\backslash (X\cap O)} = w\}$.
+  \item $L(S/X) = \{w\in (\Sigma\backslash X){}^*\mid \exists
+      w'|_{\Sigma\backslash X} = w\}$,
+    \item $\ET{}(S/X) = \{w\in (\Sigma\backslash X){}^*\mid \exists
+      w'\in \ET{}(S): w'|_{\Sigma\backslash X} = w\}$,
+    \item $\EL{}(S/X) = \{w\in (\Sigma\backslash X){}^*\mid \exists w'\in
+      \EL(S): w'|_{\Sigma\backslash X} = w\}$.
   \end{compactenum}
 \end{satz}
 
@@ -682,15 +682,15 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
       gilt also $w\in L(S/X)$. Somit ist für diesen Fall die Aussage über $L$
       korrekt.
     \item Fall 2 ($n\geq 1$): Nach der Internalisierung bleiben von dem Ablauf
-      nur noch die Aktionen übrig, die nicht Elemente aus $X\cap O$ sind. Der
-      Ablauf reduziert sich also auf $q_0 \overset{\tau~\mathrm{falls}~a_1\in
-      X\cap O}{\overset{\mathrm{sonst}~a_1}{\Longrightarrow}} q_1
-      \overset{\tau~\mathrm{falls}~a_2\in X\cap
-      O}{\overset{\mathrm{sonst}~a_2}{\Longrightarrow}} \dots
-      \overset{\tau~\mathrm{falls}~a_n\in X\cap
-      O}{\overset{\mathrm{sonst}~a_n}{\Longrightarrow}} q_n$. Dabei bleibt
+      nur noch die Aktionen übrig, die nicht Elemente aus $X$ sind. Der Ablauf
+      reduziert sich also auf $q_0 \overset{\tau~\mathrm{falls}~a_1\in
+      X}{\overset{\mathrm{sonst}~a_1}{\Longrightarrow}} q_1
+      \overset{\tau~\mathrm{falls}~a_2\in
+      X}{\overset{\mathrm{sonst}~a_2}{\Longrightarrow}} \dots
+      \overset{\tau~\mathrm{falls}~a_n\in
+      X}{\overset{\mathrm{sonst}~a_n}{\Longrightarrow}} q_n$. Dabei bleibt
       durch das Hiding von Aktionen aus $X$ in $w$ nur noch
-      $w|_{\Sigma\backslash (X\cap O)}$ erhalten. Diese Projektion des Wortes
+      $w|_{\Sigma\backslash X}$ erhalten. Diese Projektion des Wortes
       $w$ auf die eingeschränkte Aktionenmenge ist dann in $L(S/X)$ enthalten,
       da immer noch der selbe Zustand durch das Worte erreicht wird. Es gilt
       also auch für diesen Fall die Aussage über die Sprache $L$.
@@ -698,7 +698,7 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   Für ein Wort aus der Sprache $L$ des Transitionssystems $S/X$ existiert wie
   oben auch ein Ablauf. Hier ist es jedoch wichtig, dass auch
   $\tau$-Transitionen gemacht werden um dieses Wort auszuführen. In dem dies
-  $\tau$-Transitionen durch Transitionen mit Elementen aus $X\cap O$ ersetzt
+  $\tau$-Transitionen durch Transitionen mit Elementen aus $X$ ersetzt
   werden erhält man ein Trace aus der Sprache $L(S)$.
 
   (ii)
@@ -720,15 +720,15 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
       Projektion von $a_1a_2\dots a_mb_1b_2\dots b_l$ auf die eingeschränkte
       Aktionenmenge auf jeden Fall in $\StET{}(S/X)\subseteq\ET{}(S/X)$
       enthalten. Da $b_1b_2\dots b_l\in O(S)^*$, gilt nach der Projektion
-      auch $(b_1b_2\dots b_l)|_{\Sigma\backslash (X\cap O)}\in O(S/X)^*$ und
-      somit $\prune{}((a_1a_2\dots a_m)|_{\Sigma\backslash (X\cap
-      O)})=\prune{}((a_1a_2\dots a_mb_1b_2\dots b_l)|_{\Sigma\backslash (X\cap
-      O)})$. Da \ET{} eine Menge ist, die nach Definition unter \cont{}
+      auch $(b_1b_2\dots b_l)|_{\Sigma\backslash X}\in O(S/X)^*$ und
+      somit $\prune{}((a_1a_2\dots a_m)|_{\Sigma\backslash
+      X})=\prune{}((a_1a_2\dots a_mb_1b_2\dots b_l)|_{\Sigma\backslash X})$. Da
+      \ET{} eine Menge ist, die nach Definition unter \cont{}
       abgeschlossen ist, sind alle Verlängerung von $(a_1a_2\dots
-      a_m)|_{\Sigma\backslash (X\cap O)}$ ebenfalls in $\ET{}(S/X)$ enthalten.
-      Es gilt also speziell auch $w|_{\Sigma\backslash (X\cap O)}\in
+      a_m)|_{\Sigma\backslash X}$ ebenfalls in $\ET{}(S/X)$ enthalten.
+      Es gilt also speziell auch $w|_{\Sigma\backslash X}\in
       \ET{}(S/X)$. Da alle Elemente aus $\ET{}(S/X)$ nur Aktionen aus
-      $\Sigma\backslash (X\cap O)$ enthalten, ist ausgeschlossen, dass das eine
+      $\Sigma\backslash X$ enthalten, ist ausgeschlossen, dass das eine
       Fortsetzung mit Aktionen außerhalb dieser Menge möglich ist.
     \item Fall 2 ($w\in\cont{}(\MIT{}(S))$): In diesem Fall ist bereits für ein
       Präfix von $w$ ein Ablauf zu einem Zustand möglich, der nicht für alle
@@ -754,10 +754,10 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   (iii)
   Für ein Trace $w=a_1a_2\dots a_n\in \EL{}(S)$ gilt $w\in L(S)$ oder $w\in
   \ET{}(S)$. Für beide Fälle wurde oben bereits gezeigt, dass dann
-  $w|_{\Sigma\backslash (X\cap O)}$ in der entsprechenden Menge des
+  $w|_{\Sigma\backslash X}$ in der entsprechenden Menge des
   Transitionssystems $S/X$ enthalten ist. Da \EL{} als Vereinigung aus den
   Mengen $L$ und \ET{} definiert ist, ist dadurch dann auch gezeigt, dass
-  $w|_{\Sigma\backslash (X\cap O)}\in \EL{}(S/X)$ gilt.\\
+  $w|_{\Sigma\backslash X}\in \EL{}(S/X)$ gilt.\\
   Ebenfalls analog zu den beiden vorangegangen Punkten kann auch argumentiert
   werden, dass zu jedem $w\in \EL{}(S/X)$ durch hinzufügen von Aktionen aus $X$
   ein $w'\in \EL{}(S)$ gefunden werden kann.
