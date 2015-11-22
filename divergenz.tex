@@ -1,32 +1,27 @@
-\chapter{Verfeinerung auf Error-, Ruhe- und Divergenztraces}
+\chapter{Verfeinerung für Error-, Ruhe- und Divergenz-Freiheit}
 
 \section{Präkongruenz für Divergenz}
 
-In diesem Kapitel wollen wir die Menge der betrachteten Zustände noch einmal
-erweitern. Somit betrachten wir dann Errors, Ruhe-Zustände und
-Divergente-Zustände. Somit eignet sich~\cite{Chilton2013} hier als Quelle, da
-wir nun auch noch die Divergenz betrachten. Diese wurde dort gleichzeitig mit
-der Ruhe eingeführt und betrachtet. Da es sich nur um eine Erweiterung der
-Präkongruenzen aus den letzten beiden Kapiteln handelt, werden wir dabei
-ähnlich vorgehen wie in den letzten beiden Kapiteln.\\
-Wenn von einem Zustand aus eine unendliche Folge an $\tau$-Transitionen möglich
-ist, nennen wir diesen Zustand divergent.
+In diesem Kapitel soll die Menge der betrachteten Zustände noch einmal
+erweitert werden. Somit werden dann Errors, Ruhe-Zustände und
+Divergente-Zustände betrachtet. Somit eignet sich~\cite{Chilton2013} hier als
+Quelle, da nun auch noch die Divergenz betrachtet wird. Diese wurde dort
+gleichzeitig mit der Ruhe eingeführt und betrachtet. Da es sich nur um eine
+Erweiterung der Präkongruenzen aus den letzten beiden Kapiteln handelt, wird
+dabei ähnlich vorgegangen wie in den letzten beiden Kapiteln.\\
+Wie bereits im letzten Kapitel erwähnt wurden in~\cite{Chilton2013} auch noch
+divergente Zustände als Fehler-Zustände betrachtet. Um zu klären, was darunter
+verstanden wird, wird nun noch eine Definition für Divergenz gegeben.
 
 \begin{Def}[Divergenz]
   Ein \emph{Divergenz-Zustand} ist ein Zustand in einem \EIO{}, der eine
-  unendliche Folge an $\tau$s ausführen kann.\\
-  Somit ist die Menge der Divergenz-Zustände in einem \EIO{} wie folgt formal
-  definiert: $Div := \{q\in Q\mid \exists q'\in Q': q
-  \overset{\tau}{\Rightarrow} q' \wedge q'~\mathrm{ist}~\infty\mathrm{-oft}
-  ~\mathrm{durch}~\tau ~\mathrm{erreichbar}\}$.
+  unendliche Folge an $\tau$s ausführen kann. %TODO formale Def möglicherweise
+  %mit unendlicher indizierter Folge, da Q unendlich sein kann
 \end{Def}
 
-Wir verwenden als Erreichbarkeitsbegriff wieder die lokale Erreichbarkeit.
-Jedoch werden wir für Divergenz auch nicht die Methoden wählen, dass die Traces
-beliebig fortsetzbar sind, sondern nur so wie im System bereits möglich. Auf
-die gleiche Art zu Weise wie bei den Ruhe-Zuständen können wir hier auch dem
-Fehler entkommen. Durch einen Input oder einen Output kann das Divergieren des
-Systems verhindert werden und somit ist der Fehler auch als nicht so
+Als Erreichbarkeitsbegriff wird wieder die lokale Erreichbarkeit verwendet.
+Da das divergieren eines Systems nicht mehr verhindert werden kann, sobald ein
+divergenter Zustand lokal erreichbar ist, ist Divergenz als ähnlich
 \glqq{}schlimm\grqq{} zu bewerten wie ein Error.
 
 \begin{Def}[error-, ruhe- und divergenz-freie Kommunikation]
@@ -36,48 +31,48 @@ Systems verhindert werden und somit ist der Fehler auch als nicht so
 \end{Def}
 
 \begin{Def}[Divergenz-Verfeinerungs-Basisrelation]
-Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur schreiben wir $S_1\DBRel
-S_2$, wenn ein Error, Ruhe-Zustand oder Divergenz-Zustand in $S_1$ nur dann
-lokal erreichbar ist, wenn er auch in $S_2$ lokal erreichbar ist. Diese
+Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur wird $S_1\DBRel S_2$
+geschrieben, wenn ein Error, Ruhe-Zustand oder Divergenz-Zustand in $S_1$ nur
+dann lokal erreichbar ist, wenn er auch in $S_2$ lokal erreichbar ist. Diese
 \emph{Basisrelation} stellt eine \emph{Verfeinerung} bezüglich \emph{Errors},
 \emph{Ruhe-Zuständen} und \emph{Divergenz-Zuständen} dar.\\
 \DCRel{} bezeichnet die \emph{vollständige abstrakte Präkongruenz} von \DBRel{}
 bezüglich $\cdot\|\cdot$.
 \end{Def}
 
-Da wir nun die grundlegenden Definitionen für Divergenz festgehalten haben,
-können wir uns nun einen Begriff für die Traces von divergenten Zuständen
+Da nun die grundlegenden Definitionen für Divergenz festgehalten sind,
+kann man sich nun einen Begriff für die Traces von divergenten Zuständen
 bilden.\\
-Wie oben bereits erwähnt, verwenden wir hier die gleiche Technik wie im letzten
-Kapitel um die Traces zu kürzen und nur so fortzusetzen wie es das
-Transitionssystem ermöglicht.
 
 \begin{Def}[Divergenztraces]
   Sei $S$ ein \EIO{} und definiere:
   \begin{itemize}
     \item strickte Divergenztraces: $\StDT{}(S) := \{w\in\Sigma ^*\mid q_0
       \overset{w}{\Rightarrow} q\in Div\}$,
-    \item Divergenztraces: $\PrDT{}(S) := \bigcup\{\prunenew (w)\mid
+    \item gekürzte Divergenztraces: $\PrDT{}(S) := \{\prune (w)\mid
       w\in\StDT{}(S)\}$.
   \end{itemize}
 \end{Def}
 
-Da in~\cite{Chilton2013} bereits direkt Divergenz mit betrachtet wurde, wir dort
-die Flutung der Traces so vorgenommen, dass $\ET\sqsubseteq \DT\sqsubseteq\QT$
-gilt. Dies möchten wir auch gerne hier in diesem Kapitel erreichen. Somit
-können wir zwar die Semantik aus dem Error-Kapitel übernehmen, benötigen jedoch
-für die Ruhe eine andere Semantik wie im letzten Kapitel.
+Da in~\cite{Chilton2013} bereits direkt Divergenz mit betrachtet wurde, wird
+dort die Flutung der Traces so vorgenommen, dass $\ET\sqsubseteq \DT\sqsubseteq
+\QT$ gilt. Dies soll auch hier in diesem Kapitel erreicht werden. Somit kann
+zwar die Semantik aus dem Error-Kapitel übernehmen werden, jedoch wird für die
+Ruhe eine andere Semantik benötigt, die sich von der im letzten Kapitel
+unterscheidet. Die Inklusionskette der Fehlertraces scheint auch von der
+Hierarchie her auf die Bewertung zu passen, wie kritisch die einzelnen Fehler
+sind.
 
 \begin{Def}[Ruhe- und Divergenz-Semantik]
   \label{DefRuheDivSemantik}
   Sei $S$ ein \EIO{}.
   \begin{itemize}
     \item Die Menge der \emph{error-gefluteten Divergenztraces} von $S$ ist
-      $\DT{}(S) := \PrDT{}(S)\cup \ET{}(S)$.
+      $\DT{}(S) := \cont{}(\PrDT{}(S))\cup \ET{}(S)$.
     \item Die Menge der \emph{divergenz-gefluteten Ruhetraces} von $S$ ist
       $\QT{}(S) := \PrQT{}(S)\cup \DT{}(S)$.
   \end{itemize}
-  Für zwei \EIO{}s $S_1, S_2$ mit der gleichen Signatur schreiben wir $S_1\DRel
+  Für zwei \EIO{}s $S_1, S_2$ mit der gleichen Signatur schreibt man $S_1\DRel
   S_2$, wenn $S_1\ERel S_2$, $\DT{}(S_1)\sqsubseteq \DT{}(S_2)$ und
   $\QT{}(S_1)\sqsubseteq \QT{}(S_2)$ gilt.
 \end{Def}
@@ -86,9 +81,9 @@ In der letzten Definition wurde wieder durch das Fluten eine
 Informationsvermischung vorgenommen. Im Fall von \DT{} mit den Errortraces und
 im Fall von \QT{} mit den Divergenztraces. Jedoch entstehen hier wie im letzten
 Kapitel keine neuen Traces, die nicht bereits in \EL{} aus den Error-Kapitel
-enthalten wären. Somit können wir die error-geflutete Sprache ohne weitere
-Flutung verwenden. Somit ist die Relation \DRel{} ebenso wie \QRel{} eine
-Einschränkung der Relation \ERel{}.\\
+enthalten wären. Somit kann die error-geflutete Sprache ohne weitere
+Flutung verwendet werden. Somit ist die Relation \DRel{} ebenso wie \QRel{}
+eine Einschränkung der Relation \ERel{}.\\
 Ebenso wie in Satz~\ref{satzQuiSemantik} wird im nächsten Satz nur der
 Vollständigkeit halber der erste und letzte Punkt erwähnt der Beweis dazu
 findet sich in Satz~\ref{satzErrorSemanik}.
@@ -99,36 +94,33 @@ findet sich in Satz~\ref{satzErrorSemanik}.
   \begin{enumerate}
     \item $\ET{}_{12}=\cont (\prune ((\ET{}_1\|\EL{}_2)\cup
       (\EL{}_1\|\ET{}_2)))$,
-    \item $\DT{}_{12}=\prunenew ((\DT{}_1\|\EL{}_2)\cup (\EL{}_1\|\DT{}_2))\cup
-      \ET{}_{12}$,
+    \item $\DT{}_{12}=\cont (\prune ((\DT{}_1\|\EL{}_2)\cup
+      (\EL{}_1\|\DT{}_2)))\cup \ET{}_{12}$,
     \item $\QT{}_{12}=\prunenew (\QT{}_1\|\QT{}_2)\cup \DT{}_{12}$,
     \item $\EL{}_{12}=(\EL{}_1\|\EL{}_2)\cup \ET{}_{12}$.
   \end{enumerate}
 \end{satz}
 
-\begin{proof}
-  ~
-  \begin{enumerate}
-    \item \hspace{-0.2cm}:
-  \end{enumerate}
-  \vspace{-0.3cm}
-  Der Beweis diese Punktes entspricht dem Beweis von Punkt 1.\ im Beweis von
-  Satz~\ref{satzErrorSemanik}.
+\begin{proof} Es wird hier nur der 2.\ und 3.\ Punkt bewiesen.
 
   2. ``$\subseteq$'':\\
-  Wir müssen hier unterscheiden, ob wir ein $w\in \PrDT{}_{12}$ oder ein $w\in
-  \ET{}_{12}$ betrachten. Im zweiten Fall ist das $w$ in der rechten Seite der
-  Gleichung enthalten. Deshalb werden wir im weiteren Verlauf dieses Beweises
-  davon ausgehen, dass $w\in \PrDT{}_{12}$ gilt, und wir werden versuchen zu
-  zeigen, dass dieses $w$ ebenfalls in der rechten Seite enthalten ist. Aus der
-  Definition~\ref{DefRuheDivSemantik} wissen wir, dass es ein $v\in O^*_{12}$
-  gibt, so dass $(q_{01},q_{02}) \overset{wv}{\Rightarrow} (q_1,q_2)$ mit
-  $(q_1,q_2)\in Div_{12}$ gilt. Durch die Projektion auf die Transitionssysteme
-  $S_1$ und $S_2$ erhalten wir $q_{01} \overset{w_1v_1}{\Rightarrow} q_1$ und
-  $q_{02} \overset{w_2v_2}{\Rightarrow} q_2$ mit $w\in w_1\|w_2$ und $v\in
-  v_1\|v_2$. Aus $(q_1,q_2)\in Div_{12}$ können wir folgern, dass \oBdA{}
-  $q_1\in Div_1$ gilt. Damit der Zustand $(q_1,q_2)$ in der Parallelkomposition
-  erreicht werden kann, muss dann $w_2v_2\in L_2\subseteq \ET{}_2$ gelten.
+  %TODO anpassen an neue Definitionen
+  Da hier auf beiden Seiten der Gleichung Mengen stehen, die unter \cont{}
+  abgeschlossen sind, reicht es nur präfix-minimale Elemente zu betrachten. Es
+  muss hier unterschieden, ob ein präfix-minimales $w\in \cont{}(\PrDT{}_{12})$
+  oder ein $w\in \ET{}_{12}$ betrachtet wird. Im zweiten Fall ist das $w$ in
+  der rechten Seite der Gleichung enthalten. Deshalb wird im weiteren Verlauf
+  dieses Beweises davon ausgegangen, dass $w\in \cont{}(\PrDT{}_{12})$ gilt,
+  und es wird versucht zu zeigen, dass dieses $w$ ebenfalls in der rechten
+  Seite enthalten ist. Aus der Definition~\ref{DefRuheDivSemantik} und der von
+  \prune{} weiß man, dass es ein $v\in O^*_{12}$ gibt, so dass $(q_{01},q_{02})
+  \overset{wv}{\Rightarrow} (q_1,q_2)$ mit $(q_1,q_2)\in Div_{12}$ gilt. Durch
+  die Projektion auf die Transitionssysteme $S_1$ und $S_2$ erhält man $q_{01}
+  \overset{w_1v_1}{\Rightarrow} q_1$ und $q_{02} \overset{w_2v_2}{\Rightarrow}
+  q_2$ mit $w\in w_1\|w_2$ und $v\in v_1\|v_2$. Aus $(q_1,q_2)\in Div_{12}$
+  folgt, dass \oBdA{} $q_1\in Div_1$ gilt. Damit der Zustand $(q_1,q_2)$ in der
+  Parallelkomposition erreicht werden kann, muss dann $w_2v_2\in L_2\subseteq
+  \ET{}_2$ gelten.
 
   2. ``$\supseteq$'':\\
 
@@ -141,4 +133,4 @@ findet sich in Satz~\ref{satzErrorSemanik}.
   Satz~\ref{satzErrorSemanik}.
 \end{proof}
 
-\section{Hiding für Divergenz}
+\section{Hiding und Divergenz-Freiheit}
