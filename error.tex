@@ -70,8 +70,8 @@ unterscheiden werden.
     \item Die \emph{error-geflutete Sprache} von $S$ ist $\EL{}(S):=L(S)\cup \ET{}(S)$.
   \end{itemize}
   Für zwei \EIO{}s $S_1, S_2$ mit der gleichen Signatur wird
-  $S_1\ERel S_2$ geschrieben, wenn $\ET{}(S_1)\subseteq \ET{}(S_2)$ und
-  $\EL{}(S_1)\subseteq \EL{}(S_2)$ gilt.
+  $S_1\ERel S_2$ geschrieben, wenn $\ET{}_1\subseteq \ET{}_2$ und
+  $\EL{}_1\subseteq \EL{}_2$ gilt.
 \end{Def}
 
 Der folgende Satz wurde in~\cite{Vogler2014EIO} nur für die Parallelkomposition
@@ -173,13 +173,12 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
   die $\prune{}$-Funktion an dieser Stelle noch zur Anwendung kommt. Da jedoch später nur
   Präfixe von $x$ betrachtet werden, ist dieser Unterschied irrelevant.\\
   Im Folgenden wird für alle Fälle von $xy$ gezeigt, dass es ein $v\in
-  \PrET{}(S_1\|S_2)\cup \MIT{}(S_1\|S_2)$ gibt, das ein Präfix von $xy$ ist und $v$
+  \PrET{}_{12}\cup \MIT{}_{12}$ gibt, das ein Präfix von $xy$ ist und $v$
   entweder auf einen Input aus $I_{12}$ endet oder $v = \varepsilon$. Da $v$
   entweder leer ist oder auf einen Input endet, muss $v$ ein Präfix von $x$
   sein. $\varepsilon$ ist Präfix von jedem Wort und sobald $v$ mindestens einen
   Buchstaben enthält, muss das Ende von $v$ vor dem Anfang von $y\in O_{12}^*$
-  liegen. Dadurch hat $x$ ein Präfix in $\PrET{}(S_1\|S_2)\cup
-  \MIT{}(S_1\|S_2)$, damit ist $x$ in
+  liegen. Dadurch hat $x$ ein Präfix in $\PrET{}_{12}\cup \MIT{}_{12}$, damit ist $x$ in
   der Fortsetzung dieser Menge enthalten und somit gilt $x\in \ET{}_{12}$.\\
   Sei $v_1$ das kürzeste Präfix von $w_1$ in $\PrET{}_1\cup \MIT{}_1$. Falls
   $w_2\in L_2$, so sei $v_2=w_2$, sonst soll $v_2$ das kürzeste Präfix von
@@ -269,14 +268,13 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
         $u_1'\in u_1'\|u_2$ und $(q_1,q_2) \overset{u_1'}{\Rightarrow}
         (q_1'',q_2')\in E_{12}$, da für $S_2$ der entsprechende Input fehlt,
         der mit dem $c$ Output von $S_1$ zu koppeln wäre. Es handelt sich also
-        um einen neuen Error. Es wird $v:=\prune{}(v'u_1')\in \PrET{}(S_1\|
-        S_2)$ gewählt,
+        um einen neuen Error. Es wird $v:=\prune{}(v'u_1')\in \PrET{}_{12}$ gewählt,
         dies ist ein Präfix von $v'$, da $u_1\in O_1^*$.
       \item Fall IIb) ($q_2 \overset{u_2}{\Rightarrow} q_2'$ mit
         $u_2=u_1|_{I_2}$): Somit ist $u_1\in u_1\|u_2$ und $(q_1,q_2)
         \overset{u_1}{\Rightarrow} (q_1',q_2')\in E_{12}$, da $q_1'\in E_1$ und
         somit handelt es sich um einen geerbten Error. Es wird nun $v:=\prune{}
-        (v'u_1)\in \PrET{}(S_1\|S_2)$ gewählt, das wiederum ein Präfix von $v'$ ist.
+        (v'u_1)\in \PrET{}_{12}$ gewählt, das wiederum ein Präfix von $v'$ ist.
     \end{itemize}
   \end{itemize}
 
@@ -319,25 +317,25 @@ vollständig abstrakten Präkongruenz \ECRel{} zu erhalten.
   Es muss gezeigt werden: Wenn $S_1\ERel S_2$ gilt, dann für jedes
   komponierbare $S_3$ auch $S_3\|S_1\ERel S_3\|S_1$. D.h.\ es ist zu zeigen,
   dass aus $\ET{}_1\subseteq \ET{}_2$ und $\EL{}_1\subseteq \EL{}_2$,
-  $\ET{}(S_3\|S_1)\subseteq \ET{}(S_3\|S_2)$ und $\EL{}(S_3\|S_1)\subseteq
-  \EL{}(S_3\|S_2)$ folgt. Dies ergibt sich aus der Monotonie von \cont{},
+  $\ET{}_{31}\subseteq \ET{}_{32}$ und $\EL{}_{31}\subseteq
+  \EL{}_{32}$ folgt. Dies ergibt sich aus der Monotonie von \cont{},
   \prune{} und $\cdot \|\cdot$ auf Sprachen wie folgt:\\
   \begin{itemize}
     \item $\begin{aligned}[t]
-        \ET{}(S_3\|S_1) &\overset{\ref{satzErrorSemanik}~1.}{=}
+        \ET{}_{31} &\overset{\ref{satzErrorSemanik}~1.}{=}
       \cont{}(\prune{}((\ET{}_3\|\EL{}_1)\cup (\EL{}_3\|\ET{}_1)))\\
       &\hspace{-0.3cm}\overset{\ET{}_1\subseteq
     \ET{}_2}{\overset{\mathrm{und}}{\overset{\EL{}_1\subseteq \EL{}_2}{\subseteq}}}
     \cont{}(\prune{}((\ET{}_3\|\EL{}_2)\cup (\EL{}_3\|\ET{}_2)))\\
-      &\overset{\ref{satzErrorSemanik}~1.}{=} \ET{}(S_3\|S_2),
+    &\overset{\ref{satzErrorSemanik}~1.}{=} \ET{}_{32},
     \end{aligned}$
     \item $\begin{aligned}[t]
-        \EL{}(S_3\|S_1) &\overset{\ref{satzErrorSemanik}~2.}{=} (\EL{}_3\|\EL{}_1)\cup
+        \EL{}_{31} &\overset{\ref{satzErrorSemanik}~2.}{=} (\EL{}_3\|\EL{}_1)\cup
         E_{31}\\
         &\hspace{-0.4cm}\overset{\EL{}_1\subseteq
       \EL{}_2}{\overset{\mathrm{und}}{\overset{\ET{}_{31}\subseteq
       \ET{}_{32}}{\subseteq}}} (\EL{}_3\|\EL{}_2)\cup \ET{}_{32}\\
-      &\overset{\ref{satzErrorSemanik}~2.}{=} \EL{}(S_3\|S_2).
+      &\overset{\ref{satzErrorSemanik}~2.}{=} \EL{}_{32}.
     \end{aligned}$
   \end{itemize}
 \end{proof}
@@ -368,11 +366,11 @@ verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
   $O_U=I$.\\
   Um $S_1\ERel S_2$ zu zeigen, wird nachgeprüft, ob folgendes gilt:
   \begin{itemize}
-    \item $\ET{}(S_1)\subseteq \ET{}(S_2)$,
-    \item $\EL{}(S_1)\subseteq \EL{}(S_2)$.
+    \item $\ET{}_1\subseteq \ET{}_2$,
+    \item $\EL{}_1\subseteq \EL{}_2$.
   \end{itemize}
-  Für ein gewähltes präfix-minimales Element $w\in \ET{}(S_1)$ wird gezeigt,
-  dass dieses $w$ oder eines seiner Präfixe in $\ET{}(S_2)$ enthalten ist.
+  Für ein gewähltes präfix-minimales Element $w\in \ET{}_1$ wird gezeigt,
+  dass dieses $w$ oder eines seiner Präfixe in $\ET{}_2$ enthalten ist.
   Dies ist möglich, da beide Mengen durch $\cont{}$ abgeschlossen sind.
   \begin{itemize}
     \item Fall 1 ($w=\varepsilon$): Es handelt sich um einen lokal erreichbaren
@@ -383,7 +381,7 @@ verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
       $U\|S_2$ einen lokal erreichbaren Error-Zustand haben muss. Durch die
       Definition von $U$ kann dieser Error nur von $S_2$ geerbt sein. Es
       muss also in $S_2$ ein Error-Zustand durch interne Aktionen und Outputs
-      erreichbar sein, d.h.\ es gilt $\varepsilon\in \PrET{}(S_2)$.
+      erreichbar sein, d.h.\ es gilt $\varepsilon\in \PrET{}_2$.
     \item Fall 2 ($w=x_1\dots x_n x_{n+1}\in\Sigma ^+$ mit $n\geq 0$ und
       $x_{n+1}\in I$): Es wird der folgenden Partner $U$ bedachtet (siehe auch
       Abbildung~\ref{UohneE}):
@@ -429,14 +427,14 @@ verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
       vorhanden bleiben und somit kann nicht $\varepsilon\in \StET{}(U\|S_1)$
       gelten.
       \begin{itemize}
-        \item Fall 2a) ($w\in \MIT{}(S_1)$): In $U\|S_1$ erhält man
+        \item Fall 2a) ($w\in \MIT{}_1$): In $U\|S_1$ erhält man
           $(q_0,q_{01}) \overset{x_1\dots x_n}{\Rightarrow} (q_n,q')$ mit
           $q' \overset{x_{n+1}}{\not{\hspace{-0.1cm}\rightarrow}}$ und $q_n
           \overset{x_{n+1}}{\rightarrow}$. Deshalb gilt $(q_n,q')\in
           E_{U\|S_1}$ und $x_1\dots x_n\in \StET{}(U\|S_1)$. Da alle Aktionen aus
           $w$ bis auf $x_{n+1}$ synchronisiert werden gilt $x_1,\dots ,x_n\in
           O_{U\|S_1}$. Daraus ergibt sich dann $\varepsilon\in \PrET{}(U\|S_1)$.
-        \item Fall 2b) ($w\in \PrET{}(S_1)$): In $U\|S_1$ erhält man
+        \item Fall 2b) ($w\in \PrET{}_1$): In $U\|S_1$ erhält man
           $(q_0,q_{01}) \overset{w}{\Rightarrow} (q_{n+1},q'')
           \overset{u}{\Rightarrow} (q_{n+1},q')$ für $u\in O^*$ und $q'\in
           E_1$. Daraus folgt $(q_{n+1},q')\in E_{U\|S_1}$ und somit $wu\in
@@ -460,24 +458,24 @@ verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
           O_U=I$. Durch Projektion erhält man dann $q_{02} \overset{x_1\dots
           x_i}{\Rightarrow} q'
           \overset{x_{i+1}}{\not{\hspace{-0.1cm}\rightarrow}}$ und damit gilt
-          $x_1\dots x_{i+1}\in \MIT{}(S_2)\subseteq \ET{}(S_2)$. Somit ist ein Präfix
-          von $w$ in $\ET{}(S_2)$ enthalten.
+          $x_1\dots x_{i+1}\in \MIT{}_2\subseteq \ET{}_2$. Somit ist ein Präfix
+          von $w$ in $\ET{}_2$ enthalten.
         \item Fall 2ii) (geerbter Error): $U$ hat $x_1\dots x_i u$ ausgeführt
           mit $u\in I_U^*=O^*$ und ebenso hat $S_2$ diesen Weg ausgeführt.
           Durch dies hat $S_2$ einen Zustand in $E_2$ erreicht, da von $U$
           keine Errors geerbt werden können. Es gilt dann $\prune{}(x_1\dots
-          x_iu)=\prune{}(x_1\dots x_i)\in \PrET{}(S_2)\subseteq \ET{}(S_2)$. Da $x_1\dots
+          x_iu)=\prune{}(x_1\dots x_i)\in \PrET{}_2\subseteq \ET{}_2$. Da $x_1\dots
           x_i$ ein Präfix von $w$ ist, führt auch in diesem Fall ein Präfix von
           $w$ zu einem Error.
       \end{itemize}
   \end{itemize}
   Um die zweiten Inklusion zu beweisen, reicht es aufgrund der ersten
   Inklusion und der Definition von $\EL{}$ aus zu zeigen, dass
-  $L(S_1)\backslash \ET{}(S_1)\subseteq \EL{}(S_2)$ gilt.\\
-  Es wird dafür ein beliebiges $w\in L(S_1)\backslash \ET{}(S_1)$ gewählt und
-  gezeigt, dass es in $\EL{}(S_2)$ enthalten ist.
+  $L_1\backslash \ET{}_1\subseteq \EL{}_2$ gilt.\\
+  Es wird dafür ein beliebiges $w\in L_1\backslash \ET{}_1$ gewählt und
+  gezeigt, dass es in $\EL{}_2$ enthalten ist.
   \begin{itemize}
-    \item Fall 1 ($w=\varepsilon$): Da $\varepsilon$ immer in $\EL{}(S_2)$
+    \item Fall 1 ($w=\varepsilon$): Da $\varepsilon$ immer in $\EL{}_2$
       enthalten ist, ist hier nichts zu zeigen.
     \item Fall 2 ($w=x_1\dots x_n$ mit $n\geq 1$): Es wird einen
       Partner $U$ wie folgt konstruiert (siehe dazu auch Abbildung~\ref{UmitE}):
@@ -526,23 +524,23 @@ verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
         \item Fall 2a) (neuer Error aufgrund von $x_i\in O_U$ und $q_{02}
           \overset{x_1\dots x_{i-1}}{\Rightarrow} q''
           \overset{x_i}{\not{\hspace{-0.1cm}\rightarrow}}$): Es gilt $x_1\dots
-          x_i\in \MIT{}(S_2)$ und somit $w\in \EL{}(S_2)$. Anzumerken ist, dass nur
+          x_i\in \MIT{}_2$ und somit $w\in \EL{}_2$. Anzumerken ist, dass nur
           auf diesem Weg Outputs von $U$ möglich sind, deshalb gibt es keine
           anderen Outputs von $U$, die zu einem neuen Error führen können.
         \item Fall 2b) (neuer Error aufgrund von $a\in O_2$): Der einzige
           Zustand, in dem $U$ nicht alle Inputs erlaubt sind, ist $q_n$, der
           bereits ein Error-Zustand ist. Falls dieser Zustand erreichbar ist in
           $U\|S_2$, dann besitzt das komponierte \EIO{} einen geerbten Error und
-          es gilt $w\in L(S_2)\subseteq \EL{}(S_2)$, wegen Fall 2c).
+          es gilt $w\in L_2\subseteq \EL{}_2$, wegen Fall 2c).
         \item Fall 2c) (geerbter Error von $U$): Da der einzige Zustand aus
           $E_U$ $q_n$ ist und alle Aktionen synchronisiert sind, ist dies nur
           möglich, wenn gilt $q_{02} \overset{x_1\dots x_n}{\Rightarrow}$. In
-          diesem Fall gilt, $w\in L(S_2)\subseteq \EL{}(S_2)$.
+          diesem Fall gilt, $w\in L_2\subseteq \EL{}_2$.
         \item Fall 2d) (geerbter Error von $S_2$): Es gilt dann $q_{02}
           \overset{x_1\dots x_iu}{\Rightarrow} q'\in E_2$ für $i\geq 0$ und
-          $u\in O^*$. Somit ist $x_1\dots x_iu\in \StET{}(S_2)$ und damit
-          $\prune{}(x_1\dots x_iu)=\prune{}(x_1\dots x_i)\in \PrET{}(S_2)\subseteq
-          \EL{}(S_2)$. Somit gilt $w\in \EL{}(S_2)$.
+          $u\in O^*$. Somit ist $x_1\dots x_iu\in \StET{}_2$ und damit
+          $\prune{}(x_1\dots x_iu)=\prune{}(x_1\dots x_i)\in \PrET{}_2\subseteq
+          \EL{}_2$. Somit gilt $w\in \EL{}_2$.
       \end{itemize}
   \end{itemize}
 \end{proof}
@@ -562,7 +560,7 @@ Präkongruenz \ECRel{}.
   \glqq $\Leftarrow$\grqq : Nach Definition gilt, genau dann wenn
       $\varepsilon\in \ET{}(S)$, ist ein Error lokal erreichbar in $S$.
       $S_1\ERel S_2$ impliziert, dass $\varepsilon\in
-      \ET{}(S_2)$ gilt, wenn $\varepsilon\in \ET{}(S_1)$. Somit ist ein Error
+      \ET{}_2$ gilt, wenn $\varepsilon\in \ET{}_1$. Somit ist ein Error
       in $S_1$ nur dann lokal erreichbar, wenn dieser auch in $S_2$ lokal
       erreichbar ist. Dadurch folgt, dass $S_1\EBRel S_2$ gilt, da \EBRel{} in
       Definition~\ref{DefErrorBasisrel} über die lokale Erreichbarkeit der

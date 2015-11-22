@@ -78,8 +78,8 @@ Definitionen aus dem letzten Kapitel.
       $\QT{}(S) := \StQT{}(S)\cup \ET{}(S)$.
   \end{itemize}
   Für zwei \EIO{}s $S_1, S_2$ mit der gleichen Signatur wird
-  $S_1\QRel S_2$ geschrieben, wenn $S_1\ERel S_2$ und $\QT{}(S_1)\subseteq
-  \QT{}(S_2)$ gilt.
+  $S_1\QRel S_2$ geschrieben, wenn $S_1\ERel S_2$ und $\QT{}_1\subseteq
+  \QT{}_2$ gilt.
 \end{Def}
 
 Für die Menge der error-gefluteten Ruhetraces \QT{} wurde eine Informationsvermischung
@@ -281,7 +281,7 @@ werden.
   folgenden Punkte nachgewiesen werden:
   \begin{itemize}
     \item $S_1\ERel S_2$,
-    \item $\QT{}(S_1)\subseteq \QT{}(S_2)$.
+    \item $\QT{}_1\subseteq \QT{}_2$.
   \end{itemize}
   In Lemma~\ref{lemVerfeinerung} wurde bereits etwas Ähnliches gezeigt, jedoch
   wurde dort als Voraussetzung $U\|S_1\EBRel U\|S_2$ für alle Partner $U$
@@ -295,8 +295,8 @@ werden.
   verhält es sich, wenn in $S_1'$ ein Ruhe-Zustand lokal erreichbar ist.\\
   Es muss also für den ersten Punkt folgendes nachgewiesen werden:
   \begin{itemize}
-    \item $\ET{}(S_1)\subseteq \ET{}(S_2)$,
-    \item $\EL{}(S_1)\subseteq \EL{}(S_2)$.
+    \item $\ET{}_1\subseteq \ET{}_2$,
+    \item $\EL{}_1\subseteq \EL{}_2$.
   \end{itemize}
   Es wird nun damit begonnen, den ersten Unterpunkt des ersten Beweispunktes zu
   zeigen, d.h.\ es wird unter der Voraussetzung, dass $U\|S_1\QBRel U\|S_2$
@@ -317,7 +317,7 @@ werden.
       keinen Error-Zustand und auch keine fehlenden Input-Möglichkeiten
       enthält, kann der Error nur von $S_2$ geerbt sein. Somit muss in $S_2$
       ein Error-Zustand lokal erreichbar sein, d.h.\ es gilt $\varepsilon\in
-      \PrET{}(S_2)\subseteq \ET{}_2$.
+      \PrET{}_2\subseteq \ET{}_2$.
     \item Fall 2 ($w=x_1\dots x_nx_{n+1}\in\Sigma ^+$ mit $n\geq 0$ und
       $x_{n+1}\in I$): Es wird der folgende Partner $U$ betrachtet (siehe auch
       Abbildung~\ref{UohneEmitTau}):
@@ -381,13 +381,13 @@ werden.
 
   Nun wird mit dem zweiten Unterpunkt des ersten Beweispunktes begonnen. Genau
   wie im Beweis zu~\ref{lemVerfeinerung} ist hier jedoch auf Grund des bereits
-  geführten Beweisteils nur noch $L(S_1)\backslash \ET{}(S_1)\subseteq
-  \EL{}(S_2)$ zu zeigen. Es wird also für ein beliebig gewähltes $w\in
-  L(S_1)\backslash \ET{}(S_1)$ gezeigt, dass es auch in $\EL{}(S_2)$ enthalten
+  geführten Beweisteils nur noch $L_1\backslash \ET{}_1\subseteq
+  \EL{}_2$ zu zeigen. Es wird also für ein beliebig gewähltes $w\in
+  L_1\backslash \ET{}_1$ gezeigt, dass es auch in $\EL{}_2$ enthalten
   ist.
   \begin{itemize}
     \item Fall 1 ($w=\varepsilon$): Ebenso wie in~\ref{lemVerfeinerung} gilt
-      auch hier, dass $\varepsilon$ immer in $\EL{}(S_2)$ enthalten ist.
+      auch hier, dass $\varepsilon$ immer in $\EL{}_2$ enthalten ist.
     \item Fall 2 ($w=x_1\dots x_n$ mit $n\geq 1$): Die Konstruktion des
       Partners $U$ weicht wie im letzten Beweisteil nur durch die
       $\tau$-Schleifen an den Zuständen des Transitionssystems vom Beweis zu
@@ -442,22 +442,22 @@ werden.
       dass es in einer Komposition mit $U$ Ruhe-Zustände gibt, verläuft der Rest
       des Beweises dieses Punktes analog zum Beweis von
       Lemma~\ref{lemVerfeinerung}. Und somit gilt für alle Fälle (2a) bis 2d)),
-      dass $w$ in $\EL{}(S_2)$ enthalten ist.
+      dass $w$ in $\EL{}_2$ enthalten ist.
   \end{itemize}
 
   So bleibt nun nur noch der letzte Beweispunkt zu zeigen, d.h.\ die Inklusion
-  $\QT{}_1\subseteq \QT{}_2$. Diese Inklusion kann jedoch noch anlog zum Beweis
-  der Inklusion der error-gefluteten Sprachen weiter eingeschränkt werden.
+  $\QT{}_1\subseteq \QT{}_2$. Diese Inklusion kann jedoch noch, anlog zum Beweis
+  der Inklusion der error-gefluteten Sprachen, weiter eingeschränkt werden.
   Da bereits bekannt ist, dass $\ET{}_1\subseteq\ET{}_2$ gilt, muss nur
-  noch $\StQT{}_1\backslash \ET{}(S_1)\subseteq \QT{}_2$ gezeigt werden.\\
-  Es wird ein $w\in \StQT{}(S_1)\backslash\ET{}(S_1)$ gewählt und gezeigt, dass
-  es auch in $\QT{}(S_2)$ enthalten ist.\\
+  noch $\StQT{}_1\backslash \ET{}_1\subseteq \QT{}_2$ gezeigt werden.\\
+  Es wird ein $w\in \StQT{}_1\backslash\ET{}_1$ gewählt und gezeigt, dass
+  es auch in $\QT{}_2$ enthalten ist.\\
   Es ist vom Startzustand von $S_1$ durch das Wort $w$ ein ruhiger Zustand
   erreichbar. Dies hätte keine Auswirkungen auf die Parallelkomposition
   $U\|S_1$, wenn in $U$ kein Ruhe-Zustand durch $w$ erreichbar wäre.
   \begin{itemize}
     \item Fall 1 ($w=\varepsilon$): Es ist ein Ruhe-Zustand intern erreichbar in
-      $S_1$, da jedoch $\varepsilon\notin \ET{}(S_1)$ gilt, ist kein Error
+      $S_1$, da jedoch $\varepsilon\notin \ET{}_1$ gilt, ist kein Error
       lokal erreichbar. Für $U$ wird ein Transitionssystem verwendet, das nur
       aus dem Startzustand ohne Transitionsmöglichkeiten besteht. Somit ist
       auch in $U$ ein Ruhe-Zustand lokal erreichbar. Es
@@ -469,7 +469,7 @@ werden.
       Transitionen möglich sind, kann nur $\varepsilon$ ein strikter
       Ruhetrace sein, falls es sich bei dem Fehler in $U\|S_2$ um einen lokal
       erreichbaren Ruhe-Zustand handelt. Somit folgt in
-      beiden Fällen, dass $w$ in $\QT{}(S_2)$ enthalten ist.
+      beiden Fällen, dass $w$ in $\QT{}_2$ enthalten ist.
     \item Fall 2 ($w=x_1\dots x_n\in \Sigma ^+$ mit $n\geq 1$): Es wird der
       folgende Partner $U$ betrachtet (siehe auch Abbildung~\ref{UohneEmitI}):
       \begin{itemize}
@@ -513,7 +513,7 @@ werden.
       befindlichen Aktionen um synchronisierte Aktionen handelt und $I_U\cap
       I=\emptyset$, gilt $w\in O_{U\|S_1}^*$ und $w\in \StQT{}(U\|S_1)$. Es
       kann also in der Parallelkomposition durch $w$ ein Ruhe-Zustand lokal
-      erreicht werden. Da $w\notin \ET{}(S_1)$ gilt, kann auf dem Weg, der mit
+      erreicht werden. Da $w\notin \ET{}_1$ gilt, kann auf dem Weg, der mit
       $w$ im Transitionssystem $S_1$ zurück gelegt wird kein Error lokal
       erreicht werden. Es kann also weder von $S_1$ noch von $U$ ein Error auf
       diesem Weg geerbt werden. Jedoch kann durch den Aufbau von $U$ ein neuer
@@ -534,14 +534,14 @@ werden.
           des Beweises des ersten Punktes aus Lemma~\ref{lemVerfeinerung} und
           da $U$ nur Synchronisationsfehler auf dem Trace $w$ zulässt. Da
           die Menge \ET{} unter \cont{} abgeschlossen ist, gilt also auch $w\in
-          \ET{}(S_2)\subseteq \QT{}(S_2)$.
+          \ET{}_2\subseteq \QT{}_2$.
         \item Fall 2b) (Ruhe-Zustand lokal erreichbar in $U\|S_2$): Da in $U$
           nur durch $w$ ein ruhiger Zustand erreicht werden kann, muss es sich
           bei dem lokal erreichbaren Ruhe-Zustand in $U\|S_2$ um einen handeln,
           der mit $w$ erreicht werden kann. Mit Lemma~\ref{lemRuheParallelkomp}
           kann somit gefolgert werden, dass auch in $S_2$ ein Ruhe-Zustand mit
-          $w$ erreichbar sein muss. Es gilt also $w\in \StQT{}(S_2)\subseteq
-          \QT{}(S_2)$.
+          $w$ erreichbar sein muss. Es gilt also $w\in \StQT{}_2\subseteq
+          \QT{}_2$.
       \end{itemize}
   \end{itemize}
 \end{proof}
@@ -650,24 +650,27 @@ $S_2$ und $S_2/X$.
   \label{satzPraeInterQui}
   Seien $S_1$ und $S_2$ zwei \EIO{}s für die $S_1\QRel S_2$ gilt, somit gilt
   auch $S_1/X\QRel S_2/X$. Es ist also \QRel{} eine Präkongruenz bezüglich
-  $\cdot /\cdot$.
+  $\cdot /\cdot$. Es gilt für die Sprachen und Traces:
+  \begin{compactenum}[(i)]
+    \item $L(S/X) = \{w\in (\Sigma\backslash(X\cap O))^*\mid \exists
+      w'|_{\Sigma\backslash (X\cap O)} = w\}$,
+    \item $\ET{}(S/X) = \{w\in (\Sigma\backslash (X\cap O))^*\mid \exists
+      w'\in \ET{}(S): w'|_{\Sigma\backslash (X\cap O)} = w\}$,
+    \item $\EL{}(S/X) = \{w\in (\Sigma\backslash (X\cap O))^*\mid \exists w'\in
+      \EL(S): w'|_{\Sigma\backslash (X\cap O)} = w\}$,
+    \item $\QT{}(S/X) = \{w\in (\Sigma\backslash (X\cap O))^*\mid \exists w'\in
+      \QT{}(S):w'|_{\Sigma\backslash (X\cap O)}=w\}$.
+  \end{compactenum}
   %TODO Anpassen an entsprechenden Error-Satz
 \end{satz}
 
 \begin{proof}
-  Da $S_1\QRel S_2$ gilt, kann geschlossen werden, dass $S_1\ERel S_2$ und
-  $\QT{}_1\subseteq \QT{}_2$ gilt. Aufgrund von
-  Satz~\ref{satzPraeInternalisierung} ist bekannt, dass daraus $S_1/X\ERel
-  S_2/X$ folgt.\\
-  Es wird hier nun wie im Beweis zu Satz~\ref{satzPraeInternalisierung} erst
-  einmal definiert, wie die neuen Ruhetraces nach dem Hiding aussehen:
-  \begin{itemize}
-    \item $\QT{}(S/X) = \{w\in (\Sigma\backslash (X\cap O))^*\mid \exists w'\in
-      \QT{}(S):w'|_{\Sigma\backslash (X\cap O)}=w\}$.
-  \end{itemize}
-  Diese Definition stützt sich nur auf die bereits bekannte Menge $\QT{}(S)$.
-  Es kann also zu jedem Ablauf des Systems ohne Hiding ein passender in dem
-  System mit Hiding gefunden werden, falls die Definition korrekt ist.\\
+  Als erstes sollte man sich von der Richtigkeit der Aussagen (i) bis (iv)
+  überzeugen. Da jedoch im Beweis zu Satz~\ref{satzPraeInternalisierung}
+  bereits die ersten drei Punkte gezeigt wurden, muss hier nur noch (iv)
+  betrachtet werden.
+
+
   Die Korrektheit der Definition kann analog zum Beweis von
   Satz~\ref{satzPraeInternalisierung} gezeigt werden. Die Internalisierung hat
   also keine Auswirkung auf die Inklusion der Mengen. Es kann also aus der
@@ -679,6 +682,15 @@ $S_2$ und $S_2/X$.
   in~\ref{satzPraeInternalisierung}.\\
   Daraus folgt dann, dass die Relation \QRel{} trotz Hiding erhalten bleibt und
   somit bezüglich des Hiding diese Relation eine Präkongruenz ist.
+
+
+  Diese Definition stützt sich nur auf die bereits bekannte Menge $\QT{}(S)$.
+  Es kann also zu jedem Ablauf des Systems ohne Hiding ein passender in dem
+  System mit Hiding gefunden werden, falls die Definition korrekt ist.\\
+  Da $S_1\QRel S_2$ gilt, kann geschlossen werden, dass $S_1\ERel S_2$ und
+  $\QT{}_1\subseteq \QT{}_2$ gilt. Aufgrund von
+  Satz~\ref{satzPraeInternalisierung} ist bekannt, dass daraus $S_1/X\ERel
+  S_2/X$ folgt.
 \end{proof}
 
 In Definition~\ref{defIntParal} wurde mit Hilfe des Internalisierungsoperator
