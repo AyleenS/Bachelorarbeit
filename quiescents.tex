@@ -206,14 +206,15 @@ Sie entsprechen Punkt 1.\ und 2.\ aus Satz~\ref{satzErrorSemanik}.
   \StQT{}_{12}\backslash \ET{}_{12}$ betrachtet und dessen Zugehörigkeit zur
   rechten Menge versucht zu zeigen. Aufgrund von
   Definition~\ref{DefRuhetraces} weiß man, dass $(q_{01},q_{02})
-  \overset{w}{\Rightarrow} (q_1,q_2)$ gilt mit $(q_1,q_2)\in Qui_{12}$. Durch
-  Projektion erhält man $q_{01} \overset{w_1}{\Rightarrow} q_1$ und $q_{02}
-  \overset{w_2}{\Rightarrow} q_2$ mit $w\in w_1\|w_2$. Aus $(q_1,q_2)\in
-  Qui_{12}$ kann mit Punkt 2.\ von Lemma~\ref{lemRuheParallelkomp} gefolgert
-  werden, dass bereits $q_1\in Qui_1$ und $q_2\in Qui_2$ gilt. Somit gilt
-  $w_1\in \StQT{}_1\subseteq \QT{}_1$ und $w_2\in \StQT{}_2\subseteq \QT{}_2$.
-  Daraus folgt dann $w\in \QT{}_1\|\QT{}_2$ und somit ist $w$ in der rechten
-  Seiten der Gleichung enthalten.
+  \overset{w}{\Rightarrow} (q_1,q_2)$ gilt mit $(q_1,q_2)\in Qui_{12}\backslash
+  E_{12}$. Durch Projektion erhält man $q_{01} \overset{w_1}{\Rightarrow} q_1$
+  und $q_{02} \overset{w_2}{\Rightarrow} q_2$ mit $w\in w_1\|w_2$. Aus
+  $(q_1,q_2)\in Qui_{12}\backslash E_{12}$ kann mit Punkt 2.\ von
+  Lemma~\ref{lemRuheParallelkomp} gefolgert werden, dass bereits $q_1\in Qui_1$
+  und $q_2\in Qui_2$ gilt. Somit gilt $w_1\in \StQT{}_1\subseteq \QT{}_1$ und
+  $w_2\in \StQT{}_2\subseteq \QT{}_2$. Daraus folgt dann $w\in
+  \QT{}_1\|\QT{}_2$ und somit ist $w$ in der rechten Seiten der Gleichung
+  enthalten.
 
   \glqq{}$\supseteq$\grqq{}:\\
   Es muss wieder danach unterschieden werden, aus welcher Menge das betrachtete
@@ -558,7 +559,7 @@ werden.
           der mit $w$ erreicht werden kann. Mit Lemma~\ref{lemRuheParallelkomp}
           kann somit gefolgert werden, dass auch in $S_2$ ein Ruhe-Zustand mit
           $w$ erreichbar sein muss. Es gilt also $w\in \StQT{}_2\subseteq
-          \QT{}_2$.
+          \QT{}_2$.%TODO Errorfreiheit für Lemma Voraussetzungen nachdenken
       \end{itemize}
   \end{itemize}
 \end{proof}
