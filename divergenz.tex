@@ -50,10 +50,8 @@ bilden.\\
 \begin{Def}[Divergenztraces]
   Sei $S$ ein \EIO{} und definiere:
   \begin{itemize}
-    \item strickte Divergenztraces: $\StDT{}(S) := \{w\in\Sigma ^*\mid q_0
-      \overset{w}{\Rightarrow} q\in Div\}$,
-    \item gekürzte Divergenztraces: $\PrDT{}(S) := \{\prune (w)\mid
-      w\in\StDT{}(S)\}$.
+    \item \emph{strickte Divergenztraces}: $\StDT{}(S) := \{w\in\Sigma ^*\mid
+      q_0 \overset{w}{\Rightarrow} q\in Div\}$,
   \end{itemize}
 \end{Def}
 
@@ -71,7 +69,7 @@ Fehler zu bewerten sind.
   Sei $S$ ein \EIO{}.
   \begin{itemize}
     \item Die Menge der \emph{error-gefluteten Divergenztraces} von $S$ ist
-      $\DT{}(S) := \cont{}(\PrDT{}(S))\cup \ET{}(S)$.
+      $\DT{}(S) := \StDT{}(S)\cup \ET{}(S)$.
     \item Die Menge der \emph{divergenz-gefluteten Ruhetraces} von $S$ ist
       $\QT{}(S) := \StQT{}(S)\cup \DT{}(S)$.
   \end{itemize}
@@ -84,9 +82,9 @@ In der letzten Definition wurde wieder durch das Fluten eine
 Informationsvermischung vorgenommen. Im Fall von \DT{} mit den Errortraces und
 im Fall von \QT{} mit den Divergenztraces. Jedoch entstehen hier wie im letzten
 Kapitel keine neuen Traces, die nicht bereits in der error-gefluteten Sprache
-\EL{} aus den Error-Kapitel enthalten wären. Somit kann diese Sprache ohne weitere
-Flutung verwendet werden. Somit ist die Relation \DRel{} ebenso wie \QRel{}
-eine Einschränkung der Relation \ERel{}.\\
+\EL{} aus den Error-Kapitel enthalten wären. Somit kann diese Sprache ohne
+weitere Flutung verwendet werden. Somit ist die Relation \DRel{} ebenso wie
+\QRel{} eine Einschränkung der Relation \ERel{}.\\
 Ebenso wie in Satz~\ref{satzQuiSemantik} wird im nächsten Satz nur der
 Vollständigkeit halber der erste und letzte Punkt erwähnt der Beweis dazu
 findet sich in Satz~\ref{satzErrorSemanik}.
@@ -97,8 +95,8 @@ findet sich in Satz~\ref{satzErrorSemanik}.
   \begin{enumerate}
     \item $\ET{}_{12}=\cont (\prune ((\ET{}_1\|\EL{}_2)\cup
       (\EL{}_1\|\ET{}_2)))$,
-    \item $\DT{}_{12}=\cont (\prune ((\DT{}_1\|\EL{}_2)\cup
-      (\EL{}_1\|\DT{}_2)))\cup \ET{}_{12}$,
+    \item $\DT{}_{12}= (\DT{}_1\|\EL{}_2)\cup (\EL{}_1\|\DT{}_2)\cup
+      \ET{}_{12}$,
     \item $\QT{}_{12}=(\QT{}_1\|\QT{}_2)\cup \DT{}_{12}$,
     \item $\EL{}_{12}=(\EL{}_1\|\EL{}_2)\cup \ET{}_{12}$.
   \end{enumerate}
@@ -106,75 +104,69 @@ findet sich in Satz~\ref{satzErrorSemanik}.
 
 \begin{proof} Es wird hier nur der 2.\ und 3.\ Punkt bewiesen.
 
-  2. ``$\subseteq$'':\\
-  Da hier auf beiden Seiten der Gleichung Mengen stehen, die unter \cont{}
-  abgeschlossen sind, reicht es nur präfix-minimale Elemente aus $\DT{}_{12}$
-  zu betrachten. Es muss hier unterschieden, ob $w\in \PrDT{}_{12}$ oder $w\in
-  \ET{}_{12}$ betrachtet wird. Im zweiten Fall ist das $w$ in der rechten Seite
-  der Gleichung enthalten. Deshalb wird im weiteren Verlauf dieses Beweises
-  davon ausgegangen, dass $w\in \PrDT{}_{12}$ gilt, und es wird versucht zu
+  2. \glqq{}$\subseteq$\grqq{}:\\
+  Es muss hier unterschieden, ob $w\in \StDT{}_{12}$ oder $w\in \ET{}_{12}$
+  betrachtet wird. Im zweiten Fall ist das $w$ in der rechten Seite der
+  Gleichung enthalten. Deshalb wird im weiteren Verlauf dieses Beweises davon
+  ausgegangen, dass $w\in \StDT{}_{12}$ gilt, und es wird versucht zu
   zeigen, dass dieses $w$ ebenfalls in der rechten Seite enthalten ist. Aus der
-  Definition~\ref{DefRuheDivSemantik} und der von \prune{} weiß man, dass es
-  ein $v\in O^*_{12}$ gibt, so dass $(q_{01},q_{02}) \overset{w}{\Rightarrow}
-  (q_1,q_2) \overset{v}{\Rightarrow} (q_1',q_2')$ mit $(q_1',q_2')\in Div_{12}$
-  und $w = \prune{}(wv)$ gilt. Durch die Projektion auf die Transitionssysteme
-  $S_1$ und $S_2$ erhält man $q_{01} \overset{w_1}{\Rightarrow} q_1
-  \overset{v_1}{\Rightarrow} q_1'$ und $q_{02} \overset{w_2}{\Rightarrow} q_2
-  \overset{v_2}{\Rightarrow} q_2'$ mit $w\in w_1\|w_2$ und $v\in v_1\|v_2$. Aus
-  $(q_1,q_2)\in Div_{12}$ folgt, dass \oBdA{} $q_1\in Div_1$ gilt, d.h.\
-  $w_1v_1\in \StDT{}_1$. Es folgt also, dass $w_1v_1\in
-  \cont{}(\PrQT{}_1)\subseteq \DT_1$ gilt. Da $q_{02}
-  \overset{w_2v_2}{\Rightarrow}$ gilt, erhält man $w_2v_2\in L_2\subseteq
-  \ET{}_2$ gelten. Somit gilt insgesamt $wv\in \DT{}_1\|\EL{}_2$ und mit $w =
-  \prune{}(wv)$ folgt dann, dass $w$ in der rechten Seite der Gleichung
-  enthalten ist.
+  Definition~\ref{DefRuheDivSemantik} weiß man, dass $(q_{01},q_{02})
+  \overset{w}{\Rightarrow} (q_1,q_2)$ mit $(q_1,q_2)\in Div_{12}$ gilt. Durch
+  die Projektion auf die Transitionssysteme $S_1$ und $S_2$ erhält man $q_{01}
+  \overset{w_1}{\Rightarrow} q_1$ und $q_{02} \overset{w_2}{\Rightarrow} q_2$
+  mit $w\in w_1\|w_2$. Aus $(q_1,q_2)\in Div_{12}$ folgt, dass \oBdA{} $q_1\in
+  Div_1$ gilt, d.h.\ $w_1\in \StDT{}_1$. Da $q_{02} \overset{w_2}{\Rightarrow}$
+  gilt, erhält man $w_2\in L_2\subseteq \EL{}_2$ gelten. Somit gilt insgesamt
+  $w\in \DT{}_1\|\EL{}_2$ und $w$ ist in der rechten Seite der Gleichung
+  enthalten.
 
-  2. ``$\supseteq$'':\\
-  Wegen der Abgeschlossenheit beider Seiten der Gleichung gegenüber \cont{}
-  wird auch in diesem Fall nur ein präfix-minimales Element $x$ betrachtet.
-  Falls $x\in\ET{}_{12}$ gilt, ist dieses $x$ auch in der linken Seite der
+  2. \glqq{}$\supseteq$\grqq{}:\\
+  Falls $w\in\ET{}_{12}$ gilt, ist dieses $w$ auch in der linken Seite der
   Gleichung enthalten. Somit wird für den Rest des Beweises dieser Inklusion
-  davon ausgegangen, dass $x\in\prune{}((\DT{}_1\|\EL{}_2)\cup
-  (\EL{}_1\|\DT{}_2))$ gilt. Da das betrachtete $x$ durch die Anwendung der
-  \prune{}-Funktion entstanden ist, existiert ein $y\in O_{12}^*$ mit $xy\in
-  (\DT{}_1\|\EL{}_2)\cup (\EL{}_1\|\DT{}_2)$. Es wird nun davon ausgegangen,
-  das \oBdA{} $xy\in \DT{}_1\|\EL{}_2$ gilt, d.h.\ es existieren
-  $w_1\in\DT{}_1$ und $w_2\in\EL{}_2$ mit $xy\in w_1\|w_2$.\\
-  Im Folgenden wird für alle Fälle von $xy$ gezeigt, dass es ein
-  $v\in\PrDT{}_{12}\cup \PrET{}_{12}\cup \MIT{}_{12}$ gibt, das ein Präfix von
-  $xy$ ist und $v$ entweder auf einen Input aus $I_{12}$ endet oder
-  $v=\varepsilon$. Es folgt, wie im Beweis zu Satz~\ref{satzErrorSemanik}, dass
-  $v$ ein Präfix von $x$ ist. Somit ist ein Präfix von $x$ in $\PrDT{}_{12}\cup
-  \PrET{}_{12}\cup \MIT{}_{12}$ enthalten und damit ist $x$ in der Fortsetzung
-  dieser Menge enthalten. Es gilt also $x\in \DT{}_{12}$.\\
-  Sei $v_1$ das kürzeste Präfix von $w_1$ in $\PrDT{}_1\cup \PrET{}_1\cup
-  \MIT{}_1$. Falls $w_2\in L_2$, so sei $v_2=w_2$, sonst soll $v_2$ das
-  kürzeste Präfix von $w_2$ in $\PrDT{}_2\cup \PrET{}_2\cup \MIT{}_2$ sein.
-  Jede Aktion aus $v_1$ und $v_2$ hängt mit einer aus $xy$ zusammen. Es wird
-  nun davon ausgegangen, dass entweder $v_2=w_2\in L_2$ gilt oder die letzte
-  Aktion von $v_1$ vor oder gleichzeitig mit der letzten Aktion von $v_2$ statt
-  findet. Ansonsten endet $v_2\in \PrDT{}_2\cup \PrET{}_2\cup \MIT{}_2$ vor
-  $v_1$ und somit ist dieser Fall analog zu $v_1$ endet vor $v_2$.
+  davon ausgegangen, dass $w\in(\DT{}_1\|\EL{}_2)\cup (\EL{}_1\|\DT{}_2)$ gilt.
+  Es wird nun davon ausgegangen, das \oBdA{} $w\in \DT{}_1\|\EL{}_2$ gilt,
+  d.h.\ es existieren $w_1\in\DT{}_1$ und $w_2\in\EL{}_2$ mit $w\in
+  w_1\|w_2$.
   \begin{itemize}
-    %TODO aber hier Beweis weiter führen nach Vorbild des Error-Beweises
-    \item Fall 1 ($v_1=\varepsilon$):
-    \item Fall 2 ($v_1\neq\varepsilon$):
+    \item Fall 1 ($w_1\in \ET{}_1 \vee w_2\in \ET{}_2$): Dieser Fall läuft
+      analog zum Fall 1 der selben Inklusionsrichtung vom Beweis zu
+      Satz~\ref{satzQuiSemantik}. Es muss dazu nur \StQT{} durch \StDT{}
+      ersetzt werden.
+    \item Fall 2 ($w_1\in \StDT{}_1\backslash \ET{}_1 \wedge w_2\in
+      \EL{}_2\backslash \ET{}_2$): Es in diesem Fall also $q_{01}
+      \overset{w_1}{\Rightarrow} q_1\in Div_1$ und $q_{02}
+      \overset{w_2}{\Rightarrow}$. Da $q_1$ ein unendliche Folge an $\tau$s
+      ausführen kann, ist dies auch für den zusammengesetzten Zustand von $q_1$
+      und $q_2$ in der Parallelkomposition möglich. Es gilt also für die
+      Komposition $(q_{01},q_{02}) \overset{w}{\Rightarrow} (q_1,q_2)\in
+      Div_{12}$ und somit ist $w$ in der linken Seite der Gleichung enthalten,
+      da $w\in \StDT{}_{12}\subseteq \DT{}_{12}$ gilt.
   \end{itemize}
 
-  3. ``$\subseteq$'':\\
+  3. \glqq{}$\subseteq$\grqq{}:\\
   Diese Inklusionsrichtung kann analog zum Beweis der selben Inklusionsrichtung
   von Satz~\ref{satzQuiSemantik} gezeigt werden. Es muss dabei nur in der
   Argumentation die Menge $\ET{}_{12}$ durch Menge $\DT{}_{12}$ ersetzt werden.
   Dadurch wird ebenso gefolgert werden, dass der erreichte Zustand $(q_1,q_2)$
   kein Error-Zustand sein kann, da $\ET{}_{12}\subseteq \DT{}_{12}$ gilt.
 
-  3. ``$\supseteq$'':\\
+  3. \glqq{}$\supseteq$\grqq{}:\\
   Es muss wieder danach unterschieden werden, aus welcher Menge das betrachtete
   Element stammt. Falls $w$ ein Element von $\ET{}_{12}$ ist, so folgt die
   Zugehörigkeit zur linken Seite der Gleichung direkt. Somit wird für den
   weiteren Punkt dieses Beweises davon ausgegangen, dass $w\in \QT{}_1\|\QT_2$
   gilt. Für dieses $w$ soll dann gezeigt werden, dass es auch in $\QT_{12}$
-  enthalten ist. Da $QT_i=\StQT{}_i\cup \DT{}_i$ gilt, existieren für $w_1$ und
-  $w_2$ mit $w\in w_1\|w_2$ unterschiedliche Möglichkeiten:
-  %TODO Fallunterscheidung DT und StQT\DT
+  enthalten ist. Da $\QT_i=\StQT{}_i\cup \DT{}_i$ gilt, existieren für $w_1$
+  und $w_2$ mit $w\in w_1\|w_2$ unterschiedliche Möglichkeiten:
+  \begin{itemize}
+    \item Fall 1 ($w_1\in \DT{}_1 \vee w_2\in \DT{}_2$): \OBdA{} gilt $w_1\in
+      \DT{}_1$. Es kann nun $w_2\in \StQT{}_2 \subseteq L_2$ gelten oder
+      $w_2\in \DT{}_2$ und somit gilt auf jeden Fall $w_2\in \EL{}_2$. Daraus
+      kann mit dem zweiten Punkt dieses Satzes gefolgert werden, dass $w\in
+      \DT{}_{12}$ gilt und somit $w$ in der linken Seite der Gleichung
+      enthalten ist.
+    \item Fall 2 ($w_1\in \StQT{}_1\backslash \DT{}_1 \wedge w_2\in \StQT{}_2
+      \backslash \DT{}_2$): Dieser Fall läuft analog zu Fall 2 der selben
+      Inklusionsrichtung des Beweises von Satz~\ref{satzQuiSemantik}.
+  \end{itemize}
 \end{proof}
