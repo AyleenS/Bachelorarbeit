@@ -16,7 +16,7 @@ wurde die Parallelkomposition geändert, wie in~\cite{Schlosser2012BA}.
 
 Mittels der lokalen Erreichbarkeit von Errors kann ein
 Verfeinerungsrelation definiert werden. Zusätzlich wird bereits die
-gröbste Präkongruenz definiert, die gesucht werden soll.
+gröbste Präkongruenz definiert, die charakterisiert werden soll.
 
 \begin{Def}[Error-Verfeinerungs-Basisrelation]
 \label{DefErrorBasisrel}
@@ -54,7 +54,7 @@ für die Synchronisation fehlt.
   \end{itemize}
 \end{Def}
 
-In der folgenden Definition wird festgehalten, was als Errortraces auffasst
+In der folgenden Definition wird festgehalten, was als Errortrace auffasst
 wird. Diese Menge ist dadurch, dass sie die fortgesetzten Traces aus $\PrET{}$
 enthält, deutlich allgemeiner als die Menge $\StET{}$. Zusätzlich wird auch noch
 die geflutete Sprache definiert, in der die Informationen aus der Sprache und den
@@ -103,7 +103,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
   \overset{x}{\Rightarrow}(q_1,q_2)\wedge a\in I_{12}\wedge (q_1,q_2)
   \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$. Da $I_{12}
   \overset{\ref{DefParallelkomposition}}{=}(I_1\backslash O_2)\cup
-  (I_2\backslash O_1)=(I_1\cup I_2)\backslash (O_1\cup O_2)$ ist $a\in (I_1\cup
+  (I_2\backslash O_1)=(I_1\cup I_2)\backslash (O_1\cup O_2)$ ist, folgt $a\in (I_1\cup
   I_2)$ und $a\notin (O_1\cup O_2)$. Es wird unterscheiden, ob $a\in (I_1\cap I_2)$
   oder $a\in (I_1\cup I_2)\backslash (I_1\cap I_2)$ ist. Diese Unterscheidung
   ist in~\cite{Vogler2014EIO} nicht nötig, da dort $I_1\cap I_2=\emptyset$
@@ -144,13 +144,13 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
       die fehlende Möglichkeit entstanden, eine synchronisierte Aktion
       auszuführen.
       \begin{itemize}
-        \item Fall 2a) (geerbter Error): \OBdA{} $q_1'\in E_1$. Daraus folgt
+        \item Fall 2a) (geerbter Error): \OBdA{} gilt $q_1'\in E_1$. Daraus folgt
           $w_1v_1\in \StET{}_1\subseteq \cont{}(\PrET{}_1)\subseteq \ET{}_1$. Da gilt
           $q_{02}\overset{w_2v_2}{\Rightarrow}$, erhält man $w_2v_2\in
           L_2\subseteq \EL{}_2$. Dadurch ergibt sich $wv\in \ET{}_1\|\EL{}_2$ mit
           $w=\prune{}(wv)$ und somit ist $w$ in der rechten Seite der Gleichung
           enthalten.
-        \item Fall 2b) (neuer Error): \OBdA{} $a\in I_1\cap O_2$ mit
+        \item Fall 2b) (neuer Error): \OBdA{} gilt $a\in I_1\cap O_2$ mit
           $q_1'\overset{a}{\not{\hspace{-0.1cm}\rightarrow}} \wedge \; q_2'
           \overset{a}{\rightarrow}$. Daraus folgt $w_1v_1a\in \MIT{}_1\subseteq
           \ET{}_1$ und $w_2v_2a\in L_2\subseteq \EL{}_2$. Damit ergibt sich $wva\in
@@ -486,7 +486,7 @@ verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
         \item $\begin{aligned}[t]
             \delta _U=&\{(q_i,x_{i+1},q_{i+1})\mid 0\leq i< n\}\\
                       &\cup\{(q_i,x,q)\mid x\in I_U\backslash\{x_{i+1}\},0\leq
-          i\leq n\}\\
+          i< n\}\\
           &\cup\{(q,x,q)\mid x\in I_U\}.
               \end{aligned}$
       \end{itemize}
@@ -626,8 +626,8 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
 
 \begin{prop}[Error-Basisrelation bzgl. Internalisierung]
 \label{propErBaIn}
-  Wenn $S_1\EBRel S_2$ gilt, dann folgt daraus, dass auch $(S_1/X)\EBRel
-  (S_2/X)$ gilt.
+  Wenn $S_1\EBRel S_2$ gilt, dann folgt daraus, dass auch $S_1/X\EBRel S_2/X$
+  gilt.
 \end{prop}
 
 \begin{proof}
@@ -639,7 +639,10 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   nicht mehr diesen Output. Alle Traces, die keine Outputs aus der Menge hinter
   dem Internalisierungsoperator enthalten, bleiben unverändert erhalten. Es ist
   auch nicht möglich, dass durch das Verbergen von Outputs neue Errors
-  entstehen. Somit folgt die Behauptung.
+  entstehen. Auch in die umgekehrte Richtung kann durch das Ersetzten von
+  $\tau$s durch Outputs nicht an der Erreichbarkeit oder der Menge der Errors
+  geändert werden. Es ist also jeder Error, der in $S_i/X$ lokal erreichbar ist
+  auch in $S_i$ erreichbar. Somit folgt die Behauptung.
 \end{proof}
 
 \begin{satz}[Error-Präkongurenz bzgl. Interalisierung]
@@ -649,7 +652,7 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   Präkongruenz bezüglich $\cdot /\cdot$ ist.
   Es gilt für die Sprachen und Traces:
   \begin{compactenum}[(i)]
-  \item $L(S/X) = \{w\in (\Sigma\backslash X){}^*\mid \exists
+  \item $L(S/X) = \{w\in (\Sigma\backslash X){}^*\mid \exists w'\in L(S):
       w'|_{\Sigma\backslash X} = w\}$,
     \item $\ET{}(S/X) = \{w\in (\Sigma\backslash X){}^*\mid \exists
       w'\in \ET{}(S): w'|_{\Sigma\backslash X} = w\}$,
@@ -697,9 +700,9 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   \end{itemize}
   Für ein Wort aus der Sprache $L$ des Transitionssystems $S/X$ existiert wie
   oben auch ein Ablauf. Hier ist es jedoch wichtig, dass auch
-  $\tau$-Transitionen gemacht werden um dieses Wort auszuführen. In dem dies
-  $\tau$-Transitionen durch Transitionen mit Elementen aus $X$ ersetzt
-  werden erhält man ein Trace aus der Sprache $L(S)$.
+  $\tau$-Transitionen gemacht werden um dieses Wort auszuführen. In dem ein
+  Teil dieser $\tau$-Transitionen durch Transitionen mit Elementen aus $X$
+  ersetzt werden erhält man ein Trace aus der Sprache $L(S)$.
 
   (ii)
   Es wird ein Trace $w=a_1a_2\dots a_n\in \ET{}(S)$ gewählt. Dieses Trace
@@ -714,7 +717,7 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
       \overset{a_1}{\Rightarrow} q_1 \overset{a_2}{\Rightarrow} \dots
       \overset{a_m}{\Rightarrow} q_m \overset{b_1}{\Rightarrow} q_{m+1}
       \overset{b_2}{\Rightarrow} \dots \overset{b_l}{\Rightarrow} q_{m+l}$ mit
-      $m\leq n$, $l\geq 0$ und $\forall i\; b_i\in O(S)$. Es gilt dann $a_1a_2\dots
+      $m\leq n$, $l\geq 0$ und $\forall i\in \{1,\dots ,l\}: b_i\in O(S)$. Es gilt dann $a_1a_2\dots
       a_mb_1b_2\dots b_l\in \StET{}(S)$. Analog wie im Beweisteil zu (i) wird
       dieser Ablauf durch die Internalisierung reduziert. Somit ist die
       Projektion von $a_1a_2\dots a_mb_1b_2\dots b_l$ auf die eingeschränkte
@@ -734,10 +737,12 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
       Präfix von $w$ ein Ablauf zu einem Zustand möglich, der nicht für alle
       Inputs eine Transitionsmöglichkeit bietet. Der Ablauf hat also die Form
       $q_0 \overset{a_1}{\Rightarrow} q_1 \overset{a_2}{\Rightarrow} \dots
-      \overset{a_m}{\Rightarrow} q_m$ mit $m\leq n$ und $a_1a_2\dots a_m\in
-      \MIT{}(S)$. Ab hier Verläuft die Argumentation für diesen Fall analog zu
-      der vom letzten Fall, nur das die \prune{}-Funktion nicht verwendet
-      werden muss, da es hier keine Verlängerungen um Outputs gab.
+      \overset{a_{m-1}}{\Rightarrow} q_{m-1}
+      \overset{a_m}{\not{\hspace{-0.1cm}\rightarrow}}$ mit $m\leq n$ und
+      $a_1a_2\dots a_m\in \MIT{}(S)$. Ab hier Verläuft die Argumentation für
+      diesen Fall analog zu der vom letzten Fall, nur das die \prune{}-Funktion
+      nicht verwendet werden muss, da es hier keine Verlängerungen um Outputs
+      gab.
   \end{itemize}
   Ein Trace $w\in \ET{}(S/X)$ muss wie oben nicht im Transitionssystem
   enthalten sein. Es kann jedoch ein Präfix von $w$ gefunden werden wie oben,

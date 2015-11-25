@@ -40,7 +40,8 @@ Aktion, bei der nicht festgelegt ist, ob sie ein Input oder ein Output ist.\\
 Um die Komponenten der entsprechenden Transitionssystem zuzuordnen, werden für
 die Komponenten die gleichen Indizes wie für ihr zugehöriges System verwendet,
 z.B.\ wird $I_1$ für die Inputmenge des Transitionssystems $S_1$ geschrieben. Diese
-Notation wird später analog für die Sprachen eines Systems verwendet.\\
+Notation wird später analog für die Sprachen, Traces und Zustandsmengen eines
+Systems verwendet.\\
 Die Elemente der Transitionsrelation $\delta$ werden wie folgt notieren:
 \begin{itemize}
   \item $p\overset{\alpha}{\rightarrow} q$ für $(p,\alpha ,q)\in\delta$,
@@ -119,12 +120,12 @@ q_2\overset{a}{\rightarrow}\}
   S_2)=(I_1\cap O_2)\cup(O_1\cap I_2)\cup (I_1\cap I_2)$ nicht versteckt,
   sondern als Outputs bzw.\ im Fall von $I_1\cap I_2$ als Inputs der
   Komposition beibehalten.\\
-  $S_1$ wird einen \emph{Partner} von $S_2$, wenn ihre
+  $S_1$ wird ein \emph{Partner} von $S_2$ genannt, wenn ihre
   Parallelkomposition geschlossen ist, d.h.\ wenn sie duale Signaturen
   $Sig(S_1)=(I,O)$ und $Sig(S_2)=(O,I)$ haben.\\
   Die oben definierte Notation $S_{12}=S_1\|S_2$ wird auf für andere
   Indizierungen der Systeme analog angewendet, so gilt also allgemein
-  $S_{ij}=S_i\|S_j$.
+  $S_{ij}:=S_i\|S_j$ für $i,j\in\mathbb{N}$.
 \end{Def}
 
 Die Parallelkomposition kann nicht nur für Transitionssysteme betrachtet
@@ -172,9 +173,8 @@ _i}=w_i$ für $i=1,2$. Umgekehrt sind zwei Abläufe von $S_1$ und $S_2$ der Form
 $p_i \overset{w_i}{\Rightarrow} q_i$ mit $w| _{\Sigma _i}= w_i$ für $i=1,2$,
 Projektionen von einem Ablauf in $S_{12}$ der Form $(p_1,p_2)
 \overset{w}{\Rightarrow} (q_1.q_2)$. Es ist dafür nötig, dass die Abläufe der
-beiden Systeme und die Systeme selbst komponierbar sind. Das wird dadurch
-gewährleistet, dass $w$ so
-gewählt wurde, dass die Projektion auf die einzelnen Alphabete die jeweiligen
+beiden Systeme und die Systeme selbst komponierbar sind. Das $w$ wurde so
+gewählt, dass die Projektion auf die einzelnen Alphabete die jeweiligen
 Wörter ergibt. Falls keine interne Aktionen zugelassen wären, würde sogar nur
 genau ein Ablauf möglich sein in $S_{12}$. Da jedoch auch interne Aktionen
 zulässig sind, sind mehrere Abläufe möglich, da nicht klar ist, wann ein $\tau$
@@ -222,7 +222,7 @@ entsprechend Quelle~\cite{Schlosser2012BA}.
 \end{Def}
 
 Die Menge hinter dem Internalisierungsoperator ist in dieser Definition auf
-Outputs beschränkt. Diese Einschränkung wurde vorgenommen und die weitere
+Outputs beschränkt. Diese Einschränkung wurde vorgenommen um die weitere
 Betrachtung zu erleichtern. Jedoch kann es sinnvoll sein die Möglichkeit zu
 haben dort weitere Aktionen aufnehmen zu können. Dies wird jedoch nicht mehr
 Teil dieser Arbeit sein.\\
