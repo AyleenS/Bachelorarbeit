@@ -4,7 +4,7 @@
 
 In diesem Kapitel soll die Menge der betrachteten Zustände noch einmal
 erweitert werden. Somit werden dann Errors, Ruhe-Zustände und
-Divergente-Zustände betrachtet. Somit eignet sich~\cite{Chilton2013} hier als
+Divergente-Zustände betrachtet. Es eignet sich also~\cite{Chilton2013} als
 Quelle, da nun auch noch die Divergenz betrachtet wird. Diese wurde dort
 gleichzeitig mit der Ruhe eingeführt und betrachtet. Da es sich nur um eine
 Erweiterung der Präkongruenzen aus den letzten beiden Kapiteln handelt, wird
@@ -37,8 +37,8 @@ divergenter Zustand lokal erreichbar ist, ist Divergenz als ähnlich
 Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur wird $S_1\DBRel S_2$
 geschrieben, wenn ein Error, Ruhe-Zustand oder Divergenz-Zustand in $S_1$ nur
 dann lokal erreichbar ist, wenn er auch in $S_2$ lokal erreichbar ist. Diese
-\emph{Basisrelation} stellt eine \emph{Verfeinerung} bezüglich \emph{Errors},
-\emph{Ruhe-Zuständen} und \emph{Divergenz-Zuständen} dar.\\
+\emph{Basisrelation} stellt eine \emph{Verfeinerung} bezüglich \emph{Error},
+\emph{Ruhe} und \emph{Divergenz} dar.\\
 \DCRel{} bezeichnet die \emph{vollständige abstrakte Präkongruenz} von \DBRel{}
 bezüglich $\cdot\|\cdot$.
 \end{Def}
@@ -50,8 +50,8 @@ bilden.\\
 \begin{Def}[Divergenztraces]
   Sei $S$ ein \EIO{} und definiere:
   \begin{itemize}
-    \item \emph{strickte Divergenztraces}: $\StDT{}(S) := \{w\in\Sigma ^*\mid
-      q_0 \overset{w}{\Rightarrow} q\in Div\}$,
+    \item \emph{strikte Divergenztraces}: $\StDT{}(S) := \{w\in\Sigma ^*\mid
+      q_0 \overset{w}{\Rightarrow} q\in Div\}$.
   \end{itemize}
 \end{Def}
 
@@ -74,8 +74,8 @@ Fehler zu bewerten sind.
       $\QT{}(S) := \StQT{}(S)\cup \DT{}(S)$.
   \end{itemize}
   Für zwei \EIO{}s $S_1, S_2$ mit der gleichen Signatur schreibt man $S_1\DRel
-  S_2$, wenn $S_1\ERel S_2$, $\DT{}_1\sqsubseteq \DT{}_2$ und
-  $\QT{}_1\sqsubseteq \QT{}_2$ gilt.
+  S_2$, wenn $S_1\ERel S_2$, $\DT{}_1\subseteq \DT{}_2$ und
+  $\QT{}_1\subseteq \QT{}_2$ gilt.
 \end{Def}
 
 In der letzten Definition wurde wieder durch das Fluten eine
@@ -83,8 +83,8 @@ Informationsvermischung vorgenommen. Im Fall von \DT{} mit den Errortraces und
 im Fall von \QT{} mit den Divergenztraces. Jedoch entstehen hier wie im letzten
 Kapitel keine neuen Traces, die nicht bereits in der error-gefluteten Sprache
 \EL{} aus den Error-Kapitel enthalten wären. Somit kann diese Sprache ohne
-weitere Flutung verwendet werden. Somit ist die Relation \DRel{} ebenso wie
-\QRel{} eine Einschränkung der Relation \ERel{}.\\
+weitere Flutung verwendet werden. Es folgt, dass die Relation \DRel{} ebenso
+wie \QRel{} eine Einschränkung der Relation \ERel{} ist.\\
 Ebenso wie in Satz~\ref{satzQuiSemantik} wird im nächsten Satz nur der
 Vollständigkeit halber der erste und letzte Punkt erwähnt der Beweis dazu
 findet sich in Satz~\ref{satzErrorSemanik}.
@@ -105,37 +105,37 @@ findet sich in Satz~\ref{satzErrorSemanik}.
 \begin{proof} Es wird hier nur der 2.\ und 3.\ Punkt bewiesen.
 
   2. \glqq{}$\subseteq$\grqq{}:\\
-  Es muss hier unterschieden, ob $w\in \StDT{}_{12}$ oder $w\in \ET{}_{12}$
-  betrachtet wird. Im zweiten Fall ist das $w$ in der rechten Seite der
-  Gleichung enthalten. Deshalb wird im weiteren Verlauf dieses Beweises davon
-  ausgegangen, dass $w\in \StDT{}_{12}$ gilt, und es wird versucht zu
-  zeigen, dass dieses $w$ ebenfalls in der rechten Seite enthalten ist. Aus der
-  Definition~\ref{DefRuheDivSemantik} weiß man, dass $(q_{01},q_{02})
-  \overset{w}{\Rightarrow} (q_1,q_2)$ mit $(q_1,q_2)\in Div_{12}$ gilt. Durch
-  die Projektion auf die Transitionssysteme $S_1$ und $S_2$ erhält man $q_{01}
-  \overset{w_1}{\Rightarrow} q_1$ und $q_{02} \overset{w_2}{\Rightarrow} q_2$
-  mit $w\in w_1\|w_2$. Aus $(q_1,q_2)\in Div_{12}$ folgt, dass \oBdA{} $q_1\in
-  Div_1$ gilt, d.h.\ $w_1\in \StDT{}_1$. Da $q_{02} \overset{w_2}{\Rightarrow}$
-  gilt, erhält man $w_2\in L_2\subseteq \EL{}_2$ gelten. Somit gilt insgesamt
-  $w\in \DT{}_1\|\EL{}_2$ und $w$ ist in der rechten Seite der Gleichung
-  enthalten.
+  Es muss hier unterschieden, ob $w\in \StDT{}_{12}\backslash \ET{}_{12}$ oder
+  $w\in \ET{}_{12}$ betrachtet wird. Im zweiten Fall ist das $w$ in der rechten
+  Seite der Gleichung enthalten. Deshalb wird im weiteren Verlauf dieses
+  Beweises davon ausgegangen, dass $w\in \StDT{}_{12}\backslash \ET{}_{12}$
+  gilt, und es wird versucht zu zeigen, dass dieses $w$ ebenfalls in der
+  rechten Seite enthalten ist. Aus der Definition~\ref{DefRuheDivSemantik} weiß
+  man, dass $(q_{01},q_{02}) \overset{w}{\Rightarrow} (q_1,q_2)$ mit
+  $(q_1,q_2)\in Div_{12}$ gilt. Durch die Projektion auf die Transitionssysteme
+  $S_1$ und $S_2$ erhält man $q_{01} \overset{w_1}{\Rightarrow} q_1$ und
+  $q_{02} \overset{w_2}{\Rightarrow} q_2$ mit $w\in w_1\|w_2$. Aus
+  $(q_1,q_2)\in Div_{12}$ folgt, dass \oBdA{} $q_1\in Div_1$ gilt, d.h.\
+  $w_1\in \StDT{}_1$. Da $q_{02} \overset{w_2}{\Rightarrow}$ gilt, erhält man
+  $w_2\in L_2\subseteq \EL{}_2$ gelten. Somit gilt insgesamt $w\in
+  \DT{}_1\|\EL{}_2$ und $w$ ist in der rechten Seite der Gleichung enthalten.
 
   2. \glqq{}$\supseteq$\grqq{}:\\
   Falls $w\in\ET{}_{12}$ gilt, ist dieses $w$ auch in der linken Seite der
   Gleichung enthalten. Somit wird für den Rest des Beweises dieser Inklusion
   davon ausgegangen, dass $w\in(\DT{}_1\|\EL{}_2)\cup (\EL{}_1\|\DT{}_2)$ gilt.
-  Es wird nun davon ausgegangen, das \oBdA{} $w\in \DT{}_1\|\EL{}_2$ gilt,
-  d.h.\ es existieren $w_1\in\DT{}_1$ und $w_2\in\EL{}_2$ mit $w\in
-  w_1\|w_2$.
+  Es wird nun noch die Einschränkung vorausgesetzt, dass \oBdA{} $w\in
+  \DT{}_1\|\EL{}_2$ gilt, d.h.\ es existieren $w_1\in\DT{}_1$ und
+  $w_2\in\EL{}_2$ mit $w\in w_1\|w_2$.
   \begin{itemize}
     \item Fall 1 ($w_1\in \ET{}_1 \vee w_2\in \ET{}_2$): Dieser Fall läuft
       analog zum Fall 1 der selben Inklusionsrichtung vom Beweis zu
       Satz~\ref{satzQuiSemantik}. Es muss dazu nur \StQT{} durch \StDT{}
       ersetzt werden.
     \item Fall 2 ($w_1\in \StDT{}_1\backslash \ET{}_1 \wedge w_2\in
-      \EL{}_2\backslash \ET{}_2$): Es in diesem Fall also $q_{01}
+      \EL{}_2\backslash \ET{}_2$): Es gilt in diesem Fall also $q_{01}
       \overset{w_1}{\Rightarrow} q_1\in Div_1$ und $q_{02}
-      \overset{w_2}{\Rightarrow}$. Da $q_1$ ein unendliche Folge an $\tau$s
+      \overset{w_2}{\Rightarrow} q_2$. Da $q_1$ ein unendliche Folge an $\tau$s
       ausführen kann, ist dies auch für den zusammengesetzten Zustand von $q_1$
       und $q_2$ in der Parallelkomposition möglich. Es gilt also für die
       Komposition $(q_{01},q_{02}) \overset{w}{\Rightarrow} (q_1,q_2)\in
@@ -146,9 +146,10 @@ findet sich in Satz~\ref{satzErrorSemanik}.
   3. \glqq{}$\subseteq$\grqq{}:\\
   Diese Inklusionsrichtung kann analog zum Beweis der selben Inklusionsrichtung
   von Satz~\ref{satzQuiSemantik} gezeigt werden. Es muss dabei nur in der
-  Argumentation die Menge $\ET{}_{12}$ durch Menge $\DT{}_{12}$ ersetzt werden.
-  Dadurch wird ebenso gefolgert werden, dass der erreichte Zustand $(q_1,q_2)$
-  kein Error-Zustand sein kann, da $\ET{}_{12}\subseteq \DT{}_{12}$ gilt.
+  Argumentation die Menge $\ET{}_{12}$ durch die Menge $\DT{}_{12}$ ersetzt
+  werden. Dadurch kann ebenso gefolgert werden, dass der erreichte Zustand
+  $(q_1,q_2)$ kein Error-Zustand sein kann, da $\ET{}_{12}\subseteq \DT{}_{12}$
+  gilt.
 
   3. \glqq{}$\supseteq$\grqq{}:\\
   Es muss wieder danach unterschieden werden, aus welcher Menge das betrachtete
