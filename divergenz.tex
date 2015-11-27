@@ -34,6 +34,7 @@ divergenter Zustand lokal erreichbar ist, ist Divergenz als ähnlich
 \end{Def}
 
 \begin{Def}[Divergenz-Verfeinerungs-Basisrelation]
+\label{DefDivBasisrel}
 Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur wird $S_1\DBRel S_2$
 geschrieben, wenn ein Error, Ruhe-Zustand oder Divergenz-Zustand in $S_1$ nur
 dann lokal erreichbar ist, wenn er auch in $S_2$ lokal erreichbar ist. Diese
@@ -90,6 +91,7 @@ Vollständigkeit halber der erste und letzte Punkt erwähnt der Beweis dazu
 findet sich in Satz~\ref{satzErrorSemanik}.
 
 \begin{satz}[Error-, Ruhe- und Divergenz-Semantik für Parallelkompostionen]
+\label{satzDivSemantik}
   Für zwei komponierbare \EIO{}s $S_1, S_2$ und ihre Komposition
   $S_{12}$ gilt:
   \begin{enumerate}
@@ -171,3 +173,121 @@ findet sich in Satz~\ref{satzErrorSemanik}.
       Inklusionsrichtung des Beweises von Satz~\ref{satzQuiSemantik}.
   \end{itemize}
 \end{proof}
+
+Analog wie in den beiden vorgegangenen Kapiteln, ergibt sich aus diesem Satz
+als direkte Folgerung, dass es sich bei der Relation \DRel{} um eine
+Präkongruenz handelt.
+
+\begin{prop}[Divergenz-Präkongurenz]
+  \DRel{} ist eine Präkongruenz bezüglich $\cdot\|\cdot$.
+\end{prop}
+
+\begin{proof}
+  Um zu zeigen, dass es sich bei \DRel{} um eine Präkongruenz handelt, muss
+  nachgewiesen werden, dass $S_{31}\DRel{} S_{32}$ für jedes komponierbare
+  System $S_3$ gilt, wenn $S_1\DRel{} S_2$ erfüllt ist.  D.  h.\   es     ist
+  zu zeigen, dass auch $S_1\ERel{} S_2$, $\DT{}_1\subseteq \DT{}_2$ und
+  $\QT{}_1\subseteq \QT{}_2$ sowohl $S_{31}\ERel{} S_{32}$,
+  $\DT{}_{31}\subseteq \DT_{32}$ als auch $\QT{}_{31}\subseteq \QT{}_{32}$
+  folgt. Dies ergibt sich wie in den Beweisen zu den
+  Propositionen~\ref{propPraekongruenz} und~\ref{propQuiPrae} aus der Monotonie
+  von $\cdot\|\cdot$ auf Sprachen wie folgt:
+  \begin{itemize}
+    \item $\begin{aligned}[t]
+        S_{31}
+        \overset{\mathrm{Proposition}~\ref{propPraekongruenz}}{%
+        \overset{\mathrm{und}}{\overset{S_1\ERel{} S_2}{\ERel{}}}} S_{32}
+    \end{aligned}$
+    \item $\begin{aligned}[t]
+        \DT{}_{31} &\overset{\ref{satzDivSemantik}~2.}{=} (\DT{}_3\|\EL{}_1)
+        \cup (\EL{}_3\|\DT{}_1) \cup \ET{}_{31}\\
+        &\hspace{-0.5cm}\overset{\ET{}_{31}\subseteq
+      \ET{}_{32},}{\overset{\EL{}_1\subseteq
+      \EL{}_2}{\overset{\mathrm{und}}{\overset{\DT{}_1\subseteq
+    \DT{}_2}{\subseteq}}}} (\DT{}_3\|\EL{}_2) \cup (\EL{}_3\|\DT{}_2) \cup
+    \ET{}_{32}\\
+      &\overset{\ref{satzDivSemantik}~2.}{=} \DT{}_{32},
+    \end{aligned}$
+    \item $\begin{aligned}[t]
+        \QT{}_{31} &\overset{\ref{satzDivSemantik}~3.}{=} (\QT{}_3\|\QT{}_1)
+        \cup \DT{}_{31}\\
+        &\hspace{-0.5cm}\overset{\DT{}_{31}\subseteq
+      \DT{}_{32},}{\overset{\mathrm{und}}{\overset{\QT{}_1\subseteq
+      \QT{}_2}{\subseteq}}} (\QT{}_3\|\QT{}_2) \cup \DT{}_{32}\\
+      &\overset{\ref{satzDivSemantik}~3.}{=} \QT{}_{32}.
+    \end{aligned}$
+  \end{itemize}
+\end{proof}
+
+Als nächstes soll nun eine Verfeinerungsrelation bezüglich guter Kommunikation
+mit Partnern im Sinne von error-, ruhe- und divergenz-freier Kommunikation
+betrachtet werden. Es muss in diesem Lemma eine Veränderung zu den analogen
+Lemmata aus den vorangegangen Kapiteln vorgenommen. Die Einschränkung, dass $U$
+ein Partner sein muss, kann nicht mehr beibehalten werden, da die Vermeidung
+von Ruhe im Beweis aus dem letzten Kapitel hier zu Divergenz führen würde.
+Somit werden dafür Aktionen außerhalb der Menge $Synch$ benötigt.
+
+\begin{lem}[Vereinerung mit Divergenz-Zuständen]
+\label{lemDivVerfeinerung}
+  Gegeben sind zwei \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur. Wenn
+  $U\|S_1\DBRel{} U\|S_2$ für komponierbaren $U$ gilt, dann folgt daraus
+  $S_1\DRel{} S_2$.
+\end{lem}
+
+\begin{proof}
+  %TODO
+\end{proof}
+
+Der folgenden Satz hält fest, dass \DRel{} die gröbste Präkongruenz bezüglich
+$\cdot\|\cdot$ charakterisiert, die in \DBRel{} enthalten ist.
+
+\begin{satz}[Full Abstractness für Divergenz-Semantik]
+\label{satzDivFullAbst}
+  Seinen $S_1$ und $S_2$ zwei \EIO{}s mit derselben Signatur. Dann gilt $S_1
+  \DCRel{} S_2\Leftrightarrow S_1\DRel{} S_2$, insbesondere ist \DRel{} eine
+  Präkongruenz.
+\end{satz}
+
+\begin{proof}
+  %TODO
+\end{proof}
+
+Es wurde somit, wie in den letzten beiden Kapiteln, eine Kette an Folgerungen
+gezeigt, die sich zu einem Ring schließen. Jedoch wird dafür ein Schritt
+weniger benötigt, da in Lemma~\ref{lemDivVerfeinerung} bereits direkt $U$ nur
+als komponierbar und nicht als Partner vorausgesetzt wurde. Diese
+Folgerungskette ist in Abbildung~\ref{FolgerungsketteDiv} dargestellt.
+
+\begin{figure}[h!tbp]
+  \begin{center}
+    \begin{tikzpicture}
+      \matrix (m) [matrix of math nodes,row sep=2cm,column sep=4cm]{%
+        S_1\DRel S_2 & S_1\DCRel S_2 \\
+        & \substack{\forall~\mathrm{komponierbaren}~U:\\U\|S_1\DBRel U\|S_2}
+      \\};
+        \draw[-implies, double, double distance=1mm]
+          (m-1-1) -- node [above] {\glqq{}$\Leftarrow$\grqq{} von
+            Satz~\ref{satzDivFullAbst}} (m-1-2);
+        \draw[-implies, double, double distance=1mm]
+          (m-1-2) -- node [right] {Definition von \DCRel{}
+          in~\ref{DefDivBasisrel}} (m-2-2);
+        \draw[-implies, double, double distance=1mm]
+          (m-2-2) -- node [below left]
+          {Lemma~\ref{lemDivVerfeinerung}} (m-1-1);
+    \end{tikzpicture}
+    \caption{Folgerungskette}
+\label{FolgerungsketteDiv}
+  \end{center}
+\end{figure}
+
+Aus Satz~\ref{satzDivFullAbst} und Lemma~\ref{lemDivVerfeinerung} erhält man
+das folgende Korollar. Angenommen man definiert, dass $S_1$ $S_2$ verfeinern
+soll, genau dann wenn für alle Partner \EIO{}s $U$, für die $S_2$ error-, ruhe-
+und divergenz-frei mit $U$ kommuniziert, folgt, dass $S_1$ ebenfalls error-,
+ruhe- und divergenz-frei mit $U$ kommuniziert. Dann wird auch diese
+Verfeinerung durch \DRel{} charakterisiert.
+
+\begin{kor}
+  Es gilt: $S_1\DRel{} S_2 \Leftrightarrow U\|S_1\DBRel{} U\|S_2$ für alle
+  komponierbaren $U$.
+\end{kor}
