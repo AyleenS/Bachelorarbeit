@@ -667,23 +667,23 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
 
   (i)
   Für ein Wort aus der Sprache $L$ eines Transitionssystems $S$ gilt nach
-  Definition $q_0 \overset{w}{\Rightarrow} q$ mit $q\in Q$. Es gibt also zu
-  jedem $w = a_1a_2\dots a_n\in L(S)$ ein Ablauf $q_0
+  Definition $q_0 \overset{w'}{\Rightarrow} q$ mit $q\in Q$. Es gibt also zu
+  jedem $w' = a_1a_2\dots a_n\in L(S)$ ein Ablauf $q_0
   \overset{a_1}{\Rightarrow} q_1 \overset{a_2}{\Rightarrow} \dots
-  \overset{a_n}{\Rightarrow} q_n$ mit $q_n=q$. Hier ist wichtig zu beachten, dass die
-  jeweiligen Zustände nicht exakt über eine Transition erreicht werden müssen.
-  Es kann sich hier um eine Transitionsfolge aus beliebig vielen $\tau$s und
-  dem jeweiligen $a_i\in\Sigma$ handeln. Dabei ist egal, an welcher Stelle das
-  $a_i$ auftaucht. Dies ist notwendig, da auf Trace-Ebene nicht mehr
+  \overset{a_n}{\Rightarrow} q_n$ mit $q_n=q$. Hier ist wichtig zu beachten,
+  dass die jeweiligen Zustände nicht exakt über eine Transition erreicht werden
+  müssen. Es kann sich hier um eine Transitionsfolge aus beliebig vielen
+  $\tau$s und dem jeweiligen $a_i\in\Sigma$ handeln. Dabei ist egal, an welcher
+  Stelle das $a_i$ auftaucht. Dies ist notwendig, da auf Trace-Ebene nicht mehr
   festgehalten wird, wann $\tau$-Transitionen auszuführen sind um mit einer
   bestimmten Transition den Weg fortsetzen zu können. Dies ändert jedoch nichts
   daran, dass alle $a_i$ atomare Aktionen darstellen.
   \begin{itemize}
-    \item Fall 1 ($n=0$): Es gilt $w=\varepsilon$. Somit enthält $w$ keine
+    \item Fall 1 ($n=0$): Es gilt $w'=\varepsilon$. Somit enthält $w'$ keine
       Aktionen aus $X$. Es werden also durch die Anwendung des
-      Internalisierungsoperators in diesem $w$ keine Aktionen verborgen. Es
-      gilt also $w\in L(S/X)$. Somit ist für diesen Fall die Aussage über $L$
-      korrekt.
+      Internalisierungsoperators in diesem $w'$ keine Aktionen verborgen. Es
+      gilt also $w'=w\in L(S/X)$. Somit ist für diesen Fall die Aussage über
+      $L$ korrekt.
     \item Fall 2 ($n\geq 1$): Nach der Internalisierung bleiben von dem Ablauf
       nur noch die Aktionen übrig, die nicht Elemente aus $X$ sind. Der Ablauf
       reduziert sich also auf $q_0 \overset{\tau~\mathrm{falls}~a_1\in
@@ -692,51 +692,51 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
       X}{\overset{\mathrm{sonst}~a_2}{\Longrightarrow}} \dots
       \overset{\tau~\mathrm{falls}~a_n\in
       X}{\overset{\mathrm{sonst}~a_n}{\Longrightarrow}} q_n$. Dabei bleibt
-      durch das Hiding von Aktionen aus $X$ in $w$ nur noch
-      $w|_{\Sigma\backslash X}$ erhalten. Diese Projektion des Wortes
-      $w$ auf die eingeschränkte Aktionenmenge ist dann in $L(S/X)$ enthalten,
+      durch das Hiding von Aktionen aus $X$ in $w'$ nur noch
+      $w:=w'|_{\Sigma\backslash X}$ erhalten. Diese Projektion des Wortes
+      $w'$ auf die eingeschränkte Aktionenmenge ist dann in $L(S/X)$ enthalten,
       da immer noch der selbe Zustand durch das Worte erreicht wird. Es gilt
       also auch für diesen Fall die Aussage über die Sprache $L$.
   \end{itemize}
-  Für ein Wort aus der Sprache $L$ des Transitionssystems $S/X$ existiert wie
-  oben auch ein Ablauf. Hier ist es jedoch wichtig, dass auch
+  Für ein Wort $w$ aus der Sprache $L$ des Transitionssystems $S/X$ existiert
+  wie oben auch ein Ablauf. Hier ist es jedoch wichtig, dass auch
   $\tau$-Transitionen gemacht werden um dieses Wort auszuführen. In dem ein
   Teil dieser $\tau$-Transitionen durch Transitionen mit Elementen aus $X$
-  ersetzt werden erhält man ein Trace aus der Sprache $L(S)$.
+  ersetzt werden erhält man ein Trace $w'$ aus der Sprache $L(S)$.
 
   (ii)
-  Es wird ein Trace $w=a_1a_2\dots a_n\in \ET{}(S)$ gewählt. Dieses Trace
+  Es wird ein Trace $w'=a_1a_2\dots a_n\in \ET{}(S)$ gewählt. Dieses Trace
   muss nicht wie bei Punkt (i) einem Ablauf in $S$ entsprechen. Jedoch kann ein
-  Präfix von $w$ gefunden werden, dass besondere Eigenschaften erfüllen soll
+  Präfix von $w'$ gefunden werden, dass besondere Eigenschaften erfüllen soll
   und für dass es einen Ablauf gibt. Hierfür muss jedoch unterschieden werden,
-  aus welchem Grund das $w$ in $\ET{}(S)$ enthalten ist.
+  aus welchem Grund das $w'$ in $\ET{}(S)$ enthalten ist.
   \begin{itemize}
-    \item Fall 1 ($w\in\cont{}(\PrET{}(S))$): In diesem Fall gibt es einen Ablauf
-      für ein Präfix dieses $w$s, der zu einem Ablauf zu einem Zustand aus $E$
-      ergänzt werden kann. Der Ablauf hat also die Form $q_0
+    \item Fall 1 ($w'\in\cont{}(\PrET{}(S))$): In diesem Fall gibt es einen
+      Ablauf für ein Präfix dieses $w'$s, der zu einem Ablauf zu einem Zustand
+      aus $E$ ergänzt werden kann. Der Ablauf hat also die Form $q_0
       \overset{a_1}{\Rightarrow} q_1 \overset{a_2}{\Rightarrow} \dots
       \overset{a_m}{\Rightarrow} q_m \overset{b_1}{\Rightarrow} q_{m+1}
       \overset{b_2}{\Rightarrow} \dots \overset{b_l}{\Rightarrow} q_{m+l}$ mit
-      $m\leq n$, $l\geq 0$ und $\forall i\in \{1,\dots ,l\}: b_i\in O(S)$. Es gilt dann $a_1a_2\dots
-      a_mb_1b_2\dots b_l\in \StET{}(S)$. Analog wie im Beweisteil zu (i) wird
-      dieser Ablauf durch die Internalisierung reduziert. Somit ist die
-      Projektion von $a_1a_2\dots a_mb_1b_2\dots b_l$ auf die eingeschränkte
-      Aktionenmenge auf jeden Fall in $\StET{}(S/X)\subseteq\ET{}(S/X)$
-      enthalten. Da $b_1b_2\dots b_l\in O(S)^*$, gilt nach der Projektion
-      auch $(b_1b_2\dots b_l)|_{\Sigma\backslash X}\in O(S/X)^*$ und
-      somit $\prune{}((a_1a_2\dots a_m)|_{\Sigma\backslash
+      $m\leq n$, $l\geq 0$ und $\forall i\in \{1,\dots ,l\}: b_i\in O(S)$. Es
+      gilt dann $a_1a_2\dots a_mb_1b_2\dots b_l\in \StET{}(S)$. Analog wie im
+      Beweisteil zu (i) wird dieser Ablauf durch die Internalisierung
+      reduziert. Somit ist die Projektion von $a_1a_2\dots a_mb_1b_2\dots b_l$
+      auf die eingeschränkte Aktionenmenge auf jeden Fall in $\StET{}(S/X)
+      \subseteq \ET{}(S/X)$ enthalten. Da $b_1b_2\dots b_l\in O(S)^*$, gilt
+      nach der Projektion auch $(b_1b_2\dots b_l)|_{\Sigma\backslash X}\in
+      O(S/X)^*$ und somit $\prune{}((a_1a_2\dots a_m)|_{\Sigma\backslash
       X})=\prune{}((a_1a_2\dots a_mb_1b_2\dots b_l)|_{\Sigma\backslash X})$. Da
       \ET{} eine Menge ist, die nach Definition unter \cont{}
       abgeschlossen ist, sind alle Verlängerung von $(a_1a_2\dots
       a_m)|_{\Sigma\backslash X}$ ebenfalls in $\ET{}(S/X)$ enthalten.
-      Es gilt also speziell auch $w|_{\Sigma\backslash X}\in
+      Es gilt also speziell auch $w:=w'|_{\Sigma\backslash X}\in
       \ET{}(S/X)$. Da alle Elemente aus $\ET{}(S/X)$ nur Aktionen aus
-      $\Sigma\backslash X$ enthalten, ist ausgeschlossen, dass das eine
+      $\Sigma\backslash X$ enthalten, ist ausgeschlossen, dass eine
       Fortsetzung mit Aktionen außerhalb dieser Menge möglich ist.
-    \item Fall 2 ($w\in\cont{}(\MIT{}(S))$): In diesem Fall ist bereits für ein
-      Präfix von $w$ ein Ablauf zu einem Zustand möglich, der nicht für alle
-      Inputs eine Transitionsmöglichkeit bietet. Der Ablauf hat also die Form
-      $q_0 \overset{a_1}{\Rightarrow} q_1 \overset{a_2}{\Rightarrow} \dots
+    \item Fall 2 ($w'\in\cont{}(\MIT{}(S))$): In diesem Fall ist bereits für
+      ein Präfix von $w'$ ein Ablauf zu einem Zustand möglich, der nicht für
+      alle Inputs eine Transitionsmöglichkeit bietet. Der Ablauf hat also die
+      Form $q_0 \overset{a_1}{\Rightarrow} q_1 \overset{a_2}{\Rightarrow} \dots
       \overset{a_{m-1}}{\Rightarrow} q_{m-1}
       \overset{a_m}{\not{\hspace{-0.1cm}\rightarrow}}$ mit $m\leq n$ und
       $a_1a_2\dots a_m\in \MIT{}(S)$. Ab hier Verläuft die Argumentation für
@@ -757,12 +757,12 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   nur durch hinzugefügte Aktionen aus $X$ unterscheidet.
 
   (iii)
-  Für ein Trace $w=a_1a_2\dots a_n\in \EL{}(S)$ gilt $w\in L(S)$ oder $w\in
+  Für ein Trace $w'=a_1a_2\dots a_n\in \EL{}(S)$ gilt $w'\in L(S)$ oder $w'\in
   \ET{}(S)$. Für beide Fälle wurde oben bereits gezeigt, dass dann
-  $w|_{\Sigma\backslash X}$ in der entsprechenden Menge des
+  $w:=w'|_{\Sigma\backslash X}$ in der entsprechenden Menge des
   Transitionssystems $S/X$ enthalten ist. Da \EL{} als Vereinigung aus den
   Mengen $L$ und \ET{} definiert ist, ist dadurch dann auch gezeigt, dass
-  $w|_{\Sigma\backslash X}\in \EL{}(S/X)$ gilt.\\
+  $w\in \EL{}(S/X)$ gilt.\\
   Ebenfalls analog zu den beiden vorangegangen Punkten kann auch argumentiert
   werden, dass zu jedem $w\in \EL{}(S/X)$ durch hinzufügen von Aktionen aus $X$
   ein $w'\in \EL{}(S)$ gefunden werden kann.
