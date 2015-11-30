@@ -52,7 +52,7 @@ bilden.\\
   Sei $S$ ein \EIO{} und definiere:
   \begin{itemize}
     \item \emph{strikte Divergenztraces}: $\StDT{}(S) := \{w\in\Sigma ^*\mid
-      q_0 \overset{w}{\Rightarrow} q\in Div\}$.
+      q_0 \overset{w}{\Rightarrow} q\in Div\}$.%TODO PrDT einführen mit prune'
   \end{itemize}
 \end{Def}
 
@@ -70,7 +70,7 @@ Fehler zu bewerten sind.
   Sei $S$ ein \EIO{}.
   \begin{itemize}
     \item Die Menge der \emph{error-gefluteten Divergenztraces} von $S$ ist
-      $\DT{}(S) := \StDT{}(S)\cup \ET{}(S)$.
+      $\DT{}(S) := \StDT{}(S)\cup \ET{}(S)$.%TODO auf PrDT ändern
     \item Die Menge der \emph{divergenz-gefluteten Ruhetraces} von $S$ ist
       $\QT{}(S) := \StQT{}(S)\cup \DT{}(S)$.
   \end{itemize}
@@ -98,7 +98,7 @@ findet sich in Satz~\ref{satzErrorSemanik}.
     \item $\ET{}_{12}=\cont (\prune ((\ET{}_1\|\EL{}_2)\cup
       (\EL{}_1\|\ET{}_2)))$,
     \item $\DT{}_{12}= (\DT{}_1\|\EL{}_2)\cup (\EL{}_1\|\DT{}_2)\cup
-      \ET{}_{12}$,
+      \ET{}_{12}$,%TODO mit prune' erweitern
     \item $\QT{}_{12}=(\QT{}_1\|\QT{}_2)\cup \DT{}_{12}$,
     \item $\EL{}_{12}=(\EL{}_1\|\EL{}_2)\cup \ET{}_{12}$.
   \end{enumerate}
@@ -121,6 +121,7 @@ findet sich in Satz~\ref{satzErrorSemanik}.
   $w_1\in \StDT{}_1$. Da $q_{02} \overset{w_2}{\Rightarrow}$ gilt, erhält man
   $w_2\in L_2\subseteq \EL{}_2$ gelten. Somit gilt insgesamt $w\in
   \DT{}_1\|\EL{}_2$ und $w$ ist in der rechten Seite der Gleichung enthalten.
+  %TODO mit prune' erweitern
 
   2. \glqq{}$\supseteq$\grqq{}:\\
   Falls $w\in\ET{}_{12}$ gilt, ist dieses $w$ auch in der linken Seite der
@@ -144,6 +145,7 @@ findet sich in Satz~\ref{satzErrorSemanik}.
       Div_{12}$ und somit ist $w$ in der linken Seite der Gleichung enthalten,
       da $w\in \StDT{}_{12}\subseteq \DT{}_{12}$ gilt.
   \end{itemize}
+  %TODO unter Berücksichtung von PrDT und prune' abändern
 
   3. \glqq{}$\subseteq$\grqq{}:\\
   Diese Inklusionsrichtung kann analog zum Beweis der selben Inklusionsrichtung
@@ -179,6 +181,7 @@ als direkte Folgerung, dass es sich bei der Relation \DRel{} um eine
 Präkongruenz handelt.
 
 \begin{prop}[Divergenz-Präkongurenz]
+\label{propDivPrae}
   \DRel{} ist eine Präkongruenz bezüglich $\cdot\|\cdot$.
 \end{prop}
 
@@ -236,6 +239,9 @@ Somit werden dafür Aktionen außerhalb der Menge $Synch$ benötigt.
 
 \begin{proof}
   %TODO
+  \scriptsize\textcolor{lgray}{$\ET{}_1\subseteq\ET{}_2$ kann nicht garantiert
+  werden, da divergenz in $S_2$ nicht verhindert werden kann durch ein $U$.}
+  \normalsize
 \end{proof}
 
 Der folgenden Satz hält fest, dass \DRel{} die gröbste Präkongruenz bezüglich
@@ -249,7 +255,24 @@ $\cdot\|\cdot$ charakterisiert, die in \DBRel{} enthalten ist.
 \end{satz}
 
 \begin{proof}
-  %TODO
+  \glqq{}$\Leftarrow$\grqq{}: Nach Definition gilt $w\in\DT{}(S)$ mit $w\in
+  O^*$, genau dann wenn in $S$ ein Divergenz-Zustand, ein Ruhe-Zustand oder ein
+  Error-Zustand lokal erreichbar ist. $S_1\DRel S_2$ impliziert, dass
+  $w\in\DT{}_2$ gilt, wenn $w\in\DT{}_1$ gilt. Somit ist ein Divergenz-Zustand,
+  ein Ruhe-Zustand oder ein Error-Zustand nur dann in $S_1$ lokal erreichbar,
+  wenn auch ein solcher in $S_2$ lokal erreichbar ist. Daraus folgt, dass
+  $S_1\DBRel S_2$ gilt. Somit ist \DRel{} in \DBRel{} enthalten. In
+  Proposition~\ref{propDivPrae} wurde festgestellt, dass \DRel{} eine
+  Präkongruenz ist. Da jedoch \DCRel{} nach Definition die gröbste Präkongruenz
+  bezüglich $\cdot\|\cdot$ ist, die in \DBRel{} enthalten ist, muss \DRel{} in
+  \DCRel{} enthalten sein. Es folgt also aus $S_1\DRel S_2$,
+  dass auch der relationale Zusammenhang $S_1\DCRel S_2$ gilt.
+
+  \glqq{}$\Rightarrow$\grqq{}: Durch die Definition von \DCRel{} als
+  Präkongruenz in~\ref{DefDivBasisrel} folgt aus $S_1\DCRel{} S_2$, dass
+  $U\|S_1\DCRel U\|S_2$ für alle EIOs $U$ gilt, die mit $S_1$ komponierbar sind.
+  Somit folgt auch die Gültigkeit von $U\|S_1\DBRel U\|S_2$ für alle diese EIOs
+  $U$. Mit Lemma~\ref{lemDivVerfeinerung} folgt dann $S_1\QRel{} S_2$.
 \end{proof}
 
 Es wurde somit, wie in den letzten beiden Kapiteln, eine Kette an Folgerungen
@@ -291,3 +314,13 @@ Verfeinerung durch \DRel{} charakterisiert.
   Es gilt: $S_1\DRel{} S_2 \Leftrightarrow U\|S_1\DBRel{} U\|S_2$ für alle
   komponierbaren $U$.
 \end{kor}
+
+\section{Hiding und Divergenz-Freiheit}
+
+Da durch den Internalisierungsoperator Outputs in $\tau$s umgewandelt werden,
+hat das Hiding auf die Divergenz-Eigenschaft eine recht große Auswirkung. Die
+Menge der divergenten Zustände kann sich somit durch das Internalisieren
+vergrößern. Jedoch kann nur ein Zustand divergent werden, wenn von diesem aus
+bereits lokal ein divergenter Zustand aus erreichbar war. Die lokale
+Erreichbarkeit war in diesem Fall durch $\tau$s und Outputs aus der Menge $X$
+gegeben.

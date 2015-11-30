@@ -588,7 +588,7 @@ enthalten ist.
   \glqq{}$\Rightarrow$\grqq{}: Durch die Definition von \QCRel{} als
   Präkongruenz in~\ref{DefQuiBasisrel} folgt aus $S_1\QCRel{} S_2$, dass
   $U\|S_1\QCRel U\|S_2$ für alle EIOs $U$ gilt, die mit $S_1$ komponierbar sind.
-  Somit folgt auch die Gültigkeit von $U\|S_1\EBRel U\|S_2$ für alle diese EIOs
+  Somit folgt auch die Gültigkeit von $U\|S_1\QBRel U\|S_2$ für alle diese EIOs
   $U$. Mit Lemma~\ref{lemQuiVerfeinerung} folgt dann $S_1\QRel{} S_2$.
 \end{proof}
 
@@ -642,9 +642,7 @@ $\tau$-Transitionen verboten wurden, verändert sich nichts an der Menge der
 ruhigen Zustände. Da die Erreichbarkeit von Ruhe-Zuständen mittels lokaler
 Aktionen betrachtet wurde, kann sich auch nichts an der Erreichbarkeit der
 Ruhe-Zustände ändern. Somit kann eine analoge Proposition zu~\ref{propErBaIn}
-formuliert werden. Also gilt: Wenn $S_1$ einen Error oder Ruhe-Zustand lokal
-erreichen kann, dann kann diese auch $S_1/X$. Die analoge Aussage gilt auch für
-$S_2$ und $S_2/X$.
+formuliert werden.
 
 \begin{prop}[Ruhe-Basisrelation bzgl. Internalisierung]
   Wenn $S_1\QBRel S_2$ gilt, dann folgt daraus, dass auch $S_1/X\QBRel S_2/X$
@@ -785,7 +783,7 @@ werden.
 %     \path (0) edge node {$a!$} (1);
 %   \end{tikzpicture}
 %   \caption{$S_1$}
-%\label{S1}
+% \label{S1}
 % \end{center}
 % \end{figure}
 % Für $S_2$ wird das folgende Transitionssystem verwendet (siehe dazu auch
@@ -813,7 +811,7 @@ werden.
 %           (2) edge [loop below] node {$b!$} (2);
 %   \end{tikzpicture}
 %   \caption{$S_2$}
-%\label{S2}
+% \label{S2}
 % \end{center}
 % \end{figure}
 % Somit ergibt sich für die Parallelkomposition $S_{12}$ das folgende
@@ -846,7 +844,7 @@ werden.
 %           (2) edge [loop below] node {$b!$} (2);
 %   \end{tikzpicture}
 %   \caption{$S_{12}$}
-%\label{S12}
+% \label{S12}
 % \end{center}
 % \end{figure}
 
