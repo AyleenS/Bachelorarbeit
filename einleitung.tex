@@ -1,5 +1,29 @@
 \chapter{Einleitung}
 
+Wie schon aus dem Titel hervor geht, sollen in dieser Arbeit Interface
+Automaten und Fehler, die durch die Kommunikation mehrere solcher enstehen
+betrachtet werden. Eine entsprechende Definition dieser Interface Automaten
+findet sich in~\cite{Alfaro2004}. Es handelt sich also um Systeme, die via
+Inputs und Outputs mit anderen Systemen kommunizieren können. Jedoch wir in
+ausgeschlossen, dass es Fehler in einem Interface Automaten gibt. Es müsste
+also jedes mal, wenn ein Fehler durch eine Kommunikation, die nicht so möglich
+ist wie gewollt, eine Veränderung an der Komposition von zwei Systemen
+vorgenommen werden. Es müssten also alle Wege, die nicht beeinflusst werden
+können und die zu einem solchen Fehler-Zustand führen aus dem Automaten
+entfernt werden. Dies ist ein sehr umständliches Vorgehen, wenn man
+ausschließlich solche Systeme betrachten möchte. Deshalb wurden
+Transitionssysteme eingeführt, die Fehler-Zustände zulassen. Die sich jedoch
+trotzdem noch entsprechend den Interface Automaten verhalten. Es kann dann nach
+der Betrachtung trotzdem die Fehlerfreiheit eines Transitionssystems mit Fehler
+hergestellt werden, in dem die entsprechenden Wege entfernt werden.\\
+Die Betrachtung der Transitionssysteme mit Fehler-Zuständen hat auch den
+Vorteil, dass die Inputs nicht als deterministisch vorausgesetzt werden müssen
+um sicher zu stellen, dass nach dem entfernen eines Weges zu einem Fehler, der
+gleiche Input nicht noch zu einem anderen Zustand führt.\\
+Um die Begrifflichkeiten hier eindeutiger zu machen, wird im weiteren Verlauf
+das Wort Error für Kommunikationsfehler verwendet und für Verklemmung das Wort
+Ruhe. Als Fehler werden im weiteren Kommunikationsfehler, Verklemmung und
+Divergenz bezeichnet.\\
 Der Anfang dieser Arbeit orientiert sich sehr stark an~\cite{Vogler2014EIO}.
 Jedoch wird hier darauf verzichtet die Input-Mengen der
 Error-IO-Transitionssysteme (\EIO{}s) als disjunkt anzunehmen und alle

@@ -150,13 +150,21 @@ Die Semantik der späteren Kapitel basiert darauf die jeweiligen Zustände, die
 zu Problemen führen, mit den Traces zu betrachten, mit denen man diese
 Zustände erreicht. Um dies besser umsetzen zu können, wird eine
 $\prune{}$-Funktion definiert, die alle Outputs am Ende eines Traces entfernt.
-Zusätzlich werden Funktionen definiert, die die Traces beliebig fortsetzen.
+Zusätzlich werden Funktionen definiert, die die Traces beliebig fortsetzen. Da
+nicht nur beliebige Fortsetzungen von gekürzten Traces betrachtet werden
+sollen, wir ebenfalls noch eine andere Funktion zum kürzen und verlängern
+eingeführt, die nur Trace-Verlängerungen zulässt, die bereits im Eingrabe-Trace
+möglich waren.
 
 \begin{Def}[Pruning- und Fortsetzungs-Funktion]
   Für ein \EIO{} $S$ wird definiert:
   \begin{itemize}
     \item $\prune{}:\Sigma ^*\rightarrow\Sigma ^*, w\mapsto u$, mit $w=uv,
       u=\varepsilon\vee u\in\Sigma ^*\cdot I$ und $v\in O^*$,
+    \item $\prunenew{}:\Sigma ^*\rightarrow\mathfrak{P}(\Sigma ^*), w\mapsto
+      \{u\mid \exists v\in O ^*: uv=w\}$,
+    \item $\prunenew{}:\mathfrak{P}(\Sigma ^*)\rightarrow\mathfrak{P}(\Sigma
+      ^*), L\mapsto\bigcup\{\prunenew{}(w)\mid w\in L\}$,
     \item $\cont{}:\Sigma ^*\rightarrow\mathfrak{P}(\Sigma ^*),
       w\mapsto\{wu\mid u\in\Sigma ^*\}$,
     \item $\cont{}:\mathfrak{P}(\Sigma ^*)\rightarrow\mathfrak{P}(\Sigma ^*),
@@ -203,10 +211,10 @@ jedoch Inputs versteckt sind alle Traces, die diesen Input benötigen, nicht
 mehr ausführbar. Sie sind dann ab dem versteckten Input nicht mehr
 weiterführbar. Es handelt sich also um echte Einschränkungen des Systems. Die
 Transitionen werden durch das Hiding von Inputs ähnlich wie bei der Anwendung
-von Restriktionen in CSS verboten. Diese Art der Einschränkung der
-Transitionssysteme sollen hier jedoch nicht behandelt werden. Somit wird in
-der folgenden Definition nur die Internalisierung von Outputs erlaubt,
-entsprechend Quelle~\cite{Schlosser2012BA}.
+von Restriktionen in CSS, siehe dazu~\cite{Milner1989} ,verboten. Diese Art der
+Einschränkung der Transitionssysteme sollen hier jedoch nicht behandelt werden.
+Somit wird in der folgenden Definition nur die Internalisierung von Outputs
+erlaubt, entsprechend Quelle~\cite{Schlosser2012BA}.
 
 \begin{Def}[Internalisierungsoperator]
   Für ein \EIO{} $S=(Q,I,O,\delta ,q_0.E)$ ist $S/X$, mit
