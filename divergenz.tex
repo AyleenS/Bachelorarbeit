@@ -22,6 +22,13 @@ darunter verstanden wird, wird nun noch eine Definition für Divergenz gegeben.
   % q_i\neq q_j\}$.
 \end{Def}
 
+Die unendliche Folge an $\tau$s kann durch eine Schleife ausführbar sein, oder
+durch einen Weg, der mit $\tau$s ausführbar ist, im Transitionssystem, mit dem
+unendliche viele Zustände durchlaufen werden. Es ist jedoch zu beachten, dass
+ein Zustand, von dem aus unendlich vile Zustände durch $\tau$s erreichbar sind,
+nicht divergent sein muss. Es ist auch möglich, dass dieser Zustand eine
+unendliche Verzeigung hat und somit keine unendliche Folge an $\tau$s ausführen
+kann.\\
 Als Erreichbarkeitsbegriff wird wieder die lokale Erreichbarkeit verwendet.
 Da das Divergieren eines Systems nicht mehr verhindert werden kann, sobald ein
 divergenter Zustand lokal erreichbar ist, ist Divergenz als ähnlich
@@ -47,13 +54,14 @@ bezüglich $\cdot\|\cdot$.
 Da nun die grundlegenden Definitionen für Divergenz festgehalten sind,
 kann man sich nun einen Begriff für die Traces von divergenten Zuständen
 bilden. Da oben bereits festgehalten wurde, dass Divergenz als ähnlich
-\glqq{}schlimmer\grqq{} Fehler anzusehen ist, wie Error und das Divergieren
-eines Systems nicht mehr verminderbar ist, sobald ein divergenter Zustand
+\glqq{}schlimmer\grqq{} Fehler anzusehen ist, wie Error und dass das Divergieren
+eines Systems nicht mehr verhinderbar ist, sobald ein divergenter Zustand
 erreichbar ist, kommt für die Divergenztraces wieder die $\prune$-Funktion zu
 Einsatz. Da jedoch nur die Präkongruenz aus dem Error-Kapitel weiter verfeinert
 werden soll, sollen keine neuen Traces entstehen, die nicht bereits in \EL{}
 enthalten sind. Es kann also nicht möglich sein abgeschnittene Traces beliebig
-Fortzusetzen.
+Fortzusetzen. Deshalb muss hier die Abwandlung \prunenew{} der
+\prune{}-Funktion angewendet werden.
 
 \begin{Def}[Divergenztraces]
   Sei $S$ ein \EIO{} und definiere:
@@ -68,11 +76,11 @@ Fortzusetzen.
 Da in~\cite{Chilton2013} bereits direkt Divergenz mit betrachtet wurde, wird
 dort die Flutung der Traces so vorgenommen, dass $\ET\subseteq \DT\subseteq
 \QT$ gilt. Dies soll auch hier in diesem Kapitel erreicht werden. Somit kann
-zwar die Semantik aus dem Error-Kapitel übernehmen werden, jedoch wird für die
+zwar die Semantik aus dem Error-Kapitel übernommen werden, jedoch wird für die
 Ruhe eine andere Semantik benötigt, die sich von der im letzten Kapitel
 unterscheidet. Die Inklusionskette der Fehlertraces scheint auch von der
 Hierarchie her auf die Bewertung zu passen, als wie kritisch die einzelnen
-Fehler zu bewerten sind.
+Fehler für die Kommunikation zu bewerten sind.
 
 \begin{Def}[Ruhe- und Divergenz-Semantik]
 \label{DefRuheDivSemantik}
@@ -131,7 +139,7 @@ findet sich in Satz~\ref{satzErrorSemanik}.
   w_1\|w_2$ und $v\in v_1\|v_2$. Aus $(q_1',q_2')\in Div_{12}$ folgt, dass
   \oBdA{} $q_1'\in Div_1$ gilt, d.h.\ $w_1v_1\in \StDT{}_1$. Da $q_{02}
   \overset{w_2v_2}{\Rightarrow}$ gilt, erhält man $w_2v_2\in L_2\subseteq
-  \EL{}_2$ gelten. Somit gilt insgesamt $wv\in \DT{}_1\|\EL{}_2$ und $w$ ist in
+  \EL{}_2$. Somit gilt insgesamt $wv\in \DT{}_1\|\EL{}_2$ und $w$ ist in
   der rechten Seite der Gleichung enthalten, da $v\in O_{12}^*$ gilt und dieser
   Wortteil somit durch die \prunenew{}-Funktion entfernt werden kann.
 
@@ -148,7 +156,7 @@ findet sich in Satz~\ref{satzErrorSemanik}.
     \item Fall 1 ($w_1v_1\in \ET{}_1 \vee w_2v_2\in \ET{}_2$): \OBdA{} gilt
       $w_1v_1\in\ET{}_1$. Es kann sich nun bei $w_2v_2$ um ein Errortrace,
       Divergenztrace, Ruhetrace oder um ein ausführbares Trace aus dem
-      Transitionssystem handeln, es gilt in jedem Fall $w_2v_2\in\EL{}_2$.
+      Transitionssystem handeln, es gilt jedoch in jedem Fall $w_2v_2\in\EL{}_2$.
       Somit kann der erste Punkt von Satz~\ref{satzErrorSemanik} angewendet
       werden und es folgt damit, dass $w\in\ET{}_{12}$ gilt und $w$ deshalb in
       der linken Seite der Gleichung enthalten ist.
@@ -160,8 +168,8 @@ findet sich in Satz~\ref{satzErrorSemanik}.
       \overset{v_2}{\Rightarrow} q_2'$. An dieser Stelle kann nichts darüber
       gesagt werden, wie sich $S_2$ verhält, wenn $S_1$ das $u$ ausführt.
       \begin{itemize}
-        \item Fall 2a) ($q_2' \overset{u|_{\Sigma
-          _2}}{\not{\hspace{-0.1cm}\Rightarrow}}$): $S_2$ hat also nicht die
+        \item Fall 2a) \Big($q_2' \overset{u|_{\Sigma
+          _2}}{\not{\hspace{-0.1cm}\Rightarrow}}$\Big): $S_2$ hat also nicht die
           Möglichkeit das $u$ gemeinsam mit $S_1$ auszuführen, es kommt also zu
           einem Kommunikationsfehler in der Parallelkomposition. Es existiert
           ein Präfix $t$ von $u|_{\Sigma _2}$ mit $w_2v_2t\in\MIT{}_2$. Somit
@@ -201,7 +209,7 @@ findet sich in Satz~\ref{satzErrorSemanik}.
   \begin{itemize}
     \item Fall 1 ($w_1\in \DT{}_1 \vee w_2\in \DT{}_2$): \OBdA{} gilt $w_1\in
       \DT{}_1$. Es kann nun $w_2\in \StQT{}_2 \subseteq L_2$ gelten oder
-      $w_2\in \DT{}_2$ und somit gilt auf jeden Fall $w_2\in \EL{}_2$. Daraus
+      $w_2\in \DT{}_2\subseteq\ET{}_2$ und somit gilt auf jeden Fall $w_2\in \EL{}_2$. Daraus
       kann mit dem zweiten Punkt dieses Satzes gefolgert werden, dass $w\in
       \DT{}_{12}$ gilt und somit $w$ in der linken Seite der Gleichung
       enthalten ist.
@@ -356,8 +364,8 @@ Verfeinerung durch \DRel{} charakterisiert.
 Da durch den Internalisierungsoperator Outputs in $\tau$s umgewandelt werden,
 hat das Hiding auf die Divergenz-Eigenschaft eine recht große Auswirkung. Die
 Menge der divergenten Zustände kann sich somit durch das Internalisieren
-vergrößern. Es kann ein Zustand divergent werden, wenn von diesem aus bereits
-lokal ein divergenter Zustand erreichbar war oder wenn er eine unendliche
+vergrößern. Es kann ein Zustand divergent werden, wenn von diesem bereits
+lokal ein divergenter Zustand aus erreichbar war oder wenn er eine unendliche
 Folge von Aktionen aus $X\cup\{\tau\}$ ausführen konnte, jedoch nur endlich
 viele davon $\tau$s waren. Somit kann die Basisrelation für Divergenz auf jeden
 Fall nicht erhalten bleiben unter Internalisierung.
