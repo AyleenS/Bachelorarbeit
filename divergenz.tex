@@ -296,31 +296,32 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
 \begin{proof}
   %TODO an Div Definitionen anpassen und bei erstem Teil Fehler rausarbeiten
   Da davon ausgegangen wird, dass $S_1$ und $S_2$ die gleiche Signatur haben,
-  definiert man $I:=I_1=I_2$ und $O:=O_1=O_2$. Für jeden Partner $U$ gilt
-  $I_U=O$ und $O_U=I$.\\
-  Um zu zeigen, dass die Relation $S_1\QRel S_2$ gilt, müssen die
-  folgenden Punkte nachgewiesen werden:
+  definiert man $I:=I_1=I_2$ und $O:=O_1=O_2$. Für jeden fast Partner $U$ gilt
+  $I_U=O$ und $O_U=I\cup\{o\}$ mit $o\notin I\cup O$.\\
+  Um zu zeigen, dass die Relation $S_1\DRel S_2$ gilt, müssen die folgenden
+  Punkte nachgewiesen werden:
   \begin{itemize}
     \item $S_1\ERel S_2$,
+    \item $\DT{}_1\subseteq \DT{}_2$,
     \item $\QT{}_1\subseteq \QT{}_2$.
   \end{itemize}
-  In Lemma~\ref{lemVerfeinerung} wurde bereits etwas Ähnliches gezeigt, jedoch
-  wurde dort als Voraussetzung $U\|S_1\EBRel U\|S_2$ für alle Partner $U$
-  verwendet und hier die selbe Aussage mit der Basisrelation der Ruhe. Dadurch,
-  dass die hier verwendete Basisrelation nichts über die Art der erreichbaren
-  Fehlers in den Komponenten aussagt, kann der Beweis aus~\ref{lemVerfeinerung}
-  nicht verwendet werden. Es kann also aus der lokalen Erreichbarkeit eines
-  Errors in $S_1'$ und dem relationalen Zusammenhang von $S_1'\QBRel S_2'$ nur
+  In den Lemmata~\ref{lemVerfeinerung} und~\ref{lemQuiVerfeinerung} wurde
+  bereits etwas Ähnliches gezeigt. Jedoch kann Aufgrund der unterschiedlichen
+  Basisrelationen, die zur Anwendung kommen nichts über dieses Lemma und dessen
+  Gültigkeit ausgesagt werden. Es kann also in diesem Lemma eben so wie
+  in~\ref{lemQuiVerfeinerung} aus der lokalen Erreichbarkeit eines Errors in
+  $S_1'$ und dem relationalen Zusammenhang von $S_1'\DBRel S_2'$ nur
   geschlossen werden, dass in $S_2'$ auch ein Fehler lokal erreichbar ist,
-  jedoch kann dieser Fehler ein Error oder ein Ruhe-Zustand sein. Analog
-  verhält es sich, wenn in $S_1'$ ein Ruhe-Zustand lokal erreichbar ist.\\
+  jedoch kann dieser Fehler hier ein Error, ein Ruhe-Zustand oder ein
+  divergenter Zustand sein. Analog verhält es sich, wenn in $S_1'$ ein
+  Divergenz-Zustand oder ein Ruhe-Zustand lokal erreichbar ist.\\
   Es muss also für den ersten Punkt folgendes nachgewiesen werden:
   \begin{itemize}
     \item $\ET{}_1\subseteq \ET{}_2$,
     \item $\EL{}_1\subseteq \EL{}_2$.
   \end{itemize}
   Es wird nun damit begonnen, den ersten Unterpunkt des ersten Beweispunktes zu
-  zeigen, d.h.\ es wird unter der Voraussetzung, dass $U\|S_1\QBRel U\|S_2$
+  zeigen, d.h.\ es wird unter der Voraussetzung, dass $U\|S_1\DBRel U\|S_2$
   gilt, gezeigt, dass $\ET{}_1\subseteq \ET{}_2$ gilt. Da beide \ET{}-Mengen
   unter \cont{} abgeschlossen sind, reicht es ein präfix-minimales Element
   $w\in\ET{}_1$ zu betrachten und zu zeigen, dass dieses $w$ oder eines seiner
@@ -329,17 +330,27 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
     \item Fall 1 ($w=\varepsilon$): Es handelt sich um einen lokal erreichbaren
       Error in $S_1$. Für $U$ wird ein Transitionssystem verwendet, das nur aus
       dem Startzustand, einer Schleife für alle Inputs $x\in I_U$ und einer
-      Schleife für $\tau$ besteht. Somit kann $S_1$ die im Prinzip gleichen
-      Error-Zustände lokal erreichen wie $U\|S_1$. Es folgt also, dass in $U\|S_2$ ein Fehler lokal
-      erreichbar ist. Es kann sich bei dem Fehler nur um einen Error handeln,
-      da es in der Komposition mit $U$ keine Ruhe-Zustände geben kann. Da $U$
-      keinen Error-Zustand und auch keine fehlenden Input-Möglichkeiten
-      enthält, kann der Error nur von $S_2$ geerbt sein. Somit muss in $S_2$
-      ein Error-Zustand lokal erreichbar sein, d.h.\ es gilt $\varepsilon\in
-      \PrET{}_2\subseteq \ET{}_2$.
+      Schleife für $o$ besteht. Somit kann $S_1$ die im Prinzip gleichen
+      Error-Zustände lokal erreichen wie $U\|S_1$. Es folgt also, dass in
+      $U\|S_2$ ein Fehler lokal erreichbar ist. Es kann sich bei dem Fehler nur
+      um einen Error oder \textcolor{red}{Divergenz} handeln, da es in der Komposition mit $U$
+      keine Ruhe-Zustände geben kann.
+      \begin{itemize}
+        \item Fall 1a) ($\varepsilon\in\ET{}(U\|S_2)$): Da $U$ keinen
+          Error-Zustand und auch keine fehlenden Input-Möglichkeiten enthält,
+          kann der Error nur von $S_2$ geerbt sein. Somit muss in $S_2$ ein
+          Error-Zustand lokal erreichbar sein, d.h.\ es gilt $\varepsilon\in
+          \PrET{}_2\subseteq \ET{}_2$.
+        \textcolor{red}{\item Fall 1b) $\varepsilon\in\DT{}(U\|S_2)\backslash\ET{}(U\|S_2)$):
+          Da $U$ nicht unendliche viele Zustände hat und auch keine
+          $\tau$-Schleifen besitzt, kann das divergenz Verhalten nur von $S_2$
+          geerbt sein. Es muss also in $S_2$ ein Divergenz-Zustand lokal
+          erreichbar sein und somit gilt $\varepsilon\in\PrDT{}_2\subseteq
+        \DT{}_2$.\lightning}
+      \end{itemize}
     \item Fall 2 ($w=x_1\dots x_nx_{n+1}\in\Sigma{} ^+$ mit $n\geq 0$ und
       $x_{n+1}\in I$): Es wird der folgende Partner $U$ betrachtet (siehe auch
-      Abbildung~\ref{UohneEmitTau}):
+      Abbildung~\ref{UohneEmitO}):
       \begin{itemize}
         \item $Q_U=\{q_0,q_1,\dots ,q_{n+1}\}$,
         \item $q_{0U}=q_0$,
@@ -349,7 +360,7 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
                       &\cup\{(q_i,x,q_{n+1})\mid  x\in I_U\backslash\{x_{i+1}\},
           0\leq i\leq n\}\\
           &\cup\{(q_{n+1},x,q_{n+1})\mid  x\in I_U\}\\
-          &\cup\{(q_i,\tau,q_i)\mid 0\leq i\leq n+1\}.
+          &\cup\{(q_i,o,q_n+1)\mid 0\leq i\leq n+1\}.
         \end{aligned}$
       \end{itemize}
       \begin{figure} [h!tbp]
@@ -363,55 +374,83 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
 
           \path ($ (0) + (-1,0) $) edge (0)
                 (0) edge node {$x_1$} (1)
-                    edge [bend right] node [below, sloped] {$x?\neq x_1$} (n1)
-                    edge [loop above] node {$\tau$} (0)
+                    edge [bend right] node [below, sloped] {$x?\neq x_1, o!$} (n1)
                 (1) edge node {$x_2$} (dots)
-                    edge node [below, sloped] {$x?\neq x_2$} (n1)
-                    edge [loop above] node {$\tau$} (1)
+                    edge node [below, sloped] {$x?\neq x_2, o!$} (n1)
                 (dots) edge node {$x_n$} (n)
                        edge [dashed] (n1)
-                (n) edge node [above, sloped] {$x?\in I_U$} (n1)
+                (n) edge node [above, sloped] {$x?\in I_U, o!$} (n1)
                     edge [bend left] node [sloped] {$x_{n+1}$!} (n1)
-                    edge [loop above] node {$\tau$} (n)
-                (n1) edge [loop below] node {$x?\in I_U, \tau$} (n1);
+                (n1) edge [loop below] node {$x?\in I_U, o!$} (n1);
         \end{tikzpicture}
         \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$}
-\label{UohneEmitTau}
+\label{UohneEmitO}
       \end{center}
       \end{figure}
-      Die Menge der Ruhe-Zustände des hier betrachteten $U$s ist leer. Da im
-      Vergleiche zum Transitionssystem in Abbildung~\ref{UohneE} nur die
-      $\tau$-Schlingen ergänzt wurden, ändert sich nichts an den Fällen 2a) und
-      2b). Die Begründungen, wieso in den beiden Fällen $\varepsilon\in
-      \PrET{}(U\|S_1)$ gilt bleibt also analog zum Beweis von
-      Lemma~\ref{lemVerfeinerung}. Durch die $\tau$-Schlingen wurde, genau wie
-      im letzten Fall, nur erreicht, dass in einer Parallelkomposition mit $U$
-      keine Ruhe-Zustände möglich sind. Es kann also auch hier aus der lokalen
-      Erreichbarkeit eines Error-Zustandes in $U\|S_1$ auf die lokale
-      Erreichbarkeit eines Errors in $U\|S_2$ geschlossen werden. Die weitere
-      Argumentation verläuft dann analog zu Fall 2 der selben Inklusion im
-      Beweis zu Lemma~\ref{lemVerfeinerung}. Da $\tau$s nur interne Aktionen
-      eines einzelnen Systems sind, verändert sich auch nichts an den Traces,
-      über die argumentiert wird. Es können zwar möglicherweise
-      $\tau$-Transitionen ausgeführt werden, diese können jedoch weder zu einem
-      Fehler führen noch beeinflussen, dass ein anderes Trace nicht ausgeführt
-      werden kann.
+      Die Mengen der Divergenz- und Ruhe-Zustände des hier betrachteten $U$s
+      sind leer. Da im Vergleiche zum Transitionssystem in
+      Abbildung~\ref{UohneE} nur die $o$-Transitionen zu $q_{n+1}$ ergänzt
+      wurden, ändert sich nichts an den Fällen 2a) und 2b). Die Begründungen,
+      wieso in den beiden Fällen $\varepsilon\in \PrET{}(U\|S_1)$ gilt bleibt
+      also analog zum Beweis von Lemma~\ref{lemVerfeinerung}. Durch die
+      $o$-Transitionen wurde, genau wie im letzten Fall, nur erreicht, dass in
+      einer Parallelkomposition mit $U$ keine Ruhe-Zustände möglich sind. Es
+      kann also auch hier aus der lokalen Erreichbarkeit eines Error-Zustandes
+      in $U\|S_1$ auf die lokale Erreichbarkeit eines Errors oder
+      \textcolor{red}{Divergenz-Zustandes} in $U\|S_2$ geschlossen werden.
+      \begin{itemize}
+        \item Fall 2a) ($\varepsilon\in\ET{}(U\|S_2)$): 
+          \begin{itemize}
+            \item Fall 2a)i) (neuer Error): Da jeder Zustand von $U$ alle
+              Inputs $x\in O$ zulässt, muss ein lokal erreichbarer Error der
+              Form sein, dass ein Output $a\in O_U\backslash\{o\}$ von $U$
+              möglich ist, der nicht mit einem passenden Input aus $S_2$
+              synchonisiert werden kann. Durch die Konstruktion von $U$ ist in
+              $q_{n+1}$ kein Output außer $o$ möglich. Ein neuer Error muss
+              also die Form $(q_i,q')$ haben mit $i\leq n, q'
+              \overset{x_{i+1}}{\not{\hspace{-0.1cm}\rightarrow}}$ und
+              $x_{i+1}\in O_U\backslash\{o\}$. Durch Projektion erhält man dann
+              $q_{02} \overset{x_1\dots x_i}{\Rightarrow} q'
+              \overset{x_{i+1}}{\not{\hspace{-0.1cm}\rightarrow}}$ und damit
+              gilt $x_1\dots x_{i+1}\in \MIT{}_2\subseteq \ET{}_2$. Somit ist
+              ein Präfix von $w$ in $\ET{}_2$ enthalten.
+            \item Fall 2a)ii) (geerbter Error): $U$ hat $x_1\dots x_iu$
+              ausgeführt mit $u\in (O\cup\{o\})^*$ und ebenso hat $S_2$ den
+              Weg $x_1\dots x_iu|_{O}$ ausgeführt. Durch dies hat $s_2$ einen
+              Zustand aus $E_2$ erreicht, da von $U$ kein Error geerbt werden
+              kann. Es gilt dann $\prune{}(x_1\dots x_iu|_{O})=
+              \prune{}(x_1\dots x_i)\in\PrET{}_2\subseteq \ET{}_2$. Da
+              $x_1\dots x_i$ ein Präfix von $w$ ist, führt auch in diesem Fall
+              ein Präfix von $w$ zu einem Error.
+          \end{itemize}
+        \textcolor{red}{\item Fall 2b) $\varepsilon\in\DT{}(U\|S_2)\backslash\ET{}(U\|S_2)$):
+          Da $U$ nicht unendliche viele Zustände hat und auch keine
+          $\tau$-Schleifen besitzt, kann das divergenz Verhalten nur von $S_2$
+          geerbt sein. $U$ hat $x_1\dots x_iu$ ausgeführt mit $u\in (O\cup
+          \{o\})^*$ und ebenso hat $S_2$ den Weg $x_1\dots x_iu|_{O}$
+          ausgeführt. Durch dies hat $S_2$ einen Zustand aus $Div_2$
+          erreicht. Es gilt dann $x_1\dots x_i\in\PrDT{}_2\subseteq \DT{}_2$,
+          da $u|_{O}$ in $O^*$ enthalten ist. Da $x_1\dots x_i$ ein Präfix von
+          $w$ ist, führt auch in diesem Fall ein Präfix von $w$ zu einem
+        divergenten Zustand.}
+      \end{itemize}
   \end{itemize}
 
   Nun wird mit dem zweiten Unterpunkt des ersten Beweispunktes begonnen. Genau
-  wie im Beweis zu~\ref{lemVerfeinerung} ist hier jedoch auf Grund des bereits
-  geführten Beweisteils nur noch $L_1\backslash \ET{}_1\subseteq
-  \EL{}_2$ zu zeigen. Es wird also für ein beliebig gewähltes $w\in
-  L_1\backslash \ET{}_1$ gezeigt, dass es auch in $\EL{}_2$ enthalten
-  ist.
+  wie in den Beweisen zu~\ref{lemVerfeinerung} und~\ref{lemQuiVerfeinerung} ist
+  hier jedoch auf Grund des bereits geführten Beweisteils nur noch
+  $L_1\backslash \ET{}_1\subseteq \EL{}_2$ zu zeigen. Es wird also für ein
+  beliebig gewähltes $w\in L_1\backslash \ET{}_1$ gezeigt, dass es auch in
+  $\EL{}_2$ enthalten ist.
   \begin{itemize}
-    \item Fall 1 ($w=\varepsilon$): Ebenso wie in~\ref{lemVerfeinerung} gilt
-      auch hier, dass $\varepsilon$ immer in $\EL{}_2$ enthalten ist.
+    \item Fall 1 ($w=\varepsilon$): Ebenso wie in~\ref{lemVerfeinerung}
+      und~\ref{lemQuiVerfeinerung} gilt auch hier, dass $\varepsilon$ immer in
+      $\EL{}_2$ enthalten ist.
     \item Fall 2 ($w=x_1\dots x_n$ mit $n\geq 1$): Die Konstruktion des
       Partners $U$ weicht wie im letzten Beweisteil nur durch die
-      $\tau$-Schleifen an den Zuständen des Transitionssystems vom Beweis zu
-      Lemma~\ref{lemVerfeinerung} ab. Somit ist der Partner $U$ dann wie folgt
-      definiert (siehe dazu auch Abbildung~\ref{UmitEundTau}):
+      $o$-Transition im Transitionssystems vom Beweis zu
+      Lemma~\ref{lemVerfeinerung} ab. Somit ist der fast Partner $U$ dann wie
+      folgt definiert (siehe dazu auch Abbildung~\ref{UmitEundO}):
       \begin{itemize}
         \item $Q_U=\{q,q_0,q_1,\dots ,q_n\}$,
         \item $q_{0U}=q_0$,
@@ -420,8 +459,8 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
             \delta _U=&\{(q_i,x_{i+1},q_{i+1})\mid 0\leq i< n\}\\
                       &\cup\{(q_i,x,q)\mid x\in I_U\backslash\{x_{i+1}\},0\leq
           i < n\}\\
-          &\cup\{(q_i,\tau ,q_i)\mid 0\leq i\leq n\}\\
-          &\cup\{(q,\alpha ,q)\mid \alpha\in I_U\cup \{\tau\}\}.
+          &\cup\{(q_i,o ,q)\mid 0\leq i\leq n\}\\
+          &\cup\{(q,\alpha ,q)\mid \alpha\in I_U\cup \{o\}\}.
               \end{aligned}$
       \end{itemize}
       \begin{figure} [h!tbp]
@@ -433,41 +472,43 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
           \node (dots) [right of=1] {$\dots$};
           \node (n1) [right of=dots] {$q_{n-1}$};
           \node (n) [right of=n1, rectangle, draw] {$q_n\in E_U$};
-          \node (q) at ($(1)!0.5!(dots) + (0,-3)$) {$q$};
+          \node (q) at ($(dots) + (0,-3)$) {$q$};
 
           \path ($ (0) + (-1,0) $) edge (0)
                 (0) edge node {$x_1$} (1)
-                    edge [bend right] node [below, sloped] {$x?\neq x_1$} (q)
-                    edge [loop above] node {$\tau$} (0)
+                    edge [bend right] node [below, sloped] {$x?\neq x_1, o$} (q)
                 (1) edge node {$x_2$} (dots)
-                    edge node [below, sloped] {$x?\neq x_2$} (q)
-                    edge [loop above] node {$\tau$} (1)
+                    edge node [below, sloped] {$x?\neq x_2, o$} (q)
                 (dots) edge node {$x_{n-1}$} (n1)
                        edge [dashed] (q)
                 (n1) edge node {$x_n$} (n)
-                     edge [bend left] node [below, sloped] {$x?\neq x_n$} (q)
-                     edge [loop above] node {$\tau$} (n1)
-                (q) edge [loop below] node {$x?\in I_U, \tau$} (q)
-                (n) edge [loop above] node {$\tau$} (n);
+                     edge node [below, sloped] {$x?\neq x_n, o$} (q)
+                (q) edge [loop below] node {$x?\in I_U, o$} (q)
+                (n) edge [bend left] node {$o$} (q);
         \end{tikzpicture}
         \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$, $q_n$
           ist der einzige Error-Zustand}
-\label{UmitEundTau}
+\label{UmitEundO}
       \end{center}
       \end{figure}
-      Da durch die $\tau$-Schlingen an den Zuständen wie oben vermieden wird,
+      Da durch die $o$-Transitionen an den Zuständen wie oben vermieden wird,
       dass es in einer Komposition mit $U$ und auch in $U$ selbst Ruhe-Zustände
       gibt, verläuft der Rest des Beweises dieses Punktes analog zum Beweis von
       Lemma~\ref{lemVerfeinerung}. Und somit gilt für alle Fälle (2a) bis 2d)),
-      dass $w$ in $\EL{}_2$ enthalten ist.
+      dass $w$ in $\EL{}_2$ enthalten ist. %TODO prüfen
   \end{itemize}
+
+  Als nächstes wird der zweite Beweispunkt gezeigt. Also die Inklusion
+  $\DT{}_1\subseteq \DT{}_2$, die jeodch analog zu der inklusion der
+  error-gefluteten Sprache auf $\DT{}_1\backslash\ET{}_1 \subseteq \DT{}_2$
+  eingeschränkt werden kann. %TODO noch ausfüheren düfte jedoch analog zu \QT laufen
 
   So bleibt nun nur noch der letzte Beweispunkt zu zeigen, d.h.\ die Inklusion
   $\QT{}_1\subseteq \QT{}_2$. Diese Inklusion kann jedoch noch, anlog zum Beweis
   der Inklusion der error-gefluteten Sprachen, weiter eingeschränkt werden.
-  Da bereits bekannt ist, dass $\ET{}_1\subseteq\ET{}_2$ gilt, muss nur
-  noch $\StQT{}_1\backslash \ET{}_1\subseteq \QT{}_2$ gezeigt werden.\\
-  Es wird ein $w\in \StQT{}_1\backslash\ET{}_1$ gewählt und gezeigt, dass
+  Da bereits bekannt ist, dass $\DT{}_1\subseteq\DT{}_2$ gilt, muss nur
+  noch $\StQT{}_1\backslash \DT{}_1\subseteq \QT{}_2$ gezeigt werden.\\
+  Es wird ein $w\in \StQT{}_1\backslash\DT{}_1$ gewählt und gezeigt, dass
   es auch in $\QT{}_2$ enthalten ist.\\
   Durch die Wahl des $w$s wird vom Startzustand von $S_1$ durch das Wort $w$
   ein ruhiger Zustand erreichbar. Dies hat nur Auswirkungen auf die
@@ -475,21 +516,21 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
   $w$ erreichbar ist.
   \begin{itemize}
     \item Fall 1 ($w=\varepsilon$): Es ist ein Ruhe-Zustand intern erreichbar in
-      $S_1$, da jedoch $\varepsilon\notin \ET{}_1$ gilt, ist kein Error
-      lokal erreichbar. Für $U$ wird ein Transitionssystem verwendet, das nur
-      aus dem Startzustand ohne Transitionsmöglichkeiten besteht. Somit ist
-      auch in $U$ ein Ruhe-Zustand lokal erreichbar. Es
+      $S_1$, da jedoch $\varepsilon\notin \DT{}_1$ gilt, ist kein
+      Divergenz-Zustand lokal erreichbar. Für $U$ wird ein Transitionssystem
+      verwendet, das nur aus dem Startzustand ohne Transitionsmöglichkeiten
+      besteht. Somit ist auch in $U$ ein Ruhe-Zustand lokal erreichbar. Es
       folgt also mit Lemma~\ref{lemRuheParallelkomp}, dass auch in $U\|S_1$ ein
-      Ruhe-Zustand lokal erreichbar ist. Es muss also auch in
-      $U\|S_2$ ein Fehler lokal erreichbar sein. Bei diesem Fehler kann es sich
-      nun um einen Error oder um einen Ruhe-Zustand handeln, dies ist jedoch
+      Ruhe-Zustand lokal erreichbar ist. Es muss also auch in $U\|S_2$ ein
+      Fehler lokal erreichbar sein. Bei diesem Fehler kann es sich nun um einen
+      Divergenz-Zustand oder um einen Ruhe-Zustand handeln, dies ist jedoch
       Aufgrund der Definition der Menge \QT{} nicht relevant. Da für $U$ keine
       Transitionen möglich sind, kann nur $\varepsilon$ ein striktes
       Ruhetrace sein, falls es sich bei dem Fehler in $U\|S_2$ um einen lokal
-      erreichbaren Ruhe-Zustand handelt. Somit folgt in
-      beiden Fällen, dass $w$ in $\QT{}_2$ enthalten ist.
+      erreichbaren Ruhe-Zustand handelt. Somit folgt in beiden Fällen, dass $w$
+      in $\QT{}_2$ enthalten ist.
     \item Fall 2 ($w=x_1\dots x_n\in \Sigma ^+$ mit $n\geq 1$): Es wird der
-      folgende Partner $U$ betrachtet (siehe auch Abbildung~\ref{UohneEmitI}):
+      folgende Partner $U$ betrachtet (siehe auch Abbildung~\ref{UohneEmitIundO}):
       \begin{itemize}
         \item $Q_U=\{q_0,q_1,\dots ,q_n, q\}$,
         \item $q_{0U}=q_0$,
@@ -497,9 +538,9 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
         \item $\begin{aligned}[t]
             \delta _U=&\{(q_i,x_{i+1},q_{i+1})\mid  0\leq i< n\}\\
                       &\cup\{(q_i,x,q)\mid  x\in I_U\backslash\{x_{i+1}\}, 0\leq i< n\}\\
-                      &\cup\{(q_i,\tau,q_i)\mid 0\leq i< n\}\\
+                      &\cup\{(q_i,o,q)\mid 0\leq i< n\}\\
                       &\cup\{(q_n,x,q)\mid x\in I_U\}\\
-                      &\cup\{(q,\alpha,q)\mid \alpha\in I_U\cup\{\tau\}\}.
+                      &\cup\{(q,\alpha,q)\mid \alpha\in I_U\cup\{o\}\}.
         \end{aligned}$
       \end{itemize}
       \begin{figure} [h!tbp]
@@ -513,18 +554,16 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
 
           \path ($ (0) + (-1,0) $) edge (0)
                 (0) edge node {$x_1$} (1)
-                    edge [loop above] node {$\tau$} (0)
-                    edge [bend right] node [below, sloped] {$x?\neq x_1$} (q)
+                    edge [bend right] node [below, sloped] {$x?\neq x_1, o$} (q)
                 (1) edge node {$x_2$} (dots)
-                    edge [loop above] node {$\tau$} (1)
-                    edge [below, sloped] node {$x?\neq x_2$} (q)
+                    edge [below, sloped] node {$x?\neq x_2, o$} (q)
                 (dots) edge node {$x_n$} (n)
                        edge [dashed] (q)
                 (n) edge [bend left] node [below,sloped] {$x?\in I_U$} (q)
-                (q) edge [loop below] node {$x?\in I_U, \tau$} (q);
+                (q) edge [loop below] node {$x?\in I_U, o$} (q);
         \end{tikzpicture}
         \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$}
-\label{UohneEmitI}
+\label{UohneEmitIundO}
       \end{center}
       \end{figure}
       Der Zustand $q_n$ aus $U$ ist der einzige ruhige Zustand in $U$.
@@ -533,17 +572,17 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
       es sich bei allen in $w$ befindlichen Aktionen um synchronisierte
       Aktionen handelt und $I_U\cap I=\emptyset$, folgt $w\in O_{U\|S_1}^*$ und
       $w\in \StQT{}(U\|S_1)$. Es kann also in der Parallelkomposition durch $w$
-      ein Ruhe-Zustand lokal erreicht werden. Da $w\notin \ET{}_1$ gilt, kann
+      ein Ruhe-Zustand lokal erreicht werden. Da $w\notin \DT{}_1$ gilt, kann
       auf dem Weg, der mit $w$ im Transitionssystem $S_1$ zurück gelegt wird
-      kein Error lokal erreicht werden. Es kann also weder von $S_1$ noch von
-      $U$ ein Error auf diesem Weg geerbt werden und durch den Aufbau von $U$
-      kann auch kein neuer Error entstehen. Da ein Ruhe-Zustand in $U\|S_1$
-      lokal erreichbar ist, muss auch ein Fehler in $U\|S_2$ lokal erreichbar
-      sein. Hier kann jedoch zunächst keine Aussage darüber getroffen werden,
-      ob das $w$ ausführbar ist und ob es sich bei dem Fehler um Ruhe oder
-      Error handelt.
+      kein Divergenz-Zustand lokal erreicht werden. Es kann also weder von
+      $S_1$ noch von $U$ Divergenz auf diesem Weg geerbt werden. Da ein
+      Ruhe-Zustand in $U\|S_1$ lokal erreichbar ist, muss auch ein Fehler in
+      $U\|S_2$ lokal erreichbar sein. Hier kann jedoch zunächst keine Aussage
+      darüber getroffen werden, ob das $w$ ausführbar ist und ob es sich bei
+      dem Fehler um Ruhe oder Divergenz handelt.
+      %TODO ab hier abändern
       \begin{itemize}
-        \item Fall 2a) ($\varepsilon\in \ET{}(U\|S_2)$): Es handelt sich bei
+        \item Fall 2a) ($\varepsilon\in \DT{}(U\|S_2)$): Es handelt sich bei
           dem lokal erreichbaren Fehler um einen Error. Es ist somit ist nicht
           relevant, ob das $w$ ausführbar ist. Der Error kann sowohl von $S_2$
           geerbt sein, wie auch durch fehlende synchronizations Möglichkeiten
@@ -554,7 +593,7 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
           auf dem Trace $w$ zulässt. Da die Menge \ET{} unter \cont{}
           abgeschlossen ist, gilt also auch $w\in \ET{}_2\subseteq \QT{}_2$.
         \item Fall 2b) (Ruhe-Zustand lokal erreichbar in $U\|S_2$ und
-          $\varepsilon\notin \ET{}(U\|S_2)$): Da in $U$
+          $\varepsilon\notin \DT{}(U\|S_2)$): Da in $U$
           nur durch $w$ ein ruhiger Zustand erreicht werden kann, muss es sich
           bei dem lokal erreichbaren Ruhe-Zustand in $U\|S_2$ um einen handeln,
           der mit $w$ erreicht werden kann. Mit Lemma~\ref{lemRuheParallelkomp}
