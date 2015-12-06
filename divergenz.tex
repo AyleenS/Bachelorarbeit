@@ -302,7 +302,6 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
 \end{lem}
 
 \begin{proof}
-  %TODO an Div Definitionen anpassen und bei erstem Teil Fehler rausarbeiten
   Da davon ausgegangen wird, dass $S_1$ und $S_2$ die gleiche Signatur haben,
   definiert man $I:=I_1=I_2$ und $O:=O_1=O_2$. Für jeden fast Partner $U$ gilt
   $I_U=O$ und $O_U=I\cup\{o\}$ mit $o\notin I\cup O$.\\
@@ -340,21 +339,21 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
       dem Startzustand, einer Schleife für alle Inputs $x\in I_U$ und einer
       Schleife für $o$ besteht. Somit kann $S_1$ die im Prinzip gleichen
       Error-Zustände lokal erreichen wie $U\|S_1$. Es folgt also, dass in
-      $U\|S_2$ ein Fehler lokal erreichbar ist. Es kann sich bei dem Fehler nur
-      um einen Error oder \textcolor{red}{Divergenz} handeln, da es in der Komposition mit $U$
-      keine Ruhe-Zustände geben kann.
+      $U\|S_2$ ein Fehler lokal erreichbar ist. Es kann sich bei dem Fehler
+      um einen Error oder \textcolor{red}{Divergenz} handeln, da es in der
+      Komposition mit $U$ keine Ruhe-Zustände geben kann.
       \begin{itemize}
         \item Fall 1a) ($\varepsilon\in\ET{}(U\|S_2)$): Da $U$ keinen
           Error-Zustand und auch keine fehlenden Input-Möglichkeiten enthält,
           kann der Error nur von $S_2$ geerbt sein. Somit muss in $S_2$ ein
           Error-Zustand lokal erreichbar sein, d.h.\ es gilt $\varepsilon\in
           \PrET{}_2\subseteq \ET{}_2$.
-        \textcolor{red}{\item Fall 1b) $\varepsilon\in\DT{}(U\|S_2)\backslash\ET{}(U\|S_2)$):
-          Da $U$ nicht unendliche viele Zustände hat und auch keine
-          $\tau$-Schleifen besitzt, kann das divergenz Verhalten nur von $S_2$
-          geerbt sein. Es muss also in $S_2$ ein Divergenz-Zustand lokal
-          erreichbar sein und somit gilt $\varepsilon\in\PrDT{}_2\subseteq
-        \DT{}_2$.\lightning}
+        \textcolor{red}{\item Fall 1b)
+            $\varepsilon\in\DT{}(U\|S_2)\backslash\ET{}(U\|S_2)$): Da $U$ nicht
+            unendliche viele Zustände hat und auch keine $\tau$-Schleifen
+            besitzt, kann das divergenz Verhalten nur von $S_2$ geerbt sein. Es
+            muss also in $S_2$ ein Divergenz-Zustand lokal erreichbar sein und
+          somit gilt $\varepsilon\in\PrDT{}_2\subseteq \DT{}_2$.\lightning}
       \end{itemize}
     \item Fall 2 ($w=x_1\dots x_nx_{n+1}\in\Sigma{} ^+$ mit $n\geq 0$ und
       $x_{n+1}\in I$): Es wird der folgende fast Partner $U$ betrachtet (siehe
@@ -407,7 +406,7 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
       in $U\|S_1$ auf die lokale Erreichbarkeit eines Errors oder
       \textcolor{red}{Divergenz-Zustandes} in $U\|S_2$ geschlossen werden.
       \begin{itemize}
-        \item Fall 2a) ($\varepsilon\in\ET{}(U\|S_2)$): 
+        \item Fall 2a) ($\varepsilon\in\ET{}(U\|S_2)$):
           \begin{itemize}
             \item Fall 2a)i) (neuer Error): Da jeder Zustand von $U$ alle
               Inputs $x\in O$ zulässt, muss ein lokal erreichbarer Error der
@@ -424,9 +423,9 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
               ein Präfix von $w$ in $\ET{}_2$ enthalten.
             \item Fall 2a)ii) (geerbter Error): $U$ hat $x_1\dots x_iu$
               ausgeführt mit $u\in (O\cup\{o\})^*$ und ebenso hat $S_2$ den
-              Weg $x_1\dots x_iu|_{O}$ ausgeführt. Durch dies hat $S_2$ einen
+              Weg $x_1\dots x_iu|_{\Sigma _2}$ ausgeführt. Durch dies hat $S_2$ einen
               Zustand aus $E_2$ erreicht, da von $U$ kein Error geerbt werden
-              kann. Es gilt dann $\prune{}(x_1\dots x_iu|_{O})=
+              kann. Es gilt dann $\prune{}(x_1\dots x_iu|_{\Sigma _2})=
               \prune{}(x_1\dots x_i)\in\PrET{}_2\subseteq \ET{}_2$. Da
               $x_1\dots x_i$ ein Präfix von $w$ ist, führt auch in diesem Fall
               ein Präfix von $w$ zu einem Error.
@@ -435,11 +434,12 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
           Da $U$ nicht unendliche viele Zustände hat und auch keine
           $\tau$-Schleifen besitzt, kann das divergenz Verhalten nur von $S_2$
           geerbt sein. $U$ hat $x_1\dots x_iu$ ausgeführt mit $u\in (O\cup
-          \{o\})^*$ und ebenso hat $S_2$ den Weg $x_1\dots x_iu|_{O}$
+          \{o\})^*$ und ebenso hat $S_2$ den Weg $x_1\dots x_iu|_{\Sigma _2}$
           ausgeführt. Durch dies hat $S_2$ einen Zustand aus $Div_2$
-          erreicht. Es gilt dann $x_1\dots x_i\in\PrDT{}_2\subseteq \DT{}_2$,
-          da $u|_{O}$ in $O^*$ enthalten ist. Da $x_1\dots x_i$ ein Präfix von
-          $w$ ist, führt auch in diesem Fall ein Präfix von $w$ zu einem
+          erreicht. Es gilt dann $\prune{}(x_1\dots x_iu|_{\Sigma
+          _2})\prune{}(x_1\dots x_i)\in\PrDT{}_2\subseteq \DT{}_2$, da
+          $u|_{\Sigma _2}$ in $O^*$ enthalten ist. Da $x_1\dots x_i$ ein Präfix
+          von $w$ ist, führt in diesem Fall ein Präfix von $w$ zu einem
         divergenten Zustand.}
       \end{itemize}
   \end{itemize}
@@ -499,19 +499,36 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
 \label{UmitEundO}
       \end{center}
       \end{figure}
-      Da durch die $o$-Transitionen an den Zuständen wie oben vermieden wird,
-      dass es in einer Komposition mit $U$ und auch in $U$ selbst Ruhe-Zustände
-      gibt, verläuft der Rest des Beweises dieses Punktes analog zum Beweis von
-      Lemma~\ref{lemVerfeinerung}. Und somit gilt für alle Fälle (2a) bis 2d)),
-      dass $w$ in $\EL{}_2$ enthalten ist. %TODO prüfen
+      Durch die $o$-Transitionen an den Zuständen wird wie oben vermieden, dass
+      es in einer Komposition mit $U$ und auch in $U$ selbst Ruhe-Zustände
+      gibt. Da $q_{01} \overset{w}{\Rightarrow} q_1'$ gilt, kann man schließen,
+      dass $U\|S_1$ einen lokal erreichbaren geerbten Error hat. Somit muss
+      $U\|S_2$ ebenfalls einen lokal erreichbaren Fehler haben. Wie oben
+      bereits erwähnt, kann es sich bei dem Fehler nicht um Ruhe handeln. Falls
+      es sich um Divergenz handelt, gilt $\DT{}(S) = (\cont{}(\PrDT{}(S))\cap
+      \EL{}(S))\cup \ET{}(S)\subseteq \EL{}(S)$ und somit ist dafür nichts
+      weiter zu zeigen. Es wird also im folgenden davon ausgegangen, dass es
+      sich bei dem Fehler um einen lokal erreichbaren Error handelt.
+      \begin{itemize}
+        \item Fall 2a) (neuer Error aufgrund von $x_i\in O_U\backslash\{o\}$
+          und $q_{02} \overset{x_1\dots x_{i-1}}{\Rightarrow} q_2'
+          \overset{x_i}{\not{\hspace{-0.1cm}\rightarrow}}$): Es gilt $x_1\dots
+          x_i\in \MIT{}_2$ und somit $w\in\EL{}_2$. Anzumerken ist, dass nur
+          auf diesem Weg Outpus aus $Synch$ von $U$ möglich sind, deshalb gilt
+          es keine anderen Outputs von $U$, die zu einem neuen Error führen
+          könnenten.
+      \end{itemize}
+      Die restlichen Fälle sind analog zu Lemma~\ref{lemVerfeinerung} möglich.
+      Somit gilt für alle Fälle (2a) bis 2d)), dass $w$ in $\EL{}_2$ enthalten
+      ist.
   \end{itemize}
 
   Als nächstes wird der zweite Beweispunkt gezeigt. Also die Inklusion
-  $\DT{}_1\subseteq \DT{}_2$, die jeodch analog zu der inklusion der
-  error-gefluteten Sprache auf $\PrDT{}_1\backslash\ET{}_1 \subseteq \DT{}_2$
-  eingeschränkt werden kann.\\
-  Somit wird für ein $w\in \PrDT{}_1\backslash \ET{}_1$ gezeigt, dass es auch
-  in $\DT{}_2$ enthalten ist.\\
+  $\DT{}_1\subseteq \DT{}_2$, die jeodch analog zu der Inklusion der
+  error-gefluteten Sprache auf $(\cont{}(\PrDT{}_1)\cap
+  \EL{}_1)\backslash\ET{}_1 \subseteq \DT{}_2$ eingeschränkt werden kann.\\
+  Somit wird für ein präfix-minimales $w\in \PrDT{}_1\backslash \ET{}_1$
+  gezeigt, dass es auch in $\DT{}_2$ enthalten ist.\\
   Durch die Definition der Menge \PrDT{} kann man schließen, dass ein $v\in
   O^*$ existiert mit $wv\in \StDT{}_1$.
   \begin{itemize}
@@ -580,25 +597,24 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
     \begin{itemize}
       \item Fall 2a) ($\varepsilon\in \ET{}(U\|S_2)$): Der lokal erreichbare
         Fehler in $U\|S_2$ ist ein Error. Es kann somit auch möglich sein, das
-        $wv$ in nicht ausführbar ist und es in der Parallelkomposition somit
+        $wv$ nicht ausführbar ist und es in der Parallelkomposition somit
         zu einem Kommunikationsfehler gekommen ist. Es ist jedoch auch möglich,
         dass der Error von $S_2$ geerbt wird. Es ist also wegen des ersten
         Punktes von Lemma~\ref{lemVerfeinerung} und da nur auf dem Weg $wv$ in
-        $U$ Fehler durch synchonisation möglich sind, bereits ein Präfix von
+        $U$ Fehler durch Synchonisation möglich sind, bereits ein Präfix von
         $wv$ in $\ET{}_2$ enthalten und da $v\in O^*$ gilt, ist sogar ein
-        Präfix von $w$ in $\ET{}_2$ enthalten. Somit gilt auch auch
-        $w\in\ET{}_2 \subseteq \DT{}_2$, da \ET{} unter \cont{} abgeschlossen
-        ist.
+        Präfix von $w$ in $\ET{}_2$ enthalten. Somit gilt auch $w\in\ET{}_2
+        \subseteq \DT{}_2$, da \ET{} unter \cont{} abgeschlossen ist.
       \item Fall 2b) ($\varepsilon\in \PrDT{}(U\|S_2)\backslash
         \ET{}(U\|S_2)$): Es ist also nur ein divergenter Zustand in $U\|S_2$
         lokal erreichbar und kein Error. Da $U$ keine Divergenz-Möglichkeiten
-        hat, muss der Divergente Zustand von $S_2$ geerbt sein. $U$ hat
+        hat, muss der divergente Zustand von $S_2$ geerbt sein. $U$ hat
         $x_1\dots x_iu$ ausgeführt mit $u\in(O\cup\{o\})^*$ und ebenso hat
         $S_2$ den Weg $x_1\dots x_iu|_{\Sigma _2}$ ausgeführt. Durch dies hat
         $S_2$ einen Zustand aus $Div _2$ erreichen. Es gilt dann $x_1\dots
         x_i\in \PrDT{}_2\subseteq\DT{}_2$, da $u|_{\Sigma _2}\in O^*$ gilt.
         $x_1\dots x_i$ ist ein Präfix von $wv$. Da $v\in O^*$ gilt, und \DT{}
-        unter \cont{} abgeschlossen ist, gilt $w\in \DT{}_2$. %TODO über Verlängerung nachdenken
+        unter \cont{} in \EL{} abgeschlossen ist, gilt $w\in \DT{}_2$.
     \end{itemize}
   \end{itemize}
 
@@ -622,13 +638,13 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
       besteht. Somit ist auch in $U$ ein Ruhe-Zustand lokal erreichbar. Es
       folgt also mit Lemma~\ref{lemRuheParallelkomp}, dass auch in $U\|S_1$ ein
       Ruhe-Zustand lokal erreichbar ist. Es muss also auch in $U\|S_2$ ein
-      Fehler lokal erreichbar sein. Bei diesem Fehler kann es sich nun um einen
-      Error, Divergenz-Zustand oder um einen Ruhe-Zustand handeln, dies ist
-      jedoch Aufgrund der Definition der Menge \QT{} nicht relevant. Da für $U$
-      keine Transitionen möglich sind, kann nur $\varepsilon$ ein striktes
-      Ruhetrace sein, falls es sich bei dem Fehler in $U\|S_2$ um einen lokal
-      erreichbaren Ruhe-Zustand handelt. Somit folgt in beiden Fällen, dass $w$
-      in $\QT{}_2$ enthalten ist.
+      Fehler lokal erreichbar sein. Bei diesem Fehler-Zustand kann es sich nun
+      um einen Error, Divergenz-Zustand oder um einen Ruhe-Zustand handeln,
+      dies ist jedoch Aufgrund der Definition der Menge \QT{} nicht relevant.
+      Da für $U$ keine Transitionen möglich sind, kann nur $\varepsilon$ ein
+      striktes Ruhetrace sein, falls es sich bei dem Fehler in $U\|S_2$ um
+      einen lokal erreichbaren Ruhe-Zustand handelt. Somit folgt in beiden
+      Fällen, dass $w$ in $\QT{}_2$ enthalten ist.
     \item Fall 2 ($w=x_1\dots x_n\in \Sigma ^+$ mit $n\geq 1$): Es wird der
       folgende fast Partner $U$ betrachtet (siehe auch
       Abbildung~\ref{UohneEmitIundO}):
@@ -684,15 +700,15 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
       \begin{itemize}
         \item Fall 2a) ($\varepsilon\in \DT{}(U\|S_2)$): Es handelt sich bei
           dem lokal erreichbaren Fehler um einen Error oder einen
-          Divergenz-Zustand. Es ist somit ist nicht relevant, ob das $w$
-          ausführbar ist. Der Fehler kann sowohl von $S_2$ geerbt sein, wie
-          auch durch fehlende synchronizations Möglichkeiten als neuer Error in
-          der Parallelkomposition entstanden sein. Es gilt also, dass bereits
-          in $S_2$ ein Präfix von $w$ in $\DT{}_2$ enthalten ist, wegen des
+          Divergenz-Zustand. Es ist somit nicht relevant, ob das $w$ ausführbar
+          ist. Der Fehler kann sowohl von $S_2$ geerbt sein, wie auch durch
+          fehlende synchronizations Möglichkeiten als neuer Error in der
+          Parallelkomposition entstanden sein. Es gilt also, dass bereits in
+          $S_2$ ein Präfix von $w$ in $\DT{}_2$ enthalten ist, wegen des
           Beweises des zweiten Punktes aus diesem Lemma und da $U$ nur
-          Synchronisations-Fehler auf dem Trace $w$ zulässt. Da die Menge \DT{}
-          unter \cont{} abgeschlossen ist, gilt also auch $w\in
-          \DT{}_2\subseteq \QT{}_2$.%TODO über Verlängerungen von DT nachdenken
+          synchronisations Fehler auf dem Trace $w$ zulässt. Da die Menge \DT{}
+          unter \cont{} in \EL{} abgeschlossen ist, gilt also auch $w\in
+          \DT{}_2\subseteq \QT{}_2$.
         \item Fall 2b) (Ruhe-Zustand lokal erreichbar in $U\|S_2$ und
           $\varepsilon\notin \DT{}(U\|S_2)$): Da in $U$ nur durch $w$ ein
           ruhiger Zustand erreicht werden kann, muss es sich bei dem lokal
