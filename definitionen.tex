@@ -150,21 +150,13 @@ Die Semantik der späteren Kapitel basiert darauf die jeweiligen Zustände, die
 zu Problemen führen, mit den Traces zu betrachten, mit denen man diese
 Zustände erreicht. Um dies besser umsetzen zu können, wird eine
 $\prune{}$-Funktion definiert, die alle Outputs am Ende eines Traces entfernt.
-Zusätzlich werden Funktionen definiert, die die Traces beliebig fortsetzen. Da
-nicht nur beliebige Fortsetzungen von gekürzten Traces betrachtet werden
-sollen, wird ebenfalls noch eine andere Funktion zum kürzen und verlängern
-eingeführt, die nur Verlängerungenen von Traces zulässt, die bereits im
-eingegebenen Trace möglich waren.
+Zusätzlich werden Funktionen definiert, die die Traces beliebig fortsetzen.
 
 \begin{Def}[Pruning- und Fortsetzungs-Funktion]
   Für ein \EIO{} $S$ wird definiert:
   \begin{itemize}
     \item $\prune{}:\Sigma ^*\rightarrow\Sigma ^*, w\mapsto u$, mit $w=uv,
       u=\varepsilon\vee u\in\Sigma ^*\cdot I$ und $v\in O^*$,
-    \item $\prunenew{}:\Sigma ^*\rightarrow\mathfrak{P}(\Sigma ^*), w\mapsto
-      \{u\mid \exists v\in O ^*: uv=w\}$,
-    \item $\prunenew{}:\mathfrak{P}(\Sigma ^*)\rightarrow\mathfrak{P}(\Sigma
-      ^*), L\mapsto\bigcup\{\prunenew{}(w)\mid w\in L\}$,
     \item $\cont{}:\Sigma ^*\rightarrow\mathfrak{P}(\Sigma ^*),
       w\mapsto\{wu\mid u\in\Sigma ^*\}$,
     \item $\cont{}:\mathfrak{P}(\Sigma ^*)\rightarrow\mathfrak{P}(\Sigma ^*),
