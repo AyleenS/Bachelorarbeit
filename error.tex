@@ -104,7 +104,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
   \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$. Da $I_{12}
   \overset{\ref{DefParallelkomposition}}{=}(I_1\backslash O_2)\cup
   (I_2\backslash O_1)=(I_1\cup I_2)\backslash (O_1\cup O_2)$ ist, folgt $a\in (I_1\cup
-  I_2)$ und $a\notin (O_1\cup O_2)$. Es wird unterscheiden, ob $a\in (I_1\cap I_2)$
+  I_2)$ und $a\notin (O_1\cup O_2)$. Es wird unterschieden, ob $a\in (I_1\cap I_2)$
   oder $a\in (I_1\cup I_2)\backslash (I_1\cap I_2)$ ist. Diese Unterscheidung
   ist in~\cite{Vogler2014EIO} nicht nötig, da dort $I_1\cap I_2=\emptyset$
   gilt, somit gibt es dort nur den Fall 1b).
@@ -145,8 +145,8 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
       auszuführen.
       \begin{itemize}
         \item Fall 2a) (geerbter Error): \OBdA{} gilt $q_1'\in E_1$. Daraus folgt
-          $w_1v_1\in \StET{}_1\subseteq \cont{}(\PrET{}_1)\subseteq \ET{}_1$. Da gilt
-          $q_{02}\overset{w_2v_2}{\Rightarrow}$, erhält man $w_2v_2\in
+          $w_1v_1\in \StET{}_1\subseteq \cont{}(\PrET{}_1)\subseteq \ET{}_1$.
+          Da $q_{02}\overset{w_2v_2}{\Rightarrow}$ gilt, erhält man $w_2v_2\in
           L_2\subseteq \EL{}_2$. Dadurch ergibt sich $wv\in \ET{}_1\|\EL{}_2$ mit
           $w=\prune{}(wv)$ und somit ist $w$ in der rechten Seite der Gleichung
           enthalten.
@@ -439,7 +439,7 @@ verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
           \overset{u}{\Rightarrow} (q_{n+1},q')$ für $u\in O^*$ und $q'\in
           E_1$. Daraus folgt $(q_{n+1},q')\in E_{U\|S_1}$ und somit $wu\in
           \StET{}(U\|S_1)$. Da alle Aktionen aus $w$ synchronisiert werden, gilt
-          $x_1,\dots ,x_n,x_{n+1}\in O_{U\|S_1}$ und, da $u\in O^*$, folgt
+          $x_1,\dots ,x_n,$ $x_{n+1}\in O_{U\|S_1}$ und, da $u\in O^*$, folgt
           $u\in O_{U\|S_1}^*$. Somit ergibt sich $\varepsilon\in
           \PrET{}(U\|S_1)$.
       \end{itemize}
@@ -480,7 +480,7 @@ verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
     \item Fall 2 ($w=x_1\dots x_n$ mit $n\geq 1$): Es wird einen
       Partner $U$ wie folgt konstruiert (siehe dazu auch Abbildung~\ref{UmitE}):
       \begin{itemize}
-        \item $Q_U=\{q,q_0,q_1,\dots ,q_n\}$,
+        \item $Q_U=\{q_0,q_1,\dots ,q_n,q\}$,
         \item $q_{0U}=q_0$,
         \item $E_U=\{q_n\}$,
         \item $\begin{aligned}[t]
@@ -712,8 +712,8 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   aus welchem Grund das $w'$ in $\ET{}(S)$ enthalten ist.
   \begin{itemize}
     \item Fall 1 ($w'\in\cont{}(\PrET{}(S))$): In diesem Fall gibt es einen
-      Ablauf für ein Präfix dieses $w'$s, der zu einem Ablauf zu einem Zustand
-      aus $E$ ergänzt werden kann. Der Ablauf hat also die Form $q_0
+      Ablauf für ein Präfix dieses $w'$s, der zu einem Ablauf ergänzt werden
+      kann, der zu einem Zustand aus $E$ führt. Der Ablauf hat also die Form $q_0
       \overset{a_1}{\Rightarrow} q_1 \overset{a_2}{\Rightarrow} \dots
       \overset{a_m}{\Rightarrow} q_m \overset{b_1}{\Rightarrow} q_{m+1}
       \overset{b_2}{\Rightarrow} \dots \overset{b_l}{\Rightarrow} q_{m+l}$ mit
@@ -739,10 +739,13 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
       Form $q_0 \overset{a_1}{\Rightarrow} q_1 \overset{a_2}{\Rightarrow} \dots
       \overset{a_{m-1}}{\Rightarrow} q_{m-1}
       \overset{a_m}{\not{\hspace{-0.1cm}\rightarrow}}$ mit $m\leq n$ und
-      $a_1a_2\dots a_m\in \MIT{}(S)$. Ab hier Verläuft die Argumentation für
-      diesen Fall analog zu der vom letzten Fall, nur das die \prune{}-Funktion
-      nicht verwendet werden muss, da es hier keine Verlängerungen um Outputs
-      gab.
+      $a_1a_2\dots a_m\in \MIT{}(S)$. Analog zum letzten Fall und zum Teil (i)
+      wird dieser Ablauf durch die Internalisierung reduziert. Somit ist die
+      Projektion von $a_1a_2\dots a_m$ auf die eingeschränkte Aktionenmenge auf
+      jeden Fall in $\MIT{}(S/X)\subseteq \ET{}(S/X)$ enthalten. Da \ET{} unter
+      \cont{} abgeschlossen ist, sind alle Verlängerungen von $(a_1a_2\dots
+      a_m)|_{\Sigma \backslash X}$ ebenfalls in $\ET{}(S/X)$ enthalten.
+      Speziell gilt also auch $w:=w'|_{\Sigma\backslash X}\in \ET{}(S/X)$.
   \end{itemize}
   Ein Trace $w\in \ET{}(S/X)$ muss wie oben nicht im Transitionssystem
   enthalten sein. Es kann jedoch ein Präfix von $w$ gefunden werden wie oben,
