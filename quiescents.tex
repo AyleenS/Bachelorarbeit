@@ -168,8 +168,9 @@ relevant.
       für $(q_1,q_2)$ entsteht. Diese Transitionsmöglichkeit ist jedoch für
       $S_{12}$ nach Voraussetzung nicht erlaubt. Es folgt also auch, dass
       dieser Fall nicht eintreten kann.
-    \item Fall 4 ($q_1 \overset{a}{\rightarrow}$ mit $a\in O_1\cap
-      Synch(S_1,S_2)$ und $q_2 \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$):
+    \item Fall 4 \Big($q_1 \overset{a}{\rightarrow}$ mit $a\in O_1\cap
+      Synch(S_1,S_2)$ und $q_2
+      \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$\Big):
       Da $S_2$ diese Transition nicht ausführen kann, handelt es sich hier um
       einen neuen Error, da die Synchronisation an dieser Stelle nicht möglich
       ist. Es würde also $(q_1,q_2)\in E_{12}$ gelten, dies wurde jedoch in der
@@ -316,8 +317,8 @@ werden.
     \item $\EL{}_1\subseteq \EL{}_2$.
   \end{itemize}
   Es wird nun damit begonnen, den ersten Unterpunkt des ersten Beweispunktes zu
-  zeigen, d.h.\ es wird unter der Voraussetzung, dass $U\|S_1\QBRel U\|S_2$
-  gilt, gezeigt, dass $\ET{}_1\subseteq \ET{}_2$ gilt. Da beide \ET{}-Mengen
+  zeigen, d.h.\ es wird unter der Voraussetzung $U\|S_1\QBRel U\|S_2$ gezeigt,
+  dass $\ET{}_1\subseteq \ET{}_2$ gilt. Da beide \ET{}-Mengen
   unter \cont{} abgeschlossen sind, reicht es ein präfix-minimales Element
   $w\in\ET{}_1$ zu betrachten und zu zeigen, dass dieses $w$ oder eines seiner
   Präfixe in $\ET{}_2$ enthalten ist.
@@ -398,7 +399,7 @@ werden.
   wie im Beweis zu~\ref{lemVerfeinerung} ist hier jedoch auf Grund des bereits
   geführten Beweisteils nur noch $L_1\backslash \ET{}_1\subseteq
   \EL{}_2$ zu zeigen. Es wird also für ein beliebig gewähltes $w\in
-  L_1\backslash \ET{}_1$ gezeigt, dass es auch in $\EL{}_2$ enthalten
+  L_1\backslash \ET{}_1$ gezeigt, dass dieses auch in $\EL{}_2$ enthalten
   ist.
   \begin{itemize}
     \item Fall 1 ($w=\varepsilon$): Ebenso wie in~\ref{lemVerfeinerung} gilt
@@ -409,7 +410,7 @@ werden.
       Lemma~\ref{lemVerfeinerung} ab. Somit ist der Partner $U$ dann wie folgt
       definiert (siehe dazu auch Abbildung~\ref{UmitEundTau}):
       \begin{itemize}
-        \item $Q_U=\{q,q_0,q_1,\dots ,q_n\}$,
+        \item $Q_U=\{q_0,q_1,\dots ,q_n,q\}$,
         \item $q_{0U}=q_0$,
         \item $E_U=\{q_n\}$,
         \item $\begin{aligned}[t]
@@ -478,7 +479,7 @@ werden.
       folgt also mit Lemma~\ref{lemRuheParallelkomp}, dass auch in $U\|S_1$ ein
       Ruhe-Zustand lokal erreichbar ist. Es muss also auch in
       $U\|S_2$ ein Fehler lokal erreichbar sein. Bei diesem Fehler kann es sich
-      nun um einen Error oder um einen Ruhe-Zustand handeln, dies ist jedoch
+      nun um Error oder Ruhe handeln, dies ist jedoch
       Aufgrund der Definition der Menge \QT{} nicht relevant. Da für $U$ keine
       Transitionen möglich sind, kann nur $\varepsilon$ ein striktes
       Ruhetrace sein, falls es sich bei dem Fehler in $U\|S_2$ um einen lokal

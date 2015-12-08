@@ -7,7 +7,7 @@ erweitert werden. Somit werden dann Errors, Ruhe-Zustände und
 Divergente-Zustände betrachtet. Es eignet sich also~\cite{Chilton2013} als
 Quelle, da nun auch noch die Divergenz betrachtet wird. Diese wurde dort
 gleichzeitig mit der Ruhe eingeführt und betrachtet. Da es sich nur um eine
-Erweiterung der Präkongruenzen aus den letzten beiden Kapiteln handelt, wird
+Erweiterung der Präkongruenzen aus den letzten beiden Kapiteln handeln soll, wird
 dabei ähnlich vorgegangen wie in den letzten beiden Kapiteln.\\
 Wie bereits oben und im letzten Kapitel erwähnt wurden in~\cite{Chilton2013}
 auch noch divergente Zustände als Fehler-Zustände betrachtet. Um zu klären, was
@@ -23,9 +23,9 @@ darunter verstanden wird, wird nun noch eine Definition für Divergenz gegeben.
 \end{Def}
 
 Die unendliche Folge an $\tau$s kann durch eine Schleife ausführbar sein, oder
-durch einen Weg, der mit $\tau$s ausführbar ist, im Transitionssystem, mit dem
+durch einen Weg, der mit $\tau$s ausführbar ist, mit dem
 unendliche viele Zustände durchlaufen werden. Es ist jedoch zu beachten, dass
-ein Zustand, von dem aus unendlich vile Zustände durch $\tau$s erreichbar sind,
+ein Zustand, von dem aus unendlich viele Zustände durch $\tau$s erreichbar sind,
 nicht divergent sein muss. Es ist auch möglich, dass dieser Zustand eine
 unendliche Verzeigung hat und somit keine unendliche Folge an $\tau$s ausführen
 kann.\\
@@ -52,7 +52,7 @@ bezüglich $\cdot\|\cdot$.
 \end{Def}
 
 Da nun die grundlegenden Definitionen für Divergenz festgehalten sind,
-kann man sich nun einen Begriff für die Traces von divergenten Zuständen
+kann man sich nun einen Begriff für die Traces zu divergenten Zuständen
 bilden. Da oben bereits festgehalten wurde, dass Divergenz als ähnlich
 \glqq{}schlimmer\grqq{} Fehler anzusehen ist, wie Error und dass das Divergieren
 eines Systems nicht mehr verhinderbar ist, sobald ein divergenter Zustand
@@ -79,17 +79,17 @@ dort die Flutung der Traces so vorgenommen, dass $\ET\subseteq \DT\subseteq
 \QT$ gilt. Dies soll auch hier in diesem Kapitel erreicht werden. Somit kann
 zwar die Semantik aus dem Error-Kapitel übernommen werden, jedoch wird für die
 Ruhe eine andere Semantik benötigt, die sich von der im letzten Kapitel
-unterscheidet. Die Inklusionskette der Fehlertraces scheint auch von der
-Hierarchie her auf die Bewertung zu passen, als wie kritisch die einzelnen
+unterscheidet. Die Inklusionskette der Fehlertraces passt auch von der
+Hierarchie her auf die Bewertung, als wie kritisch die einzelnen
 Fehler für die Kommunikation zu bewerten sind.
 
 \begin{Def}[Ruhe- und Divergenz-Semantik]
 \label{DefRuheDivSemantik}
   Sei $S$ ein \EIO{}.
   \begin{itemize}
-    \item Die Menge der \emph{error-gefluteten Divergenztraces} von $S$ ist
+    \item Die Menge der \emph{error-gefluteten Divergenztraces} von $S$ ist\\
       $\DT{}(S) := (\cont{}(\PrDT{}(S))\cap \EL{}(S))\cup \ET{}(S)$.
-    \item Die Menge der \emph{divergenz-gefluteten Ruhetraces} von $S$ ist
+    \item Die Menge der \emph{divergenz-gefluteten Ruhetraces} von $S$ ist\\
       $\QT{}(S) := \StQT{}(S)\cup \DT{}(S)$.
   \end{itemize}
   Für zwei \EIO{}s $S_1, S_2$ mit der gleichen Signatur schreibt man $S_1\DRel
@@ -126,7 +126,7 @@ findet sich in Satz~\ref{satzErrorSemanik}.
 
   2. \glqq{}$\subseteq$\grqq{}:\\
   Da beide Seiten unter \cont{} im Schnitt mit \EL{} abgeschlossen sind, genügt
-  es ein Präfix minimales Element $w$ zu betrachten. Es muss hier unterschieden, ob $w\in
+  es ein präfix-minimales Element $w$ zu betrachten. Es muss hier unterschieden, ob $w\in
   \PrDT{}_{12}\backslash \ET{}_{12}$ oder $w\in \ET{}_{12}$ betrachtet wird. Im
   zweiten Fall ist das $w$ in der rechten Seite der Gleichung enthalten.
   Deshalb wird im weiteren Verlauf dieses Beweises davon ausgegangen, dass
@@ -139,15 +139,16 @@ findet sich in Satz~\ref{satzErrorSemanik}.
   $q_{01} \overset{w_1}{\Rightarrow} q_1 \overset{v_1}{\Rightarrow} q_1'$ und
   $q_{02} \overset{w_2}{\Rightarrow} q_2 \overset{v_2}{\Rightarrow} q_2'$ mit
   $w\in w_1\|w_2$ und $v\in v_1\|v_2$. Aus $(q_1',q_2')\in Div_{12}$ folgt,
-  dass \oBdA{} $q_1'\in Div_1$ gilt, d.h.\ $w_1v_1\in \StDT{}_1$. Da $q_{02}
-  \overset{w_2v_2}{\Rightarrow}$ gilt, erhält man $w_2v_2\in \EL_2\subseteq
-  \EL{}_2$. Somit gilt insgesamt $wv\in \DT{}_1\|\EL{}_2$ und $w$ ist in der
-  rechten Seite der Gleichung enthalten, da $v\in O_{12}^*$ gilt uns somit
-  $\prune{}(wv)=\prune{}(w)$.
+  dass \oBdA{} $q_1'\in Div_1$ gilt, d.h.\ $w_1v_1\in \StDT{}_1\subseteq
+  \DT{}_1$. Da $q_{02} \overset{w_2v_2}{\Rightarrow}$ gilt, erhält man
+  $w_2v_2\in \EL_2$. Somit gilt insgesamt $wv\in \DT{}_1\|\EL{}_2$ und $w$ ist
+  in der rechten Seite der Gleichung enthalten, da $v\in O_{12}^*$ gilt und
+  somit $\prune{}(wv)=\prune{}(w)$.
 
   2. \glqq{}$\supseteq$\grqq{}:\\
-  Es wird ebenso wie oben nur ein präfix minimales $w$ betrachtet wegen den
-  Abschlusses beider Seiten. Falls $w\in\ET{}_{12}$ gilt, ist dieses $w$ auch
+  Es wird ebenso wie oben nur ein präfix-minimales $w$ betrachtet wegen den
+  Abschlusses beider Seiten unter \cont{} im Schnitt mit \EL{}. Falls
+  $w\in\ET{}_{12}$ gilt, ist dieses $w$ auch
   in der linken Seite der Gleichung enthalten. Somit wird für den Rest des
   Beweises dieser Inklusion davon ausgegangen, dass
   $w\in\prune{}((\DT{}_1\|\EL{}_2)\cup (\EL{}_1\|\DT{}_2))$ gilt. Dadurch lässt
@@ -158,8 +159,8 @@ findet sich in Satz~\ref{satzErrorSemanik}.
   v_1\|v_2$.
   \begin{itemize}
     \item Fall 1 ($w_1v_1\in \ET{}_1 \vee w_2v_2\in \ET{}_2$): \OBdA{} gilt
-      $w_1v_1\in\ET{}_1$. Es kann sich nun bei $w_2v_2$ um ein Errortrace,
-      Divergenztrace, Ruhetrace oder um ein ausführbares Trace aus dem
+      $w_1v_1\in\ET{}_1$. Es kann sich nun bei $w_2v_2$ um ein Error-,
+      Divergenz-, Ruhe- oder um ein ausführbares Trace aus dem
       Transitionssystem handeln, es gilt jedoch in jedem Fall $w_2v_2\in\EL{}_2$.
       Somit kann der erste Punkt von Satz~\ref{satzErrorSemanik} angewendet
       werden und es folgt damit, dass $w\in\ET{}_{12}$ gilt und $w$ deshalb in
@@ -182,7 +183,8 @@ findet sich in Satz~\ref{satzErrorSemanik}.
           folgt insgesamt, da $v$ und $u$ in $O_{12}^*$ enthalten sind und
           \ET{} unter \cont{} abgeschlossen ist, dass $w\in\ET{}_{12}$ gilt.
           Das $w$ ist also in der linken Seite der Gleichung enthalten.
-        \item Fall 2b) ($q_2 \overset{u|_{\Sigma _2}}{\Rightarrow} q_2'$): Da
+        \item Fall 2b) \big($q_2 \overset{u|_{\Sigma _2}}{\Rightarrow}
+          q_2'$\big): Da
           $q_1'$ ein unendliche Folge an $\tau$s ausführen kann, ist dies auch
           für den zusammengesetzten Zustand von $q_1'$ und $q_2'$ in der
           Parallelkomposition möglich. Es gilt also für die Komposition
@@ -191,8 +193,9 @@ findet sich in Satz~\ref{satzErrorSemanik}.
           mit $w'\in w_1'\|w_2'$ in $\StDT{}_{12}$ enthalten. Durch die
           parallel Ausführung von $u$ und $u|_{\Sigma _2}$ entstehen nur
           Outputs und es gilt auch $u\in u\|u|_{\Sigma _2}$. Es folgt also,
-          dass $w'\in\PrDT{}_{12}$ gilt und da $w'$ ein Präfix von $w$ ist und
-          \DT{} unter \cont{} in den \EL{} Traces des Transitionssystems
+          dass $w'\in\PrDT{}_{12}$ gilt und da $w'$ ein Präfix von $w\in
+          w_1\|w_2 \in \EL{}_1\|\EL{}_2$ ist und \DT{} unter \cont{} in den
+          Traces der error-gefluteten Sprache \EL{} des Transitionssystems
           abgeschlossen ist dass $w\in\DT{}_{12}$ gilt.
       \end{itemize}
   \end{itemize}
@@ -216,7 +219,7 @@ findet sich in Satz~\ref{satzErrorSemanik}.
   \begin{itemize}
     \item Fall 1 ($w_1\in \DT{}_1 \vee w_2\in \DT{}_2$): \OBdA{} gilt $w_1\in
       \DT{}_1$. Es kann nun $w_2\in \StQT{}_2 \subseteq L_2$ gelten oder
-      $w_2\in \DT{}_2\subseteq\ET{}_2$ und somit gilt auf jeden Fall $w_2\in
+      $w_2\in \DT{}_2\subseteq\EL{}_2$ und somit gilt auf jeden Fall $w_2\in
       \EL{}_2$. Daraus kann mit dem zweiten Punkt dieses Satzes gefolgert
       werden, dass $w\in \DT{}_{12}$ gilt und somit $w$ in der linken Seite der
       Gleichung enthalten ist.
@@ -249,7 +252,7 @@ Präkongruenz handelt.
     \item $\begin{aligned}[t]
         S_{31}
         \overset{\mathrm{Proposition}~\ref{propPraekongruenz}}{%
-        \overset{\mathrm{und}}{\overset{S_1\ERel{} S_2}{\ERel{}}}} S_{32}
+        \overset{\mathrm{und}}{\overset{S_1\ERel{} S_2}{\ERel{}}}} S_{32},
     \end{aligned}$
     \item $\begin{aligned}[t]
         \DT{}_{31} &\overset{\ref{satzDivSemantik}~2.}{=}
@@ -275,20 +278,21 @@ Präkongruenz handelt.
 \end{proof}
 
 Als nächstes soll nun eine Verfeinerungsrelation bezüglich guter Kommunikation
-mit Transitionssystemen im Sinne von error-, ruhe- und divergenz-freier
+von Transitionssystemen im Sinne von error-, ruhe- und divergenz-freier
 Kommunikation betrachtet werden. Es muss in diesem Lemma eine Veränderung zu
-den analogen Lemmata aus den vorangegangen Kapiteln vorgenommen. Die
+den analogen Lemmata aus den vorangegangen Kapiteln vorgenommen werden. Die
 Einschränkung, dass $U$ ein Partner sein muss, kann nicht mehr beibehalten
-werden, da die Vermeidung von Ruhe im Beweis aus dem letzten Kapitel hier zu
-Divergenz führen würde. Somit werden dafür Aktionen außerhalb der Menge $Synch$
+werden, da die Strategie zur Vermeidung von Ruhe im Beweis aus dem letzten
+Kapitel hier zu Divergenz führen würde. Somit werden für die Ruhe-Vermeidung in
+diesem Kapitel Aktionen außerhalb der Menge $Synch$
 benötigt. Jedoch müssten trotzdem nicht alle komponierbaren $U$ betrachtet
-werden. Es kann eine Einschränkung gemacht werden, so dass $U$ fasst ein
+werden. Es kann eine Einschränkung gemacht werden, so dass $U$ fast ein
 Partner ist. Um die Formulierungen im folgenden zu Vereinfachen, wird hierfür
 nun ein neuer Begriff definiert.
 
 \begin{Def}[fast Partner]
-  Ein \EIO{} $S_1$ ist ein \emph{fast Partner} von $S_2$, wenn $I_1=O_2$ und
-  $O_1=I_2\cup\{o\}$ mit $o\notin I_2\cup O_2$ gilt.
+  Ein \EIO{} $S_1$ ist ein \emph{fast Partner} von einem \EIO{} $S_2$, wenn
+  $I_1=O_2$ und $O_1=I_2\cup\{o\}$ mit $o\notin I_2\cup O_2$ gilt.
 \end{Def}
 
 Ein fast Partner $S_1$ von $S_2$ unterscheidet sich von einem Partner von $S_2$
@@ -349,7 +353,7 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
           Error-Zustand lokal erreichbar sein, d.h.\ es gilt $\varepsilon\in
           \PrET{}_2\subseteq \ET{}_2$.
         \textcolor{red}{\item Fall 1b)
-            $\varepsilon\in\DT{}(U\|S_2)\backslash\ET{}(U\|S_2)$): Da $U$ nicht
+            ($\varepsilon\in\DT{}(U\|S_2)\backslash\ET{}(U\|S_2)$): Da $U$ nicht
             unendliche viele Zustände hat und auch keine $\tau$-Schleifen
             besitzt, kann das divergenz Verhalten nur von $S_2$ geerbt sein. Es
             muss also in $S_2$ ein Divergenz-Zustand lokal erreichbar sein und
@@ -402,17 +406,17 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
       also analog zum Beweis von Lemma~\ref{lemVerfeinerung}. Durch die
       $o$-Transitionen wurde, genau wie im letzten Fall, nur erreicht, dass in
       einer Parallelkomposition mit $U$ keine Ruhe-Zustände möglich sind. Es
-      kann also auch hier aus der lokalen Erreichbarkeit eines Error-Zustandes
+      kann also auch hier aus der lokalen Erreichbarkeit eines Errors
       in $U\|S_1$ auf die lokale Erreichbarkeit eines Errors oder
       \textcolor{red}{Divergenz-Zustandes} in $U\|S_2$ geschlossen werden.
       \begin{itemize}
         \item Fall 2a) ($\varepsilon\in\ET{}(U\|S_2)$):
           \begin{itemize}
             \item Fall 2a)i) (neuer Error): Da jeder Zustand von $U$ alle
-              Inputs $x\in O$ zulässt, muss ein lokal erreichbarer Error der
+              Inputs $x\in I_U=O$ zulässt, muss ein lokal erreichbarer Error der
               Form sein, dass ein Output $a\in O_U\backslash\{o\}$ von $U$
               möglich ist, der nicht mit einem passenden Input aus $S_2$
-              synchonisiert werden kann. Durch die Konstruktion von $U$ ist in
+              synchronisiert werden kann. Durch die Konstruktion von $U$ ist in
               $q_{n+1}$ kein Output außer $o$ möglich. Ein neuer Error muss
               also die Form $(q_i,q')$ haben mit $i\leq n, q'
               \overset{x_{i+1}}{\not{\hspace{-0.1cm}\rightarrow}}$ und
@@ -430,7 +434,7 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
               $x_1\dots x_i$ ein Präfix von $w$ ist, führt auch in diesem Fall
               ein Präfix von $w$ zu einem Error.
           \end{itemize}
-        \textcolor{red}{\item Fall 2b) $\varepsilon\in\DT{}(U\|S_2)\backslash\ET{}(U\|S_2)$):
+        \textcolor{red}{\item Fall 2b) ($\varepsilon\in\DT{}(U\|S_2)\backslash\ET{}(U\|S_2)$):
           Da $U$ nicht unendliche viele Zustände hat und auch keine
           $\tau$-Schleifen besitzt, kann das divergenz Verhalten nur von $S_2$
           geerbt sein. $U$ hat $x_1\dots x_iu$ ausgeführt mit $u\in (O\cup
@@ -440,7 +444,7 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
           _2})\prune{}(x_1\dots x_i)\in\PrDT{}_2\subseteq \DT{}_2$, da
           $u|_{\Sigma _2}$ in $O^*$ enthalten ist. Da $x_1\dots x_i$ ein Präfix
           von $w$ ist, führt in diesem Fall ein Präfix von $w$ zu einem
-        divergenten Zustand.}
+        divergenten Zustand.\lightning}
       \end{itemize}
   \end{itemize}
 
@@ -454,13 +458,13 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
     \item Fall 1 ($w=\varepsilon$): Ebenso wie in~\ref{lemVerfeinerung}
       und~\ref{lemQuiVerfeinerung} gilt auch hier, dass $\varepsilon$ immer in
       $\EL{}_2$ enthalten ist.
-    \item Fall 2 ($w=x_1\dots x_n$ mit $n\geq 1$): Die Konstruktion des
+    \item Fall 2 ($w=x_1\dots x_n$ mit $n\geq 1$): Die Konstruktion des fast
       Partners $U$ weicht wie im letzten Beweisteil nur durch die
       $o$-Transition im Transitionssystems vom Beweis zu
       Lemma~\ref{lemVerfeinerung} ab. Somit ist der fast Partner $U$ dann wie
       folgt definiert (siehe dazu auch Abbildung~\ref{UmitEundO}):
       \begin{itemize}
-        \item $Q_U=\{q,q_0,q_1,\dots ,q_n\}$,
+        \item $Q_U=\{q_0,q_1,\dots ,q_n,q\}$,
         \item $q_{0U}=q_0$,
         \item $E_U=\{q_n\}$,
         \item $\begin{aligned}[t]
@@ -468,7 +472,7 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
                       &\cup\{(q_i,x,q)\mid x\in I_U\backslash\{x_{i+1}\},0\leq
           i < n\}\\
           &\cup\{(q_i,o ,q)\mid 0\leq i\leq n\}\\
-          &\cup\{(q,\alpha ,q)\mid \alpha\in I_U\cup \{o\}\}.
+          &\cup\{(q,x ,q)\mid x\in I_U\cup \{o\}\}.
               \end{aligned}$
       \end{itemize}
       \begin{figure} [h!tbp]
@@ -484,15 +488,15 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
 
           \path ($ (0) + (-1,0) $) edge (0)
                 (0) edge node {$x_1$} (1)
-                    edge [bend right] node [below, sloped] {$x?\neq x_1, o$} (q)
+                    edge [bend right] node [below, sloped] {$x?\neq x_1, o!$} (q)
                 (1) edge node {$x_2$} (dots)
-                    edge node [below, sloped] {$x?\neq x_2, o$} (q)
+                    edge node [below, sloped] {$x?\neq x_2, o!$} (q)
                 (dots) edge node {$x_{n-1}$} (n1)
                        edge [dashed] (q)
                 (n1) edge node {$x_n$} (n)
-                     edge node [below, sloped] {$x?\neq x_n, o$} (q)
-                (q) edge [loop below] node {$x?\in I_U, o$} (q)
-                (n) edge [bend left] node {$o$} (q);
+                     edge node [below, sloped] {$x?\neq x_n, o!$} (q)
+                (q) edge [loop below] node {$x?\in I_U, o!$} (q)
+                (n) edge [bend left] node {$o!$} (q);
         \end{tikzpicture}
         \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$, $q_n$
           ist der einzige Error-Zustand}
@@ -504,27 +508,35 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
       gibt. Da $q_{01} \overset{w}{\Rightarrow} q_1'$ gilt, kann man schließen,
       dass $U\|S_1$ einen lokal erreichbaren geerbten Error hat. Somit muss
       $U\|S_2$ ebenfalls einen lokal erreichbaren Fehler haben. Wie oben
-      bereits erwähnt, kann es sich bei dem Fehler nicht um Ruhe handeln. Falls
-      es sich um Divergenz handelt, gilt $\DT{}(S) = (\cont{}(\PrDT{}(S))\cap
-      \EL{}(S))\cup \ET{}(S)\subseteq \EL{}(S)$ und somit ist dafür nichts
-      weiter zu zeigen. Es wird also im folgenden davon ausgegangen, dass es
-      sich bei dem Fehler um einen lokal erreichbaren Error handelt.
+      bereits erwähnt, kann es sich bei dem Fehler nicht um Ruhe handeln.
       \begin{itemize}
         \item Fall 2a) (neuer Error aufgrund von $x_i\in O_U\backslash\{o\}$
           und $q_{02} \overset{x_1\dots x_{i-1}}{\Rightarrow} q_2'
           \overset{x_i}{\not{\hspace{-0.1cm}\rightarrow}}$): Es gilt $x_1\dots
           x_i\in \MIT{}_2$ und somit $w\in\EL{}_2$. Anzumerken ist, dass nur
-          auf diesem Weg Outpus aus $Synch$ von $U$ möglich sind, deshalb gilt
+          auf diesem Weg Outputs von $U$ aus $Synch$ möglich sind, deshalb gilt
           es keine anderen Outputs von $U$, die zu einem neuen Error führen
-          könnenten.
+          könnten.
       \end{itemize}
       Die restlichen Fälle sind analog zu Lemma~\ref{lemVerfeinerung} möglich.
       Somit gilt für alle Fälle (2a) bis 2d)), dass $w$ in $\EL{}_2$ enthalten
       ist.
+      \begin{itemize}
+        \item Fall 2e) (Divergenz und kein neuer Error): Da $U$ keine
+          Möglichkeit hat zu divergieren, muss diese Möglichkeit von $S_2$
+          geerbt sein. Es gilt dann $q_{02} \overset{x_1\dots
+          x_iu}{\Rightarrow} q'\in Div_2$ für $i\geq 0$ und $u\in O^*$. Somit
+          ist $x_1\dots x_iu\in\StDT{}_2$ und damit $\prune{}(x_1\dots x_iu)=
+          \prune{}(x_1\dots x_i)\in\PrDT{}_2\subseteq \DT{}_2$. Da in $U$ $w$
+          ausführbar ist und es zu keinem neuen Error in $U\|S_2$ kommt, muss
+          $w$ auch in $S_2$ ausführbar sein. Also folgt, dass $w$ in $\DT{}_2
+          \subseteq \EL{}_2$ enthalten ist, da \DT{} unter \cont{} im Schnitt
+          mit \EL{} abgeschlossen ist.
+      \end{itemize}
   \end{itemize}
 
   Als nächstes wird der zweite Beweispunkt gezeigt. Also die Inklusion
-  $\DT{}_1\subseteq \DT{}_2$, die jeodch analog zu der Inklusion der
+  $\DT{}_1\subseteq \DT{}_2$, die jedoch analog zu der Inklusion der
   error-gefluteten Sprache auf $(\cont{}(\PrDT{}_1)\cap
   \EL{}_1)\backslash\ET{}_1 \subseteq \DT{}_2$ eingeschränkt werden kann.\\
   Somit wird für ein präfix-minimales $w\in \PrDT{}_1\backslash \ET{}_1$
@@ -551,11 +563,10 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
         \item $E_U=\emptyset$,
         \item $\begin{aligned}[t]
             \delta _U=&\{(q_i,x_{i+1},q_{i+1})\mid  0\leq i< n+l\}\\
-                      &\cup\{(q_i,x,q)\mid  x\in I_U\backslash\{x_{i+1}\},
-          0\leq i< n+l\}\\
-                      &\cup\{(q_i,o,q)\mid 0\leq i< n+l\}\\
+                      &\cup\{(q_i,x,q)\mid  x\in (I_U\cup
+          \{o\})\backslash\{x_{i+1}\}, 0\leq i< n+l\}\\
                       &\cup\{(q_{n+l},x,q)\mid x\in I_U\cup\{o\}\}\\
-                      &\cup\{(q,\alpha,q)\mid \alpha\in I_U\cup\{o\}\}.
+                      &\cup\{(q,x,q)\mid x\in I_U\cup\{o\}\}.
         \end{aligned}$
       \end{itemize}
       \begin{figure} [h!tbp]
@@ -569,13 +580,13 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
 
           \path ($ (0) + (-1,0) $) edge (0)
                 (0) edge node {$x_1$} (1)
-                    edge [bend right] node [below, sloped] {$x?\neq x_1, o$} (q)
+                    edge [bend right] node [below, sloped] {$x?\neq x_1, o!$} (q)
                 (1) edge node {$x_2$} (dots)
-                    edge [below, sloped] node {$x?\neq x_2, o$} (q)
-                (dots) edge node {$x_n$} (n)
+                    edge [below, sloped] node {$x?\neq x_2, o!$} (q)
+                (dots) edge node {$x_{n+l}$} (n)
                        edge [dashed] (q)
-                (n) edge [bend left] node [below,sloped] {$x?\in I_U, o$} (q)
-                (q) edge [loop below] node {$x?\in I_U, o$} (q);
+                (n) edge [bend left] node [below,sloped] {$x?\in I_U, o!$} (q)
+                (q) edge [loop below] node {$x?\in I_U, o!$} (q);
         \end{tikzpicture}
         \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$}
 \label{UfuerDTmitO}
@@ -590,7 +601,7 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
     gilt immer noch $wv\notin \ET{}_1$ und somit kann weder von $S_1$ noch von
     $U$ ein Error auf dem Weg $wv$ geerbt werden. Es muss ein Fehler in
     $U\|S_2$ lokal erreichbar sein, da in $U\|S_1$ durch $wv$ ein
-    Divergenz-Zustand erreichbar ist und $w$ nur aus synchonisierten Aktionen
+    Divergenz-Zustand erreichbar ist und $w$ nur aus synchronisierten Aktionen
     besteht und $I_U\cap I=\emptyset$ gilt und somit $wv\in O_{U\|S_1}^*$
     folgt. Bei dem lokal erreichbaren Fehler in $U\|S_2$ kann es sich um Error
     oder Divergenz handeln.
@@ -601,20 +612,23 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
         zu einem Kommunikationsfehler gekommen ist. Es ist jedoch auch möglich,
         dass der Error von $S_2$ geerbt wird. Es ist also wegen des ersten
         Punktes von Lemma~\ref{lemVerfeinerung} und da nur auf dem Weg $wv$ in
-        $U$ Fehler durch Synchonisation möglich sind, bereits ein Präfix von
+        $U$ Fehler durch Synchronisation möglich sind, bereits ein Präfix von
         $wv$ in $\ET{}_2$ enthalten und da $v\in O^*$ gilt, ist sogar ein
         Präfix von $w$ in $\ET{}_2$ enthalten. Somit gilt auch $w\in\ET{}_2
         \subseteq \DT{}_2$, da \ET{} unter \cont{} abgeschlossen ist.
       \item Fall 2b) ($\varepsilon\in \PrDT{}(U\|S_2)\backslash
         \ET{}(U\|S_2)$): Es ist also nur ein divergenter Zustand in $U\|S_2$
-        lokal erreichbar und kein Error. Da $U$ keine Divergenz-Möglichkeiten
+        lokal erreichbar und kein Error. Da $U$ keine Divergenz-Möglich\-keiten
         hat, muss der divergente Zustand von $S_2$ geerbt sein. $U$ hat
         $x_1\dots x_iu$ ausgeführt mit $u\in(O\cup\{o\})^*$ und ebenso hat
         $S_2$ den Weg $x_1\dots x_iu|_{\Sigma _2}$ ausgeführt. Durch dies hat
-        $S_2$ einen Zustand aus $Div _2$ erreichen. Es gilt dann $x_1\dots
-        x_i\in \PrDT{}_2\subseteq\DT{}_2$, da $u|_{\Sigma _2}\in O^*$ gilt.
-        $x_1\dots x_i$ ist ein Präfix von $wv$. Da $v\in O^*$ gilt, und \DT{}
-        unter \cont{} in \EL{} abgeschlossen ist, gilt $w\in \DT{}_2$.
+        $S_2$ einen Zustand aus $Div _2$ erreichen. Es gilt dann
+        $\prune{}(x_1\dots x_iu|_{\Sigma _2})\prune{}(x_1\dots x_i)\in
+        \PrDT{}_2\subseteq\DT{}_2$. $x_1\dots x_i$ ist ein Präfix von $wv$. In
+        $U$ ist das Wort $wv$ ausführbar, da $wv\in O_{U\|S_1}^*=O_{U\|S_2}^*$
+        und $\varepsilon\notin \ET{}(U\|S_2)$, muss $wv$ auch in $S_2$
+        ausführbar sein. Da $v\in O^*$ gilt, und \DT{} unter \cont{} in \EL{}
+        abgeschlossen ist, gilt $w\in \DT{}_2$.
     \end{itemize}
   \end{itemize}
 
@@ -654,10 +668,10 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
         \item $E_U=\emptyset$,
         \item $\begin{aligned}[t]
             \delta _U=&\{(q_i,x_{i+1},q_{i+1})\mid  0\leq i< n\}\\
-                      &\cup\{(q_i,x,q)\mid  x\in I_U\backslash\{x_{i+1}\}, 0\leq i< n\}\\
-                      &\cup\{(q_i,o,q)\mid 0\leq i< n\}\\
+                      &\cup\{(q_i,x,q)\mid  x\in (I_U\cup
+          \{o\})\backslash\{x_{i+1}\}, 0\leq i< n\}\\
                       &\cup\{(q_n,x,q)\mid x\in I_U\}\\
-                      &\cup\{(q,\alpha,q)\mid \alpha\in I_U\cup\{o\}\}.
+                      &\cup\{(q,x,q)\mid x\in I_U\cup\{o\}\}.
         \end{aligned}$
       \end{itemize}
       \begin{figure} [h!tbp]
@@ -671,13 +685,13 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
 
           \path ($ (0) + (-1,0) $) edge (0)
                 (0) edge node {$x_1$} (1)
-                    edge [bend right] node [below, sloped] {$x?\neq x_1, o$} (q)
+                    edge [bend right] node [below, sloped] {$x?\neq x_1, o!$} (q)
                 (1) edge node {$x_2$} (dots)
-                    edge [below, sloped] node {$x?\neq x_2, o$} (q)
+                    edge [below, sloped] node {$x?\neq x_2, o!$} (q)
                 (dots) edge node {$x_n$} (n)
                        edge [dashed] (q)
                 (n) edge [bend left] node [below,sloped] {$x?\in I_U$} (q)
-                (q) edge [loop below] node {$x?\in I_U, o$} (q);
+                (q) edge [loop below] node {$x?\in I_U, o!$} (q);
         \end{tikzpicture}
         \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$}
 \label{UohneEmitIundO}
@@ -698,18 +712,25 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
       darüber getroffen werden, ob das $w$ ausführbar ist und ob es sich bei
       dem Fehler um Error, Ruhe oder Divergenz handelt.
       \begin{itemize}
-        \item Fall 2a) ($\varepsilon\in \DT{}(U\|S_2)$): Es handelt sich bei
-          dem lokal erreichbaren Fehler um einen Error oder einen
-          Divergenz-Zustand. Es ist somit nicht relevant, ob das $w$ ausführbar
-          ist. Der Fehler kann sowohl von $S_2$ geerbt sein, wie auch durch
-          fehlende synchronizations Möglichkeiten als neuer Error in der
-          Parallelkomposition entstanden sein. Es gilt also, dass bereits in
-          $S_2$ ein Präfix von $w$ in $\DT{}_2$ enthalten ist, wegen des
-          Beweises des zweiten Punktes aus diesem Lemma und da $U$ nur
-          synchronisations Fehler auf dem Trace $w$ zulässt. Da die Menge \DT{}
-          unter \cont{} in \EL{} abgeschlossen ist, gilt also auch $w\in
-          \DT{}_2\subseteq \QT{}_2$.
-        \item Fall 2b) (Ruhe-Zustand lokal erreichbar in $U\|S_2$ und
+        \item Fall 2a) ($\varepsilon\in \EL{}(U\|S_2)$): Der lokal erreichbare
+          Fehler ist ein Error. Das $w$ muss somit nicht ausführbar sein. Da
+          nur auf dem Trace $w$ in $U$ Sychornisa\-tions-Fehler möglich sind und
+          wegen des ersten Punktes von Lemma~\ref{lemVerfeinerung}, ist ein
+          Präfix von $w$ in $\ET{}_2$ enthalten. Da die Menge \ET{} unter
+          \cont{} abgeschlossen ist, gilt auch $w\in \ET{}_2\subseteq \DT{}_2
+          \subseteq \QT{}_2$.
+        \item Fall 2b) ($\varepsilon\in \DT{}(U\|S_2)\backslash
+          \EL{}(U\|S_2)$): Es handelt sich bei dem lokal erreichbaren Fehler um
+          Divergenz. Der Fehler muss von $S_2$ geerbt sein, da $U$ keine
+          Divergenz-Möglichkeiten hat. Es gilt also, dass bereits in $S_2$ ein
+          Präfix von $w$ in $\DT{}_2$ enthalten ist, wegen des Beweises des
+          zweiten Punktes aus diesem Lemma. Da $w$ durch die Sychchonisation in
+          $U\|S_1$ und $U\|S_2$ nur aus Outputs besteht und $\varepsilon\notin
+          \ET{}(U\|S_2)$ gilt, folgt aus der Ausführbarkeit von $w$ in $U$ die
+          Ausführbarkeit von $w$ in $S_2$. Somit reicht der Abschluss unter
+          \cont{} in Schnitt mit \EL{} aus um in diesem Fall zu folgern, dass
+          $w\in \DT{}_2\subseteq \QT{}_2$ gilt.
+        \item Fall 2c) (Ruhe-Zustand lokal erreichbar in $U\|S_2$ und
           $\varepsilon\notin \DT{}(U\|S_2)$): Da in $U$ nur durch $w$ ein
           ruhiger Zustand erreicht werden kann, muss es sich bei dem lokal
           erreichbaren Ruhe-Zustand in $U\|S_2$ um einen handeln, der mit $w$
@@ -720,89 +741,89 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
   \end{itemize}
 \end{proof}
 
-Der folgenden Satz hält fest, dass \DRel{} die gröbste Präkongruenz bezüglich
-$\cdot\|\cdot$ charakterisiert, die in \DBRel{} enthalten ist.
+% Der folgenden Satz hält fest, dass \DRel{} die gröbste Präkongruenz bezüglich
+% $\cdot\|\cdot$ charakterisiert, die in \DBRel{} enthalten ist.
 
-\begin{satz}[Full Abstractness für Divergenz-Semantik]
-\label{satzDivFullAbst}
-  Seinen $S_1$ und $S_2$ zwei \EIO{}s mit derselben Signatur. Dann gilt $S_1
-  \DCRel{} S_2\Leftrightarrow S_1\DRel{} S_2$, insbesondere ist \DRel{} eine
-  Präkongruenz.
-\end{satz}
+% \begin{satz}[Full Abstractness für Divergenz-Semantik]
+% \label{satzDivFullAbst}
+%   Seinen $S_1$ und $S_2$ zwei \EIO{}s mit derselben Signatur. Dann gilt $S_1
+%   \DCRel{} S_2\Leftrightarrow S_1\DRel{} S_2$, insbesondere ist \DRel{} eine
+%   Präkongruenz.
+% \end{satz}
 
-\begin{proof}
-  \glqq{}$\Leftarrow$\grqq{}: Nach Definition gilt $w\in\DT{}(S)$ mit $w\in
-  O^*$, genau dann wenn in $S$ ein Divergenz-Zustand, ein Ruhe-Zustand oder ein
-  Error-Zustand lokal erreichbar ist. $S_1\DRel S_2$ impliziert, dass
-  $w\in\DT{}_2$ gilt, wenn $w\in\DT{}_1$ gilt. Somit ist ein Divergenz-Zustand,
-  ein Ruhe-Zustand oder ein Error-Zustand nur dann in $S_1$ lokal erreichbar,
-  wenn auch ein solcher in $S_2$ lokal erreichbar ist. Daraus folgt, dass
-  $S_1\DBRel S_2$ gilt. Somit ist \DRel{} in \DBRel{} enthalten. In
-  Proposition~\ref{propDivPrae} wurde festgestellt, dass \DRel{} eine
-  Präkongruenz ist. Da jedoch \DCRel{} nach Definition die gröbste Präkongruenz
-  bezüglich $\cdot\|\cdot$ ist, die in \DBRel{} enthalten ist, muss \DRel{} in
-  \DCRel{} enthalten sein. Es folgt also aus $S_1\DRel S_2$,
-  dass auch der relationale Zusammenhang $S_1\DCRel S_2$ gilt.
+% \begin{proof}
+%   \glqq{}$\Leftarrow$\grqq{}: Nach Definition gilt $w\in\QT{}(S)$ mit $w\in
+%   O^*$, genau dann wenn in $S$ ein Divergenz-Zustand, ein Ruhe-Zustand oder ein
+%   Error-Zustand lokal erreichbar ist. $S_1\DRel S_2$ impliziert, dass
+%   $w\in\QT{}_2$ gilt, wenn $w\in\QT{}_1$ gilt. Somit ist ein Divergenz-Zustand,
+%   ein Ruhe-Zustand oder ein Error-Zustand nur dann in $S_1$ lokal erreichbar,
+%   wenn auch ein solcher in $S_2$ lokal erreichbar ist. Daraus folgt, dass
+%   $S_1\DBRel S_2$ gilt. Somit ist \DRel{} in \DBRel{} enthalten. In
+%   Proposition~\ref{propDivPrae} wurde festgestellt, dass \DRel{} eine
+%   Präkongruenz ist. Da jedoch \DCRel{} nach Definition die gröbste Präkongruenz
+%   bezüglich $\cdot\|\cdot$ ist, die in \DBRel{} enthalten ist, muss \DRel{} in
+%   \DCRel{} enthalten sein. Es folgt also aus $S_1\DRel S_2$,
+%   dass auch der relationale Zusammenhang $S_1\DCRel S_2$ gilt.
 
-  \glqq{}$\Rightarrow$\grqq{}: Durch die Definition von \DCRel{} als
-  Präkongruenz in~\ref{DefDivBasisrel} folgt aus $S_1\DCRel{} S_2$, dass
-  $U\|S_1\DCRel U\|S_2$ für alle EIOs $U$ gilt, die mit $S_1$ komponierbar sind.
-  Somit folgt auch die Gültigkeit von $U\|S_1\DBRel U\|S_2$ für alle diese EIOs
-  $U$. Mit Lemma~\ref{lemDivVerfeinerung} folgt dann $S_1\QRel{} S_2$.
-\end{proof}
+%   \glqq{}$\Rightarrow$\grqq{}: Durch die Definition von \DCRel{} als
+%   Präkongruenz in~\ref{DefDivBasisrel} folgt aus $S_1\DCRel{} S_2$, dass
+%   $U\|S_1\DCRel U\|S_2$ für alle EIOs $U$ gilt, die mit $S_1$ komponierbar sind.
+%   Somit folgt auch die Gültigkeit von $U\|S_1\DBRel U\|S_2$ für alle diese EIOs
+%   $U$. Mit Lemma~\ref{lemDivVerfeinerung} folgt dann $S_1\QRel{} S_2$.
+% \end{proof}
 
-Es wurde somit, wie in den letzten beiden Kapiteln, eine Kette an Folgerungen
-gezeigt, die sich zu einem Ring schließen. Jedoch ändert sich an der Begründung
-für einen der Folgepfeile etwas, da in Lemma~\ref{lemDivVerfeinerung} $U$ kein
-Partner mehr ist, sondern nur ein fast Partner. Diese Folgerungskette ist in
-Abbildung~\ref{FolgerungsketteDiv} dargestellt.
+% Es wurde somit, wie in den letzten beiden Kapiteln, eine Kette an Folgerungen
+% gezeigt, die sich zu einem Ring schließen. Jedoch ändert sich an der Begründung
+% für einen der Folgepfeile etwas, da in Lemma~\ref{lemDivVerfeinerung} $U$ kein
+% Partner mehr ist, sondern nur ein fast Partner. Diese Folgerungskette ist in
+% Abbildung~\ref{FolgerungsketteDiv} dargestellt.
 
-\begin{figure}[h!tbp]
-  \begin{center}
-    \begin{tikzpicture}
-      \matrix (m) [matrix of math nodes,row sep=2cm,column sep=4cm]{%
-        S_1\DRel S_2 & S_1\DCRel S_2 \\
-        \substack{\forall~\mathrm{fast}~\mathrm{Partner}~U:\\U\|S_1\DBRel
-        U\|S_2} & \substack{\forall~\mathrm{komponierbaren}~U:\\U\|S_1\DBRel
-      U\|S_2} \\};
-        \draw[-implies, double, double distance=1mm]
-          (m-1-1) -- node [above] {\glqq{}$\Leftarrow$\grqq{} von
-            Satz~\ref{satzDivFullAbst}} (m-1-2);
-        \draw[-implies, double, double distance=1mm]
-          (m-1-2) -- node [right] {Definition von \DCRel{}
-          in~\ref{DefDivBasisrel}} (m-2-2);
-        \draw[-implies, double, double distance=1mm]
-          (m-2-1) -- node [left]
-          {Lemma~\ref{lemDivVerfeinerung}} (m-1-1);
-        \draw[-implies, double, double distance=1mm]
-        (m-2-2) -- node [below]
-        {$\substack{U~\mathrm{fast}~\mathrm{Partner}\\\Downarrow\\U~\mathrm{komponierbar}}$}
-        (m-2-1);
-    \end{tikzpicture}
-    \caption{Folgerungskette}
-\label{FolgerungsketteDiv}
-  \end{center}
-\end{figure}
+% \begin{figure}[h!tbp]
+%   \begin{center}
+%     \begin{tikzpicture}
+%       \matrix (m) [matrix of math nodes,row sep=2cm,column sep=4cm]{%
+%         S_1\DRel S_2 & S_1\DCRel S_2 \\
+%         \substack{\forall~\mathrm{fast}~\mathrm{Partner}~U:\\U\|S_1\DBRel
+%         U\|S_2} & \substack{\forall~\mathrm{komponierbaren}~U:\\U\|S_1\DBRel
+%       U\|S_2} \\};
+%         \draw[-implies, double, double distance=1mm]
+%           (m-1-1) -- node [above] {\glqq{}$\Leftarrow$\grqq{} von
+%             Satz~\ref{satzDivFullAbst}} (m-1-2);
+%         \draw[-implies, double, double distance=1mm]
+%           (m-1-2) -- node [right] {Definition von \DCRel{}
+%           in~\ref{DefDivBasisrel}} (m-2-2);
+%         \draw[-implies, double, double distance=1mm]
+%           (m-2-1) -- node [left]
+%           {Lemma~\ref{lemDivVerfeinerung}} (m-1-1);
+%         \draw[-implies, double, double distance=1mm]
+%         (m-2-2) -- node [below]
+%         {$\substack{U~\mathrm{fast}~\mathrm{Partner}\\\Downarrow\\U~\mathrm{komponierbar}}$}
+%         (m-2-1);
+%     \end{tikzpicture}
+%     \caption{Folgerungskette}
+% \label{FolgerungsketteDiv}
+%   \end{center}
+% \end{figure}
 
-Aus Satz~\ref{satzDivFullAbst} und Lemma~\ref{lemDivVerfeinerung} erhält man
-das folgende Korollar. Angenommen man definiert, dass $S_1$ $S_2$ verfeinern
-soll, genau dann wenn für alle fast Partner \EIO{}s $U$, für die $S_2$ error-,
-ruhe- und divergenz-frei mit $U$ kommuniziert, folgt, dass $S_1$ ebenfalls
-error-, ruhe- und divergenz-frei mit $U$ kommuniziert. Dann wird auch diese
-Verfeinerung durch \DRel{} charakterisiert.
+% Aus Satz~\ref{satzDivFullAbst} und Lemma~\ref{lemDivVerfeinerung} erhält man
+% das folgende Korollar. Angenommen man definiert, dass $S_1$ $S_2$ verfeinern
+% soll, genau dann wenn für alle fast Partner \EIO{}s $U$, für die $S_2$ error-,
+% ruhe- und divergenz-frei mit $U$ kommuniziert, folgt, dass $S_1$ ebenfalls
+% error-, ruhe- und divergenz-frei mit $U$ kommuniziert. Dann wird auch diese
+% Verfeinerung durch \DRel{} charakterisiert.
 
-\begin{kor}
-  Es gilt: $S_1\DRel{} S_2 \Leftrightarrow U\|S_1\DBRel{} U\|S_2$ für alle
-  komponierbaren $U$.
-\end{kor}
+% \begin{kor}
+%   Es gilt: $S_1\DRel{} S_2 \Leftrightarrow U\|S_1\DBRel{} U\|S_2$ für alle
+%   komponierbaren $U$.
+% \end{kor}
 
-\section{Hiding und Divergenz-Freiheit}
+% \section{Hiding und Divergenz-Freiheit}
 
-Da durch den Internalisierungsoperator Outputs in $\tau$s umgewandelt werden,
-hat das Hiding auf die Divergenz-Eigenschaft eine recht große Auswirkung. Die
-Menge der divergenten Zustände kann sich somit durch das Internalisieren
-vergrößern. Es kann ein Zustand divergent werden, wenn von diesem bereits
-lokal ein divergenter Zustand aus erreichbar war oder wenn er eine unendliche
-Folge von Aktionen aus $X\cup\{\tau\}$ ausführen konnte, jedoch nur endlich
-viele davon $\tau$s waren. Somit kann die Basisrelation für Divergenz auf jeden
-Fall nicht erhalten bleiben unter Internalisierung.
+% Da durch den Internalisierungsoperator Outputs in $\tau$s umgewandelt werden,
+% hat das Hiding auf die Divergenz-Eigenschaft eine recht große Auswirkung. Die
+% Menge der divergenten Zustände kann sich somit durch das Internalisieren
+% vergrößern. Es kann ein Zustand divergent werden, wenn von diesem bereits
+% lokal ein divergenter Zustand aus erreichbar war oder wenn er eine unendliche
+% Folge von Aktionen aus $X\cup\{\tau\}$ ausführen konnte, jedoch nur endlich
+% viele davon $\tau$s waren. Somit kann die Basisrelation für Divergenz auf jeden
+% Fall nicht erhalten bleiben unter Internalisierung.
