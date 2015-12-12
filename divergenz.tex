@@ -7,7 +7,7 @@ erweitert werden. Somit werden dann Errors, Ruhe-Zustände und
 Divergente-Zustände betrachtet. Es eignet sich also~\cite{Chilton2013} als
 Quelle, da nun auch noch die Divergenz betrachtet wird. Diese wurde dort
 gleichzeitig mit der Ruhe eingeführt und betrachtet. Da es sich nur um eine
-Erweiterung der Präkongruenzen aus den letzten beiden Kapiteln handeln soll, wird
+Abwandlung der Präkongruenzen aus den letzten beiden Kapiteln handeln soll, wird
 dabei ähnlich vorgegangen wie in den letzten beiden Kapiteln.\\
 Wie bereits oben und im letzten Kapitel erwähnt wurden in~\cite{Chilton2013}
 auch noch divergente Zustände als Fehler-Zustände betrachtet. Um zu klären, was
@@ -57,12 +57,13 @@ bilden. Da oben bereits festgehalten wurde, dass Divergenz als ähnlich
 \glqq{}schlimmer\grqq{} Fehler anzusehen ist, wie Error und dass das Divergieren
 eines Systems nicht mehr verhinderbar ist, sobald ein divergenter Zustand
 erreichbar ist, kommt für die Divergenztraces wieder die $\prune$-Funktion zu
-Einsatz. Da jedoch nur die Präkongruenz aus dem Error-Kapitel weiter verfeinert
-werden soll, sollen keine neuen Traces entstehen, die nicht bereits in \EL{}
-enthalten sind. Es kann also nicht möglich sein abgeschnittene Traces beliebig
-Fortzusetzen. Deshalb wird hier die Menge der Fortgesetzten Traces durch einen
-Schnitt mit der error-gefluteten Sprache \EL{} wieder auf die Traces
-eingeschränkt, die bereits vorhanden sind.
+Einsatz. Ein System, dass unendliche viele $\tau$s ausführen kann, ist von
+außen nicht so einem System zu unterscheiden, dass einen Error-Zustand
+erreicht. Somit wird in den Trace-Mengen auch nicht zwischen Errortraces und
+Divergenztraces explizit unterschieden. Somit kann man auch nicht mehr nur mit
+den Errortraces die Sprache fluten, sondern muss sowohl mit den Errortraces wie
+auch den Divergenztraces fluten. Ebenso werden die strikten Ruhetraces mit
+diesen beiden Trace Mengen geflutet.
 
 \begin{Def}[Divergenztraces]
   Sei $S$ ein \EIO{} und definiere:
@@ -75,63 +76,65 @@ eingeschränkt, die bereits vorhanden sind.
 \end{Def}
 
 Da in~\cite{Chilton2013} bereits direkt Divergenz mit betrachtet wurde, wird
-dort die Flutung der Traces so vorgenommen, dass $\ET\subseteq \DT\subseteq
-\QT$ gilt. Dies soll auch hier in diesem Kapitel erreicht werden. Somit kann
-zwar die Semantik aus dem Error-Kapitel übernommen werden, jedoch wird für die
-Ruhe eine andere Semantik benötigt, die sich von der im letzten Kapitel
-unterscheidet. Die Inklusionskette der Fehlertraces passt auch von der
-Hierarchie her auf die Bewertung, als wie kritisch die einzelnen
-Fehler für die Kommunikation zu bewerten sind.
+dort die Flutung der Traces so vorgenommen, dass die Errortraces in den
+Divergenztraces enthalten sind und die Divergenztraces in den Ruhetraces. Da
+hier zwischen den Errortraces und den Divergenztraces nicht unterschieden
+werden soll, kann diese Inklusionskette nicht so umgesetzt werden, jedoch soll
+entsteht durch das Fluten immer noch der selbe Effekt für die Ruhetraces. Somit
+kann nur die Semantik der Menge \ET{} aus den früheren Kapitel übernommen
+werden.
 
-\begin{Def}[Ruhe- und Divergenz-Semantik]
+\begin{Def}[Error-, Divergenz- und Ruhe-Semantik]
 \label{DefRuheDivSemantik}
   Sei $S$ ein \EIO{}.
   \begin{itemize}
-    \item Die Menge der \emph{error-gefluteten Divergenztraces} von $S$ ist\\
-      $\DT{}(S) := (\cont{}(\PrDT{}(S))\cap \EL{}(S))\cup \ET{}(S)$.
-    \item Die Menge der \emph{divergenz-gefluteten Ruhetraces} von $S$ ist\\
-      $\QT{}(S) := \StQT{}(S)\cup \DT{}(S)$.
+    \item Die Menge der \emph{Divergenztraces} von $S$ ist $\DT{}(S) :=
+      \cont{}(\PrDT{}(S))$.
+    \item Die Menge der \emph{Error-Divergenztraces} von $S$ ist $\EDT{}(S) :=
+      \ET{}(S)\cup \DT{}(S)$.
+    \item Die Menge der \emph{error-divergenz-gefluteten Ruhetraces} von $S$
+      ist $\QDT{}(S) := \StQT{}(S)\cup \EDT{}(S)$.
+    \item Die Menge der \emph{error-divergenz-gefluteten Sprache} von $S$ ist
+      $\EDL{}(S) := L(S) \cup \EDT{}(S)$.
   \end{itemize}
   Für zwei \EIO{}s $S_1, S_2$ mit der gleichen Signatur schreibt man $S_1\DRel
-  S_2$, wenn $S_1\ERel S_2$, $\DT{}_1\subseteq \DT{}_2$ und
-  $\QT{}_1\subseteq \QT{}_2$ gilt.
+  S_2$, wenn $\EDT{}_1\subseteq \EDT{}_2$, $\EDL{}_1\subseteq \EDL{}_2$ und
+  $\QDT{}_1\subseteq \QDT{}_2$ gilt.
 \end{Def}
 
 In der letzten Definition wurde wieder durch das Fluten eine
-Informationsvermischung vorgenommen. Im Fall von \DT{} mit den Errortraces und
-im Fall von \QT{} mit den Divergenztraces. Jedoch entstehen hier wie im letzten
-Kapitel keine neuen Traces, die nicht bereits in der error-gefluteten Sprache
-\EL{} aus den Error-Kapitel enthalten wären. Somit kann diese Sprache ohne
-weitere Flutung verwendet werden. Es folgt, dass die Relation \DRel{} ebenso
-wie \QRel{} eine Einschränkung der Relation \ERel{} ist.\\
-Ebenso wie in Satz~\ref{satzQuiSemantik} wird im nächsten Satz nur der
-Vollständigkeit halber der erste und letzte Punkt erwähnt der Beweis dazu
-findet sich in Satz~\ref{satzErrorSemanik}.
+Informationsvermischung vorgenommen. Im beiden Fällen \QDT{} und \EDL{} mit
+\EDT{}, den Error-Divergenztraces. Da hier die Errortraces um die
+Divergenztraces erweitert wurde, und die error-geflutete Sprache zur
+error-divergenz-gefluteten Sprache erweitert wurde folgt, dass die Relation
+\DRel{} im Gegensatz zu \QRel{} keine direkte Einschränkung der Relation
+\ERel{} ist.
 
 \begin{satz}[Error-, Ruhe- und Divergenz-Semantik für Parallelkompostionen]
 \label{satzDivSemantik}
   Für zwei komponierbare \EIO{}s $S_1, S_2$ und ihre Komposition
   $S_{12}$ gilt:
   \begin{enumerate}
-    \item $\ET{}_{12}=\cont (\prune ((\ET{}_1\|\EL{}_2)\cup
-      (\EL{}_1\|\ET{}_2)))$,
-    \item $\DT{}_{12}= (\cont{}(\prune{}((\DT{}_1\|\EL{}_2)\cup
-      (\EL{}_1\|\DT{}_2)))\cap \EL_{12})\cup \ET{}_{12}$,
-    \item $\QT{}_{12}=(\QT{}_1\|\QT{}_2)\cup \DT{}_{12}$,
-    \item $\EL{}_{12}=(\EL{}_1\|\EL{}_2)\cup \ET{}_{12}$.
+    \item $\EDT{}_{12}=\cont (\prune ((\EDT{}_1\|\EDL{}_2)\cup
+      (\EDL{}_1\|\EDT{}_2)))$,
+    \item $\QDT{}_{12}=(\QDT{}_1\|\QDT{}_2)\cup \EDT{}_{12}$,
+    \item $\EDL{}_{12}=(\EDL{}_1\|\EDL{}_2)\cup \EDT{}_{12}$.
   \end{enumerate}
 \end{satz}
 
-\begin{proof} Es wird hier nur der 2.\ und 3.\ Punkt bewiesen.
+\begin{proof}
 
-  2. \glqq{}$\subseteq$\grqq{}:\\
-  Da beide Seiten unter \cont{} im Schnitt mit \EL{} abgeschlossen sind, genügt
-  es ein präfix-minimales Element $w$ zu betrachten. Es muss hier unterschieden, ob $w\in
-  \PrDT{}_{12}\backslash \ET{}_{12}$ oder $w\in \ET{}_{12}$ betrachtet wird. Im
-  zweiten Fall ist das $w$ in der rechten Seite der Gleichung enthalten.
-  Deshalb wird im weiteren Verlauf dieses Beweises davon ausgegangen, dass
-  $w\in \PrDT{}_{12}\backslash \ET{}_{12}$ gilt, und es wird versucht zu
-  zeigen, dass dieses $w$ ebenfalls in der rechten Seite enthalten ist. Aus der
+  1. \glqq{}$\subseteq$\grqq{}:\\
+  Da beide Seiten unter \cont{} abgeschlossen sind, genügt es ein
+  präfix-minimales Element $w$ zu betrachten. Es muss hier unterschieden, ob
+  $w\in \ET{}_{12}$ oder $w\in \DT{}_{12}\backslash \ET{}_{12}$ betrachtet
+  wird. Im ersten Fall ist das $w$ in der rechten Seite der Gleichung
+  enthalten, wegen den Beweises des ersten Punktes von
+  Satz~\ref{satzErrorSemanik}. Deshalb wird im weiteren Verlauf dieses Beweises
+  davon ausgegangen, dass $w\in \DT{}_{12}\backslash \ET{}_{12}$ gilt, und es
+  wird versucht zu zeigen, dass dieses $w$ ebenfalls in der rechten Seite
+  enthalten ist. Da das betrachtete $w$ präfix-minimal ist, gilt $w\in
+  \PrDT{}_{12}\backslash \ET{}_{12}$. Aus der
   Definition~\ref{DefRuheDivSemantik} weiß man, dass ein $v\in O^*_{12}$
   existiert, so dass $(q_{01},q_{02}) \overset{w}{\Rightarrow} (q_1,q_2)
   \overset{v}{\Rightarrow} (q_1',q_2')$ mit $(q_1',q_2')\in Div_{12}$ gilt.
@@ -140,93 +143,116 @@ findet sich in Satz~\ref{satzErrorSemanik}.
   $q_{02} \overset{w_2}{\Rightarrow} q_2 \overset{v_2}{\Rightarrow} q_2'$ mit
   $w\in w_1\|w_2$ und $v\in v_1\|v_2$. Aus $(q_1',q_2')\in Div_{12}$ folgt,
   dass \oBdA{} $q_1'\in Div_1$ gilt, d.h.\ $w_1v_1\in \StDT{}_1\subseteq
-  \DT{}_1$. Da $q_{02} \overset{w_2v_2}{\Rightarrow}$ gilt, erhält man
-  $w_2v_2\in \EL_2$. Somit gilt insgesamt $wv\in \DT{}_1\|\EL{}_2$ und $w$ ist
-  in der rechten Seite der Gleichung enthalten, da $v\in O_{12}^*$ gilt und
+  \EDT{}_1$. Da $q_{02} \overset{w_2v_2}{\Rightarrow}$ gilt, erhält man
+  $w_2v_2\in \EDL_2$. Somit gilt insgesamt $wv\in \EDT{}_1\|\EDL{}_2$ und $w$
+  ist in der rechten Seite der Gleichung enthalten, da $v\in O_{12}^*$ gilt und
   somit $\prune{}(wv)=\prune{}(w)$.
 
-  2. \glqq{}$\supseteq$\grqq{}:\\
+  1. \glqq{}$\supseteq$\grqq{}:\\
   Es wird ebenso wie oben nur ein präfix-minimales $w$ betrachtet wegen den
-  Abschlusses beider Seiten unter \cont{} im Schnitt mit \EL{}. Falls
-  $w\in\ET{}_{12}$ gilt, ist dieses $w$ auch
-  in der linken Seite der Gleichung enthalten. Somit wird für den Rest des
-  Beweises dieser Inklusion davon ausgegangen, dass
-  $w\in\prune{}((\DT{}_1\|\EL{}_2)\cup (\EL{}_1\|\DT{}_2))$ gilt. Dadurch lässt
-  sich ein $v$ aus $O_{12}^*$ finden, sodass $wv\in (\DT{}_1\|\EL{}_2)\cup
-  (\EL{}_1\|\DT{}_2)$ gilt. Es wird nun noch die Einschränkung vorausgesetzt,
-  dass \oBdA{} $wv\in \DT{}_1\|\EL{}_2$ gilt, d.h.\ es existieren
-  $w_1v_1\in\DT{}_1$ und $w_2v_2\in\EL{}_2$ mit $w\in w_1\|w_2$ und $v\in
-  v_1\|v_2$.
-  \begin{itemize}
-    \item Fall 1 ($w_1v_1\in \ET{}_1 \vee w_2v_2\in \ET{}_2$): \OBdA{} gilt
-      $w_1v_1\in\ET{}_1$. Es kann sich nun bei $w_2v_2$ um ein Error-,
-      Divergenz-, Ruhe- oder um ein ausführbares Trace aus dem
-      Transitionssystem handeln, es gilt jedoch in jedem Fall $w_2v_2\in\EL{}_2$.
-      Somit kann der erste Punkt von Satz~\ref{satzErrorSemanik} angewendet
-      werden und es folgt damit, dass $w\in\ET{}_{12}$ gilt und $w$ deshalb in
-      der linken Seite der Gleichung enthalten ist.
-    \item Fall 2 ($w_1v_1\in (\cont{}(\PrDT{}_1)\cap \EL_1)\backslash \ET{}_1
-      \wedge w_2\in \EL{}_2\backslash \ET{}_2$): Es gilt in diesem Fall, dass
-      ein Präfix $w_1'$ von $w_1v_1$ und ein $u\in O_1^*\subseteq O_{12}^*$
-      existiert mit $q_{01} \overset{w_1'}{\Rightarrow} q_1
-      \overset{u}{\Rightarrow} q_1'\in Div_1$ und $q_{02}
-      \overset{w_2'}{\Rightarrow} q_2$ mit $w_2'$ das entsprechende Präfix von
-      $w_2v_2$ das parallel zu $w_1'$ ausgeführt wird. An dieser Stelle kann
-      nichts darüber gesagt werden, wie sich $S_2$ verhält, wenn $S_1$ das $u$
-      ausführt.
-      \begin{itemize}
-        \item Fall 2a) \Big($q_2 \overset{u|_{\Sigma
-          _2}}{\not{\hspace{-0.1cm}\Rightarrow}}$\Big): $S_2$ hat also nicht die
-          Möglichkeit das $u$ gemeinsam mit $S_1$ auszuführen, es kommt also zu
-          einem Kommunikationsfehler in der Parallelkomposition. Es existiert
-          ein Präfix $t$ von $u|_{\Sigma _2}$ mit $w_2't\in\MIT{}_2$. Somit
-          folgt insgesamt, da $v$ und $u$ in $O_{12}^*$ enthalten sind und
-          \ET{} unter \cont{} abgeschlossen ist, dass $w\in\ET{}_{12}$ gilt.
-          Das $w$ ist also in der linken Seite der Gleichung enthalten.
-        \item Fall 2b) \big($q_2 \overset{u|_{\Sigma _2}}{\Rightarrow}
-          q_2'$\big): Da
-          $q_1'$ ein unendliche Folge an $\tau$s ausführen kann, ist dies auch
-          für den zusammengesetzten Zustand von $q_1'$ und $q_2'$ in der
-          Parallelkomposition möglich. Es gilt also für die Komposition
-          $(q_{01},q_{02}) \overset{w'}{\Rightarrow} (q_1,q_2)
-          \overset{u}{\Rightarrow} (q_1',q_2')\in Div_{12}$ und somit ist $w'u$
-          mit $w'\in w_1'\|w_2'$ in $\StDT{}_{12}$ enthalten. Durch die
-          parallel Ausführung von $u$ und $u|_{\Sigma _2}$ entstehen nur
-          Outputs und es gilt auch $u\in u\|u|_{\Sigma _2}$. Es folgt also,
-          dass $w'\in\PrDT{}_{12}$ gilt und da $w'$ ein Präfix von $w\in
-          w_1\|w_2 \in \EL{}_1\|\EL{}_2$ ist und \DT{} unter \cont{} in den
-          Traces der error-gefluteten Sprache \EL{} des Transitionssystems
-          abgeschlossen ist dass $w\in\DT{}_{12}$ gilt.
-      \end{itemize}
-  \end{itemize}
+  Abschlusses beider Seiten unter \cont{}. Es wird also für ein beliebiges
+  $w\in\prune{}((\EDT{}_1\|\EDL{}_2)\cup (\EDL{}_1\|\EDT{}_2))$ gezeigt, dass
+  es auch in $\EDT{}_{12}$ enthalten ist. Da das $w$ aus der \prune{}-Funktion
+  entstanden ist, lässt sich ein $v$ aus $O_{12}^*$ finden, sodass $wv\in
+  (\EDT{}_1\|\EDL{}_2)\cup (\EDL{}_1\|\EDT{}_2)$ gilt. Es wird nun noch die
+  Einschränkung vorausgesetzt, dass \oBdA{} $wv\in \EDT{}_1\|\EDL{}_2$ gilt,
+  d.h.\ es existieren $w_1v_1\in\EDT{}_1$ und $w_2v_2\in\EDL{}_2$ mit $w\in
+  w_1\|w_2$ und $v\in v_1\|v_2$.
+  %TODO analog zu Satz aus Error-Kapitel formulieren
+  % \begin{itemize}
+  %   \item Fall 1 ($w_1v_1\in \ET{}_1 \vee w_2v_2\in \ET{}_2$): \OBdA{} gilt
+  %     $w_1v_1\in\ET{}_1$. Es kann sich nun bei $w_2v_2$ um ein
+  %     Error-Divergenz-, Ruhe- oder um ein ausführbares Trace aus dem
+  %     Transitionssystem handeln, es gilt jedoch in jedem Fall
+  %     $w_2v_2\in\EDL{}_2$. Somit kann der erste Punkt von
+  %     Satz~\ref{satzErrorSemanik} angewendet werden und es folgt damit, dass
+  %     $w\in\EDT{}_{12}$ gilt und $w$ deshalb in der linken Seite der Gleichung
+  %     enthalten ist.
+  %   \item Fall 2 ($w_1v_1\in (\cont{}(\PrDT{}_1)\cap \EL_1)\backslash \ET{}_1
+  %     \wedge w_2\in \EL{}_2\backslash \ET{}_2$): Es gilt in diesem Fall, dass
+  %     ein Präfix $w_1'$ von $w_1v_1$ und ein $u\in O_1^*\subseteq O_{12}^*$
+  %     existiert mit $q_{01} \overset{w_1'}{\Rightarrow} q_1
+  %     \overset{u}{\Rightarrow} q_1'\in Div_1$ und $q_{02}
+  %     \overset{w_2'}{\Rightarrow} q_2$ mit $w_2'$ das entsprechende Präfix von
+  %     $w_2v_2$ das parallel zu $w_1'$ ausgeführt wird. An dieser Stelle kann
+  %     nichts darüber gesagt werden, wie sich $S_2$ verhält, wenn $S_1$ das $u$
+  %     ausführt.
+  %     \begin{itemize}
+  %       \item Fall 2a) \Big($q_2 \overset{u|_{\Sigma
+  %         _2}}{\not{\hspace{-0.1cm}\Rightarrow}}$\Big): $S_2$ hat also nicht die
+  %         Möglichkeit das $u$ gemeinsam mit $S_1$ auszuführen, es kommt also zu
+  %         einem Kommunikationsfehler in der Parallelkomposition. Es existiert
+  %         ein Präfix $t$ von $u|_{\Sigma _2}$ mit $w_2't\in\MIT{}_2$. Somit
+  %         folgt insgesamt, da $v$ und $u$ in $O_{12}^*$ enthalten sind und
+  %         \ET{} unter \cont{} abgeschlossen ist, dass $w\in\ET{}_{12}$ gilt.
+  %         Das $w$ ist also in der linken Seite der Gleichung enthalten.
+  %       \item Fall 2b) \big($q_2 \overset{u|_{\Sigma _2}}{\Rightarrow}
+  %         q_2'$\big): Da
+  %         $q_1'$ ein unendliche Folge an $\tau$s ausführen kann, ist dies auch
+  %         für den zusammengesetzten Zustand von $q_1'$ und $q_2'$ in der
+  %         Parallelkomposition möglich. Es gilt also für die Komposition
+  %         $(q_{01},q_{02}) \overset{w'}{\Rightarrow} (q_1,q_2)
+  %         \overset{u}{\Rightarrow} (q_1',q_2')\in Div_{12}$ und somit ist $w'u$
+  %         mit $w'\in w_1'\|w_2'$ in $\StDT{}_{12}$ enthalten. Durch die
+  %         parallel Ausführung von $u$ und $u|_{\Sigma _2}$ entstehen nur
+  %         Outputs und es gilt auch $u\in u\|u|_{\Sigma _2}$. Es folgt also,
+  %         dass $w'\in\PrDT{}_{12}$ gilt und da $w'$ ein Präfix von $w\in
+  %         w_1\|w_2 \in \EL{}_1\|\EL{}_2$ ist und \DT{} unter \cont{} in den
+  %         Traces der error-gefluteten Sprache \EL{} des Transitionssystems
+  %         abgeschlossen ist dass $w\in\DT{}_{12}$ gilt.
+  %     \end{itemize}
+  % \end{itemize}
 
-  3. \glqq{}$\subseteq$\grqq{}:\\
+  2. \glqq{}$\subseteq$\grqq{}:\\
   Diese Inklusionsrichtung kann analog zum Beweis der selben Inklusionsrichtung
   von Satz~\ref{satzQuiSemantik} gezeigt werden. Es muss dabei nur in der
-  Argumentation die Menge $\ET{}_{12}$ durch die Menge $\DT{}_{12}$ ersetzt
+  Argumentation die Menge $\ET{}_{12}$ durch die Menge $\EDT{}_{12}$ ersetzt
   werden. Dadurch kann ebenso gefolgert werden, dass der erreichte Zustand
-  $(q_1,q_2)$ kein Error-Zustand sein kann, da $\ET{}_{12}\subseteq \DT{}_{12}$
-  gilt.
+  $(q_1,q_2)$ kein Error-Zustand sein kann, da $\ET{}_{12}\subseteq
+  \EDT{}_{12}$ gilt.
 
-  3. \glqq{}$\supseteq$\grqq{}:\\
+  2. \glqq{}$\supseteq$\grqq{}:\\
   Es muss wieder danach unterschieden werden, aus welcher Menge das betrachtete
-  Element stammt. Falls $w$ ein Element von $\DT{}_{12}$ ist, so folgt die
+  Element stammt. Falls $w$ ein Element von $\EDT{}_{12}$ ist, so folgt die
   Zugehörigkeit zur linken Seite der Gleichung direkt. Somit wird für den
-  weiteren Punkt dieses Beweises davon ausgegangen, dass $w\in \QT{}_1\|\QT_2$
-  gilt. Für dieses $w$ soll dann gezeigt werden, dass es auch in $\QT_{12}$
-  enthalten ist. Da $\QT_i=\StQT{}_i\cup \DT{}_i$ gilt, existieren für $w_1$
-  und $w_2$ mit $w\in w_1\|w_2$ unterschiedliche Möglichkeiten:
+  weiteren Punkt dieses Beweises davon ausgegangen, dass $w\in
+  \QDT{}_1\|\QDT{}_2$ gilt. Für dieses $w$ soll dann gezeigt werden, dass es
+  auch in $\QDT_{12}$ enthalten ist. Da $\QDT_i=\StQT{}_i\cup \EDT{}_i$ gilt,
+  existieren für $w_1$ und $w_2$ mit $w\in w_1\|w_2$ unterschiedliche
+  Möglichkeiten:
   \begin{itemize}
-    \item Fall 1 ($w_1\in \DT{}_1 \vee w_2\in \DT{}_2$): \OBdA{} gilt $w_1\in
-      \DT{}_1$. Es kann nun $w_2\in \StQT{}_2 \subseteq L_2$ gelten oder
-      $w_2\in \DT{}_2\subseteq\EL{}_2$ und somit gilt auf jeden Fall $w_2\in
-      \EL{}_2$. Daraus kann mit dem zweiten Punkt dieses Satzes gefolgert
-      werden, dass $w\in \DT{}_{12}$ gilt und somit $w$ in der linken Seite der
-      Gleichung enthalten ist.
-    \item Fall 2 ($w_1\in \StQT{}_1\backslash \DT{}_1 \wedge w_2\in \StQT{}_2
-      \backslash \DT{}_2$): Dieser Fall läuft analog zu Fall 2 der selben
-      Inklusionsrichtung des Beweises von Satz~\ref{satzQuiSemantik}.
+    \item Fall 1 ($w_1\in \EDT{}_1 \vee w_2\in \EDT{}_2$): \OBdA{} gilt $w_1\in
+      \EDT{}_1$. Es kann nun $w_2\in \StQT{}_2 \subseteq L_2$ gelten oder
+      $w_2\in \EDT{}_2\subseteq\EDL{}_2$ und somit gilt auf jeden Fall $w_2\in
+      \EDL{}_2$. Daraus kann mit dem zweiten Punkt dieses Satzes gefolgert
+      werden, dass $w\in \EDT{}_{12}$ gilt und somit $w$ in der linken Seite
+      der Gleichung enthalten ist.
+    \item Fall 2 ($w_1\in \StQT{}_1\backslash \EDT{}_1 \wedge w_2\in \StQT{}_2
+      \backslash \EDT{}_2$): Dieser Fall läuft analog zu Fall 2 der selben
+      Inklusionsrichtung des Beweises von Satz~\ref{satzQuiSemantik}. Hierfür
+      ist wichtig festzustellen, dass Lemma~\ref{lemRuheParallelkomp} anwendbar
+      ist, da $\ET{}_i\subseteq \EDT{}_i$ gilt.
   \end{itemize}
+
+  3.:\\
+  Durch die Definition ist klar, dass $L_i\subseteq \EDT{}_i$,
+  $\ET{}_i\subseteq \EDT{}_i$ und $\DT{}_i\subseteq \EDT{}_i$ gilt. Die
+  Argumentation wird von der rechten Seite der Gleichung aus begonnen:
+  \begin{align*}
+    &(\EDL{}_1\| \EDL{}_2)\cup \EDT{}_{12}\\
+    &\overset{\ref{DefRuheDivSemantik}}{=}(L_1\cup \EDT{}_1)\|(L_2\cup
+    \EDT{}_2)\cup \EDT{}_{12}\\
+    &=\underset{\overset{1.}{\subseteq} \EDT{}_{12}}{\underset{\subseteq
+    (\EDL{}_1\|\EDT{}_2)}{\underbrace{(L_1\|\EDT{}_2)}}} \cup
+    \underset{\overset{1.}{\subseteq} \EDT{}_{12}}{\underset{\subseteq
+    (\EDT{}_1\|\EDL{}_2)}{\underbrace{(\EDT{}_1\|L_2)}}} \cup
+    (L_1\|L_2) \cup \underset{\overset{1.}{\subseteq}
+    \EDT{}_{12}}{\underset{\subseteq
+    (\EDL{}_1\|\EDT{}_2)}{\underbrace{(\EDT{}_1\|\EDT{}_2)}}} \cup \ET{}_{12}\\
+    &=(L_1\|L_2) \cup \EDT{}_{12}\\
+    &\overset{\ref{LemmaSprache}}{=}L_{12}\cup \EDT{}_{12}\\
+    &\overset{\ref{DefRuheDivSemantik}}{=}\EDL{}_{12}.
+  \end{align*}
 \end{proof}
 
 Analog wie in den beiden vorgegangenen Kapiteln, ergibt sich aus diesem Satz
@@ -242,40 +268,34 @@ Präkongruenz handelt.
   Um zu zeigen, dass es sich bei \DRel{} um eine Präkongruenz handelt, muss
   nachgewiesen werden, dass $S_{31}\DRel{} S_{32}$ für jedes komponierbare
   System $S_3$ gilt, wenn $S_1\DRel{} S_2$ erfüllt ist.  D.h.\ es ist
-  zu zeigen, dass auch $S_1\ERel{} S_2$, $\DT{}_1\subseteq \DT{}_2$ und
-  $\QT{}_1\subseteq \QT{}_2$ sowohl $S_{31}\ERel{} S_{32}$,
-  $\DT{}_{31}\subseteq \DT_{32}$ als auch $\QT{}_{31}\subseteq \QT{}_{32}$
-  folgt. Dies ergibt sich wie in den Beweisen zu den
+  zu zeigen, dass auch $\EDT{}_1\subseteq \EDT{}_2$, $\QDT{}_1\subseteq
+  \QDT{}_2$ und $\EDL{}_1\subseteq \EDL{}_2$ sowohl $\EDT{}_{31}\subseteq
+  \EDT_{32}$, $\QDT{}_{31}\subseteq \QDT{}_{32}$ als auch $\EDL{}_{31}\subseteq
+  \EDL{}_{32}$ folgt. Dies ergibt sich wie in den Beweisen zu den
   Propositionen~\ref{propPraekongruenz} und~\ref{propQuiPrae} aus der Monotonie
   von $\cdot\|\cdot$ auf Sprachen wie folgt:
   \begin{itemize}
     \item $\begin{aligned}[t]
-        S_{31}
-        \overset{\mathrm{Proposition}~\ref{propPraekongruenz}}{%
-        \overset{\mathrm{und}}{\overset{S_1\ERel{} S_2}{\ERel{}}}} S_{32},
+        \EDT{}_{31} &\overset{\ref{satzDivSemantik}~1.}{=}
+        \cont{}(\prune{}((\EDT{}_3\|\EDL{}_1) \cup (\EDL{}_3\|\EDT{}_1))\\
+        &\hspace{-0.5cm}\overset{\EDT{}_1\subseteq
+      \EDT{}_2}{\overset{\mathrm{und}}{\overset{\EDL{}_1\subseteq
+    \EDL{}_2}{\subseteq}}} \cont{}(\prune{}((\EDT{}_3\|\EDL{}_2) \cup
+    (\EDL{}_3\|\EDT{}_2)))\\
+      &\overset{\ref{satzDivSemantik}~2.}{=} \EDT{}_{32},
     \end{aligned}$
     \item $\begin{aligned}[t]
-        \DT{}_{31} &\overset{\ref{satzDivSemantik}~2.}{=}
-        (\cont{}(\prune{}((\DT{}_3\|\EL{}_1) \cup (\EL{}_3\|\DT{}_1)))\cap
-        \EL_{31}) \cup \ET{}_{31}\\
-        &\hspace{-0.5cm}\overset{\ET{}_{31}\subseteq
-      \ET{}_{32},}{\overset{\EL{}_{31}\subseteq
-        \EL{}_{32},}{\overset{\EL{}_1\subseteq
-      \EL{}_2}{\overset{\mathrm{und}}{\overset{\DT{}_1\subseteq
-  \DT{}_2}{\subseteq}}}}} (\cont{}(\prune{}((\DT{}_3\|\EL{}_2) \cup
-  (\EL{}_3\|\DT{}_2)))\cap \EL_{32}) \cup \ET{}_{32}\\
-      &\overset{\ref{satzDivSemantik}~2.}{=} \DT{}_{32},
-    \end{aligned}$
-    \item $\begin{aligned}[t]
-        \QT{}_{31} &\overset{\ref{satzDivSemantik}~3.}{=} (\QT{}_3\|\QT{}_1)
-        \cup \DT{}_{31}\\
-        &\hspace{-0.5cm}\overset{\DT{}_{31}\subseteq
-      \DT{}_{32},}{\overset{\mathrm{und}}{\overset{\QT{}_1\subseteq
-      \QT{}_2}{\subseteq}}} (\QT{}_3\|\QT{}_2) \cup \DT{}_{32}\\
-      &\overset{\ref{satzDivSemantik}~3.}{=} \QT{}_{32}.
+        \QDT{}_{31} &\overset{\ref{satzDivSemantik}~2.}{=} (\QDT{}_3\|\QDT{}_1)
+        \cup \EDT{}_{31}\\
+        &\hspace{-0.5cm}\overset{\EDT{}_{31}\subseteq
+      \EDT{}_{32},}{\overset{\mathrm{und}}{\overset{\QDT{}_1\subseteq
+      \QDT{}_2}{\subseteq}}} (\QDT{}_3\|\QDT{}_2) \cup \EDT{}_{32}\\
+      &\overset{\ref{satzDivSemantik}~3.}{=} \QDT{}_{32}.
     \end{aligned}$
   \end{itemize}
 \end{proof}
+
+%TODO aber hier weiter
 
 Als nächstes soll nun eine Verfeinerungsrelation bezüglich guter Kommunikation
 von Transitionssystemen im Sinne von error-, ruhe- und divergenz-freier
@@ -357,7 +377,7 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
             unendliche viele Zustände hat und auch keine $\tau$-Schleifen
             besitzt, kann das divergenz Verhalten nur von $S_2$ geerbt sein. Es
             muss also in $S_2$ ein Divergenz-Zustand lokal erreichbar sein und
-          somit gilt $\varepsilon\in\PrDT{}_2\subseteq \DT{}_2$.\lightning}
+          somit gilt $\varepsilon\in\PrDT{}_2\subseteq \DT{}_2$.}
       \end{itemize}
     \item Fall 2 ($w=x_1\dots x_nx_{n+1}\in\Sigma{} ^+$ mit $n\geq 0$ und
       $x_{n+1}\in I$): Es wird der folgende fast Partner $U$ betrachtet (siehe
@@ -444,7 +464,7 @@ nur um den Output $o$, der nicht in der Menge $Synch(S_1,S_2)$ enthalten ist.
           _2})\prune{}(x_1\dots x_i)\in\PrDT{}_2\subseteq \DT{}_2$, da
           $u|_{\Sigma _2}$ in $O^*$ enthalten ist. Da $x_1\dots x_i$ ein Präfix
           von $w$ ist, führt in diesem Fall ein Präfix von $w$ zu einem
-        divergenten Zustand.\lightning}
+        divergenten Zustand.}
       \end{itemize}
   \end{itemize}
 
