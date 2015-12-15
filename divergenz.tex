@@ -178,56 +178,23 @@ error-divergenz-gefluteten Sprache erweitert wurde folgt, dass die Relation
         \item Fall IIIa) ($u_2\in (O_1\cap I_2)^*, c\in (O_1\cap I_2)$, sodass
           $u_2c$ ein Präfix von $u_1|_{I_2}$ mit $q_2
           \overset{u_2}{\Rightarrow}
-          q_2'\overset{c}{\not{\hspace{-0.1cm}\rightarrow}}$):
+          q_2'\overset{c}{\not{\hspace{-0.1cm}\rightarrow}}$): Für ein Präfix
+          $u_1'c$ von $u_1$ mit $u_1'c|_{I_2}= u_2c$ weiß man, dass $q_1
+          \overset{u_1'}{\Rightarrow} q_1''
+          \overset{c}{\not{\hspace{-0.1cm}\rightarrow}}$. Somit gilt $u_1'\in
+          u_1'\|u_2$ und $(q_1,q_2) \overset{u_1'}{\Rightarrow} (q_1'',q_2')
+          \in E_{12}$, da für $S_2$ der entsprechende Input fehlt, der mit dem
+          $c$ Output von $S_1$ zu koppeln wäre. Es handelt sich also um einen
+          neuen Error. Es wird $v:=\prune{}(v'u_1')\in \PrET{}_{12}$ gewählt,
+          dies ist ein Präfix von $v'$, da $u_1\in O_1^*$.
         \item Fall IIIb) ($q_2 \overset{u_2}{\Rightarrow} q_2'$ mit $u_2=
-          u_1|_{I_2}$):
+          u_1|_{I_2}$): Somit ist $u_1\in u_1\|u_2$ und $(q_1,q_2)
+          \overset{u_1}{\Rightarrow} (q_1',q_2') \in Div_{12}$, da $q_1\in
+          Div_1$. $S_{12}$ hat also die Divergenz von $S_1$ geerbt. Es wird nun
+          $v:= \prune{}(v'u_1)\in \PrDT{}_{12}$ gewählt, das wiederum ein
+          Präfix von $v'$ ist.
       \end{itemize}
   \end{itemize}
-
-  %TODO analog zu Satz aus Error-Kapitel formulieren
-  % \begin{itemize}
-  %   \item Fall 1 ($w_1v_1\in \ET{}_1 \vee w_2v_2\in \ET{}_2$): \OBdA{} gilt
-  %     $w_1v_1\in\ET{}_1$. Es kann sich nun bei $w_2v_2$ um ein
-  %     Error-Divergenz-, Ruhe- oder um ein ausführbares Trace aus dem
-  %     Transitionssystem handeln, es gilt jedoch in jedem Fall
-  %     $w_2v_2\in\EDL{}_2$. Somit kann der erste Punkt von
-  %     Satz~\ref{satzErrorSemanik} angewendet werden und es folgt damit, dass
-  %     $w\in\EDT{}_{12}$ gilt und $w$ deshalb in der linken Seite der Gleichung
-  %     enthalten ist.
-  %   \item Fall 2 ($w_1v_1\in (\cont{}(\PrDT{}_1)\cap \EL_1)\backslash \ET{}_1
-  %     \wedge w_2\in \EL{}_2\backslash \ET{}_2$): Es gilt in diesem Fall, dass
-  %     ein Präfix $w_1'$ von $w_1v_1$ und ein $u\in O_1^*\subseteq O_{12}^*$
-  %     existiert mit $q_{01} \overset{w_1'}{\Rightarrow} q_1
-  %     \overset{u}{\Rightarrow} q_1'\in Div_1$ und $q_{02}
-  %     \overset{w_2'}{\Rightarrow} q_2$ mit $w_2'$ das entsprechende Präfix von
-  %     $w_2v_2$ das parallel zu $w_1'$ ausgeführt wird. An dieser Stelle kann
-  %     nichts darüber gesagt werden, wie sich $S_2$ verhält, wenn $S_1$ das $u$
-  %     ausführt.
-  %     \begin{itemize}
-  %       \item Fall 2a) \Big($q_2 \overset{u|_{\Sigma
-  %         _2}}{\not{\hspace{-0.1cm}\Rightarrow}}$\Big): $S_2$ hat also nicht die
-  %         Möglichkeit das $u$ gemeinsam mit $S_1$ auszuführen, es kommt also zu
-  %         einem Kommunikationsfehler in der Parallelkomposition. Es existiert
-  %         ein Präfix $t$ von $u|_{\Sigma _2}$ mit $w_2't\in\MIT{}_2$. Somit
-  %         folgt insgesamt, da $v$ und $u$ in $O_{12}^*$ enthalten sind und
-  %         \ET{} unter \cont{} abgeschlossen ist, dass $w\in\ET{}_{12}$ gilt.
-  %         Das $w$ ist also in der linken Seite der Gleichung enthalten.
-  %       \item Fall 2b) \big($q_2 \overset{u|_{\Sigma _2}}{\Rightarrow}
-  %         q_2'$\big): Da
-  %         $q_1'$ ein unendliche Folge an $\tau$s ausführen kann, ist dies auch
-  %         für den zusammengesetzten Zustand von $q_1'$ und $q_2'$ in der
-  %         Parallelkomposition möglich. Es gilt also für die Komposition
-  %         $(q_{01},q_{02}) \overset{w'}{\Rightarrow} (q_1,q_2)
-  %         \overset{u}{\Rightarrow} (q_1',q_2')\in Div_{12}$ und somit ist $w'u$
-  %         mit $w'\in w_1'\|w_2'$ in $\StDT{}_{12}$ enthalten. Durch die
-  %         parallel Ausführung von $u$ und $u|_{\Sigma _2}$ entstehen nur
-  %         Outputs und es gilt auch $u\in u\|u|_{\Sigma _2}$. Es folgt also,
-  %         dass $w'\in\PrDT{}_{12}$ gilt und da $w'$ ein Präfix von $w\in
-  %         w_1\|w_2 \in \EL{}_1\|\EL{}_2$ ist und \DT{} unter \cont{} in den
-  %         Traces der error-gefluteten Sprache \EL{} des Transitionssystems
-  %         abgeschlossen ist dass $w\in\DT{}_{12}$ gilt.
-  %     \end{itemize}
-  % \end{itemize}
 
   2. \glqq{}$\subseteq$\grqq{}:\\
   Diese Inklusionsrichtung kann analog zum Beweis der selben Inklusionsrichtung
@@ -687,89 +654,89 @@ enthalten ist.
   \end{itemize}
 \end{proof}
 
-% Der folgenden Satz hält fest, dass \DRel{} die gröbste Präkongruenz bezüglich
-% $\cdot\|\cdot$ charakterisiert, die in \DBRel{} enthalten ist.
+Der folgenden Satz hält fest, dass \DRel{} die gröbste Präkongruenz bezüglich
+$\cdot\|\cdot$ charakterisiert, die in \DBRel{} enthalten ist.
 
-% \begin{satz}[Full Abstractness für Divergenz-Semantik]
-% \label{satzDivFullAbst}
-%   Seinen $S_1$ und $S_2$ zwei \EIO{}s mit derselben Signatur. Dann gilt $S_1
-%   \DCRel{} S_2\Leftrightarrow S_1\DRel{} S_2$, insbesondere ist \DRel{} eine
-%   Präkongruenz.
-% \end{satz}
+\begin{satz}[Full Abstractness für Divergenz-Semantik]
+\label{satzDivFullAbst}
+  Seinen $S_1$ und $S_2$ zwei \EIO{}s mit derselben Signatur. Dann gilt $S_1
+  \DCRel{} S_2\Leftrightarrow S_1\DRel{} S_2$, insbesondere ist \DRel{} eine
+  Präkongruenz.
+\end{satz}
 
-% \begin{proof}
-%   \glqq{}$\Leftarrow$\grqq{}: Nach Definition gilt $w\in\QT{}(S)$ mit $w\in
-%   O^*$, genau dann wenn in $S$ ein Divergenz-Zustand, ein Ruhe-Zustand oder ein
-%   Error-Zustand lokal erreichbar ist. $S_1\DRel S_2$ impliziert, dass
-%   $w\in\QT{}_2$ gilt, wenn $w\in\QT{}_1$ gilt. Somit ist ein Divergenz-Zustand,
-%   ein Ruhe-Zustand oder ein Error-Zustand nur dann in $S_1$ lokal erreichbar,
-%   wenn auch ein solcher in $S_2$ lokal erreichbar ist. Daraus folgt, dass
-%   $S_1\DBRel S_2$ gilt. Somit ist \DRel{} in \DBRel{} enthalten. In
-%   Proposition~\ref{propDivPrae} wurde festgestellt, dass \DRel{} eine
-%   Präkongruenz ist. Da jedoch \DCRel{} nach Definition die gröbste Präkongruenz
-%   bezüglich $\cdot\|\cdot$ ist, die in \DBRel{} enthalten ist, muss \DRel{} in
-%   \DCRel{} enthalten sein. Es folgt also aus $S_1\DRel S_2$,
-%   dass auch der relationale Zusammenhang $S_1\DCRel S_2$ gilt.
+\begin{proof}
+  \glqq{}$\Leftarrow$\grqq{}: Nach Definition gilt $w\in\QDT{}(S)$ mit $w\in
+  O^*$, genau dann wenn in $S$ ein Divergenz-Zustand, ein Ruhe-Zustand oder ein
+  Error-Zustand lokal erreichbar ist. $S_1\DRel S_2$ impliziert, dass
+  $w\in\QDT{}_2$ gilt, wenn $w\in\QDT{}_1$ gilt. Somit ist ein Divergenz-Zustand,
+  ein Ruhe-Zustand oder ein Error-Zustand nur dann in $S_1$ lokal erreichbar,
+  wenn auch ein solcher in $S_2$ lokal erreichbar ist. Daraus folgt, dass
+  $S_1\DBRel S_2$ gilt. Somit ist \DRel{} in \DBRel{} enthalten. In
+  Proposition~\ref{propDivPrae} wurde festgestellt, dass \DRel{} eine
+  Präkongruenz ist. Da jedoch \DCRel{} nach Definition die gröbste Präkongruenz
+  bezüglich $\cdot\|\cdot$ ist, die in \DBRel{} enthalten ist, muss \DRel{} in
+  \DCRel{} enthalten sein. Es folgt also aus $S_1\DRel S_2$,
+  dass auch der relationale Zusammenhang $S_1\DCRel S_2$ gilt.
 
-%   \glqq{}$\Rightarrow$\grqq{}: Durch die Definition von \DCRel{} als
-%   Präkongruenz in~\ref{DefDivBasisrel} folgt aus $S_1\DCRel{} S_2$, dass
-%   $U\|S_1\DCRel U\|S_2$ für alle EIOs $U$ gilt, die mit $S_1$ komponierbar sind.
-%   Somit folgt auch die Gültigkeit von $U\|S_1\DBRel U\|S_2$ für alle diese EIOs
-%   $U$. Mit Lemma~\ref{lemDivVerfeinerung} folgt dann $S_1\QRel{} S_2$.
-% \end{proof}
+  \glqq{}$\Rightarrow$\grqq{}: Durch die Definition von \DCRel{} als
+  Präkongruenz in~\ref{DefDivBasisrel} folgt aus $S_1\DCRel{} S_2$, dass
+  $U\|S_1\DCRel U\|S_2$ für alle EIOs $U$ gilt, die mit $S_1$ komponierbar sind.
+  Somit folgt auch die Gültigkeit von $U\|S_1\DBRel U\|S_2$ für alle diese EIOs
+  $U$. Mit Lemma~\ref{lemDivVerfeinerung} folgt dann $S_1\QRel{} S_2$.
+\end{proof}
 
-% Es wurde somit, wie in den letzten beiden Kapiteln, eine Kette an Folgerungen
-% gezeigt, die sich zu einem Ring schließen. Jedoch ändert sich an der Begründung
-% für einen der Folgepfeile etwas, da in Lemma~\ref{lemDivVerfeinerung} $U$ kein
-% Partner mehr ist, sondern nur ein fast Partner. Diese Folgerungskette ist in
-% Abbildung~\ref{FolgerungsketteDiv} dargestellt.
+Es wurde somit, wie in den letzten beiden Kapiteln, eine Kette an Folgerungen
+gezeigt, die sich zu einem Ring schließen. Jedoch ändert sich an der Begründung
+für einen der Folgepfeile etwas, da in Lemma~\ref{lemDivVerfeinerung} $U$ kein
+Partner mehr ist, sondern nur ein $\omega$-Partner. Diese Folgerungskette ist in
+Abbildung~\ref{FolgerungsketteDiv} dargestellt.
 
-% \begin{figure}[h!tbp]
-%   \begin{center}
-%     \begin{tikzpicture}
-%       \matrix (m) [matrix of math nodes,row sep=2cm,column sep=4cm]{%
-%         S_1\DRel S_2 & S_1\DCRel S_2 \\
-%         \substack{\forall~\mathrm{fast}~\mathrm{Partner}~U:\\U\|S_1\DBRel
-%         U\|S_2} & \substack{\forall~\mathrm{komponierbaren}~U:\\U\|S_1\DBRel
-%       U\|S_2} \\};
-%         \draw[-implies, double, double distance=1mm]
-%           (m-1-1) -- node [above] {\glqq{}$\Leftarrow$\grqq{} von
-%             Satz~\ref{satzDivFullAbst}} (m-1-2);
-%         \draw[-implies, double, double distance=1mm]
-%           (m-1-2) -- node [right] {Definition von \DCRel{}
-%           in~\ref{DefDivBasisrel}} (m-2-2);
-%         \draw[-implies, double, double distance=1mm]
-%           (m-2-1) -- node [left]
-%           {Lemma~\ref{lemDivVerfeinerung}} (m-1-1);
-%         \draw[-implies, double, double distance=1mm]
-%         (m-2-2) -- node [below]
-%         {$\substack{U~\mathrm{fast}~\mathrm{Partner}\\\Downarrow\\U~\mathrm{komponierbar}}$}
-%         (m-2-1);
-%     \end{tikzpicture}
-%     \caption{Folgerungskette}
-% \label{FolgerungsketteDiv}
-%   \end{center}
-% \end{figure}
+\begin{figure}[h!tbp]
+  \begin{center}
+    \begin{tikzpicture}
+      \matrix (m) [matrix of math nodes,row sep=2cm,column sep=4cm]{%
+        S_1\DRel S_2 & S_1\DCRel S_2 \\
+        \substack{\forall~\omega\mathrm{-Partner}~U:\\U\|S_1\DBRel
+        U\|S_2} & \substack{\forall~\mathrm{komponierbaren}~U:\\U\|S_1\DBRel
+      U\|S_2} \\};
+        \draw[-implies, double, double distance=1mm]
+          (m-1-1) -- node [above] {\glqq{}$\Leftarrow$\grqq{} von
+            Satz~\ref{satzDivFullAbst}} (m-1-2);
+        \draw[-implies, double, double distance=1mm]
+          (m-1-2) -- node [right] {Definition von \DCRel{}
+          in~\ref{DefDivBasisrel}} (m-2-2);
+        \draw[-implies, double, double distance=1mm]
+          (m-2-1) -- node [left]
+          {Lemma~\ref{lemDivVerfeinerung}} (m-1-1);
+        \draw[-implies, double, double distance=1mm]
+        (m-2-2) -- node [below]
+        {$\substack{U~\omega\mathrm{-Partner}\\\Downarrow\\U~\mathrm{komponierbar}}$}
+        (m-2-1);
+    \end{tikzpicture}
+    \caption{Folgerungskette}
+\label{FolgerungsketteDiv}
+  \end{center}
+\end{figure}
 
-% Aus Satz~\ref{satzDivFullAbst} und Lemma~\ref{lemDivVerfeinerung} erhält man
-% das folgende Korollar. Angenommen man definiert, dass $S_1$ $S_2$ verfeinern
-% soll, genau dann wenn für alle fast Partner \EIO{}s $U$, für die $S_2$ error-,
-% ruhe- und divergenz-frei mit $U$ kommuniziert, folgt, dass $S_1$ ebenfalls
-% error-, ruhe- und divergenz-frei mit $U$ kommuniziert. Dann wird auch diese
-% Verfeinerung durch \DRel{} charakterisiert.
+Aus Satz~\ref{satzDivFullAbst} und Lemma~\ref{lemDivVerfeinerung} erhält man
+das folgende Korollar. Angenommen man definiert, dass $S_1$ $S_2$ verfeinern
+soll, genau dann wenn für alle $\omega$-Partner \EIO{}s $U$, für die $S_2$ error-,
+ruhe- und divergenz-frei mit $U$ kommuniziert, folgt, dass $S_1$ ebenfalls
+error-, ruhe- und divergenz-frei mit $U$ kommuniziert. Dann wird auch diese
+Verfeinerung durch \DRel{} charakterisiert.
 
-% \begin{kor}
-%   Es gilt: $S_1\DRel{} S_2 \Leftrightarrow U\|S_1\DBRel{} U\|S_2$ für alle
-%   komponierbaren $U$.
-% \end{kor}
+\begin{kor}
+  Es gilt: $S_1\DRel{} S_2 \Leftrightarrow U\|S_1\DBRel{} U\|S_2$ für alle
+  komponierbaren $U$.
+\end{kor}
 
-% \section{Hiding und Divergenz-Freiheit}
+\section{Hiding und Divergenz-Freiheit}
 
-% Da durch den Internalisierungsoperator Outputs in $\tau$s umgewandelt werden,
-% hat das Hiding auf die Divergenz-Eigenschaft eine recht große Auswirkung. Die
-% Menge der divergenten Zustände kann sich somit durch das Internalisieren
-% vergrößern. Es kann ein Zustand divergent werden, wenn von diesem bereits
-% lokal ein divergenter Zustand aus erreichbar war oder wenn er eine unendliche
-% Folge von Aktionen aus $X\cup\{\tau\}$ ausführen konnte, jedoch nur endlich
-% viele davon $\tau$s waren. Somit kann die Basisrelation für Divergenz auf jeden
-% Fall nicht erhalten bleiben unter Internalisierung.
+Da durch den Internalisierungsoperator Outputs in $\tau$s umgewandelt werden,
+hat das Hiding auf die Divergenz-Eigenschaft eine recht große Auswirkung. Die
+Menge der divergenten Zustände kann sich somit durch das Internalisieren
+vergrößern. Es kann ein Zustand divergent werden, wenn von diesem bereits
+lokal ein divergenter Zustand aus erreichbar war oder wenn er eine unendliche
+Folge von Aktionen aus $X\cup\{\tau\}$ ausführen konnte, jedoch nur endlich
+viele davon $\tau$s waren. Somit kann die Basisrelation für Divergenz unter
+Internalisierung auf jeden Fall nicht erhalten bleiben.
