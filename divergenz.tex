@@ -22,8 +22,9 @@ darunter verstanden wird, wird nun noch eine Definition für Divergenz gegeben.
   % q_i\neq q_j\}$.
 \end{Def}
 
-Die unendliche Folge an $\tau$s kann durch eine Schleife ausführbar sein, oder
-durch einen Weg, der mit $\tau$s ausführbar ist, mit dem
+Die unendliche Folge an $\tau$s kann durch eine Schleife an einem durch $\tau$s
+erreichbaren Zustand ausführbar sein, oder durch einen Weg, der mit $\tau$s
+ausführbar ist, mit dem
 unendliche viele Zustände durchlaufen werden. Es ist jedoch zu beachten, dass
 ein Zustand, von dem aus unendlich viele Zustände durch $\tau$s erreichbar sind,
 nicht divergent sein muss. Es ist auch möglich, dass dieser Zustand eine
@@ -35,7 +36,7 @@ divergenter Zustand lokal erreichbar ist, ist Divergenz als ähnlich
 \glqq{}schlimm\grqq{} zu bewerten wie ein Error.
 
 \begin{Def}[error-, ruhe- und divergenz-freie Kommunikation]
-  Zwei \EIO{}s $S_1$ und $S_2$ kommunizieren \emph{error-, ruhe- und
+  Zwei \linebreak\EIO{}s $S_1$ und $S_2$ kommunizieren \emph{error-, ruhe- und
   divergenz-frei}, wenn in ihre Parallelkomposition $S_{12}$ keine Errors,
   Ruhe-Zustände und Divergenz-Zustände lokal erreichbar sind.
 \end{Def}
@@ -52,7 +53,7 @@ bezüglich $\cdot\|\cdot$.
 \end{Def}
 
 Da nun die grundlegenden Definitionen für Divergenz festgehalten sind,
-kann man sich nun einen Begriff für die Traces zu divergenten Zuständen
+kann man sich einen Begriff für die Traces zu divergenten Zuständen
 bilden. Da oben bereits festgehalten wurde, dass Divergenz als ähnlich
 \glqq{}schlimmer\grqq{} Fehler anzusehen ist, wie Error und dass das Divergieren
 eines Systems nicht mehr verhinderbar ist, sobald ein divergenter Zustand
@@ -63,7 +64,7 @@ erreicht. Somit wird in den Trace-Mengen auch nicht zwischen Errortraces und
 Divergenztraces explizit unterschieden. Somit kann man auch nicht mehr nur mit
 den Errortraces die Sprache fluten, sondern muss sowohl mit den Errortraces wie
 auch den Divergenztraces fluten. Ebenso werden die strikten Ruhetraces mit
-diesen beiden Trace Mengen geflutet.
+diesen beiden Trace-Mengen geflutet.
 
 \begin{Def}[Divergenztraces]
   Sei $S$ ein \EIO{} und definiere:
@@ -79,10 +80,11 @@ Da in~\cite{Chilton2013} bereits direkt Divergenz mit betrachtet wurde, wird
 dort die Flutung der Traces so vorgenommen, dass die Errortraces in den
 Divergenztraces enthalten sind und die Divergenztraces in den Ruhetraces. Da
 hier zwischen den Errortraces und den Divergenztraces nicht unterschieden
-werden soll, kann diese Inklusionskette nicht so umgesetzt werden, jedoch soll
+werden soll, kann diese Inklusionskette nicht so umgesetzt werden, jedoch
 entsteht durch das Fluten immer noch der selbe Effekt für die Ruhetraces. Somit
 kann nur die Semantik der Menge \ET{} aus den früheren Kapitel übernommen
-werden.
+werden. Die jedoch für den weiteren Verlauf nur innerhalb der Trace-Menge
+\EDT{} relevant sein wird.
 
 \begin{Def}[Error-, Divergenz- und Ruhe-Semantik]
 \label{DefRuheDivSemantik}
@@ -93,7 +95,7 @@ werden.
     \item Die Menge der \emph{Error-Divergenztraces} von $S$ ist $\EDT{}(S) :=
       \ET{}(S)\cup \DT{}(S)$.
     \item Die Menge der \emph{error-divergenz-gefluteten Ruhetraces} von $S$
-      ist $\QDT{}(S) := \StQT{}(S)\cup \EDT{}(S)$.
+      ist $\QDT{}(S) :=$\linebreak $\StQT{}(S)\cup \EDT{}(S)$.
     \item Die Menge der \emph{error-divergenz-gefluteten Sprache} von $S$ ist
       $\EDL{}(S) := L(S) \cup \EDT{}(S)$.
   \end{itemize}
@@ -103,8 +105,8 @@ werden.
 \end{Def}
 
 In der letzten Definition wurde wieder durch das Fluten eine
-Informationsvermischung vorgenommen. Im beiden Fällen \QDT{} und \EDL{} mit
-\EDT{}, den Error-Divergenztraces. Da hier die Errortraces um die
+Informationsvermischung vorgenommen. Sowohl im Fall \QDT{} wie auch im Fall
+\EDL{} mit \EDT{}, den Error-Divergenztraces. Da hier die Errortraces um die
 Divergenztraces erweitert wurde, und die error-geflutete Sprache zur
 error-divergenz-gefluteten Sprache erweitert wurde folgt, dass die Relation
 \DRel{} im Gegensatz zu \QRel{} keine direkte Einschränkung der Relation
@@ -125,12 +127,14 @@ error-divergenz-gefluteten Sprache erweitert wurde folgt, dass die Relation
 \begin{proof}
 
   1. \glqq{}$\subseteq$\grqq{}:\\
-  Da beide Seiten unter \cont{} abgeschlossen sind, genügt es ein
+  Da beide Seiten der Gleichung unter \cont{} abgeschlossen sind, genügt es ein
   präfix-minimales Element $w$ zu betrachten. Es muss hier unterschieden, ob
   $w\in \ET{}_{12}$ oder $w\in \DT{}_{12}\backslash \ET{}_{12}$ betrachtet
   wird. Im ersten Fall ist das $w$ in der rechten Seite der Gleichung
   enthalten, wegen den Beweises des ersten Punktes von
-  Satz~\ref{satzErrorSemanik}. Deshalb wird im weiteren Verlauf dieses Beweises
+  Satz~\ref{satzErrorSemanik} und da $\ET{}(S)\subseteq \EDT{}(S)$ und
+  $\EL{}(S)\subseteq \EDL{}(S)$ gilt. Deshalb wird im weiteren Verlauf dieses
+  Beweises
   davon ausgegangen, dass $w\in \DT{}_{12}\backslash \ET{}_{12}$ gilt, und es
   wird versucht zu zeigen, dass dieses $w$ ebenfalls in der rechten Seite
   enthalten ist. Da das betrachtete $w$ präfix-minimal ist, gilt $w\in
@@ -150,29 +154,29 @@ error-divergenz-gefluteten Sprache erweitert wurde folgt, dass die Relation
 
   1. \glqq{}$\supseteq$\grqq{}:\\
   Es wird ebenso wie oben nur ein präfix-minimales $w$ betrachtet wegen den
-  Abschlusses beider Seiten unter \cont{}. Es wird also für ein beliebiges
-  $x\in\prune{}((\EDT{}_1\|\EDL{}_2)\cup (\EDL{}_1\|\EDT{}_2))$ gezeigt, dass
+  Abschlusses beider Seiten der Gleichung unter \cont{}. Es wird also für ein beliebiges
+  $x\in\prune{}((\EDT{}_1\|$ $\EDL{}_2)\cup (\EDL{}_1\|\EDT{}_2))$ gezeigt, dass
   dieses oder einer seiner Präfixe auch in $\EDT{}_{12}$ enthalten ist. Da das
   $x$ aus der \prune{}-Funktion entstanden ist, lässt sich ein $y$ aus
   $O_{12}^*$ finden, sodass $xy\in (\EDT{}_1\|\EDL{}_2)\cup
-  (\EDL{}_1\|\EDT{}_2)$ gilt. Es wird nun noch die Einschränkung vorausgesetzt,
-  dass \oBdA{} $xy\in \EDT{}_1\|\EDL{}_2$ gilt, d.h.\ es existieren
+  (\EDL{}_1\|\EDT{}_2)$. Es wird nun noch die Einschränkung vorausgesetzt,
+  dass \oBdA{} $xy\in \EDT{}_1\|\EDL{}_2$, d.h.\ es existieren
   $w_1\in\EDT{}_1$ und $w_2\in\EDL{}_2$ mit $xy\in w_1\|w_2$.\\
   Die folgende Argumentation läuft analog zu dem Beweis der Inklusion
-  $\ET{}_{12} \supseteq \cont{}(\prune{}((\ET{}_1\|\EL_2)\cup
+  $\ET{}_{12} \supseteq \cont{}($ $\prune{}((\ET{}_1\|\EL_2)\cup
   (\EL{}_1\|\ET{}_2)))$ aus Satz~\ref{satzErrorSemanik}. Es muss dazu nur
   jeweils an den Stellen, wo $\PrET{}(S)\cup \MIT{}(S)$ steht auch noch eine
   Vereinigung mit $\PrDT{}(S)$ vorgenommen werden. Am Ende ist dann auch noch
   ein Fall für $v_1\in\PrDT{}_1$ zu ergänzen:
   \begin{itemize}
-    \item Fall III ($v_1\in \PrDT{}_1$): $\exists u_1\in O_1^*: q_{01}
-      \overset{v_1}{\Rightarrow} q_1 \overset{u_1}{\Rightarrow} q_1'$ mit
-      $q_1'\in Div_1$. Da es hier keine disjunkten Inputmengen gibt, kann das
+    \item Fall III ($v_1\in \PrDT{}_1$): Es exisiert ein $u_1$ aus $O_1^*$,
+      sodass $q_{01} \overset{v_1}{\Rightarrow} q_1 \overset{u_1}{\Rightarrow}
+      q_1'$ mit $q_1'\in Div_1$ gilt. Da es hier keine disjunkten Inputmengen gibt, kann das
       $a$ auf das $v_1$ im Fall $v_1\neq \varepsilon$ endet, ebenfalls der
       letzte Buchstabe von $v_2$ sein. Im Fall von $v_2\in \MIT{}_2$ kann somit
       $a=b$ gelten und somit wäre $v_2= v_2'$. Dieser Fall verläuft jedoch
       analog zu Fall Ic) und wird somit hier nicht weiter betrachtet. Es gilt
-      somit für alle anderen Fälle hier $q_{02} \overset{v_2'}{\Rightarrow}
+      somit für alle im folgenden betrachteten Fälle $q_{02} \overset{v_2'}{\Rightarrow}
       q_2$ mit $(q_{01},q_{02}) \overset{v'}{\Rightarrow}$.
       \begin{itemize}
         \item Fall IIIa) ($u_2\in (O_1\cap I_2)^*, c\in (O_1\cap I_2)$, sodass
@@ -181,7 +185,7 @@ error-divergenz-gefluteten Sprache erweitert wurde folgt, dass die Relation
           q_2'\overset{c}{\not{\hspace{-0.1cm}\rightarrow}}$): Für ein Präfix
           $u_1'c$ von $u_1$ mit $u_1'c|_{I_2}= u_2c$ weiß man, dass $q_1
           \overset{u_1'}{\Rightarrow} q_1''
-          \overset{c}{\not{\hspace{-0.1cm}\rightarrow}}$. Somit gilt $u_1'\in
+          \overset{c}{\hspace{-0.1cm}\rightarrow}$. Somit gilt $u_1'\in
           u_1'\|u_2$ und $(q_1,q_2) \overset{u_1'}{\Rightarrow} (q_1'',q_2')
           \in E_{12}$, da für $S_2$ der entsprechende Input fehlt, der mit dem
           $c$ Output von $S_1$ zu koppeln wäre. Es handelt sich also um einen
@@ -199,7 +203,8 @@ error-divergenz-gefluteten Sprache erweitert wurde folgt, dass die Relation
   2. \glqq{}$\subseteq$\grqq{}:\\
   Diese Inklusionsrichtung kann analog zum Beweis der selben Inklusionsrichtung
   von Satz~\ref{satzQuiSemantik} gezeigt werden. Es muss dabei nur in der
-  Argumentation die Menge $\ET{}_{12}$ durch die Menge $\EDT{}_{12}$ ersetzt
+  Argumentation die Menge $\ET{}_{12}$ durch die Menge $\EDT{}_{12}$ und die
+  Menge $\QT{}(S)$ durch die Menge $\QDT{}(S)$ ersetzt
   werden. Dadurch kann ebenso gefolgert werden, dass der erreichte Zustand
   $(q_1,q_2)$ kein Error-Zustand sein kann, da $\ET{}_{12}\subseteq
   \EDT{}_{12}$ gilt.
@@ -208,7 +213,7 @@ error-divergenz-gefluteten Sprache erweitert wurde folgt, dass die Relation
   Es muss wieder danach unterschieden werden, aus welcher Menge das betrachtete
   Element stammt. Falls $w$ ein Element von $\EDT{}_{12}$ ist, so folgt die
   Zugehörigkeit zur linken Seite der Gleichung direkt. Somit wird für den
-  weiteren Punkt dieses Beweises davon ausgegangen, dass $w\in
+  weiteren Verlauf dieses Beweises davon ausgegangen, dass $w\in
   \QDT{}_1\|\QDT{}_2$ gilt. Für dieses $w$ soll dann gezeigt werden, dass es
   auch in $\QDT_{12}$ enthalten ist. Da $\QDT_i=\StQT{}_i\cup \EDT{}_i$ gilt,
   existieren für $w_1$ und $w_2$ mit $w\in w_1\|w_2$ unterschiedliche
@@ -224,24 +229,25 @@ error-divergenz-gefluteten Sprache erweitert wurde folgt, dass die Relation
       \backslash \EDT{}_2$): Dieser Fall läuft analog zu Fall 2 der selben
       Inklusionsrichtung des Beweises von Satz~\ref{satzQuiSemantik}. Hierfür
       ist wichtig festzustellen, dass Lemma~\ref{lemRuheParallelkomp} anwendbar
-      ist, da $\ET{}_i\subseteq \EDT{}_i$ gilt.
+      ist, da $\ET{}_i\subseteq \EDT{}_i$ gilt. Zusätzlich muss die Menge
+      $\QT{}_{12}$ durch $\QDT{}_{12}$ ersetzt werden.
   \end{itemize}
 
   3.:\\
-  Durch die Definition ist klar, dass $L_i\subseteq \EDT{}_i$,
-  $\ET{}_i\subseteq \EDT{}_i$ und $\DT{}_i\subseteq \EDT{}_i$ gilt. Die
+  Durch die Definition ist klar, dass $L_i\subseteq \EDT{}_i$ und
+  $\EDT{}_i\subseteq \EDL{}_i$ gilt. Die
   Argumentation wird von der rechten Seite der Gleichung aus begonnen:
   \begin{align*}
     &(\EDL{}_1\| \EDL{}_2)\cup \EDT{}_{12}\\
-    &\overset{\ref{DefRuheDivSemantik}}{=}(L_1\cup \EDT{}_1)\|(L_2\cup
-    \EDT{}_2)\cup \EDT{}_{12}\\
+    &\overset{\ref{DefRuheDivSemantik}}{=}((L_1\cup \EDT{}_1)\|(L_2\cup
+    \EDT{}_2))\cup \EDT{}_{12}\\
     &=\underset{\overset{1.}{\subseteq} \EDT{}_{12}}{\underset{\subseteq
     (\EDL{}_1\|\EDT{}_2)}{\underbrace{(L_1\|\EDT{}_2)}}} \cup
     \underset{\overset{1.}{\subseteq} \EDT{}_{12}}{\underset{\subseteq
     (\EDT{}_1\|\EDL{}_2)}{\underbrace{(\EDT{}_1\|L_2)}}} \cup
     (L_1\|L_2) \cup \underset{\overset{1.}{\subseteq}
     \EDT{}_{12}}{\underset{\subseteq
-    (\EDL{}_1\|\EDT{}_2)}{\underbrace{(\EDT{}_1\|\EDT{}_2)}}} \cup \ET{}_{12}\\
+    (\EDL{}_1\|\EDT{}_2)}{\underbrace{(\EDT{}_1\|\EDT{}_2)}}} \cup \EDT{}_{12}\\
     &=(L_1\|L_2) \cup \EDT{}_{12}\\
     &\overset{\ref{LemmaSprache}}{=}L_{12}\cup \EDT{}_{12}\\
     &\overset{\ref{DefRuheDivSemantik}}{=}\EDL{}_{12}.
@@ -294,14 +300,14 @@ Kommunikation betrachtet werden. Es muss in diesem Lemma eine Veränderung zu
 den analogen Lemmata aus den vorangegangen Kapiteln vorgenommen werden. Die
 Einschränkung, dass $U$ ein Partner sein muss, kann nicht mehr beibehalten
 werden, da die Strategie zur Vermeidung von Ruhe im Beweis aus dem letzten
-Kapitel hier zu Divergenz führen würde. Somit werden für die Ruhe-Vermeidung in
+Kapitel hier zu Divergenz führen würde. Somit wird für die Ruhe-Vermeidung in
 diesem Kapitel Aktionen außerhalb der Menge $Synch$
-benötigt. Jedoch müssten trotzdem nicht alle komponierbaren $U$ betrachtet
+benötigt. Jedoch müssten trotzdem nicht alle komponierbaren \EIO{}s $U$ betrachtet
 werden. Es kann eine Einschränkung gemacht werden, so dass $U$ fast ein
-Partner ist. Um die Formulierungen im folgenden zu Vereinfachen, wird hierfür
+Partner ist. Um umständliche Formulierungen im folgenden zu Vereinfachen, wird hierfür
 nun ein neuer Begriff definiert.
 
-\begin{Def}[$\omega$-Partner]
+\begin{Def}[\boldmath$\omega$-Partner]
   Ein \EIO{} $S_1$ ist ein \emph{$\omega$-Partner} von einem \EIO{} $S_2$, wenn
   $I_1=O_2$ und $O_1=I_2\cup\{\omega\}$ mit $\omega\notin I_2\cup O_2$ gilt.
 \end{Def}
@@ -341,13 +347,13 @@ enthalten ist.
 
   Als erstes wird der erste Beweispunkt gezeigt. Also die Inklusion
   $\EDT{}_1\subseteq \EDT{}_2$.\\
-  Es wird also für ein präfix-minimales $w$ aus $\EDT{}_1$ gezeigt, dass dieses
+  Es wird für ein präfix-minimales $w$ aus $\EDT{}_1$ gezeigt, dass dieses
   $w$ oder eines seiner Präfixe in $\EDT{}_2$ enthalten ist. Diese Möglichkeit
-  beitet sich, dass beide Mengen unter \cont{} abgeschlossen sind.
+  bietet sich, da beide Mengen unter \cont{} abgeschlossen sind.
   \begin{itemize}
-    \item Fall 1 ($w=\varepsilon$): Es handelt sich um einen lokal ereichbaren
+    \item Fall 1 ($w=\varepsilon$): Es handelt sich um einen lokal erreichbaren
       Error oder Divergenz-Zustand in $S_1$. Für $U$ wird ein Transitionssystem
-      verwendet, das nur aus dem Startzustand une einer Schleife für alle
+      verwendet, das nur aus dem Startzustand und einer Schleife für alle
       Inputs $x\in I_U$ und einer Schleife für $\omega$ besteht. Somit kann
       $S_1$ die im Prinzip gleichen Error-Zustände bzw. Divergenz-Zustände
       lokal erreichen wie $U\|S_1$. Draus folgt, dass auch $U\|S_2$ einen lokal
@@ -403,7 +409,8 @@ enthalten ist.
       Die Mengen der Divergenz- und Ruhe-Zustände des hier betrachteten $U$s
       sind leer. Da im Vergleiche zum Transitionssystem in
       Abbildung~\ref{UohneE} nur die $\omega$-Transitionen zu $q_{n+1}$ ergänzt
-      wurden, ändert sich nichts an den Fällen 2a) und 2b). Die Begründungen,
+      wurden, ändert sich nichts an dem Fall 2a). In Fall 2b) muss die Menge
+      $O^*$ durch $(O\cup \{\omega\})^*$ ersetzt werden. Die Begründungen,
       wieso in den beiden Fällen $\varepsilon\in \PrET{}(U\|S_1)$ gilt bleibt
       also analog zum Beweis von Lemma~\ref{lemVerfeinerung}. Da nun aber auch
       Divergenz betrachtet wird, muss ein weiterer Fall ergänzt werden:
@@ -412,12 +419,12 @@ enthalten ist.
           \overset{w}{\Rightarrow} (q_{n+1},q'') \overset{u}{\Rightarrow}
           (q_{n+1},q')$ für $u\in (O\cup \{\omega\})^*$ und $q'\in Div_1$.
           Daraus folgt $(q_{n+1},q')\in Div_{U\|S_1}$ und somit $wu\in
-          \StDT{}(U\|S_1)$. Da alle Aktionen aus $w$ synchonisiert werden gilt
+          \StDT{}(U\|S_1)$. Da alle Aktionen aus $w$ synchronisiert werden gilt
           $x_1,\dots ,x_n,x_{n+1}\in O_{U\|S_1}$ und, da $u\in (O\cup
           \{\omega\})^*$, folgt $u\in O_{U\|S_1}^*$. Somit ergibt sich
           $\varepsilon\in \PrDT{}(U\|S_1)$.
       \end{itemize}
-      Da $\varepsilon$ in $\PrET{}(U\|S_1)$ oder in $\PrDT{}(U\|S_1)$ enthalten
+      Da $\varepsilon$ in $\PrET{}(U\|S_1)\cup \PrDT{}(U\|S_1)$ enthalten
       ist, kann mit der Relation $U\|S_1\DBRel U\|S_2$ geschlossen werden, dass
       in $U\|S_2$ ein Fehler lokal erreichbar sein muss. Durch die
       $\omega$-Transionen an den Zuständen von $U$ kann es in Komposition mit
@@ -453,14 +460,14 @@ enthalten ist.
           (O\cup \{\omega\})^*$ und ebenso hat $S_2$ den Weg $x_1\dots
           x_iu|_{\Sigma _2}$ ausgeführt. Durch dies hat $S_2$ einen Zustand aus
           $Div_2$ erreicht. Es gilt dann $\prune{}(x_1\dots x_iu|_{\Sigma
-          _2})\prune{}(x_1\dots x_i)\in\PrDT{}_2\subseteq \DT{}_2$, da
+          _2}) = \prune{}(x_1\dots x_i)\in\PrDT{}_2\subseteq \DT{}_2$, da
           $u|_{\Sigma _2}$ in $O^*$ enthalten ist. Da $x_1\dots x_i$ ein Präfix
           von $w$ ist, führt in diesem Fall ein Präfix von $w$ zu einem
           divergenten Zustand und ist somit in $\EDT{}_2$ enthalten.
       \end{itemize}
   \end{itemize}
 
-  Als nächstes wird nun der zweite Beweispunkt gezeigen, d.h.\ die Inklusion
+  Als nächstes wird nun der zweite Beweispunkt gezeigt, d.h.\ die Inklusion
   $\QDT{}_1\subseteq \QDT{}_2$. Diese Inklusion kann jedoch noch, anlog zum
   Beweis der Inklusion der error-gefluteten Sprachen aus dem Error-Kapitel,
   weiter eingeschränkt werden. Da bereits bekannt ist, dass $\EDT{}_1\subseteq
@@ -567,19 +574,19 @@ enthalten ist.
       \end{itemize}
   \end{itemize}
 
-  Nun wird mit dem zweiten Unterpunkt des ersten Beweispunktes begonnen. Analog
+  Nun wird mit dem letzten Punkt des Beweises begonnen. Analog
   wie in den Beweisen zu~\ref{lemVerfeinerung} und~\ref{lemQuiVerfeinerung} ist
   hier jedoch auf Grund der bereits geführten Beweisteile nur noch
   $L_1\backslash \EDT{}_1\subseteq \EDL{}_2$ zu zeigen. Es wird also für ein
   beliebig gewähltes $w\in L_1\backslash \EDT{}_1$ gezeigt, dass es auch in
   $\EDL{}_2$ enthalten ist.
   \begin{itemize}
-    \item Fall 1 ($w=\varepsilon$): Ebenso wie in~\ref{lemVerfeinerung}
+    \item Fall 1 ($w=\varepsilon$): Analog zu~\ref{lemVerfeinerung}
       und~\ref{lemQuiVerfeinerung} gilt auch hier, dass $\varepsilon$ immer in
       $\EDL{}_2$ enthalten ist.
     \item Fall 2 ($w=x_1\dots x_n$ mit $n\geq 1$): Die Konstruktion des
-      $\omega$-Partners $U$ nur durch die $\omega$-Transition im
-      Transitionssystems vom Beweis zur error-gefluteten Sprache \EL{} aus
+      $\omega$-Partners $U$ weicht nur durch die $\omega$-Transition vom
+      Transitionssystems aus dem Beweis der Inklusion der error-gefluteten Sprache \EL{} aus
       Lemma~\ref{lemVerfeinerung} ab. Somit ist der $\omega$-Partner $U$ dann
       wie folgt definiert (siehe dazu auch Abbildung~\ref{UmitEundO}):
       \begin{itemize}
@@ -630,9 +637,9 @@ enthalten ist.
       $U\|S_2$ ebenfalls einen lokal erreichbaren Fehler haben. Wie oben
       bereits erwähnt, kann es sich bei dem Fehler nicht um Ruhe handeln.
       \begin{itemize}
-        \item Fall 2a) (neuer Error aufgrund von $x_i\in O_U\backslash
+        \item Fall 2a) \big(neuer Error aufgrund von $x_i\in O_U\backslash
           \{\omega\}$ und $q_{02} \overset{x_1\dots x_{i-1}}{\Rightarrow} q_2'
-          \overset{x_i}{\not{\hspace{-0.1cm}\rightarrow}}$): Es gilt $x_1\dots
+          \overset{x_i}{\not{\hspace{-0.1cm}\rightarrow}}$\big): Es gilt $x_1\dots
           x_i\in \MIT{}_2$ und somit $w\in\EDL{}_2$. Anzumerken ist, dass nur
           auf diesem Weg Outputs von $U$ aus $Synch$ möglich sind, deshalb gilt
           es keine anderen Outputs von $U$, die zu einem neuen Error führen
@@ -739,4 +746,9 @@ vergrößern. Es kann ein Zustand divergent werden, wenn von diesem bereits
 lokal ein divergenter Zustand aus erreichbar war oder wenn er eine unendliche
 Folge von Aktionen aus $X\cup\{\tau\}$ ausführen konnte, jedoch nur endlich
 viele davon $\tau$s waren. Somit kann die Basisrelation für Divergenz unter
-Internalisierung auf jeden Fall nicht erhalten bleiben.
+Internalisierung auf jeden Fall nicht erhalten bleiben.\\
+Zusätzlich vergrößern sich durch die zusätzlichen Divergenz-Zustände alle
+Trace-Mengen, die in der Präkongruenz \DRel{} betrachtet werden. Somit würde
+die Untersuchung, ob die Relation erhalten bleibt unter Hiding deutlich
+aufwendiger werden. Deshalb soll dies nicht mehr in dieser Arbeit betrachtet
+werden.
