@@ -22,6 +22,25 @@ verlassen können.
   \overset{\alpha}{\not{\hspace{-0.1cm}\rightarrow}}\big\}$.
 \end{Def}
 
+Diese Definition bewertet einen Zustand, der keine Outputs hat, aber eine
+$\tau$-Schleife zu sich selbst als nicht ruhig. Jedoch kann dieser Zustand auch
+niemals einen Output aufführen ohne einen Input von Außen. Ebenso kann ein
+Zustand, der selbst keine Output-Möglichkeit hat und alle durch $\tau$
+erreichbaren Zustände auch keine Outputs haben, ohne Hilfe von Außen niemals
+einen Output ausführen. Die Ruhe-Zustände aus der Definition sind also
+wirklich Deadlock-Zustände, in denen das System nichts mehr tun kann ohne einen
+Input. Wenn man eine Erweiterung um $\tau$s zu Zuständen
+ohne Outputs zulassen würde, hätte man zusätzliche noch Verklemmungen der Art
+Livelock, da diese Zustände möglicherweise beliebig viele interne Aktionen
+ausführen können, jedoch nie aus eigener Kraft einen wirklichen Fortschritt, im
+Form eines Outputs, bewirken können. Man hätte alternativ die Menge der
+Ruhe-Zustände auch als $\left\{q\in Q\mid \forall a\in O: q
+\overset{a}{\not{\hspace{-0.1cm}\Rightarrow}}\right\}$ definieren können. Somit
+wären dies alle Zustände, die keine Möglichkeit haben ohne einen Input von
+Außen, je wieder einen Output machen zu können. Falls man diese Definition
+verwenden würde, müsste man immer alle Zustände betrachten, die durch $\tau$s
+erreichbar sind. Dies würde einige Betrachtungen deutlich aufwendiger gemacht
+und soll deshalb hier nicht behandelt werden.\\
 Für die Erreichbarkeit wird wie im letzten Kapitel wieder der
 optimistischen Ansatz der lokalen Erreichbarkeit für die Error-Zustände
 verwendet. Ruhe ist kein unabwendbarer Fehler, sondern kann durch einen Input
@@ -722,178 +741,3 @@ werden.
 \begin{kor}[Ruhe-Präkongruenz mit Internalisierung]
   \QRel{} ist eine Präkongruenz bezüglich $\cdot |\cdot$.
 \end{kor}
-
-% \section{Diskussion für Veränderungen und weiterführende Definitionen}
-
-% Es wäre hier auch denkbar, dass man für die Ruhe-Zustände einen andere Art
-% der lokalen Erreichbarkeit verwendet. Es könnte dadurch sogar möglich sein eine
-% noch gröbere Präkongruenz zu erhalten. Dies wurde hier jedoch nicht gemacht, da
-% es bei den denkbaren Umsetzung eines solchen Erreichbarkeitsbegriffes zu
-% Problemen kommt, so dass nicht mehr alle Inklusionen erreichen können, die in
-% den Sätzen gefordert wurden.\\
-% Die Umsetzung des lokalen Erreichbarkeitsbegriffes wie im letzten Kapitel, mit
-% abschneiden der Outputs und beliebigem Fortsetzten der Traces, würde zu einem
-% Problem in Satz~\ref{satzQuiSemantik} in Punkt 2.\ führen, dass analog zu dem
-% Problem währe in der Semantik, die als nächstes beschrieben wird. Zusätzlich könnte
-% man nicht die \EL{} als geflutete Sprache beibehalten sondern müsste noch
-% zusätzlich mit den Ruhetraces fluten, da sonst nicht mehr alle
-% Informationen, die in den Ruhetraces enthalten sind auch in der gefluteten Sprache
-% enthalten wäre. Durch diese Abänderung käme es zusätzlich noch zu einem Problem
-% in Punkt 3.\ bei Satz~\ref{satzQuiSemantik}. Durch die Anwendung der Definition
-% der gefluteten Sprachen würden Terme entstehen, in denen Ruhetraces und Traces
-% aus der Sprache $L$ in Parallelkomposition gesetzt würden. Da die Ruhetraces
-% nicht mehr Teil der Sprache sind, kann nicht mehr gelten, dass die Teil von
-% $L_1\|L_2$ ist. Es kann auch nicht Teil der Ruhetraces sein, da Ruhetraces nur
-% aus Kombination von zwei Ruhetraces entstehen können oder in dem sie
-% Errortraces sind, was beides hier nicht der Fall ist.\\
-% Man muss jedoch nicht an dieser Umsetzung für die lokale Erreichbarkeit
-% festhalten. Man könnte sich auch eine Umsetzung denken, in der man die
-% Ruhetraces zwar um die Outputs kürzt, jedoch dann nur Fortsetzungen zulässt,
-% die bereits im Transitionssystem möglich sind. Somit benötigt man keine weitere
-% Flutung der gefluteten Sprache \EL{}, da weiterhin alle Ruhetraces in der
-% Sprache $L$ enthalten sind. Jedoch stößt man hier wieder bei Punkt 2.\ von
-% Satz~\ref{satzQuiSemantik} an Probleme. Hierzu muss davon ausgegangen werden,
-% dass eine neue \prune{}-Funktion definiert wurde bzw.\ eine neue
-% \cont{}-Funktion, wie z.B. $\prunenew{}: \Sigma ^*\rightarrow
-% \mathfrak{P}(\Sigma ^*), w\mapsto \{u\mid \exists v\in O^*:w=uv\}$. Somit würde
-% sich die Definition der Ruhetraces entsprechend abändern. So das statt
-% \StQT{} ein entsprechendes \PrQT{} enthalten wäre, dass durch die Anwendung
-% der \prunenew{}-Funktion entstanden wäre. Somit wäre Punkte 2.\ von
-% Satz~\ref{satzQuiSemantik} entsprechend auch leicht abgewandelt und müsste
-% $\QT{}_{12}=\prunenew (\QT{}_1\|\QT{}_2)\cup \ET{}_{12}$ lauten. Das Problem
-% würde nun auftauchen wenn man die Inklusionsrichtung $\supseteq$ zu beweisen
-% versucht. Hierzu gibt es jedoch folgendes Gegenbeispiel, dass die Behauptung
-% gar nicht stimmen kann.\\
-% Für $S_1$ wird das folgende Transitionssystem verwendet (siehe dazu auch
-% Abbildung~\ref{S1}):
-% \begin{itemize}
-%   \item $Q_1=\{q_{01}, q_{11}\}$,
-%   \item $I_1=\emptyset$,
-%   \item $O_1=\{a\}$,
-%   \item $\delta _1 = \{(q_{01},a,q_{11})\}$,
-%   \item $E_1=\emptyset$,
-%   \item $Qui_1=\{q_{11}\}$.
-% \end{itemize}
-% \begin{figure} [h!tbp]
-% \begin{center}
-%   \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
-
-%     \node (0) {$q_{01}$};
-%     \node (1) [right of=0, rectangle, draw] {$q_{11}\in Qui_1$};
-
-%     \path (0) edge node {$a!$} (1);
-%   \end{tikzpicture}
-%   \caption{$S_1$}
-% \label{S1}
-% \end{center}
-% \end{figure}
-% Für $S_2$ wird das folgende Transitionssystem verwendet (siehe dazu auch
-% Abbildung~\ref{S2}):
-% \begin{itemize}
-%   \item $Q_2=\{q_{02}, q_{12}, q_{22}\}$,
-%   \item $I_2=\{a\}$,
-%   \item $O_2=\{b\}$,
-%   \item $\delta _2 = \{(q_{02},a,q_{22}), (q_{02},b,q_{12}), (q_{12},a,q_{22}),
-%     (q_{22},b,q_{22})\}$,
-%   \item $E_2=\emptyset$,
-%   \item $Qui_2=\{q_{12}\}$.
-% \end{itemize}
-% \begin{figure} [h!tbp]
-% \begin{center}
-%   \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
-
-%     \node (0) {$q_{02}$};
-%     \node (1) [right of=0, rectangle, draw] {$q_{12}\in Qui_2$};
-%     \node (2) at ($(0)!0.5!(1) + (0,-2)$){$q_{22}$};
-
-%     \path (0) edge node {$b!$} (1)
-%               edge [below left] node {$a?$} (2)
-%           (1) edge node {$a?$} (2)
-%           (2) edge [loop below] node {$b!$} (2);
-%   \end{tikzpicture}
-%   \caption{$S_2$}
-% \label{S2}
-% \end{center}
-% \end{figure}
-% Somit ergibt sich für die Parallelkomposition $S_{12}$ das folgende
-% Transitionssystem, bei dem bereits unerreichbare Zustände weggelassen sind
-% (siehe dazu auch Abbildung~\ref{S12}):
-% \begin{itemize}
-%   \item $Q_{12}=\{(q_{01},q_{02}), (q_{01},q_{12}), (q_{11},q_{22})\}$,
-%   \item $I_{12}=\emptyset$,
-%   \item $O_{12}=\{a,b\}$,
-%   \item $\begin{aligned}[t]
-%       \delta _{12} = \{&((q_{01},q_{02)},a,(q_{11},q_{22})),
-%       ((q_{01},q_{12}),a,(q_{11},q_{22})),
-%     ((q_{01},q_{02}),b,(q_{01},q_{12})),\\
-%   &((q_{11},q_{22}),b,(q_{11},q_{22}))\},
-%         \end{aligned}$
-%   \item $E_{12}=\emptyset$,
-%   \item $Qui_{12}=\emptyset$.
-% \end{itemize}
-% \begin{figure} [h!tbp]
-% \begin{center}
-%   \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
-
-%     \node (0) {$(q_{01},q_{02})$};
-%     \node (1) [right of=0] {$(q_{01},q_{12})$};
-%     \node (2) at ($(0)!0.5!(1) + (0,-2)$){$(q_{11},q_{22})$};
-
-%     \path (0) edge node {$b!$} (1)
-%               edge [below left] node {$a!$} (2)
-%           (1) edge node {$a!$} (2)
-%           (2) edge [loop below] node {$b!$} (2);
-%   \end{tikzpicture}
-%   \caption{$S_{12}$}
-% \label{S12}
-% \end{center}
-% \end{figure}
-
-% Es wäre möglich gewesen, die Menge der Ruhe-Zustände bereits anders zu
-% definieren. Dadurch, dass die $\tau$-Transitionen verboten wurden, ist man
-% einer Fallunterscheidung entgangen. Da jedoch Ruhe-Zustände als Deadlock-Zustände
-% anzusehen sind, aus denen das System ohne Hilfe nicht mehr heraus kommt,
-% müsste hier eigentlich darauf achten, wohin die $\tau$-Transitionen führen
-% und dann möglicherweise die Zustände trotz dieser Transitionen in die Menge
-% aufnehmen. Ein Zustand, der keine Outputs machen kann und als einzige
-% $\tau$-Transition eine Schlinge auf sich selbst hat, kann sich ebenfalls nicht
-% ohne Inputs aus diesem Zustand heraus bewegen. Dieser Zustand wird jedoch nach
-% der Definition dieser Arbeit nicht als ruhig angesehen. Jedoch ist so ein Zustand
-% divergent, da er eine unendliche Folge an internen Aktionen ausführen kann.
-% Dies wurde in~\cite{Chilton2013} mit untersucht. Auch bei anderen
-% Divergenz-Möglichkeiten eines Zustandes, bei denen nicht die Möglichkeit
-% besteht von einem durch $\tau$ erreichbaren Zustand aus einen Output zu machen,
-% sollte der Zustand als ruhig angesehen werden. Die passende Definition würde
-% dann wie folgt lauten.
-
-% \begin{Def}[Ruhe Alternative]
-%   Ein Ruhe-Zustand ist ein Zustand in einem \EIO{}, der keine Möglichkeit hat
-%   ohne einen Input von außen je wieder einen Output zu machen.\\
-%   Somit ist die Menge der Ruhe-Zustände in einem \EIO{} wie folgt formal
-%   definiert: $Qui:=\left\{q\in Q\mid \forall a\in O: q
-%   \overset{a}{\not{\hspace{-0.1cm}\Rightarrow}}\right\}$.
-% \end{Def}
-
-% Die in dieser Arbeit verwendete Definition von Ruhe, betrachtet Ruhe-Zustände
-% wie eine Verklemmung. Analog dazu kann man die Zustände, die durch die
-% alternative Definition als ruhig angesehen werden, als Livelocks auffassen.
-% Es ist zwar die ganze Zeit möglich Aktionen auszuführen, aber nur interne, so
-% dass keine Kommunikation mit anderen Systemen möglich ist.
-% Diese Art der Definition hätte jedoch die Betrachtung deutlich aufwendiger
-% gemacht und soll deshalb hier nicht behandelt werden.
-
-% \scriptsize\textcolor{lgray}{Erweiterungsmöglichkeiten:
-% \begin{itemize}
-%   \item Ruhe-Semantik analog zu Error-Semantik (\EL{} würde nicht mehr alle
-%     Informationen enthalten)
-%   \item Ruhe-Semantik mit \prune{} jedoch nur Trace Fortsetzungen wie im System
-%     möglich (\ref{satzQuiSemantik} 2. $\supseteq$ wegen fortsetzen mit Outputs
-%     und Synchronisation nicht mehr möglich)
-%   \item alternative Definition für Ruhe mit $\forall a\in O: q
-%     \overset{a}{\not{\hspace{-0.1cm}\Rightarrow}}$ (vor allem Veränderungen in
-%     Lemma 4.9, dort kann nicht mehr an Partner festgehalten werden, da die
-%     $\tau$-Schleifen dann nicht ausreichen, sondern ein Output aus der Menge
-%     der nicht synchronisierten Aktionen hinzugefügt werden muss)
-% \end{itemize}}
-
-% \normalsize
