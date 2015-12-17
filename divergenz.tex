@@ -165,7 +165,7 @@ error-divergenz-gefluteten Sprache erweitert wurde folgt, dass die Relation
   Vereinigung mit $\PrDT{}(S)$ vorgenommen werden. Am Ende ist dann auch noch
   ein Fall für $v_1\in\PrDT{}_1$ zu ergänzen:
   \begin{itemize}
-    \item Fall III ($v_1\in \PrDT{}_1$): Es exisiert ein $u_1$ aus $O_1^*$,
+    \item Fall III ($v_1\in \PrDT{}_1$): Es existiert ein $u_1$ aus $O_1^*$,
       sodass $q_{01} \overset{v_1}{\Rightarrow} q_1 \overset{u_1}{\Rightarrow}
       q_1'$ mit $q_1'\in Div_1$ gilt. Da es hier keine disjunkten Inputmengen gibt, kann das
       $a$ auf das $v_1$ im Fall $v_1\neq \varepsilon$ endet, ebenfalls der
@@ -423,7 +423,7 @@ enthalten ist.
       Da $\varepsilon$ in $\PrET{}(U\|S_1)\cup \PrDT{}(U\|S_1)$ enthalten
       ist, kann mit der Relation $U\|S_1\DBRel U\|S_2$ geschlossen werden, dass
       in $U\|S_2$ ein Fehler lokal erreichbar sein muss. Durch die
-      $\omega$-Transionen an den Zuständen von $U$ kann es in Komposition mit
+      $\omega$-Transitionen an den Zuständen von $U$ kann es in Komposition mit
       $U$ keine Ruhe-Zustände geben. Der Fehler muss also Error oder Divergenz
       sein.
       \begin{itemize}
@@ -732,6 +732,11 @@ Verfeinerung durch \DRel{} charakterisiert.
   Es gilt: $S_1\DRel{} S_2 \Leftrightarrow U\|S_1\DBRel{} U\|S_2$ für alle
   komponierbaren $U$.
 \end{kor}
+
+Um die gröbste Präkongruenz mit den gewünschten Eigenschaften zu erhalten,
+musste hier eine Änderung gegenüber~\cite{Chilton2013} vorgenommen werden. Es
+musste auf die Verfeinerung der Error-Präkongruenz verzichtet werden und es
+mussten auf Trace-Ebene Error und Divergenz vermischt werden.
 
 \section{Hiding und Divergenz-Freiheit}
 
