@@ -2,28 +2,36 @@
 
 Interface Automaten werden eingesetzt um Verhalten zu modellieren und zu
 untersuchen. Sie sind eine abstrakte Beschreibung des Kommunikationsverhaltens
-eines Systems oder einer Komponente durch Inputs und Outputs. Für die
+eines Systems oder einer Komponente durch Inputs und Outputs. Somit können
+parallel arbeitende Softwarekomponenten simuliert werden. Die Kommunikation
+wird durch eine Parallelkomposition der Komponenten erreicht. Für die
 grundlegende Betrachtung wird hier ein Output als vom jeweiligen System
 kontrolliert angesehen. Falls in einer Parallelkomposition von dem einen System
 ein Outputs ausgeführt wird, muss dieser von dem anderen System durch einen
 Input synchronisiert werden. Falls dies nicht möglich ist, ist ein
-Kommunikationsfehler eingetreten, der verhindert werden sollte.
-In~\cite{Lynch1996} wird dies für die I/O-Automaten garantiert, in dem für alle
-Zustände alle Inputs möglich sind. In Interface-Automaten ist ein fehlender
-Input jedoch hervorgerufen durch die Voraussetzung, dass die Umwelt diesen
-Input in diesem Zustand nicht senden darf.\\
+Kommunikationsfehler eingetreten, der verhindert werden sollte, da das
+Verhalten des Systems dann unvorhersehbar wird. In~\cite{Lynch1996} wird dies
+für die I/O-Automaten garantiert, in dem für alle Zustände alle Inputs möglich
+sind. In Interface-Automaten ist ein fehlender Input jedoch hervorgerufen durch
+die Voraussetzung, dass die Umwelt diesen Input in diesem Zustand nicht senden
+darf.\\
 Allgemein werden hier nur optimistische Ansätze betrachtet, d.h.\ es wird davon
 ausgegangen, dass ein Fehler kein Problem ist, solang er in einer hilfreichen
-Umgebung nicht erreicht wird.\\
+Umgebung nicht erreicht wird. Jedoch ist auch die pessimistische Ansicht weit
+verbreitet, dass ein System mit einem Fehler niemals zulässig sein kann. Da man
+nicht immer von einer Fehlerfreien Spezifikation ausgehen kann, scheint der
+optimistische Ansatz näher an der Realität zu liegen.\\
 So wie diese Interface Automaten in~\cite{Alfaro2004} definiert sind, kann es
 in der Parallelkomposition von zwei Automaten zu Kommunikationsfehlern kommen.
 In dem eine Komponente einen Output macht, den die andere nicht als Input
 aufnehmen kann. Diese Fehler-Zustände, die daraus entstehen sind jedoch nicht
-zulässig und müssen mit einer speziell definieren Operation gestutzt werden.\\
-Um diesem Problem des aufwendigen Abschneidens entgegenzuwirken, soll hier eine
-andere Modellierung betrachtet werden. Die Komponenten sollen als labelled
-transitions systems (LTSs) mit disjunkten Input- und Output-Aktionen und einer
-internen Aktion modelliert werden. Diese Systeme sollen explizite
+zulässig und müssen inklusive aller Zustände, durch die man mit lokalen
+Aktionen den Fehler-Zustand erreichen kann, mit einer speziell definieren
+Operation gestutzt werden.\\
+Um diesem Problem des aufwendigen Stutzens entgegenzuwirken, soll hier eine
+andere Modellierung betrachtet werden. Die Komponenten sollen als beschriftetes
+Transitionssystem (LTS) mit disjunkten Input- und Output-Aktionen und einer
+internen Aktion ($\tau$) modelliert werden. Diese Systeme sollen explizite
 Error-Zustände haben. Durch die Parallelkomposition können dann wie oben
 beschrieben neue Error-Zustände entstehen und es werden auch noch die
 Error-Zustände der einzelnen Komponenten geerbt.\\
@@ -31,7 +39,8 @@ Darüber sind dann Verfeinerungsrelationen möglich, diese sollen die
 Voraussetzung erfüllen, dass eine Fehlerfrei Spezifikation nur durch ein
 Fehlerfreies System verfeinert werden kann. Dies wird hier als Basisrelation
 verstanden, die durch die genaue Definition der Fehlerfreiheit parametrisiert
-ist.\\
+ist. Die Verfeinerungsrelation kann also auch als Implementierung aufgefasst
+werden.\\
 Da Modularität bzw.\ Austauschbarkeit der Komponenten gewünscht ist, sollte die
 Verfeinerungsrelationen eine Präkongruenz sein. Falls eine Komponente einer
 Parallelkomposition durch eine Verfeinerung ersetzt wird, soll die Komposition
@@ -44,37 +53,24 @@ Präkongruenz. Diesen erhält man durch stutzen wie in~\cite{Alfaro2004}. Es ist
 also möglich die \EIO{}s nur für die Untersuchung zu verwenden und die
 Fehler-Zustände am Ende zu entfernen um wieder Interface-Automaten zu
 erhalten.\\
-
-Wie schon aus dem Titel hervor geht, sollen in dieser Arbeit Interface
-Automaten und mehrere Fehlertypen, die durch den Aufbau oder die Kommunikation mehrere solcher enstehen
-betrachtet werden. Eine entsprechende Definition dieser Interface Automaten
-findet sich in~\cite{Alfaro2004}. Es handelt sich um Systeme, die via
-Inputs und Outputs mit anderen Systemen kommunizieren können. Jedoch wird
-ausgeschlossen, dass es Fehler in einem Interface Automaten gibt. Es müsste
-also jedes mal, wenn ein Fehler durch eine Kommunikation, die nicht so möglich
-ist wie gewollt, eine Veränderung an der Komposition von zwei Systemen
-vorgenommen werden. Alle Wege, die nicht beeinflusst werden
-können und die zu einem Fehler-Zustand führen müssten aus dem Automaten
-entfernt werden. Dies ist ein sehr umständliches Vorgehen, wenn man
-ausschließlich solche Systeme mit Fehlern betrachten möchte. Deshalb wurden
-Transitionssysteme eingeführt, die Fehler-Zustände zulassen. Diese
-Transitionssysteme werden Error-IO-Transitionssysteme (\EIO{}s) genannt. Die sich jedoch
-trotzdem noch entsprechend den Interface Automaten verhalten. Es kann dann nach
-der Betrachtung trotzdem die Fehlerfreiheit eines Transitionssystems mit Fehler
-hergestellt werden, in dem die entsprechenden Wege entfernt werden.\\
 Die Betrachtung der Transitionssysteme mit Fehler-Zuständen hat auch den
 Vorteil, dass die Inputs nicht als deterministisch vorausgesetzt werden müssen
 um sicher zu stellen, dass nach dem entfernen eines Weges zu einem Fehler, der
-gleiche Input nicht noch zu einem anderen zulässigen Zustand führt.\\
+gleiche Input nicht noch zu einem anderen zulässigen Zustand führt. Jedoch muss
+dann vor der Umwandlung in einen Interface Automaten durch das entfernen der
+Fehler-Zustände auf diese Inputs geachtet werden.\\
 Um die Begrifflichkeiten hier eindeutiger und intuitiver bzgl.\ dessen, was
 wirklich in dem System passiert, zu machen, wird im weiteren Verlauf
 das Wort Error für Kommunikationsfehler verwendet und für Verklemmung das Wort
 Ruhe. Als Fehler werden im weiteren Kommunikationsfehler, Verklemmung und
 Divergenz bezeichnet.\\
 Der Anfang dieser Arbeit orientiert sich sehr stark an~\cite{Vogler2014EIO}.
-Jedoch wird hier darauf verzichtet die Input-Mengen der \EIO{}s als disjunkt anzunehmen und alle
-Definitionen und Sätze werden erst einmal ohne das Verbergen der
-synchronisierten Aktionen betrachtet.\\
+Jedoch wird hier darauf verzichtet die Input-Mengen der \EIO{}s als disjunkt
+anzunehmen und alle Definitionen und Sätze werden erst einmal ohne das
+Verbergen der synchronisierten Aktionen betrachtet. Da die Input-Mengen einen
+nicht leeren Schnitt haben können, muss festgelegt werden, dass die Komposition
+aus zwei Systemen einen Input aus diesem Schnitt nur ausführen kann, wen beide
+Systeme die Möglichkeit für diesen Input haben.\\
 Dadurch dass die synchronisierten Aktionen nicht verborgen werden, wird hier
 ein Modell betrachtet, mit dem nicht nur zwei Systeme miteinander kommunizieren können,
 sondern beliebig viele. Ein Output eines Systems ist somit eine Art Multicast.
@@ -84,7 +80,9 @@ Kann jedoch ein System den Output nicht als Input aufnehmen, wird dieses System 
 der Nachricht nicht beeinträchtigt.\\
 Anschießend werden die Auswirkung von Hiding auf diese Struktur
 untersucht und somit das Verbergen in der Parallelkomposition nachgebildet.
-Durch das Hiding können Outputs durch interne Aktionen ersetzt werden.\\
+Durch das Hiding können Outputs durch interne Aktionen ersetzt werden. Es wird
+also die Kommunikation durch diesen Output mit anderen Systemen verboten, bzw.\
+der Kommunikationskanal wird geschlossen.\\
 Diese Art der Betrachtung der
 \EIO{}s wurde auch bereits in~\cite{Schlosser2012BA} gewählt, jedoch wurde
 diese Arbeit nicht als direkte Quelle genutzt, bis auf den Abschnitt des
@@ -124,8 +122,3 @@ ausführen.\\
 Eine andere Betrachtungsweise zeigt dann die Hinzunahme von unendlichen Traces,
 die mit der Eigenschaft der Divergenz genauer betrachtet werden sollen. Hierbei
 kann ein System unendliche viele $\tau$-Transitionen ausführen.
-
-\scriptsize\textcolor{lgray}{TODO: erweitern/umformulieren (bis jetzt nur Teile
-aus anderen Kapitel in Einleitung verschoben)}
-
-\normalsize
