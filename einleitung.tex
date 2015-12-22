@@ -2,25 +2,22 @@
 
 Interface Automaten werden eingesetzt um Verhalten zu modellieren und zu
 untersuchen. Sie sind eine abstrakte Beschreibung des Kommunikationsverhaltens
-eines Systems oder einer Komponente durch Inputs und Outputs. Somit können
+eines Systems oder einer Komponente durch Inputs und Outputs. Es können dadurch
 parallel arbeitende Softwarekomponenten simuliert werden. Die Kommunikation
-wird durch eine Parallelkomposition der Komponenten erreicht. Für die
-grundlegende Betrachtung wird hier ein Output als vom jeweiligen System
-kontrolliert angesehen. Falls in einer Parallelkomposition von dem einen System
-ein Outputs ausgeführt wird, muss dieser von dem anderen System durch einen
+zwischen den Systemen wird durch eine Parallelkomposition der Komponenten
+erreicht. Für die grundlegende Betrachtung wird hier ein Output bzw.\ eine
+interne Aktion als vom jeweiligen System
+kontrolliert angesehen und ein Input als von der Umwelt kontrolliert. Falls in
+einer Parallelkomposition ein Output von einem System ausgeführt wird, muss
+dieser von dem anderen beteiligten System durch einen
 Input synchronisiert werden. Falls dies nicht möglich ist, ist ein
 Kommunikationsfehler eingetreten, der verhindert werden sollte, da das
-Verhalten des Systems dann unvorhersehbar wird. In~\cite{Lynch1996} wird dies
+Verhalten des Systems dann unvorhersehbar wird. In~\cite{Lynch1996} wird die
+Abwesenheit dieser Kommunikationsfehler
 für die I/O-Automaten garantiert, in dem für alle Zustände alle Inputs möglich
-sind. In Interface-Automaten ist ein fehlender Input jedoch hervorgerufen durch
+sind. In Interface Automaten ist ein fehlender Input jedoch hervorgerufen durch
 die Voraussetzung, dass die Umwelt diesen Input in diesem Zustand nicht senden
 darf.\\
-Allgemein werden hier nur optimistische Ansätze betrachtet, d.h.\ es wird davon
-ausgegangen, dass ein Fehler kein Problem ist, solang er in einer hilfreichen
-Umgebung nicht erreicht wird. Jedoch ist auch die pessimistische Ansicht weit
-verbreitet, dass ein System mit einem Fehler niemals zulässig sein kann. Da man
-nicht immer von einer Fehlerfreien Spezifikation ausgehen kann, scheint der
-optimistische Ansatz näher an der Realität zu liegen.\\
 So wie diese Interface Automaten in~\cite{Alfaro2004} definiert sind, kann es
 in der Parallelkomposition von zwei Automaten zu Kommunikationsfehlern kommen.
 In dem eine Komponente einen Output macht, den die andere nicht als Input
@@ -31,13 +28,13 @@ Operation gestutzt werden.\\
 Um diesem Problem des aufwendigen Stutzens entgegenzuwirken, soll hier eine
 andere Modellierung betrachtet werden. Die Komponenten sollen als beschriftetes
 Transitionssystem (LTS) mit disjunkten Input- und Output-Aktionen und einer
-internen Aktion ($\tau$) modelliert werden. Diese Systeme sollen explizite
+internen Aktion $\tau$ modelliert werden. Diese Systeme sollen explizite
 Error-Zustände haben. Durch die Parallelkomposition können dann wie oben
 beschrieben neue Error-Zustände entstehen und es werden auch noch die
 Error-Zustände der einzelnen Komponenten geerbt.\\
 Darüber sind dann Verfeinerungsrelationen möglich, diese sollen die
-Voraussetzung erfüllen, dass eine Fehlerfrei Spezifikation nur durch ein
-Fehlerfreies System verfeinert werden kann. Dies wird hier als Basisrelation
+Voraussetzung erfüllen, dass eine fehlerfrei Spezifikation nur durch ein
+fehlerfreies System verfeinert werden kann. Dies wird hier als Basisrelation
 verstanden, die durch die genaue Definition der Fehlerfreiheit parametrisiert
 ist. Die Verfeinerungsrelation kann also auch als Implementierung aufgefasst
 werden.\\
@@ -51,7 +48,7 @@ In~\cite{Vogler2014EIO} wurde für Error-Freiheit nachgewiesen, das jedes \EIO{}
 äquivalent ist zu einem ohne Error-Zustände unter Berücksichtigung der
 Präkongruenz. Diesen erhält man durch stutzen wie in~\cite{Alfaro2004}. Es ist
 also möglich die \EIO{}s nur für die Untersuchung zu verwenden und die
-Fehler-Zustände am Ende zu entfernen um wieder Interface-Automaten zu
+Fehler-Zustände am Ende zu entfernen um wieder Interface Automaten zu
 erhalten.\\
 Die Betrachtung der Transitionssysteme mit Fehler-Zuständen hat auch den
 Vorteil, dass die Inputs nicht als deterministisch vorausgesetzt werden müssen
@@ -101,6 +98,12 @@ werden oder nicht. Es besteht also die Möglichkeit, dass das \EIO{} in einen
 der betrachteten Zustände übergeht, sobald dieser lokal erreichbar ist. Diese Art der
 Erreichbarkeit von Zuständen wird auch in Kapitel 3 von~\cite{Vogler2014EIO}
 für Error-Zustände behandelt.\\
+Allgemein werden hier nur optimistische Ansätze betrachtet, d.h.\ es wird davon
+ausgegangen, dass ein Fehler kein Problem ist, solang er in einer hilfreichen
+Umgebung nicht erreicht wird. Jedoch ist auch die pessimistische Ansicht weit
+verbreitet, dass ein System mit einem Fehler niemals zulässig sein kann. Da man
+nicht immer von einer fehlerfreien Spezifikation ausgehen kann, scheint der
+optimistische Ansatz näher an der Realität zu liegen.\\
 Neben dem hier betrachteten optimistischen Ansatz gibt es noch zwei weitere
 Ansätze in~\cite{Vogler2014EIO} für die Erreichbarkeit von Error-Zuständen:
 einen hyper-optimistischen Ansatz, bei dem ein Error als erreichbar gilt, wenn
@@ -118,7 +121,17 @@ Das System ist dann auf einen Input von Außen angewiesen um sich wieder aus
 diesem Zustand befreien zu können. Es kann ohne diesen Input keinen Fortschritt
 mehr geben, in Form von Outputs. Da aber auch die $\tau$-Transitionen verboten
 sind, kann das System auch keine interne Aktion zu einem anderen Zustand
-ausführen.\\
+ausführen. Somit wurden die Ruhe-Zustände nur als Art der Deadlocks umgesetzt,
+jedoch falls man die $\tau$s nicht komplett verbieten würde, könnten auch
+Livelocks damit dargestellt werden.\\
 Eine andere Betrachtungsweise zeigt dann die Hinzunahme von unendlichen Traces,
 die mit der Eigenschaft der Divergenz genauer betrachtet werden sollen. Hierbei
-kann ein System unendliche viele $\tau$-Transitionen ausführen.
+kann ein System unendliche viele $\tau$-Transitionen ausführen. Hier kann dann
+auch relevant sein, dass die betrachteten Transitionssysteme nicht endlich sein
+müssen.
+
+Kapitel 2 erläutert die grundlegenden Definitionen. In Kapitel 3 bis 5 werden
+nach einander die Fehler-Mengen, die betrachtet werden, immer weiter vergrößert.
+Zuerst werden in Kapitel 3 nur Error betrachtet, dann in Kapitel 4 auch noch
+zusätzlich Ruhe. Im letzten Kapitel werden dann Error, Ruhe und Divergenz
+betrachtet.
