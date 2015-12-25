@@ -15,7 +15,8 @@ darunter verstanden wird, wird nun noch eine Definition für Divergenz gegeben.
 
 \begin{Def}[Divergenz]
   Ein \emph{Divergenz-Zustand} ist ein Zustand in einem \EIO{}, der eine
-  unendliche Folge an $\tau$s ausführen kann.
+  unendliche Folge an $\tau$s ausführen kann. Die Menge $Div(S)$ besteht aus all
+  diesen Divergenten-Zuständen des \EIO{}s $S$.
 \end{Def}
 
 Die unendliche Folge an $\tau$s kann durch eine Schleife an einem durch $\tau$s
@@ -218,7 +219,7 @@ error-divergenz-gefluteten Sprache erweitert wurde folgt, dass die Relation
     \item Fall 1 ($w_1\in \EDT{}_1 \vee w_2\in \EDT{}_2$): \OBdA{} gilt $w_1\in
       \EDT{}_1$. Es kann nun $w_2\in \StQT{}_2 \subseteq L_2$ gelten oder
       $w_2\in \EDT{}_2\subseteq\EDL{}_2$ und somit gilt auf jeden Fall $w_2\in
-      \EDL{}_2$. Daraus kann mit dem zweiten Punkt dieses Satzes gefolgert
+      \EDL{}_2$. Daraus kann mit dem ersten Punkt dieses Satzes gefolgert
       werden, dass $w\in \EDT{}_{12}$ gilt und somit $w$ in der linken Seite
       der Gleichung enthalten ist.
     \item Fall 2 ($w_1\in \StQT{}_1\backslash \EDT{}_1 \wedge w_2\in \StQT{}_2
@@ -618,7 +619,7 @@ enthalten ist.
                        edge [dashed] (q)
                 (n1) edge node {$x_n$} (n)
                      edge node [below, sloped] {$x?\neq x_n, \omega !$} (q)
-                (q) edge [loop below] node {$x?\in I_U, o!$} (q)
+                (q) edge [loop below] node {$x?\in I_U, \omega !$} (q)
                 (n) edge [bend left] node {$\omega !$} (q);
         \end{tikzpicture}
         \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$, $q_n$
@@ -685,7 +686,7 @@ $\cdot\|\cdot$ charakterisiert, die in \DBRel{} enthalten ist.
   Präkongruenz in~\ref{DefDivBasisrel} folgt aus $S_1\DCRel{} S_2$, dass
   $U\|S_1\DCRel U\|S_2$ für alle EIOs $U$ gilt, die mit $S_1$ komponierbar sind.
   Somit folgt auch die Gültigkeit von $U\|S_1\DBRel U\|S_2$ für alle diese EIOs
-  $U$. Mit Lemma~\ref{lemDivVerfeinerung} folgt dann $S_1\QRel{} S_2$.
+  $U$. Mit Lemma~\ref{lemDivVerfeinerung} folgt dann $S_1\DRel{} S_2$.
 \end{proof}
 
 Es wurde somit, wie in den letzten beiden Kapiteln, eine Kette an Folgerungen

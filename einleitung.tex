@@ -23,19 +23,19 @@ in der Parallelkomposition von zwei Automaten zu Kommunikationsfehlern kommen.
 In dem eine Komponente einen Output macht, den die andere nicht als Input
 aufnehmen kann. Diese Fehler-Zustände, die daraus entstehen sind jedoch nicht
 zulässig und müssen inklusive aller Zustände, durch die man mit lokalen
-Aktionen den Fehler-Zustand erreichen kann, mit einer speziell definieren
+Aktionen einen dieser Fehler-Zustände erreichen kann, mit einer speziell definieren
 Operation gestutzt werden.\\
 Um diesem Problem des aufwendigen Stutzens entgegenzuwirken, soll hier eine
 andere Modellierung betrachtet werden. Die Komponenten sollen als beschriftetes
 Transitionssystem (LTS) mit disjunkten Input- und Output-Aktionen und einer
 internen Aktion $\tau$ modelliert werden. Diese Systeme sollen explizite
 Error-Zustände haben. Durch die Parallelkomposition können dann wie oben
-beschrieben neue Error-Zustände entstehen und es werden auch noch die
+beschrieben neue Error-Zustände entstehen und es werden zusätzlich auch noch die
 Error-Zustände der einzelnen Komponenten geerbt.\\
 Darüber sind dann Verfeinerungsrelationen möglich, diese sollen die
 Voraussetzung erfüllen, dass eine fehlerfrei Spezifikation nur durch ein
 fehlerfreies System verfeinert werden kann. Dies wird hier als Basisrelation
-verstanden, die durch die genaue Definition der Fehlerfreiheit parametrisiert
+verstanden, die durch die explizite Definition der jeweiligen Fehler-Art parametrisiert
 ist. Die Verfeinerungsrelation kann also auch als Implementierung aufgefasst
 werden.\\
 Da Modularität bzw.\ Austauschbarkeit der Komponenten gewünscht ist, sollte die
@@ -46,7 +46,7 @@ wird eine größte Präkongruenz bezüglich der Parallelkomposition
 charakterisiert, die in der Basisrelation enthalten ist.\\
 In~\cite{Vogler2014EIO} wurde für Error-Freiheit nachgewiesen, das jedes \EIO{}
 äquivalent ist zu einem ohne Error-Zustände unter Berücksichtigung der
-Präkongruenz. Diesen erhält man durch stutzen wie in~\cite{Alfaro2004}. Es ist
+Präkongruenz. Diesen erhält man durch Stutzen wie in~\cite{Alfaro2004}. Es ist
 also möglich die \EIO{}s nur für die Untersuchung zu verwenden und die
 Fehler-Zustände am Ende zu entfernen um wieder Interface Automaten zu
 erhalten.\\
@@ -90,7 +90,7 @@ In dieser Arbeit wird ein optimistischer Ansatz für die Erreichbarkeit
 der jeweils betrachteten Zuständen verwendet. Ein Zustand gilt nach der Definition in dieser
 Arbeit als erreichbar, wenn er lokal erreicht
 werden kann, d.h.\ durch lokale Aktionen. Die Menge bestehend aus der internen
-Aktion $\tau$ und den Output-Aktionen wird hier als Menge der lokale Aktionen
+Aktion $\tau$ und den Output-Aktionen wird hier als Menge der lokalen Aktionen
 bezeichnet.
 Alle Elemente aus dieser Menge können ohne weiteres Zutun von außen ausgeführt
 werden. Somit kann nicht beeinflusst werden, ob diese Transitionen genutzt
@@ -126,8 +126,8 @@ jedoch falls man die $\tau$s nicht komplett verbieten würde, könnten auch
 Livelocks damit dargestellt werden.\\
 Eine andere Betrachtungsweise zeigt dann die Hinzunahme von unendlichen Traces,
 die mit der Eigenschaft der Divergenz genauer betrachtet werden sollen. Hierbei
-kann ein System unendliche viele $\tau$-Transitionen ausführen. Hier kann dann
-auch relevant sein, dass die betrachteten Transitionssysteme nicht endlich sein
+kann ein System unendliche viele $\tau$-Transitionen ausführen. Es kann dann
+auch relevant sein, dass die hier betrachteten Transitionssysteme nicht endlich sein
 müssen.
 
 Kapitel 2 erläutert die grundlegenden Definitionen. In Kapitel 3 bis 5 werden
