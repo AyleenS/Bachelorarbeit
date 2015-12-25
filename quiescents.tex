@@ -9,10 +9,27 @@ Kapitel angewendet, jedoch wird~\cite{Chilton2013} als Quelle verwendet. Darin
 werden ähnliche Konzepte beschrieben, jedoch aus Sicht der Traces. Es werden
 dort zudem gleichzeitig auch noch Traces mit Divergenz betrachtet. Diese
 Eigenschaft wird hier zunächst nicht betrachtet.\\
-Die Zustände, die keine Outputs und keine Transitionsmöglichkeit für
-eine interne Aktion haben, werden als eine Art Verklemmung angesehen, da sie
-ohne einen Input von einem Kommunikationspartner den Zustand nicht mehr
-verlassen können.
+Zustände, die keine Outputs ohne einen Input ausführen können, werden als
+in einer Art Verklemmung angesehen, da sie ohne Zutun von Außen den Zustand
+nicht mehr verlassen können. So ein Zustand hat also keine
+Transitionsmöglichkeiten für einen Output. Falls einer dieser Zustände
+die Möglichkeit für eine interne Aktion hat, darf dadurch niemals ein Zustand
+erreicht werden, von dem aus ein Output möglich ist. Ein Zustand, der keine
+Outputs und $\tau$s ausführen kann, ist also ein Deadlock-Zustand, in denen das
+System nichts mehr tun kann ohne einen Input. Wenn man eine Erweiterung um
+$\tau$s zu Zuständen ohne Outputs zulässt, hat man zusätzliche noch
+Verklemmungen der Art Livelock, da diese Zustände möglicherweise beliebig viele
+interne Aktionen ausführen können, jedoch nie aus eigener Kraft einen
+wirklichen Fortschritt, im Form eines Outputs, bewirken können. Die Menge der
+Zustände, die sich in einer Verklemmung befinden, würde also durch $\left\{q\in
+Q\mid \forall a\in O: q \overset{a}{\not{\hspace{-0.1cm}\Rightarrow}}\right\}$
+beschrieben werden. Somit wären dies alle Zustände, die keine Möglichkeit haben
+ohne einen Input von Außen, je wieder einen Output machen zu können. Falls man
+diese Definition verwenden würde, müsste man immer alle Zustände betrachten,
+die durch $\tau$s erreichbar sind. Dies würde einige Betrachtungen deutlich
+aufwendiger machen und soll deshalb hier nicht behandelt werden. Die Definition
+für die betrachteten Verklemmungen, hier Ruhe genannt, beschränkt sich auf
+Zustände, die keine Outputs und $\tau$s ausführen können.
 
 \begin{Def}[Ruhe]
   Ein \emph{Ruhe-Zustand} ist ein Zustand in einem \EIO{}, der keine
@@ -22,25 +39,6 @@ verlassen können.
   \overset{\alpha}{\not{\hspace{-0.1cm}\rightarrow}}\big\}$.
 \end{Def}
 
-Diese Definition bewertet einen Zustand, der keine Outputs hat, aber eine
-$\tau$-Schleife zu sich selbst als nicht ruhig. Jedoch kann dieser Zustand auch
-niemals einen Output aufführen ohne einen Input von Außen. Ebenso kann ein
-Zustand, der selbst keine Output-Möglichkeit hat und alle durch $\tau$
-erreichbaren Zustände auch keine Outputs haben, ohne Hilfe von Außen niemals
-einen Output ausführen. Die Ruhe-Zustände aus der Definition sind also
-wirklich Deadlock-Zustände, in denen das System nichts mehr tun kann ohne einen
-Input. Wenn man eine Erweiterung um $\tau$s zu Zuständen
-ohne Outputs zulassen würde, hätte man zusätzliche noch Verklemmungen der Art
-Livelock, da diese Zustände möglicherweise beliebig viele interne Aktionen
-ausführen können, jedoch nie aus eigener Kraft einen wirklichen Fortschritt, im
-Form eines Outputs, bewirken können. Man hätte alternativ die Menge der
-Ruhe-Zustände auch als $\left\{q\in Q\mid \forall a\in O: q
-\overset{a}{\not{\hspace{-0.1cm}\Rightarrow}}\right\}$ definieren können. Somit
-wären dies alle Zustände, die keine Möglichkeit haben ohne einen Input von
-Außen, je wieder einen Output machen zu können. Falls man diese Definition
-verwenden würde, müsste man immer alle Zustände betrachten, die durch $\tau$s
-erreichbar sind. Dies würde einige Betrachtungen deutlich aufwendiger gemacht
-und soll deshalb hier nicht behandelt werden.\\
 Für die Erreichbarkeit wird wie im letzten Kapitel wieder der
 optimistischen Ansatz der lokalen Erreichbarkeit für die Error-Zustände
 verwendet. Ruhe ist kein unabwendbarer Fehler, sondern kann durch einen Input
