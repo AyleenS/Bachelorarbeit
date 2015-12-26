@@ -490,18 +490,42 @@ werden.
   \begin{itemize}
     \item Fall 1 ($w=\varepsilon$): Es ist ein Ruhe-Zustand intern erreichbar in
       $S_1$, da jedoch $\varepsilon\notin \ET{}_1$ gilt, ist kein Error
-      lokal erreichbar. Für $U$ wird ein Transitionssystem verwendet, das nur
-      aus dem Startzustand ohne Transitionsmöglichkeiten besteht. Somit ist
-      auch in $U$ ein Ruhe-Zustand lokal erreichbar. Es
-      folgt also mit Lemma~\ref{lemRuheParallelkomp}, dass auch in $U\|S_1$ ein
-      Ruhe-Zustand lokal erreichbar ist. Es muss also auch in
-      $U\|S_2$ ein Fehler lokal erreichbar sein. Bei diesem Fehler kann es sich
-      nun um Error oder Ruhe handeln, dies ist jedoch
-      Aufgrund der Definition der Menge \QT{} nicht relevant. Da für $U$ keine
-      Transitionen möglich sind, kann nur $\varepsilon$ ein striktes
-      Ruhetrace sein, falls es sich bei dem Fehler in $U\|S_2$ um einen lokal
-      erreichbaren Ruhe-Zustand handelt. Somit folgt in
-      beiden Fällen, dass $w$ in $\QT{}_2$ enthalten ist.
+      lokal erreichbar. Für $U$ wird das folgende Transitionssystem verwendet
+      (siehe auch Abbildung~\ref{UepsQET}):
+      \begin{itemize}
+        \item $Q_U=\{q_0, q\}$,
+        \item $q_{0U}=q_0$,
+        \item $E_U=\emptyset$,
+        \item $\begin{aligned}[t]
+            \delta _U=&\{(q_0,x,q)\mid x\in I_U\}\\
+                      &\cup\{(q,x,q)\mid x\in I_U\cup\{\tau\}\}.
+          \end{aligned}$
+      \end{itemize}
+      \begin{figure} [h!tbp]
+      \begin{center}
+        \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
+          \node (0) [rectangle, dashed, draw]{$q_0\in Qui_U$};
+          \node (q) [right of=0] {$q$};
+
+          \path ($ (0) + (-2,0) $) edge (0)
+                (0) edge node {$x?\in I_U$} (q)
+                (q) edge [loop right] node {$x?\in I_U, \tau$} (q);
+        \end{tikzpicture}
+        \caption{}
+\label{UepsQET}
+      \end{center}
+      \end{figure}
+      Es ist somit ebenfalls in $U$ ein Ruhe-Zustand lokal erreichbar.
+      Zusätzlich wird durch den Aufbau von $U$ verhindert, dass neue Errors in
+      der Komposition entstehen können. Damit folgt mit
+      Lemma~\ref{lemRuheParallelkomp}, dass auch in $U\|S_1$ ein Ruhe-Zustand
+      lokal erreichbar ist. Es muss also auch in $U\|S_2$ ein Fehler lokal
+      erreichbar sein. Bei diesem Fehler kann es sich nun um Error oder Ruhe
+      handeln, dies ist jedoch Aufgrund der Definition der Menge \QT{} nicht
+      relevant. Da für $U$ keine Transitionen möglich sind, kann nur
+      $\varepsilon$ ein striktes Ruhetrace sein, falls es sich bei dem Fehler
+      in $U\|S_2$ um einen lokal erreichbaren Ruhe-Zustand handelt. Somit folgt
+      in beiden Fällen, dass $w$ in $\QT{}_2$ enthalten ist.
     \item Fall 2 ($w=x_1\dots x_n\in \Sigma ^+$ mit $n\geq 1$): Es wird der
       folgende Partner $U$ betrachtet (siehe auch Abbildung~\ref{UohneEmitI}):
       \begin{itemize}
