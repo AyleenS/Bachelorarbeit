@@ -75,9 +75,12 @@ diesen beiden Trace-Mengen geflutet.
 
 Da in~\cite{Chilton2013} bereits direkt Divergenz mit betrachtet wurde, wird
 dort die Flutung der Traces so vorgenommen, dass die Errortraces in den
-Divergenztraces enthalten sind und die Divergenztraces in den Ruhetraces. Da
-hier zwischen den Errortraces und den Divergenztraces nicht unterschieden
-werden soll, kann diese Inklusionskette nicht so umgesetzt werden, jedoch
+Divergenztraces enthalten sind und die Divergenztraces in den Ruhetraces.
+Es wird dort die Error-Präkongruenz erhalten und nur durch die Inklusionen der
+Divergenztraces und Ruhetraces erweitert. Dies ist Aufgrund der Basisrelation
+hier nicht möglich. Da hier zwischen den Errortraces und den Divergenztraces
+nicht unterschieden werden soll, kann diese Inklusionskette nicht so umgesetzt
+werden wie in~\cite{Chilton2013}, jedoch
 entsteht durch das Fluten immer noch der selbe Effekt für die Ruhetraces. Somit
 kann nur die Semantik der Menge \ET{} aus den früheren Kapitel übernommen
 werden. Die jedoch für den weiteren Verlauf nur innerhalb der Trace-Menge
@@ -107,7 +110,102 @@ Informationsvermischung vorgenommen. Sowohl im Fall \QDT{} wie auch im Fall
 Divergenztraces erweitert wurde, und die error-geflutete Sprache zur
 error-divergenz-gefluteten Sprache erweitert wurde folgt, dass die Relation
 \DRel{} im Gegensatz zu \QRel{} keine direkte Einschränkung der Relation
-\ERel{} ist.
+\ERel{} ist. Durch die Definition der Basisrelation, ist auch keine andere
+Lösung möglich. Dies wird an folgendem Beispiel illustriert. Hier für werden
+die nachfolgenden Transitionssysteme benötigt:
+\begin{itemize}
+  \item $S_1 = (\{q_{01}\},\emptyset ,\emptyset , \emptyset, q_{01},
+    \{q_{01}\})$ (siehe auch Abbildung~\ref{S1}),
+  \item $S_2 = (\{q_{02}\},\emptyset ,\emptyset , \{(q_{02},\tau ,q_{02})\},
+    q_{02}, \emptyset )$ (siehe auch Abbildung~\ref{S2}),
+  \item $U = (\{q_{0U}\}, \emptyset, \{\omega\}, \{(q_{0U},\omega ,q_{0U})\},
+    q_{0U}, \emptyset )$ (siehe auch Abbildung~\ref{U}).
+\end{itemize}
+\begin{figure}[h!tbp]
+  \begin{minipage}{0.3\textwidth}
+  \begin{center}
+    \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
+      \node (0) [rectangle, draw]{$q_{01}\in E_1$};
+
+      \path ($ (0) + (-1.5,0) $) edge (0);
+    \end{tikzpicture}
+    \caption{$S_1$}
+\label{S1}
+  \end{center}
+  \end{minipage}
+  \begin{minipage}{0.05\textwidth}
+  \end{minipage}
+  \begin{minipage}{0.3\textwidth}
+  \begin{center}
+    \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
+      \node (0) [rectangle, dashed, draw]{$q_{02}\in Div_2$};
+
+      \path ($ (0) + (-1.8,0) $) edge (0)
+            (0) [loop right] edge node {$\tau$} (0);
+    \end{tikzpicture}
+    \caption{$S_2$}
+\label{S2}
+  \end{center}
+  \end{minipage}
+  \begin{minipage}{0.05\textwidth}
+  \end{minipage}
+  \begin{minipage}{0.3\textwidth}
+  \begin{center}
+    \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
+      \node (0) {$q_{0U}$};
+
+      \path ($ (0) + (-1,0) $) edge (0)
+            (0) [loop right] edge node {$\omega$} (0);
+    \end{tikzpicture}
+    \caption{$U$}
+\label{U}
+  \end{center}
+  \end{minipage}
+\end{figure}
+
+Für die Parallelkomposition $U\|S_1$ und $U\|S_2$ gilt dann:
+\begin{itemize}
+  \item $U\|S_1 =(\{(q_{0U},q_{01})\},\emptyset ,\{\omega\}, \{((q_{0U},
+    q_{01}),\omega ,(q_{0U},q_{01}))\}, (q_{0U}, q_{01}),
+    \{(q_{0U},q_{01})\})$ (siehe auch Abbildung~\ref{US1}),
+  \item $U\|S_2 =(\{(q_{0U},q_{02})\},\emptyset ,\{\omega\}, \{((q_{0U},
+    q_{02}),\omega ,(q_{0U},q_{02})), ((q_{0U},q_{02}),\tau
+  ,(q_{0U},q_{02}))\}, (q_{0U},$ $q_{02}), \emptyset)$ (siehe auch
+  Abbildung~\ref{US2}).
+\end{itemize}
+\begin{figure}[h!tbp]
+  \begin{minipage}{0.5\textwidth}
+  \begin{center}
+    \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
+      \node (0) [rectangle, draw]{$(q_{0U},q_{01})\in E_{U1}$};
+
+      \path ($ (0) + (-2.3,0) $) edge (0)
+            (0) [loop right] edge node {$\omega$} (0);
+    \end{tikzpicture}
+    \caption{$U\|S_1$}
+\label{US1}
+  \end{center}
+  \end{minipage}
+  \begin{minipage}{0.5\textwidth}
+  \begin{center}
+    \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
+      \node (0) [rectangle, dashed, draw]{$(q_{0U},q_{02})\in Div_{U2}$};
+
+      \path ($ (0) + (-2.5,0) $) edge (0)
+            (0) [loop right] edge node {$\omega ,\tau$} (0);
+    \end{tikzpicture}
+    \caption{$U\|S_2$}
+\label{US2}
+  \end{center}
+  \end{minipage}
+\end{figure}
+Somit stehen die beiden Transitionssysteme $U\|S_1$ und $U\|S_2$ in der
+Basisrelation \DBRel{}. Um ein analoges Lemma zu den
+Lemmata~\ref{lemVerfeinerung} und~\ref{lemQuiVerfeinerung} formulieren zu
+können sollten somit auch $S_1$ und $S_2$ in der Relation \DRel{} stehen. Es
+kann also in unter der Verfeinerungsrelation \DRel{} nicht unterschieden
+werden, ob das System Error oder Divergenz als Fehler hat.
+
 
 \begin{satz}[Error-, Ruhe- und Divergenz-Semantik für Parallelkompostionen]
 \label{satzDivSemantik}
@@ -150,7 +248,7 @@ error-divergenz-gefluteten Sprache erweitert wurde folgt, dass die Relation
   somit $\prune{}(wv)=\prune{}(w)$.
 
   1. \glqq{}$\supseteq$\grqq{}:\\
-  Es wird ebenso wie oben nur ein präfix-minimales $w$ betrachtet wegen den
+  Es wird ebenso wie oben nur ein präfix-minimales $x$ betrachtet wegen den
   Abschlusses beider Seiten der Gleichung unter \cont{}. Es wird also für ein beliebiges
   $x\in\prune{}((\EDT{}_1\|$ $\EDL{}_2)\cup (\EDL{}_1\|\EDT{}_2))$ gezeigt, dass
   dieses oder einer seiner Präfixe auch in $\EDT{}_{12}$ enthalten ist. Da das
@@ -163,8 +261,13 @@ error-divergenz-gefluteten Sprache erweitert wurde folgt, dass die Relation
   $\ET{}_{12} \supseteq \cont{}($ $\prune{}((\ET{}_1\|\EL_2)\cup
   (\EL{}_1\|\ET{}_2)))$ aus Satz~\ref{satzErrorSemanik}. Es muss dazu nur
   jeweils an den Stellen, wo $\PrET{}(S)\cup \MIT{}(S)$ steht auch noch eine
-  Vereinigung mit $\PrDT{}(S)$ vorgenommen werden. Am Ende ist dann auch noch
-  ein Fall für $v_1\in\PrDT{}_1$ zu ergänzen:
+  Vereinigung mit $\PrDT{}(S)$ vorgenommen werden. Für Fall I und II ist
+  jeweils kein weiterer Unterfall für $v_2'$ notwendig, da wenn es nicht
+  ausführbar ist automatisch ein Error in der Parallelkomposition entsteht.
+  Somit ist egal, ob auch noch Divergenz vorlag. Falls $v_2'$ ausführbar
+  ist, ist nicht relevant, ob eine Divergenz-Möglichkeit bestanden hat, da diese
+  nichts an der Ausführbarkeit ändert. Am Ende ist dann auch noch ein Fall für
+  $v_1\in\PrDT{}_1$ zu ergänzen:
   \begin{itemize}
     \item Fall III ($v_1\in \PrDT{}_1$): Es existiert ein $u_1$ aus $O_1^*$,
       sodass $q_{01} \overset{v_1}{\Rightarrow} q_1 \overset{u_1}{\Rightarrow}
@@ -202,9 +305,10 @@ error-divergenz-gefluteten Sprache erweitert wurde folgt, dass die Relation
   von Satz~\ref{satzQuiSemantik} gezeigt werden. Es muss dabei nur in der
   Argumentation die Menge $\ET{}_{12}$ durch die Menge $\EDT{}_{12}$ und die
   Menge $\QT{}(S)$ durch die Menge $\QDT{}(S)$ ersetzt
-  werden. Dadurch kann ebenso gefolgert werden, dass der erreichte Zustand
-  $(q_1,q_2)$ kein Error-Zustand sein kann, da $\ET{}_{12}\subseteq
-  \EDT{}_{12}$ gilt.
+  werden. Dadurch kann ebenso gefolgert werden, dass im Fall $w\in
+  \StQT{}_{12}\backslash \EDT{}_{12}$ der erreichte Zustand $(q_1,q_2)$ kein
+  Error-Zustand sein kann, da $\ET{}_{12}\subseteq \EDT{}_{12}$ gilt und somit
+  lässt sich auch hier Lemma~\ref{lemRuheParallelkomp} anwenden.
 
   2. \glqq{}$\supseteq$\grqq{}:\\
   Es muss wieder danach unterschieden werden, aus welcher Menge das betrachtete
@@ -225,9 +329,7 @@ error-divergenz-gefluteten Sprache erweitert wurde folgt, dass die Relation
     \item Fall 2 ($w_1\in \StQT{}_1\backslash \EDT{}_1 \wedge w_2\in \StQT{}_2
       \backslash \EDT{}_2$): Dieser Fall läuft analog zu Fall 2 der selben
       Inklusionsrichtung des Beweises von Satz~\ref{satzQuiSemantik}. Hierfür
-      ist wichtig festzustellen, dass Lemma~\ref{lemRuheParallelkomp} anwendbar
-      ist, da $\ET{}_i\subseteq \EDT{}_i$ gilt. Zusätzlich muss die Menge
-      $\QT{}_{12}$ durch $\QDT{}_{12}$ ersetzt werden.
+      muss die Menge $\QT{}_{12}$ durch $\QDT{}_{12}$ ersetzt werden.
   \end{itemize}
 
   3.:\\
@@ -406,7 +508,8 @@ enthalten ist.
       Die Mengen der Divergenz- und Ruhe-Zustände des hier betrachteten $U$s
       sind leer. Da im Vergleiche zum Transitionssystem in
       Abbildung~\ref{UohneE} nur die $\omega$-Transitionen zu $q_{n+1}$ ergänzt
-      wurden, ändert sich nichts an dem Fall 2a). In Fall 2b) muss die Menge
+      wurden, ändert sich nichts an dem Fall 2a) im ersten Punkt des Beweises
+      von Lemma~\ref{lemVerfeinerung}. In Fall 2b) muss die Menge
       $O^*$ durch $(O\cup \{\omega\})^*$ ersetzt werden. Die Begründungen,
       wieso in den beiden Fällen $\varepsilon\in \PrET{}(U\|S_1)$ gilt bleibt
       also analog zum Beweis von Lemma~\ref{lemVerfeinerung}. Da nun aber auch
@@ -459,8 +562,8 @@ enthalten ist.
           $Div_2$ erreicht. Es gilt dann $\prune{}(x_1\dots x_iu|_{\Sigma
           _2}) = \prune{}(x_1\dots x_i)\in\PrDT{}_2\subseteq \DT{}_2$, da
           $u|_{\Sigma _2}$ in $O^*$ enthalten ist. Da $x_1\dots x_i$ ein Präfix
-          von $w$ ist, führt in diesem Fall ein Präfix von $w$ zu einem
-          divergenten Zustand und ist somit in $\EDT{}_2$ enthalten.
+          von $w$ ist und $\DT{}_2\subseteq \EDT{}_2$ gilt, ist in diesem Fall
+          ein Präfix von $w$ in $\EDT{}_2$ enthalten.
       \end{itemize}
   \end{itemize}
 
@@ -571,19 +674,21 @@ enthalten ist.
       Divergenz handelt.
       \begin{itemize}
         \item Fall 2a) ($\varepsilon\in \ET{}(U\|S_2)$): Der lokal erreichbare
-          Fehler ist ein Error. Das $w$ muss somit nicht ausführbar sein. Da
-          nur auf dem Trace $w$ in $U$ Sychornisa\-tions-Fehler möglich sind
-          und wegen des ersten Punktes von Lemma~\ref{lemVerfeinerung}, ist ein
-          Präfix von $w$ in $\ET{}_2$ enthalten. Da die Menge \ET{} unter
-          \cont{} abgeschlossen ist, gilt auch $w\in \ET{}_2\subseteq \EDT{}_2
-          \subseteq \QDT{}_2$.
+          Fehler ist ein Error. Das $w$ muss somit nicht ausführbar sein. Der
+          Error kann sowohl von $S_2$ geerbt sein, wie durch fehlende
+          synchonizations Möglichkeiten als neuer Error in der
+          Parallelkomposition entstanden sein. Da nur auf dem Trace $w$ in $U$
+          Sychornisa\-tions-Fehler möglich sind und wegen den Fällen 2i) und
+          2ii) des ersten Punktes von dieses Beweises, ist ein Präfix von $w$
+          in $\EDT{}_2$ enthalten. Da die Menge \EDT{} unter \cont{}
+          abgeschlossen ist, gilt auch $w\in \EDT{}_2 \subseteq \QDT{}_2$.
         \item Fall 2b) ($\varepsilon\in \DT{}(U\|S_2)\backslash
           \ET{}(U\|S_2)$): Es handelt sich bei dem lokal erreichbaren Fehler um
           Divergenz. Der Fehler muss von $S_2$ geerbt sein, da $U$ keine
           Divergenz-Möglichkeiten hat. Es gilt also, dass bereits in $S_2$ ein
-          Präfix von $w$ in $\EDT{}_2$ enthalten ist, wegen des Beweises des
-          zweiten Punktes aus diesem Lemma. Mit dem Abschluss unter \cont{}
-          folgt, dass auch $w\in \EDT{}_2\subseteq \QDT{}_2$ gilt.
+          Präfix von $w$ in $\EDT{}_2$ enthalten ist, wegen Fall 2iii) des
+          Beweises des ersten Punktes aus diesem Lemma. Mit dem Abschluss unter
+          \cont{} folgt, dass auch $w\in \EDT{}_2\subseteq \QDT{}_2$ gilt.
         \item Fall 2c) (Ruhe-Zustand lokal erreichbar in $U\|S_2$ und
           $\varepsilon\notin \EDT{}(U\|S_2)$): Da in $U$ nur durch $w$ ein
           ruhiger Zustand erreicht werden kann, muss es sich bei dem lokal
@@ -761,7 +866,20 @@ Verfeinerung durch \DRel{} charakterisiert.
 Um die gröbste Präkongruenz mit den gewünschten Eigenschaften zu erhalten,
 musste hier eine Änderung gegenüber~\cite{Chilton2013} vorgenommen werden. Es
 musste auf die Verfeinerung der Error-Präkongruenz verzichtet werden und es
-mussten auf Trace-Ebene Error und Divergenz vermischt werden.
+mussten auf Trace-Ebene Error und Divergenz vermischt werden.\\
+Indem man eine Basisrelation definieren würde, die unterscheiden kann, ob es
+sich um Error oder Divergenz handelt, könnte man die hier erhaltenen
+Ergebnisse so verändern, dass sie dem Ansatz entsprechen würden,
+den~\cite{Chilton2013} verwendet hat. Es wäre also möglich, dass man nicht nur
+die Basisrelation \DBRel{} als erfüllt voraussetzt, sondern zusätzlich auch
+noch die Basisrelation \EBRel{}. Somit wäre garantiert, dass man die beiden
+Systeme $S_1$ (siehe dazu Abbildung~\ref{S1}) und $S_2$ (siehe dazu
+Abbildung~\ref{S2}) aus dem Beispiel oben unter der Verfeinerungsrelation
+unterscheiden könnte. Es würde dann also die Relation \ERel{} erhalten bleiben
+und man hätte die Inklusionen $\DT{}_1 \cup\ET{}_1 \subseteq \DT{}_2\cup
+\ET{}_2$ und $\QT{}_1\cup \DT{}_1\subseteq \QT{}_2\cup \DT{}_2$ für die
+Verfeinerungsrelation in diesem Kapitel. Dies würde dem Ansatz
+aus~\cite{Chilton2013} entsprechen.
 
 \section{Hiding und Divergenz-Freiheit}
 
