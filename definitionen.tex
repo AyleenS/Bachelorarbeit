@@ -3,7 +3,7 @@
 Die Definitionen dieses Kapitels sind größtenteils aus~\cite{Vogler2014EIO}
 übernommen, mit den in der Einleitung erwähnten Abänderungen. In diesen
 Definitionen werden die Grundlagen der Transitionssysteme, mit denen hier
-gearbeitet werden soll behandelt.
+gearbeitet werden soll, behandelt.
 
 \section{Error-IO-Transitionssystem}
 Die hier betrachteten \EIO{}s sind Systeme, deren Transitionen mit Inputs und
@@ -70,7 +70,7 @@ Zwei \EIO{}s sind komponierbar, wenn ihre Output-Mengen disjunkt sind. Die
 Error-Zustän\-de der Parallelkomposition setzen sich aus den Errors der
 beiden zusammengesetzten Komponenten (geerbte Errors) und den Zuständen, die
 Outputs aus der Menge der synchronisierten Aktionen besitzen, für die im zu
-komponierenden System jedoch kein passender Input vorhanden ist, (neue Errors)
+komponierenden System jedoch kein passender Input vorhanden ist (neue Errors),
 zusammen.\\
 In der folgenden Definition muss eine Veränderung
 gegenüber~\cite{Vogler2014EIO} an der Menge der synchronisierten
@@ -175,7 +175,7 @@ Projektionen von einem Ablauf in $S_{12}$ der Form $(p_1,p_2)
 \overset{w}{\Rightarrow} (q_1.q_2)$. Es ist dafür nötig, dass die Abläufe der
 beiden Systeme und die Systeme selbst komponierbar sind. Das $w$ wurde so
 gewählt, dass die Projektion auf die einzelnen Alphabete die jeweiligen
-Wörter ergibt. Falls keine interne Aktionen zugelassen wären, würde sogar nur
+Wörter ergibt. Falls keine internen Aktionen zugelassen wären, würde sogar nur
 genau ein Ablauf möglich sein in $S_{12}$. Da jedoch auch interne Aktionen
 zulässig sind, sind mehrere Abläufe möglich, da nicht klar ist, wann ein $\tau$
 in einem Trace ausgeführt wird. Daraus ergibt sich das folgende Lemma.
@@ -202,8 +202,8 @@ das Verstecken von Outputs sind diese nach außen nicht mehr sichtbar. Werden
 jedoch Inputs versteckt sind alle Traces, die diesen Input benötigen, nicht
 mehr ausführbar. Sie sind dann ab dem versteckten Input nicht mehr
 weiterführbar. Es handelt sich also um echte Einschränkungen des Systems. Die
-Transitionen werden durch das Hiding von Inputs ähnlich wie bei der Anwendung
-von Restriktionen in CSS, siehe dazu~\cite{Milner1989}, verboten. Diese Art der
+Transitionen werden durch das Hiding von Inputs verboten, ähnlich wie bei der Anwendung
+von Restriktionen in CSS, siehe dazu~\cite{Milner1989}. Diese Art der
 Einschränkung der Transitionssysteme sollen hier jedoch nicht behandelt werden.
 Somit wird in der folgenden Definition nur die Internalisierung von Outputs
 erlaubt, entsprechend Quelle~\cite{Schlosser2012BA}.
@@ -222,15 +222,15 @@ erlaubt, entsprechend Quelle~\cite{Schlosser2012BA}.
 \end{Def}
 
 Die Menge hinter dem Internalisierungsoperator ist in dieser Definition auf
-Outputs beschränkt. Diese Einschränkung wurde vorgenommen um die weitere
+Outputs beschränkt. Diese Einschränkung wurde vorgenommen, um die weitere
 Betrachtung zu erleichtern. Jedoch kann es sinnvoll sein die Möglichkeit zu
 haben dort weitere Aktionen aufnehmen zu können. Dies wird jedoch nicht mehr
 Teil dieser Arbeit sein.\\
 In~\cite{Vogler2014EIO} wird die Parallelkomposition nur mit Verbergen der
 synchronisierten Aktionen betrachtet, die durch die Synchronisation von einem
-Input mit einem Output entstehen. Diese Parallelkomposition kann nun mit dem
+Input mit einem Output entstehen. Diese Parallelkomposition wird nun mit dem
 Internalisierungsoperator durch Hiding der synchronisierten Aktionen, die in
-der Parallelkomposition zu Outputs werden, nachbildet werden. Da in dieser Arbeit
+der Parallelkomposition zu Outputs werden, nachbildet. Da in dieser Arbeit
 die Inputmengen der Systeme, die komponiert werden, nicht disjunkt sein müssen,
 ergeben sich auch Inputs aus der Synchronisation von Aktionen. Diese können
 jedoch mit der hier verwendeten Definition des Internalisierungsoperators nicht verborgen

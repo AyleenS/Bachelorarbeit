@@ -14,7 +14,7 @@ wurde die Parallelkomposition geändert, wie in~\cite{Schlosser2012BA}.
   Parallelkomposition $S_{12}$ keine Errors lokal erreicht werden können.
 \end{Def}
 
-Mittels der lokalen Erreichbarkeit von Errors kann ein
+Mittels der lokalen Erreichbarkeit von Errors kann eine
 Verfeinerungsrelation definiert werden. Zusätzlich wird bereits die
 gröbste Präkongruenz definiert, die charakterisiert werden soll.
 
@@ -30,7 +30,7 @@ gröbste Präkongruenz definiert, die charakterisiert werden soll.
 \end{Def}
 
 Um sich näher mit den Präkongruenzen auseinandersetzen zu können, müssen bestimmte Traces
-aus der Struktur hervor gehoben werden. Die strikten Errortraces entsprechen Wegen, die
+aus der Struktur hervorgehoben werden. Die strikten Errortraces entsprechen Wegen, die
 direkt vom Startzustand zu einem Zustand in der Menge $E$ führen. Da Outputs Aktionen
 sind, die von außen nicht verhindert werden können, wird auch noch die
 Menge der Traces benötigt, die zu einem Zustand führen können, von dem aus mit lokalen Aktionen
@@ -59,7 +59,7 @@ wird. Diese Menge ist dadurch, dass sie die fortgesetzten Traces aus $\PrET{}$
 enthält, deutlich allgemeiner als die Menge $\StET{}$. Zusätzlich wird auch noch
 die geflutete Sprache definiert, in der die Informationen aus der Sprache und den
 Errortraces vereint werden und somit bei der Inklusion nicht mehr explizit
-unterscheiden werden.
+unterschieden werden.
 
 \begin{Def}[Error-Semantik]
 \label{DefETEL}
@@ -252,7 +252,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
   \item Fall II ($v_1\in \PrET{}_1$): $\exists u_1\in O_1^*:q_{01}
     \overset{v_1}{\Rightarrow} q_1 \overset{u_1}{\Rightarrow} q_1'$ mit
     $q_1'\in E_1$. Da es hier keine disjunkten Inputmengen wie
-    in~\cite{Vogler2014EIO} gibt kann das $a$, auf das $v_1$ im Fall $v_1\neq
+    in~\cite{Vogler2014EIO} gibt, kann das $a$, auf das $v_1$ im Fall $v_1\neq
     \varepsilon$ endet, ebenfalls der letzte Buchstabe von $v_2$
     sein. Im Fall von $v_2\in \MIT{}_2$ kann somit $a=b$ gelten und somit wäre
     $v_2=v_2'$. Dieser Fall verläuft jedoch analog zu Fall Ic) und wird somit
@@ -383,7 +383,7 @@ verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
       muss also in $S_2$ ein Error-Zustand durch interne Aktionen und Outputs
       erreichbar sein, d.h.\ es gilt $\varepsilon\in \PrET{}_2$.
     \item Fall 2 ($w=x_1\dots x_n x_{n+1}\in\Sigma ^+$ mit $n\geq 0$ und
-      $x_{n+1}\in I$): Es wird der folgenden Partner $U$ bedachtet (siehe auch
+      $x_{n+1}\in I$): Es wird der folgende Partner $U$ bedachtet (siehe auch
       Abbildung~\ref{UohneE}):
       \begin{itemize}
         \item $Q_U=\{q_0,q_1,\dots ,q_{n+1}\}$,
@@ -469,7 +469,7 @@ verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
           $w$ zu einem Error.
       \end{itemize}
   \end{itemize}
-  Um die zweiten Inklusion zu beweisen, reicht es aufgrund der ersten
+  Um die zweite Inklusion zu beweisen, reicht es aufgrund der ersten
   Inklusion und der Definition von $\EL{}$ aus zu zeigen, dass
   $L_1\backslash \ET{}_1\subseteq \EL{}_2$ gilt.\\
   Es wird dafür ein beliebiges $w\in L_1\backslash \ET{}_1$ gewählt und
@@ -477,7 +477,7 @@ verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
   \begin{itemize}
     \item Fall 1 ($w=\varepsilon$): Da $\varepsilon$ immer in $\EL{}_2$
       enthalten ist, ist hier nichts zu zeigen.
-    \item Fall 2 ($w=x_1\dots x_n$ mit $n\geq 1$): Es wird einen
+    \item Fall 2 ($w=x_1\dots x_n$ mit $n\geq 1$): Es wird ein
       Partner $U$ wie folgt konstruiert (siehe dazu auch Abbildung~\ref{UmitE}):
       \begin{itemize}
         \item $Q_U=\{q_0,q_1,\dots ,q_n,q\}$,
@@ -535,7 +535,7 @@ verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
         \item Fall 2c) (geerbter Error von $U$): Da der einzige Zustand aus
           $E_U$ $q_n$ ist und alle Aktionen synchronisiert sind, ist dies nur
           möglich, wenn gilt $q_{02} \overset{x_1\dots x_n}{\Rightarrow}$. In
-          diesem Fall gilt, $w\in L_2\subseteq \EL{}_2$.
+          diesem Fall gilt $w\in L_2\subseteq \EL{}_2$.
         \item Fall 2d) (geerbter Error von $S_2$): Es gilt dann $q_{02}
           \overset{x_1\dots x_iu}{\Rightarrow} q'\in E_2$ für $i\geq 0$ und
           $u\in O^*$. Somit ist $x_1\dots x_iu\in \StET{}_2$ und damit
@@ -573,8 +573,8 @@ Präkongruenz \ECRel{}.
 
       \glqq{}$\Rightarrow$\grqq{}: Durch die Definition von \ECRel{} als
       Präkongruenz in~\ref{DefErrorBasisrel} folgt aus $S_1\ECRel S_2$, dass
-      $U\|S_1\ECRel U\|S_2$ für alle \EIO{}s $U$, die mit $S_1$ komponierbar
-      sind. Da \ECRel{} nach Definition auch in \EBRel{} enthalten sein soll
+      $U\|S_1\ECRel U\|S_2$ für alle \EIO{}s $U$ gilt, die mit $S_1$ komponierbar
+      sind. Da \ECRel{} nach Definition auch in \EBRel{} enthalten sein soll,
       folgt aus $U\|S_1\ECRel U\|S_2$ auch die Gültigkeit von $U\|S_1\EBRel
       U\|S_2$ für alle diese \EIO{}s $U$. Mit Lemma~\ref{lemVerfeinerung} folgt
       dann $S_1\ERel S_2$.
@@ -640,9 +640,9 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   dem Internalisierungsoperator enthalten, bleiben unverändert erhalten. Es ist
   auch nicht möglich, dass durch das Verbergen von Outputs neue Errors
   entstehen. Auch in die umgekehrte Richtung kann durch das Ersetzten von
-  $\tau$s durch Outputs nicht an der Erreichbarkeit oder der Menge der Errors
-  geändert werden. Es ist also jeder Error, der in $S_i/X$ lokal erreichbar ist
-  auch in $S_i$ erreichbar. Somit folgt die Behauptung.
+  $\tau$s durch Outputs nichts an der Erreichbarkeit oder der Menge der Errors
+  geändert werden. Es ist also jeder Error, der in $S_i/X$ lokal erreichbar
+  ist, auch in $S_i$ erreichbar. Somit folgt die Behauptung.
 \end{proof}
 
 \begin{satz}[Error-Präkongurenz bzgl. Interalisierung]
@@ -673,9 +673,9 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   \overset{a_n}{\Rightarrow} q_n$ mit $q_n=q$. Hier ist wichtig zu beachten,
   dass die jeweiligen Zustände nicht exakt über eine Transition erreicht werden
   müssen. Es kann sich hier um eine Transitionsfolge aus beliebig vielen
-  $\tau$s und dem jeweiligen $a_i\in\Sigma$ handeln. Dabei ist egal, an welcher
+  $\tau$s und dem jeweiligen $a_i\in\Sigma$ handeln. Dabei ist egal an welcher
   Stelle das $a_i$ auftaucht. Dies ist notwendig, da auf Trace-Ebene nicht mehr
-  festgehalten wird, wann $\tau$-Transitionen auszuführen sind um mit einer
+  festgehalten wird, wann $\tau$-Transitionen auszuführen sind, um mit einer
   bestimmten Transition den Weg fortsetzen zu können. Dies ändert jedoch nichts
   daran, dass alle $a_i$ atomare Aktionen darstellen.
   \begin{itemize}
@@ -695,20 +695,20 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
       durch das Hiding von Aktionen aus $X$ in $w'$ nur noch
       $w:=w'|_{\Sigma\backslash X}$ erhalten. Diese Projektion des Wortes
       $w'$ auf die eingeschränkte Aktionenmenge ist dann in $L(S/X)$ enthalten,
-      da immer noch der selbe Zustand durch das Worte erreicht wird. Es gilt
+      da immer noch derselbe Zustand durch das Worte erreicht wird. Es gilt
       also auch für diesen Fall die Aussage über die Sprache $L$.
   \end{itemize}
   Für ein Wort $w$ aus der Sprache $L$ des Transitionssystems $S/X$ existiert
   wie oben auch ein Ablauf. Hier ist es jedoch wichtig, dass auch
-  $\tau$-Transitionen gemacht werden um dieses Wort auszuführen. In dem ein
+  $\tau$-Transitionen gemacht werden, um dieses Wort auszuführen. In dem ein
   Teil dieser $\tau$-Transitionen durch Transitionen mit Elementen aus $X$
   ersetzt werden erhält man ein Trace $w'$ aus der Sprache $L(S)$.
 
   (ii)
   Es wird ein Trace $w'=a_1a_2\dots a_n\in \ET{}(S)$ gewählt. Dieses Trace
   muss nicht wie bei Punkt (i) einem Ablauf in $S$ entsprechen. Jedoch kann ein
-  Präfix von $w'$ gefunden werden, dass besondere Eigenschaften erfüllen soll
-  und für dass es einen Ablauf gibt. Hierfür muss jedoch unterschieden werden,
+  Präfix von $w'$ gefunden werden, das besondere Eigenschaften erfüllen soll
+  und für das es einen Ablauf gibt. Hierfür muss jedoch unterschieden werden
   aus welchem Grund das $w'$ in $\ET{}(S)$ enthalten ist.
   \begin{itemize}
     \item Fall 1 ($w'\in\cont{}(\PrET{}(S))$): In diesem Fall gibt es einen
@@ -727,7 +727,7 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
       O(S/X)^*$ und somit $\prune{}((a_1a_2\dots a_m)|_{\Sigma\backslash
       X})=\prune{}((a_1a_2\dots a_mb_1b_2\dots b_l)|_{\Sigma\backslash X})$. Da
       \ET{} eine Menge ist, die nach Definition unter \cont{}
-      abgeschlossen ist, sind alle Verlängerung von $(a_1a_2\dots
+      abgeschlossen ist, sind alle Verlängerungen von $(a_1a_2\dots
       a_m)|_{\Sigma\backslash X}$ ebenfalls in $\ET{}(S/X)$ enthalten.
       Es gilt also speziell auch $w:=w'|_{\Sigma\backslash X}\in
       \ET{}(S/X)$. Da alle Elemente aus $\ET{}(S/X)$ nur Aktionen aus
@@ -748,15 +748,15 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
       Speziell gilt also auch $w:=w'|_{\Sigma\backslash X}\in \ET{}(S/X)$.
   \end{itemize}
   Ein Trace $w\in \ET{}(S/X)$ muss wie oben nicht im Transitionssystem
-  enthalten sein. Es kann jedoch ein Präfix von $w$ gefunden werden wie oben,
-  mit dem ein Error-Zustand, über eine Verlängerung, oder ein Zustand, für den
+  enthalten sein. Es kann jedoch ein Präfix von $w$ wie oben gefunden werden,
+  mit dem ein Error-Zustand über eine Verlängerung oder ein Zustand, für den
   nicht alle Input-Transitionen möglich sind, erreicht werden. Für dieses
   Präfix von $w$ bzw.\ für das Präfix von $w$ mit der entsprechenden
   Verlängerung existiert ein Ablauf im Transitionssystem $S/X$, der wie in (i)
-  beschrieben, durch das ersetzen von $\tau$-Transitionen, auf einen Ablauf in
+  beschrieben, durch das Ersetzen von $\tau$-Transitionen auf einen Ablauf in
   $S$ erweitert werden kann. Dieser Ablauf kann dann analog zu den beiden
-  Fällen oben verkürzt und Aufgrund des Abschlusses gegenüber \cont{}
-  verlängert werden, so dass ein $w'\in \ET{}(S)$ entsteht, dass sich von $w$
+  Fällen oben verkürzt und aufgrund des Abschlusses gegenüber \cont{}
+  verlängert werden, so dass ein $w'\in \ET{}(S)$ entsteht, das sich von $w$
   nur durch hinzugefügte Aktionen aus $X$ unterscheidet.
 
   (iii)
@@ -764,10 +764,10 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   \ET{}(S)$. Für beide Fälle wurde oben bereits gezeigt, dass dann
   $w:=w'|_{\Sigma\backslash X}$ in der entsprechenden Menge des
   Transitionssystems $S/X$ enthalten ist. Da \EL{} als Vereinigung aus den
-  Mengen $L$ und \ET{} definiert ist, ist dadurch dann auch gezeigt, dass
+  Mengen $L$ und \ET{} definiert ist, ist dadurch auch gezeigt, dass
   $w\in \EL{}(S/X)$ gilt.\\
-  Ebenfalls analog zu den beiden vorangegangen Punkten kann auch argumentiert
-  werden, dass zu jedem $w\in \EL{}(S/X)$ durch hinzufügen von Aktionen aus $X$
+  Ebenfalls analog zu den beiden vorangegangenen Punkten kann auch argumentiert
+  werden, dass zu jedem $w\in \EL{}(S/X)$ durch Hinzufügen von Aktionen aus $X$
   ein $w'\in \EL{}(S)$ gefunden werden kann.
 
   Da $S_1\ERel S_2$ gilt, weiß man, dass $\ET{}_1\subseteq \ET{}_2$ und
@@ -785,7 +785,7 @@ Aus~\ref{propPraekongruenz} ist bekannt, dass \ERel{} eine Präkongruenz
 bezüglich $\cdot\|\cdot$ ist, und aus~\ref{satzPraeInternalisierung}, dass
 \ERel{} auch eine Präkongruenz bezüglich $\cdot/\cdot$ ist. Da sich nach
 Definition~\ref{defIntParal} die Parallelkomposition mit Internalisierung nur
-aus diesen Operatoren zusammensetzt, erhalten man das folgende Korollar.
+aus diesen Operatoren zusammensetzt, erhält man das folgende Korollar.
 
 \begin{kor}[Error-Präkongurenz mit Internalisierung]
   \ERel{} ist eine Präkongruenz bezüglich $\cdot|\cdot$.
