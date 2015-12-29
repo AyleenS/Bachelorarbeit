@@ -1,6 +1,6 @@
 \chapter{Einleitung}
 
-Interface Automaten werden eingesetzt, um Verhalten zu modellieren und zu
+Interface-Automaten werden eingesetzt, um Verhalten zu modellieren und zu
 untersuchen. Sie sind eine abstrakte Beschreibung des Kommunikationsverhaltens
 eines Systems oder einer Komponente durch Inputs und Outputs. Es können dadurch
 parallel arbeitende Softwarekomponenten simuliert werden. Die Kommunikation
@@ -15,10 +15,10 @@ Kommunikationsfehler eingetreten, der verhindert werden sollte, da das
 Verhalten des Systems dann unvorhersehbar wird. In~\cite{Lynch1996} wird die
 Abwesenheit dieser Kommunikationsfehler
 für die I/O-Automaten garantiert, in dem für alle Zustände alle Inputs möglich
-sind. In Interface Automaten ist ein fehlender Input jedoch hervorgerufen durch
+sind. In Interface-Automaten ist ein fehlender Input jedoch hervorgerufen durch
 die Voraussetzung, dass die Umwelt diesen Input in diesem Zustand nicht senden
 darf.\\
-So wie diese Interface Automaten in~\cite{Alfaro2004} definiert sind, kann es
+So wie diese Interface-Automaten in~\cite{Alfaro2004} definiert sind, kann es
 in der Parallelkomposition von zwei Automaten zu Kommunikationsfehlern kommen.
 In dem eine Komponente einen Output macht, den die andere nicht als Input
 aufnehmen kann. Diese Fehler-Zustände, die daraus entstehen, sind jedoch nicht
@@ -48,13 +48,13 @@ In~\cite{Vogler2014EIO} wurde für Error-Freiheit nachgewiesen, dass jedes \EIO{
 äquivalent ist zu einem ohne Error-Zustände unter Berücksichtigung der
 Präkongruenz. Diesen erhält man durch Stutzen wie in~\cite{Alfaro2004}. Es ist
 also möglich die \EIO{}s nur für die Untersuchung zu verwenden und die
-Fehler-Zustände am Ende zu entfernen, um wieder Interface Automaten zu
+Fehler-Zustände am Ende zu entfernen, um wieder Interface-Automaten zu
 erhalten.\\
 Die Betrachtung der Transitionssysteme mit Fehler-Zuständen hat auch den
 Vorteil, dass die Inputs nicht als deterministisch vorausgesetzt werden müssen
 um sicher zu stellen, dass nach dem Entfernen eines Weges zu einem Fehler, der
 gleiche Input nicht noch zu einem anderen zulässigen Zustand führt. Jedoch muss
-dann vor der Umwandlung in einen Interface Automaten durch das Entfernen der
+dann vor der Umwandlung in einen Interface-Automaten durch das Entfernen der
 Fehler-Zustände auf diese Inputs geachtet werden.\\
 Um die Begrifflichkeiten hier eindeutiger und intuitiver, bzgl.\ dessen was
 wirklich in dem System passiert, zu machen, wird im weiteren Verlauf
