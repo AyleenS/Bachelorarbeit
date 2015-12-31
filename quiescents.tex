@@ -4,7 +4,7 @@
 
 In diesem Kapitel wird es nicht mehr nur um die Erreichbarkeit von
 Error-Zuständen gehen, sondern auch um die Erreichbarkeit von
-Ruhe-Zuständen. Es wird dabei ein analoge Herangehensweise zur der im letzten
+Ruhe-Zuständen. Es wird dabei eine analoge Herangehensweise zur der im letzten
 Kapitel angewendet, jedoch wird~\cite{Chilton2013} als Quelle verwendet. Darin
 werden ähnliche Konzepte beschrieben, jedoch aus Sicht der Traces. Es werden
 dort zudem gleichzeitig auch noch Traces mit Divergenz betrachtet. Diese
@@ -20,11 +20,11 @@ System nichts mehr tun kann ohne einen Input. Wenn man eine Erweiterung um
 $\tau$s zu Zuständen ohne Outputs zulässt, hat man zusätzliche noch
 Verklemmungen der Art Livelock, da diese Zustände möglicherweise beliebig viele
 interne Aktionen ausführen können, jedoch nie aus eigener Kraft einen
-wirklichen Fortschritt, im Form eines Outputs, bewirken können. Die Menge der
+wirklichen Fortschritt in Form eines Outputs bewirken können. Die Menge der
 Zustände, die sich in einer Verklemmung befinden, würde also durch $\left\{q\in
 Q\mid \forall a\in O: q \overset{a}{\not{\hspace{-0.1cm}\Rightarrow}}\right\}$
 beschrieben werden. Somit wären dies alle Zustände, die keine Möglichkeit haben
-ohne einen Input von Außen, je wieder einen Output machen zu können. Falls man
+ohne einen Input von Außen je wieder einen Output machen zu können. Falls man
 diese Definition verwenden würde, müsste man immer alle Zustände betrachten,
 die durch $\tau$s erreichbar sind. Dies würde einige Betrachtungen deutlich
 aufwendiger machen und soll deshalb hier nicht behandelt werden. Die Definition
@@ -40,10 +40,10 @@ Zustände, die keine Outputs und $\tau$s ausführen können.
 \end{Def}
 
 Für die Erreichbarkeit wird wie im letzten Kapitel wieder der
-optimistischen Ansatz der lokalen Erreichbarkeit für die Error-Zustände
+optimistische Ansatz der lokalen Erreichbarkeit für die Error-Zustände
 verwendet. Ruhe ist kein unabwendbarer Fehler, sondern kann durch einen Input
 repariert werden. Daraus ergibt sich, dass ein Ruhe-Zustand als nicht so
-\glqq{}schlimmer Fehler\grqq{} anzusehen wie ein Error. Somit ist ein
+\glqq{}schlimmer Fehler\grqq{} anzusehen ist wie ein Error. Somit ist ein
 Ruhe-Zustand ebenso wie ein Error-Zustand erreichbar, sobald er durch Outputs
 und $\tau$s erreicht werden kann, jedoch ist nicht jede beliebige Fortsetzung
 eines Traces, das durch lokale Aktionen zu einem Ruhe-Zustand führt, ein
@@ -68,7 +68,7 @@ Ruhetrace.
 
 Um eine genauere Auseinandersetzung mit den Präkongruenzen zu ermöglichen,
 benötigt man wie im letzten Kapitel die Definition von Traces auf der Struktur.
-Dadurch erhält man die Möglichkeit, die gröbste Präkongruenz charakterisieren zu
+Dadurch erhält man die Möglichkeit die gröbste Präkongruenz charakterisieren zu
 können.\\
 Wie bereits oben erwähnt, sind Ruhe-Zustände reparierbare Fehler im Gegensatz
 zu Errors. Somit werden keine gekürzten Ruhetraces benötigt, bei denen die
@@ -100,7 +100,7 @@ Definitionen aus dem letzten Kapitel.
 \end{Def}
 
 Für die Menge der error-gefluteten Ruhetraces \QT{} wurde eine Informationsvermischung
-mit den Errortraces vorgenommen wie beim Fluten der Sprache \EL{}. Da jedoch
+mit den Errortraces vorgenommen, wie beim Fluten der Sprache \EL{}. Da jedoch
 durch die Ruhetraces keine neuen Traces entstehen, die nicht bereits in der
 gefluteten Sprache \EL{} enthalten wären, würde eine neue Flutung von \EL{}
 nichts ändern. Es wird also durch die Relation \QRel{} nur die
@@ -126,14 +126,14 @@ relevant.
   1.:\\
   Da $q_1\in Qui_1$ und $q_2\in Qui_2$ gilt, haben
   diese beiden Zustände jeweils höchstens die Möglichkeiten Transitionen
-  auszuführen, die mit Inputs beschriftet sind, jedoch keine Möglichkeiten, für
+  auszuführen, die mit Inputs beschriftet sind, jedoch keine Möglichkeiten für
   Outputs oder $\tau$s.\\
   Angenommen der Zustand, der durch Parallelkomposition aus den Zuständen $q_1$
   und $q_2$ entsteht, ist nicht ruhig, d.h.\ er hat die Möglichkeit für eine
   Transition mit einem Output oder einem $\tau$.
   \begin{itemize}
     \item Fall 1 ($(q_1,q_2) \overset{\tau}{\rightarrow}$): Ein $\tau$ ist eine
-      interne Aktion und kann in dieser Arbeit nicht durch das verbergen von
+      interne Aktion und kann in dieser Arbeit nicht durch das Verbergen von
       Aktionen bei der Synchronisation entstehen. Ein $\tau$ in der
       Parallelkomposition ist also nur möglich, wenn dies bereits für einen der
       beiden Zustände ausführbar war, aus denen der Zustand zusammen gesetzt
@@ -157,13 +157,13 @@ relevant.
       ausgeschlossen worden. Somit ist es nicht möglich, dass $S_{12}$ diese
       Transition für den Zustand $(q_1,q_2)$ ausführen kann.
   \end{itemize}
-  Da alle diese Fälle zu einem Widerspruch mit der Voraussetzung führen, folgt,
+  Da alle diese Fälle zu einem Widerspruch mit der Voraussetzung führen folgt,
   dass bereits die Annahme, dass der Zustand $(q_1,q_2)$ nicht ruhig ist,
   falsch war. Es folgt also, dass $(q_1,q_2)\in Qui_{12}$ gilt.
 
   2.:\\
   Es gilt $(q_1,q_2)\in Qui_{12}\backslash E_{12}$, somit hat
-  dieser Zustand allen falls die Möglichkeit, Transitionen für Inputs
+  dieser Zustand allenfalls die Möglichkeit Transitionen für Inputs
   auszuführen.\\
   Angenommen $q_1\notin Qui_1$, dann ist für $q_1$ entweder eine
   $\tau$-Transition oder eine Output-Transition möglich.
@@ -221,8 +221,8 @@ Sie entsprechen Punkt 1.\ und 2.\ aus Satz~\ref{satzErrorSemanik}.
   Hier muss unterschieden werden, ob ein $w\in\StQT{}_{12}\backslash \ET{}_{12}$
   oder ein $w\in \ET{}_{12}$ betrachtet wird. Im zweiten Fall ist das
   $w$ in der rechten Seite enthalten. Somit wird ab jetzt ein $w\in
-  \StQT{}_{12}\backslash \ET{}_{12}$ betrachtet und dessen Zugehörigkeit zur
-  rechten Menge versucht zu zeigen. Aufgrund von
+  \StQT{}_{12}\backslash \ET{}_{12}$ betrachtet und es wird versucht dessen
+  Zugehörigkeit zur rechten Menge zu zeigen. Aufgrund von
   Definition~\ref{DefRuhetraces} weiß man, dass $(q_{01},q_{02})
   \overset{w}{\Rightarrow} (q_1,q_2)$ gilt mit $(q_1,q_2)\in Qui_{12}\backslash
   E_{12}$. Durch Projektion erhält man $q_{01} \overset{w_1}{\Rightarrow} q_1$
@@ -235,7 +235,7 @@ Sie entsprechen Punkt 1.\ und 2.\ aus Satz~\ref{satzErrorSemanik}.
   enthalten.
 
   \glqq{}$\supseteq$\grqq{}:\\
-  Es muss wieder danach unterschieden werden, aus welcher Menge das betrachtete
+  Es muss wieder danach unterschieden werden aus welcher Menge das betrachtete
   Element stammt. Falls $w\in \ET{}_{12}$ gilt, so kann die
   Zugehörigkeit zur linken Seite direkt gefolgert werden. Somit wird für den
   weiteren Beweis dieser Inklusionsrichtung ein Element $w\in \QT{}_1\|\QT{}_2$
@@ -250,7 +250,7 @@ Sie entsprechen Punkt 1.\ und 2.\ aus Satz~\ref{satzErrorSemanik}.
       Satz~\ref{satzErrorSemanik} gefolgert werden, dass $w\in \ET{}_{12}$ gilt
       und somit $w$ in der linken Seite der Gleichung enthalten ist.
     \item Fall 2 ($w_1\in \StQT{}_1\backslash\ET{}_1\wedge w_2\in
-      \StQT{}_2\backslash\ET{}_2$): Es gilt in diesem Fall ist $q_{01}
+      \StQT{}_2\backslash\ET{}_2$): Es gilt in diesem Fall $q_{01}
       \overset{w_1}{\Rightarrow} q_1\in Qui_1$ und $q_{02}
       \overset{w_2}{\Rightarrow} q_2\in Qui_2$. Da $q_1$ und $q_2$ in der
       jeweiligen Ruhe-Menge enthalten sind, ist auch der Zustand, der aus ihnen
@@ -277,8 +277,8 @@ Kapitel charakterisiert werden soll.
   Es muss gezeigt werden: Wenn $S_1\QRel S_2$ gilt, so auch
   $S_{31}\QRel S_{32}$ für jedes komponierbare System $S_3$. D.h.\ es ist zu zeigen, dass aus
   $S_1\ERel S_2$ und $\QT{}_1\subseteq \QT{}_2$ sowohl $S_{31}\ERel S_{32}$ als
-  auch $\QT{}_{31}\subseteq \QT{}_{32}$ folgt. Dies ergibt sich wie im Beweis
-  zu Proposition~\ref{propPraekongruenz} aus der Monotonie von $\cdot\|\cdot$
+  auch $\QT{}_{31}\subseteq \QT{}_{32}$ folgt. Dies ergibt sich, wie im Beweis
+  zu Proposition~\ref{propPraekongruenz}, aus der Monotonie von $\cdot\|\cdot$
   auf Sprachen wie folgt:
   \begin{itemize}
     \item $\begin{aligned}[t]
@@ -320,8 +320,8 @@ werden.
   \end{itemize}
   In Lemma~\ref{lemVerfeinerung} wurde bereits etwas Ähnliches gezeigt, jedoch
   wurde dort als Voraussetzung $U\|S_1\EBRel U\|S_2$ für alle Partner $U$
-  verwendet und hier die selbe Aussage mit der Basisrelation der Ruhe. Dadurch,
-  dass die hier verwendete Basisrelation nichts über die Art der erreichbaren
+  verwendet und hier dieselbe Aussage mit der Basisrelation der Ruhe. Dadurch,
+  dass die hier verwendete Basisrelation nichts über die Art des erreichbaren
   Fehlers in den Komponenten aussagt, kann der Beweis aus~\ref{lemVerfeinerung}
   nicht verwendet werden. Es kann also aus der lokalen Erreichbarkeit eines
   Errors in $S_1'$ und dem relationalen Zusammenhang von $S_1'\QBRel S_2'$ nur
@@ -397,15 +397,15 @@ werden.
       Vergleiche zum Transitionssystem in Abbildung~\ref{UohneE} nur die
       $\tau$-Schlingen ergänzt wurden, ändert sich nichts an den Fällen 2a) und
       2b). Die Begründungen, wieso in den beiden Fällen $\varepsilon\in
-      \PrET{}(U\|S_1)$ gilt bleibt also analog zum Beweis von
+      \PrET{}(U\|S_1)$ gilt, bleibt also analog zum Beweis von
       Lemma~\ref{lemVerfeinerung}. Durch die $\tau$-Schlingen wurde, genau wie
       im letzten Fall, nur erreicht, dass in einer Parallelkomposition mit $U$
       keine Ruhe-Zustände möglich sind. Es kann also auch hier aus der lokalen
       Erreichbarkeit eines Error-Zustandes in $U\|S_1$ auf die lokale
       Erreichbarkeit eines Errors in $U\|S_2$ geschlossen werden. Die weitere
-      Argumentation verläuft dann analog zu Fall 2 der selben Inklusion im
+      Argumentation verläuft dann analog zu Fall 2, derselben Inklusion im
       Beweis zu Lemma~\ref{lemVerfeinerung}. Da $\tau$s nur interne Aktionen
-      eines einzelnen Systems sind, verändert sich auch nichts an den Traces,
+      eines einzelnen Systems sind, verändert sich auch nichts an den Traces
       über die argumentiert wird. Es können zwar möglicherweise
       $\tau$-Transitionen ausgeführt werden, diese können jedoch weder zu einem
       Fehler führen noch beeinflussen, dass ein anderes Trace nicht ausgeführt
@@ -413,7 +413,7 @@ werden.
   \end{itemize}
 
   Nun wird mit dem zweiten Unterpunkt des ersten Beweispunktes begonnen. Genau
-  wie im Beweis zu~\ref{lemVerfeinerung} ist hier jedoch auf Grund des bereits
+  wie im Beweis zu~\ref{lemVerfeinerung} ist hier jedoch aufgrund des bereits
   geführten Beweisteils nur noch $L_1\backslash \ET{}_1\subseteq
   \EL{}_2$ zu zeigen. Es wird also für ein beliebig gewähltes $w\in
   L_1\backslash \ET{}_1$ gezeigt, dass dieses auch in $\EL{}_2$ enthalten
@@ -476,9 +476,9 @@ werden.
       dass $w$ in $\EL{}_2$ enthalten ist.
   \end{itemize}
 
-  So bleibt nun nur noch der letzte Beweispunkt zu zeigen, d.h.\ die Inklusion
-  $\QT{}_1\subseteq \QT{}_2$. Diese Inklusion kann jedoch noch, anlog zum Beweis
-  der Inklusion der error-gefluteten Sprachen, weiter eingeschränkt werden.
+  So bleibt nur noch der letzte Beweispunkt zu zeigen, d.h.\ die Inklusion
+  $\QT{}_1\subseteq \QT{}_2$. Diese Inklusion kann jedoch, anlog zum Beweis
+  der Inklusion der error-gefluteten Sprachen, noch weiter eingeschränkt werden.
   Da bereits bekannt ist, dass $\ET{}_1\subseteq\ET{}_2$ gilt, muss nur
   noch $\StQT{}_1\backslash \ET{}_1\subseteq \QT{}_2$ gezeigt werden.\\
   Es wird ein $w\in \StQT{}_1\backslash\ET{}_1$ gewählt und gezeigt, dass
@@ -521,7 +521,7 @@ werden.
       Lemma~\ref{lemRuheParallelkomp}, dass auch in $U\|S_1$ ein Ruhe-Zustand
       lokal erreichbar ist. Es muss also auch in $U\|S_2$ ein Fehler lokal
       erreichbar sein. Bei diesem Fehler kann es sich nun um Error oder Ruhe
-      handeln, dies ist jedoch Aufgrund der Definition der Menge \QT{} nicht
+      handeln, dies ist jedoch aufgrund der Definition der Menge \QT{} nicht
       relevant. Da für $U$ keine Transitionen möglich sind, kann nur
       $\varepsilon$ ein striktes Ruhetrace sein, falls es sich bei dem Fehler
       in $U\|S_2$ um einen lokal erreichbaren Ruhe-Zustand handelt. Somit folgt
@@ -572,7 +572,7 @@ werden.
       Aktionen handelt und $I_U\cap I=\emptyset$, folgt $w\in O_{U\|S_1}^*$ und
       $w\in \StQT{}(U\|S_1)$. Es kann also in der Parallelkomposition durch $w$
       ein Ruhe-Zustand lokal erreicht werden. Da $w\notin \ET{}_1$ gilt, kann
-      auf dem Weg, der mit $w$ im Transitionssystem $S_1$ zurück gelegt wird
+      auf dem Weg, der mit $w$ im Transitionssystem $S_1$ zurückgelegt wird,
       kein Error lokal erreicht werden. Es kann also weder von $S_1$ noch von
       $U$ ein Error auf diesem Weg geerbt werden und durch den Aufbau von $U$
       kann auch kein neuer Error entstehen. Da ein Ruhe-Zustand in $U\|S_1$
@@ -582,13 +582,13 @@ werden.
       Error handelt.
       \begin{itemize}
         \item Fall 2a) ($\varepsilon\in \ET{}(U\|S_2)$): Es handelt sich bei
-          dem lokal erreichbaren Fehler um einen Error. Es ist somit ist nicht
+          dem lokal erreichbaren Fehler um einen Error. Es ist somit nicht
           relevant, ob das $w$ ausführbar ist. Der Error kann sowohl von $S_2$
-          geerbt sein, wie auch durch fehlende synchronizations Möglichkeiten
+          geerbt sein, wie auch durch fehlende Synchronizationsmöglichkeiten
           als neuer Error in der Parallelkomposition entstanden sein. Es gilt
           also, dass bereits in $S_2$ ein Präfix von $w$ in $\ET{}_2$ enthalten
           ist, wegen des Beweises des ersten Punktes aus
-          Lemma~\ref{lemVerfeinerung} und da $U$ nur Synchronisations-Fehler
+          Lemma~\ref{lemVerfeinerung} und da $U$ nur Synchronisationsfehler
           auf dem Trace $w$ zulässt. Da die Menge \ET{} unter \cont{}
           abgeschlossen ist, gilt also auch $w\in \ET{}_2\subseteq \QT{}_2$.
         \item Fall 2b) (Ruhe-Zustand lokal erreichbar in $U\|S_2$ und
@@ -616,7 +616,7 @@ enthalten ist.
 
 \begin{proof}
   \glqq{}$\Leftarrow$\grqq{}: Nach Definition gilt $w\in\QT{}(S)$ mit $w\in
-  O^*$, genau dann wenn in $S$ ein Ruhe-Zustand oder ein Error-Zustand lokal
+  O^*$ genau dann, wenn in $S$ ein Ruhe-Zustand oder ein Error-Zustand lokal
   erreichbar ist. $S_1\QRel S_2$ impliziert, dass $w\in\QT{}_2$ gilt, wenn
   $w\in\QT{}_1$ gilt. Somit ist ein Ruhe-Zustand oder ein Error-Zustand nur dann in
   $S_1$ lokal erreichbar, wenn auch ein solcher in $S_2$ lokal erreichbar ist.
@@ -665,7 +665,7 @@ dargestellt.
 
 Aus Satz~\ref{satzQuiFullAbst} und Lemma~\ref{lemQuiVerfeinerung} erhält man
 das folgende Korollar. Angenommen man definiert, dass $S_1$ $S_2$ verfeinern
-soll, genau dann wenn für alle Partner \EIO{}s $U$, für die $S_2$ error- und
+soll genau dann, wenn für alle Partner \EIO{}s $U$ für die $S_2$ error- und
 ruhe-frei mit $U$ kommuniziert, folgt, dass $S_1$ ebenfalls error- und
 ruhe-frei mit $U$ kommuniziert. Dann wird auch diese Verfeinerung durch \QRel{}
 charakterisiert.
@@ -692,12 +692,12 @@ formuliert werden.
 \end{prop}
 
 \begin{proof}
-  Dass die Error-Erreichbarkeit unverändert bleibt unter Hiding wurde bereits
+  Dass die Error-Erreichbarkeit unverändert bleibt unter Hiding, wurde bereits
   im Beweis zu Proposition~\ref{propErBaIn} gezeigt. Mit der analogen
   Argumentation folgt auch, dass sich nichts an der Erreichbarkeit der
-  Ruhe-Zustände ändert. Es können durch Hiding nämlich nur Outputs verborgen
+  Ruhe-Zustände ändert. Es können durch Hiding nur Outputs verborgen
   werden, die bereits in der Menge der lokalen Aktionen enthalten sind. Die
-  Menge der Ruhe-Zustände kann sich durch das Internalisieren auch nicht
+  Menge der Ruhe-Zustände kann sich durch das Internalisieren nicht
   vergrößern oder verkleinern, wie oben bereits festgestellt. Also gilt: Wenn
   $S_i$ einen Error oder Ruhe-Zustand lokal erreichen kann, dann kann das auch
   $S_i/X$ und umgekehrt, da dabei nur $\tau$s durch Outputs ersetzt werden. Es
@@ -723,7 +723,7 @@ formuliert werden.
 \end{satz}
 
 \begin{proof}
-  Als erstes sollte man sich von der Richtigkeit der Aussagen (i) bis (iv)
+  Als Erstes sollte man sich von der Richtigkeit der Aussagen (i) bis (iv)
   überzeugen. Da jedoch im Beweis zu Satz~\ref{satzPraeInternalisierung}
   bereits die ersten drei Punkte gezeigt wurden, muss hier nur noch (iv)
   betrachtet werden.
@@ -737,8 +737,9 @@ formuliert werden.
   ist jedoch anzumerken, dass im Beweis zu Punkt (i) durch die Einschränkung
   des Traces immer noch der gleiche Zustand erreicht wird. Es folgt also
   insgesamt, dass $w:=w'_{\Sigma\backslash X}\in \QT{}(S/X)$ gilt.\\
-  Für ein $w\in\QT{}(S/X)$ kann ebenfalls wie im Beweis zu Punkt (i) und (iii)
-  durch ersetzen von $\tau$s im jeweiligen Ablauf ein Ablauf gefunden werden,
+  Für ein $w\in\QT{}(S/X)$ kann, ebenfalls wie im Beweis zu Punkt (i) und
+  (iii),
+  durch Ersetzen von $\tau$s im jeweiligen Ablauf ein Ablauf gefunden werden,
   der in $S$ enthalten ist. Es gibt also eine Erweiterung $w'$ von $w$ um
   Aktionen aus $X$, sodass diese in $\QT{}(S)$ enthalten ist.
 
@@ -755,7 +756,7 @@ formuliert werden.
 In Definition~\ref{defIntParal} wurde mit Hilfe des Internalisierungsoperator
 aus der Parallelkomposition ohne Verbergen die Parallelkomposition mit
 Verbergen der synchronisierten Aktionen nachgebildet. Es kann deren
-Eigenschaft als Präkongruenz aus den Präkongruenz-Eigenschaften von
+Eigenschaft als Präkongruenz aus den Präkongruenz\-eigenschaften von
 $\cdot\|\cdot$ und $\cdot /\cdot$ bezüglich \QRel{} aus der
 Proposition~\ref{propQuiPrae} und dem Satz~\ref{satzPraeInterQui} geschlossen
 werden.
