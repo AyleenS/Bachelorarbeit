@@ -2,9 +2,10 @@
 
 Interface-Automaten werden eingesetzt, um Verhalten zu modellieren und zu
 untersuchen. Sie sind eine abstrakte Beschreibung des Kommunikationsverhaltens
-eines Systems oder einer Komponente durch Inputs und Outputs. Es können dadurch
+eines Systems oder einer Komponente durch Inputs und Outputs. Es können durch
+Interface-Automaten
 parallel arbeitende Softwarekomponenten simuliert werden. Die Kommunikation
-zwischen den Systemen wird durch eine Parallelkomposition der Komponenten
+zwischen  Systemen wird durch eine Parallelkomposition der beteiligten Komponenten
 erreicht. Für die grundlegende Betrachtung wird hier ein Output bzw.\ eine
 interne Aktion als vom jeweiligen System
 kontrolliert angesehen und ein Input als von der Umwelt kontrolliert. Falls in
@@ -18,9 +19,9 @@ für die I/O-Automaten garantiert, in dem für alle Zustände alle Inputs mögli
 sind. In Interface-Automaten ist ein fehlender Input jedoch hervorgerufen durch
 die Voraussetzung, dass die Umwelt diesen Input in diesem Zustand nicht senden
 darf.\\
-So wie diese Interface-Automaten in~\cite{Alfaro2004} definiert sind, kann es
-in der Parallelkomposition von zwei Automaten zu Kommunikationsfehlern kommen.
-In dem eine Komponente einen Output macht, den die andere nicht als Input
+So wie die Interface-Automaten in~\cite{Alfaro2004} definiert sind, kann es
+in der Parallelkomposition von zwei dieser Automaten zu Kommunikationsfehlern
+kommen, in dem eine Komponente einen Output macht, den die andere nicht als Input
 aufnehmen kann. Diese Fehler-Zustände, die daraus entstehen, sind jedoch nicht
 zulässig und müssen inklusive aller Zustände, durch die man mit lokalen
 Aktionen einen dieser Fehler-Zustände erreichen kann, mit einer speziell definieren
@@ -36,7 +37,7 @@ Darüber sind dann Verfeinerungsrelationen möglich, diese sollen die
 Voraussetzung erfüllen, dass eine fehlerfrei Spezifikation nur durch ein
 fehlerfreies System verfeinert werden kann. Dies wird hier als Basisrelation
 verstanden, die durch die explizite Definition der jeweiligen Fehler-Art parametrisiert
-ist. Die Verfeinerungsrelation kann also auch als Implementierung aufgefasst
+ist. Die Verfeinerungsrelation kann auch als Implementierung aufgefasst
 werden.\\
 Da Modularität bzw.\ Austauschbarkeit der Komponenten gewünscht ist, sollte die
 Verfeinerungsrelationen eine Präkongruenz sein. Falls eine Komponente einer
@@ -71,7 +72,7 @@ Systeme die Möglichkeit für diesen Input haben.\\
 Dadurch dass die synchronisierten Aktionen nicht verborgen werden, wird hier
 ein Modell betrachtet, mit dem nicht nur zwei Systeme miteinander kommunizieren können,
 sondern beliebig viele. Ein Output eines Systems ist somit eine Art Multicast.
-Jedes System, das diesen Output als Input verarbeiten kann, empfängt ihn somit auch,
+Jedes System, das diesen Output als Input verarbeiten kann, empfängt ihn auch,
 da bei jeder Komposition der Output weitergeleitet wird an andere Systeme.
 Kann jedoch ein System den Output nicht als Input aufnehmen, wird dieses System von
 der Nachricht nicht beeinträchtigt.\\
@@ -79,7 +80,7 @@ Anschießend werden die Auswirkung von Hiding auf diese Struktur
 untersucht und somit das Verbergen in der Parallelkomposition nachgebildet.
 Durch das Hiding können Outputs durch interne Aktionen ersetzt werden. Es wird
 also die Kommunikation durch diesen Output mit anderen Systemen verboten, bzw.\
-der Kommunikationskanal wird geschlossen.\\
+der Kommunikationskanal wird geschlossen, da die Aktion internalisiert wird.\\
 Diese Art der Betrachtung der
 \EIO{}s wurde auch bereits in~\cite{Schlosser2012BA} gewählt, jedoch wurde
 diese Arbeit nicht als direkte Quelle genutzt, bis auf den Abschnitt des
@@ -87,7 +88,7 @@ Hidings. Die Feststellungen im Definitionskapitel und dem Kapitel über
 Errors stimmen mit dieser Quelle überein, jedoch wurden alle Beweise davon unabhängig neu
 geführt.\\
 In dieser Arbeit wird ein optimistischer Ansatz für die Erreichbarkeit
-der jeweils betrachteten Zuständen verwendet. Ein Zustand gilt nach der Definition in dieser
+der jeweils betrachteten Zustände verwendet. Ein Zustand gilt nach der Definition in dieser
 Arbeit als erreichbar, wenn er lokal erreicht
 werden kann, d.h.\ durch lokale Aktionen. Die Menge, bestehend aus der internen
 Aktion $\tau$ und den Output-Aktionen, wird hier als Menge der lokalen Aktionen

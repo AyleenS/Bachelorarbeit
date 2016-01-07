@@ -45,7 +45,7 @@ Systems verwendet.\\
 Die Elemente der Transitionsrelation $\delta$ werden wie folgt notieren:
 \begin{itemize}
   \item $p\overset{\alpha}{\rightarrow} q$ für $(p,\alpha ,q)\in\delta$,
-  \item $p\overset{\alpha}{\rightarrow}$ für $\exists q: (p,\alpha ,q)\in\delta$,
+  \item $p\overset{\alpha}{\rightarrow}$ für $\exists q \in Q: (p,\alpha ,q)\in\delta$,
   \item $p\overset{w}{\rightarrow} q$ für $p \overset{\alpha _1}{\rightarrow}
     p_1 \overset{\alpha _2}{\rightarrow} p_2\dots \overset{\alpha
     _n}{\rightarrow} q$ mit $w\in (\Sigma\cup\{\tau\})^*, w=\alpha _1\alpha
@@ -81,14 +81,15 @@ Outputs, wie in~\cite{Vogler2014EIO}, sondern im Fall von $I_1\cap I_2$ auch um
 Inputs. Falls es bei Inputs aus $I_1\cap I_2$ zu einem fehlenden Input für die
 Synchronisation kommt, ist die Transition für die Parallelkomposition nicht
 ausführbar, jedoch handelt es sich auch nicht um einen neuen Error, da es
-zwischen den beiden Systemen dadurch nicht zu einem Kommunikations-Fehler
+zwischen den beiden Systemen dadurch nicht zu einem Kommunikationsfehler
 kommt. Die beiden Transitionssysteme können über die beiden Inputs nicht
 miteinander kommunizieren, sondern nur mit anderen Systemen.
 
 \begin{Def}[Parallelkomposition]
 \label{DefParallelkomposition}
   Zwei \EIO{}s $S_1, S_2$ sind \emph{komponierbar}, falls
-  $O_1\cap O_2=\emptyset$ gilt. Die \emph{Parallelkomposition} ist
+  $O_1\cap O_2=\emptyset$ gilt. Die \emph{Parallelkomposition} der \EIO{}s
+  $S_1$ und $S_2$ ist
   $S_{12}:=S_1\|S_2=(Q,I,O,\delta ,q_0,E)$ mit den Komponenten:
   \begin{itemize}
     \item $Q=Q_1\times Q_2$,
@@ -107,11 +108,11 @@ miteinander kommunizieren, sondern nur mit anderen Systemen.
         E=&(Q_1\times E_2)\cup (E_1\times Q_2)
         &&\phantom{neue}\mathrm{geerbte}~\mathrm{Errors}\\
         &\left.\begin{aligned}
-        &\cup\{(q_1,q_2)\mid \exists a\in O_1\cap I_2: q_1\overset{a}{\rightarrow}\wedge
-      q_2\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\}\\
-      &\cup\{(q_1,q_2)\mid \exists a\in I_1\cap O_2:
+        &\cup\left\{(q_1,q_2)\mid \exists a\in O_1\cap I_2: q_1\overset{a}{\rightarrow}\wedge
+      q_2\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\right\}\\
+      &\cup\left\{(q_1,q_2)\mid \exists a\in I_1\cap O_2:
 q_1\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\wedge
-q_2\overset{a}{\rightarrow}\}
+q_2\overset{a}{\rightarrow}\right\}
 \end{aligned}\hspace{1cm}\right\}
       &&\phantom{neue}\mathrm{neue}~\mathrm{Errors}.\\
   \end{aligned}$
@@ -120,7 +121,7 @@ q_2\overset{a}{\rightarrow}\}
   S_2)=(I_1\cap O_2)\cup(O_1\cap I_2)\cup (I_1\cap I_2)$ nicht versteckt,
   sondern als Outputs bzw.\ im Fall von $I_1\cap I_2$ als Inputs der
   Komposition beibehalten.\\
-  $S_1$ wird ein \emph{Partner} von $S_2$ genannt, wenn ihre
+  $S_1$ wird \emph{Partner} von $S_2$ genannt, wenn ihre
   Parallelkomposition geschlossen ist, d.h.\ wenn sie duale Signaturen
   $Sig(S_1)=(I,O)$ und $Sig(S_2)=(O,I)$ haben.\\
   Die oben definierte Notation $S_{12}=S_1\|S_2$ wird auch für andere
@@ -173,12 +174,13 @@ _i}=w_i$ für $i=1,2$. Umgekehrt sind zwei Abläufe von $S_1$ und $S_2$ der Form
 $p_i \overset{w_i}{\Rightarrow} q_i$ mit $w| _{\Sigma _i}= w_i$ für $i=1,2$,
 Projektionen von einem Ablauf in $S_{12}$ der Form $(p_1,p_2)
 \overset{w}{\Rightarrow} (q_1.q_2)$. Es ist dafür nötig, dass die Abläufe der
-beiden Systeme und die Systeme selbst komponierbar sind. Das $w$ wurde so
-gewählt, dass die Projektion auf die einzelnen Alphabete die jeweiligen
-Wörter ergibt. Falls keine internen Aktionen zugelassen wären, würde sogar nur
-genau ein Ablauf möglich sein in $S_{12}$. Da jedoch auch interne Aktionen
-zulässig sind, sind mehrere Abläufe möglich, da nicht klar ist, wann ein $\tau$
-in einem Trace ausgeführt wird. Daraus ergibt sich das folgende Lemma.
+beiden Systeme $S_1$, $S_2$ und die Systeme selbst komponierbar sind. Das $w$ wurde so
+gewählt, dass die Projektion auf die einzelnen Alphabete $\Sigma _1$, $\Sigma
+_2$ die jeweiligen Wörter $w_1$, $w_2$ ergibt. Falls keine internen Aktionen
+zugelassen wären, würde sogar nur genau ein Ablauf möglich sein in $S_{12}$. Da
+jedoch auch interne Aktionen zulässig sind, sind mehrere Abläufe möglich, da
+nicht klar ist, wann ein $\tau$ in einem Trace ausgeführt wird. Daraus ergibt
+sich das folgende Lemma.
 
 \begin{lem}[Sprache der Parallelkomposition]
 \label{LemmaSprache}
