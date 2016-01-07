@@ -12,7 +12,7 @@ Eigenschaft wird hier zunächst nicht betrachtet.\\
 Zustände, die keine Outputs ohne einen Input ausführen können, werden als
 in einer Art Verklemmung angesehen, da sie ohne Zutun von Außen den Zustand
 nicht mehr verlassen können. So ein Zustand hat also keine
-Transitionsmöglichkeiten für einen Output. Falls einer dieser Zustände
+Transitionsmöglichkeiten für einen Output. Falls dieser Zustand
 die Möglichkeit für eine interne Aktion hat, darf dadurch niemals ein Zustand
 erreicht werden, von dem aus ein Output möglich ist. Ein Zustand, der keine
 Outputs und $\tau$s ausführen kann, ist also ein Deadlock-Zustand, in denen das
@@ -152,10 +152,11 @@ relevant.
       Synch(S_1,S_2)$): Der Output $a$ ist in diesem Fall durch Synchronisation
       von einem Output mit einem Input entstanden. \OBdA{} gilt $a\in O_1\cap
       I_2$. Für die einzelnen Systeme muss also gelten, dass $q_1
-      \overset{a}{\rightarrow}$ und $q_2 \overset{a}{\rightarrow}$ gilt. Die
+      \overset{a}{\rightarrow}$ und $q_2 \overset{a}{\rightarrow}$. Die
       Transition für das System $S_1$ ist jedoch in der Voraussetzung
       ausgeschlossen worden. Somit ist es nicht möglich, dass $S_{12}$ diese
-      Transition für den Zustand $(q_1,q_2)$ ausführen kann.
+      in diesem Fall angenommene Transition für den Zustand $(q_1,q_2)$
+      ausführen kann.
   \end{itemize}
   Da alle diese Fälle zu einem Widerspruch mit der Voraussetzung führen folgt,
   dass bereits die Annahme, dass der Zustand $(q_1,q_2)$ nicht ruhig ist,
@@ -189,7 +190,8 @@ relevant.
       Synch(S_1,S_2)$ und $q_2
       \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$\Big):
       Da $S_2$ diese Transition nicht ausführen kann, handelt es sich hier um
-      einen neuen Error, da die Synchronisation an dieser Stelle nicht möglich
+      einen neuen Error, da die Synchronisation des Outputs $a$ von $S_1$ mit
+      einem Input $a$ von $S_2$ an dieser Stelle nicht möglich
       ist. Es würde also $(q_1,q_2)\in E_{12}$ gelten, dies wurde jedoch in der
       Voraussetzung bereits ausgeschlossen. Somit ist dieser Fall nicht
       möglich.
@@ -322,13 +324,13 @@ werden.
   wurde dort als Voraussetzung $U\|S_1\EBRel U\|S_2$ für alle Partner $U$
   verwendet und hier dieselbe Aussage mit der Basisrelation der Ruhe. Dadurch,
   dass die hier verwendete Basisrelation nichts über die Art des erreichbaren
-  Fehlers in den Komponenten aussagt, kann der Beweis aus~\ref{lemVerfeinerung}
+  Fehlers in den Komponenten aussagt, kann der Beweis aus Lemma~\ref{lemVerfeinerung}
   nicht verwendet werden. Es kann also aus der lokalen Erreichbarkeit eines
   Errors in $S_1'$ und dem relationalen Zusammenhang von $S_1'\QBRel S_2'$ nur
   geschlossen werden, dass in $S_2'$ auch ein Fehler lokal erreichbar ist,
-  jedoch kann dieser Fehler ein Error oder ein Ruhe-Zustand sein. Analog
+  jedoch kann dieser Fehler Error oder Ruhe sein. Analog
   verhält es sich, wenn in $S_1'$ ein Ruhe-Zustand lokal erreichbar ist.\\
-  Es muss also für den ersten Punkt folgendes nachgewiesen werden:
+  Es muss also für den ersten Punkt noch folgendes nachgewiesen werden:
   \begin{itemize}
     \item $\ET{}_1\subseteq \ET{}_2$,
     \item $\EL{}_1\subseteq \EL{}_2$.
@@ -343,7 +345,7 @@ werden.
     \item Fall 1 ($w=\varepsilon$): Es handelt sich um einen lokal erreichbaren
       Error in $S_1$. Für $U$ wird ein Transitionssystem verwendet, das nur aus
       dem Startzustand, einer Schleife für alle Inputs $x\in I_U$ und einer
-      Schleife für $\tau$ besteht. Somit kann $S_1$ die im Prinzip gleichen
+      Schlinge für $\tau$ besteht. Somit kann $S_1$ die im Prinzip gleichen
       Error-Zustände lokal erreichen wie $U\|S_1$. Es folgt also, dass in $U\|S_2$ ein Fehler lokal
       erreichbar ist. Es kann sich bei dem Fehler nur um einen Error handeln,
       da es in der Komposition mit $U$ keine Ruhe-Zustände geben kann. Da $U$
@@ -397,7 +399,7 @@ werden.
       Vergleiche zum Transitionssystem in Abbildung~\ref{UohneE} nur die
       $\tau$-Schlingen ergänzt wurden, ändert sich nichts an den Fällen 2a) und
       2b). Die Begründungen, wieso in den beiden Fällen $\varepsilon\in
-      \PrET{}(U\|S_1)$ gilt, bleibt also analog zum Beweis von
+      \PrET{}(U\|S_1)$ gilt, bleibt also analog zum Beweis  des ersten Punktes von
       Lemma~\ref{lemVerfeinerung}. Durch die $\tau$-Schlingen wurde, genau wie
       im letzten Fall, nur erreicht, dass in einer Parallelkomposition mit $U$
       keine Ruhe-Zustände möglich sind. Es kann also auch hier aus der lokalen
@@ -423,7 +425,8 @@ werden.
       auch hier, dass $\varepsilon$ immer in $\EL{}_2$ enthalten ist.
     \item Fall 2 ($w=x_1\dots x_n$ mit $n\geq 1$): Die Konstruktion des
       Partners $U$ weicht wie im letzten Beweisteil nur durch die
-      $\tau$-Schleifen an den Zuständen des Transitionssystems vom Beweis zu
+      $\tau$-Schleifen an den Zuständen des Transitionssystems vom Beweis es
+      zweiten Punktes aus
       Lemma~\ref{lemVerfeinerung} ab. Somit ist der Partner $U$ dann wie folgt
       definiert (siehe dazu auch Abbildung~\ref{UmitEundTau}):
       \begin{itemize}
@@ -471,7 +474,8 @@ werden.
       \end{figure}
       Da durch die $\tau$-Schlingen an den Zuständen wie oben vermieden wird,
       dass es in einer Komposition mit $U$ und auch in $U$ selbst Ruhe-Zustände
-      gibt, verläuft der Rest des Beweises dieses Punktes analog zum Beweis von
+      gibt, verläuft der Rest des Beweises dieses Punktes analog zum Beweis der
+      selben Inklusionsrichtung von
       Lemma~\ref{lemVerfeinerung}. Und somit gilt für alle Fälle (2a) bis 2d)),
       dass $w$ in $\EL{}_2$ enthalten ist.
   \end{itemize}
@@ -511,18 +515,19 @@ werden.
                 (0) edge node {$x?\in I_U$} (q)
                 (q) edge [loop right] node {$x?\in I_U, \tau$} (q);
         \end{tikzpicture}
-        \caption{}
+        \caption{$q_0$ ist der einzige Ruhe-Zustand}
 \label{UepsQET}
       \end{center}
       \end{figure}
-      Es ist somit ebenfalls in $U$ ein Ruhe-Zustand lokal erreichbar.
+      Es ist somit ebenfalls in $U$ ein Ruhe-Zustand intern erreichbar.
       Zusätzlich wird durch den Aufbau von $U$ verhindert, dass neue Errors in
-      der Komposition entstehen können. Damit folgt mit
+      der Komposition entstehen können. Damit folgt mit dem ersten Punkt von
       Lemma~\ref{lemRuheParallelkomp}, dass auch in $U\|S_1$ ein Ruhe-Zustand
       lokal erreichbar ist. Es muss also auch in $U\|S_2$ ein Fehler lokal
       erreichbar sein. Bei diesem Fehler kann es sich nun um Error oder Ruhe
       handeln, dies ist jedoch aufgrund der Definition der Menge \QT{} nicht
-      relevant. Da für $U$ keine Transitionen möglich sind, kann nur
+      relevant. Da in $U$ nur durch $\varepsilon$ ein Ruhezustand erreichbar
+      ist, kann nur
       $\varepsilon$ ein striktes Ruhetrace sein, falls es sich bei dem Fehler
       in $U\|S_2$ um einen lokal erreichbaren Ruhe-Zustand handelt. Somit folgt
       in beiden Fällen, dass $w$ in $\QT{}_2$ enthalten ist.
@@ -561,12 +566,13 @@ werden.
                 (n) edge [bend left] node [below,sloped] {$x?\in I_U$} (q)
                 (q) edge [loop below] node {$x?\in I_U, \tau$} (q);
         \end{tikzpicture}
-        \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$}
+        \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$, $q_n$
+        ist der einzige Ruhe-Zustand}
 \label{UohneEmitI}
       \end{center}
       \end{figure}
       Der Zustand $q_n$ aus $U$ ist der einzige ruhige Zustand in $U$.
-      Es gilt wegen Lemma~\ref{lemRuheParallelkomp}, dass auch in der
+      Es gilt wegen des ersten Punktes von Lemma~\ref{lemRuheParallelkomp}, dass auch in der
       Parallelkomposition $U\|S_1$ ein Ruhe-Zustand mit $w$ erreicht wird. Da
       es sich bei allen in $w$ befindlichen Aktionen um synchronisierte
       Aktionen handelt und $I_U\cap I=\emptyset$, folgt $w\in O_{U\|S_1}^*$ und
@@ -575,7 +581,8 @@ werden.
       auf dem Weg, der mit $w$ im Transitionssystem $S_1$ zurückgelegt wird,
       kein Error lokal erreicht werden. Es kann also weder von $S_1$ noch von
       $U$ ein Error auf diesem Weg geerbt werden und durch den Aufbau von $U$
-      kann auch kein neuer Error entstehen. Da ein Ruhe-Zustand in $U\|S_1$
+      kann auch kein neuer Error in der Parallelkomposition beider Systeme
+      entstehen. Da ein Ruhe-Zustand in $U\|S_1$
       lokal erreichbar ist, muss auch ein Fehler in $U\|S_2$ lokal erreichbar
       sein. Hier kann jedoch zunächst keine Aussage darüber getroffen werden,
       ob das $w$ ausführbar ist und ob es sich bei dem Fehler um Ruhe oder
@@ -607,11 +614,10 @@ Mit dem folgenden Satz wird festgehalten, dass mit \QRel{} die gröbste
 Präkongruenz charakterisiert wurde bezüglich $\cdot\|\cdot$, die in \QBRel{}
 enthalten ist.
 
-\begin{satz}[Full Abstractness für Ruhe-Semantik]
+\begin{satz}[Vollständige Abstraktheit für Ruhe-Semantik]
 \label{satzQuiFullAbst}
   Seien $S_1$ und $S_2$ zwei \EIO{}s mit derselben Signatur. Dann gilt
-  $S_1\QCRel S_2\Leftrightarrow S_1\QRel S_2$, insbesondere ist \QRel{} eine
-  Präkongruenz.
+  $S_1\QCRel S_2\Leftrightarrow S_1\QRel S_2$.
 \end{satz}
 
 \begin{proof}
@@ -620,17 +626,18 @@ enthalten ist.
   erreichbar ist. $S_1\QRel S_2$ impliziert, dass $w\in\QT{}_2$ gilt, wenn
   $w\in\QT{}_1$ gilt. Somit ist ein Ruhe-Zustand oder ein Error-Zustand nur dann in
   $S_1$ lokal erreichbar, wenn auch ein solcher in $S_2$ lokal erreichbar ist.
-  Daraus folgt, dass $S_1\QBRel S_2$ gilt. Somit ist \QRel{} in \QBRel{}
+  Daraus folgt, dass $S_1\QBRel S_2$ gilt. Es ist also \QRel{} in \QBRel{}
   enthalten. In Proposition~\ref{propQuiPrae} wurde festgestellt, dass \QRel{}
-  eine Präkongruenz ist. Da jedoch \QCRel{} nach Definition die gröbste
+  eine Präkongruenz ist. Da jedoch \QCRel{} nach Definition~\ref{DefQuiBasisrel} die gröbste
   Präkongruenz bezüglich $\cdot\|\cdot$ ist, die in \QBRel{} enthalten ist,
   muss \QRel{} in \QCRel{} enthalten sein. Es folgt also aus $S_1\QRel S_2$,
-  dass auch der relationale Zusammenhang $S_1\QCRel S_2$ gilt.
+  dass auch $S_1\QCRel S_2$ gilt.
 
   \glqq{}$\Rightarrow$\grqq{}: Durch die Definition von \QCRel{} als
   Präkongruenz in~\ref{DefQuiBasisrel} folgt aus $S_1\QCRel{} S_2$, dass
-  $U\|S_1\QCRel U\|S_2$ für alle EIOs $U$ gilt, die mit $S_1$ komponierbar sind.
-  Somit folgt auch die Gültigkeit von $U\|S_1\QBRel U\|S_2$ für alle diese EIOs
+  $U\|S_1\QCRel U\|S_2$ für alle \EIO{}s $U$ gilt, die mit $S_1$ komponierbar sind.
+  Da \QCRel{} nach Definition in \QBRel{} enthalte ist, folgt auch die
+  Gültigkeit von $U\|S_1\QBRel U\|S_2$ für alle diese \EIO{}s
   $U$. Mit Lemma~\ref{lemQuiVerfeinerung} folgt dann $S_1\QRel{} S_2$.
 \end{proof}
 
@@ -738,7 +745,7 @@ formuliert werden.
   des Traces immer noch der gleiche Zustand erreicht wird. Es folgt also
   insgesamt, dass $w:=w'_{\Sigma\backslash X}\in \QT{}(S/X)$ gilt.\\
   Für ein $w\in\QT{}(S/X)$ kann, ebenfalls wie im Beweis zu Punkt (i) und
-  (iii),
+  (ii),
   durch Ersetzen von $\tau$s im jeweiligen Ablauf ein Ablauf gefunden werden,
   der in $S$ enthalten ist. Es gibt also eine Erweiterung $w'$ von $w$ um
   Aktionen aus $X$, sodass diese in $\QT{}(S)$ enthalten ist.
