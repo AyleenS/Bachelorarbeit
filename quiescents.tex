@@ -490,123 +490,83 @@ werden.
   Durch die Wahl des $w$s wird vom Startzustand von $S_1$ durch das Wort $w$
   ein ruhiger Zustand erreichbar. Dies hat nur Auswirkungen auf die
   Parallelkomposition $U\|S_1$, wenn in $U$ ebenfalls ein Ruhe-Zustand durch
-  $w$ erreichbar ist.
+  $w$ erreichbar ist.\\
+  Das betrachtete $w$ hat also die Form $w=x_1\dots x_n\in \Sigma ^*$ mit
+  $n\geq 0$. Es wird der folgende Partner $U$ betrachtet (siehe auch
+  Abbildung~\ref{UohneEmitI}):
   \begin{itemize}
-    \item Fall 1 ($w=\varepsilon$): Es ist ein Ruhe-Zustand intern erreichbar in
-      $S_1$, da jedoch $\varepsilon\notin \ET{}_1$ gilt, ist kein Error
-      lokal erreichbar. Für $U$ wird das folgende Transitionssystem verwendet
-      (siehe auch Abbildung~\ref{UepsQET}):
-      \begin{itemize}
-        \item $Q_U=\{q_0, q\}$,
-        \item $q_{0U}=q_0$,
-        \item $E_U=\emptyset$,
-        \item $\begin{aligned}[t]
-            \delta _U=&\{(q_0,x,q)\mid x\in I_U\}\\
-                      &\cup\{(q,x,q)\mid x\in I_U\cup\{\tau\}\}.
-          \end{aligned}$
-      \end{itemize}
-      \begin{figure} [h!tbp]
-      \begin{center}
-        \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
-          \node (0) [rectangle, dashed, draw]{$q_0\in Qui_U$};
-          \node (q) [right of=0] {$q$};
+    \item $Q_U=\{q_0,q_1,\dots ,q_n, q\}$,
+    \item $q_{0U}=q_0$,
+    \item $E_U=\emptyset$,
+    \item $\begin{aligned}[t]
+        \delta _U=&\{(q_i,x_{i+1},q_{i+1})\mid  0\leq i< n\}\\
+                  &\cup\{(q_i,x,q)\mid  x\in I_U\backslash\{x_{i+1}\}, 0\leq i< n\}\\
+                  &\cup\{(q_i,\tau,q_i)\mid 0\leq i< n\}\\
+                  &\cup\{(q_n,x,q)\mid x\in I_U\}\\
+                  &\cup\{(q,\alpha,q)\mid \alpha\in I_U\cup\{\tau\}\}.
+    \end{aligned}$
+  \end{itemize}
+  \begin{figure} [h!tbp]
+  \begin{center}
+    \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
+      \node (0) {$q_0$};
+      \node (1) [right of=0] {$q_1$};
+      \node (dots) [right of=1] {$\dots$};
+      \node (n) [right of=dots, rectangle, dashed, draw] {$q_n\in Qui_U$};
+      \node (q) at ($(1)!0.5!(dots) + (0,-3)$) {$q$};
 
-          \path ($ (0) + (-2,0) $) edge (0)
-                (0) edge node {$x?\in I_U$} (q)
-                (q) edge [loop right] node {$x?\in I_U, \tau$} (q);
-        \end{tikzpicture}
-        \caption{$q_0$ ist der einzige Ruhe-Zustand}
-\label{UepsQET}
-      \end{center}
-      \end{figure}
-      Es ist somit ebenfalls in $U$ ein Ruhe-Zustand intern erreichbar.
-      Zusätzlich wird durch den Aufbau von $U$ verhindert, dass neue Errors in
-      der Komposition entstehen können. Damit folgt mit dem ersten Punkt von
-      Lemma~\ref{lemRuheParallelkomp}, dass auch in $U\|S_1$ ein Ruhe-Zustand
-      lokal erreichbar ist. Es muss also auch in $U\|S_2$ ein Fehler lokal
-      erreichbar sein. Bei diesem Fehler kann es sich nun um Error oder Ruhe
-      handeln, dies ist jedoch aufgrund der Definition der Menge \QT{} nicht
-      relevant. Da in $U$ nur durch $\varepsilon$ ein Ruhezustand erreichbar
-      ist, kann nur
-      $\varepsilon$ ein striktes Ruhetrace sein, falls es sich bei dem Fehler
-      in $U\|S_2$ um einen lokal erreichbaren Ruhe-Zustand handelt. Somit folgt
-      in beiden Fällen, dass $w$ in $\QT{}_2$ enthalten ist.
-    \item Fall 2 ($w=x_1\dots x_n\in \Sigma ^+$ mit $n\geq 1$): Es wird der
-      folgende Partner $U$ betrachtet (siehe auch Abbildung~\ref{UohneEmitI}):
-      \begin{itemize}
-        \item $Q_U=\{q_0,q_1,\dots ,q_n, q\}$,
-        \item $q_{0U}=q_0$,
-        \item $E_U=\emptyset$,
-        \item $\begin{aligned}[t]
-            \delta _U=&\{(q_i,x_{i+1},q_{i+1})\mid  0\leq i< n\}\\
-                      &\cup\{(q_i,x,q)\mid  x\in I_U\backslash\{x_{i+1}\}, 0\leq i< n\}\\
-                      &\cup\{(q_i,\tau,q_i)\mid 0\leq i< n\}\\
-                      &\cup\{(q_n,x,q)\mid x\in I_U\}\\
-                      &\cup\{(q,\alpha,q)\mid \alpha\in I_U\cup\{\tau\}\}.
-        \end{aligned}$
-      \end{itemize}
-      \begin{figure} [h!tbp]
-      \begin{center}
-        \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
-          \node (0) {$q_0$};
-          \node (1) [right of=0] {$q_1$};
-          \node (dots) [right of=1] {$\dots$};
-          \node (n) [right of=dots, rectangle, dashed, draw] {$q_n\in Qui_U$};
-          \node (q) at ($(1)!0.5!(dots) + (0,-3)$) {$q$};
-
-          \path ($ (0) + (-1,0) $) edge (0)
-                (0) edge node {$x_1$} (1)
-                    edge [loop above] node {$\tau$} (0)
-                    edge [bend right] node [below, sloped] {$x?\neq x_1$} (q)
-                (1) edge node {$x_2$} (dots)
-                    edge [loop above] node {$\tau$} (1)
-                    edge [below, sloped] node {$x?\neq x_2$} (q)
-                (dots) edge node {$x_n$} (n)
-                       edge [dashed] (q)
-                (n) edge [bend left] node [below,sloped] {$x?\in I_U$} (q)
-                (q) edge [loop below] node {$x?\in I_U, \tau$} (q);
-        \end{tikzpicture}
-        \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$, $q_n$
-        ist der einzige Ruhe-Zustand}
+      \path ($ (0) + (-1,0) $) edge (0)
+            (0) edge node {$x_1$} (1)
+                edge [loop above] node {$\tau$} (0)
+                edge [bend right] node [below, sloped] {$x?\neq x_1$} (q)
+            (1) edge node {$x_2$} (dots)
+                edge [loop above] node {$\tau$} (1)
+                edge [below, sloped] node {$x?\neq x_2$} (q)
+            (dots) edge node {$x_n$} (n)
+                   edge [dashed] (q)
+            (n) edge [bend left] node [below,sloped] {$x?\in I_U$} (q)
+            (q) edge [loop below] node {$x?\in I_U, \tau$} (q);
+    \end{tikzpicture}
+    \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$, $q_n$
+    ist der einzige Ruhe-Zustand}
 \label{UohneEmitI}
-      \end{center}
-      \end{figure}
-      Der Zustand $q_n$ aus $U$ ist der einzige ruhige Zustand in $U$.
-      Es gilt wegen des ersten Punktes von Lemma~\ref{lemRuheParallelkomp}, dass auch in der
-      Parallelkomposition $U\|S_1$ ein Ruhe-Zustand mit $w$ erreicht wird. Da
-      es sich bei allen in $w$ befindlichen Aktionen um synchronisierte
-      Aktionen handelt und $I_U\cap I=\emptyset$, folgt $w\in O_{U\|S_1}^*$ und
-      $w\in \StQT{}(U\|S_1)$. Es kann also in der Parallelkomposition durch $w$
-      ein Ruhe-Zustand lokal erreicht werden. Da $w\notin \ET{}_1$ gilt, kann
-      auf dem Weg, der mit $w$ im Transitionssystem $S_1$ zurückgelegt wird,
-      kein Error lokal erreicht werden. Es kann also weder von $S_1$ noch von
-      $U$ ein Error auf diesem Weg geerbt werden und durch den Aufbau von $U$
-      kann auch kein neuer Error in der Parallelkomposition beider Systeme
-      entstehen. Da ein Ruhe-Zustand in $U\|S_1$
-      lokal erreichbar ist, muss auch ein Fehler in $U\|S_2$ lokal erreichbar
-      sein. Hier kann jedoch zunächst keine Aussage darüber getroffen werden,
-      ob das $w$ ausführbar ist und ob es sich bei dem Fehler um Ruhe oder
-      Error handelt.
-      \begin{itemize}
-        \item Fall 2a) ($\varepsilon\in \ET{}(U\|S_2)$): Es handelt sich bei
-          dem lokal erreichbaren Fehler um einen Error. Es ist somit nicht
-          relevant, ob das $w$ ausführbar ist. Der Error kann sowohl von $S_2$
-          geerbt sein, wie auch durch fehlende Synchronizationsmöglichkeiten
-          als neuer Error in der Parallelkomposition entstanden sein. Es gilt
-          also, dass bereits in $S_2$ ein Präfix von $w$ in $\ET{}_2$ enthalten
-          ist, wegen des Beweises des ersten Punktes aus
-          Lemma~\ref{lemVerfeinerung} und da $U$ nur Synchronisationsfehler
-          auf dem Trace $w$ zulässt. Da die Menge \ET{} unter \cont{}
-          abgeschlossen ist, gilt also auch $w\in \ET{}_2\subseteq \QT{}_2$.
-        \item Fall 2b) (Ruhe-Zustand lokal erreichbar in $U\|S_2$ und
-          $\varepsilon\notin \ET{}(U\|S_2)$): Da in $U$
-          nur durch $w$ ein ruhiger Zustand erreicht werden kann, muss es sich
-          bei dem lokal erreichbaren Ruhe-Zustand in $U\|S_2$ um einen handeln,
-          der mit $w$ erreicht werden kann. Mit Lemma~\ref{lemRuheParallelkomp}
-          kann somit gefolgert werden, dass auch in $S_2$ ein Ruhe-Zustand mit
-          $w$ erreichbar sein muss. Es gilt also $w\in \StQT{}_2\subseteq
-          \QT{}_2$.
-      \end{itemize}
+  \end{center}
+  \end{figure}
+  Der Zustand $q_n$ aus $U$ ist der einzige ruhige Zustand in $U$. Es gilt
+  wegen des ersten Punktes von Lemma~\ref{lemRuheParallelkomp}, dass auch in
+  der Parallelkomposition $U\|S_1$ ein Ruhe-Zustand mit $w$ erreicht wird. Da
+  es sich bei allen in $w$ befindlichen Aktionen um synchronisierte
+  Aktionen handelt und $I_U\cap I=\emptyset$, folgt $w\in O_{U\|S_1}^*$ und
+  $w\in \StQT{}(U\|S_1)$. Es kann also in der Parallelkomposition durch $w$
+  ein Ruhe-Zustand lokal erreicht werden. Da $w\notin \ET{}_1$ gilt, kann
+  auf dem Weg, der mit $w$ im Transitionssystem $S_1$ zurückgelegt wird,
+  kein Error lokal erreicht werden. Es kann also weder von $S_1$ noch von
+  $U$ ein Error auf diesem Weg geerbt werden und durch den Aufbau von $U$
+  kann auch kein neuer Error in der Parallelkomposition beider Systeme
+  entstehen. Da ein Ruhe-Zustand in $U\|S_1$
+  lokal erreichbar ist, muss auch ein Fehler in $U\|S_2$ lokal erreichbar
+  sein. Hier kann jedoch zunächst keine Aussage darüber getroffen werden,
+  ob das $w$ ausführbar ist und ob es sich bei dem Fehler um Ruhe oder
+  Error handelt.
+  \begin{itemize}
+    \item Fall a) ($\varepsilon\in \ET{}(U\|S_2)$): Es handelt sich bei
+      dem lokal erreichbaren Fehler um einen Error. Es ist somit nicht
+      relevant, ob das $w$ ausführbar ist. Der Error kann sowohl von $S_2$
+      geerbt sein, wie auch durch fehlende Synchronizationsmöglichkeiten
+      als neuer Error in der Parallelkomposition entstanden sein. Es gilt
+      also, dass bereits in $S_2$ ein Präfix von $w$ in $\ET{}_2$ enthalten
+      ist, wegen des Beweises des ersten Punktes aus
+      Lemma~\ref{lemVerfeinerung} und da $U$ nur Synchronisationsfehler
+      auf dem Trace $w$ zulässt. Da die Menge \ET{} unter \cont{}
+      abgeschlossen ist, gilt also auch $w\in \ET{}_2\subseteq \QT{}_2$.
+    \item Fall b) (Ruhe-Zustand lokal erreichbar in $U\|S_2$ und
+      $\varepsilon\notin \ET{}(U\|S_2)$): Da in $U$
+      nur durch $w$ ein ruhiger Zustand erreicht werden kann, muss es sich
+      bei dem lokal erreichbaren Ruhe-Zustand in $U\|S_2$ um einen handeln,
+      der mit $w$ erreicht werden kann. Mit Lemma~\ref{lemRuheParallelkomp}
+      kann somit gefolgert werden, dass auch in $S_2$ ein Ruhe-Zustand mit
+      $w$ erreichbar sein muss. Es gilt also $w\in \StQT{}_2\subseteq
+      \QT{}_2$.
   \end{itemize}
 \end{proof}
 
