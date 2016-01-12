@@ -18,7 +18,8 @@ Abwesenheit dieser Kommunikationsfehler
 für die I/O-Automaten garantiert, in dem für alle Zustände alle Inputs möglich
 sind. In Interface-Automaten ist ein fehlender Input jedoch hervorgerufen durch
 die Voraussetzung, dass die Umwelt diesen Input in diesem Zustand nicht senden
-darf.\\
+darf. Es ist also nicht sinnvoll, für die Vermeidung von Kommunikationsfehler
+in Interface-Automaten, alle Inputs für alle Zustände zuzulassen.\\
 So wie die Interface-Automaten in~\cite{Alfaro2004} definiert sind, kann es
 in der Parallelkomposition von zwei dieser Automaten zu Kommunikationsfehlern
 kommen, in dem eine Komponente einen Output macht, den die andere nicht als Input
