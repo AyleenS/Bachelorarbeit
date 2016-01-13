@@ -1,18 +1,19 @@
 \chapter{Einleitung}
 
-Interface-Automaten werden eingesetzt, um Verhalten zu modellieren und zu
-untersuchen. Sie sind eine abstrakte Beschreibung des Kommunikationsverhaltens
+Interface-Automaten werden im Allgemeinen dafür eingesetzt, um Verhalten zu modellieren und zu
+untersuchen. Sie beschreiben abstrakt des Kommunikationsverhaltens
 eines Systems oder einer Komponente durch Inputs und Outputs. Es können durch
 Interface-Automaten
 parallel arbeitende Softwarekomponenten simuliert werden. Die Kommunikation
 zwischen  Systemen wird durch eine Parallelkomposition der beteiligten Komponenten
-erreicht. Für die grundlegende Betrachtung wird hier ein Output bzw.\ eine
+erreicht. Grundsätzlich wird hier ein Output bzw.\ eine
 interne Aktion als vom jeweiligen System
 kontrolliert angesehen und ein Input als von der Umwelt kontrolliert. Falls in
 einer Parallelkomposition ein Output von einem System ausgeführt wird, muss
-dieser von dem anderen beteiligten System durch einen
-Input synchronisiert werden. Falls dies nicht möglich ist, ist ein
-Kommunikationsfehler eingetreten, der verhindert werden sollte, da das
+dieser von allen anderen beteiligten System, die diese Aktion in ihrer
+Inputmenge haben, durch einen
+Input synchronisiert werden. Falls dies nicht möglich ist, tritt ein
+Kommunikationsfehler ein, der verhindert werden sollte, da das
 Verhalten des Systems dann unvorhersehbar wird. In~\cite{Lynch1996} wird die
 Abwesenheit dieser Kommunikationsfehler
 für die I/O-Automaten garantiert, in dem für alle Zustände alle Inputs möglich
@@ -30,7 +31,8 @@ Operation gestutzt werden.\\
 Um diesem Problem des aufwendigen Stutzens entgegenzuwirken, soll hier eine
 andere Modellierung betrachtet werden. Die Komponenten sollen als beschriftetes
 Transitionssystem (LTS) mit disjunkten Input- und Output-Aktionen und einer
-internen Aktion $\tau$ modelliert werden. Diese Systeme sollen explizite
+internen Aktion $\tau$ modelliert werden. Diese Modelle werden dann
+Error-IO-Transitionssysteme (\EIO{}s) genannt. Die Systeme sollen explizite
 Error-Zustände haben. Durch die Parallelkomposition können dann wie oben
 beschrieben neue Error-Zustände entstehen und es werden zusätzlich auch noch die
 Error-Zustände der einzelnen Komponenten geerbt.\\
