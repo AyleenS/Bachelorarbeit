@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper,twoside,ngerman,parskip=half*]{scrbook}
+\documentclass[12pt,a4paper,oneside,ngerman,parskip=half*]{scrbook}
 
 \clubpenalty=10000
 \widowpenalty=10000
@@ -9,6 +9,8 @@
 \usepackage[utf8]{inputenc}
 
 \usepackage{amsmath,amssymb,amsthm,mathtools}
+
+\usepackage{geometry}
 
 \usepackage{tikz}
 \usetikzlibrary{arrows, automata, calc, matrix}
@@ -42,11 +44,13 @@
 \newcommand{\oBdA}{oBdA}
 \newcommand{\OBdA}{OBdA}
 \newcommand{\EIO}{EIO}
-\newcommand{\prune}{\ensuremath{prune}}
-\newcommand{\cont}{\ensuremath{cont}}
+\newcommand{\prune}{\ensuremath{\mathrm{prune}}}
+\newcommand{\cont}{\ensuremath{\mathrm{cont}}}
+\newcommand{\Sig}{\ensuremath{\mathrm{Sig}}}
+\newcommand{\Synch}{\ensuremath{\mathrm{Synch}}}
 
-\newcommand{\EBRel}{\ensuremath{\sqsubseteq _E^B}}
-\newcommand{\ECRel}{\ensuremath{\sqsubseteq _E^C}}
+\newcommand{\EBRel}{\ensuremath{\sqsubseteq _E^\mathrm{B}}}
+\newcommand{\ECRel}{\ensuremath{\sqsubseteq _E^\mathrm{C}}}
 \newcommand{\ERel}{\ensuremath{\sqsubseteq _E}}
 \newcommand{\StET}{\ensuremath{StET}}
 \newcommand{\PrET}{\ensuremath{PrET}}
@@ -54,15 +58,15 @@
 \newcommand{\ET}{\ensuremath{ET}}
 \newcommand{\EL}{\ensuremath{EL}}
 
-\newcommand{\QBRel}{\ensuremath{\sqsubseteq _{Qui}^B}}
-\newcommand{\QCRel}{\ensuremath{\sqsubseteq _{Qui}^C}}
+\newcommand{\QBRel}{\ensuremath{\sqsubseteq _{Qui}^\mathrm{B}}}
+\newcommand{\QCRel}{\ensuremath{\sqsubseteq _{Qui}^\mathrm{C}}}
 \newcommand{\QRel}{\ensuremath{\sqsubseteq _{Qui}}}
 \newcommand{\StQT}{\ensuremath{StQT}}
 \newcommand{\PrQT}{\ensuremath{PrQT}}
 \newcommand{\QT}{\ensuremath{QET}}
 
-\newcommand{\DBRel}{\ensuremath{\sqsubseteq _{Div}^B}}
-\newcommand{\DCRel}{\ensuremath{\sqsubseteq _{Div}^C}}
+\newcommand{\DBRel}{\ensuremath{\sqsubseteq _{Div}^\mathrm{B}}}
+\newcommand{\DCRel}{\ensuremath{\sqsubseteq _{Div}^\mathrm{C}}}
 \newcommand{\DRel}{\ensuremath{\sqsubseteq _{Div}}}
 \newcommand{\StDT}{\ensuremath{StDT}}
 \newcommand{\PrDT}{\ensuremath{PrDT}}
@@ -72,10 +76,12 @@
 \newcommand{\DT}{\ensuremath{DT}}
 
 \begin{document}
+
 \frontmatter
 
 \input{titlepage.tex}
 
+\newgeometry{twoside,left=2cm,right=3cm,top=2.5cm,bottom=5cm}
 \tableofcontents{}
 
 \mainmatter{}

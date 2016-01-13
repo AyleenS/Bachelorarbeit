@@ -109,6 +109,7 @@ Das folgende Lemma soll explizit festhalten, wie Ruhezustände sich unter der
 Parallelkomposition verhalten. Dies ist vor allem für den danach folgenden Satz
 relevant.
 
+\vspace{0.5cm}
 \begin{lem}[Ruhe-Zustände unter Parallelkomposition]
 \label{lemRuheParallelkomp}
   ~
@@ -141,15 +142,15 @@ relevant.
       ausgeschlossen, deshalb kann auch $(q_1,q_2)$ keine solche Transition
       ausführen.
     \item Fall 2 ($(q_1,q_2) \overset{a}{\rightarrow}$ mit $a\in O\backslash
-      Synch(S_1,S_2)$): Da es sich bei $a$ um einen Output handelt, der nicht
-      in $Synch(S_1,S_2)$ enthalten ist, kann dieser nicht aus der
+      \Synch(S_1,S_2)$): Da es sich bei $a$ um einen Output handelt, der nicht
+      in $\Synch(S_1,S_2)$ enthalten ist, kann dieser nicht aus der
       Synchronisation von zwei Aktionen entstanden sein, sondern muss bereits
       für $S_1$ oder $S_2$ ausführbar gewesen sein. Es gilt also \oBdA{} $q_1
       \overset{a}{\rightarrow}$ mit $a\in O_1$. Dies ist jedoch Aufgrund der
       Voraussetzungen nicht möglich. Somit kann die Parallelkomposition
       diese Transition für $(q_1,q_2)$ ebenfalls nicht ausführt werden.
     \item Fall 3 ($(q_1,q_2) \overset{a}{\rightarrow}$ mit $a\in O\cap
-      Synch(S_1,S_2)$): Der Output $a$ ist in diesem Fall durch Synchronisation
+      \Synch(S_1,S_2)$): Der Output $a$ ist in diesem Fall durch Synchronisation
       von einem Output mit einem Input entstanden. \OBdA{} gilt $a\in O_1\cap
       I_2$. Für die einzelnen Systeme muss also gelten, dass $q_1
       \overset{a}{\rightarrow}$ und $q_2 \overset{a}{\rightarrow}$. Die
@@ -174,20 +175,20 @@ relevant.
       Transition ausführen. Dies ist jedoch durch die Voraussetzung verboten.
       Somit gilt auch $q_1 \overset{\tau}{\not{\hspace{-0.1cm}\rightarrow}}$.
     \item Fall 2 ($q_1 \overset{a}{\rightarrow}$ mit $a\in O_1\backslash
-      Synch(S_1,S_2)$): Da es sich bei $a$ um einen Output handelt, der nicht
+      \Synch(S_1,S_2)$): Da es sich bei $a$ um einen Output handelt, der nicht
       zu synchronisieren ist, wird dieser einfach in die Parallelkomposition
       übernommen. Es müsste also $(q_1,q_2) \overset{a}{\rightarrow}$ gelten,
       was jedoch verboten ist. Somit kann die Transition für $S_1$ in diesem
       Fall auch nicht möglich sein.
     \item Fall 3 ($q_1 \overset{a}{\rightarrow}$ mit $a\in O_1\cap
-      Synch(S_1,S_2)$ und $q_2 \overset{a}{\rightarrow}$): In diesem Fall ist
+      \Synch(S_1,S_2)$ und $q_2 \overset{a}{\rightarrow}$): In diesem Fall ist
       die Synchronisation des Outputs $a$ von $S_1$ mit dem Input $a$ von $S_2$
       möglich, so dass in der Parallelkomposition der Output $a$ als Transition
       für $(q_1,q_2)$ entsteht. Diese Transitionsmöglichkeit ist jedoch für
       $S_{12}$ nach Voraussetzung nicht erlaubt. Es folgt also auch, dass
       dieser Fall nicht eintreten kann.
     \item Fall 4 \Big($q_1 \overset{a}{\rightarrow}$ mit $a\in O_1\cap
-      Synch(S_1,S_2)$ und $q_2
+      \Synch(S_1,S_2)$ und $q_2
       \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$\Big):
       Da $S_2$ diese Transition nicht ausführen kann, handelt es sich hier um
       einen neuen Error, da die Synchronisation des Outputs $a$ von $S_1$ mit

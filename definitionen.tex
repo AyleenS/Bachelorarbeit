@@ -32,7 +32,7 @@ Aktionen ersetzt werden.
 \end{Def}
 
 Die \emph{Aktionsmenge} eines \EIO{}s $S$ ist $\Sigma = I\cup O$ und die
-\emph{Signatur} $Sig(S)=(I,O)$.\\
+\emph{Signatur} $\Sig(S)=(I,O)$.\\
 Um in graphischen Veranschaulichungen Inputs und Outputs zu unterscheiden, wird
 folgende Notation verwendet: $x?$ für den Input $x$ und $x!$ für den Output
 $x$. Falls ein $x$ ohne $?$ oder $!$ verwendet wird, steht dies für eine
@@ -98,11 +98,11 @@ miteinander kommunizieren, sondern nur mit anderen Systemen.
     \item $q_0=(q_{01},q_{02})$,
     \item $\begin{aligned}[t]
     \delta =&\{((q_1,q_2),\alpha ,(p_1,q_2))\mid (q_1,\alpha ,p_1)\in\delta
-      _1,\alpha\in(\Sigma _1\cup\{\tau\})\backslash Synch(S_1,S_2)\}\\
+      _1,\alpha\in(\Sigma _1\cup\{\tau\})\backslash \Synch(S_1,S_2)\}\\
       &\cup\{((q_1,q_2),\alpha ,(q_1,p_2))\mid (q_2,\alpha ,p_2)\in\delta
-      _2,\alpha\in(\Sigma _2\cup\{\tau\})\backslash Synch(S_1,S_2)\}\\
+      _2,\alpha\in(\Sigma _2\cup\{\tau\})\backslash \Synch(S_1,S_2)\}\\
       &\cup\{((q_1,q_2),\alpha ,(p_1,p_2))\mid (q_1,\alpha ,p_1)\in\delta
-      _1, (q_2,\alpha ,p_2)\in\delta _2, \alpha\in Synch(S_1,S_2)\},
+      _1, (q_2,\alpha ,p_2)\in\delta _2, \alpha\in \Synch(S_1,S_2)\},
   \end{aligned}$
     \item $\begin{aligned}[t]
         E=&(Q_1\times E_2)\cup (E_1\times Q_2)
@@ -117,13 +117,13 @@ q_2\overset{a}{\rightarrow}\right\}
       &&\phantom{neue}\mathrm{neue}~\mathrm{Errors}.\\
   \end{aligned}$
   \end{itemize}
-  Dabei werden die \emph{synchronisierten Aktionen} $Synch(S_1,
+  Dabei werden die \emph{synchronisierten Aktionen} $\Synch(S_1,
   S_2)=(I_1\cap O_2)\cup(O_1\cap I_2)\cup (I_1\cap I_2)$ nicht versteckt,
   sondern als Outputs bzw.\ im Fall von $I_1\cap I_2$ als Inputs der
   Komposition beibehalten.\\
   $S_1$ wird \emph{Partner} von $S_2$ genannt, wenn ihre
   Parallelkomposition geschlossen ist, d.h.\ wenn sie duale Signaturen
-  $Sig(S_1)=(I,O)$ und $Sig(S_2)=(O,I)$ haben.\\
+  $\Sig(S_1)=(I,O)$ und $\Sig(S_2)=(O,I)$ haben.\\
   Die oben definierte Notation $S_{12}=S_1\|S_2$ wird auch für andere
   Indizierungen der Systeme analog angewendet, so gilt also allgemein
   $S_{ij}:=S_i\|S_j$ für $i,j\in\mathbb{N}$.
@@ -245,5 +245,5 @@ Parallelkomposition aus~\cite{Vogler2014EIO} nachgebildet werden kann.
 \begin{Def}[Parallelkomposition mit Internalisierung]
 \label{defIntParal}
   Seinen $S_1$ und $S_2$ komponierbare \EIO{}s, dann ist
-  $S_1|S_2=S_{12}/(Synch(S_1,S_2)\cap O_{12})$.
+  $S_1|S_2=S_{12}/(\Synch(S_1,S_2)\cap O_{12})$.
 \end{Def}

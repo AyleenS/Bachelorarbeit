@@ -101,7 +101,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
   aufgrund der Definition der Menge der Errortraces entweder in $\MIT{}_{12}$ oder in
   $\PrET{}_{12}$ enthalten.
   \begin{itemize}
-    \item Fall 1 ($w\in \MIT{}_{12}$): Aus der Definition von $MIT$ folgt, dass es eine
+    \item Fall 1 ($w\in \MIT{}_{12}$): Aus der Definition von \MIT{} folgt, dass es eine
   Aufteilung $w=xa$ gibt mit $(q_{01},q_{02})
   \overset{x}{\Rightarrow}(q_1,q_2)\wedge a\in I_{12}\wedge (q_1,q_2)
   \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$. Da $I_{12}
@@ -239,7 +239,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
           \overset{v_2''}{\Rightarrow} q_2 \overset{a}{\rightarrow}$ mit
           $v_2'=v_2''a$. Da jedoch die Menge der synchronisierten Aktionen
           bezüglich~\cite{Vogler2014EIO} erweitert wurde liegt $a$ in
-          $Synch(S_1,S_2)$, also folgt $(q_1,q_2)
+          $\Synch(S_1,S_2)$, also folgt $(q_1,q_2)
           \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ schon aus $q_1
           \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$. Somit kann hier
           $v:=v''a=v'\in \MIT{}_{12}$ gewählt werden.
@@ -470,8 +470,8 @@ verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
         \item Fall 2ii) (geerbter Error): $U$ hat $x_1\dots x_i u$ ausgeführt
           mit $u\in I_U^*=O^*$ und ebenso hat $S_2$ diesen Weg ausgeführt.
           Durch dies hat $S_2$ einen Zustand in $E_2$ erreicht, da von $U$
-          keine Errors geerbt werden können. Es gilt dann $\prune{}(x_1\dots
-          x_iu)=\prune{}(x_1\dots x_i)\in \PrET{}_2\subseteq \ET{}_2$. Da $x_1\dots
+          keine Errors geerbt werden können. Es gilt dann $\prune{}(x_1\dots$
+          $x_iu)=\prune{}(x_1\dots x_i)\in \PrET{}_2\subseteq \ET{}_2$. Da $x_1\dots
           x_i$ ein Präfix von $w$ ist, führt auch in diesem Fall ein Präfix von
           $w$ zu einem Error.
       \end{itemize}
