@@ -163,17 +163,19 @@ die nachfolgenden Transitionssysteme benötigt:
   \end{minipage}
 \end{figure}
 
-%TODO ab hier Kammern verschoenern
-
 Für die Parallelkompositionen $U\|S_1$ und $U\|S_2$ gilt dann:
 \begin{itemize}
-  \item $U\|S_1 =(\{(q_{0U},q_{01})\},\emptyset ,\{\omega\}, \{((q_{0U},
-    q_{01}),\omega ,(q_{0U},q_{01}))\}, (q_{0U}, q_{01}),
-    \{(q_{0U},q_{01})\})$ (siehe auch Abbildung~\ref{US1}),
-  \item $U\|S_2 =(\{(q_{0U},q_{02})\},\emptyset ,\{\omega\}, \{((q_{0U},
-    q_{02}),\omega ,(q_{0U},q_{02})), ((q_{0U},q_{02}),\tau
-  ,(q_{0U},q_{02}))\}, (q_{0U},$ $q_{02}), \emptyset)$ (siehe auch
-  Abbildung~\ref{US2}).
+  \item $U\|S_1 =\left(\left\{\left(q_{0U},q_{01}\right)\right\},\emptyset
+      ,\left\{\omega\right\}, \left\{\left(\left(q_{0U}, q_{01}\right),\omega
+        ,\left(q_{0U},q_{01}\right)\right)\right\}, \left(q_{0U},
+        q_{01}\right), \left\{\left(q_{0U},q_{01}\right)\right\}\right)$ (siehe
+        auch Abbildung~\ref{US1}),
+  \item $U\|S_2 =\left(\left\{\left(q_{0U},q_{02}\right)\right\},\emptyset
+      ,\left\{\omega\right\}, \left\{\left(\left(q_{0U}, q_{02}\right),\omega
+          ,\left(q_{0U},q_{02}\right)\right), \left(\left(q_{0U},q_{02}\right),
+          \tau ,\left(q_{0U},q_{02}\right)\right)\right\},
+          \left(q_{0U},\right.\right.$
+        $\left.\left.q_{02}\right), \emptyset\right)$ (siehe auch Abbildung~\ref{US2}).
 \end{itemize}
 \begin{figure}[h!tbp]
   \begin{minipage}{0.5\textwidth}
@@ -215,8 +217,8 @@ werden, ob das System Error oder Divergenz als Fehler hat.
   Für zwei komponierbare \EIO{}s $S_1, S_2$ und ihre Komposition
   $S_{12}$ gilt:
   \begin{enumerate}
-    \item $\EDT{}_{12}=\cont (\prune ((\EDT{}_1\|\EDL{}_2)\cup
-      (\EDL{}_1\|\EDT{}_2)))$,
+    \item $\EDT{}_{12}=\cont \left(\prune \left(\left(\EDT{}_1\|\EDL{}_2\right)\cup
+      \left(\EDL{}_1\|\EDT{}_2\right)\right)\right)$,
     \item $\QDT{}_{12}=(\QDT{}_1\|\QDT{}_2)\cup \EDT{}_{12}$,
     \item $\EDL{}_{12}=(\EDL{}_1\|\EDL{}_2)\cup \EDT{}_{12}$.
   \end{enumerate}
@@ -252,8 +254,9 @@ werden, ob das System Error oder Divergenz als Fehler hat.
 
   1. \glqq{}$\supseteq$\grqq{}:\\
   Es wird ebenso wie oben nur ein präfix-minimales $x$ betrachtet wegen des
-  Abschlusses beider Seiten der Gleichung unter \cont{}. Es wird also für ein beliebiges
-  $x\in\prune{}((\EDT{}_1\|$ $\EDL{}_2)\cup (\EDL{}_1\|\EDT{}_2))$ gezeigt, dass
+  Abschlusses beider Seiten der Gleichung unter \cont{}. Es wird also für ein
+  beliebiges $x\in\prune{}\left(\left(\EDT{}_1\|\right.\right.$
+  $\left.\left.\EDL{}_2\right)\cup \left(\EDL{}_1\|\EDT{}_2\right)\right)$ gezeigt, dass
   dieses oder einer seiner Präfixe auch in $\EDT{}_{12}$ enthalten ist. Da das
   $x$ aus der \prune{}-Funktion entstanden ist, lässt sich ein $y$ aus
   $O_{12}^*$ finden, sodass $xy\in (\EDT{}_1\|\EDL{}_2)\cup
@@ -261,8 +264,8 @@ werden, ob das System Error oder Divergenz als Fehler hat.
   dass \oBdA{} $xy\in \EDT{}_1\|\EDL{}_2$, d.h.\ es existieren
   $w_1\in\EDT{}_1$ und $w_2\in\EDL{}_2$ mit $xy\in w_1\|w_2$.\\
   Die folgende Argumentation läuft analog zu dem Beweis der Inklusion
-  $\ET{}_{12} \supseteq \cont{}($ $\prune{}((\ET{}_1\|\EL_2)\cup
-  (\EL{}_1\|\ET{}_2)))$ aus Satz~\ref{satzErrorSemanik}. Es muss dazu nur
+  $\ET{}_{12} \supseteq \cont{}\left(\right.$ $\left.\prune{}\left(\left(\ET{}_1\|\EL_2\right)\cup
+  \left(\EL{}_1\|\ET{}_2\right)\right)\right)$ aus Satz~\ref{satzErrorSemanik}. Es muss dazu nur
   jeweils an den Stellen, an denen $\PrET{}(S)\cup \MIT{}(S)$ steht auch noch eine
   Vereinigung mit $\PrDT{}(S)$ vorgenommen werden. Für Fall I und II ist
   jeweils kein weiterer Unterfall für $v_2'$ notwendig da, wenn $v_2'$ nicht
@@ -282,10 +285,10 @@ werden, ob das System Error oder Divergenz als Fehler hat.
       gilt für alle im folgenden betrachteten Fälle $q_{02} \overset{v_2'}{\Rightarrow}
       q_2$ mit $(q_{01},q_{02}) \overset{v'}{\Rightarrow}$.
       \begin{itemize}
-        \item Fall IIIa) ($u_2\in (O_1\cap I_2)^*, c\in (O_1\cap I_2)$, sodass
+        \item Fall IIIa) \Big($u_2\in (O_1\cap I_2)^*, c\in (O_1\cap I_2)$, sodass
           $u_2c$ ein Präfix von $u_1|_{I_2}$ mit $q_2
           \overset{u_2}{\Rightarrow}
-          q_2'\overset{c}{\not{\hspace{-0.1cm}\rightarrow}}$): Für ein Präfix
+          q_2'\overset{c}{\not{\hspace{-0.1cm}\rightarrow}}$\Big): Für ein Präfix
           $u_1'c$ von $u_1$ mit $u_1'c|_{I_2}= u_2c$ weiß man, dass $q_1
           \overset{u_1'}{\Rightarrow} q_1''
           \overset{c}{\hspace{-0.1cm}\rightarrow}$. Somit gilt $u_1'\in
@@ -294,8 +297,8 @@ werden, ob das System Error oder Divergenz als Fehler hat.
           $c$ Output von $S_1$ zu koppeln wäre. Es handelt sich also um einen
           neuen Error. Es wird $v:=\prune{}(v'u_1')\in \PrET{}_{12}$ gewählt,
           dies ist ein Präfix von $v'$, da $u_1\in O_1^*$.
-        \item Fall IIIb) ($q_2 \overset{u_2}{\Rightarrow} q_2'$ mit $u_2=
-          u_1|_{I_2}$): Somit ist $u_1\in u_1\|u_2$ und $(q_1,q_2)
+        \item Fall IIIb) \big($q_2 \overset{u_2}{\Rightarrow} q_2'$ mit $u_2=
+          u_1|_{I_2}$\big): Somit ist $u_1\in u_1\|u_2$ und $(q_1,q_2)
           \overset{u_1}{\Rightarrow} (q_1',q_2') \in Div_{12}$, da $q_1\in
           Div_1$. $S_{12}$ hat also die Divergenz von $S_1$ geerbt. Es wird nun
           $v:= \prune{}(v'u_1)\in \PrDT{}_{12}$ gewählt, das wiederum ein
@@ -342,8 +345,8 @@ werden, ob das System Error oder Divergenz als Fehler hat.
   Argumentation wird von der rechten Seite der Gleichung aus begonnen:
   \begin{align*}
     &(\EDL{}_1\| \EDL{}_2)\cup \EDT{}_{12}\\
-    &\overset{\ref{DefRuheDivSemantik}}{=}((L_1\cup \EDT{}_1)\|(L_2\cup
-    \EDT{}_2))\cup \EDT{}_{12}\\
+    &\overset{\ref{DefRuheDivSemantik}}{=}\left(\left(L_1\cup
+  \EDT{}_1\right)\|\left(L_2\cup \EDT{}_2\right)\right)\cup \EDT{}_{12}\\
     &=\underset{\overset{1.}{\subseteq} \EDT{}_{12}}{\underset{\subseteq
     (\EDL{}_1\|\EDT{}_2)}{\underbrace{(L_1\|\EDT{}_2)}}} \cup
     \underset{\overset{1.}{\subseteq} \EDT{}_{12}}{\underset{\subseteq
@@ -379,11 +382,13 @@ Präkongruenz handelt.
   \begin{itemize}
     \item $\begin{aligned}[t]
         \EDT{}_{31} &\overset{\ref{satzDivSemantik}~1.}{=}
-        \cont{}(\prune{}((\EDT{}_3\|\EDL{}_1) \cup (\EDL{}_3\|\EDT{}_1))\\
+        \cont{}\left(\prune{}\left(\left(\EDT{}_3\|\EDL{}_1\right) \cup
+        \left(\EDL{}_3\|\EDT{}_1\right)\right)\right)\\
         &\hspace{-0.5cm}\overset{\EDT{}_1\subseteq
       \EDT{}_2}{\overset{\mathrm{und}}{\overset{\EDL{}_1\subseteq
-    \EDL{}_2}{\subseteq}}} \cont{}(\prune{}((\EDT{}_3\|\EDL{}_2) \cup
-    (\EDL{}_3\|\EDT{}_2)))\\
+    \EDL{}_2}{\subseteq}}}
+    \cont{}\left(\prune{}\left(\left(\EDT{}_3\|\EDL{}_2\right) \cup
+        \left(\EDL{}_3\|\EDT{}_2\right)\right)\right)\\
       &\overset{\ref{satzDivSemantik}~2.}{=} \EDT{}_{32},
     \end{aligned}$
     \item $\begin{aligned}[t]
