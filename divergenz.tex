@@ -66,10 +66,10 @@ diesen beiden Trace-Mengen geflutet.
 \begin{Def}[Divergenztraces]
   Sei $S$ ein \EIO{} und definiere:
   \begin{itemize}
-    \item \emph{strikte Divergenztraces}: $\StDT{}(S) := \{w\in\Sigma ^*\mid
-      q_0 \overset{w}{\Rightarrow} q\in Div\}$,
+    \item \emph{strikte Divergenztraces}: $\StDT{}(S) := \left\{w\in\Sigma ^*\mid
+      q_0 \overset{w}{\Rightarrow} q\in Div\right\}$,
     \item \emph{gekürzte Divergenztraces}: $\PrDT{}(S) :=
-      \bigcup\{\prune{}(w)\mid w\in\StDT{}(S)\}$.
+      \bigcup\hspace{1pt}\left\{\prune{}(w)\mid w\in\StDT{}(S)\right\}$.
   \end{itemize}
 \end{Def}
 
@@ -114,12 +114,12 @@ error-divergenz-gefluteten Sprache erweitert wurde, folgt dass die Relation
 Lösung möglich. Dies wird an folgendem Beispiel illustriert. Hierfür werden
 die nachfolgenden Transitionssysteme benötigt:
 \begin{itemize}
-  \item $S_1 = (\{q_{01}\},\emptyset ,\emptyset , \emptyset, q_{01},
-    \{q_{01}\})$ (siehe auch Abbildung~\ref{S1}),
-  \item $S_2 = (\{q_{02}\},\emptyset ,\emptyset , \{(q_{02},\tau ,q_{02})\},
-    q_{02}, \emptyset )$ (siehe auch Abbildung~\ref{S2}),
-  \item $U = (\{q_{0U}\}, \emptyset, \{\omega\}, \{(q_{0U},\omega ,q_{0U})\},
-    q_{0U}, \emptyset )$ (siehe auch Abbildung~\ref{U}).
+  \item $S_1 = \left(\{q_{01}\},\emptyset ,\emptyset , \emptyset, q_{01},
+    \{q_{01}\}\right)$ (siehe auch Abbildung~\ref{S1}),
+  \item $S_2 = \left(\{q_{02}\},\emptyset ,\emptyset , \{(q_{02},\tau ,q_{02})\},
+    q_{02}, \emptyset \right)$ (siehe auch Abbildung~\ref{S2}),
+  \item $U = \left(\{q_{0U}\}, \emptyset, \{\omega\}, \{(q_{0U},\omega ,q_{0U})\},
+    q_{0U}, \emptyset \right)$ (siehe auch Abbildung~\ref{U}).
 \end{itemize}
 \begin{figure}[h!tbp]
   \begin{minipage}{0.3\textwidth}
@@ -162,6 +162,8 @@ die nachfolgenden Transitionssysteme benötigt:
   \end{center}
   \end{minipage}
 \end{figure}
+
+%TODO ab hier Kammern verschoenern
 
 Für die Parallelkompositionen $U\|S_1$ und $U\|S_2$ gilt dann:
 \begin{itemize}

@@ -78,8 +78,8 @@ zu Errors. Somit werden keine gekürzten Ruhetraces benötigt, bei denen die
 \label{DefRuhetraces}
   Sei $S$ ein \EIO{} und definiere:
   \begin{itemize}
-    \item \emph{strikte Ruhetraces}: $\StQT{}(S) := \{w\in\Sigma ^*\mid q_0
-      \overset{w}{\Rightarrow} q\in Qui\}$.
+    \item \emph{strikte Ruhetraces}: $\StQT{}(S) := \left\{w\in\Sigma ^*\mid q_0
+      \overset{w}{\Rightarrow} q\in Qui\right\}$.
   \end{itemize}
 \end{Def}
 
@@ -133,7 +133,7 @@ relevant.
   und $q_2$ entsteht, ist nicht ruhig, d.h.\ er hat die Möglichkeit für eine
   Transition mit einem Output oder einem $\tau$.
   \begin{itemize}
-    \item Fall 1 ($(q_1,q_2) \overset{\tau}{\rightarrow}$): Ein $\tau$ ist eine
+    \item Fall 1 \big($(q_1,q_2) \overset{\tau}{\rightarrow}$\big): Ein $\tau$ ist eine
       interne Aktion und kann in dieser Arbeit nicht durch das Verbergen von
       Aktionen bei der Synchronisation entstehen. Ein $\tau$ in der
       Parallelkomposition ist also nur möglich, wenn dies bereits für einen der
@@ -141,16 +141,16 @@ relevant.
       ist. Jedoch ist eine $\tau$-Transition für $q_1$ und $q_2$
       ausgeschlossen, deshalb kann auch $(q_1,q_2)$ keine solche Transition
       ausführen.
-    \item Fall 2 ($(q_1,q_2) \overset{a}{\rightarrow}$ mit $a\in O\backslash
-      \Synch(S_1,S_2)$): Da es sich bei $a$ um einen Output handelt, der nicht
+    \item Fall 2 \big($(q_1,q_2) \overset{a}{\rightarrow}$ mit $a\in O\backslash
+      \Synch(S_1,S_2)$\big): Da es sich bei $a$ um einen Output handelt, der nicht
       in $\Synch(S_1,S_2)$ enthalten ist, kann dieser nicht aus der
       Synchronisation von zwei Aktionen entstanden sein, sondern muss bereits
       für $S_1$ oder $S_2$ ausführbar gewesen sein. Es gilt also \oBdA{} $q_1
       \overset{a}{\rightarrow}$ mit $a\in O_1$. Dies ist jedoch Aufgrund der
       Voraussetzungen nicht möglich. Somit kann die Parallelkomposition
       diese Transition für $(q_1,q_2)$ ebenfalls nicht ausführt werden.
-    \item Fall 3 ($(q_1,q_2) \overset{a}{\rightarrow}$ mit $a\in O\cap
-      \Synch(S_1,S_2)$): Der Output $a$ ist in diesem Fall durch Synchronisation
+    \item Fall 3 \big($(q_1,q_2) \overset{a}{\rightarrow}$ mit $a\in O\cap
+      \Synch(S_1,S_2)$\big): Der Output $a$ ist in diesem Fall durch Synchronisation
       von einem Output mit einem Input entstanden. \OBdA{} gilt $a\in O_1\cap
       I_2$. Für die einzelnen Systeme muss also gelten, dass $q_1
       \overset{a}{\rightarrow}$ und $q_2 \overset{a}{\rightarrow}$. Die
@@ -170,18 +170,18 @@ relevant.
   Angenommen $q_1\notin Qui_1$, dann ist für $q_1$ entweder eine
   $\tau$-Transition oder eine Output-Transition möglich.
   \begin{itemize}
-    \item Fall 1 ($q_1 \overset{\tau}{\rightarrow}$): Da diese Transition für
+    \item Fall 1 \big($q_1 \overset{\tau}{\rightarrow}$\big): Da diese Transition für
       $S_1$ möglich ist, kann auch $S_{12}$ im Zustand $(q_1,q_2)$ diese
       Transition ausführen. Dies ist jedoch durch die Voraussetzung verboten.
       Somit gilt auch $q_1 \overset{\tau}{\not{\hspace{-0.1cm}\rightarrow}}$.
-    \item Fall 2 ($q_1 \overset{a}{\rightarrow}$ mit $a\in O_1\backslash
-      \Synch(S_1,S_2)$): Da es sich bei $a$ um einen Output handelt, der nicht
+    \item Fall 2 \big($q_1 \overset{a}{\rightarrow}$ mit $a\in O_1\backslash
+      \Synch(S_1,S_2)$\big): Da es sich bei $a$ um einen Output handelt, der nicht
       zu synchronisieren ist, wird dieser einfach in die Parallelkomposition
       übernommen. Es müsste also $(q_1,q_2) \overset{a}{\rightarrow}$ gelten,
       was jedoch verboten ist. Somit kann die Transition für $S_1$ in diesem
       Fall auch nicht möglich sein.
-    \item Fall 3 ($q_1 \overset{a}{\rightarrow}$ mit $a\in O_1\cap
-      \Synch(S_1,S_2)$ und $q_2 \overset{a}{\rightarrow}$): In diesem Fall ist
+    \item Fall 3 \big($q_1 \overset{a}{\rightarrow}$ mit $a\in O_1\cap
+      \Synch(S_1,S_2)$ und $q_2 \overset{a}{\rightarrow}$\big): In diesem Fall ist
       die Synchronisation des Outputs $a$ von $S_1$ mit dem Input $a$ von $S_2$
       möglich, so dass in der Parallelkomposition der Output $a$ als Transition
       für $(q_1,q_2)$ entsteht. Diese Transitionsmöglichkeit ist jedoch für
@@ -210,8 +210,8 @@ Sie entsprechen Punkt 1.\ und 2.\ aus Satz~\ref{satzErrorSemanik}.
 \label{satzQuiSemantik}
   Für zwei komponierbare \EIO{}s $S_1, S_2$ und ihre Komposition $S_{12}$ gilt:
   \begin{enumerate}
-    \item $\ET{}_{12} = \cont{}(\prune{}((\ET{}_1\|\EL{}_2)\cup
-      (\EL{}_1\|\ET{}_2)))$,
+    \item $\ET{}_{12} = \cont{}\left(\prune{}\left(\left(\ET{}_1\|\EL{}_2\right)\cup
+      \left(\EL{}_1\|\ET{}_2\right)\right)\right)$,
     \item $\QT{}_{12} = (\QT{}_1\|\QT{}_2)\cup \ET{}_{12}$,
     \item $\EL{}_{12} = (\EL{}_1\|\EL{}_2)\cup \ET{}_{12}$.
   \end{enumerate}
@@ -676,20 +676,20 @@ formuliert werden.
   \QBRel S_2/X$.
 \end{proof}
 
-\begin{satz}[Ruhe-Präkongurenz bzgl. Internalisierung]
+\begin{satz}[Ruhe-Präkongruenz bzgl. Internalisierung]
 \label{satzPraeInterQui}
   Seien $S_1$ und $S_2$ zwei \EIO{}s für die $S_1\QRel S_2$ gilt, somit gilt
   auch $S_1/X\QRel S_2/X$. Es ist also \QRel{} eine Präkongruenz bezüglich
   $\cdot /\cdot$. Es gilt für die Sprachen und Traces:
   \begin{compactenum}[(i)]
-  \item $L(S/X) = \{w\in (\Sigma\backslash X){}^*\mid \exists w'\in L(S):
-      w'|_{\Sigma\backslash X} = w\}$,
-    \item $\ET{}(S/X) = \{w\in (\Sigma\backslash X){}^*\mid \exists
-      w'\in \ET{}(S): w'|_{\Sigma\backslash X} = w\}$,
-    \item $\EL{}(S/X) = \{w\in (\Sigma\backslash X){}^*\mid \exists w'\in
-      \EL(S): w'|_{\Sigma\backslash X} = w\}$,
-    \item $\QT{}(S/X) = \{w\in (\Sigma\backslash X){}^*\mid \exists w'\in
-      \QT{}(S):w'|_{\Sigma\backslash X}=w\}$.
+  \item $L(S/X) = \left\{w\in (\Sigma\backslash X){}^*\mid \exists w'\in L(S):
+      w'|_{\Sigma\backslash X} = w\right\}$,
+    \item $\ET{}(S/X) = \left\{w\in (\Sigma\backslash X){}^*\mid \exists
+      w'\in \ET{}(S): w'|_{\Sigma\backslash X} = w\right\}$,
+    \item $\EL{}(S/X) = \left\{w\in (\Sigma\backslash X){}^*\mid \exists w'\in
+      \EL(S): w'|_{\Sigma\backslash X} = w\right\}$,
+    \item $\QT{}(S/X) = \left\{w\in (\Sigma\backslash X){}^*\mid \exists w'\in
+      \QT{}(S):w'|_{\Sigma\backslash X}=w\right\}$.
   \end{compactenum}
 \end{satz}
 
