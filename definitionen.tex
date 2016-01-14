@@ -24,7 +24,7 @@ Aktionen ersetzt werden.
     \item $Q$ $-$ die Menge der Zustände,
     \item $I,O$ $-$ die disjunkten Mengen der (sichtbaren) Input- und
       Output-Aktionen,
-    \item $\delta\subseteq Q\times (I\cup O\cup\{\tau\})\times Q$ $-$ die
+    \item $\delta\subseteq Q\times \left(I\cup O\cup\{\tau\}\right)\times Q$ $-$ die
       Transitionsrelation,
     \item $q_0\in Q$ $-$ der Startzustand,
     \item $E\subseteq Q$ $-$ die Menge der Error-Zustände.
@@ -46,24 +46,24 @@ Die Elemente der Transitionsrelation $\delta$ werden wie folgt notieren:
 \begin{itemize}
   \item $p\overset{\alpha}{\rightarrow} q$ für $(p,\alpha ,q)\in\delta$,
   \item $p\overset{\alpha}{\rightarrow}$ für $\exists q \in Q: (p,\alpha ,q)\in\delta$,
-  \item $p\overset{w}{\rightarrow} q$ für $p \overset{\alpha _1}{\rightarrow}
-    p_1 \overset{\alpha _2}{\rightarrow} p_2\dots \overset{\alpha
-    _n}{\rightarrow} q$ mit $w\in (\Sigma\cup\{\tau\})^*, w=\alpha _1\alpha
+  \item $p\overset{w}{\rightarrow} q$ für $p \overset{\alpha _1}{\longrightarrow}
+    p_1 \overset{\alpha _2}{\longrightarrow} p_2\dots \overset{\alpha
+    _n}{\longrightarrow} q$ mit $w\in \left(\Sigma\cup\{\tau\}\right)^*, w=\alpha _1\alpha
     _2\dots \alpha _n$,
-  \item $p\overset{w}{\rightarrow}$ für $p \overset{\alpha _1}{\rightarrow}
-    \overset{\alpha _2}{\rightarrow} \dots \overset{\alpha _n}{\rightarrow}$
-    mit $w\in (\Sigma\cup\{\tau\})^*, w=\alpha _1\alpha _2\dots \alpha _n$,
+  \item $p\overset{w}{\rightarrow}$ für $p \overset{\alpha _1}{\longrightarrow}
+    \overset{\alpha _2}{\longrightarrow} \dots \overset{\alpha _n}{\longrightarrow}$
+    mit $w\in \left(\Sigma\cup\{\tau\}\right)^*, w=\alpha _1\alpha _2\dots \alpha _n$,
   \item $w|_B$ steht für die Zeichenfolge, die aus $w$ entsteht durch Löschen
     aller Zeichen, die nicht in $B\subseteq\Sigma$ enthalten sind, d.h.\ es
     bezeichnet die Projektion von $w$ auf die Menge $B$,
   \item $p\overset{w}{\Rightarrow} q$ für $w\in\Sigma^*$ mit $\exists
-    w'\in(\Sigma\cup\{\tau\})^*:w'|_{\Sigma}=w\wedge p\overset{w'}{\rightarrow}
+    w'\in\left(\Sigma\cup\{\tau\}\right)^*:w'|_{\Sigma}=w\wedge p\overset{w'}{\rightarrow}
     q$,
   \item $p\overset{w}{\Rightarrow}$ für $\exists q:p\overset{w}{\Rightarrow}
     q$.
 \end{itemize}
 Die \emph{Sprache} von $S$ ist
-$L(S)=\{w\in\Sigma^*\mid q_0\overset{w}{\Rightarrow}\}$.
+$L(S)=\left\{w\in\Sigma^*\mid q_0\overset{w}{\Rightarrow}\right\}$.
 
 \section{Parallelkomposition}
 Zwei \EIO{}s sind komponierbar, wenn ihre Output-Mengen disjunkt sind. Die
@@ -97,12 +97,12 @@ miteinander kommunizieren, sondern nur mit anderen Systemen.
     \item $O=O_1\cup O_2$,
     \item $q_0=(q_{01},q_{02})$,
     \item $\begin{aligned}[t]
-    \delta =&\{((q_1,q_2),\alpha ,(p_1,q_2))\mid (q_1,\alpha ,p_1)\in\delta
-      _1,\alpha\in(\Sigma _1\cup\{\tau\})\backslash \Synch(S_1,S_2)\}\\
-      &\cup\{((q_1,q_2),\alpha ,(q_1,p_2))\mid (q_2,\alpha ,p_2)\in\delta
-      _2,\alpha\in(\Sigma _2\cup\{\tau\})\backslash \Synch(S_1,S_2)\}\\
-      &\cup\{((q_1,q_2),\alpha ,(p_1,p_2))\mid (q_1,\alpha ,p_1)\in\delta
-      _1, (q_2,\alpha ,p_2)\in\delta _2, \alpha\in \Synch(S_1,S_2)\},
+    \delta =&\left\{((q_1,q_2),\alpha ,(p_1,q_2))\mid (q_1,\alpha ,p_1)\in\delta
+      _1,\alpha\in(\Sigma _1\cup\{\tau\})\backslash \Synch(S_1,S_2)\right\}\\
+      &\cup\left\{((q_1,q_2),\alpha ,(q_1,p_2))\mid (q_2,\alpha ,p_2)\in\delta
+      _2,\alpha\in(\Sigma _2\cup\{\tau\})\backslash \Synch(S_1,S_2)\right\}\\
+      &\cup\left\{((q_1,q_2),\alpha ,(p_1,p_2))\mid (q_1,\alpha ,p_1)\in\delta
+      _1, (q_2,\alpha ,p_2)\in\delta _2, \alpha\in \Synch(S_1,S_2)\right\},
   \end{aligned}$
     \item $\begin{aligned}[t]
         E=&(Q_1\times E_2)\cup (E_1\times Q_2)
@@ -141,9 +141,10 @@ während des Ablaufs des Systems.
   Gegeben zwei \EIO{}s $S_1$ und $S_2$, sowie $w_1\in\Sigma _1, w_2\in\Sigma
   _2, W_1\subseteq\Sigma _1^*, W_2\subseteq\Sigma _2^*$:
   \begin{itemize}
-    \item $w_1\| w_2:=\{w\in (\Sigma _1\cup\Sigma _2)^*\mid w|_{\Sigma _1}=w_1\wedge
-      w|_{\Sigma _2}=w_2\}$,
-    \item $W_1\| W_2:=\bigcup\hspace{1pt}\{w_1\| w_2\mid w_1\in W_1\wedge w_2\in W_2\}$.
+    \item $w_1\| w_2:=\left\{w\in (\Sigma _1\cup\Sigma _2)^*\mid w|_{\Sigma _1}=w_1\wedge
+      w|_{\Sigma _2}=w_2\right\}$,
+    \item $W_1\| W_2:=\bigcup\hspace{1pt}\left\{w_1\| w_2\mid w_1\in W_1\wedge
+      w_2\in W_2\right\}$.
   \end{itemize}
 \end{Def}
 
@@ -159,9 +160,9 @@ Zusätzlich werden Funktionen definiert, die die Traces beliebig fortsetzen.
     \item $\prune{}:\Sigma ^*\rightarrow\Sigma ^*, w\mapsto u$, mit $w=uv,
       u=\varepsilon\vee u\in\Sigma ^*\cdot I$ und $v\in O^*$,
     \item $\cont{}:\Sigma ^*\rightarrow\mathfrak{P}(\Sigma ^*),
-      w\mapsto\{wu\mid u\in\Sigma ^*\}$,
+      w\mapsto\left\{wu\mid u\in\Sigma ^*\right\}$,
     \item $\cont{}:\mathfrak{P}(\Sigma ^*)\rightarrow\mathfrak{P}(\Sigma ^*),
-      L\mapsto\bigcup\hspace{1pt}\{\cont{}(w)\mid w\in L\}$.
+      L\mapsto\bigcup\hspace{1pt}\left\{\cont{}(w)\mid w\in L\right\}$.
   \end{itemize}
 \end{Def}
 
@@ -218,8 +219,8 @@ erlaubt, entsprechend Quelle~\cite{Schlosser2012BA}.
     \item $\tau \notin X$,
     \item $X\subseteq O$,
     \item $O'=O\backslash X$,
-    \item $\delta '=(\delta\cup\{(q,\tau ,q')\mid (q,x,q')\in\delta
-      ,x\in X\})\backslash \{(q,x,q')\mid x\in X\}$.
+    \item $\delta '=\left(\delta\cup\left\{(q,\tau ,q')\mid (q,x,q')\in\delta
+      ,x\in X\right\}\right)\backslash \left\{(q,x,q')\mid x\in X\right\}$.
   \end{itemize}
 \end{Def}
 

@@ -46,9 +46,10 @@ für die Synchronisation fehlt.
 \label{DefErrortraces}
   Für ein \EIO{} $S$ wird definiert:
   \begin{itemize}
-    \item \emph{strikte Errortraces}: $\StET{}(S)=\{w\in\Sigma
-      ^*\mid q_0\overset{w}{\Rightarrow}q\in E\}$,
-    \item \emph{gekürzte Errortraces}: $\PrET{}(S)=\{\prune{}(w)\mid w\in \StET{}(S)\}$,
+    \item \emph{strikte Errortraces}: $\StET{}(S)=\left\{w\in\Sigma
+      ^*\mid q_0\overset{w}{\Rightarrow}q\in E\right\}$,
+    \item \emph{gekürzte Errortraces}: $\PrET{}(S)=\left\{\prune{}(w)\mid w\in
+      \StET{}(S)\right\}$,
     \item \emph{Input-kritische Traces}: $\MIT{}(S)=\left\{wa\in\Sigma ^*\mid
       q_0\overset{w}{\Rightarrow}q\wedge a\in I\wedge
     q\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\right\}$.
@@ -89,7 +90,8 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
   $S_{12}$, gilt:
   \begin{enumerate}
     \item
-      $\ET{}_{12}=\cont{}(\prune{}((\ET{}_1\|\EL{}_2)\cup(\EL{}_1\|\ET{}_2)))$,
+      $\ET{}_{12}=\cont{}\left(\prune{}\left(\left(\ET{}_1\|\EL{}_2\right)\cup
+      \left(\EL{}_1\|\ET{}_2\right)\right)\right)$,
     \item $\EL{}_{12}=(\EL{}_1\|\EL{}_2)\cup \ET{}_{12}$.
   \end{enumerate}
 \end{satz}
@@ -165,7 +167,8 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
   1. \glqq{}$\supseteq$\grqq{}:\\
   Wegen der Abgeschlossenheit beider Seiten der Gleichung gegenüber $\cont{}$
   wird auch in diesem Fall nur ein präfix-minimales Element $x\in
-  \prune{}((\ET{}_1\|\EL{}_2)\cup (\EL{}_1\|\ET{}_2))$ betrachtet. Da $x$ durch
+  \prune{}\left(\left(\ET{}_1\|\EL{}_2\right)\cup
+    \left(\EL{}_1\|\ET{}_2\right)\right)$ betrachtet. Da $x$ durch
   die Anwendung der $\prune{}$-Funktion entstanden ist, existiert ein $y\in
   O_{12}^*$ mit $xy\in(\ET{}_1\|\EL{}_2)\cup (\EL{}_1\|\ET{}_2)$. \OBdA{} wird
   davon ausgegangen, dass
@@ -290,7 +293,8 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
   Seite der Gleichung aus begonnen:
   \begin{align*}
     &(\EL{}_1\| \EL{}_2)\cup \ET{}_{12}\\
-    &\overset{\ref{DefETEL}}{=}((L_1\cup \ET{}_1)\|(L_2\cup \ET{}_2))\cup \ET{}_{12}\\
+    &\overset{\ref{DefETEL}}{=}\left(\left(L_1\cup
+  \ET{}_1\right)\|\left(L_2\cup \ET{}_2\right)\right)\cup \ET{}_{12}\\
     &=\underset{\overset{1.}{\subseteq} \ET{}_{12}}{\underset{\subseteq
     (\EL{}_1\|\ET{}_2)}{\underbrace{(L_1\|\ET{}_2)}}} \cup
     \underset{\overset{1.}{\subseteq} \ET{}_{12}}{\underset{\subseteq
@@ -326,10 +330,12 @@ vollständig abstrakten Präkongruenz \ECRel{} zu erhalten.
   \begin{itemize}
     \item $\begin{aligned}[t]
         \ET{}_{31} &\overset{\ref{satzErrorSemanik}~1.}{=}
-      \cont{}(\prune{}((\ET{}_3\|\EL{}_1)\cup (\EL{}_3\|\ET{}_1)))\\
+      \cont{}\left(\prune{}\left(\left(\ET{}_3\|\EL{}_1\right)\cup
+          \left(\EL{}_3\|\ET{}_1\right)\right)\right)\\
       &\hspace{-0.3cm}\overset{\ET{}_1\subseteq
     \ET{}_2}{\overset{\mathrm{und}}{\overset{\EL{}_1\subseteq \EL{}_2}{\subseteq}}}
-    \cont{}(\prune{}((\ET{}_3\|\EL{}_2)\cup (\EL{}_3\|\ET{}_2)))\\
+    \cont{}\left(\prune{}\left(\left(\ET{}_3\|\EL{}_2\right)\cup
+        \left(\EL{}_3\|\ET{}_2\right)\right)\right)\\
     &\overset{\ref{satzErrorSemanik}~1.}{=} \ET{}_{32},
     \end{aligned}$
     \item $\begin{aligned}[t]
@@ -658,12 +664,12 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   Präkongruenz bezüglich $\cdot /\cdot$ ist.
   Es gilt für die Sprachen und Traces:
   \begin{compactenum}[(i)]
-  \item $L(S/X) = \{w\in (\Sigma\backslash X){}^*\mid \exists w'\in L(S):
-      w'|_{\Sigma\backslash X} = w\}$,
-    \item $\ET{}(S/X) = \{w\in (\Sigma\backslash X){}^*\mid \exists
-      w'\in \ET{}(S): w'|_{\Sigma\backslash X} = w\}$,
-    \item $\EL{}(S/X) = \{w\in (\Sigma\backslash X){}^*\mid \exists w'\in
-      \EL(S): w'|_{\Sigma\backslash X} = w\}$.
+  \item $L(S/X) = \left\{w\in (\Sigma\backslash X){}^*\mid \exists w'\in L(S):
+      w'|_{\Sigma\backslash X} = w\right\}$,
+    \item $\ET{}(S/X) = \left\{w\in (\Sigma\backslash X){}^*\mid \exists
+      w'\in \ET{}(S): w'|_{\Sigma\backslash X} = w\right\}$,
+    \item $\EL{}(S/X) = \left\{w\in (\Sigma\backslash X){}^*\mid \exists w'\in
+      \EL(S): w'|_{\Sigma\backslash X} = w\right\}$.
   \end{compactenum}
 \end{satz}
 
