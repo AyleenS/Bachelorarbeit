@@ -3,7 +3,7 @@
 \section{Präkongruenz für Divergenz}
 
 In diesem Kapitel soll die Menge der betrachteten Zustände noch einmal
-erweitert werden. Somit werden dann Errors, Ruhe-Zustände und
+erweitert werden. Somit werden dann Error-, Ruhe- und
 Divergente-Zustände betrachtet. Es eignet sich also~\cite{Chilton2013} als
 Quelle, da nun auch noch die Divergenz betrachtet wird. Diese wurde dort
 gleichzeitig mit der Ruhe eingeführt und betrachtet. Da es sich nur um eine
@@ -30,18 +30,18 @@ kann.\\
 Als Erreichbarkeitsbegriff wird wieder die lokale Erreichbarkeit verwendet.
 Da das Divergieren eines Systems nicht mehr verhindert werden kann, sobald ein
 divergenter Zustand lokal erreicht werden kann, ist Divergenz als ähnlich
-\glqq{}schlimm\grqq{} zu bewerten wie ein Error.
+\glqq{}schlimm\grqq{} zu bewerten wie ein Error-Zustand.
 
 \begin{Def}[error-, ruhe- und divergenz-freie Kommunikation]
   Zwei \linebreak\EIO{}s $S_1$ und $S_2$ kommunizieren \emph{error-, ruhe- und
-  divergenz-frei}, wenn in ihre Parallelkomposition $S_{12}$ keine Errors,
-  Ruhe-Zustände und Divergenz-Zustände lokal erreichbar sind.
+  divergenz-frei}, wenn in ihre Parallelkomposition $S_{12}$ keine Error-,
+  Ruhe- und Divergenz-Zustände lokal erreichbar sind.
 \end{Def}
 
 \begin{Def}[Divergenz-Verfeinerungs-Basisrelation]
 \label{DefDivBasisrel}
 Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur wird $S_1\DBRel S_2$
-geschrieben, wenn ein Error, Ruhe-Zustand oder Divergenz-Zustand in $S_1$ nur
+geschrieben, wenn ein Error-, Ruhe- oder Divergenz-Zustand in $S_1$ nur
 dann lokal erreichbar ist, wenn er auch in $S_2$ lokal erreichbar ist. Diese
 \emph{Basisrelation} stellt eine \emph{Verfeinerung} bezüglich \emph{Error},
 \emph{Ruhe} und \emph{Divergenz} dar.\\
@@ -204,12 +204,14 @@ Für die Parallelkompositionen $U\|S_1$ und $U\|S_2$ gilt dann:
   \end{minipage}
 \end{figure}
 Somit stehen die beiden Transitionssysteme $U\|S_1$ und $U\|S_2$ in der
-Basisrelation \DBRel{}, obwohl in $U\|S_1$ nur ein Error und in $U\|S_2$ nur
+Basisrelation \DBRel{}, obwohl in $U\|S_1$ nur ein Error-Zustand und in $U\|S_2$ nur
 ein Divergenz-Zustand lokal erreichbar ist. Um ein analoges Lemma zu den
 Lemmata~\ref{lemVerfeinerung} und~\ref{lemQuiVerfeinerung} formulieren zu
-können sollten somit auch $S_1$ und $S_2$ in der Relation \DRel{} stehen. Es
+können sollten somit auch $S_1$ und $S_2$ in der Relation \DRel{} stehen. Dies
+wurde in der letzten Definition bereits berücksichtigt. Es
 kann also unter der Verfeinerungsrelation \DRel{} nicht unterschieden
-werden, ob das System Error oder Divergenz als Fehler hat.
+werden, ob das System Error oder Divergenz als Fehler hat. Somit folgt also aus
+$S_1\DRel{} S_2$ nicht $S_1\ERel{} S_2$.
 
 
 \begin{satz}[Error-, Ruhe- und Divergenz-Semantik für Parallelkompostionen]
@@ -269,7 +271,7 @@ werden, ob das System Error oder Divergenz als Fehler hat.
   jeweils an den Stellen, an denen $\PrET{}(S)\cup \MIT{}(S)$ steht auch noch eine
   Vereinigung mit $\PrDT{}(S)$ vorgenommen werden. Für Fall I und II ist
   jeweils kein weiterer Unterfall für $v_2'$ notwendig da, wenn $v_2'$ nicht
-  ausführbar ist, automatisch ein Error in der Parallelkomposition entsteht.
+  ausführbar ist, automatisch ein Error-Zustand in der Parallelkomposition entsteht.
   Somit ist egal, ob auch noch Divergenz vorlag. Falls $v_2'$ ausführbar, ist
   nicht relevant, ob eine Divergenz-Möglichkeit bestanden hat, da diese
   nichts an der Ausführbarkeit ändert. Am Ende ist dann auch noch ein Fall für
@@ -347,11 +349,11 @@ werden, ob das System Error oder Divergenz als Fehler hat.
     &(\EDL{}_1\| \EDL{}_2)\cup \EDT{}_{12}\\
     &\overset{\ref{DefRuheDivSemantik}}{=}\left(\left(L_1\cup
   \EDT{}_1\right)\|\left(L_2\cup \EDT{}_2\right)\right)\cup \EDT{}_{12}\\
-    &=\underset{\overset{1.}{\subseteq} \EDT{}_{12}}{\underset{\subseteq
+    &=(L_1\|L_2) \cup \underset{\overset{1.}{\subseteq} \EDT{}_{12}}{\underset{\subseteq
     (\EDL{}_1\|\EDT{}_2)}{\underbrace{(L_1\|\EDT{}_2)}}} \cup
     \underset{\overset{1.}{\subseteq} \EDT{}_{12}}{\underset{\subseteq
     (\EDT{}_1\|\EDL{}_2)}{\underbrace{(\EDT{}_1\|L_2)}}} \cup
-    (L_1\|L_2) \cup \underset{\overset{1.}{\subseteq}
+    \underset{\overset{1.}{\subseteq}
     \EDT{}_{12}}{\underset{\subseteq
     (\EDL{}_1\|\EDT{}_2)}{\underbrace{(\EDT{}_1\|\EDT{}_2)}}} \cup \EDT{}_{12}\\
     &=(L_1\|L_2) \cup \EDT{}_{12}\\
@@ -377,8 +379,8 @@ Präkongruenz handelt.
   \QDT{}_2$ und $\EDL{}_1\subseteq \EDL{}_2$, sowohl $\EDT{}_{31}\subseteq
   \EDT_{32}$, $\QDT{}_{31}\subseteq \QDT{}_{32}$ als auch $\EDL{}_{31}\subseteq
   \EDL{}_{32}$ folgt. Dies ergibt sich, wie in den Beweisen zu den
-  Propositionen~\ref{propPraekongruenz} und~\ref{propQuiPrae}, aus der Monotonie
-  von $\cdot\|\cdot$ auf Sprachen wie folgt:
+  Propositionen~\ref{propPraekongruenz} und~\ref{propQuiPrae}, aus der
+  Monotonie von \cont{}, \prune{} und $\cdot\|\cdot$ auf Sprachen wie folgt:
   \begin{itemize}
     \item $\begin{aligned}[t]
         \EDT{}_{31} &\overset{\ref{satzDivSemantik}~1.}{=}
@@ -446,10 +448,11 @@ enthalten ist.
   bereits etwas Ähnliches gezeigt. Jedoch kann aufgrund der unterschiedlichen
   Basisrelation, die zur Anwendung kommen, nichts über dieses Lemma und dessen
   Gültigkeit ausgesagt werden. Es kann also in diesem Lemma, ebenso wie
-  in Lemma~\ref{lemQuiVerfeinerung}, aus der lokalen Erreichbarkeit eines Errors in
-  $S_1'$ und dem relationalen Zusammenhang von $S_1'\DBRel S_2'$ nur
+  in Lemma~\ref{lemQuiVerfeinerung}, aus der lokalen Erreichbarkeit eines
+  Error-Zustandes in
+  $S_1'$ und dem Zusammenhang von $S_1'\DBRel S_2'$ nur
   geschlossen werden, dass in $S_2'$ auch ein Fehler lokal erreichbar ist,
-  jedoch kann dieser Fehler hier ein Error, ein Ruhe-Zustand oder ein
+  jedoch kann dieser Fehler hier ein Error-Zustand, ein Ruhe-Zustand oder ein
   divergenter Zustand sein. Analog verhält es sich, wenn in $S_1'$ ein
   Divergenz-Zustand oder ein Ruhe-Zustand lokal erreichbar ist.
 
@@ -460,7 +463,7 @@ enthalten ist.
   bietet sich, da beide Mengen unter \cont{} abgeschlossen sind.
   \begin{itemize}
     \item Fall 1 ($w=\varepsilon$): Es handelt sich um einen lokal erreichbaren
-      Error oder Divergenz-Zustand in $S_1$. Für $U$ wird ein Transitionssystem
+      Error- oder Divergenz-Zustand in $S_1$. Für $U$ wird ein Transitionssystem
       verwendet, das nur aus dem Startzustand und einer Schleife für alle
       Inputs $x\in I_U$ und einer Schlinge für $\omega$ besteht. Somit kann
       $S_1$ im Prinzip die gleichen Error-Zustände bzw. Divergenz-Zustände
@@ -468,7 +471,7 @@ enthalten ist.
       erreichbaren Fehler haben muss, da $U\|S_1\DBRel U\|S_2$ gilt. Durch den
       Aufbau von $U$ ist in einer Parallelkomposition mit $U$ kein
       Ruhe-Zustand möglich. Der Fehler, der in $U\|S_2$ lokal erreichbar ist,
-      muss also ein Error oder Divergenz-Zustand sein. Da von $U$ kein Error
+      muss also ein Error- oder Divergenz-Zustand sein. Da von $U$ kein Error
       und keine Divergenz geerbt werden kann und durch die Inputschleife auch
       kein neuer Error enstehen kann, muss der Fehler von $U_2$ geerbt sein.
       Somit gilt also, dass in $S_2$ ein Error- oder Divergenz-Zustand lokal
@@ -528,7 +531,8 @@ enthalten ist.
           \overset{w}{\Rightarrow} (q_{n+1},q'') \overset{u}{\Rightarrow}
           (q_{n+1},q')$ für $u\in (O\cup \{\omega\})^*$ und $q'\in Div_1$.
           Daraus folgt $(q_{n+1},q')\in Div_{U\|S_1}$ und somit $wu\in
-          \StDT{}(U\|S_1)$. Da alle Aktionen aus $w$ synchronisiert werden gilt
+          \StDT{}(U\|S_1)$. Da alle Aktionen aus $w$ synchronisiert werden und
+          $I_U\cap I_1 = \emptyset$ gilt
           $x_1,\dots ,x_n,x_{n+1}\in O_{U\|S_1}$ und, da $u\in (O\cup
           \{\omega\})^*$, folgt $u\in O_{U\|S_1}^*$. Somit ergibt sich
           $\varepsilon\in \PrDT{}(U\|S_1)$.
@@ -542,14 +546,14 @@ enthalten ist.
       \begin{itemize}
         \item Fall 2i) ($\varepsilon\in\ET{}(U\|S_2)$ wegen neuem Error): Da
           jeder Zustand von $U$ alle Inputs $x\in I_U=O$ zulässt, muss ein
-          lokal erreichbarer Error der Form sein, dass ein Output $a\in
+          lokal erreichbarer Error-Zustand der Form sein, dass ein Output $a\in
           O_U\backslash\{\omega\}$ von $U$ möglich ist, der nicht mit einem
           passenden Input aus $S_2$ synchronisiert werden kann. Durch die
           Konstruktion von $U$ ist in $q_{n+1}$ kein Output außer $\omega$
           möglich. Ein neuer Error muss also die Form $(q_i,q')$ haben mit
           $i\leq n, q' \overset{x_{i+1}}{\not{\hspace{-0.2cm}\longrightarrow}}$ und
           $x_{i+1}\in O_U\backslash\{\omega\}$. Durch Projektion erhält man
-          dann $q_{02} \overset{x_1\dots x_i}{\Longrightarrow} q'
+          dann $q_{02} \overset{x_1\dots x_i}{\xRightarrow{\hspace{0.9cm}}} q'
           \overset{x_{i+1}}{\not{\hspace{-0.2cm}\longrightarrow}}$ und damit gilt
           $x_1\dots x_{i+1}\in \MIT{}_2\subseteq \ET{}_2$. Somit ist ein Präfix
           von $w$ in $\EDT{}_2$ enthalten.
@@ -560,7 +564,7 @@ enthalten ist.
           kein Error geerbt werden kann. Es gilt dann $\prune{}(x_1\dots
           x_iu|_{\Sigma _2})= \prune{}(x_1\dots x_i)\in\PrET{}_2\subseteq
           \ET{}_2$. Da $x_1\dots x_i$ ein Präfix von $w$ ist, führt auch in
-          diesem Fall ein Präfix von $w$ zu einem Error und ist somit in
+          diesem Fall ein Präfix von $w$ zu einem Error-Zustand und ist somit in
           $\EDT{}_2$ enthalten.
         \item Fall 2iii) ($\varepsilon\in \DT{}(U\|S_2)\backslash
           \ET{}(U\|S_2)$): Da $U$ nicht unendliche viele Zustände hat und auch
@@ -609,7 +613,7 @@ enthalten ist.
       \node (0) {$q_0$};
       \node (1) [right of=0] {$q_1$};
       \node (dots) [right of=1] {$\dots$};
-      \node (n) [right of=dots, rectangle, dashed, draw] {$q_n\in Qui_U$};
+      \node (n) [right of=dots, rectangle, dotted, draw] {$q_n\in Qui_U$};
       \node (q) at ($(1)!0.5!(dots) + (0,-3)$) {$q$};
 
       \path ($ (0) + (-1,0) $) edge (0)
@@ -639,7 +643,7 @@ enthalten ist.
   $w\in \StQT{}(U\|S_1)$. Es kann also in der Parallelkomposition durch $w$
   ein Ruhe-Zustand lokal erreicht werden. Da $w\notin \EDT{}_1$ gilt, kann
   auf dem Weg, der mit $w$ im Transitionssystem $S_1$ zurück gelegt wird,
-  kein Error oder Divergenz-Zustand lokal erreicht werden. Es kann also
+  kein Error- oder Divergenz-Zustand lokal erreicht werden. Es kann also
   weder von $S_1$ noch von $U$ Error oder Divergenz auf diesem Weg geerbt
   werden oder neu entstehen. Da ein Ruhe-Zustand in $U\|S_1$ lokal
   erreichbar ist, muss auch ein Fehler in $U\|S_2$ lokal erreichbar sein.
@@ -648,11 +652,11 @@ enthalten ist.
   Divergenz handelt.
   \begin{itemize}
     \item Fall a) ($\varepsilon\in \ET{}(U\|S_2)$): Der lokal erreichbare
-      Fehler ist ein Error. Das $w$ muss somit nicht ausführbar sein. Der
+      Fehler ist ein Error-Zustand. Das $w$ muss somit nicht ausführbar sein. Der
       Error kann sowohl von $S_2$ geerbt sein, wie durch fehlende
       Synchronizations-Möglichkeiten als neuer Error in der
       Parallelkomposition entstanden sein. Da nur auf dem Trace $w$ in $U$
-      Sychornisa\-tions-Fehler möglich sind und wegen den Fällen 2i) und
+      Synchronisations-Fehler möglich sind und wegen den Fällen 2i) und
       2ii) des ersten Punktes von diesem Beweis ist ein Präfix von $w$
       in $\EDT{}_2$ enthalten. Da die Menge \EDT{} unter \cont{}
       abgeschlossen ist, gilt auch $w\in \EDT{}_2 \subseteq \QDT{}_2$.
@@ -773,7 +777,7 @@ $\cdot\|\cdot$ charakterisiert, die in \DBRel{} enthalten ist.
 
 \begin{proof}
   \glqq{}$\Leftarrow$\grqq{}: Nach Definition gilt $w\in\QDT{}(S)$ mit $w\in
-  O^*$ genau dann, wenn in $S$ ein Divergenz-Zustand, ein Ruhe-Zustand oder ein
+  O(S)^*$ genau dann, wenn in $S$ ein Divergenz-Zustand, ein Ruhe-Zustand oder ein
   Error-Zustand lokal erreichbar ist. $S_1\DRel S_2$ impliziert, dass
   $w\in\QDT{}_2$ gilt, wenn $w\in\QDT{}_1$ gilt. Somit ist ein Divergenz-Zustand,
   ein Ruhe-Zustand oder ein Error-Zustand nur dann in $S_1$ lokal erreichbar,
@@ -851,7 +855,7 @@ noch die Basisrelation \EBRel{}. Somit wäre garantiert, dass man die beiden
 Systeme $S_1$ (siehe dazu Abbildung~\ref{S1}) und $S_2$ (siehe dazu
 Abbildung~\ref{S2}) aus dem Beispiel oben unter der Verfeinerungsrelation
 unterscheiden könnte. Es würde dann die Relation \ERel{} erhalten bleiben
-und man hätte die Inklusionen $\DT{}_1 \cup\ET{}_1 \subseteq \DT{}_2\cup
+und man hätte zusätzlich die Inklusionen $\DT{}_1 \cup\ET{}_1 \subseteq \DT{}_2\cup
 \ET{}_2$ und $\QT{}_1\cup \DT{}_1\subseteq \QT{}_2\cup \DT{}_2$ für die
 Verfeinerungsrelation in diesem Kapitel. Dies würde dem Ansatz
 aus~\cite{Chilton2013} entsprechen. Dadurch würden jedoch Error als

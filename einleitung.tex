@@ -1,6 +1,7 @@
 \chapter{Einleitung}
 
-Interface-Automaten werden im Allgemeinen dafür eingesetzt, um Verhalten zu modellieren und zu
+Interface-Automaten werden im Allgemeinen dafür eingesetzt, um Verhalten vom
+System oder Teilen davon zu modellieren und zu
 untersuchen. Sie beschreiben abstrakt des Kommunikationsverhaltens
 eines Systems oder einer Komponente durch Inputs und Outputs. Es können durch
 Interface-Automaten
@@ -16,11 +17,12 @@ Input synchronisiert werden. Falls dies nicht möglich ist, tritt ein
 Kommunikationsfehler ein, der verhindert werden sollte, da das
 Verhalten des Systems dann unvorhersehbar wird. In~\cite{Lynch1996} wird die
 Abwesenheit dieser Kommunikationsfehler
-für die I/O-Automaten garantiert, in dem für alle Zustände alle Inputs möglich
-sind. In Interface-Automaten ist ein fehlender Input jedoch hervorgerufen durch
-die Voraussetzung, dass die Umwelt diesen Input in diesem Zustand nicht senden
+für die darin betrachteten I/O-Automaten garantiert, in dem für alle Zustände alle Inputs möglich
+sind. In Interface-Automaten ist ein fehlender Input jedoch durch die
+Voraussetzung zu begründen, dass die Umwelt diesen Input in diesem Zustand nicht senden
 darf. Es ist also nicht sinnvoll, für die Vermeidung von Kommunikationsfehler
-in Interface-Automaten, alle Inputs für alle Zustände zuzulassen.\\
+in Interface-Automaten, alle Inputs für alle Zustände zuzulassen, da dann nicht
+mehr alle zulässigen Voraussetzungen erfüllt werden könnten.\\
 So wie die Interface-Automaten in~\cite{Alfaro2004} definiert sind, kann es
 in der Parallelkomposition von zwei dieser Automaten zu Kommunikationsfehlern
 kommen, in dem eine Komponente einen Output macht, den die andere nicht als Input
@@ -28,12 +30,12 @@ aufnehmen kann. Diese Fehler-Zustände, die daraus entstehen, sind jedoch nicht
 zulässig und müssen inklusive aller Zustände, durch die man mit lokalen
 Aktionen einen dieser Fehler-Zustände erreichen kann, mit einer speziell definieren
 Operation gestutzt werden.\\
-Um diesem Problem des aufwendigen Stutzens entgegenzuwirken, soll hier eine
+Um dem Problem des aufwendigen Stutzens entgegenzuwirken, soll hier eine
 andere Modellierung betrachtet werden. Die Komponenten sollen als beschriftetes
 Transitionssystem (LTS) mit disjunkten Input- und Output-Aktionen und einer
 internen Aktion $\tau$ modelliert werden. Diese Modelle werden dann
-Error-IO-Transitionssysteme (\EIO{}s) genannt. Die Systeme sollen explizite
-Error-Zustände haben. Durch die Parallelkomposition können dann wie oben
+Error-IO-Transitionssysteme (\EIO{}s) genannt. Für die Systeme sollen explizite
+Error-Zustände möglich sein. Durch die Parallelkomposition können dann wie oben
 beschrieben neue Error-Zustände entstehen und es werden zusätzlich auch noch die
 Error-Zustände der einzelnen Komponenten geerbt.\\
 Darüber sind dann Verfeinerungsrelationen möglich, diese sollen die
@@ -48,7 +50,7 @@ Parallelkomposition durch eine Verfeinerung ersetzt wird, soll die Komposition
 selbst auch verfeinert werden. Da die Basisrelation keine Präkongruenz ist,
 wird eine größte Präkongruenz bezüglich der Parallelkomposition
 charakterisiert, die in der Basisrelation enthalten ist.\\
-In~\cite{Vogler2014EIO} wurde für Error-Freiheit nachgewiesen, dass jedes \EIO{}
+In~\cite{Vogler2014EIO} wurde für Kommunikationsfehler-Freiheit nachgewiesen, dass jedes \EIO{}
 äquivalent ist zu einem ohne Error-Zustände unter Berücksichtigung der
 Präkongruenz. Diesen erhält man durch Stutzen wie in~\cite{Alfaro2004}. Es ist
 also möglich die \EIO{}s nur für die Untersuchung zu verwenden und die
@@ -125,7 +127,7 @@ Das System ist dann auf einen Input von Außen angewiesen um sich wieder aus
 diesem Zustand befreien zu können. Es kann ohne diesen Input keinen Fortschritt
 mehr geben in Form von Outputs. Da aber auch die $\tau$-Transitionen verboten
 sind, kann das System auch keine interne Aktion zu einem anderen Zustand
-ausführen. Somit wurden die Ruhe-Zustände nur als Art der Deadlocks umgesetzt,
+ausführen. Somit wurden die Ruhe-Zustände als Art Deadlocks umgesetzt,
 jedoch falls man die $\tau$s nicht komplett verbieten würde, könnten auch
 Livelocks damit dargestellt werden.\\
 Eine andere Betrachtungsweise zeigt dann die Hinzunahme von unendlichen Traces,

@@ -3,7 +3,7 @@
 \section{Präkongruenz für Ruhe}
 
 In diesem Kapitel wird es nicht mehr nur um die Erreichbarkeit von
-Error-Zuständen gehen, sondern auch um die Erreichbarkeit von
+Error-Zuständen gehen, wie im letzten Kapitel, sondern auch um die Erreichbarkeit von
 Ruhe-Zuständen. Es wird dabei eine analoge Herangehensweise zur der im letzten
 Kapitel angewendet, jedoch wird~\cite{Chilton2013} als Quelle verwendet. Darin
 werden ähnliche Konzepte beschrieben, jedoch aus Sicht der Traces. Es werden
@@ -13,7 +13,7 @@ Zustände, die keine Outputs ohne einen Input ausführen können, werden als
 in einer Art Verklemmung angesehen, da sie ohne Zutun von Außen den Zustand
 nicht mehr verlassen können. So ein Zustand hat also keine
 Transitionsmöglichkeiten für einen Output. Falls dieser Zustand
-die Möglichkeit für eine interne Aktion hat, darf dadurch niemals ein Zustand
+die Möglichkeit für eine interne Aktion hat, darf durch diese $\tau$s niemals ein Zustand
 erreicht werden, von dem aus ein Output möglich ist. Ein Zustand, der keine
 Outputs und $\tau$s ausführen kann, ist also ein Deadlock-Zustand, in denen das
 System nichts mehr tun kann ohne einen Input. Wenn man eine Erweiterung um
@@ -42,8 +42,8 @@ Zustände, die keine Outputs und $\tau$s ausführen können.
 Für die Erreichbarkeit wird wie im letzten Kapitel wieder der
 optimistische Ansatz der lokalen Erreichbarkeit für die Error-Zustände
 verwendet. Ruhe ist kein unabwendbarer Fehler, sondern kann durch einen Input
-repariert werden. Daraus ergibt sich, dass ein Ruhe-Zustand als nicht so
-\glqq{}schlimmer Fehler\grqq{} anzusehen ist wie ein Error. Somit ist ein
+repariert werden. Daraus ergibt sich, dass Ruhe als nicht so
+\glqq{}schlimmer Fehler\grqq{} anzusehen ist wie Error. Somit ist ein
 Ruhe-Zustand ebenso wie ein Error-Zustand erreichbar, sobald er durch Outputs
 und $\tau$s erreicht werden kann, jedoch ist nicht jede beliebige Fortsetzung
 eines Traces, das durch lokale Aktionen zu einem Ruhe-Zustand führt, ein
@@ -51,14 +51,14 @@ Ruhetrace.
 
 \begin{Def}[error- und ruhe-freie Kommunikation]
   Zwei \EIO{}s $S_1$ und $S_2$ \emph{kommunizieren error- und ruhe-frei}, wenn
-  in ihrer Parallelkomposition $S_{12}$ keine Errors und keine Ruhe-Zustände
+  in ihrer Parallelkomposition $S_{12}$ keine Error- und keine Ruhe-Zustände
   lokal erreichbar sind.
 \end{Def}
 
 \begin{Def}[Ruhe-Verfeinerungs-Basisrelation]
 \label{DefQuiBasisrel}
   Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur wird
-  $S_1\QBRel S_2$ geschrieben, wenn ein Error oder Ruhe-Zustand in $S_1$ nur
+  $S_1\QBRel S_2$ geschrieben, wenn ein Error- oder Ruhe-Zustand in $S_1$ nur
   dann lokal erreichbar ist, wenn ein solcher auch in $S_2$ lokal erreichbar
   ist. Diese \emph{Basisrelation} stellt eine \emph{Verfeinerung} bezüglich
   \emph{Error} und \emph{Ruhe} dar.\\
@@ -71,7 +71,7 @@ benötigt man wie im letzten Kapitel die Definition von Traces auf der Struktur.
 Dadurch erhält man die Möglichkeit die gröbste Präkongruenz charakterisieren zu
 können.\\
 Wie bereits oben erwähnt, sind Ruhe-Zustände reparierbare Fehler im Gegensatz
-zu Errors. Somit werden keine gekürzten Ruhetraces benötigt, bei denen die
+zu Error-Zuständen. Somit werden keine gekürzten Ruhetraces benötigt, bei denen die
 \prune{}-Funktion zur Anwendung käme und auch keine beliebigen Verlängerungen.
 
 \begin{Def}[Ruhetraces]
@@ -148,7 +148,7 @@ relevant.
       für $S_1$ oder $S_2$ ausführbar gewesen sein. Es gilt also \oBdA{} $q_1
       \overset{a}{\rightarrow}$ mit $a\in O_1$. Dies ist jedoch Aufgrund der
       Voraussetzungen nicht möglich. Somit kann die Parallelkomposition
-      diese Transition für $(q_1,q_2)$ ebenfalls nicht ausführt werden.
+      diese Transition für $(q_1,q_2)$ ebenfalls nicht ausführen.
     \item Fall 3 \big($(q_1,q_2) \overset{a}{\rightarrow}$ mit $a\in O\cap
       \Synch(S_1,S_2)$\big): Der Output $a$ ist in diesem Fall durch Synchronisation
       von einem Output mit einem Input entstanden. \OBdA{} gilt $a\in O_1\cap
@@ -252,7 +252,7 @@ Sie entsprechen Punkt 1.\ und 2.\ aus Satz~\ref{satzErrorSemanik}.
       \EL{}_2$. Daraus kann dann mit dem ersten Punkt von
       Satz~\ref{satzErrorSemanik} gefolgert werden, dass $w\in \ET{}_{12}$ gilt
       und somit $w$ in der linken Seite der Gleichung enthalten ist.
-    \item Fall 2 ($w_1\in \StQT{}_1\backslash\ET{}_1\wedge w_2\in
+    \item Fall 2 ($w_1\in \StQT{}_1\backslash\ET{}_1\,\wedge\, w_2\in
       \StQT{}_2\backslash\ET{}_2$): Es gilt in diesem Fall $q_{01}
       \overset{w_1}{\Rightarrow} q_1\in Qui_1$ und $q_{02}
       \overset{w_2}{\Rightarrow} q_2\in Qui_2$. Da $q_1$ und $q_2$ in der
@@ -327,7 +327,7 @@ werden.
   dass die hier verwendete Basisrelation nichts über die Art des erreichbaren
   Fehlers in den Komponenten aussagt, kann der Beweis aus Lemma~\ref{lemVerfeinerung}
   nicht verwendet werden. Es kann also aus der lokalen Erreichbarkeit eines
-  Errors in $S_1'$ und dem relationalen Zusammenhang von $S_1'\QBRel S_2'$ nur
+  Error-Zustandes in $S_1'$ und dem relationalen Zusammenhang von $S_1'\QBRel S_2'$ nur
   geschlossen werden, dass in $S_2'$ auch ein Fehler lokal erreichbar ist,
   jedoch kann dieser Fehler Error oder Ruhe sein. Analog
   verhält es sich, wenn in $S_1'$ ein Ruhe-Zustand lokal erreichbar ist.\\
@@ -344,11 +344,11 @@ werden.
   Präfixe in $\ET{}_2$ enthalten ist.
   \begin{itemize}
     \item Fall 1 ($w=\varepsilon$): Es handelt sich um einen lokal erreichbaren
-      Error in $S_1$. Für $U$ wird ein Transitionssystem verwendet, das nur aus
+      Error-Zustand in $S_1$. Für $U$ wird ein Transitionssystem verwendet, das nur aus
       dem Startzustand, einer Schleife für alle Inputs $x\in I_U$ und einer
       Schlinge für $\tau$ besteht. Somit kann $S_1$ die im Prinzip gleichen
       Error-Zustände lokal erreichen wie $U\|S_1$. Es folgt also, dass in $U\|S_2$ ein Fehler lokal
-      erreichbar ist. Es kann sich bei dem Fehler nur um einen Error handeln,
+      erreichbar ist. Es kann sich bei dem Fehler nur um einen Error-Zustand handeln,
       da es in der Komposition mit $U$ keine Ruhe-Zustände geben kann. Da $U$
       keinen Error-Zustand und auch keine fehlenden Input-Möglichkeiten
       enthält, kann der Error nur von $S_2$ geerbt sein. Somit muss in $S_2$
@@ -405,7 +405,7 @@ werden.
       im letzten Fall, nur erreicht, dass in einer Parallelkomposition mit $U$
       keine Ruhe-Zustände möglich sind. Es kann also auch hier aus der lokalen
       Erreichbarkeit eines Error-Zustandes in $U\|S_1$ auf die lokale
-      Erreichbarkeit eines Errors in $U\|S_2$ geschlossen werden. Die weitere
+      Erreichbarkeit eines Error-Zustandes in $U\|S_2$ geschlossen werden. Die weitere
       Argumentation verläuft dann analog zu Fall 2, derselben Inklusion im
       Beweis zu Lemma~\ref{lemVerfeinerung}. Da $\tau$s nur interne Aktionen
       eines einzelnen Systems sind, verändert sich auch nichts an den Traces
@@ -426,7 +426,7 @@ werden.
       auch hier, dass $\varepsilon$ immer in $\EL{}_2$ enthalten ist.
     \item Fall 2 ($w=x_1\dots x_n$ mit $n\geq 1$): Die Konstruktion des
       Partners $U$ weicht wie im letzten Beweisteil nur durch die
-      $\tau$-Schleifen an den Zuständen des Transitionssystems vom Beweis es
+      $\tau$-Schleifen an den Zuständen des Transitionssystems vom Beweis des
       zweiten Punktes aus
       Lemma~\ref{lemVerfeinerung} ab. Somit ist der Partner $U$ dann wie folgt
       definiert (siehe dazu auch Abbildung~\ref{UmitEundTau}):
@@ -513,7 +513,7 @@ werden.
       \node (0) {$q_0$};
       \node (1) [right of=0] {$q_1$};
       \node (dots) [right of=1] {$\dots$};
-      \node (n) [right of=dots, rectangle, dashed, draw] {$q_n\in Qui_U$};
+      \node (n) [right of=dots, rectangle, dotted, draw] {$q_n\in Qui_U$};
       \node (q) at ($(1)!0.5!(dots) + (0,-3)$) {$q$};
 
       \path ($ (0) + (-1,0) $) edge (0)
@@ -544,7 +544,7 @@ werden.
   $w\in \StQT{}(U\|S_1)$. Es kann also in der Parallelkomposition durch $w$
   ein Ruhe-Zustand lokal erreicht werden. Da $w\notin \ET{}_1$ gilt, kann
   auf dem Weg, der mit $w$ im Transitionssystem $S_1$ zurückgelegt wird,
-  kein Error lokal erreicht werden. Es kann also weder von $S_1$ noch von
+  kein Error-Zustand lokal erreicht werden. Es kann also weder von $S_1$ noch von
   $U$ ein Error auf diesem Weg geerbt werden und durch den Aufbau von $U$
   kann auch kein neuer Error in der Parallelkomposition beider Systeme
   entstehen. Da ein Ruhe-Zustand in $U\|S_1$
@@ -554,13 +554,13 @@ werden.
   Error handelt.
   \begin{itemize}
     \item Fall a) ($\varepsilon\in \ET{}(U\|S_2)$): Es handelt sich bei
-      dem lokal erreichbaren Fehler um einen Error. Es ist somit nicht
+      dem lokal erreichbaren Fehler um einen Error-Zustand. Es ist somit nicht
       relevant, ob das $w$ ausführbar ist. Der Error kann sowohl von $S_2$
       geerbt sein, wie auch durch fehlende Synchronizationsmöglichkeiten
       als neuer Error in der Parallelkomposition entstanden sein. Es gilt
       also, dass bereits in $S_2$ ein Präfix von $w$ in $\ET{}_2$ enthalten
       ist, wegen des Beweises des ersten Punktes aus
-      Lemma~\ref{lemVerfeinerung} und da $U$ nur Synchronisationsfehler
+      Lemma~\ref{lemVerfeinerung} und da $U$ nur Synchronisations-Fehler
       auf dem Trace $w$ zulässt. Da die Menge \ET{} unter \cont{}
       abgeschlossen ist, gilt also auch $w\in \ET{}_2\subseteq \QT{}_2$.
     \item Fall b) (Ruhe-Zustand lokal erreichbar in $U\|S_2$ und
@@ -586,7 +586,7 @@ enthalten ist.
 
 \begin{proof}
   \glqq{}$\Leftarrow$\grqq{}: Nach Definition gilt $w\in\QT{}(S)$ mit $w\in
-  O^*$ genau dann, wenn in $S$ ein Ruhe-Zustand oder ein Error-Zustand lokal
+  O(S)^*$ genau dann, wenn in $S$ ein Ruhe-Zustand oder ein Error-Zustand lokal
   erreichbar ist. $S_1\QRel S_2$ impliziert, dass $w\in\QT{}_2$ gilt, wenn
   $w\in\QT{}_1$ gilt. Somit ist ein Ruhe-Zustand oder ein Error-Zustand nur dann in
   $S_1$ lokal erreichbar, wenn auch ein solcher in $S_2$ lokal erreichbar ist.
@@ -650,7 +650,8 @@ charakterisiert.
 
 Es soll nun auch hier die Auswirkungen der Internalisierung von Aktionen auf
 die Verfeinerungsrelationen untersucht werden. Es werden Outputs in interne
-Aktionen umgewandelt. Da jedoch bei den Ruhe-Zuständen auch
+Aktionen umgewandelt. Da jedoch bei den Ruhe-Zuständen, in der hier verwendeten
+Definition, auch
 $\tau$-Transitionen verboten wurden, verändert sich nichts an der Menge der
 ruhigen Zustände. Da die Erreichbarkeit von Ruhe-Zuständen mittels lokaler
 Aktionen betrachtet wurde, kann sich auch nichts an der Erreichbarkeit der
@@ -670,7 +671,7 @@ formuliert werden.
   werden, die bereits in der Menge der lokalen Aktionen enthalten sind. Die
   Menge der Ruhe-Zustände kann sich durch das Internalisieren nicht
   vergrößern oder verkleinern, wie oben bereits festgestellt. Also gilt: Wenn
-  $S_i$ einen Error oder Ruhe-Zustand lokal erreichen kann, dann kann das auch
+  $S_i$ einen Error- oder Ruhe-Zustand lokal erreichen kann, dann kann das auch
   $S_i/X$ und umgekehrt, da dabei nur $\tau$s durch Outputs ersetzt werden. Es
   folgt also aus der Relation $S_1 \QBRel S_2$ auch der Zusammenhang $S_1/X
   \QBRel S_2/X$.
@@ -707,12 +708,12 @@ formuliert werden.
   $\ET{}(S/X)$ oder in $\StQT{}(S/X)$ enthalten ist. Für ein $w'\in\StQT{}(S)$
   ist jedoch anzumerken, dass im Beweis zu Punkt (i) durch die Einschränkung
   des Traces immer noch der gleiche Zustand erreicht wird. Es folgt also
-  insgesamt, dass $w:=w'_{\Sigma\backslash X}\in \QT{}(S/X)$ gilt.\\
+  insgesamt, dass $w\in \QT{}(S/X)$ gilt.\\
   Für ein $w\in\QT{}(S/X)$ kann, ebenfalls wie im Beweis zu Punkt (i) und
   (ii),
-  durch Ersetzen von $\tau$s im jeweiligen Ablauf ein Ablauf gefunden werden,
+  durch Ersetzen von $\tau$s durch Outputs aus $X$ im jeweiligen Ablauf ein Ablauf gefunden werden,
   der in $S$ enthalten ist. Es gibt also eine Erweiterung $w'$ von $w$ um
-  Aktionen aus $X$, sodass diese in $\QT{}(S)$ enthalten ist.
+  Aktionen aus $X$, sodass diese Erweiterung in $\QT{}(S)$ enthalten ist.
 
   Da $S_1\QRel S_2$ gilt, kann geschlossen werden, dass $S_1\ERel S_2$ und
   $\QT{}_1\subseteq \QT{}_2$ gilt. Aufgrund von

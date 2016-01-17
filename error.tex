@@ -8,22 +8,23 @@ getrennt und erweitert im Vergleich zu denen in~\cite{Vogler2014EIO}. Ebenfalls
 wurde die Parallelkomposition geändert, wie in~\cite{Schlosser2012BA}.
 
 \begin{Def}[error-freie Kommunikation]
-  Ein Error ist \emph{lokal erreichbar} in einem \EIO{} $S$, wenn $\exists w\in O^*: q_0
+  Ein Error-Zustand ist \emph{lokal erreichbar} in einem \EIO{} $S$, wenn $\exists w\in O^*: q_0
   \overset{w}{\Rightarrow} q\in E$.\\
   Zwei \EIO{}s $S_1$ und $S_2$ \emph{kommunizieren error-frei}, wenn in ihrer
-  Parallelkomposition $S_{12}$ keine Errors lokal erreicht werden können.
+  Parallelkomposition $S_{12}$ keine Error-Zustände lokal erreicht werden können.
 \end{Def}
 
-Mittels der lokalen Erreichbarkeit von Errors kann eine
+Mittels der lokalen Erreichbarkeit von Error-Zuständen kann eine
 Verfeinerungsrelation definiert werden. Zusätzlich wird bereits die
 gröbste Präkongruenz definiert, die charakterisiert werden soll.
 
 \begin{Def}[Error-Verfeinerungs-Basisrelation]
 \label{DefErrorBasisrel}
   Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur wird
-  $S_1\EBRel S_2$ geschrieben, wenn ein Error in $S_1$ nur dann lokal erreichbar ist, wenn er
+  $S_1\EBRel S_2$ geschrieben, wenn ein Error-Zustand in $S_1$ nur dann lokal erreichbar ist, wenn er
   auch in $S_2$ lokal erreichbar ist. Es handelt sich dabei um eine
-  \emph{Basisrelation} für die \emph{Verfeinerung} im Bezug auf \emph{Errors}.\\
+  \emph{Basisrelation} für die \emph{Verfeinerung} im Bezug auf
+  \emph{Error-Zustände}.\\
   \ECRel{} bezeichnet die \emph{vollständig abstrakte Präkongruenz} von \EBRel{}
   bezüglich $\cdot\|\cdot$, d.h.\ die gröbste Präkongruenz bezüglich
   $\cdot\|\cdot$, die in \EBRel{} enthalten ist.
@@ -35,9 +36,10 @@ direkt vom Startzustand zu einem Zustand in der Menge $E$ führen. Da Outputs
 und $\tau$s Aktionen
 sind, die von außen nicht verhindert werden können, wird auch noch die
 Menge der Traces benötigt, die zu einem Zustand führen können, von dem aus mit lokalen Aktionen
-ein Error erreicht werden kann. Zusätzlich ist auch noch die Menge der Traces
+ein Error-Zustand erreicht werden kann. Zusätzlich ist auch noch die Menge der Traces
 interessant, für die es einen Input $a\in I$ gibt, durch den sie möglicherweise nicht
-fortgesetzt werden können. Diese führen zwar nicht direkt zu einem Error,
+fortgesetzt werden können. Diese führen zwar nicht direkt zu einem
+Error-Zustand,
 jedoch in Komposition mit einem anderen Transitionssystem sind
 dies gefährdete Stellen. Sie führen zu einem neuen Error, sobald dieser Input
 für die Synchronisation fehlt.
@@ -114,8 +116,8 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
   ist in~\cite{Vogler2014EIO} nicht nötig, da dort $I_1\cap I_2=\emptyset$
   gilt, somit gibt es dort nur den Fall 1b).
   \begin{itemize}
-    \item Fall 1a) ($a\in (I_1\cap I_2)$): Nun kann der Ablauf der
-      Komposition auf die Transitionssysteme projiziert werden und man erhält dann \oBdA{}
+    \item Fall 1a) ($a\in (I_1\cap I_2)$): Der Ablauf der Komposition kann nun
+      auf die Transitionssysteme projiziert werden und man erhält dann \oBdA{}
       $q_{01}\overset{x_1}{\Rightarrow} q_1
       \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ und
       $q_{02}\overset{x_2}{\Rightarrow} q_2
@@ -196,7 +198,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
   endet vor $v_2$.
   \begin{itemize}
     \item Fall 1 ($v_1=\varepsilon$): Da $\varepsilon\in \PrET{}_1\cup
-      \MIT{}_1$, ist bereits in $S_1$ ein Error lokal erreichbar. $\varepsilon\in
+      \MIT{}_1$, ist bereits in $S_1$ ein Error-Zustand lokal erreichbar. $\varepsilon\in
       \MIT{}_1$ ist nicht möglich, da jedes Element aus $MIT$ nach Definition
       mindestens die Länge $1$ haben muss. Mit der Wahl
       $v_2'=v'=\varepsilon$ ist $v_2'$ ein Präfix von $v_2$.
@@ -219,9 +221,9 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
   \overset{v_2'}{\Rightarrow}$ gefolgert werden, wie das
   in~\cite{Vogler2014EIO} möglich war, sondern nur wenn $a\notin I_2$ gilt.
   \begin{itemize}
-    \item Fall I ($v_1\in \MIT{}_1$ und $v_1\neq\varepsilon$): Es gibt $q_{01}
-      \overset{v_1'}{\Rightarrow}q_1
-      \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ und sei $v'=v''a$. Bei der
+    \item Fall I ($v_1\in \MIT{}_1$ und $v_1\neq\varepsilon$): Es gibt einen
+      Ablauf der Form $q_{01} \overset{v_1'}{\Rightarrow}q_1
+      \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ und es gilt $v'=v''a$. Bei der
       folgenden Fallunterscheidung müssen bezüglich~\cite{Vogler2014EIO}
       zwei weitere Fälle (Ib) und Ic)) einfügt werden, da es zulässig ist, dass $a$
       sowohl in $I_1$ wie auch in $I_2$ enthalten ist.
@@ -252,7 +254,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
           $v''\in v_1'\|v_2''$. Daraus ergibt sich $(q_{01},q_{02})
           \overset{v''}{\Rightarrow} (q_1,q_2)$ mit $q_1
           \overset{a}{\not{\hspace{-0.1cm}\rightarrow}},a\in I_1, q_2
-          \overset{a}{\rightarrow}$, $a\in O_2$, somit gilt $(q_1,q_2)\in
+          \overset{a}{\rightarrow}$ und $a\in O_2$, somit gilt $(q_1,q_2)\in
           E_{12}$. Es wird $v:=\prune{}(v'')\in \PrET{}_{12}$ gewählt.
       \end{itemize}
   \item Fall II ($v_1\in \PrET{}_1$): $\exists u_1\in O_1^*:q_{01}
@@ -295,11 +297,11 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
     &(\EL{}_1\| \EL{}_2)\cup \ET{}_{12}\\
     &\overset{\ref{DefETEL}}{=}\left(\left(L_1\cup
   \ET{}_1\right)\|\left(L_2\cup \ET{}_2\right)\right)\cup \ET{}_{12}\\
-    &=\underset{\overset{1.}{\subseteq} \ET{}_{12}}{\underset{\subseteq
+    &=(L_1\|L_2) \cup \underset{\overset{1.}{\subseteq} \ET{}_{12}}{\underset{\subseteq
     (\EL{}_1\|\ET{}_2)}{\underbrace{(L_1\|\ET{}_2)}}} \cup
     \underset{\overset{1.}{\subseteq} \ET{}_{12}}{\underset{\subseteq
     (\ET{}_1\|\EL{}_2)}{\underbrace{(\ET{}_1\|L_2)}}} \cup
-    (L_1\|L_2) \cup \underset{\overset{1.}{\subseteq}
+     \underset{\overset{1.}{\subseteq}
     \ET{}_{12}}{\underset{\subseteq (\EL{}_1\|\ET{}_2)}{\underbrace{(\ET{}_1\|\ET{}_2)}}} \cup
     \ET{}_{12}\\
     &=(L_1\|L_2) \cup \ET{}_{12}\\
@@ -384,7 +386,7 @@ verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
   abgeschlossen sind.
   \begin{itemize}
     \item Fall 1 ($w=\varepsilon$): Es handelt sich um einen lokal erreichbaren
-      Error in $S_1$.
+      Error-Zustand in $S_1$.
       Für $U$ wird ein Transitionssystem verwendet, das nur aus dem Startzustand und
       einer Schleife für alle Inputs $x\in I_U$ besteht. Somit kann $S_1$ die
       im Prinzip gleichen
@@ -439,7 +441,7 @@ verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
       kann.
       \begin{itemize}
         \item Fall 2a) ($w\in \MIT{}_1$): In $U\|S_1$ erhält man
-          $(q_0,q_{01}) \overset{x_1\dots x_n}{\Longrightarrow} (q_n,q')$ mit
+          $(q_0,q_{01}) \overset{x_1\dots x_n}{\xRightarrow{\hspace{1cm}}} (q_n,q')$ mit
           $q' \overset{x_{n+1}}{\not{\hspace{-0.2cm}\longrightarrow}}$ und $q_n
           \overset{x_{n+1}}{\longrightarrow}$. Deshalb gilt $(q_n,q')\in
           E_{U\|S_1}$ und $x_1\dots x_n\in \StET{}(U\|S_1)$. Da alle Aktionen aus
@@ -457,19 +459,19 @@ verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
           \PrET{}(U\|S_1)$.
       \end{itemize}
       Da $\varepsilon\in \PrET{}(U\|S_1)$ gilt, kann durch
-      $U\|S_1\EBRel U\|S_2$ geschlossen werden, dass auch in $U\|S_2$ ein Error
-      lokal erreichbar sein muss.\\
+      $U\|S_1\EBRel U\|S_2$ geschlossen werden, dass auch in $U\|S_2$ ein
+      Error-Zustand lokal erreichbar sein muss.\\
       Dieser Error kann geerbt oder neu sein.
       \begin{itemize}
         \item Fall 2i) (neuer Error): Da jeder Zustand von $U$ alle Inputs $x\in
-          O=I_U$ zulässt, muss ein lokal erreichbarer Error der Form sein, dass
+          O=I_U$ zulässt, muss ein lokal erreichbarer Error-Zustand der Form sein, dass
           ein Output $a\in O_U$ von $U$ möglich ist, der nicht mit einem
           passenden Input aus $S_2$ synchronisiert werden kann. Durch die
           Konstruktion von $U$ sind in $q_{n+1}$ keine Outputs möglich. Ein
           neuer Error muss also die Form $(q_i,q')$ haben mit $i\leq n, q'
           \overset{x_{i+1}}{\not{\hspace{-0.2cm}\longrightarrow}}$ und $x_{i+1}\in
           O_U=I$. Durch Projektion erhält man dann $q_{02} \overset{x_1\dots
-          x_i}{\Longrightarrow} q'
+          x_i}{\xRightarrow{\hspace{0.9cm}}} q'
           \overset{x_{i+1}}{\not{\hspace{-0.2cm}\longrightarrow}}$ und damit gilt
           $x_1\dots x_{i+1}\in \MIT{}_2\subseteq \ET{}_2$. Somit ist ein Präfix
           von $w$ in $\ET{}_2$ enthalten.
@@ -479,7 +481,7 @@ verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
           keine Errors geerbt werden können. Es gilt dann $\prune{}(x_1\dots$
           $x_iu)=\prune{}(x_1\dots x_i)\in \PrET{}_2\subseteq \ET{}_2$. Da $x_1\dots
           x_i$ ein Präfix von $w$ ist, führt auch in diesem Fall ein Präfix von
-          $w$ zu einem Error.
+          $w$ zu einem Error-Zustand.
       \end{itemize}
   \end{itemize}
   Um die zweite Inklusion zu beweisen, reicht es aufgrund der ersten
@@ -489,7 +491,7 @@ verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
   gezeigt, dass es in $\EL{}_2$ enthalten ist.
   \begin{itemize}
     \item Fall 1 ($w=\varepsilon$): Da $\varepsilon$ immer in $\EL{}_2$
-      enthalten ist, ist hier nichts zu zeigen.
+      enthalten ist, muss hier nichts gezeigt werden.
     \item Fall 2 ($w=x_1\dots x_n$ mit $n\geq 1$): Es wird ein
       Partner $U$ wie folgt konstruiert (siehe dazu auch Abbildung~\ref{UmitE}):
       \begin{itemize}
@@ -532,10 +534,10 @@ verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
       \end{figure}
       Da $q_{01} \overset{w}{\Rightarrow} q'$ gilt, kann man schließen, dass $U\|S_1$
       einen lokal erreichbaren geerbten Error hat. Somit muss $U\|S_2$ ebenfalls einen
-      lokal erreichbaren Error haben.
+      lokal erreichbaren Error-Zustand haben.
       \begin{itemize}
         \item Fall 2a) (neuer Error aufgrund von $x_i\in O_U$ und $q_{02}
-          \overset{x_1\dots x_{i-1}}{\Longrightarrow} q''
+          \overset{x_1\dots x_{i-1}}{\xRightarrow{\hspace{1.3cm}}} q''
           \overset{x_i}{\not{\hspace{-0.1cm}\rightarrow}}$): Es gilt $x_1\dots
           x_i\in \MIT{}_2$ und somit $w\in \EL{}_2$. Anzumerken ist, dass nur
           auf diesem Weg Outputs von $U$ möglich sind, deshalb gibt es keine
@@ -547,10 +549,11 @@ verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
           es gilt $w\in L_2\subseteq \EL{}_2$, wegen Fall 2c).
         \item Fall 2c) (geerbter Error von $U$): Da der einzige Zustand aus
           $E_U$ $q_n$ ist und alle Aktionen synchronisiert sind, ist dies nur
-          möglich, wenn gilt $q_{02} \overset{x_1\dots x_n}{\Longrightarrow}$. In
+          möglich, wenn gilt $q_{02} \overset{x_1\dots
+          x_n}{\xRightarrow{\hspace{1cm}}}$. In
           diesem Fall gilt $w\in L_2\subseteq \EL{}_2$.
         \item Fall 2d) (geerbter Error von $S_2$): Es gilt dann $q_{02}
-          \overset{x_1\dots x_iu}{\Longrightarrow} q'\in E_2$ für $i\geq 0$ und
+          \overset{x_1\dots x_iu}{\xRightarrow{\hspace{1.2cm}}} q'\in E_2$ für $i\geq 0$ und
           $u\in O^*$. Somit ist $x_1\dots x_iu\in \StET{}_2$ und damit
           $\prune{}(x_1\dots x_iu)=\prune{}(x_1\dots x_i)\in \PrET{}_2\subseteq
           \EL{}_2$. Somit gilt $w\in \EL{}_2$.
@@ -570,9 +573,9 @@ Präkongruenz \ECRel{}.
 
 \begin{proof}
   \glqq{}$\Leftarrow$\grqq{}: Nach Definition gilt, genau dann wenn
-      $\varepsilon\in \ET{}(S)$, ist ein Error lokal erreichbar in $S$.
+      $\varepsilon\in \ET{}(S)$, ist ein Error-Zustand lokal erreichbar in $S$.
       $S_1\ERel S_2$ impliziert, dass $\varepsilon\in
-      \ET{}_2$ gilt, wenn $\varepsilon\in \ET{}_1$. Somit ist ein Error
+      \ET{}_2$ gilt, wenn $\varepsilon\in \ET{}_1$. Somit ist ein Error-Zustand
       in $S_1$ nur dann lokal erreichbar, wenn dieser auch in $S_2$ lokal
       erreichbar ist. Dadurch folgt, dass $S_1\EBRel S_2$ gilt, da \EBRel{} in
       Definition~\ref{DefErrorBasisrel} über die lokale Erreichbarkeit der
@@ -646,14 +649,14 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   Da die Definition der lokalen Erreichbarkeit auf lokalen Aktionen beruht, die
   aus den Outputs und der internen Aktion besteht, ändert sich durch das
   Verbergen von Outputs nichts an der Error-Erreichbarkeit. Somit ist jeder
-  Error, der in $S_i$ lokal erreichbar ist über ein Trace, das Outputs aus $X$
+  Error-Zustand, der in $S_i$ lokal erreichbar ist über ein Trace, das Outputs aus $X$
   enthält, auch in $S_i/X$ erreichbar, jedoch enthält das Trace
-  nicht mehr diesen Output. Alle Traces, die keine Outputs aus der Menge hinter
+  nicht mehr diese Outputs. Alle Traces, die keine Outputs aus der Menge hinter
   dem Internalisierungsoperator enthalten, bleiben unverändert erhalten. Es ist
   auch nicht möglich, dass durch das Verbergen von Outputs neue Errors
   entstehen. Auch in die umgekehrte Richtung kann durch das Ersetzten von
-  $\tau$s durch Outputs nichts an der Erreichbarkeit oder der Menge der Errors
-  geändert werden. Es ist also jeder Error, der in $S_i/X$ lokal erreichbar
+  $\tau$s durch Outputs nichts an der Erreichbarkeit oder der Menge der
+  Error-Zustände geändert werden. Es ist also jeder Error-Zustand, der in $S_i/X$ lokal erreichbar
   ist, auch in $S_i$ erreichbar. Somit folgt die Behauptung.
 \end{proof}
 

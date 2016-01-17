@@ -67,7 +67,7 @@ $L(S)=\left\{w\in\Sigma^*\mid q_0\overset{w}{\Rightarrow}\right\}$.
 
 \section{Parallelkomposition}
 Zwei \EIO{}s sind komponierbar, wenn ihre Output-Mengen disjunkt sind. Die
-Error-Zustän\-de der Parallelkomposition setzen sich aus den Errors der
+Error-Zustän\-de der Parallelkomposition setzen sich aus den Error-Zuständen der
 beiden zusammengesetzten Komponenten (geerbte Errors) und den Zuständen, die
 Outputs aus der Menge der synchronisierten Aktionen besitzen, für die im zu
 komponierenden System jedoch kein passender Input vorhanden ist (neue Errors),
@@ -75,7 +75,7 @@ zusammen.\\
 In der folgenden Definition muss eine Veränderung
 gegenüber~\cite{Vogler2014EIO} an der Menge der synchronisierten
 Aktionen vorgenommen werden. Da nicht mehr $I_1\cap I_2 =\emptyset$ gelten
-muss, werden die gemeinsamen Inputs synchronisiert. Somit handelt es sich in
+muss, werden die gemeinsamen Inputs der Systeme synchronisiert. Somit handelt es sich in
 der Parallelkomposition bei synchronisierten Aktionen nicht mehr nur um
 Outputs, wie in~\cite{Vogler2014EIO}, sondern im Fall von $I_1\cap I_2$ auch um
 Inputs. Falls es bei Inputs aus $I_1\cap I_2$ zu einem fehlenden Input für die
@@ -121,8 +121,8 @@ q_2\overset{a}{\rightarrow}\right\}
   S_2)=(I_1\cap O_2)\cup(O_1\cap I_2)\cup (I_1\cap I_2)$ nicht versteckt,
   sondern als Outputs bzw.\ im Fall von $I_1\cap I_2$ als Inputs der
   Komposition beibehalten.\\
-  $S_1$ wird \emph{Partner} von $S_2$ genannt, wenn ihre
-  Parallelkomposition geschlossen ist, d.h.\ wenn sie duale Signaturen
+  $S_1$ wird \emph{Partner} von $S_2$ genannt, wenn die Parallelkomposition von
+  $S_1$ und $S_2$ geschlossen ist, d.h.\ wenn sie duale Signaturen
   $\Sig(S_1)=(I,O)$ und $\Sig(S_2)=(O,I)$ haben.\\
   Die oben definierte Notation $S_{12}=S_1\|S_2$ wird auch für andere
   Indizierungen der Systeme analog angewendet, so gilt also allgemein
@@ -176,8 +176,8 @@ $p_i \overset{w_i}{\Rightarrow} q_i$ mit $w| _{\Sigma _i}= w_i$ für $i=1,2$,
 Projektionen von einem Ablauf in $S_{12}$ der Form $(p_1,p_2)
 \overset{w}{\Rightarrow} (q_1.q_2)$. Es ist dafür nötig, dass die Abläufe der
 beiden Systeme $S_1$, $S_2$ und die Systeme selbst komponierbar sind. Das $w$ wurde so
-gewählt, dass die Projektion auf die einzelnen Alphabete $\Sigma _1$, $\Sigma
-_2$ die jeweiligen Wörter $w_1$, $w_2$ ergibt. Falls keine internen Aktionen
+gewählt, dass die Projektion auf die einzelnen Alphabete $\Sigma _1$ und $\Sigma
+_2$ die jeweiligen Wörter $w_1$ und $w_2$ ergibt. Falls keine internen Aktionen
 zugelassen wären, würde sogar nur genau ein Ablauf möglich sein in $S_{12}$. Da
 jedoch auch interne Aktionen zulässig sind, sind mehrere Abläufe möglich, da
 nicht klar ist, wann ein $\tau$ in einem Trace ausgeführt wird. Daraus ergibt
