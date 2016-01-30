@@ -117,12 +117,10 @@ die nachfolgenden Transitionssysteme benötigt:
   \item $S_1 = \left(\{q_{01}\},\emptyset ,\emptyset , \emptyset, q_{01},
     \{q_{01}\}\right)$ (siehe auch Abbildung~\ref{S1}),
   \item $S_2 = \left(\{q_{02}\},\emptyset ,\emptyset , \{(q_{02},\tau ,q_{02})\},
-    q_{02}, \emptyset \right)$ (siehe auch Abbildung~\ref{S2}),
-  \item $U = \left(\{q_{0U}\}, \emptyset, \{\omega\}, \{(q_{0U},\omega ,q_{0U})\},
-    q_{0U}, \emptyset \right)$ (siehe auch Abbildung~\ref{U}).
+    q_{02}, \emptyset \right)$ (siehe auch Abbildung~\ref{S2}).
 \end{itemize}
 \begin{figure}[h!tbp]
-  \begin{minipage}{0.3\textwidth}
+  \begin{minipage}{0.49\textwidth}
   \begin{center}
     \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
       \node (0) [rectangle, draw]{$q_{01}\in E_1$};
@@ -133,12 +131,11 @@ die nachfolgenden Transitionssysteme benötigt:
 \label{S1}
   \end{center}
   \end{minipage}
-  \begin{minipage}{0.05\textwidth}
-  \end{minipage}
-  \begin{minipage}{0.3\textwidth}
+  \hfill
+  \begin{minipage}{0.49\textwidth}
   \begin{center}
     \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
-      \node (0) [rectangle, dashed, draw]{$q_{02}\in Div_2$};
+      \node (0) [rectangle, dashed, draw]{$q_{02}\in Div_2\backslash E_2$};
 
       \path ($ (0) + (-1.8,0) $) edge (0)
             (0) [loop right] edge node {$\tau$} (0);
@@ -147,73 +144,25 @@ die nachfolgenden Transitionssysteme benötigt:
 \label{S2}
   \end{center}
   \end{minipage}
-  \begin{minipage}{0.05\textwidth}
-  \end{minipage}
-  \begin{minipage}{0.3\textwidth}
-  \begin{center}
-    \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
-      \node (0) {$q_{0U}$};
-
-      \path ($ (0) + (-1,0) $) edge (0)
-            (0) [loop right] edge node {$\omega !$} (0);
-    \end{tikzpicture}
-    \caption{$U$}
-\label{U}
-  \end{center}
-  \end{minipage}
 \end{figure}
 
-Für die Parallelkompositionen $U\|S_1$ und $U\|S_2$ gilt dann:
-\begin{itemize}
-  \item $U\|S_1 =\left(\left\{\left(q_{0U},q_{01}\right)\right\},\emptyset
-      ,\left\{\omega\right\}, \left\{\left(\left(q_{0U}, q_{01}\right),\omega
-        ,\left(q_{0U},q_{01}\right)\right)\right\}, \left(q_{0U},
-        q_{01}\right),
-      \left\{\left(q_{0U},q_{01}\right)\right\}\right)$\linebreak (siehe
-        auch Abbildung~\ref{US1}),
-  \item $U\|S_2 =\left(\left\{\left(q_{0U},q_{02}\right)\right\},\emptyset
-      ,\left\{\omega\right\}, \left\{\left(\left(q_{0U}, q_{02}\right),\omega
-          ,\left(q_{0U},q_{02}\right)\right),
-          \left(\left(q_{0U},q_{02}\right),
-          \tau ,\left(q_{0U},q_{02}\right)\right)\right\},\right.$\linebreak
-          $\left.\left(q_{0U},q_{02}\right), \emptyset\right)$ (siehe auch Abbildung~\ref{US2}).
-\end{itemize}
-\begin{figure}[h!tbp]
-  \begin{minipage}{0.49\textwidth}
-  \begin{center}
-    \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
-      \node (0) [rectangle, draw]{$(q_{0U},q_{01})\in E_{U1}$};
-
-      \path ($ (0) + (-2.3,0) $) edge (0)
-            (0) [loop right] edge node {$\omega !$} (0);
-    \end{tikzpicture}
-    \caption{$U\|S_1$}
-\label{US1}
-  \end{center}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.49\textwidth}
-  \begin{center}
-    \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
-      \node (0) [rectangle, dashed, draw]{$(q_{0U},q_{02})\in Div_{U2}$};
-
-      \path ($ (0) + (-2.5,0) $) edge (0)
-            (0) [loop right] edge node {$\omega !,\tau$} (0);
-    \end{tikzpicture}
-    \caption{$U\|S_2$}
-\label{US2}
-  \end{center}
-  \end{minipage}
-\end{figure}
-Somit stehen die beiden Transitionssysteme $U\|S_1$ und $U\|S_2$ in der
-Basisrelation \DBRel{}, obwohl in $U\|S_1$ nur ein Error-Zustand und in $U\|S_2$ nur
-ein Divergenz-Zustand lokal erreichbar ist. Um ein analoges Lemma zu den
+Der Startzustand von $S_1$ ist in der Menge $E_1$ enthalten und somit ein
+Error-Zustand. Da keine unendliche $\tau$-Transitionen in $S_1$ möglich sind,
+ist $q_{01}$ kein Divergenz-Zustand. Bei $S_2$ ist der Startzustand und durch
+die $\tau$-Schleife divergent und nicht in der Menge $E_2=\emptyset$
+enthalten.\\
+Somit stehen die beiden Transitionssysteme $S_1$ und $S_2$ in der
+Basisrelation \DBRel{}, obwohl in $S_1$ nur ein Error-Zustand und in $S_2$ nur
+ein Divergenz-Zustand jedoch kein Error-Zustand lokal erreichbar ist. Um ein analoges Lemma zu den
 Lemmata~\ref{lemVerfeinerung} und~\ref{lemQuiVerfeinerung} formulieren zu
-können sollten somit auch $S_1$ und $S_2$ in der Relation \DRel{} stehen. Dies
+können sollten somit auch $S_1$ und $S_2$ in der Relation \DRel{} stehen, da
+für ein entsprechendes $U$ die Identität (Transitionssystem aus einem
+Startzustand und einer Schleife für $\omega$) gewählt werden kann. Dies
 wurde in der letzten Definition bereits berücksichtigt. Es
 kann also unter der Verfeinerungsrelation \DRel{} nicht unterschieden
 werden, ob das System Error oder Divergenz als Fehler hat. Somit folgt also aus
-$S_1\DRel{} S_2$ nicht $S_1\ERel{} S_2$.
+$S_1\DRel{} S_2$ nicht $S_1\ERel{} S_2$, da in $S_2$ kein Error-Zustand lokal
+erreichbar ist.
 
 
 \begin{satz}[Error-, Ruhe- und Divergenz-Semantik für Parallelkompostionen]
@@ -565,9 +514,12 @@ enthalten ist.
           Durch dies hat $S_2$ einen Zustand aus $E_2$ erreicht, da von $U$
           kein Error geerbt werden kann. Es gilt dann $\prune{}(x_1\dots
           x_iu|_{\Sigma _2})= \prune{}(x_1\dots x_i)\in\PrET{}_2\subseteq
-          \ET{}_2$. Da $x_1\dots x_i$ ein Präfix von $w$ ist, führt auch in
-          diesem Fall ein Präfix von $w$ zu einem Error-Zustand und ist somit in
-          $\EDT{}_2$ enthalten.
+          \ET{}_2$. Da $x_1\dots x_i$ ein Präfix von $w$ ist, führt in diesem
+          Fall eine Verlängerung um lokale Aktionen von einm
+          Präfix von $w$ zu einem Error-Zustand. Da $\ET$ der Menge aller
+          Verlängerungen von gekürzten Errortraces entspricht, ist $x_1\dots x_i$ in
+          $\EDT{}_2$ enthalten und somit ist ein Präfix von $w$ in $\EDT{}_2$
+          enthalten.
         \item Fall 2iii) ($\varepsilon\in \DT{}(U\|S_2)\backslash
           \ET{}(U\|S_2)$): Da $U$ nicht unendliche viele Zustände hat und auch
           keine $\tau$-Schleifen besitzt, kann das Divergenzverhalten nur von
@@ -577,8 +529,11 @@ enthalten ist.
           $Div_2$ erreicht. Es gilt dann $\prune{}(x_1\dots x_iu|_{\Sigma
           _2}) = \prune{}(x_1\dots x_i)\in\PrDT{}_2\subseteq \DT{}_2$, da
           $u|_{\Sigma _2}$ in $O^*$ enthalten ist. Da $x_1\dots x_i$ ein Präfix
-          von $w$ ist und $\DT{}_2\subseteq \EDT{}_2$ gilt, ist in diesem Fall
-          ein Präfix von $w$ in $\EDT{}_2$ enthalten.
+          von $w$ ist, führt in diesem Fall eine Verlängerung um lokale
+          Aktionen von einem Präfix von $w$ zu einem divergenten Zustand. Da
+          $\DT$ die Menge aller Verlängerungen von gekürzten Divergenztraces
+          ist und $\DT{}_2\subseteq \EDT{}_2$ gilt, ist in diesem Fall das
+          Präfix $x_1\dots x_i$ von $w$ in $\EDT{}_2$ enthalten.
       \end{itemize}
   \end{itemize}
 
@@ -856,13 +811,40 @@ die Basisrelation \DBRel{} als erfüllt voraussetzt, sondern zusätzlich auch
 noch die Basisrelation \EBRel{}. Somit wäre garantiert, dass man die beiden
 Systeme $S_1$ (siehe dazu Abbildung~\ref{S1}) und $S_2$ (siehe dazu
 Abbildung~\ref{S2}) aus dem Beispiel oben unter der Verfeinerungsrelation
-unterscheiden könnte. Es würde dann die Relation \ERel{} erhalten bleiben
-und man hätte zusätzlich die Inklusionen $\DT{}_1 \cup\ET{}_1 \subseteq \DT{}_2\cup
-\ET{}_2$ und $\QT{}_1\cup \DT{}_1\subseteq \QT{}_2\cup \DT{}_2$ für die
-Verfeinerungsrelation in diesem Kapitel. Dies würde dem Ansatz
-aus~\cite{Chilton2013} entsprechen. Dadurch würden jedoch Error als
-\glqq{}schlimmerer Fehler\grqq{} aufgefasst, wie Divergenz. Es gäbe also eine
-echte Hierarchie zwischen den Fehler.
+unterscheiden könnte. Die Definition für die zu verwendende Basisrelation
+müsste dann wie folgt lauten.
+
+\begin{Def}[alternative Divergenz-Verfeinerungs-Basisrelation]
+  Für zwei \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur wird $S_1\DBaRel{}
+  S_2$ geschreiben, wenn ein Error-Zustand in $S_1$ nur dann lokal erreichbar
+  ist, wenn er auch in $S_2$ erreichbar ist und wenn ein Divergenz- oder
+  Ruhe-Zustand nur in $S_1$ lokal erreichbar ist, wenn auch in $S_2$ ein
+  Error-, Divergenz- oder Ruhe-Zustand lokal erreichbar ist. Die
+  \emph{Basisrelation} stellt eine Verfeinerung bezüglich \emph{Error},
+  \emph{Ruhe} und \emph{Divergenz} dar.\\
+  \DCaRel{} bezeichnet die vollständig abstrakte Präkongurenz von \DBaRel{}
+  bezüglich $\cdot\|\cdot$.
+\end{Def}
+
+Die Relation \DBaRel{} ist somit die Vereinigung der Relationen \EBRel und
+\DBRel{}. Die Relation \DCaRel{} könnte dann durch die folgende
+Relationsdefinition charakterisiert werden.
+
+\begin{Def}[alternative Charakterisierung der volltändig abstrakten Präkonrugenz]
+  Für zwei \EIO{}s $S_1$, $S_2$ mit der gleichen Signatur schreibt man
+  $S_1\DaRel{} S_2$, wenn $\ET{}_1\subseteq \ET{}_2$, $\EDT{}_1\subseteq
+  \EDT{}_2$, $\QDT{}_1\subseteq \QDT{}_2$ und $\EL{}_1\subseteq \EL{}_2$ gilt.
+\end{Def}
+
+Um dies als korrekte Charakterisierung nachzuweisen müssten Beweisteile
+abgeändert werden, in dem vor allem Fälle von Divergenz gestrichen werden, da
+\DBaRel{} unterscheiden kann ob es sich bei einem Fehler um einen Error hanelt
+oder nicht. Diese Charakterisierung \DaRel{} entspricht dem Ansatz
+aus~\cite{Chilton2013}. Dadurch werden jedoch Error als \glqq{}schlimmerer
+Fehler\grqq{} aufgefasst, wie Divergenz. Es gibt mit diesen Definitionen also
+eine echte Hierarchie zwischen den Fehler.
+
+
 
 \section{Hiding und Divergenz-Freiheit}
 
