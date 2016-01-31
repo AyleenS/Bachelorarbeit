@@ -820,31 +820,29 @@ müsste dann wie folgt lauten.
   ist, wenn er auch in $S_2$ erreichbar ist und wenn ein Divergenz- oder
   Ruhe-Zustand nur in $S_1$ lokal erreichbar ist, wenn auch in $S_2$ ein
   Error-, Divergenz- oder Ruhe-Zustand lokal erreichbar ist. Die
-  \emph{Basisrelation} stellt eine Verfeinerung bezüglich \emph{Error},
-  \emph{Ruhe} und \emph{Divergenz} dar.\\
+  \emph{alternative Basisrelation} stellt ebenfalls eine Verfeinerung bezüglich
+  \emph{Error}, \emph{Ruhe} und \emph{Divergenz} dar.\\
   \DCaRel{} bezeichnet die vollständig abstrakte Präkongurenz von \DBaRel{}
   bezüglich $\cdot\|\cdot$.
 \end{Def}
 
-Die Relation \DBaRel{} ist somit die Vereinigung der Relationen \EBRel und
+Die Relation \DBaRel{} ist somit die Vereinigung der Relationen \EBRel{} und
 \DBRel{}. Die Relation \DCaRel{} könnte dann durch die folgende
 Relationsdefinition charakterisiert werden.
 
 \begin{Def}[alternative Charakterisierung der volltändig abstrakten Präkonrugenz]
   Für zwei \EIO{}s $S_1$, $S_2$ mit der gleichen Signatur schreibt man
-  $S_1\DaRel{} S_2$, wenn $\ET{}_1\subseteq \ET{}_2$, $\EDT{}_1\subseteq
-  \EDT{}_2$, $\QDT{}_1\subseteq \QDT{}_2$ und $\EL{}_1\subseteq \EL{}_2$ gilt.
+  $S_1\DaRel{} S_2$, wenn $S_1 \ERel{} S_2$, $\EDT{}_1\subseteq
+  \EDT{}_2$ und $\QDT{}_1\subseteq \QDT{}_2$ gilt.
 \end{Def}
 
 Um dies als korrekte Charakterisierung nachzuweisen müssten Beweisteile
 abgeändert werden, in dem vor allem Fälle von Divergenz gestrichen werden, da
-\DBaRel{} unterscheiden kann ob es sich bei einem Fehler um einen Error hanelt
+\DBaRel{} unterscheiden kann ob es sich bei einem Fehler um einen Error handelt
 oder nicht. Diese Charakterisierung \DaRel{} entspricht dem Ansatz
-aus~\cite{Chilton2013}. Dadurch werden jedoch Error als \glqq{}schlimmerer
+aus~\cite{Chilton2013}. Dadurch wird jedoch Error als \glqq{}schlimmerer
 Fehler\grqq{} aufgefasst, wie Divergenz. Es gibt mit diesen Definitionen also
 eine echte Hierarchie zwischen den Fehler.
-
-
 
 \section{Hiding und Divergenz-Freiheit}
 
