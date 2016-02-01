@@ -51,7 +51,7 @@ bezüglich $\cdot\|\cdot$.
 
 Da nun die grundlegenden Definitionen für Divergenz festgehalten sind,
 kann man sich einen Begriff für die Traces zu divergenten Zuständen
-bilden. Da oben bereits festgehalten wurde, dass Divergenz als ähnlich
+bilden. Da oben bereits festgestellt wurde, dass Divergenz als ähnlich
 \glqq{}schlimmer Fehler\grqq{} anzusehen ist wie Error und dass das Divergieren
 eines Systems nicht mehr verhinderbar ist, sobald ein divergenter Zustand lokal
 erreichbar ist, kommt für die Divergenztraces wieder die $\prune$-Funktion zu
@@ -148,7 +148,8 @@ die nachfolgenden Transitionssysteme benötigt:
 
 Der Startzustand von $S_1$ ist in der Menge $E_1$ enthalten und somit ein
 Error-Zustand. Da keine unendliche $\tau$-Transitionen in $S_1$ möglich sind,
-ist $q_{01}$ kein Divergenz-Zustand. Bei $S_2$ ist der Startzustand und durch
+ist $q_{01}$ kein Divergenz-Zustand. Bei $S_2$ ist der Startzustand
+durch
 die $\tau$-Schleife divergent und nicht in der Menge $E_2=\emptyset$
 enthalten.\\
 Somit stehen die beiden Transitionssysteme $S_1$ und $S_2$ in der
@@ -426,7 +427,7 @@ enthalten ist.
       und keine Divergenz geerbt werden kann und durch die Inputschleife auch
       kein neuer Error enstehen kann, muss der Fehler von $U_2$ geerbt sein.
       Somit gilt also, dass in $S_2$ ein Error- oder Divergenz-Zustand lokal
-      erreichbar ist. Da $\EDT{}(S) = \ET{}(S)\cup \DT{}(S)$ gilt, folgt somit
+      erreichbar ist. Da $\EDT{}(S) = \ET{}(S)\cup \DT{}(S)$ gilt, folgt
       $w\in \EDT{}_2$.
     \item Fall 2 ($w=x_1\dots x_nx_{n+1}\in\Sigma{} ^+$ mit $n\geq 0$ und
       $x_{n+1}\in I$): Es wird der folgende $\omega$-Partner $U$ betrachtet
@@ -515,7 +516,7 @@ enthalten ist.
           kein Error geerbt werden kann. Es gilt dann $\prune{}(x_1\dots
           x_iu|_{\Sigma _2})= \prune{}(x_1\dots x_i)\in\PrET{}_2\subseteq
           \ET{}_2$. Da $x_1\dots x_i$ ein Präfix von $w$ ist, führt in diesem
-          Fall eine Verlängerung um lokale Aktionen von einm
+          Fall eine Verlängerung um lokale Aktionen von einem
           Präfix von $w$ zu einem Error-Zustand. Da $\ET$ der Menge aller
           Verlängerungen von gekürzten Errortraces entspricht, ist $x_1\dots x_i$ in
           $\EDT{}_2$ enthalten und somit ist ein Präfix von $w$ in $\EDT{}_2$
@@ -816,19 +817,23 @@ müsste dann wie folgt lauten.
 
 \begin{Def}[alternative Divergenz-Verfeinerungs-Basisrelation]
   Für zwei \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur wird $S_1\DBaRel{}
-  S_2$ geschreiben, wenn ein Error-Zustand in $S_1$ nur dann lokal erreichbar
+  S_2$ geschrieben, wenn ein Error-Zustand in $S_1$ nur dann lokal erreichbar
   ist, wenn er auch in $S_2$ erreichbar ist und wenn ein Divergenz- oder
-  Ruhe-Zustand nur in $S_1$ lokal erreichbar ist, wenn auch in $S_2$ ein
+  Ruhe-Zustand nur in $S_1$ nur dann lokal erreichbar ist, wenn auch in $S_2$ ein
   Error-, Divergenz- oder Ruhe-Zustand lokal erreichbar ist. Die
   \emph{alternative Basisrelation} stellt ebenfalls eine Verfeinerung bezüglich
   \emph{Error}, \emph{Ruhe} und \emph{Divergenz} dar.\\
-  \DCaRel{} bezeichnet die vollständig abstrakte Präkongurenz von \DBaRel{}
+  \DCaRel{} bezeichnet die \emph{vollständig abstrakte Präkongruenz} von \DBaRel{}
   bezüglich $\cdot\|\cdot$.
 \end{Def}
 
 Die Relation \DBaRel{} ist somit die Vereinigung der Relationen \EBRel{} und
-\DBRel{}. Die Relation \DCaRel{} könnte dann durch die folgende
-Relationsdefinition charakterisiert werden.
+\DBRel{}. Die Forderung von \DBRel{} für die lokale Erreichbarkeit von
+Error-Zuständen in $S_1$ wird bereits durch die stärke Forderung von \EBRel{}
+für die lokale Erreichbarkeit von Error-Zuständen erfüllt und
+wurde deshalb in der obigen Definition nicht explizit aufgeführt. Die Relation
+\DCaRel{} könnte dann durch die im folgenden definierte Relation charakterisiert
+werden.
 
 \begin{Def}[alternative Charakterisierung der volltändig abstrakten Präkonrugenz]
   Für zwei \EIO{}s $S_1$, $S_2$ mit der gleichen Signatur schreibt man
@@ -836,13 +841,21 @@ Relationsdefinition charakterisiert werden.
   \EDT{}_2$ und $\QDT{}_1\subseteq \QDT{}_2$ gilt.
 \end{Def}
 
-Um dies als korrekte Charakterisierung nachzuweisen müssten Beweisteile
-abgeändert werden, in dem vor allem Fälle von Divergenz gestrichen werden, da
-\DBaRel{} unterscheiden kann ob es sich bei einem Fehler um einen Error handelt
-oder nicht. Diese Charakterisierung \DaRel{} entspricht dem Ansatz
+Diese Charakterisierung \DaRel{} entspricht dem Ansatz
 aus~\cite{Chilton2013}. Dadurch wird jedoch Error als \glqq{}schlimmerer
 Fehler\grqq{} aufgefasst, wie Divergenz. Es gibt mit diesen Definitionen also
-eine echte Hierarchie zwischen den Fehler.
+eine echte Hierarchie zwischen den Fehler. Es sieht so aus, dass die
+Mengeninklusion $\EDL{}_1\subseteq \EDL{}_2$ fehlen würde, damit \DaRel{} die
+Vereinigung von \ERel{} und \DRel{} wäre. Dies ist jedoch nicht der Fall, da
+diese Inklusion aus den geforderten Inklusionen bereits folgt. Durch $S_1
+\ERel{} S_2$ weiß man, dass $\EL_1 \subseteq \EL_2$ gilt. Die Menge \EL{} ist
+nach Definition die Vereinigung aus der Sprache $L$ und den Errortraces \ET{}.
+Somit fehlt nur noch die Divergenztraces \DT{} um daraus die Menge \EDL{} zu
+erhalten. Jedoch ist durch die Inklusion $\EDT_1\subseteq \EDT{}_2$ auch
+bereits klar, dass $\ET{}_1\cup \DT{}_1 \subseteq \ET{}_2\cup \DT{}_2$ gilt.
+Insgesamt folgt dann die Gleichung $\EDL = \EL \cup \EDT$. Falls sich eine
+der beiden Mengen \EL{} bzw. \EDT{} vergrößert, vergrößert sich auch die Menge
+\EDL{} echt. Somit ist also \DaRel{} die Vereinigung von \ERel{} und \DRel{}.
 
 \section{Hiding und Divergenz-Freiheit}
 
