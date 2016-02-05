@@ -12,7 +12,7 @@ Eigenschaft wird hier zunächst nicht betrachtet.\\
 Zustände, die keine Outputs ohne einen Input ausführen können, werden als
 in einer Art Verklemmung angesehen, da sie ohne Zutun von Außen den Zustand
 nicht mehr verlassen können. So ein Zustand hat also keine
-Transitionsmöglichkeiten für einen Output. Falls dieser Zustand
+Transitions-Möglichkeiten für einen Output. Falls dieser Zustand
 die Möglichkeit für eine interne Aktion hat, darf durch diese $\tau$s niemals ein Zustand
 erreicht werden, von dem aus ein Output möglich ist. Ein Zustand, der keine
 Outputs und $\tau$s ausführen kann, ist also ein Deadlock-Zustand, in denen das
@@ -184,7 +184,7 @@ relevant.
       \Synch(S_1,S_2)$ und $q_2 \overset{a}{\rightarrow}$\big): In diesem Fall ist
       die Synchronisation des Outputs $a$ von $S_1$ mit dem Input $a$ von $S_2$
       möglich, so dass in der Parallelkomposition der Output $a$ als Transition
-      für $(q_1,q_2)$ entsteht. Diese Transitionsmöglichkeit ist jedoch für
+      für $(q_1,q_2)$ entsteht. Diese Transitions-Möglichkeit ist jedoch für
       $S_{12}$ nach Voraussetzung nicht erlaubt. Es folgt also auch, dass
       dieser Fall nicht eintreten kann.
     \item Fall 4 \Big($q_1 \overset{a}{\rightarrow}$ mit $a\in O_1\cap
@@ -556,7 +556,7 @@ werden.
     \item Fall a) ($\varepsilon\in \ET{}(U\|S_2)$): Es handelt sich bei
       dem lokal erreichbaren Fehler um einen Error-Zustand. Es ist somit nicht
       relevant, ob das $w$ ausführbar ist. Der Error kann sowohl von $S_2$
-      geerbt sein, wie auch durch fehlende Synchronizationsmöglichkeiten
+      geerbt sein, wie auch durch fehlende Synchronisations-Möglichkeiten
       als neuer Error in der Parallelkomposition entstanden sein. Es gilt
       also, dass bereits in $S_2$ ein Präfix von $w$ in $\ET{}_2$ enthalten
       ist, wegen des Beweises des ersten Punktes aus
@@ -575,7 +575,7 @@ werden.
 \end{proof}
 
 Mit dem folgenden Satz wird festgehalten, dass mit \QRel{} die gröbste
-Präkongruenz charakterisiert wurde bezüglich $\cdot\|\cdot$, die in \QBRel{}
+Präkongruenz bezüglich $\cdot\|\cdot$ charakterisiert wurde, die in \QBRel{}
 enthalten ist.
 
 \begin{satz}[Vollständige Abstraktheit für Ruhe-Semantik]
@@ -634,12 +634,13 @@ dargestellt.
   \end{center}
 \end{figure}
 
-Aus Satz~\ref{satzQuiFullAbst} und Lemma~\ref{lemQuiVerfeinerung} erhält man
-das folgende Korollar. Angenommen man definiert, dass $S_1$ $S_2$ verfeinern
+Angenommen man definiert, dass $S_1$ $S_2$ verfeinern
 soll genau dann, wenn für alle Partner \EIO{}s $U$ für die $S_2$ error- und
 ruhe-frei mit $U$ kommuniziert, folgt, dass $S_1$ ebenfalls error- und
 ruhe-frei mit $U$ kommuniziert. Dann wird auch diese Verfeinerung durch \QRel{}
-charakterisiert.
+charakterisiert.\\
+Aus Satz~\ref{satzQuiFullAbst} und Lemma~\ref{lemQuiVerfeinerung} erhält man
+das folgende Korollar.
 
 \begin{kor}
   Es gilt: $S_1\QRel S_2\Leftrightarrow U\|S_1\QBRel U\|S_2$ für alle Partner

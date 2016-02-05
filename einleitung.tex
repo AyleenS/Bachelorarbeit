@@ -26,7 +26,7 @@ mehr alle zulässigen Voraussetzungen erfüllt werden könnten.\\
 So wie die Interface-Automaten in~\cite{Alfaro2004} definiert sind, kann es
 in der Parallelkomposition von zwei dieser Automaten zu Kommunikationsfehlern
 kommen, in dem eine Komponente einen Output macht, den die andere nicht als Input
-aufnehmen kann. Diese Fehler-Zustände, die daraus entstehen, sind jedoch nicht
+aufnehmen kann. Die daraus entstehen Fehler-Zustände, sind jedoch nicht
 zulässig und müssen inklusive aller Zustände, durch die man mit lokalen
 Aktionen einen dieser Fehler-Zustände erreichen kann, mit einer speziell definieren
 Operation gestutzt werden.\\
@@ -52,7 +52,7 @@ wird eine größte Präkongruenz bezüglich der Parallelkomposition
 charakterisiert, die in der Basisrelation enthalten ist.\\
 In~\cite{Vogler2014EIO} wurde für Kommunikationsfehler-Freiheit nachgewiesen, dass jedes \EIO{}
 äquivalent ist zu einem ohne Error-Zustände unter Berücksichtigung der
-Präkongruenz. Diesen erhält man durch Stutzen wie in~\cite{Alfaro2004}. Es ist
+Präkongruenz. Dieses erhält man durch Stutzen wie in~\cite{Alfaro2004}. Es ist
 also möglich die \EIO{}s nur für die Untersuchung zu verwenden und die
 Fehler-Zustände am Ende zu entfernen, um wieder Interface-Automaten zu
 erhalten.\\
@@ -70,7 +70,8 @@ Divergenz bezeichnet.\\
 Der Anfang dieser Arbeit orientiert sich sehr stark an~\cite{Vogler2014EIO}.
 Jedoch wird hier darauf verzichtet die Input-Mengen der \EIO{}s als disjunkt
 anzunehmen und alle Definitionen und Sätze werden erst einmal ohne das
-Verbergen der synchronisierten Aktionen betrachtet. Da die Input-Mengen einen
+Verbergen der synchronisierten Aktionen betrachtet. Da die Input-Mengen im
+Gegensatz zu~\cite{Vogler2014EIO} einen
 nicht leeren Schnitt haben können, muss festgelegt werden, dass die Komposition
 aus zwei Systemen einen Input aus diesem Schnitt nur ausführen kann, wenn beide
 Systeme die Möglichkeit für diesen Input haben.\\

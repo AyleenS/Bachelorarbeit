@@ -148,8 +148,7 @@ die nachfolgenden Transitionssysteme benötigt:
 
 Der Startzustand von $S_1$ ist in der Menge $E_1$ enthalten und somit ein
 Error-Zustand. Da keine unendliche $\tau$-Transitionen in $S_1$ möglich sind,
-ist $q_{01}$ kein Divergenz-Zustand. Bei $S_2$ ist der Startzustand
-durch
+ist $q_{01}$ kein Divergenz-Zustand. Bei $S_2$ ist der Startzustand durch
 die $\tau$-Schleife divergent und nicht in der Menge $E_2=\emptyset$
 enthalten.\\
 Somit stehen die beiden Transitionssysteme $S_1$ und $S_2$ in der
@@ -157,8 +156,8 @@ Basisrelation \DBRel{}, obwohl in $S_1$ nur ein Error-Zustand und in $S_2$ nur
 ein Divergenz-Zustand jedoch kein Error-Zustand lokal erreichbar ist. Um ein analoges Lemma zu den
 Lemmata~\ref{lemVerfeinerung} und~\ref{lemQuiVerfeinerung} formulieren zu
 können sollten somit auch $S_1$ und $S_2$ in der Relation \DRel{} stehen, da
-für ein entsprechendes $U$ die Identität (Transitionssystem aus einem
-Startzustand und einer Schleife für $\omega$) gewählt werden kann. Dies
+ein entsprechendes $U$, die Identität (Transitionssystem aus einem
+Startzustand und einer Schleife für $\omega$), gewählt werden kann. Dies
 wurde in der letzten Definition bereits berücksichtigt. Es
 kann also unter der Verfeinerungsrelation \DRel{} nicht unterschieden
 werden, ob das System Error oder Divergenz als Fehler hat. Somit folgt also aus
@@ -185,7 +184,7 @@ erreichbar ist.
   präfix-mini\-ma\-les Element $w$ zu betrachten. Es muss hier unterschieden werden, ob
   $w\in \ET{}_{12}$ oder $w\in \DT{}_{12}\backslash \ET{}_{12}$ betrachtet
   wird. Im ersten Fall ist das $w$ in der rechten Seite der Gleichung
-  enthalten wegen dem Beweis des ersten Punktes von
+  enthalten wegen des Beweis des ersten Punktes von
   Satz~\ref{satzErrorSemanik} und da $\ET{}(S)\subseteq \EDT{}(S)$ und
   $\EL{}(S)\subseteq \EDL{}(S)$ gilt. Deshalb wird im weiteren Verlauf dieses
   Beweises
@@ -612,7 +611,7 @@ enthalten ist.
     \item Fall a) ($\varepsilon\in \ET{}(U\|S_2)$): Der lokal erreichbare
       Fehler ist ein Error-Zustand. Das $w$ muss somit nicht ausführbar sein. Der
       Error kann sowohl von $S_2$ geerbt sein, wie durch fehlende
-      Synchronizations-Möglichkeiten als neuer Error in der
+      Synchronisations-Möglichkeiten als neuer Error in der
       Parallelkomposition entstanden sein. Da nur auf dem Trace $w$ in $U$
       Synchronisations-Fehler möglich sind und wegen den Fällen 2i) und
       2ii) des ersten Punktes von diesem Beweis ist ein Präfix von $w$
@@ -704,7 +703,7 @@ enthalten ist.
           x_{i-1}}{\xRightarrow{\hspace{1cm}}} q_2'
           \overset{x_i}{\not{\hspace{-0.1cm}\rightarrow}}$\big): Es gilt $x_1\dots
           x_i\in \MIT{}_2$ und somit $w\in\EDL{}_2$. Anzumerken ist, dass nur
-          auf diesem Weg Outputs von $U$ aus $\Synch$ möglich sind, deshalb gibt
+          auf diesem Weg Outputs von $U$ aus der Menge $\Synch (S_2,U)$ möglich sind, deshalb gibt
           es keine anderen Outputs von $U$, die zu einem neuen Error führen
           könnten.
       \end{itemize}
@@ -735,10 +734,10 @@ $\cdot\|\cdot$ charakterisiert, die in \DBRel{} enthalten ist.
 
 \begin{proof}
   \glqq{}$\Leftarrow$\grqq{}: Nach Definition gilt $w\in\QDT{}(S)$ mit $w\in
-  O(S)^*$ genau dann, wenn in $S$ ein Divergenz-Zustand, ein Ruhe-Zustand oder ein
-  Error-Zustand lokal erreichbar ist. $S_1\DRel S_2$ impliziert, dass
-  $w\in\QDT{}_2$ gilt, wenn $w\in\QDT{}_1$ gilt. Somit ist ein Divergenz-Zustand,
-  ein Ruhe-Zustand oder ein Error-Zustand nur dann in $S_1$ lokal erreichbar,
+  O(S)^*$ genau dann, wenn in $S$ ein Divergenz-, Ruhe- oder Error-Zustand
+  lokal erreichbar ist. $S_1\DRel S_2$ impliziert, dass
+  $w\in\QDT{}_2$ gilt, wenn $w\in\QDT{}_1$ gilt. Somit ist ein Divergenz-,
+  Ruhe- oder Error-Zustand nur dann in $S_1$ lokal erreichbar,
   wenn auch ein solcher in $S_2$ lokal erreichbar ist. Daraus folgt, dass
   $S_1\DBRel S_2$ gilt. Es ist also \DRel{} in \DBRel{} enthalten. In
   Proposition~\ref{propDivPrae} wurde festgestellt, dass \DRel{} eine
@@ -788,12 +787,13 @@ Abbildung~\ref{FolgerungsketteDiv} dargestellt.
   \end{center}
 \end{figure}
 
-Aus Satz~\ref{satzDivFullAbst} und Lemma~\ref{lemDivVerfeinerung} erhält man
-das folgende Korollar. Angenommen man definiert, dass $S_1$ $S_2$ verfeinern
+Angenommen man definiert, dass $S_1$ $S_2$ verfeinern
 soll genau dann, wenn für alle $\omega$-Partner \EIO{}s $U$ für die $S_2$ error-,
 ruhe- und divergenz-frei mit $U$ kommuniziert, folgt, dass $S_1$ ebenfalls
 error-, ruhe- und divergenz-frei mit $U$ kommuniziert. Dann wird auch diese
-Verfeinerung durch \DRel{} charakterisiert.
+Verfeinerung durch \DRel{} charakterisiert.\\
+Aus Satz~\ref{satzDivFullAbst} und Lemma~\ref{lemDivVerfeinerung} erhält man
+das folgende Korollar.
 
 \begin{kor}
   Es gilt: $S_1\DRel{} S_2 \Leftrightarrow U\|S_1\DBRel{} U\|S_2$ für alle
@@ -823,8 +823,8 @@ müsste dann wie folgt lauten.
   Error-, Divergenz- oder Ruhe-Zustand lokal erreichbar ist. Die
   \emph{alternative Basisrelation} stellt ebenfalls eine Verfeinerung bezüglich
   \emph{Error}, \emph{Ruhe} und \emph{Divergenz} dar.\\
-  \DCaRel{} bezeichnet die \emph{vollständig abstrakte Präkongruenz} von \DBaRel{}
-  bezüglich $\cdot\|\cdot$.
+  \DCaRel{} bezeichnet die \emph{alternative vollständig abstrakte
+  Präkongruenz} von \DBaRel{} bezüglich $\cdot\|\cdot$.
 \end{Def}
 
 Die Relation \DBaRel{} ist somit die Vereinigung der Relationen \EBRel{} und

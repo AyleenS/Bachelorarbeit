@@ -147,7 +147,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
       mit $w\in w_1\|w_2$ und $v\in v_1\|v_2$. Aus $(q_1',q_2')\in E_{12}$
       folgt, dass es sich entweder um einen geerbten oder einen neuen Error
       handelt. Bei einem geerbten wäre bereits einer der beiden Zustände $q_1$
-      bzw. $q_2$ ein Error-Zustand gewesen. Der neue Error hingegen wäre durch
+      bzw. $q_2$ ein Error-Zustand gewesen. Ein neue Error hingegen wäre durch
       die fehlende Möglichkeit entstanden, eine synchronisierte Aktion
       auszuführen.
       \begin{itemize}
@@ -627,11 +627,13 @@ Ring schließt. Dies ist in Abbildung~\ref{Folgerungskette} dargestellt.
   \end{center}
 \end{figure}
 
-Aus Satz~\ref{satzFullAbstractness} und Lemma~\ref{lemVerfeinerung} ergibt sich
-das folgende Korollar. Angenommen man definiert, dass $S_1$ $S_2$ verfeinern
+Angenommen man definiert, dass $S_1$ $S_2$ verfeinern
 soll, genau dann wenn für alle Partner \EIO{}s $U$, für die $S_2$ error-frei
 mit $U$ kommuniziert, folgt, dass $S_1$ ebenfalls error-frei mit $U$
-kommuniziert. Dann wird auch diese Verfeinerung durch \ERel{} charakterisiert.
+kommuniziert. Dann wird auch diese Verfeinerung durch \ERel{}
+charakterisiert.\\
+Aus Satz~\ref{satzFullAbstractness} und Lemma~\ref{lemVerfeinerung} ergibt sich
+das folgende Korollar.
 
 \begin{kor}
   Es gilt: $S_1\ERel S_2 \Leftrightarrow U\|S_1\EBRel U\|S_2$ für alle Partner
@@ -641,7 +643,7 @@ kommuniziert. Dann wird auch diese Verfeinerung durch \ERel{} charakterisiert.
 \section{Hiding und Error-Freiheit}
 
 Es soll nun untersucht werden, was für Auswirkungen Hiding auf die
-Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
+Verfeinerungsrelationen hat. Es werden also Outputs der betrachteten Systeme internalisiert.
 
 \begin{prop}[Error-Basisrelation bzgl. Internalisierung]
 \label{propErBaIn}
@@ -785,7 +787,7 @@ Verfeinerungsrelationen hat. Es werden also Outputs der Systeme internalisiert.
   \ET{}(S)$. Für beide Fälle wurde oben bereits gezeigt, dass dann
   $w:=w'|_{\Sigma\backslash X}$ in der entsprechenden Menge des
   Transitionssystems $S/X$ enthalten ist. Da \EL{} als Vereinigung aus den
-  Mengen $L$ und \ET{} definiert ist, ist dadurch auch gezeigt, dass
+  Mengen $L$ und \ET{} definiert wurde, ist dadurch auch gezeigt, dass
   $w\in \EL{}(S/X)$ gilt.\\
   Ebenfalls analog zu den beiden vorangegangenen Punkten kann auch argumentiert
   werden, dass zu jedem $w\in \EL{}(S/X)$ durch Hinzufügen von Aktionen aus $X$
