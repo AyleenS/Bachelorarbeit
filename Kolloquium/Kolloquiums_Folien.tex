@@ -2,6 +2,13 @@
 \usepackage{ngerman,amsmath,amssymb,graphicx,tikz,xcolor}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
+\newtheorem{Def}{Definition}
+
+\newcommand{\EIO}{EIO}
+\newcommand{\prune}{\ensuremath{\mathrm{prune}}}
+\newcommand{\cont}{\ensuremath{\mathrm{cont}}}
+\newcommand{\Sig}{\ensuremath{\mathrm{Sig}}}
+\newcommand{\Synch}{\ensuremath{\mathrm{Synch}}}
 
 \usetikzlibrary{shapes,arrows}
 
@@ -49,5 +56,72 @@
 
 \section{Definitionen}
 \begin{frame}
+  \begin{Def}[Error-IO-Transitionssysteme]
+    Ein \textbf{Error-IO-Transitionssysteme (\EIO{})} ist ein Tupel $S=(Q,I,O,\delta
+    ,q_0,E)$ mit den Komponenten:
+    \begin{itemize}
+      \item $Q$ - die Menge der Zustände,
+      \item $I,O$ - die disjunkte Menge der (sichtbaren) Input- und
+        Output-Aktionen,
+      \item $\delta\subseteq Q\times (I\cup O\cup \{\tau\})\times Q$ - die
+        Transitionsrelation,
+      \item $q_0\in Q$ - der Startzustand,
+      \item $E\subseteq Q$ - die Menge der Error-Zustände.
+    \end{itemize}
+  \end{Def}
+  Aktionsmenge von S: $\Sigma = I\cup O$\\
+  Signatur: $\mathrm{Sig}(S)= (I,O)$
+\end{frame}
+
+\begin{frame}
+  \begin{Def}[Parallelkomposition]
+    Zwei \EIO{}s $S_1,S_2$ sind \textbf{komponierbar}, falls $O_1\cap
+    O_2=\emptyset$ gilt. Die Parallelkomposition der \EIO{}s $S_1$ und $S_2$ ist
+    $S_{12}:= S_1\|S_2= (Q,I,O,\delta ,q_0,E)$ mit den Komponenten:
+    \begin{itemize}
+      \item $Q=Q_1\times Q_2$,
+      \item $I=(I_1\backslash O_2)\cup(I_2\backslash O_1)$,
+      \item $O=O_1\cup O_2$,
+      \item $q_0=(q_{01},q_{02})$,
+      \only<1>{
+      \item $\begin{aligned}[t]
+      \delta =&\left\{((q_1,q_2),\alpha ,(p_1,q_2))\mid (q_1,\alpha ,p_1)\in\delta
+        _1,\right.\\ &\left.\alpha\in(\Sigma _1\cup\{\tau\})\backslash \Synch(S_1,S_2)\right\}\\
+        &\cup\left\{((q_1,q_2),\alpha ,(q_1,p_2))\mid (q_2,\alpha ,p_2)\in\delta
+        _2,\right.\\ &\left.\alpha\in(\Sigma _2\cup\{\tau\})\backslash \Synch(S_1,S_2)\right\}\\
+        &\cup\left\{((q_1,q_2),\alpha ,(p_1,p_2))\mid (q_1,\alpha ,p_1)\in\delta
+        _1, (q_2,\alpha ,p_2)\in\delta _2,\right.\\ &\left.\alpha\in \Synch(S_1,S_2)\right\},
+      \end{aligned}$
+      \item $E = \dots$.
+      }
+      \only<2>{
+      \item $\delta = \dots$,
+      \item $\begin{aligned}[t]
+          E=&(Q_1\times E_2)\cup (E_1\times Q_2)\\
+          &\begin{aligned}
+          &\cup\left\{(q_1,q_2)\mid \exists a\in O_1\cap I_2: q_1\overset{a}{\rightarrow}\wedge
+        q_2\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\right\}\\
+        &\cup\left\{(q_1,q_2)\mid \exists a\in I_1\cap O_2:
+        q_1\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\wedge
+        q_2\overset{a}{\rightarrow}\right\}.
+      \end{aligned}\\
+      \end{aligned}$
+    }
+    \end{itemize}
+  \end{Def}
+\end{frame}
+
+\begin{frame}
+  \begin{Def}[Pruning- und Fortsetzungs-Funktion]
+    Für ein \EIO{} S wird definiert:
+    \begin{itemize}
+      \item $\prune :\Sigma ^*\rightarrow\Sigma ^*, w\mapsto u$, mit $w=uv,
+        u=\varepsilon \wedge u\in\Sigma ^* \cdot I$ und $v\in O^*$,
+      \item $\cont :\Sigma ^*\rightarrow \mathfrak{P}(\Sigma ^*), w\mapsto
+        \{wu\mid u\in\Sigma ^*\}$,
+      \item $\cont :\mathfrak{P}(\Sigma ^*)\rightarrow \mathfrak{P}(\Sigma ^*),
+        L\mapsto \bigcup\,\{\cont (w)\mid w\in L\}$.
+    \end{itemize}
+  \end{Def}
 \end{frame}
 \end{document}
