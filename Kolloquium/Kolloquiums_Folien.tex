@@ -1,5 +1,5 @@
-\documentclass[mathserif]{beamer}
-\usepackage{ngerman,amsmath,amssymb,graphicx,tikz,xcolor}
+\documentclass[mathserif, xcolor=dvipsnames]{beamer}
+\usepackage{ngerman,amsmath,amssymb,graphicx,tikz,xcolor,lastpage}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \newtheorem{Def}{Definition}
@@ -16,15 +16,35 @@
 \usecolortheme{crane}
 \usefonttheme{structuresmallcapsserif}
 
+\setbeamercolor{title}{bg=YellowOrange}
+\setbeamercolor{frametitle}{bg=YellowOrange}
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
+  \end{beamercolorbox}}%
+}
+\setbeamertemplate{navigation symbols}{}
+
 \title{Kommunikationsfehler, Verklemmung und Divergenz bei Interface-Automaten}
 \subtitle{Kolloquium zur Bachelorarbeit}
 \author{Ayleen Schinko}
 \date{\today}
 
 \begin{document}
+\begin{frame}[plain]
 \maketitle
+\end{frame}
 \section{Inhalt}
 \begin{frame}
+  \frametitle{Inhalt}
   \begin{itemize}
       \item Motivation
       \item Definitionen
@@ -35,9 +55,7 @@
 
 \section{Motivation}
 \begin{frame}
-  \begin{center}
-    \Large{Motivation}
-  \end{center}
+  \frametitle{Motivation}
   \begin{itemize}
     \item Modellierung von Systemen und deren Kommunikationsverhalten
       (Parallelkomposition)
@@ -56,6 +74,7 @@
 
 \section{Definitionen}
 \begin{frame}
+  \frametitle{Definitionen}
   \begin{Def}[Error-IO-Transitionssysteme]
     Ein \textbf{Error-IO-Transitionssysteme (\EIO{})} ist ein Tupel $S=(Q,I,O,\delta
     ,q_0,E)$ mit den Komponenten:
