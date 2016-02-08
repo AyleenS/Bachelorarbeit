@@ -158,9 +158,11 @@ Zusätzlich werden Funktionen definiert, die die Traces beliebig fortsetzen.
   Für ein \EIO{} $S$ wird definiert:
   \begin{itemize}
     \item $\prune{}:\Sigma ^*\rightarrow\Sigma ^*, w\mapsto u$, mit $w=uv,
-      u=\varepsilon\vee u\in\Sigma ^*\cdot I$ und $v\in O^*$,
-    \item $\cont{}:\Sigma ^*\rightarrow\mathfrak{P}(\Sigma ^*),
+      u=\varepsilon\footnotemark\vee u\in\Sigma ^*\cdot I$ und $v\in O^*$,
+    \footnotetext{$\varepsilon$ bezeichnet das leere Wort}
+    \item $\cont{}:\Sigma ^*\rightarrow\mathfrak{P}(\Sigma ^*)\footnotemark,
       w\mapsto\left\{wu\mid u\in\Sigma ^*\right\}$,
+    \footnotetext{$\mathfrak{P}(M)$ bezeichnet die Potenzmenge der Menge $M$}
     \item $\cont{}:\mathfrak{P}(\Sigma ^*)\rightarrow\mathfrak{P}(\Sigma ^*),
       L\mapsto\bigcup\hspace{1pt}\left\{\cont{}(w)\mid w\in L\right\}$.
   \end{itemize}
