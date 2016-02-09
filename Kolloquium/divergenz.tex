@@ -1,0 +1,197 @@
+\section{Verfeinerung für Error-, Ruhe- und Divergenz-Freiheit}
+\begin{frame}
+  \begin{Def}[Divergenz-Verfeinerungs-Basisrelation]
+    Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur wird $S_1\DBRel S_2$
+    geschrieben, wenn ein Error-, Ruhe- oder Divergenz-Zustand in $S_1$ nur
+    dann lokal erreichbar ist, wenn er auch in $S_2$ lokal erreichbar ist. Diese
+    \textbf{Basisrelation} stellt eine \textbf{Verfeinerung} bezüglich \textbf{Error},
+    \textbf{Ruhe} und \textbf{Divergenz} dar.\\
+    \DCRel{} bezeichnet die \textbf{vollständige abstrakte Präkongruenz} von \DBRel{}
+    bezüglich $\cdot\|\cdot$.
+  \end{Def}
+  \visible<2>{%
+  \begin{Def}[Divergenztraces]
+    Sei $S$ ein \EIO{} und definiere:
+    \begin{itemize}
+      \item \textbf{strikte Divergenztraces}: $\StDT{}(S) := \left\{w\in\Sigma ^*\mid
+        q_0 \overset{w}{\Rightarrow} q\in Div\right\}$,
+      \item \textbf{gekürzte Divergenztraces}: $\PrDT{}(S) :=
+        \bigcup\hspace{1pt}\left\{\prune{}(w)\mid w\in\StDT{}(S)\right\}$.
+    \end{itemize}
+\end{Def}}
+\end{frame}
+
+\begin{frame}
+  \begin{Def}[Error-, Divergenz- und Ruhe-Semantik]
+    Sei $S$ ein \EIO{}.
+    \begin{itemize}
+      \item Die Menge der \textbf{Divergenztraces} von $S$ ist $\DT{}(S) :=
+        \cont{}(\PrDT{}(S))$.
+      \item Die Menge der \textbf{Error-Divergenztraces} von $S$ ist $\EDT{}(S) :=
+        \ET{}(S)\cup \DT{}(S)$.
+      \item Die Menge der \textbf{error-divergenz-gefluteten Ruhetraces} von $S$
+        ist $\QDT{}(S) :=$\linebreak $\StQT{}(S)\cup \EDT{}(S)$.
+      \item Die Menge der \textbf{error-divergenz-gefluteten Sprache} von $S$ ist
+        $\EDL{}(S) := L(S) \cup \EDT{}(S)$.
+    \end{itemize}
+    Für zwei \EIO{}s $S_1, S_2$ mit der gleichen Signatur schreibt man $S_1\DRel
+    S_2$, wenn $\EDT{}_1\subseteq \EDT{}_2$, $\QDT{}_1\subseteq \QDT{}_2$ und
+    $\EDL{}_1\subseteq \EDL{}_2$ gilt.
+  \end{Def}
+\end{frame}
+
+\begin{frame}
+  \begin{satz}[Error-, Ruhe- und Divergenz-Semantik für Parallelkomposition]
+    Für zwei komponierbare \EIO{}s $S_1, S_2$ und ihre Komposition
+    $S_{12}$ gilt:
+    \begin{enumerate}
+      \item $\EDT{}_{12}=\cont \left(\prune \left(\left(\EDT{}_1\|\EDL{}_2\right)\cup
+        \left(\EDL{}_1\|\EDT{}_2\right)\right)\right)$,
+      \item $\QDT{}_{12}=(\QDT{}_1\|\QDT{}_2)\cup \EDT{}_{12}$,
+      \item $\EDL{}_{12}=(\EDL{}_1\|\EDL{}_2)\cup \EDT{}_{12}$.
+    \end{enumerate}
+  \end{satz}
+  \visible<2>{%
+  \begin{prop}[Divergenz-Präkongrunez]
+    \DRel{} ist eine Präkongruenz bezüglich $\cdot\|\cdot$.
+  \end{prop}}
+\end{frame}
+
+\begin{frame}
+  \begin{Def}[\boldmath$\omega$-Partner]
+    Ein \EIO{} $S_1$ ist ein \textbf{\boldmath$\omega$-Partner} von einem \EIO{} $S_2$, wenn
+    $I_1=O_2$ und $O_1=I_2\cup\{\omega\}$ mit $\omega\notin I_2\cup O_2$ gilt.
+  \end{Def}
+  \visible<2>{%
+  \begin{lem}[Verfeinerung mit Divergenz-Zuständen]
+    Gegeben sind zwei \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur. Wenn
+    $U\|S_1\DBRel{} U\|S_2$ für alle $\omega$-Partner $U$ gilt, dann folgt daraus
+    $S_1\DRel{} S_2$.
+\end{lem}}
+\end{frame}
+
+\begin{frame}
+  $x?$ bezeichnet den Input $x$ und $x!$ den Output $x$
+  \begin{figure} [h!tbp]
+  \begin{center}
+    \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
+      \node (0) {$q_0$};
+      \node (1) [right of=0] {$q_1$};
+      \node (dots) [right of=1] {$\dots$};
+      \node (n) [right of=dots] {$q_n$};
+      \node (n1) at ($(1)!0.5!(dots) + (0,-3)$) {$q_{n+1}$};
+
+      \path ($ (0) + (-1,0) $) edge (0)
+            (0) edge node {$x_1$} (1)
+                edge [bend right] node [below, sloped] {$x?\neq x_1, \omega
+                !$} (n1)
+            (1) edge node {$x_2$} (dots)
+                edge node [below, sloped] {$x?\neq x_2, \omega !$} (n1)
+            (dots) edge node {$x_n$} (n)
+                   edge [dashed] (n1)
+            (n) edge node [above, sloped] {$x?\in I_U, \omega !$} (n1)
+                edge [bend left] node [sloped] {$x_{n+1}$!} (n1)
+            (n1) edge [loop below] node {$x?\in I_U, \omega !$} (n1);
+    \end{tikzpicture}
+    \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$}
+  \end{center}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \begin{figure} [h!tbp]
+  \begin{center}
+    \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
+      \node (0) {$q_0$};
+      \node (1) [right of=0] {$q_1$};
+      \node (dots) [right of=1] {$\dots$};
+      \node (n) [right of=dots, rectangle, dotted, draw] {$q_n\in Qui_U$};
+      \node (q) at ($(1)!0.5!(dots) + (0,-3)$) {$q$};
+
+      \path ($ (0) + (-1,0) $) edge (0)
+            (0) edge node {$x_1$} (1)
+                edge [bend right] node [below, sloped] {$x?\neq x_1, \omega
+                !$} (q)
+            (1) edge node {$x_2$} (dots)
+                edge [below, sloped] node {$x?\neq x_2, \omega !$} (q)
+            (dots) edge node {$x_n$} (n)
+                   edge [dashed] (q)
+            (n) edge [bend left] node [below,sloped] {$x?\in I_U$} (q)
+            (q) edge [loop below] node {$x?\in I_U, \omega !$} (q);
+    \end{tikzpicture}
+    \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$, $q_n$
+      ist der einzige Ruhe-Zustand}
+  \end{center}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \begin{figure} [h!tbp]
+  \begin{center}
+    \begin{tikzpicture}[->, >=latex',auto,node distance =2.5cm, semithick]
+
+      \node (0) {$q_0$};
+      \node (1) [right of=0] {$q_1$};
+      \node (dots) [right of=1] {$\dots$};
+      \node (n1) [right of=dots] {$q_{n-1}$};
+      \node (n) [right of=n1, rectangle, draw] {$q_n\in E_U$};
+      \node (q) at ($(dots) + (0,-3)$) {$q$};
+
+      \path ($ (0) + (-1,0) $) edge (0)
+            (0) edge node {$x_1$} (1)
+                edge [bend right] node [below, sloped] {$x?\neq x_1, \omega
+                !$} (q)
+            (1) edge node {$x_2$} (dots)
+                edge node [below, sloped] {$x?\neq x_2, \omega !$} (q)
+            (dots) edge node {$x_{n-1}$} (n1)
+                   edge [dashed] (q)
+            (n1) edge node {$x_n$} (n)
+                 edge node [below, sloped] {$x?\neq x_n, \omega !$} (q)
+            (q) edge [loop below] node {$x?\in I_U, \omega !$} (q)
+            (n) edge [bend left] node {$\omega !$} (q);
+    \end{tikzpicture}
+    \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$, $q_n$
+      ist der einzige Error-Zustand}
+  \end{center}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \begin{satz}[Vollstänige Abstraktheit für Divergenz-Semantik]
+    Seinen $S_1$ und $S_2$ zwei \EIO{}s mit derselben Signatur. Dann gilt $S_1
+    \DCRel{} S_2\Leftrightarrow S_1\DRel{} S_2$.
+  \end{satz}
+  \visible<2>{%
+  \begin{figure} [h!tbp]
+  \begin{center}
+    \begin{tikzpicture}[auto]
+      \node (m-1-1) {$S_1\DRel S_2$};
+      \node[right = 5cm of m-1-1] (m-1-2) {$S_1\DCRel S_2$}
+      edge[implies-, double, double distance=1mm] node [above]
+      {\rmfamily\footnotesize\parbox{4cm}{\glqq{}$\Leftarrow$\grqq{} von Satz
+      Vollständige Abstraktheit für Divergenz-Semantik}} (m-1-1);
+      \node[below = 2cm of m-1-1] (m-2-1) {$\substack{\forall\;\omega
+          -\mathrm{Partner}~U:\\ U\|S_1 \DBRel U\|S_2}$}
+          edge[-implies, double, double distance=1mm] node [left]
+          {\rmfamily\footnotesize\parbox{2.3cm}{Lemma Verfeinerung mit
+          Div\-er\-genz-Zu\-stän\-den}} (m-1-1);
+      \node[below = 2cm of m-1-2] (m-2-2) {$\substack{\forall\;\omega
+          -\mathrm{komponierbaren}~U:\\ U\|S_1 \DBRel U\|S_2}$}
+          edge[-implies, double, double distance=1mm] node [below]
+          {$\substack{U~\omega\mathrm{-Partner}\\ \Downarrow\\
+          U~\mathrm{komponierbar}}$} (m-2-1)
+          edge[implies-, double, double distance=1mm] node [right]
+          {\rmfamily\small\parbox{2cm}{Definition
+          von \DCRel{}}} (m-1-2);
+    \end{tikzpicture}
+    \caption{Folgerungskette}
+  \end{center}
+  \end{figure}}
+\end{frame}
+
+\begin{frame}
+  \begin{kor}
+    Es gilt: $S_1\DRel{} S_2 \Leftrightarrow U\|S_1\DBRel{} U\|S_2$ für alle
+    komponierbaren $U$.
+  \end{kor}
+\end{frame}
