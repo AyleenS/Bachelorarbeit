@@ -209,8 +209,8 @@ erreichbar ist.
   1. \glqq{}$\supseteq$\grqq{}:\\
   Es wird ebenso wie oben nur ein präfix-minimales $x$ betrachtet wegen des
   Abschlusses beider Seiten der Gleichung unter \cont{}. Es wird also für ein
-  beliebiges $x\in\prune{}\left(\left(\EDT{}_1\|\right.\right.$
-  $\left.\left.\EDL{}_2\right)\cup \left(\EDL{}_1\|\EDT{}_2\right)\right)$ gezeigt, dass
+  beliebiges $x\in\prune{}\left(\right.$ $\left.\left(\EDT{}_1\|
+  \EDL{}_2\right)\cup \left(\EDL{}_1\|\EDT{}_2\right)\right)$ gezeigt, dass
   dieses oder einer seiner Präfixe auch in $\EDT{}_{12}$ enthalten ist. Da das
   $x$ aus der \prune{}-Funktion entstanden ist, lässt sich ein $y$ aus
   $O_{12}^*$ finden, sodass $xy\in (\EDT{}_1\|\EDL{}_2)\cup
@@ -490,7 +490,7 @@ enthalten ist.
           $\varepsilon\in \PrDT{}(U\|S_1)$.
       \end{itemize}
       Da $\varepsilon$ in $\PrET{}(U\|S_1)\cup \PrDT{}(U\|S_1)$ enthalten
-      ist, kann mit der Relation $U\|S_1\DBRel U\|S_2$ geschlossen werden, dass
+      ist, kann mit der Relation\linebreak $U\|S_1\DBRel U\|S_2$ geschlossen werden, dass
       in $U\|S_2$ ein Fehler lokal erreichbar sein muss. Durch die
       $\omega$-Transitionen an den Zuständen von $U$ kann es in Komposition mit
       $U$ keine Ruhe-Zustände geben. Der Fehler muss also Error oder Divergenz
@@ -817,7 +817,7 @@ unterscheiden könnte. Die Definition für die zu verwendende Basisrelation
 müsste dann wie folgt lauten.
 
 \begin{Def}[alternative Divergenz-Verfeinerungs-Basisrelation]
-  Für zwei \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur wird $S_1\DBaRel{}
+  Für\linebreak zwei \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur wird $S_1\DBaRel{}
   S_2$ geschrieben, wenn ein Error-Zustand in $S_1$ nur dann lokal erreichbar
   ist, wenn er auch in $S_2$ erreichbar ist und wenn ein Divergenz- oder
   Ruhe-Zustand nur in $S_1$ nur dann lokal erreichbar ist, wenn auch in $S_2$ ein
@@ -836,8 +836,9 @@ wurde deshalb in der obigen Definition nicht explizit aufgeführt. Die Relation
 \DCaRel{} könnte dann durch die im folgenden definierte Relation charakterisiert
 werden.
 
-\begin{Def}[alternative Charakterisierung der volltändig abstrakten Präkonrugenz]
-  Für zwei \EIO{}s $S_1$, $S_2$ mit der gleichen Signatur schreibt man
+\begin{Def}[alternative Charakterisierung der volltändig abstrakten\linebreak Präkonrugenz]
+  Für zwei \EIO{}s $S_1$, $S_2$ mit der gleichen Signatur schreibt
+  man\linebreak
   $S_1\DaRel{} S_2$, wenn $S_1 \ERel{} S_2$, $\EDT{}_1\subseteq
   \EDT{}_2$ und $\QDT{}_1\subseteq \QDT{}_2$ gilt.
 \end{Def}

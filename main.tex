@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper,oneside,ngerman,parskip=half*,bibtotoc]{scrbook}
+\documentclass[12pt,a4paper,twoside,ngerman,parskip=half*,bibtotoc]{scrbook}
 
 \clubpenalty=10000
 \widowpenalty=10000
@@ -9,8 +9,6 @@
 \usepackage[utf8]{inputenc}
 
 \usepackage{amsmath,amssymb,amsthm,mathtools}
-
-\usepackage{geometry}
 
 \usepackage{tikz}
 \usetikzlibrary{arrows, automata, calc, matrix}
@@ -80,11 +78,14 @@
 
 \begin{document}
 
+\KOMAoptions{twoside = false}
+
 \frontmatter
 
 \input{titlepage.tex}
 
-\newgeometry{twoside,left=2cm,right=3cm,top=2.5cm,bottom=5cm}
+\KOMAoptions{twoside}
+
 \tableofcontents{}
 
 \mainmatter{}
@@ -98,8 +99,6 @@
 \input{quiescents.tex}
 
 \input{divergenz.tex}
-
-% \input{danksagung.tex}
 
 \bibliographystyle{amsalphagar}
 \bibliography{literatur}
