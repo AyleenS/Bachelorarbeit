@@ -7,7 +7,7 @@ eines Systems oder einer Komponente durch Inputs und Outputs. Es können durch
 Interface-Automaten
 parallel arbeitende Softwarekomponenten simuliert werden. Die Kommunikation
 zwischen  Systemen wird durch eine Parallelkomposition der beteiligten Komponenten
-erreicht. Grundsätzlich wird hier ein Output bzw.\ eine
+modelliert. Grundsätzlich wird hier ein Output bzw.\ eine
 interne Aktion als vom jeweiligen System
 kontrolliert angesehen und ein Input als von der Umwelt kontrolliert. Falls in
 einer Parallelkomposition ein Output von einem System ausgeführt wird, muss
@@ -23,9 +23,9 @@ Voraussetzung zu begründen, dass die Umwelt diesen Input in diesem Zustand nich
 darf. Es ist also nicht sinnvoll, für die Vermeidung von Kommunikationsfehler
 in Interface-Automaten, alle Inputs für alle Zustände zuzulassen, da dann nicht
 mehr alle zulässigen Voraussetzungen erfüllt werden könnten.\\
-So wie die Interface-Automaten in~\cite{Alfaro2004} definiert sind, kann es
-in der Parallelkomposition von zwei dieser Automaten zu Kommunikationsfehlern
-kommen, in dem eine Komponente einen Output macht, den die andere nicht als Input
+Die Definition der Interface-Automaten in~\cite{Alfaro2004} lässt
+in der Parallelkomposition von zwei dieser Automaten Kommunikationsfehlern zu,
+in dem eine Komponente einen Output macht, den die andere nicht als Input
 aufnehmen kann. Die daraus entstehen Fehler-Zustände, sind jedoch nicht
 zulässig und müssen inklusive aller Zustände, durch die man mit lokalen
 Aktionen einen dieser Fehler-Zustände erreichen kann, mit einer speziell definieren
@@ -52,8 +52,8 @@ wird eine größte Präkongruenz bezüglich der Parallelkomposition
 charakterisiert, die in der Basisrelation enthalten ist.\\
 In~\cite{Vogler2014EIO} wurde für Kommunikationsfehler-Freiheit nachgewiesen, dass jedes \EIO{}
 äquivalent ist zu einem ohne Error-Zustände unter Berücksichtigung der
-Präkongruenz. Dieses erhält man durch Stutzen wie in~\cite{Alfaro2004}. Es ist
-also möglich die \EIO{}s nur für die Untersuchung zu verwenden und die
+Präkongruenz. Dieses erhält man durch Stutzen wie in~\cite{Alfaro2004}. Damit
+ist es also möglich die \EIO{}s nur für die Untersuchung zu verwenden und die
 Fehler-Zustände am Ende zu entfernen, um wieder Interface-Automaten zu
 erhalten.\\
 Die Betrachtung der Transitionssysteme mit Fehler-Zuständen hat auch den
@@ -62,35 +62,35 @@ um sicher zu stellen, dass nach dem Entfernen eines Weges zu einem Fehler, der
 gleiche Input nicht noch zu einem anderen zulässigen Zustand führt. Jedoch muss
 dann vor der Umwandlung in einen Interface-Automaten durch das Entfernen der
 Fehler-Zustände auf diese Inputs geachtet werden.\\
-Um die Begrifflichkeiten hier eindeutiger und intuitiver, bzgl.\ dessen was
-wirklich in dem System passiert, zu machen, wird im weiteren Verlauf
+Um die Begrifflichkeiten hier eindeutiger und intuitiver zu machen, wird im weiteren Verlauf
 das Wort Error für Kommunikationsfehler verwendet und für Verklemmung das Wort
 Ruhe. Als Fehler werden im weiteren Kommunikationsfehler, Verklemmung und
 Divergenz bezeichnet.\\
 Der Anfang dieser Arbeit orientiert sich sehr stark an~\cite{Vogler2014EIO}.
 Jedoch wird hier darauf verzichtet die Input-Mengen der \EIO{}s als disjunkt
-anzunehmen und alle Definitionen und Sätze werden erst einmal ohne das
+anzunehmen und alle Definitionen und Sätze werden zunächst ohne das
 Verbergen der synchronisierten Aktionen betrachtet. Da die Input-Mengen im
 Gegensatz zu~\cite{Vogler2014EIO} einen
-nicht leeren Schnitt haben können, muss festgelegt werden, dass die Komposition
+nicht leeren Schnitt haben können, ergibt sich in natürlicherweise die
+Voraussetzung, dass die Komposition
 aus zwei Systemen einen Input aus diesem Schnitt nur ausführen kann, wenn beide
 Systeme die Möglichkeit für diesen Input haben.\\
 Dadurch dass die synchronisierten Aktionen nicht verborgen werden, wird hier
 ein Modell betrachtet, mit dem nicht nur zwei Systeme miteinander kommunizieren können,
 sondern beliebig viele. Ein Output eines Systems ist somit eine Art Multicast.
 Jedes System, das diesen Output als Input verarbeiten kann, empfängt ihn auch,
-da bei jeder Komposition der Output weitergeleitet wird an andere Systeme.
+da bei jeder Komposition der Output an andere Systeme weitergeleitet wird.
 Kann jedoch ein System den Output nicht als Input aufnehmen, wird dieses System von
 der Nachricht nicht beeinträchtigt.\\
 Anschießend werden die Auswirkung von Hiding auf diese Struktur
 untersucht und somit das Verbergen in der Parallelkomposition nachgebildet.
 Durch das Hiding können Outputs durch interne Aktionen ersetzt werden. Es wird
-also die Kommunikation durch diesen Output mit anderen Systemen verboten, bzw.\
-der Kommunikationskanal wird geschlossen, da die Aktion internalisiert wird.\\
+also die Kommunikation durch diese Outputs mit anderen Systemen verboten, bzw.\
+die Kommunikationskanäle werden geschlossen, da die Aktionen internalisiert
+werden.\\
 Diese Art der Betrachtung der
-\EIO{}s wurde auch bereits in~\cite{Schlosser2012BA} gewählt, jedoch wurde
-diese Arbeit nicht als direkte Quelle genutzt, bis auf den Abschnitt des
-Hidings. Die Feststellungen im Definitionskapitel und dem Kapitel über
+\EIO{}s wurde auch bereits in~\cite{Schlosser2012BA} gewählt, jedoch dient
+diese Arbeit nur im Abschnitt des Hidings in Kapitel 3 als direkte Quelle. Die Feststellungen im Definitionskapitel und dem Kapitel über
 Errors stimmen mit dieser Quelle überein, jedoch wurden alle Beweise davon unabhängig neu
 geführt.\\
 In dieser Arbeit wird ein optimistischer Ansatz für die Erreichbarkeit
@@ -114,25 +114,23 @@ optimistische Ansatz näher an der Realität zu liegen.\\
 Neben dem hier betrachteten optimistischen Ansatz gibt es noch zwei weitere
 Ansätze in~\cite{Vogler2014EIO} für die Erreichbarkeit von Error-Zuständen:
 einen hyper-optimistischen Ansatz, bei dem ein Error als erreichbar gilt, wenn
-er durch interne Aktionen erreicht werden kann, und einen pessimistischen
-Ansatz, bei dem ein Error als erreichbar gilt, sobald es eine Folge an Inputs
-und Outputs gibt, mit denen der Error-Zustand vom Startzustand aus erreicht
-werden kann.\\
+er durch interne Aktionen erreicht werden kann, und den bereits oben erwähnten
+pessimistischen Ansatz.\\
 Es wird versucht bei allen betrachteten Zustandsmengen die gröbste Präkongruenz zu
 finden, die in der jeweiligen Basisrelation enthalten ist und die eine
 Präkongruenz bezüglich der Parallelkomposition ist.\\
 Es werden im Verlauf dieser Arbeit Ruhe-Zustände betrachtet, die keine Outputs
 und keine $\tau$s zulassen. Somit befindet sich das betrachtete
-Transitionssystem in einer Art Verklemmung, wenn es in einem Ruhe-Zustand ist.
-Das System ist dann auf einen Input von Außen angewiesen um sich wieder aus
-diesem Zustand befreien zu können. Es kann ohne diesen Input keinen Fortschritt
-mehr geben in Form von Outputs. Da aber auch die $\tau$-Transitionen verboten
-sind, kann das System auch keine interne Aktion zu einem anderen Zustand
+Transitionssystem in einer Art Verklemmung und ist dann auf einen Input von
+Außen angewiesen um sich wieder aus diesem Zustand befreien zu können. Es kann
+ohne diesen Input keinen Fortschritt mehr geben in Form von Outputs. Da aber
+auch die $\tau$-Transitionen verboten sind, kann das System auch keine interne
+Aktion zu einem anderen Zustand
 ausführen. Somit wurden die Ruhe-Zustände als Art Deadlocks umgesetzt,
 jedoch falls man die $\tau$s nicht komplett verbieten würde, könnten auch
 Livelocks damit dargestellt werden.\\
-Eine andere Betrachtungsweise zeigt dann die Hinzunahme von unendlichen Traces,
-die mit der Eigenschaft der Divergenz genauer betrachtet werden sollen. Hierbei
+Die Hinzunahme unendlicher Traces führt zu einer anderen Betrachtungsweise, mit
+der die Eigenschaft der Divergenz genauer betrachtet werden sollen. Hierbei
 kann ein System unendlich viele $\tau$-Transitionen ausführen. Es kann dann
 auch relevant sein, dass die hier betrachteten Transitionssysteme nicht endlich sein
 müssen.
