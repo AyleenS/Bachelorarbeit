@@ -22,9 +22,8 @@ gröbste Präkongruenz definiert, die charakterisiert werden soll.
 \label{DefErrorBasisrel}
   Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur wird
   $S_1\EBRel S_2$ geschrieben, wenn ein Error-Zustand in $S_1$ nur dann lokal erreichbar ist, wenn er
-  auch in $S_2$ lokal erreichbar ist. Es handelt sich dabei um eine
-  \emph{Basisrelation} für die \emph{Verfeinerung} im Bezug auf
-  \emph{Error-Zustände}.\\
+  auch in $S_2$ lokal erreichbar ist. Diese \emph{Basisrelation} stellt eine
+  \emph{Verfeinerung} bezüglich \emph{Error} da.\\
   \ECRel{} bezeichnet die \emph{vollständig abstrakte Präkongruenz} von \EBRel{}
   bezüglich $\cdot\|\cdot$, d.h.\ die gröbste Präkongruenz bezüglich
   $\cdot\|\cdot$, die in \EBRel{} enthalten ist.
@@ -58,7 +57,7 @@ für die Synchronisation fehlt.
   \end{itemize}
 \end{Def}
 
-In der folgenden Definition wird festgehalten, was als Errortrace auffasst
+In der folgenden Definition wird festgehalten, was als Errortrace aufgefasst
 wird. Diese Menge ist dadurch, dass sie die fortgesetzten Traces aus $\PrET{}$
 enthält, deutlich allgemeiner als die Menge $\StET{}$. Die fortgesetzten Traces
 aus \MIT{} sind aufgrund der Möglichkeit für Kommunikationsfehler ebenfalls in

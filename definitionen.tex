@@ -1,9 +1,10 @@
 \chapter{Definitionen und Notationen}
 
 Die Definitionen dieses Kapitels basieren größtenteils auf dem Paper von Bujtor
-und Vogler~\cite{Vogler2014EIO}, mit den in der Einleitung bereits erwähnten Abänderungen. In diesen
-Definitionen werden die Grundlagen der Transitionssysteme, mit denen hier
-gearbeitet werden soll, beschrieben.
+und Vogler~\cite{Vogler2014EIO}, mit den in der Einleitung bereits erwähnten
+Modifikationen. In diesen
+Definitionen werden die Grundlagen der Transitionssysteme, mit denen im
+folgenden gearbeitet werden soll, beschrieben.
 
 \section{Error-IO-Transitionssystem}
 Die hier betrachteten \EIO{}s sind Systeme, deren Transitionen mit Inputs und
@@ -11,7 +12,7 @@ Outputs beschriftet sind. Jede Transition ist dabei mit einem Input oder einem
 Output versehen. Ebenfalls zulässig ist eine Transitionsbeschriftung mit
 $\tau$, einer \emph{internen}, unbeobachtbaren \emph{Aktion}. Diese interne
 Aktion lässt also keine Interaktion mit der Umwelt, d.h.\ mit anderen Systemen,
-zu. In~\cite{Vogler2014EIO} entsteht das $\tau$ in vielen Fällen durch das
+zu. In~\cite{Vogler2014EIO} entsteht das $\tau$ meist durch das
 Verbergen der Inputs und Outputs, die in einer Komposition synchronisiert
 werden. Hier werden diese Aktionen hingegen nicht verborgen. Jedoch wird im
 weiteren Verlauf noch das Hiding betrachten, in dem Outputs durch interne
@@ -62,7 +63,7 @@ Die Elemente der Transitionsrelation $\delta$ werden wie folgt notieren:
   \item $p\overset{w}{\Rightarrow}$ für $\exists q:p\overset{w}{\Rightarrow}
     q$.
 \end{itemize}
-Die \emph{Sprache} von $S$ ist
+Die \emph{Sprache} eines \EIO{}s $S$ ist
 $L(S)=\left\{w\in\Sigma^*\mid q_0\overset{w}{\Rightarrow}\right\}$.
 
 \section{Parallelkomposition}
@@ -219,7 +220,7 @@ erlaubt, entsprechend Quelle~\cite{Schlosser2012BA}.
 \begin{Def}[Internalisierungsoperator]
   Für ein \EIO{} $S=(Q,I,O,\delta ,q_0.E)$ ist $S/X$, mit
   dem \emph{Internalisierungsoperator} $\cdot /\cdot$,
-  definiert als $S'=(Q,I,O',\delta ', q_0,E)$ mit:
+  definiert als $(Q,I,O',\delta ', q_0,E)$ mit:
   \begin{itemize}
     \item $\tau \notin X$,
     \item $X\subseteq O$,
@@ -234,9 +235,9 @@ Outputs beschränkt. Diese Einschränkung wurde vorgenommen, um die weitere
 Betrachtung zu erleichtern. Jedoch kann es sinnvoll sein die Möglichkeit zu
 haben dort weitere Aktionen aufnehmen zu können. Dies wird jedoch nicht mehr
 Teil dieser Arbeit sein.\\
-In~\cite{Vogler2014EIO} wird die Parallelkomposition nur mit Verbergen der
-synchronisierten Aktionen betrachtet, die durch die Synchronisation von einem
-Input mit einem Output entstehen. Diese Parallelkomposition wird nun mit dem
+In~\cite{Vogler2014EIO} werden bei der Parallelkomposition die synchronisierten
+Aktionen, welche durch die Synchronisation von einem Input mit einem Output
+entstehen, verborgen. Diese Parallelkomposition wird nun mit dem
 Internalisierungsoperator durch Hiding der synchronisierten Aktionen, die in
 der Parallelkomposition zu Outputs werden, nachbildet. Da in dieser Arbeit
 die Inputmengen der Systeme, die komponiert werden, nicht disjunkt sein müssen,
@@ -250,6 +251,7 @@ Parallelkomposition aus~\cite{Vogler2014EIO} nachgebildet werden kann.
 
 \begin{Def}[Parallelkomposition mit Internalisierung]
 \label{defIntParal}
-  Seinen $S_1$ und $S_2$ komponierbare \EIO{}s, dann ist
-  $S_1|S_2=S_{12}/(\Synch(S_1,S_2)\cap O_{12})$.
+  Seinen $S_1$ und $S_2$ komponierbare \EIO{}s, dann ist die
+  Parallelkomposition mit Internalisierung definiert als $S_1|S_2 = S_{12}/(
+  \Synch(S_1,S_2) \cap O_{12})$.
 \end{Def}
