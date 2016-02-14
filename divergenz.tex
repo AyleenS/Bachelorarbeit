@@ -802,8 +802,8 @@ das folgende Korollar.
 \end{kor}
 
 Um die gröbste Präkongruenz mit den gewünschten Eigenschaften zu erhalten,
-musste hier eine Änderung gegenüber~\cite{Chilton2013} vorgenommen werden. Es
-musste auf die Verfeinerung der Error-Präkongruenz verzichtet werden und es
+wurde hier eine Änderung gegenüber~\cite{Chilton2013} vorgenommen. Es
+war nötig auf die Verfeinerung der Error-Präkongruenz zu verzichtet und es
 mussten auf Trace-Ebene Error und Divergenz vermischt werden.\\
 Falls man eine Basisrelation definieren würde, die unterscheiden kann, ob es
 sich um Error oder Divergenz handelt, könnte man die hier erhaltenen
@@ -820,7 +820,7 @@ müsste dann wie folgt lauten.
   Für\linebreak zwei \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur wird $S_1\DBaRel{}
   S_2$ geschrieben, wenn ein Error-Zustand in $S_1$ nur dann lokal erreichbar
   ist, wenn er auch in $S_2$ erreichbar ist und wenn ein Divergenz- oder
-  Ruhe-Zustand nur in $S_1$ nur dann lokal erreichbar ist, wenn auch in $S_2$ ein
+  Ruhe-Zustand in $S_1$ nur dann lokal erreichbar ist, wenn auch in $S_2$ ein
   Error-, Divergenz- oder Ruhe-Zustand lokal erreichbar ist. Die
   \emph{alternative Basisrelation} stellt ebenfalls eine Verfeinerung bezüglich
   \emph{Error}, \emph{Ruhe} und \emph{Divergenz} dar.\\
@@ -830,7 +830,7 @@ müsste dann wie folgt lauten.
 
 Die Relation \DBaRel{} ist somit die Vereinigung der Relationen \EBRel{} und
 \DBRel{}. Die Forderung von \DBRel{} für die lokale Erreichbarkeit von
-Error-Zuständen in $S_1$ wird bereits durch die stärke Forderung von \EBRel{}
+Error-Zuständen in $S_1$ wird bereits durch die stärkere Forderung von \EBRel{}
 für die lokale Erreichbarkeit von Error-Zuständen erfüllt und
 wurde deshalb in der obigen Definition nicht explizit aufgeführt. Die Relation
 \DCaRel{} könnte dann durch die im folgenden definierte Relation charakterisiert
@@ -845,15 +845,15 @@ werden.
 
 Diese Charakterisierung \DaRel{} entspricht dem Ansatz
 aus~\cite{Chilton2013}. Dadurch wird jedoch Error als \glqq{}schlimmerer
-Fehler\grqq{} aufgefasst, wie Divergenz. Es gibt mit diesen Definitionen also
+Fehler\grqq{} aufgefasst wie Divergenz. Es gibt mit diesen Definitionen also
 eine echte Hierarchie zwischen den Fehler. Es sieht so aus, dass die
 Mengeninklusion $\EDL{}_1\subseteq \EDL{}_2$ fehlen würde, damit \DaRel{} die
 Vereinigung von \ERel{} und \DRel{} wäre. Dies ist jedoch nicht der Fall, da
 diese Inklusion aus den geforderten Inklusionen bereits folgt. Durch $S_1
 \ERel{} S_2$ weiß man, dass $\EL_1 \subseteq \EL_2$ gilt. Die Menge \EL{} ist
 nach Definition die Vereinigung aus der Sprache $L$ und den Errortraces \ET{}.
-Somit fehlt nur noch die Divergenztraces \DT{} um daraus die Menge \EDL{} zu
-erhalten. Jedoch ist durch die Inklusion $\EDT_1\subseteq \EDT{}_2$ auch
+Somit fehlt nur noch die Divergenztraces \DT{}, um daraus die Menge \EDL{} zu
+erhalten. Jedoch ist durch die Inklusion $\EDT_1\subseteq \EDT{}_2$
 bereits klar, dass $\ET{}_1\cup \DT{}_1 \subseteq \ET{}_2\cup \DT{}_2$ gilt.
 Insgesamt folgt dann die Gleichung $\EDL = \EL \cup \EDT$. Falls sich eine
 der beiden Mengen \EL{} bzw. \EDT{} vergrößert, vergrößert sich auch die Menge
