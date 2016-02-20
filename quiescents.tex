@@ -266,26 +266,26 @@ Sie entsprechen Punkt 1.\ und 2.\ aus Satz~\ref{satzErrorSemanik}.
   \end{itemize}
 \end{proof}
 
-Die folgende Proposition ist eine direkte Folgerung aus dem letzten Satz.
+Das folgende Korollar ist eine direkte Folgerung aus dem letzten Satz.
 Jedoch ist es eine wichtige Feststellung um zu zeigen, dass es sich bei der
 Relation \QRel{} um die gröbste Präkongruenz handeln könnte, die in diesem
 Kapitel charakterisiert werden soll.
 
-\begin{prop}[Ruhe-Präkongruenz]
+\begin{kor}[Ruhe-Präkongruenz]
 \label{propQuiPrae}
-  \QRel{} ist eine Präkongruenz bezüglich $\cdot\|\cdot$.
-\end{prop}
+  Die Relation \QRel{} ist eine Präkongruenz bezüglich $\cdot\|\cdot$.
+\end{kor}
 
 \begin{proof}
   Es muss gezeigt werden: Wenn $S_1\QRel S_2$ gilt, so auch
   $S_{31}\QRel S_{32}$ für jedes komponierbare System $S_3$. D.h.\ es ist zu zeigen, dass aus
   $S_1\ERel S_2$ und $\QT{}_1\subseteq \QT{}_2$ sowohl $S_{31}\ERel S_{32}$ als
   auch $\QT{}_{31}\subseteq \QT{}_{32}$ folgt. Dies ergibt sich, wie im Beweis
-  zu Proposition~\ref{propPraekongruenz}, aus der Monotonie von $\cdot\|\cdot$
+  zu Korollar~\ref{propPraekongruenz}, aus der Monotonie von $\cdot\|\cdot$
   auf Sprachen wie folgt:
   \begin{itemize}
     \item $\begin{aligned}[t]
-        S_{31} \overset{\mathrm{Proposition}
+        S_{31} \overset{\mathrm{Korollar}
         ~\ref{propPraekongruenz}}{\overset{\mathrm{und}}{\overset{S_1\ERel
     S_2}{\ERel}}} S_{32},
     \end{aligned}$
@@ -591,7 +591,7 @@ enthalten ist.
   $w\in\QT{}_1$ gilt. Somit ist ein Ruhe-Zustand oder ein Error-Zustand nur dann in
   $S_1$ lokal erreichbar, wenn auch ein solcher in $S_2$ lokal erreichbar ist.
   Daraus folgt, dass $S_1\QBRel S_2$ gilt. Es ist also \QRel{} in \QBRel{}
-  enthalten. In Proposition~\ref{propQuiPrae} wurde festgestellt, dass \QRel{}
+  enthalten. Im Korollar~\ref{propQuiPrae} wurde festgestellt, dass \QRel{}
   eine Präkongruenz ist. Da jedoch \QCRel{} nach Definition~\ref{DefQuiBasisrel} die gröbste
   Präkongruenz bezüglich $\cdot\|\cdot$ ist, die in \QBRel{} enthalten ist,
   muss \QRel{} in \QCRel{} enthalten sein. Es folgt also aus $S_1\QRel S_2$,
@@ -730,10 +730,10 @@ In Definition~\ref{defIntParal} wurde mit Hilfe des Internalisierungsoperator
 aus der Parallelkomposition ohne Verbergen die Parallelkomposition mit
 Verbergen der synchronisierten Aktionen nachgebildet. Es kann deren
 Eigenschaft als Präkongruenz aus den Präkongruenz\-eigenschaften von
-$\cdot\|\cdot$ und $\cdot /\cdot$ bezüglich \QRel{} aus der
-Proposition~\ref{propQuiPrae} und dem Satz~\ref{satzPraeInterQui} geschlossen
+$\cdot\|\cdot$ und $\cdot /\cdot$ bezüglich \QRel{} aus dem
+Korollar~\ref{propQuiPrae} und dem Satz~\ref{satzPraeInterQui} geschlossen
 werden.
 
 \begin{kor}[Ruhe-Präkongruenz mit Internalisierung]
-  \QRel{} ist eine Präkongruenz bezüglich $\cdot |\cdot$.
+  Die Relation \QRel{} ist eine Präkongruenz bezüglich $\cdot |\cdot$.
 \end{kor}

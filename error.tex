@@ -79,9 +79,11 @@ unterschieden werden.
   $\EL{}_1\subseteq \EL{}_2$ gilt.
 \end{Def}
 
-Der folgende Satz wurde in~\cite{Vogler2014EIO} nur für die Parallelkomposition
-mit verborgenen synchronisierten Aktionen formuliert, jedoch entspricht er dem
-analogen Satz aus~\cite{Schlosser2012BA}. Da der Beweis jedoch ohne Beachtung
+Der folgende Satz wurde in~\cite{Vogler2014EIO} für die Parallelkomposition
+mit verborgenen synchronisierten Aktionen formuliert, jedoch entspricht, der
+hier aufgeführte Satz für die Parallelkomposition ohne verbergen der
+synchronisierten Aktionen, dem
+analogen Satz aus~\cite{Schlosser2012BA}. Da der Beweis ohne Beachtung
 von~\cite{Schlosser2012BA} neu geführt wurde, wird hier eher auf die
 Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
 
@@ -101,7 +103,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
   1. \glqq{}$\subseteq$\grqq{}:\\
   Da beide Seiten der Gleichung unter der Fortsetzung $\cont{}$ abgeschlossen sind, genügt es ein
   präfix-minimales Element $w$ von $\ET{}_{12}$ zu betrachten. Dieses Element ist
-  aufgrund der Definition der Menge der Errortraces entweder in $\MIT{}_{12}$ oder in
+  aufgrund der Definition der Menge der Errortraces in $\MIT{}_{12}$ oder in
   $\PrET{}_{12}$ enthalten.
   \begin{itemize}
     \item Fall 1 ($w\in \MIT{}_{12}$): Aus der Definition von \MIT{} folgt, dass es eine
@@ -136,8 +138,8 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
       gilt $w\in (x_1\| x_2)\cdot\{a\}\subseteq (x_1a)\|x_2\subseteq \ET{}_1\|\EL{}_2$.
       Dies ist eine Teilmenge der rechten Seite der Gleichung.
   \end{itemize}
-    \item Fall 2 ($w\in \PrET{}_{12}$): Durch die Definitionen von $\PrET{}$
-      und $\prune{}$ weiß man, dass es ein $v\in O_{12}^*$ gibt, so dass
+    \item Fall 2 ($w\in \PrET{}_{12}$): Aus den Definitionen von $\PrET{}$
+      und $\prune{}$ folgt, dass es ein $v\in O_{12}^*$ gibt, so dass
       $(q_{01},q_{02}) \overset{w}{\Rightarrow} (q_1,q_2)
       \overset{v}{\Rightarrow} (q_1',q_2')$ gilt mit $(q_1',q_2')\in E_{12}$
       und $w=\prune{}(wv)$. Durch Projektion erhält man $q_{01}
@@ -181,16 +183,17 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
   Präfixe von $x$ betrachtet werden, ist dieser Unterschied irrelevant.\\
   Im Folgenden wird für alle Fälle von $xy$ gezeigt, dass es ein $v\in
   \PrET{}_{12}\cup \MIT{}_{12}$ gibt, das ein Präfix von $xy$ ist und $v$
-  entweder auf einen Input aus $I_{12}$ endet oder $v = \varepsilon$. Da $v$
-  entweder leer ist oder auf einen Input endet, muss $v$ ein Präfix von $x$
+  entweder auf einen Input aus $I_{12}$ endet oder $v = \varepsilon$. Damit
+  muss $v$ ein Präfix von $x$
   sein. $\varepsilon$ ist Präfix von jedem Wort und sobald $v$ mindestens einen
   Buchstaben enthält, muss das Ende von $v$ vor dem Anfang von $y\in O_{12}^*$
-  liegen. Dadurch hat $x$ ein Präfix in $\PrET{}_{12}\cup \MIT{}_{12}$, damit ist $x$ in
-  der Fortsetzung dieser Menge enthalten und somit gilt $x\in \ET{}_{12}$.\\
+  liegen. Dadurch ist ein Präfix von $x$ in $\PrET{}_{12}\cup \MIT{}_{12}$
+  enthalten und somit gilt $x\in \ET{}_{12}$, da \ET{} die Fortsetzung der
+  Mengenvereinigung aus \PrET{} und \MIT{} ist.\\
   Sei $v_1$ das kürzeste Präfix von $w_1$ in $\PrET{}_1\cup \MIT{}_1$. Falls
   $w_2\in L_2$, so sei $v_2=w_2$, sonst soll $v_2$ das kürzeste Präfix von
   $w_2$ in $\PrET{}_2\cup \MIT{}_2$ sein. Jede Aktion in $v_1$ und $v_2$ hängt mit
-  einer aus $xy$ zusammen. Es wird nun davon ausgegangen, dass entweder
+  einer aus $xy$ zusammen. Es kann nun davon ausgegangen werden, dass entweder
   $v_2=w_2\in L_2$ gilt oder die letzte Aktion von $v_1$ vor oder
   gleichzeitig mit der letzten Aktion von $v_2$ statt findet. Ansonsten endet
   $v_2\in \PrET{}_2\cup \MIT{}_2$ vor $v_1$ und somit ist dieser Fall analog zu $v_1$
@@ -223,7 +226,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
     \item Fall I ($v_1\in \MIT{}_1$ und $v_1\neq\varepsilon$): Es gibt einen
       Ablauf der Form $q_{01} \overset{v_1'}{\Rightarrow}q_1
       \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ und es gilt $v'=v''a$. Bei der
-      folgenden Fallunterscheidung müssen bezüglich~\cite{Vogler2014EIO}
+      folgenden Fallunterscheidung müssen im Gegensatz zu~\cite{Vogler2014EIO}
       zwei weitere Fälle (Ib) und Ic)) einfügt werden, da es zulässig ist, dass $a$
       sowohl in $I_1$ wie auch in $I_2$ enthalten ist.
       \begin{itemize}
@@ -238,7 +241,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
           v_1'\|v_2''$. $a$ ist  für $S_2$, ebenso wie für $S_1$, ein fehlender
           Input. Daraus folgt, dass $(q_1,q_2)
           \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ gilt. Es wird
-          $v:=v''a=v'\in \MIT{}_{12}$ gewählt.
+          ebenfalls $v:=v''a=v'\in \MIT{}_{12}$ gewählt.
         \item Fall Ic) ($a\in I_2$ und $v_2'\in L_2$): Es gilt $q_{02}
           \overset{v_2''}{\Rightarrow} q_2 \overset{a}{\rightarrow}$ mit
           $v_2'=v_2''a$. Da jedoch die Menge der synchronisierten Aktionen
@@ -246,7 +249,7 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
           $\Synch(S_1,S_2)$, also folgt $(q_1,q_2)
           \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$ schon aus $q_1
           \overset{a}{\not{\hspace{-0.1cm}\rightarrow}}$. Somit kann hier
-          $v:=v''a=v'\in \MIT{}_{12}$ gewählt werden.
+          nochmals $v:=v''a=v'\in \MIT{}_{12}$ gewählt werden.
         \item Fall Id) ($a\in O_2$): Es gilt $v_2'=v_2''a$ und $q_{02}
           \overset{v_2'}{\Rightarrow}$. Man erhält also $q_{02}
           \overset{v_2''}{\Rightarrow} q_2 \overset{a}{\rightarrow}$ mit
@@ -261,10 +264,10 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
     $q_1'\in E_1$. Da es hier keine disjunkten Inputmengen wie
     in~\cite{Vogler2014EIO} gibt, kann das $a$, auf das $v_1$ im Fall $v_1\neq
     \varepsilon$ endet, ebenfalls der letzte Buchstabe von $v_2$
-    sein. Im Fall von $v_2\in \MIT{}_2$ kann somit $a=b$ gelten und somit wäre
-    $v_2=v_2'$. Dieser Fall verläuft jedoch analog zu Fall Ic) und wird somit
-    hier nicht weiter betrachtet. Es gilt somit für
-    alle anderen Fälle hier $q_{02} \overset{v_2'}{\Rightarrow}q_2$ mit
+    sein. Im Fall von $v_2\in \MIT{}_2$ kann somit $a=b$ gelten, wodurch
+    $v_2=v_2'$ gilt. Dieser Fall verläuft jedoch analog zu Fall Ic) und wird
+    hier nicht weiter betrachtet. Es gilt für
+    alle anderen Fälle $q_{02} \overset{v_2'}{\Rightarrow}q_2$ mit
     $(q_{01},q_{02}) \overset{v'}{\Rightarrow}(q_1,q_2)$.
     \begin{itemize}
       \item Fall IIa) \Big($u_2\in (O_1\cap I_2)^*, c\in (O_1\cap I_2)$, sodass
@@ -278,23 +281,21 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
         um einen neuen Error. Es wird $v:=\prune{}(v'u_1')\in \PrET{}_{12}$ gewählt,
         dies ist ein Präfix von $v'$, da $u_1\in O_1^*$.
       \item Fall IIb) \big($q_2 \overset{u_2}{\Rightarrow} q_2'$ mit
-        $u_2=u_1|_{I_2}$\big): Somit ist $u_1\in u_1\|u_2$ und $(q_1,q_2)
+        $u_2=u_1|_{I_2}$\big): Es gilt $u_1\in u_1\|u_2$ und $(q_1,q_2)
         \overset{u_1}{\Rightarrow} (q_1',q_2')\in E_{12}$, da $q_1'\in E_1$ und
-        es handelt sich um einen geerbten Error in $S_{12}$. Es wird nun $v:=\prune{}
+        somit handelt es sich in $S_{12}$ um einen geerbten Error. Nun wird $v:=\prune{}
         (v'u_1)\in \PrET{}_{12}$ gewählt, das wiederum ein Präfix von $v'$ ist.
     \end{itemize}
   \end{itemize}
 
   2.:\\
   Der Beweis für diesen Punkt konnte bezüglich~\cite{Vogler2014EIO} fast
-  unverändert übernommen werden, bis auf die Ersetzung der Zeichen der
-  Parallelkomposition.\\
+  unverändert übernommen werden.\\
   Es ist durch die Definition klar, dass $L_i\subseteq \EL{}_i$ und
   $\ET{}_i\subseteq \EL{}_i$ gilt. Die Argumentation wird von der rechten
   Seite der Gleichung aus begonnen:
   \begin{align*}
-    &(\EL{}_1\| \EL{}_2)\cup \ET{}_{12}\\
-    &\overset{\ref{DefETEL}}{=}\left(\left(L_1\cup
+    (\EL{}_1\| \EL{}_2)\cup \ET{}_{12}&\overset{\ref{DefETEL}}{=}\left(\left(L_1\cup
   \ET{}_1\right)\|\left(L_2\cup \ET{}_2\right)\right)\cup \ET{}_{12}\\
     &=(L_1\|L_2) \cup \underset{\overset{1.}{\subseteq} \ET{}_{12}}{\underset{\subseteq
     (\EL{}_1\|\ET{}_2)}{\underbrace{(L_1\|\ET{}_2)}}} \cup
@@ -309,17 +310,17 @@ Erwähnung der Unterschiede zu~\cite{Vogler2014EIO} Wert gelegt.
   \end{align*}
 \end{proof}
 
-Die folgende Proposition wurde hier noch explizit mit Beweis eingefügt im
+Das folgende Korollar wurde hier noch explizit mit Beweis eingefügt im
 Gegensatz zu den Ausführungen in~\cite{Vogler2014EIO}, in denen diese
 Präkongruenz nur als Folgerung aus dem letzten Satz erwähnt wird. Die
 Feststellung, dass es sich um eine Präkongruenz handelt, ist wichtig, da
 dann die erste Eigenschaft erfüllt ist, um eine operationale Beschreibung der
 vollständig abstrakten Präkongruenz \ECRel{} zu erhalten.
 
-\begin{prop}[Error-Präkongruenz]
+\begin{kor}[Error-Präkongruenz]
 \label{propPraekongruenz}
-  \ERel{} ist eine Präkongruenz bezüglich $\cdot\|\cdot$.
-\end{prop}
+  Die Relation \ERel{} ist eine Präkongruenz bezüglich $\cdot\|\cdot$.
+\end{kor}
 
 \begin{proof}
   Es muss gezeigt werden: Wenn $S_1\ERel S_2$ gilt, dann für jedes
@@ -351,15 +352,15 @@ vollständig abstrakten Präkongruenz \ECRel{} zu erhalten.
 \end{proof}
 
 In~\cite{Vogler2014EIO} wurde auch die Verfeinerung von \EIO{}s als Relation
-betrachtet mit Spezifikation und Implementierung. Hier soll ebenfalls eine
+mit Spezifikation und Implementierung betrachtet. Hier soll ebenfalls eine
 Verfeinerungsrelation über \EIO{}s betrachtet werden, jedoch sollen die
 synchronisierten Aktionen nicht verborgen werden. Dadurch ändern sich natürlich
-auch Teile des Beweises, vor allem muss statt mit $\StET{}$ mit der Menge
+auch Teile des folgenden Beweises, vor allem muss statt mit $\StET{}$ mit der Menge
 $\PrET{}$ argumentiert werden. Dieses Lemma existiert in dieser Form nicht
 in~\cite{Schlosser2012BA}, da es dort mit der Aussage von
 Satz~\ref{satzFullAbstractness} kombiniert wurde. Jedoch ist die Aussage dieses
 Lemmas trotzdem Teil dessen, was gezeigt wird und somit finden sich die Teile
-dieses Beweises auch dort wieder.\\
+des folgenden Beweises auch dort wieder.\\
 Die Verfeinerungsrelation, die in dem nächsten Lemma betrachtet werden soll,
 verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
 
@@ -433,8 +434,8 @@ verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
 \label{UohneE}
       \end{center}
       \end{figure}
-      Für $w$ können zwei Fälle unterscheiden werden. Beide führen zu
-      $\varepsilon\in \PrET{}(U\|S_1)$. Dieses Resultat unterscheidet sich von dem
+      Für $w$ können nun zwei Fälle unterscheiden werden. Aus beiden wird
+      folgen, dass $\varepsilon\in \PrET{}(U\|S_1)$. Dieses Vorgehen unterscheidet sich von dem
       in~\cite{Vogler2014EIO}, da hier die synchronisierten Aktionen als Outputs
       vorhanden bleiben und somit nicht $\varepsilon\in \StET{}(U\|S_1)$ gelten
       kann.
@@ -474,8 +475,9 @@ verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
           \overset{x_{i+1}}{\not{\hspace{-0.2cm}\longrightarrow}}$ und damit gilt
           $x_1\dots x_{i+1}\in \MIT{}_2\subseteq \ET{}_2$. Somit ist ein Präfix
           von $w$ in $\ET{}_2$ enthalten.
-        \item Fall 2ii) (geerbter Error): $U$ hat $x_1\dots x_i u$ ausgeführt
-          mit $u\in I_U^*=O^*$ und ebenso hat $S_2$ diesen Weg ausgeführt.
+        \item Fall 2ii) (geerbter Error): $U$ hat $x_1\dots x_i u$
+          mit $u\in I_U^*=O^*$ ausgeführt und ebenso hat $S_2$ diesen Wort
+          abgearbeitet.
           Durch dies hat $S_2$ einen Zustand in $E_2$ erreicht, da von $U$
           keine Errors geerbt werden können. Es gilt dann $\prune{}(x_1\dots$
           $x_iu)=\prune{}(x_1\dots x_i)\in \PrET{}_2\subseteq \ET{}_2$. Da
@@ -487,7 +489,7 @@ verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
           enthalten.
       \end{itemize}
   \end{itemize}
-  Um die zweite Inklusion zu beweisen, reicht es aufgrund der ersten
+  Um die andere Inklusion zu beweisen, reicht es aufgrund der ersten
   Inklusion und der Definition von $\EL{}$ aus zu zeigen, dass
   $L_1\backslash \ET{}_1\subseteq \EL{}_2$ gilt.\\
   Es wird dafür ein beliebiges $w\in L_1\backslash \ET{}_1$ gewählt und
@@ -547,13 +549,13 @@ verfeinert über guter Kommunikation im Sinne der error-freien Kommunikation.
           anderen Outputs von $U$, die zu einem neuen Error führen können.
         \item Fall 2b) (neuer Error aufgrund von $a\in O = I_U$): Der einzige
           Zustand, in dem $U$ nicht alle Inputs erlaubt sind, ist $q_n$, der
-          bereits ein Error-Zustand ist. Falls dieser Zustand erreichbar ist in
-          $U\|S_2$, dann besitzt das komponierte \EIO{} einen geerbten Error und
-          es gilt $w\in L_2\subseteq \EL{}_2$, wegen Fall 2c).
-        \item Fall 2c) (geerbter Error von $U$): Da der einzige Zustand aus
-          $E_U$ $q_n$ ist und alle Aktionen synchronisiert sind, ist dies nur
-          möglich, wenn gilt $q_{02} \overset{x_1\dots
-          x_n}{\xRightarrow{\hspace{1cm}}}$. In
+          bereits ein Error-Zustand ist. Da hier dieser Zustand in $U\|S_2$
+          erreichbar ist, besitzt das komponierte \EIO{} einen geerbten Error und
+          es gilt $w\in L_2\subseteq \EL{}_2$, wegen dem folgenden Fall 2c).
+        \item Fall 2c) (geerbter Error von $U$): Da $q_n$ der einzige
+          Error-Zustand in $U$ ist und alle Aktionen synchronisiert sind, ist dies nur
+          möglich, wenn $q_{02} \overset{x_1\dots
+          x_n}{\xRightarrow{\hspace{1cm}}}$ gilt. In
           diesem Fall gilt $w\in L_2\subseteq \EL{}_2$.
         \item Fall 2d) (geerbter Error von $S_2$): Es gilt dann $q_{02}
           \overset{x_1\dots x_iu}{\xRightarrow{\hspace{1.2cm}}} q'\in E_2$ für $i\geq 0$ und
@@ -570,8 +572,8 @@ Präkongruenz \ECRel{}.
 
 \begin{satz}[Vollständige Abstraktheit für Error-Semanik]
 \label{satzFullAbstractness}
-  Seien $S_1$ und $S_2$ zwei \EIO{}s mit derselben Signatur. Dann gilt
-  $S_1\ECRel S_2\Leftrightarrow S_1\ERel S_2$.
+Für zwei \EIO{}s $S_1$ und $S_2$ mit derselben Signatur gilt
+$S_1\ECRel S_2\Leftrightarrow S_1\ERel S_2$.
 \end{satz}
 
 \begin{proof}
@@ -583,7 +585,7 @@ Präkongruenz \ECRel{}.
       erreichbar ist. Dadurch folgt, dass $S_1\EBRel S_2$ gilt, da \EBRel{} in
       Definition~\ref{DefErrorBasisrel} über die lokale Erreichbarkeit der
       Error-Zustände definiert wurde. Es ist also \ERel{} in \EBRel{} enthalten.
-      Wie in Proposition~\ref{propPraekongruenz} gezeigt, ist \ERel{} eine
+      Wie in Korollar~\ref{propPraekongruenz} gezeigt, ist \ERel{} eine
       Präkongruenz bezüglich $\cdot\|\cdot$. Da \ECRel{} die gröbste Präkongruenz bezüglich
       $\cdot\|\cdot$ ist, die in \EBRel{} enthalten ist, muss \ERel{} in
       \ECRel{} enthalten sein. Es folgt also aus $S_1\ERel S_2$, dass auch
@@ -804,12 +806,12 @@ Verfeinerungsrelationen hat. Es werden also Outputs der betrachteten Systeme int
   Präkongruenz darstellt.
 \end{proof}
 
-Aus Proposition~\ref{propPraekongruenz} ist bekannt, dass \ERel{} eine Präkongruenz
+Aus Korollar~\ref{propPraekongruenz} ist bekannt, dass \ERel{} eine Präkongruenz
 bezüglich $\cdot\|\cdot$ ist, und aus Satz~\ref{satzPraeInternalisierung}, dass
 \ERel{} auch eine Präkongruenz bezüglich $\cdot/\cdot$ ist. Da sich nach
 Definition~\ref{defIntParal} die Parallelkomposition mit Internalisierung nur
 aus diesen Operatoren zusammensetzt, erhält man das folgende Korollar.
 
 \begin{kor}[Error-Präkongurenz mit Internalisierung]
-  \ERel{} ist eine Präkongruenz bezüglich $\cdot|\cdot$.
+  Die Relation \ERel{} ist eine Präkongruenz bezüglich $\cdot|\cdot$.
 \end{kor}
