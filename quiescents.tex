@@ -42,8 +42,8 @@ Zustände, die keine Outputs und $\tau$s ausführen können.
 Für die Erreichbarkeit wird wie im letzten Kapitel wieder der
 optimistische Ansatz der lokalen Erreichbarkeit für die Error-Zustände
 verwendet. Ruhe ist kein unabwendbarer Fehler, sondern kann durch einen Input
-repariert werden. Daraus ergibt sich, dass Ruhe als nicht so
-\glqq{}schlimmer Fehler\grqq{} anzusehen ist wie Error. Somit ist ein
+repariert werden. Daraus ergibt sich, dass Ruhe im Vergleich zu Error als
+weniger \glqq{}schlimmer Fehler\grqq{} anzusehen ist. Somit ist ein
 Ruhe-Zustand ebenso wie ein Error-Zustand erreichbar, sobald er durch Outputs
 und $\tau$s erreicht werden kann, jedoch ist nicht jede beliebige Fortsetzung
 eines Traces, das durch lokale Aktionen zu einem Ruhe-Zustand führt, ein
@@ -71,8 +71,8 @@ benötigt man wie im letzten Kapitel die Definition von Traces auf der Struktur.
 Dadurch erhält man die Möglichkeit die gröbste Präkongruenz charakterisieren zu
 können.\\
 Wie bereits oben erwähnt, sind Ruhe-Zustände reparierbare Fehler im Gegensatz
-zu Error-Zuständen. Somit werden keine gekürzten Ruhetraces benötigt, bei denen die
-\prune{}-Funktion zur Anwendung käme und auch keine beliebigen Verlängerungen.
+zu Error-Zuständen. Es genügt deshalb für Ruhe die strikten Traces ohne Kürzung
+zu betrachten.
 
 \begin{Def}[Ruhetraces]
 \label{DefRuhetraces}
@@ -83,7 +83,7 @@ zu Error-Zuständen. Somit werden keine gekürzten Ruhetraces benötigt, bei den
   \end{itemize}
 \end{Def}
 
-Es wird nur eine Semantik für die Ruhe definiert, die Error-Semantik wird aus
+Es wird nur eine Ruhe-Semantik definiert, die Error-Semantik wird aus
 dem letzten Kapitel übernommen. Somit gelten für \ET{} und \EL{} die
 Definitionen aus dem letzten Kapitel.
 
@@ -161,7 +161,8 @@ relevant.
   \end{itemize}
   Da alle diese Fälle zu einem Widerspruch mit der Voraussetzung führen folgt,
   dass bereits die Annahme, dass der Zustand $(q_1,q_2)$ nicht ruhig ist,
-  falsch war. Es folgt also, dass $(q_1,q_2)\in Qui_{12}$ gilt.
+  falsch war. Es gilt also, dass aus $q_i\in Qui_i$ für $i\in\{1,2\}$
+  $(q_1,q_2)\in Qui_{12}$ folgt.
 
   2.:\\
   Es gilt $(q_1,q_2)\in Qui_{12}\backslash E_{12}$, somit hat
@@ -172,14 +173,14 @@ relevant.
   \begin{itemize}
     \item Fall 1 \big($q_1 \overset{\tau}{\rightarrow}$\big): Da diese Transition für
       $S_1$ möglich ist, kann auch $S_{12}$ im Zustand $(q_1,q_2)$ diese
-      Transition ausführen. Dies ist jedoch durch die Voraussetzung verboten.
-      Somit gilt auch $q_1 \overset{\tau}{\not{\hspace{-0.1cm}\rightarrow}}$.
+      Transition ausführen. Dies ist jedoch durch die Voraussetzung verboten
+      und somit kann dieser Fall nicht eintreten.
     \item Fall 2 \big($q_1 \overset{a}{\rightarrow}$ mit $a\in O_1\backslash
       \Synch(S_1,S_2)$\big): Da es sich bei $a$ um einen Output handelt, der nicht
       zu synchronisieren ist, wird dieser einfach in die Parallelkomposition
       übernommen. Es müsste also $(q_1,q_2) \overset{a}{\rightarrow}$ gelten,
       was jedoch verboten ist. Somit kann die Transition für $S_1$ in diesem
-      Fall auch nicht möglich sein.
+      Fall nicht möglich sein.
     \item Fall 3 \big($q_1 \overset{a}{\rightarrow}$ mit $a\in O_1\cap
       \Synch(S_1,S_2)$ und $q_2 \overset{a}{\rightarrow}$\big): In diesem Fall ist
       die Synchronisation des Outputs $a$ von $S_1$ mit dem Input $a$ von $S_2$
@@ -223,7 +224,7 @@ Sie entsprechen Punkt 1.\ und 2.\ aus Satz~\ref{satzErrorSemanik}.
   \glqq{}$\subseteq$\grqq{}:\\
   Hier muss unterschieden werden, ob ein $w\in\StQT{}_{12}\backslash \ET{}_{12}$
   oder ein $w\in \ET{}_{12}$ betrachtet wird. Im zweiten Fall ist das
-  $w$ in der rechten Seite enthalten. Somit wird ab jetzt ein $w\in
+  $w$ offensichtlich in der rechten Seite enthalten. Somit wird ab jetzt ein $w\in
   \StQT{}_{12}\backslash \ET{}_{12}$ betrachtet und es wird versucht dessen
   Zugehörigkeit zur rechten Menge zu zeigen. Aufgrund von
   Definition~\ref{DefRuhetraces} weiß man, dass $(q_{01},q_{02})
@@ -247,11 +248,11 @@ Sie entsprechen Punkt 1.\ und 2.\ aus Satz~\ref{satzErrorSemanik}.
   $w\in w_1\| w_2$ unterschiedliche Möglichkeiten:
   \begin{itemize}
     \item Fall 1 ($w_1\in \ET{}_1\vee w_2\in \ET{}_2$): \OBdA{} gilt
-      $w_1\in \ET{}_1$. Nun kann $w_2\in \StQT{}_2\subseteq L_2$ gelten
-      oder $w_2\in \ET{}_2$ und somit gilt auf jeden Fall $w_2\in
-      \EL{}_2$. Daraus kann dann mit dem ersten Punkt von
+      $w_1\in \ET{}_1$. Nun kann $w_2\in \StQT{}_2\subseteq L_2$
+      oder $w_2\in \ET{}_2$ gelten und somit ist auf jeden Fall $w_2$ in
+      $\EL{}_2$ enthalten. Daraus kann dann mit dem ersten Punkt von
       Satz~\ref{satzErrorSemanik} gefolgert werden, dass $w\in \ET{}_{12}$ gilt
-      und somit $w$ in der linken Seite der Gleichung enthalten ist.
+      und damit ist $w$ in der linken Seite der Gleichung enthalten.
     \item Fall 2 ($w_1\in \StQT{}_1\backslash\ET{}_1\,\wedge\, w_2\in
       \StQT{}_2\backslash\ET{}_2$): Es gilt in diesem Fall $q_{01}
       \overset{w_1}{\Rightarrow} q_1\in Qui_1$ und $q_{02}
@@ -312,8 +313,8 @@ werden.
 \end{lem}
 
 \begin{proof}
-  Da davon ausgegangen wird, dass $S_1$ und $S_2$ die gleiche Signatur haben,
-  definiert man $I:=I_1=I_2$ und $O:=O_1=O_2$. Für jeden Partner $U$ gilt
+  Da $S_1$ und $S_2$ die gleiche Signatur haben,
+  wird $I:=I_1=I_2$ und $O:=O_1=O_2$ definiert. Für jeden Partner $U$ gilt
   $I_U=O$ und $O_U=I$.\\
   Um zu zeigen, dass die Relation $S_1\QRel S_2$ gilt, müssen die
   folgenden Punkte nachgewiesen werden:
@@ -487,7 +488,7 @@ werden.
   Da bereits bekannt ist, dass $\ET{}_1\subseteq\ET{}_2$ gilt, muss nur
   noch $\StQT{}_1\backslash \ET{}_1\subseteq \QT{}_2$ gezeigt werden.\\
   Es wird ein $w\in \StQT{}_1\backslash\ET{}_1$ gewählt und gezeigt, dass
-  es auch in $\QT{}_2$ enthalten ist.\\
+  dieses auch in $\QT{}_2$ enthalten ist.\\
   Durch die Wahl des $w$s wird vom Startzustand von $S_1$ durch das Wort $w$
   ein ruhiger Zustand erreichbar. Dies hat nur Auswirkungen auf die
   Parallelkomposition $U\|S_1$, wenn in $U$ ebenfalls ein Ruhe-Zustand durch
@@ -703,7 +704,7 @@ formuliert werden.
 
   (iv)
   Die Korrektheit dieser Aussage kann analog zum Beweis der Punkte (i) bis
-  (iii) im Satz~\ref{satzPraeInternalisierung} gezeigt werden. Für ein $w'\in
+  (iii) aus Satz~\ref{satzPraeInternalisierung} gezeigt werden. Für ein $w'\in
   \QT{}(S)$ gilt $w'\in\ET{}(S)$ oder $w'\in\StQT{}(S)\subseteq L(S)$.
   Es gilt also mit Punkt (i) und (ii), dass $w:=w'|_{\Sigma\backslash X}$ in
   $\ET{}(S/X)$ oder in\linebreak $\StQT{}(S/X)$ enthalten ist. Für ein $w'\in\StQT{}(S)$
@@ -712,7 +713,8 @@ formuliert werden.
   insgesamt, dass $w\in \QT{}(S/X)$ gilt.\\
   Für ein $w\in\QT{}(S/X)$ kann, ebenfalls wie im Beweis zu Punkt (i) und
   (ii),
-  durch Ersetzen von $\tau$s durch Outputs aus $X$ im jeweiligen Ablauf ein Ablauf gefunden werden,
+  mittels Ersetzen von $\tau$s durch Outputs aus $X$ im jeweiligen Ablauf ein
+  Ablauf gefunden werden,
   der in $S$ enthalten ist. Es gibt also eine Erweiterung $w'$ von $w$ um
   Aktionen aus $X$, sodass diese Erweiterung in $\QT{}(S)$ enthalten ist.
 
