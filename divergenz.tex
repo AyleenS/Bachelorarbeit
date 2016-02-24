@@ -8,7 +8,7 @@ Divergente-Zustände betrachtet. Es eignet sich also~\cite{Chilton2013} als
 Quelle, da nun auch noch die Divergenz betrachtet wird. Diese wurde dort
 gleichzeitig mit der Ruhe eingeführt und betrachtet. Da es sich nur um eine
 Abwandlung der Präkongruenzen aus den letzten beiden Kapiteln handeln soll, wird
-dabei ähnlich vorgegangen wie in den letzten beiden Kapiteln.\\
+dabei ähnlich vorgegangen.\\
 Wie bereits oben und im letzten Kapitel erwähnt wurden in~\cite{Chilton2013}
 auch noch divergente Zustände als Fehler-Zustände betrachtet. Um zu klären, was
 darunter zu verstehen ist, wird nun noch eine Definition für Divergenz gegeben.
@@ -59,7 +59,7 @@ erreichbar ist, kommt für die Divergenztraces wieder die $\prune$-Funktion zu
 Einsatz. Ein System, das unendliche viele $\tau$s ausführen kann, ist von
 außen nicht von so einem System zu unterscheiden, das einen Error-Zustand
 erreicht. Somit wird in den Trace-Mengen auch nicht zwischen Errortraces und
-Divergenztraces explizit unterschieden. Dadurch kann man auch nicht mehr nur mit
+Divergenztraces explizit unterschieden. Dadurch genügt es nicht mehr nur mit
 den Errortraces die Sprache fluten, sondern muss sowohl mit den Errortraces wie
 auch den Divergenztraces fluten. Ebenso werden die strikten Ruhetraces mit
 diesen beiden Trace-Mengen geflutet.
@@ -75,8 +75,8 @@ diesen beiden Trace-Mengen geflutet.
 \end{Def}
 
 Da in~\cite{Chilton2013} bereits direkt Divergenz mit betrachtet wurde, wird
-dort die Flutung der Traces so vorgenommen, dass die Errortraces in den
-Divergenztraces enthalten sind und die Divergenztraces in den Ruhetraces.
+dort das Fluten der Traces so vorgenommen, dass die Errortraces in den
+Divergenztraces und die Divergenztraces in den Ruhetraces enthalten sind.
 Es wird dort die Error-Präkongruenz erhalten und nur durch die Inklusionen der
 Divergenztraces und Ruhetraces erweitert. Dies ist aufgrund der Basisrelation
 hier nicht möglich. Da hier zwischen den Errortraces und den Divergenztraces
@@ -84,8 +84,8 @@ nicht unterschieden werden soll, kann diese Inklusionskette nicht so umgesetzt
 werden wie in~\cite{Chilton2013}, jedoch
 entsteht durch das Fluten immer noch derselbe Effekt für die Ruhetraces. Somit
 kann nur die Semantik der Menge \ET{} aus den früheren Kapiteln übernommen
-werden, die jedoch für den weiteren Verlauf nur innerhalb der Trace-Menge
-\EDT{} relevant sein wird.
+werden. Jedoch wird die Menge \ET{} für den weiteren Verlauf nur innerhalb der
+Trace-Menge \EDT{} relevant sein wird.
 
 \begin{Def}[Error-, Divergenz- und Ruhe-Semantik]
 \label{DefRuheDivSemantik}
@@ -202,37 +202,39 @@ erreichbar ist.
   $w\in w_1\|w_2$ und $v\in v_1\|v_2$. Aus $(q_1',q_2')\in Div_{12}$ folgt,
   dass \oBdA{} $q_1'\in Div_1$ gilt, d.h.\ $w_1v_1\in \StDT{}_1\subseteq
   \EDT{}_1$. Da $q_{02} \overset{w_2v_2}{\Longrightarrow}$ gilt, erhält man
-  $w_2v_2\in \EDL_2$. Somit gilt insgesamt $wv\in \EDT{}_1\|\EDL{}_2$ und $w$
-  ist in der rechten Seite der Gleichung enthalten, da $v\in O_{12}^*$ gilt und
-  somit $\prune{}(wv)=\prune{}(w)$.
+  $w_2v_2\in \EDL_2$. Somit gilt insgesamt $wv\in \EDT{}_1\|\EDL{}_2$ und da
+  $v\in O_{12}^*$, ist $w$ in der rechten Seite der Gleichung enthalten und
+  es folgt insgesamt $\prune{}(wv)=\prune{}(w)$.
 
   1. \glqq{}$\supseteq$\grqq{}:\\
   Es wird ebenso wie oben nur ein präfix-minimales $x$ betrachtet wegen des
   Abschlusses beider Seiten der Gleichung unter \cont{}. Es wird also für ein
   beliebiges $x\in\prune{}\left(\right.$ $\left.\left(\EDT{}_1\|
   \EDL{}_2\right)\cup \left(\EDL{}_1\|\EDT{}_2\right)\right)$ gezeigt, dass
-  dieses oder einer seiner Präfixe auch in $\EDT{}_{12}$ enthalten ist. Da das
+  dieses oder eines seiner Präfixe auch in $\EDT{}_{12}$ enthalten ist. Da das
   $x$ aus der \prune{}-Funktion entstanden ist, lässt sich ein $y$ aus
   $O_{12}^*$ finden, sodass $xy\in (\EDT{}_1\|\EDL{}_2)\cup
-  (\EDL{}_1\|\EDT{}_2)$. Es wird nun noch die Einschränkung vorausgesetzt,
+  (\EDL{}_1\|\EDT{}_2)$. Es wird nun noch vorausgesetzt,
   dass \oBdA{} $xy\in \EDT{}_1\|\EDL{}_2$, d.h.\ es existieren
   $w_1\in\EDT{}_1$ und $w_2\in\EDL{}_2$ mit $xy\in w_1\|w_2$.\\
   Die folgende Argumentation läuft analog zu dem Beweis der Inklusion
   $\ET{}_{12} \supseteq \cont{}\left(\right.$ $\left.\prune{}\left(\left(\ET{}_1\|\EL_2\right)\cup
   \left(\EL{}_1\|\ET{}_2\right)\right)\right)$ aus Satz~\ref{satzErrorSemanik}. Es muss dazu nur
   jeweils an den Stellen, an denen $\PrET{}(S)\cup \MIT{}(S)$ steht auch noch eine
-  Vereinigung mit $\PrDT{}(S)$ vorgenommen werden. Für Fall I und II ist
+  Vereinigung mit $\PrDT{}(S)$ vorgenommen werden. Für Fall I und II aus dem
+  Beweis vom Satz~\ref{satzErrorSemanik} ist
   jeweils kein weiterer Unterfall für $v_2'$ notwendig da, wenn $v_2'$ nicht
-  ausführbar ist, automatisch ein Error-Zustand in der Parallelkomposition entsteht.
+  ausführbar ist, bereits ein Error-Zustand in der Parallelkomposition entsteht.
   Somit ist egal, ob auch noch Divergenz vorlag. Falls $v_2'$ ausführbar, ist
   nicht relevant, ob eine Divergenz-Möglichkeit bestanden hat, da diese
-  nichts an der Ausführbarkeit ändert. Am Ende ist dann auch noch ein Fall für
+  nichts an der Ausführbarkeit ändert. Am Ende ist ein zusätzlicher Fall für
   $v_1\in\PrDT{}_1$ zu ergänzen:
   \begin{itemize}
     \item Fall III ($v_1\in \PrDT{}_1$): Es existiert ein $u_1$ aus $O_1^*$,
       sodass $q_{01} \overset{v_1}{\Rightarrow} q_1 \overset{u_1}{\Rightarrow}
-      q_1'$ mit $q_1'\in Div_1$ gilt. Da es hier keine disjunkten Inputmengen gibt, kann das
-      $a$ auf das $v_1$ im Fall $v_1\neq \varepsilon$ endet, ebenfalls der
+      q_1'$ mit $q_1'\in Div_1$ gilt. Da es hier keine disjunkten Inputmengen
+      gibt kann das
+      $a$, auf das $v_1$ im Fall $v_1\neq \varepsilon$ endet, ebenfalls der
       letzte Buchstabe von $v_2$ sein. Im Fall von $v_2\in \MIT{}_2$ kann somit
       $a=b$ gelten und damit wäre $v_2= v_2'$. Dieser Fall verläuft jedoch
       analog zu Fall Ic) und wird somit hier nicht weiter betrachtet. Deshalb
@@ -248,7 +250,7 @@ erreichbar ist.
           \overset{c}{\hspace{-0.1cm}\rightarrow}$. Somit gilt $u_1'\in
           u_1'\|u_2$ und $(q_1,q_2) \overset{u_1'}{\Rightarrow} (q_1'',q_2')
           \in E_{12}$, da für $S_2$ der entsprechende Input fehlt, der mit dem
-          $c$ Output von $S_1$ zu koppeln wäre. Es handelt sich also um einen
+          Output $c$ von $S_1$ zu koppeln wäre. Es handelt sich also um einen
           neuen Error. Es wird $v:=\prune{}(v'u_1')\in \PrET{}_{12}$ gewählt,
           dies ist ein Präfix von $v'$, da $u_1\in O_1^*$.
         \item Fall IIIb) \big($q_2 \overset{u_2}{\Rightarrow} q_2'$ mit $u_2=
@@ -294,8 +296,8 @@ erreichbar ist.
   \end{itemize}
 
   3.:\\
-  Durch die Definition ist klar, dass $L_i\subseteq \EDT{}_i$ und
-  $\EDT{}_i\subseteq \EDL{}_i$ gilt. Die
+  Durch die Definition~\ref{DefRuheDivSemantik} ist klar, dass $L_i\subseteq
+  \EDL{}_i$ und $\EDT{}_i\subseteq \EDL{}_i$ gilt. Die
   Argumentation wird von der rechten Seite der Gleichung aus begonnen:
   \begin{align*}
     &(\EDL{}_1\| \EDL{}_2)\cup \EDT{}_{12}\\
