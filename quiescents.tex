@@ -109,7 +109,8 @@ Das folgende Lemma soll explizit festhalten, wie Ruhezustände sich unter der
 Parallelkomposition verhalten. Dies ist vor allem für den danach folgenden Satz
 relevant.
 
-\vspace{0.5cm}
+\pagebreak
+
 \begin{lem}[Ruhe-Zustände unter Parallelkomposition]
 \label{lemRuheParallelkomp}
   ~
@@ -178,7 +179,8 @@ relevant.
     \item Fall 2 \big($q_1 \overset{a}{\rightarrow}$ mit $a\in O_1\backslash
       \Synch(S_1,S_2)$\big): Da es sich bei $a$ um einen Output handelt, der nicht
       zu synchronisieren ist, wird dieser einfach in die Parallelkomposition
-      übernommen. Es müsste also $(q_1,q_2) \overset{a}{\rightarrow}$ gelten,
+      übernommen. Es müsste also $(q_1,q_2) \overset{a}{\rightarrow}$  mit
+      $a\in O_{12}$ gelten,
       was jedoch verboten ist. Somit kann die Transition für $S_1$ in diesem
       Fall nicht möglich sein.
     \item Fall 3 \big($q_1 \overset{a}{\rightarrow}$ mit $a\in O_1\cap
@@ -537,7 +539,7 @@ werden.
   Falls für das betrachtete $w =\varepsilon$ gilt, reduziert sich der Partner
   $U$ auf den Zustand $q_n =q_0$ und den Zustand $q$. Es ist also in diesem
   Fall der Startzustand gleich dem ruhigen Zustand.\\
-  Allgemein ist der Zustand $q_n$ aus $U$ ist der einzige ruhige Zustand in $U$. Es gilt
+  Allgemein ist der Zustand $q_n$ aus $U$ der einzige ruhige Zustand in $U$. Es gilt
   wegen des ersten Punktes von Lemma~\ref{lemRuheParallelkomp}, dass auch in
   der Parallelkomposition $U\|S_1$ ein Ruhe-Zustand mit $w$ erreicht wird. Da
   es sich bei allen in $w$ befindlichen Aktionen um synchronisierte

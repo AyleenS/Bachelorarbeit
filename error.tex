@@ -8,8 +8,8 @@ getrennt und erweitert im Vergleich zu denen in~\cite{Vogler2014EIO}. Ebenfalls
 wurde die Parallelkomposition geändert, wie in~\cite{Schlosser2012BA}.
 
 \begin{Def}[error-freie Kommunikation]
-  Ein Error-Zustand ist \emph{lokal erreichbar} in einem \EIO{} $S$, wenn $\exists w\in O^*: q_0
-  \overset{w}{\Rightarrow} q\in E$.\\
+  Ein Error-Zustand ist \emph{lokal erreichbar} in einem \EIO{} $S$, wenn ein
+  $w\in O^*$ existiert mit $q_0 \overset{w}{\Rightarrow} q\in E$.\\
   Zwei \EIO{}s $S_1$ und $S_2$ \emph{kommunizieren error-frei}, wenn in ihrer
   Parallelkomposition $S_{12}$ keine Error-Zustände lokal erreicht werden können.
 \end{Def}
@@ -42,6 +42,8 @@ Error-Zustand,
 jedoch in Komposition mit einem anderen Transitionssystem sind
 dies gefährdete Stellen. Sie führen zu einem neuen Error, sobald dieser Input
 für die Synchronisation fehlt.
+
+\pagebreak
 
 \begin{Def}[Errortraces]
 \label{DefErrortraces}
