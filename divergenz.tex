@@ -8,7 +8,7 @@ Divergente-Zustände betrachtet. Es eignet sich also~\cite{Chilton2013} als
 Quelle, da nun auch noch die Divergenz betrachtet wird. Diese wurde dort
 gleichzeitig mit der Ruhe eingeführt und betrachtet. Da es sich nur um eine
 Abwandlung der Präkongruenzen aus den letzten beiden Kapiteln handeln soll, wird
-dabei ähnlich vorgegangen.\\
+in diesem Kapitel ein ähnliches Vorgehen angewendet.\\
 Wie bereits oben und im letzten Kapitel erwähnt wurden in~\cite{Chilton2013}
 auch noch divergente Zustände als Fehler-Zustände betrachtet. Um zu klären, was
 darunter zu verstehen ist, wird nun noch eine Definition für Divergenz gegeben.
@@ -60,8 +60,8 @@ Einsatz. Ein System, das unendliche viele $\tau$s ausführen kann, ist von
 außen nicht von so einem System zu unterscheiden, das einen Error-Zustand
 erreicht. Somit wird in den Trace-Mengen auch nicht zwischen Errortraces und
 Divergenztraces explizit unterschieden. Dadurch genügt es nicht mehr nur mit
-den Errortraces die Sprache fluten, sondern muss sowohl mit den Errortraces wie
-auch den Divergenztraces fluten. Ebenso werden die strikten Ruhetraces mit
+den Errortraces die Sprache fluten, sondern es muss sowohl mit den Errortraces wie
+auch den Divergenztraces geflutet werden. Ebenso werden die strikten Ruhetraces mit
 diesen beiden Trace-Mengen geflutet.
 
 \begin{Def}[Divergenztraces]
@@ -215,14 +215,14 @@ erreichbar ist.
   $x$ aus der \prune{}-Funktion entstanden ist, lässt sich ein $y$ aus
   $O_{12}^*$ finden, sodass $xy\in (\EDT{}_1\|\EDL{}_2)\cup
   (\EDL{}_1\|\EDT{}_2)$. Es wird nun noch vorausgesetzt,
-  dass \oBdA{} $xy\in \EDT{}_1\|\EDL{}_2$, d.h.\ es existieren
+  dass \oBdA{} $xy\in \EDT{}_1\|\EDL{}_2$ gilt, d.h.\ es existieren
   $w_1\in\EDT{}_1$ und $w_2\in\EDL{}_2$ mit $xy\in w_1\|w_2$.\\
   Die folgende Argumentation läuft analog zu dem Beweis der Inklusion
   $\ET{}_{12} \supseteq \cont{}\left(\right.$ $\left.\prune{}\left(\left(\ET{}_1\|\EL_2\right)\cup
   \left(\EL{}_1\|\ET{}_2\right)\right)\right)$ aus Satz~\ref{satzErrorSemanik}. Es muss dazu nur
   jeweils an den Stellen, an denen $\PrET{}(S)\cup \MIT{}(S)$ steht auch noch eine
   Vereinigung mit $\PrDT{}(S)$ vorgenommen werden. Für Fall I und II aus dem
-  Beweis vom Satz~\ref{satzErrorSemanik} ist
+  Beweis der oben genannten Inklusion vom Satz~\ref{satzErrorSemanik} ist
   jeweils kein weiterer Unterfall für $v_2'$ notwendig da, wenn $v_2'$ nicht
   ausführbar ist, bereits ein Error-Zustand in der Parallelkomposition entsteht.
   Somit ist egal, ob auch noch Divergenz vorlag. Falls $v_2'$ ausführbar, ist
@@ -237,7 +237,8 @@ erreichbar ist.
       $a$, auf das $v_1$ im Fall $v_1\neq \varepsilon$ endet, ebenfalls der
       letzte Buchstabe von $v_2$ sein. Im Fall von $v_2\in \MIT{}_2$ kann somit
       $a=b$ gelten und damit wäre $v_2= v_2'$. Dieser Fall verläuft jedoch
-      analog zu Fall Ic) und wird somit hier nicht weiter betrachtet. Deshalb
+      analog zu Fall Ic) aus dem Beweis der oben gegannten Inklusition vom
+      Satz~\ref{satzErrorSemanik} und wird somit hier nicht weiter betrachtet. Deshalb
       gilt für alle im folgenden betrachteten Fälle $q_{02} \overset{v_2'}{\Rightarrow}
       q_2$ mit $(q_{01},q_{02}) \overset{v'}{\Rightarrow}$.
       \begin{itemize}
@@ -253,7 +254,7 @@ erreichbar ist.
           Output $c$ von $S_1$ zu koppeln wäre. Es handelt sich also um einen
           neuen Error. Es wird $v:=\prune{}(v'u_1')\in \PrET{}_{12}$ gewählt,
           dies ist ein Präfix von $v'$, da $u_1\in O_1^*$.
-        \item Fall IIIb) \big($q_2 \overset{u_2}{\Rightarrow} q_2'$ mit $u_2=
+        \item Fall IIIb) \big($q_1 \overset{u_2}{\Rightarrow} q_2'$ mit $u_2=
           u_1|_{I_2}$\big): Somit ist $u_1\in u_1\|u_2$ und $(q_1,q_2)
           \overset{u_1}{\Rightarrow} (q_1',q_2') \in Div_{12}$, da $q_1\in
           Div_1$. $S_{12}$ hat also die Divergenz von $S_1$ geerbt. Es wird nun
@@ -299,21 +300,21 @@ erreichbar ist.
   Durch die Definition~\ref{DefRuheDivSemantik} ist klar, dass $L_i\subseteq
   \EDL{}_i$ und $\EDT{}_i\subseteq \EDL{}_i$ gilt. Die
   Argumentation wird von der rechten Seite der Gleichung aus begonnen:
+  {\allowdisplaybreaks
   \begin{align*}
-    &(\EDL{}_1\| \EDL{}_2)\cup \EDT{}_{12}\\
-    &\qquad\qquad\overset{\ref{DefRuheDivSemantik}}{=}\left(\left(L_1\cup
+    (\EDL{}_1\| \EDL{}_2)\cup \EDT{}_{12} &\overset{\ref{DefRuheDivSemantik}}{=}\left(\left(L_1\cup
   \EDT{}_1\right)\|\left(L_2\cup \EDT{}_2\right)\right)\cup \EDT{}_{12}\\
-    &\qquad\qquad=(L_1\|L_2) \cup \underset{\overset{1.}{\subseteq} \EDT{}_{12}}{\underset{\subseteq
+    &=(L_1\|L_2) \cup \underset{\overset{1.}{\subseteq} \EDT{}_{12}}{\underset{\subseteq
     (\EDL{}_1\|\EDT{}_2)}{\underbrace{(L_1\|\EDT{}_2)}}} \cup
     \underset{\overset{1.}{\subseteq} \EDT{}_{12}}{\underset{\subseteq
-    (\EDT{}_1\|\EDL{}_2)}{\underbrace{(\EDT{}_1\|L_2)}}} \cup
-    \underset{\overset{1.}{\subseteq}
+    (\EDT{}_1\|\EDL{}_2)}{\underbrace{(\EDT{}_1\|L_2)}}} \\
+    &\quad\quad\cup \underset{\overset{1.}{\subseteq}
     \EDT{}_{12}}{\underset{\subseteq
     (\EDL{}_1\|\EDT{}_2)}{\underbrace{(\EDT{}_1\|\EDT{}_2)}}} \cup \EDT{}_{12}\\
-    &\qquad\qquad=(L_1\|L_2) \cup \EDT{}_{12}\\
-    &\qquad\qquad\overset{\ref{LemmaSprache}}{=}L_{12}\cup \EDT{}_{12}\\
-    &\qquad\qquad\overset{\ref{DefRuheDivSemantik}}{=}\EDL{}_{12}.
-  \end{align*}
+    &=(L_1\|L_2) \cup \EDT{}_{12}\\
+    &\overset{\ref{LemmaSprache}}{=}L_{12}\cup \EDT{}_{12}\\
+    &\overset{\ref{DefRuheDivSemantik}}{=}\EDL{}_{12}.
+\end{align*}}
 \end{proof}
 
 Analog wie in den beiden vorgegangenen Kapiteln, ergibt sich aus diesem Satz
