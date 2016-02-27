@@ -328,8 +328,8 @@ Präkongruenz handelt.
 
 \begin{proof}
   Um zu zeigen, dass es sich bei \DRel{} um eine Präkongruenz handelt, muss
-  nachgewiesen werden, dass $S_{31}\DRel{} S_{32}$ für jedes komponierbare
-  System $S_3$ gilt, wenn $S_1\DRel{} S_2$ erfüllt ist.  D.h.\ es ist
+  nachgewiesen werden, dass aus $S_1\DRel{} S_2$  auch
+  $S_{31}\DRel{} S_{32}$ für jedes komponierbare System $S_3$ folgt.  D.h.\ es ist
   zu zeigen, dass aus $\EDT{}_1\subseteq \EDT{}_2$, $\QDT{}_1\subseteq
   \QDT{}_2$ und $\EDL{}_1\subseteq \EDL{}_2$, sowohl $\EDT{}_{31}\subseteq
   \EDT_{32}$, $\QDT{}_{31}\subseteq \QDT{}_{32}$ als auch $\EDL{}_{31}\subseteq
@@ -341,20 +341,28 @@ Präkongruenz handelt.
         \EDT{}_{31} &\overset{\ref{satzDivSemantik}~1.}{=}
         \cont{}\left(\prune{}\left(\left(\EDT{}_3\|\EDL{}_1\right) \cup
         \left(\EDL{}_3\|\EDT{}_1\right)\right)\right)\\
-        &\hspace{-0.5cm}\overset{\EDT{}_1\subseteq
+        &\hspace{-0.6cm}\overset{\EDT{}_1\subseteq
       \EDT{}_2}{\overset{\mathrm{und}}{\overset{\EDL{}_1\subseteq
     \EDL{}_2}{\subseteq}}}
     \cont{}\left(\prune{}\left(\left(\EDT{}_3\|\EDL{}_2\right) \cup
         \left(\EDL{}_3\|\EDT{}_2\right)\right)\right)\\
-      &\overset{\ref{satzDivSemantik}~2.}{=} \EDT{}_{32},
+      &\overset{\ref{satzDivSemantik}~1.}{=} \EDT{}_{32},
     \end{aligned}$
     \item $\begin{aligned}[t]
         \QDT{}_{31} &\overset{\ref{satzDivSemantik}~2.}{=} (\QDT{}_3\|\QDT{}_1)
         \cup \EDT{}_{31}\\
-        &\hspace{-0.5cm}\overset{\EDT{}_{31}\subseteq
+        &\hspace{-0.8cm}\overset{\EDT{}_{31}\subseteq
       \EDT{}_{32},}{\overset{\mathrm{und}}{\overset{\QDT{}_1\subseteq
       \QDT{}_2}{\subseteq}}} (\QDT{}_3\|\QDT{}_2) \cup \EDT{}_{32}\\
-      &\overset{\ref{satzDivSemantik}~3.}{=} \QDT{}_{32}.
+      &\overset{\ref{satzDivSemantik}~2.}{=} \QDT{}_{32}.
+    \end{aligned}$
+    \item $\begin{aligned}[t]
+        \EDL{}_{31} &\overset{\ref{satzDivSemantik}~3.}{=} (\EDL{}_3\|\EDL{}_1)
+        \cup \EDT{}_{31}\\
+        &\hspace{-0.8cm}\overset{\EDT{}_{31}\subseteq
+      \EDT{}_{32},}{\overset{\mathrm{und}}{\overset{\EDL{}_1\subseteq
+      \EDL{}_2}{\subseteq}}} (\EDL{}_3\|\EDL{}_2) \cup \EDT{}_{32}\\
+      &\overset{\ref{satzDivSemantik}~3.}{=} \EDL{}_{32}.
     \end{aligned}$
   \end{itemize}
 \end{proof}
@@ -400,9 +408,9 @@ enthalten ist.
     \item $\EDL{}_1\subseteq \EDL{}_2$.
   \end{itemize}
   In den Lemmata~\ref{lemVerfeinerung} und~\ref{lemQuiVerfeinerung} wurde
-  bereits etwas Ähnliches gezeigt. Jedoch kann aufgrund der unterschiedlichen
+  bereits etwas Ähnliches gezeigt. Jedoch kann draus aufgrund der unterschiedlichen
   Basisrelation, die zur Anwendung kommen, nichts über dieses Lemma und dessen
-  Gültigkeit ausgesagt werden. Es kann also in diesem Lemma, ebenso wie
+  Gültigkeit ausgesagt werden. Es kann in diesem Lemma, ebenso wie
   in Lemma~\ref{lemQuiVerfeinerung}, aus der lokalen Erreichbarkeit eines
   Error-Zustandes in
   $S_1'$ und dem Zusammenhang von $S_1'\DBRel S_2'$ nur
@@ -421,10 +429,10 @@ enthalten ist.
       Error- oder Divergenz-Zustand in $S_1$. Für $U$ wird ein Transitionssystem
       verwendet, das nur aus dem Startzustand und einer Schleife für alle
       Inputs $x\in I_U$ und einer Schlinge für $\omega$ besteht. Somit kann
-      $S_1$ im Prinzip die gleichen Error-Zustände bzw. Divergenz-Zustände
-      lokal erreichen wie $U\|S_1$. Draus folgt, dass auch $U\|S_2$ einen lokal
-      erreichbaren Fehler haben muss, da $U\|S_1\DBRel U\|S_2$ gilt. Durch den
-      Aufbau von $U$ ist in einer Parallelkomposition mit $U$ kein
+      $S_1$ im Prinzip die gleichen Error-Zustände bzw. Divergenz-Zustände wie
+      $U\|S_1$ lokal erreichen. Draus folgt, dass auch $U\|S_2$ einen lokal
+      erreichbaren Fehler haben muss, da $U\|S_1\DBRel U\|S_2$ gilt. Durch die
+      Struktur von $U$ ist in einer Parallelkomposition mit $U$ kein
       Ruhe-Zustand möglich. Der Fehler, der in $U\|S_2$ lokal erreichbar ist,
       muss also ein Error- oder Divergenz-Zustand sein. Da von $U$ kein Error
       und keine Divergenz geerbt werden kann und durch die Inputschleife auch
@@ -488,8 +496,8 @@ enthalten ist.
           Daraus folgt $(q_{n+1},q')\in Div_{U\|S_1}$ und somit $wu\in
           \StDT{}(U\|S_1)$. Da alle Aktionen aus $w$ synchronisiert werden und
           $I_U\cap I_1 = \emptyset$ gilt
-          $x_1,\dots ,x_n,x_{n+1}\in O_{U\|S_1}$ und, da $u\in (O\cup
-          \{\omega\})^*$, folgt $u\in O_{U\|S_1}^*$. Somit ergibt sich
+          $x_1,\dots ,x_n,x_{n+1}\in O_{U\|S_1}$. Da zusätzlich $u$ in $(O\cup
+          \{\omega\})^*$ enthalten ist, folgt $u\in O_{U\|S_1}^*$. Somit ergibt sich
           $\varepsilon\in \PrDT{}(U\|S_1)$.
       \end{itemize}
       Da $\varepsilon$ in $\PrET{}(U\|S_1)\cup \PrDT{}(U\|S_1)$ enthalten
@@ -542,7 +550,7 @@ enthalten ist.
   \end{itemize}
 
   Als nächstes wird nun der zweite Beweispunkt gezeigt, d.h.\ die Inklusion
-  $\QDT{}_1\subseteq \QDT{}_2$. Diese Inklusion kann jedoch noch, anlog zum
+  $\QDT{}_1\subseteq \QDT{}_2$. Diese Inklusion kann jedoch noch, analog zum
   Beweis der Inklusion der error-gefluteten Sprachen aus dem Error-Kapitel,
   weiter eingeschränkt werden. Da bereits bekannt ist, dass $\EDT{}_1\subseteq
   \EDT{}_2$ gilt, muss nur noch $\StQT{}_1\backslash \EDT{}_1\subseteq
@@ -593,16 +601,16 @@ enthalten ist.
 \label{UohneEmitIundO}
   \end{center}
   \end{figure}
-  Falls für das betrachtete $w =\varepsilon$ gilt, reduziert sich der
+  Falls für das betrachtete $w$ dem leeren Wort $\varepsilon$ entspricht, reduziert sich der
   $\omega$-Partner $U$ auf den Zustand $q_n =q_0$ und den Zustand $q$. Es ist
   also in diesem Fall der Startzustand gleich dem ruhigen Zustand.\\
-  Allgemein ist der Zustand $q_n$ aus $U$ ist der einzige ruhige Zustand in $U$.
+  Allgemein ist der Zustand $q_n$ aus $U$ der einzige ruhige Zustand in $U$.
   Es gilt wegen des erstem Punktes von Lemma~\ref{lemRuheParallelkomp}, dass
   auch in der Parallelkomposition $U\|S_1$ ein Ruhe-Zustand mit $w$ erreicht
   wird. Da es sich bei allen in $w$ befindlichen Aktionen um synchronisierte
   Aktionen handelt und $I_U\cap I=\emptyset$, folgt $w\in O_{U\|S_1}^*$ und
   $w\in \StQT{}(U\|S_1)$. Es kann also in der Parallelkomposition durch $w$
-  ein Ruhe-Zustand lokal erreicht werden. Da $w\notin \EDT{}_1$ gilt, kann
+  ein Ruhe-Zustand lokal erreicht werden. Da $w\notin \EDT{}_1$, kann
   auf dem Weg, der mit $w$ im Transitionssystem $S_1$ zurück gelegt wird,
   kein Error- oder Divergenz-Zustand lokal erreicht werden. Es kann also
   weder von $S_1$ noch von $U$ Error oder Divergenz auf diesem Weg geerbt
@@ -652,7 +660,7 @@ enthalten ist.
     \item Fall 2 ($w=x_1\dots x_n$ mit $n\geq 1$): Die Konstruktion des
       $\omega$-Partners $U$ weicht nur durch die $\omega$-Transition vom
       Transitionssystem aus dem Beweis der Inklusion der error-gefluteten Sprache \EL{} aus
-      Lemma~\ref{lemVerfeinerung} ab. Somit ist der $\omega$-Partner $U$ dann
+      Lemma~\ref{lemVerfeinerung} ab. Der $\omega$-Partner $U$ ist dann
       wie folgt definiert (siehe dazu auch Abbildung~\ref{UmitEundO}):
       \begin{itemize}
         \item $Q_U=\{q_0,q_1,\dots ,q_n,q\}$,
@@ -822,9 +830,9 @@ müsste dann wie folgt lauten.
 \begin{Def}[alternative Divergenz-Verfeinerungs-Basisrelation]
   Für\linebreak zwei \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur wird $S_1\DBaRel{}
   S_2$ geschrieben, wenn ein Error-Zustand in $S_1$ nur dann lokal erreichbar
-  ist, wenn er auch in $S_2$ erreichbar ist und wenn ein Divergenz- oder
+  ist, wenn er auch in $S_2$ lokal erreichbar ist und wenn ein Divergenz- oder
   Ruhe-Zustand in $S_1$ nur dann lokal erreichbar ist, wenn auch in $S_2$ ein
-  Error-, Divergenz- oder Ruhe-Zustand lokal erreichbar ist. Die
+  Error-, Divergenz- oder Ruhe-Zustand lokal erreichbar ist. Diese
   \emph{alternative Basisrelation} stellt ebenfalls eine Verfeinerung bezüglich
   \emph{Error}, \emph{Ruhe} und \emph{Divergenz} dar.\\
   \DCaRel{} bezeichnet die \emph{alternative vollständig abstrakte
@@ -847,13 +855,14 @@ werden.
 \end{Def}
 
 Diese Charakterisierung \DaRel{} entspricht dem Ansatz
-aus~\cite{Chilton2013}. Dadurch wird jedoch Error als \glqq{}schlimmerer
-Fehler\grqq{} aufgefasst wie Divergenz. Es gibt mit diesen Definitionen also
-eine echte Hierarchie zwischen den Fehler. Es sieht so aus, dass die
-Mengeninklusion $\EDL{}_1\subseteq \EDL{}_2$ fehlen würde, damit \DaRel{} die
-Vereinigung von \ERel{} und \DRel{} wäre. Dies ist jedoch nicht der Fall, da
-diese Inklusion aus den geforderten Inklusionen bereits folgt. Durch $S_1
-\ERel{} S_2$ weiß man, dass $\EL_1 \subseteq \EL_2$ gilt. Die Menge \EL{} ist
+aus~\cite{Chilton2013}. Dadurch wird jedoch Error im vergleich zu Divergenz als
+\glqq{}schlimmerer Fehler\grqq{} aufgefasst. Es ergibt sich also aus der Definitionen
+eine echte Hierarchie zwischen den Fehler. Man erkennt nicht sofort, dass auch
+die Mengeninklusion $\EDL{}_1\subseteq \EDL{}_2$ gilt, die benötigt wird, damit \DaRel{} die
+Vereinigung von \ERel{} und \DRel{} ist. Diese Inklusion, muss in der
+Definition jedoch nicht explizit aufgeführt werden, da sie aus den geforderten
+Inklusionen bereits folgt. Durch $S_1 \ERel{} S_2$ weiß man, dass $\EL_1
+\subseteq \EL_2$ gilt. Die Menge \EL{} ist
 nach Definition die Vereinigung aus der Sprache $L$ und den Errortraces \ET{}.
 Somit fehlt nur noch die Divergenztraces \DT{}, um daraus die Menge \EDL{} zu
 erhalten. Jedoch ist durch die Inklusion $\EDT_1\subseteq \EDT{}_2$
@@ -862,16 +871,19 @@ Insgesamt folgt dann die Gleichung $\EDL = \EL \cup \EDT$. Falls sich eine
 der beiden Mengen \EL{} bzw. \EDT{} vergrößert, vergrößert sich auch die Menge
 \EDL{} echt. Somit ist also \DaRel{} die Vereinigung von \ERel{} und \DRel{}.
 
+\newpage
+
 \section{Hiding und Divergenz-Freiheit}
 
 Da durch den Internalisierungsoperator Outputs in $\tau$s umgewandelt werden,
-hat das Hiding auf die Divergenz-Eigenschaft eine recht große Auswirkung. Die
-Menge der divergenten Zustände kann sich somit durch das Internalisieren
+hat das Hiding auf die Divergenz-Eigenschaft im Vergleich zu den Eigenschaften
+aus den beiden vorangegangenen Kapiteln deutlich großere Auswirkungen. Die
+Menge der divergenten Zustände kann sich durch das Internalisieren
 vergrößern. Es kann ein Zustand divergent werden, wenn von diesem bereits
 lokal ein divergenter Zustand aus erreichbar war oder wenn er eine unendliche
 Folge von Aktionen aus $X\cup\{\tau\}$ ausführen konnte, jedoch nur endlich
-viele davon $\tau$s waren. Somit kann die Basisrelation für Divergenz unter
-Internalisierung auf keinen Fall erhalten bleiben.\\
+viele davon $\tau$s waren. Somit ist es nicht möglich, dass die Basisrelation
+für Divergenz unter Internalisierung erhalten bleibt.\\
 Außerdem vergrößern sich durch die zusätzlichen Divergenz-Zustände alle
 Trace-Mengen, die in der Präkongruenz \DRel{} betrachtet werden. Somit würde
 die Untersuchung, ob die Relation erhalten bleibt, unter Hiding deutlich
