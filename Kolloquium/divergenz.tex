@@ -1,5 +1,6 @@
 \section{Verfeinerung für Error-, Ruhe- und Divergenz-Freiheit}
 \begin{frame}
+  \frametitle{Verfeinerung}
   \begin{Def}[Divergenz-Verfeinerungs-Basisrelation]
     Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur wird $S_1\DBRel S_2$
     geschrieben, wenn ein Error-, Ruhe- oder Divergenz-Zustand in $S_1$ nur
@@ -9,16 +10,30 @@
     \DCRel{} bezeichnet die \textbf{vollständige abstrakte Präkongruenz} von \DBRel{}
     bezüglich $\cdot\|\cdot$.
   \end{Def}
-  \visible<2>{%
-  \begin{Def}[Divergenztraces]
-    Sei $S$ ein \EIO{} und definiere:
+\end{frame}
+
+\begin{frame}
+  \begin{Def}[Traces]
+    Für ein \EIO{} $S$ wird definiert:
     \begin{itemize}
-      \item \textbf{strikte Divergenztraces}: $\StDT{}(S) := \left\{w\in\Sigma ^*\mid
+      \item \textbf{strikte Errortraces}: $\StET{}(S)=\left\{w\in\Sigma
+        ^*\mid q_0\overset{w}{\Rightarrow}q\in E\right\}$,
+      \item \textbf{gekürzte Errortraces}: $\PrET{}(S)=\left\{\prune{}(w)\mid w\in
+        \StET{}(S)\right\}$,
+      \item \textbf{Input-kritische Traces}: $\MIT{}(S)=\left\{wa\in\Sigma ^*\mid
+        q_0\overset{w}{\Rightarrow}q\wedge a\in I\wedge
+      q\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\right\}$,
+      \item \textbf{Errortraces}: $\ET{}(S):=\cont{}(\PrET{}(S))\cup
+        \cont{}(\MIT{}(S))$,
+      \item \textbf{strikte Ruhetraces}: $\StQT{}(S) := \left\{w\in\Sigma ^*\mid q_0
+        \overset{w}{\Rightarrow} q\in Qui\right\}$,
+      \item \textbf{strikte Divergenztraces}: $\StDT{}(S) := \left\{w\in\Sigma
+          ^*\mid
         q_0 \overset{w}{\Rightarrow} q\in Div\right\}$,
       \item \textbf{gekürzte Divergenztraces}: $\PrDT{}(S) :=
         \bigcup\hspace{1pt}\left\{\prune{}(w)\mid w\in\StDT{}(S)\right\}$.
     \end{itemize}
-\end{Def}}
+  \end{Def}
 \end{frame}
 
 \begin{frame}
