@@ -1,0 +1,31 @@
+\section{weitere Verfeinerungen}
+\begin{frame}
+  \frametitle{weitere Verfeinerungen}
+  \begin{itemize}
+    \item Verfeinerung für Error-Freiheit
+    \item Verfeinerung für Error- und Ruhe-Freiheit
+  \end{itemize}
+\end{frame}
+
+\section{Hiding}
+\begin{frame}
+  \frametitle{Hiding}
+  \begin{Def}[Internalisierungsoperator]
+    Für ein \EIO{} $S=(Q,I,O,\delta ,q_0.E)$ ist $S/X$, mit
+    dem \textbf{Internalisierungsoperator} $\cdot /\cdot$,
+    definiert als $(Q,I,O',\delta ', q_0,E)$ mit:
+    \begin{itemize}
+      \item $\tau \notin X$,
+      \item $X\subseteq O$,
+      \item $O'=O\backslash X$,
+      \item $\delta '=\left(\delta\cup\left\{(q,\tau ,q')\mid (q,x,q')\in\delta
+        ,x\in X\right\}\right)\backslash \left\{(q,x,q')\mid x\in X\right\}$.
+    \end{itemize}
+  \end{Def}
+  \visible<2>{%
+  \begin{Def}[Parallelkomposition mit Internalisierung]
+    Seinen $S_1$ und $S_2$ komponierbare \EIO{}s, dann ist die
+    Parallelkomposition mit Internalisierung definiert als $S_1|S_2 = S_{12}/(
+    \Synch(S_1,S_2) \cap O_{12})$.
+\end{Def}}
+\end{frame}
