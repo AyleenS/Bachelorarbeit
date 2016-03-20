@@ -49,11 +49,11 @@ für die Synchronisation fehlt.
 \label{DefErrortraces}
   Für ein \EIO{} $S$ wird definiert:
   \begin{itemize}
-    \item \emph{strikte Errortraces}: $\StET{}(S)=\left\{w\in\Sigma
+    \item \emph{strikte Errortraces}: $\StET{}(S):=\left\{w\in\Sigma
       ^*\mid q_0\overset{w}{\Rightarrow}q\in E\right\}$,
-    \item \emph{gekürzte Errortraces}: $\PrET{}(S)=\left\{\prune{}(w)\mid w\in
+    \item \emph{gekürzte Errortraces}: $\PrET{}(S):=\bigcup\left\{\prune{}(w)\mid w\in
       \StET{}(S)\right\}$,
-    \item \emph{Input-kritische Traces}: $\MIT{}(S)=\left\{wa\in\Sigma ^*\mid
+    \item \emph{Input-kritische Traces}: $\MIT{}(S):=\left\{wa\in\Sigma ^*\mid
       q_0\overset{w}{\Rightarrow}q\wedge a\in I\wedge
     q\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\right\}$.
   \end{itemize}
