@@ -23,27 +23,22 @@
     Zwei \EIO{}s $S_1,S_2$ sind \textbf{komponierbar}, falls $O_1\cap
     O_2=\emptyset$ gilt. Die Parallelkomposition der \EIO{}s $S_1$ und $S_2$ ist
     $S_{12}:= S_1\|S_2= (Q,I,O,\delta ,q_0,E)$ mit den Komponenten:
-    \begin{itemize}
+
+    \vspace{-1em}
+    \makebox(0,0)[l,t]{
+      \parbox{\textwidth}{
+      \vspace{0.4em}
       \only<1>{%
+    \begin{itemize}
       \item $Q=Q_1\times Q_2$,
       \item $I=(I_1\backslash O_2)\cup(I_2\backslash O_1)$,
       \item $O=O_1\cup O_2$,
       \item $q_0=(q_{01},q_{02})$,
       \item \dots,
-      }
-      \only<2>{%
-      \item \dots,
-      \item $\begin{aligned}[t]
-      \delta =&\left\{((q_1,q_2),\alpha ,(p_1,q_2))\mid (q_1,\alpha ,p_1)\in\delta
-        _1,\right.\\ &\left.\alpha\in(\Sigma _1\cup\{\tau\})\backslash \Synch(S_1,S_2)\right\}\\
-        &\cup\left\{((q_1,q_2),\alpha ,(q_1,p_2))\mid (q_2,\alpha ,p_2)\in\delta
-        _2,\right.\\ &\left.\alpha\in(\Sigma _2\cup\{\tau\})\backslash \Synch(S_1,S_2)\right\}\\
-        &\cup\left\{((q_1,q_2),\alpha ,(p_1,p_2))\mid (q_1,\alpha ,p_1)\in\delta
-        _1, (q_2,\alpha ,p_2)\in\delta _2,\right.\\ &\left.\alpha\in \Synch(S_1,S_2)\right\},
-      \end{aligned}$
-      \item \dots,
+    \end{itemize}
       }
       \only<3>{%
+    \begin{itemize}
       \item \dots,
       \item $\begin{aligned}[t]
           E=&(Q_1\times E_2)\cup (E_1\times Q_2)\\
@@ -55,8 +50,23 @@
         q_2\overset{a}{\rightarrow}\right\},
       \end{aligned}\\
       \end{aligned}$
-    }
     \end{itemize}
+    }
+}}
+      \visible<2>{%
+    \begin{itemize}
+      \item \dots,
+      \item $\begin{aligned}[t]
+      \delta =&\left\{((q_1,q_2),\alpha ,(p_1,q_2))\mid (q_1,\alpha ,p_1)\in\delta
+        _1,\right.\\ &\left.\alpha\in(\Sigma _1\cup\{\tau\})\backslash \Synch(S_1,S_2)\right\}\\
+        &\cup\left\{((q_1,q_2),\alpha ,(q_1,p_2))\mid (q_2,\alpha ,p_2)\in\delta
+        _2,\right.\\ &\left.\alpha\in(\Sigma _2\cup\{\tau\})\backslash \Synch(S_1,S_2)\right\}\\
+        &\cup\left\{((q_1,q_2),\alpha ,(p_1,p_2))\mid (q_1,\alpha ,p_1)\in\delta
+        _1, (q_2,\alpha ,p_2)\in\delta _2,\right.\\ &\left.\alpha\in \Synch(S_1,S_2)\right\},
+      \end{aligned}$
+      \item \dots,
+    \end{itemize}
+      }
     mit $\mathrm{Sync}(S_1,S_2) = (I_1\cap O_2)\cup (O_1\cap I_2)\cup (I_1\cap I_2)$.
   \end{Def}
 \end{frame}
@@ -64,7 +74,7 @@
 \begin{frame}
   \emph{Traces} sind die möglichen Wege eines \EIO{}s, mit ihrer
   Transitionsbeschriftung.
-  \visible<2>{%
+  \uncover<2>{%
   \begin{Def}[Pruning- und Fortsetzungs-Funktion]
     Für ein \EIO{} S wird definiert:
     \begin{itemize}
@@ -86,7 +96,7 @@
     $Qui := \left\{q\in Q\mid\forall\alpha\in (O\cap\{\tau\}):
   q\overset{\alpha}{\not{\hspace{-0.1cm}\rightarrow}}\right\}$.
   \end{Def}
-  \visible<2>{%
+  \uncover<2>{%
   \begin{Def}[Divergenz]
     Ein \textbf{Divergenz-Zustand} ist ein Zustand in einem \EIO{}, der eine
     unendliche Folge von $\tau$s ausführen kann.\\

@@ -1,5 +1,13 @@
+\RequirePackage{xstring}
+\IfSubStr{\jobname}{\detokenize{handout}}{%
+\documentclass[mathserif, xcolor=dvipsnames, notheorems, compress, handout]{beamer}
+  \usepackage{pgfpages}
+  \pgfpagesuselayout{2 on 1}[a4paper,border shrink=5mm]
+}{%
 \documentclass[mathserif, xcolor=dvipsnames]{beamer}
-\usepackage{ngerman,amsmath,amssymb,graphicx,xcolor,lastpage}
+}
+
+\usepackage{ngerman,amsmath,amssymb}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 
@@ -73,6 +81,8 @@
 \subtitle{Kolloquium zur Bachelorarbeit}
 \author{Ayleen Schinko}
 \date{\today}
+
+\setbeamercovered{transparent}
 
 \begin{document}
 \begin{frame}[plain]
