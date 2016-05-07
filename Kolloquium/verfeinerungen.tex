@@ -1,4 +1,4 @@
-\section{Verfeinerung für Error-, Ruhe- und Divergenz-Freiheit}
+\section{Verfeinerungen über Fehler-Freiheit}
 \begin{frame}
   \frametitle{Verfeinerung}
   \begin{Def}[Divergenz-Verfeinerungs-Basisrelation]
@@ -85,91 +85,91 @@
 \end{lem}}
 \end{frame}
 
-\begin{frame}
-  $x?$ bezeichnet den Input $x$ und $x!$ den Output $x$
-  \begin{figure} [h!tbp]
-  \begin{center}
-    \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
-      \node (0) {$q_0$};
-      \node (1) [right of=0] {$q_1$};
-      \node (dots) [right of=1] {$\dots$};
-      \node (n) [right of=dots] {$q_n$};
-      \node (n1) at ($(1)!0.5!(dots) + (0,-3)$) {$q_{n+1}$};
+% \begin{frame}
+%   $x?$ bezeichnet den Input $x$ und $x!$ den Output $x$
+%   \begin{figure} [h!tbp]
+%   \begin{center}
+%     \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
+%       \node (0) {$q_0$};
+%       \node (1) [right of=0] {$q_1$};
+%       \node (dots) [right of=1] {$\dots$};
+%       \node (n) [right of=dots] {$q_n$};
+%       \node (n1) at ($(1)!0.5!(dots) + (0,-3)$) {$q_{n+1}$};
 
-      \path ($ (0) + (-1,0) $) edge (0)
-            (0) edge node {$x_1$} (1)
-                edge [bend right] node [below, sloped] {$x?\neq x_1, \omega
-                !$} (n1)
-            (1) edge node {$x_2$} (dots)
-                edge node [below, sloped] {$x?\neq x_2, \omega !$} (n1)
-            (dots) edge node {$x_n$} (n)
-                   edge [dashed] (n1)
-            (n) edge node [above, sloped] {$x?\in I_U, \omega !$} (n1)
-                edge [bend left] node [sloped] {$x_{n+1}$!} (n1)
-            (n1) edge [loop below] node {$x?\in I_U, \omega !$} (n1);
-    \end{tikzpicture}
-    \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$}
-  \end{center}
-  \end{figure}
-\end{frame}
+%       \path ($ (0) + (-1,0) $) edge (0)
+%             (0) edge node {$x_1$} (1)
+%                 edge [bend right] node [below, sloped] {$x?\neq x_1, \omega
+%                 !$} (n1)
+%             (1) edge node {$x_2$} (dots)
+%                 edge node [below, sloped] {$x?\neq x_2, \omega !$} (n1)
+%             (dots) edge node {$x_n$} (n)
+%                    edge [dashed] (n1)
+%             (n) edge node [above, sloped] {$x?\in I_U, \omega !$} (n1)
+%                 edge [bend left] node [sloped] {$x_{n+1}$!} (n1)
+%             (n1) edge [loop below] node {$x?\in I_U, \omega !$} (n1);
+%     \end{tikzpicture}
+%     \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$}
+%   \end{center}
+%   \end{figure}
+% \end{frame}
 
-\begin{frame}
-  \begin{figure} [h!tbp]
-  \begin{center}
-    \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
-      \node (0) {$q_0$};
-      \node (1) [right of=0] {$q_1$};
-      \node (dots) [right of=1] {$\dots$};
-      \node (n) [right of=dots, rectangle, dotted, draw] {$q_n\in Qui_U$};
-      \node (q) at ($(1)!0.5!(dots) + (0,-3)$) {$q$};
+% \begin{frame}
+%   \begin{figure} [h!tbp]
+%   \begin{center}
+%     \begin{tikzpicture}[->, >=latex',auto,node distance =3cm, semithick]
+%       \node (0) {$q_0$};
+%       \node (1) [right of=0] {$q_1$};
+%       \node (dots) [right of=1] {$\dots$};
+%       \node (n) [right of=dots, rectangle, dotted, draw] {$q_n\in Qui_U$};
+%       \node (q) at ($(1)!0.5!(dots) + (0,-3)$) {$q$};
 
-      \path ($ (0) + (-1,0) $) edge (0)
-            (0) edge node {$x_1$} (1)
-                edge [bend right] node [below, sloped] {$x?\neq x_1, \omega
-                !$} (q)
-            (1) edge node {$x_2$} (dots)
-                edge [below, sloped] node {$x?\neq x_2, \omega !$} (q)
-            (dots) edge node {$x_n$} (n)
-                   edge [dashed] (q)
-            (n) edge [bend left] node [below,sloped] {$x?\in I_U$} (q)
-            (q) edge [loop below] node {$x?\in I_U, \omega !$} (q);
-    \end{tikzpicture}
-    \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$, $q_n$
-      ist der einzige Ruhe-Zustand}
-  \end{center}
-  \end{figure}
-\end{frame}
+%       \path ($ (0) + (-1,0) $) edge (0)
+%             (0) edge node {$x_1$} (1)
+%                 edge [bend right] node [below, sloped] {$x?\neq x_1, \omega
+%                 !$} (q)
+%             (1) edge node {$x_2$} (dots)
+%                 edge [below, sloped] node {$x?\neq x_2, \omega !$} (q)
+%             (dots) edge node {$x_n$} (n)
+%                    edge [dashed] (q)
+%             (n) edge [bend left] node [below,sloped] {$x?\in I_U$} (q)
+%             (q) edge [loop below] node {$x?\in I_U, \omega !$} (q);
+%     \end{tikzpicture}
+%     \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$, $q_n$
+%       ist der einzige Ruhe-Zustand}
+%   \end{center}
+%   \end{figure}
+% \end{frame}
 
-\begin{frame}
-  \begin{figure} [h!tbp]
-  \begin{center}
-    \begin{tikzpicture}[->, >=latex',auto,node distance =2.5cm, semithick]
+% \begin{frame}
+%   \begin{figure} [h!tbp]
+%   \begin{center}
+%     \begin{tikzpicture}[->, >=latex',auto,node distance =2.5cm, semithick]
 
-      \node (0) {$q_0$};
-      \node (1) [right of=0] {$q_1$};
-      \node (dots) [right of=1] {$\dots$};
-      \node (n1) [right of=dots] {$q_{n-1}$};
-      \node (n) [right of=n1, rectangle, draw] {$q_n\in E_U$};
-      \node (q) at ($(dots) + (0,-3)$) {$q$};
+%       \node (0) {$q_0$};
+%       \node (1) [right of=0] {$q_1$};
+%       \node (dots) [right of=1] {$\dots$};
+%       \node (n1) [right of=dots] {$q_{n-1}$};
+%       \node (n) [right of=n1, rectangle, draw] {$q_n\in E_U$};
+%       \node (q) at ($(dots) + (0,-3)$) {$q$};
 
-      \path ($ (0) + (-1,0) $) edge (0)
-            (0) edge node {$x_1$} (1)
-                edge [bend right] node [below, sloped] {$x?\neq x_1, \omega
-                !$} (q)
-            (1) edge node {$x_2$} (dots)
-                edge node [below, sloped] {$x?\neq x_2, \omega !$} (q)
-            (dots) edge node {$x_{n-1}$} (n1)
-                   edge [dashed] (q)
-            (n1) edge node {$x_n$} (n)
-                 edge node [below, sloped] {$x?\neq x_n, \omega !$} (q)
-            (q) edge [loop below] node {$x?\in I_U, \omega !$} (q)
-            (n) edge [bend left] node {$\omega !$} (q);
-    \end{tikzpicture}
-    \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$, $q_n$
-      ist der einzige Error-Zustand}
-  \end{center}
-  \end{figure}
-\end{frame}
+%       \path ($ (0) + (-1,0) $) edge (0)
+%             (0) edge node {$x_1$} (1)
+%                 edge [bend right] node [below, sloped] {$x?\neq x_1, \omega
+%                 !$} (q)
+%             (1) edge node {$x_2$} (dots)
+%                 edge node [below, sloped] {$x?\neq x_2, \omega !$} (q)
+%             (dots) edge node {$x_{n-1}$} (n1)
+%                    edge [dashed] (q)
+%             (n1) edge node {$x_n$} (n)
+%                  edge node [below, sloped] {$x?\neq x_n, \omega !$} (q)
+%             (q) edge [loop below] node {$x?\in I_U, \omega !$} (q)
+%             (n) edge [bend left] node {$\omega !$} (q);
+%     \end{tikzpicture}
+%     \caption{$x?\neq x_i$ steht für alle $x\in I_U\backslash\{x_i\}$, $q_n$
+%       ist der einzige Error-Zustand}
+%   \end{center}
+%   \end{figure}
+% \end{frame}
 
 \begin{frame}
   \begin{satz}[Vollstänige Abstraktheit für Divergenz-Semantik]

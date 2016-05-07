@@ -84,29 +84,12 @@
   \tableofcontents{}
 \end{frame}
 
-\section{Motivation}
-\begin{frame}
-  \frametitle{Motivation}
-  \begin{itemize}
-    \item Modellierung von Systemen und deren Kommunikationsverhalten
-      (Parallelkomposition)
-    \item simulation parallel arbeitender Softwarekomponenten
-    \item Kommunikationsfehler in Interface-Automaten nicht zulässig, deshalb
-      Error-IO-Transitionssysteme als Abwandlung davon betrachtet
-      \begin{itemize}
-        \item Kommunikationsfehler (bzw. Error) zwischen Komponenten
-        \item Verklemmung (bzw. Ruhe) innerhalb einer Softwarekomponenten (keine
-          Outputs mehr möglich)
-        \item Divergenz einer Softwarekomponenten (unendliche viele intere
-          Aktionen)
-      \end{itemize}
-  \end{itemize}
-\end{frame}
+\input{motivation.tex}
 
 \input{definitionen.tex}
 
-\input{divergenz.tex}
+\input{verfeinerungen.tex}
 
-\input{weiteres.tex}
+\input{hiding.tex}
 
 \end{document}

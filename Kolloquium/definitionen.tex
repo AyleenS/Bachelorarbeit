@@ -24,11 +24,15 @@
     O_2=\emptyset$ gilt. Die Parallelkomposition der \EIO{}s $S_1$ und $S_2$ ist
     $S_{12}:= S_1\|S_2= (Q,I,O,\delta ,q_0,E)$ mit den Komponenten:
     \begin{itemize}
+      \only<1>{%
       \item $Q=Q_1\times Q_2$,
       \item $I=(I_1\backslash O_2)\cup(I_2\backslash O_1)$,
       \item $O=O_1\cup O_2$,
       \item $q_0=(q_{01},q_{02})$,
-      \only<1>{%
+      \item \dots,
+      }
+      \only<2>{%
+      \item \dots,
       \item $\begin{aligned}[t]
       \delta =&\left\{((q_1,q_2),\alpha ,(p_1,q_2))\mid (q_1,\alpha ,p_1)\in\delta
         _1,\right.\\ &\left.\alpha\in(\Sigma _1\cup\{\tau\})\backslash \Synch(S_1,S_2)\right\}\\
@@ -37,10 +41,10 @@
         &\cup\left\{((q_1,q_2),\alpha ,(p_1,p_2))\mid (q_1,\alpha ,p_1)\in\delta
         _1, (q_2,\alpha ,p_2)\in\delta _2,\right.\\ &\left.\alpha\in \Synch(S_1,S_2)\right\},
       \end{aligned}$
-      \item $E = \dots$.
+      \item \dots,
       }
-      \only<2>{%
-      \item $\delta = \dots$,
+      \only<3>{%
+      \item \dots,
       \item $\begin{aligned}[t]
           E=&(Q_1\times E_2)\cup (E_1\times Q_2)\\
           &\begin{aligned}
@@ -48,11 +52,12 @@
         q_2\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\right\}\\
         &\cup\left\{(q_1,q_2)\mid \exists a\in I_1\cap O_2:
         q_1\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\wedge
-        q_2\overset{a}{\rightarrow}\right\}.
+        q_2\overset{a}{\rightarrow}\right\},
       \end{aligned}\\
       \end{aligned}$
     }
     \end{itemize}
+    mit $\mathrm{Sync}(S_1,S_2) = (I_1\cap O_2)\cup (O_1\cap I_2)\cup (I_1\cap I_2)$.
   \end{Def}
 \end{frame}
 
