@@ -1,14 +1,38 @@
 \section{Verfeinerungen über Fehler-Freiheit}
 \begin{frame}
   \frametitle{Verfeinerung}
-  \begin{Def}[Divergenz-Verfeinerungs-Basisrelation]
-    Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur wird $S_1\DBRel S_2$
-    geschrieben, wenn ein Error-, Ruhe- oder Divergenz-Zustand in $S_1$ nur
-    dann lokal erreichbar ist, wenn er auch in $S_2$ lokal erreichbar ist. Diese
-    \textbf{Basisrelation} stellt eine \textbf{Verfeinerung} bezüglich \textbf{Error},
-    \textbf{Ruhe} und \textbf{Divergenz} dar.\\
-    \DCRel{} bezeichnet die \textbf{vollständige abstrakte Präkongruenz} von \DBRel{}
-    bezüglich $\cdot\|\cdot$.
+  \begin{Def}[Basisrelation]
+  Für \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur wird \dots
+  \begin{columns}[]
+    \begin{column}{.05\textwidth}
+    \end{column}
+    \begin{column}{.40\textwidth}
+      \begin{block}{}
+        \dots{} $S_1\QBRel S_2$ geschrieben, wenn ein \textbf{Error}- oder
+        \textbf{Ruhe}-Zustand in $S_1$ nur dann lokal erreichbar ist, wenn er
+        auch in $S_2$ lokal erreichbar ist.
+      \end{block}
+    \end{column}
+    \begin{column}{.05\textwidth}
+    \end{column}
+    \begin{column}{.40\textwidth}
+      \uncover<2->{%
+      \begin{block}{}
+        \dots{} $S_1\DBRel S_2$
+        geschrieben, wenn ein \textbf{Error}-, \textbf{Ruhe}- oder
+        \textbf{Divergenz}-Zustand in $S_1$ nur
+        dann lokal erreichbar ist, wenn er auch in $S_2$ lokal erreichbar ist.
+      \end{block}
+    }
+    \end{column}
+    \begin{column}{.05\textwidth}
+    \end{column}
+  \end{columns}
+    \vspace{1em}
+    \uncover<3>{%
+    \QCRel{} (bzw. \DCRel{}) bezeichnet die \textbf{vollständige abstrakte
+    Präkongruenz} von \QBRel{} (bzw. \DBRel{}) bezüglich $\cdot\|\cdot$.
+  }
   \end{Def}
 \end{frame}
 
@@ -20,69 +44,196 @@
         ^*\mid q_0\overset{w}{\Rightarrow}q\in E\right\}$,
       \item \textbf{gekürzte Errortraces}: $\PrET{}(S):=\bigcup\left\{\prune{}(w)\mid w\in
         \StET{}(S)\right\}$,
+      \item \textbf{error-gefluteten Ruhetraces}: $\QT{}(S) := \StQT{}(S)\cup
+        \ET{}(S)$,
       \item \textbf{Input-kritische Traces}: $\MIT{}(S):=\left\{wa\in\Sigma ^*\mid
         q_0\overset{w}{\Rightarrow}q\wedge a\in I\wedge
       q\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\right\}$,
-      \item \textbf{Errortraces}: $\ET{}(S):=\cont{}(\PrET{}(S))\cup
-        \cont{}(\MIT{}(S))$,
-      \item \textbf{strikte Ruhetraces}: $\StQT{}(S) := \left\{w\in\Sigma ^*\mid q_0
+      \item<2-> \textbf{strikte Ruhetraces}: $\StQT{}(S) := \left\{w\in\Sigma ^*\mid q_0
         \overset{w}{\Rightarrow} q\in Qui\right\}$,
-      \item \textbf{strikte Divergenztraces}: $\StDT{}(S) := \left\{w\in\Sigma
+      \item<3-> \textbf{strikte Divergenztraces}: $\StDT{}(S) := \left\{w\in\Sigma
           ^*\mid
         q_0 \overset{w}{\Rightarrow} q\in Div\right\}$,
-      \item \textbf{gekürzte Divergenztraces}: $\PrDT{}(S) :=
+      \item<3-> \textbf{gekürzte Divergenztraces}: $\PrDT{}(S) :=
         \bigcup\hspace{1pt}\left\{\prune{}(w)\mid w\in\StDT{}(S)\right\}$.
-      \item \textbf{Divergenztraces}: $\DT{}(S) :=
-        \cont{}(\PrDT{}(S))$.
     \end{itemize}
   \end{Def}
 \end{frame}
 
 \begin{frame}
-  \begin{Def}[Error-, Divergenz- und Ruhe-Semantik]
-    Sei $S$ ein \EIO{}.
-    \begin{itemize}
-      \item Die Menge der \textbf{Error-Divergenztraces} von $S$ ist $\EDT{}(S) :=
-        \ET{}(S)\cup \DT{}(S)$.
-      \item Die Menge der \textbf{error-divergenz-gefluteten Ruhetraces} von $S$
-        ist $\QDT{}(S) := \StQT{}(S)\cup \EDT{}(S)$.
-      \item Die Menge der \textbf{error-divergenz-gefluteten Sprache} von $S$ ist
-        $\EDL{}(S) := L(S) \cup \EDT{}(S)$.
-    \end{itemize}
-    Für zwei \EIO{}s $S_1, S_2$ mit der gleichen Signatur schreibt man $S_1\DRel
-    S_2$, wenn $\EDT{}_1\subseteq \EDT{}_2$, $\QDT{}_1\subseteq \QDT{}_2$ und
-    $\EDL{}_1\subseteq \EDL{}_2$ gilt.
+  \begin{Def}[Semantik]
+    \small
+    Für ein \EIO{} $S$ wird definiert:
+  \begin{columns}[]
+    \begin{column}{.05\textwidth}
+    \end{column}
+    \begin{column}{.42\textwidth}
+      \begin{block}{}
+      \begin{itemize}
+        \item \textbf{Errortraces}: $\ET{}(S):=\cont{}(\PrET{}(S))\cup
+          \cont{}(\MIT{}(S))$,
+        \item \textbf{error-geflutete Ruhetraces}: $\QT{}(S) := \StQT{}(S)\cup
+          \ET{}(S)$,
+        \item \textbf{error-geflutete Sprache}: $\EL{}(S):=L(S)\cup \ET{}(S)$.
+      \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{.05\textwidth}
+    \end{column}
+    \begin{column}{.42\textwidth}
+      \uncover<2->{%
+      \begin{block}{}
+      \begin{itemize}
+        \item \textbf{Error-Divergenztraces}: $\EDT{}(S) :=
+          \ET{}(S)\cup \cont{}(\PrDT{}(S))$,
+        \item \textbf{error-divergenz-gefluteten Ruhetraces}: $\QDT{}(S) :=
+          \StQT{}(S)\cup \EDT{}(S)$,
+        \item \textbf{error-divergenz-gefluteten Sprache}:
+          $\EDL{}(S) := L(S) \cup \EDT{}(S)$.
+      \end{itemize}
+      \end{block}
+    }
+    \end{column}
+    \begin{column}{.05\textwidth}
+    \end{column}
+  \end{columns}
   \end{Def}
 \end{frame}
 
 \begin{frame}
-  \begin{satz}[Error-, Ruhe- und Divergenz-Semantik für Parallelkomposition]
+  \begin{Def}[Semantik]
+  Für zwei \EIO{}s $S_1, S_2$ mit der gleichen Signatur schreibt man \dots
+  \begin{columns}[]
+    \begin{column}{.05\textwidth}
+    \end{column}
+    \begin{column}{.40\textwidth}
+      \begin{block}{}
+        \dots{} $S_1\QRel S_2$, wenn:
+        \begin{itemize}
+          \item $\ET{}_1\subseteq \ET{}_2$,
+          \item $\QT{}_1\subseteq \QT{}_2$ und
+          \item $\EL{}_1\subseteq \EL{}_2$ gilt.
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{.05\textwidth}
+    \end{column}
+    \begin{column}{.40\textwidth}
+      \uncover<2->{%
+      \begin{block}{}
+        \dots{} $S_1\DRel S_2$, wenn:
+        \begin{itemize}
+          \item $\EDT{}_1\subseteq \EDT{}_2$,
+          \item $\QDT{}_1\subseteq \QDT{}_2$ und
+          \item $\EDL{}_1\subseteq \EDL{}_2$ gilt.
+        \end{itemize}
+      \end{block}
+    }
+    \end{column}
+    \begin{column}{.05\textwidth}
+    \end{column}
+  \end{columns}
+  \end{Def}
+\end{frame}
+
+\begin{frame}
+  \small
+  \begin{satz}[Semantik für Parallelkomposition]
     Für zwei komponierbare \EIO{}s $S_1, S_2$ und ihre Komposition
     $S_{12}$ gilt:
-    \begin{enumerate}
-      \item $\EDT{}_{12}=\cont \left(\prune \left(\left(\EDT{}_1\|\EDL{}_2\right)\cup
-        \left(\EDL{}_1\|\EDT{}_2\right)\right)\right)$,
-      \item $\QDT{}_{12}=(\QDT{}_1\|\QDT{}_2)\cup \EDT{}_{12}$,
-      \item $\EDL{}_{12}=(\EDL{}_1\|\EDL{}_2)\cup \EDT{}_{12}$.
-    \end{enumerate}
+  \begin{columns}[]
+    \begin{column}{.05\textwidth}
+    \end{column}
+    \begin{column}{.42\textwidth}
+      \begin{block}{}
+        \begin{enumerate}
+          \item $\ET{}_{12}=\cont \left(\prune
+              \left(\left(\ET{}_1\|\EL{}_2\right)\cup\right.\right.$
+            $\left.\left.\left(\EL{}_1\|\ET{}_2\right)\right)\right)$,
+          \item $\QT{}_{12}=(\QT{}_1\|\QT{}_2)\cup \ET{}_{12}$,
+          \item $\EL{}_{12}=(\EL{}_1\|\EL{}_2)\cup \ET{}_{12}$.
+        \end{enumerate}
+      \end{block}
+    \end{column}
+    \begin{column}{.05\textwidth}
+    \end{column}
+    \begin{column}{.42\textwidth}
+      \uncover<2->{%
+      \begin{block}{}
+        \begin{enumerate}
+          \item $\EDT{}_{12}=\cont \left(\prune
+              \left(\left(\EDT{}_1\|\EDL{}_2\right)\right.\right.$
+                $\left.\left.\cup
+            \left(\EDL{}_1\|\EDT{}_2\right)\right)\right)$,
+          \item $\QDT{}_{12}=(\QDT{}_1\|\QDT{}_2)\cup \EDT{}_{12}$,
+          \item $\EDL{}_{12}=(\EDL{}_1\|\EDL{}_2)\cup \EDT{}_{12}$.
+        \end{enumerate}
+      \end{block}
+    }
+    \end{column}
+    \begin{column}{.05\textwidth}
+    \end{column}
+  \end{columns}
   \end{satz}
-  \visible<2>{%
-  \begin{prop}[Divergenz-Präkongrunez]
-    Die Relation \DRel{} ist eine Präkongruenz bezüglich $\cdot\|\cdot$.
+  \uncover<3>{%
+  \begin{prop}[Präkongrunez]
+    Die Relation \QRel{} (bzw. \DRel{}) ist eine Präkongruenz bezüglich $\cdot\|\cdot$.
   \end{prop}}
 \end{frame}
 
 \begin{frame}
-  \begin{Def}[\boldmath$\omega$-Partner]
-    Ein \EIO{} $S_1$ ist ein \textbf{\boldmath$\omega$-Partner} von einem \EIO{} $S_2$, wenn
-    $I_1=O_2$ und $O_1=I_2\cup\{\omega\}$ mit $\omega\notin I_2\cup O_2$ gilt.
-  \end{Def}
-  \visible<2>{%
-  \begin{lem}[Verfeinerung mit Divergenz-Zuständen]
-    Gegeben sind zwei \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur. Wenn
-    $U\|S_1\DBRel{} U\|S_2$ für alle $\omega$-Partner $U$ gilt, dann folgt daraus
-    $S_1\DRel{} S_2$.
-\end{lem}}
+  \begin{lem}[Verfeinerung]
+    Gegeben sind zwei \EIO{}s $S_1$ und $S_2$ mit der gleichen Signatur.
+  \begin{columns}[]
+    \begin{column}{.05\textwidth}
+    \end{column}
+    \begin{column}{.42\textwidth}
+      \begin{block}{}
+        Wenn $U\|S_1\QBRel{} U\|S_2$ für alle Partner $U$ gilt, dann
+        folgt daraus $S_1\QRel{} S_2$.
+      \end{block}
+    \end{column}
+    \begin{column}{.05\textwidth}
+    \end{column}
+    \begin{column}{.42\textwidth}
+      \uncover<2->{%
+      \begin{block}{}
+        Wenn $U\|S_1\DBRel{} U\|S_2$ für alle $\omega$-Partner $U$ gilt, dann
+        folgt daraus $S_1\DRel{} S_2$.
+      \end{block}
+    }
+    \end{column}
+    \begin{column}{.05\textwidth}
+    \end{column}
+  \end{columns}
+  \end{lem}
+  \uncover<3->{%
+  \begin{satz}[Vollstänige Abstraktheit]
+    Seinen $S_1$ und $S_2$ zwei \EIO{}s mit derselben Signatur. Dann gilt:
+  \begin{columns}[]
+    \begin{column}{.05\textwidth}
+    \end{column}
+    \begin{column}{.42\textwidth}
+      \uncover<3->{%
+      \begin{block}{}
+        $S_1 \QCRel{} S_2\Leftrightarrow S_1\QRel{} S_2$.
+      \end{block}
+    }
+    \end{column}
+    \begin{column}{.05\textwidth}
+    \end{column}
+    \begin{column}{.42\textwidth}
+      \uncover<4->{%
+      \begin{block}{}
+        $S_1 \DCRel{} S_2\Leftrightarrow S_1\DRel{} S_2$.
+      \end{block}
+    }
+    \end{column}
+    \begin{column}{.05\textwidth}
+    \end{column}
+  \end{columns}
+  \end{satz}
+}
 \end{frame}
 
 % \begin{frame}
@@ -172,11 +323,34 @@
 % \end{frame}
 
 \begin{frame}
-  \begin{satz}[Vollstänige Abstraktheit für Divergenz-Semantik]
-    Seinen $S_1$ und $S_2$ zwei \EIO{}s mit derselben Signatur. Dann gilt $S_1
-    \DCRel{} S_2\Leftrightarrow S_1\DRel{} S_2$.
-  \end{satz}
-  \visible<2>{%
+  \begin{figure} [h!tbp]
+  \begin{center}
+    \begin{tikzpicture}[auto]
+      \node (m-1-1) {$S_1\QRel S_2$};
+      \node[right = 5cm of m-1-1] (m-1-2) {$S_1\QCRel S_2$}
+      edge[implies-, double, double distance=1mm] node [above]
+      {\rmfamily\footnotesize\parbox{4cm}{\glqq{}$\Leftarrow$\grqq{} von Satz
+      Vollständige Abstraktheit für Ruhe-Semantik}} (m-1-1);
+      \node[below = 2cm of m-1-1] (m-2-1) {$\substack{\forall\;
+      \mathrm{Partner}~U:\\ U\|S_1 \QBRel U\|S_2}$}
+          edge[-implies, double, double distance=1mm] node [left]
+          {\rmfamily\footnotesize\parbox{2.3cm}{Lemma Verfeinerung mit
+          Ruhe-Zu\-stän\-den}} (m-1-1);
+      \node[below = 2cm of m-1-2] (m-2-2) {$\substack{\forall\;
+      \mathrm{komponierbaren}~U:\\ U\|S_1 \QBRel U\|S_2}$}
+          edge[-implies, double, double distance=1mm] node [below]
+          {$\substack{U~\mathrm{Partner}\\ \Downarrow\\
+          U~\mathrm{komponierbar}}$} (m-2-1)
+          edge[implies-, double, double distance=1mm] node [right]
+          {\rmfamily\small\parbox{2cm}{Definition
+          von \QCRel{}}} (m-1-2);
+    \end{tikzpicture}
+    \caption{Folgerungskette für Ruhe}
+  \end{center}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
   \begin{figure} [h!tbp]
   \begin{center}
     \begin{tikzpicture}[auto]
@@ -199,14 +373,51 @@
           {\rmfamily\small\parbox{2cm}{Definition
           von \DCRel{}}} (m-1-2);
     \end{tikzpicture}
-    \caption{Folgerungskette}
+    \caption{Folgerungskette für Divergenz}
   \end{center}
-  \end{figure}}
+  \end{figure}
 \end{frame}
 
 \begin{frame}
   \begin{kor}
-    Es gilt: $S_1\DRel{} S_2 \Leftrightarrow U\|S_1\DBRel{} U\|S_2$ für alle
-    komponierbaren $U$.
+    Es gilt:
+  \begin{columns}[]
+    \begin{column}{.05\textwidth}
+    \end{column}
+    \begin{column}{.40\textwidth}
+      \begin{block}{}
+        \begin{center}
+          $S_1\QRel{} S_2$
+
+          \vspace{0.5em}
+          $\Updownarrow$
+          \vspace{0.5em}
+
+          $U\|S_1\QBRel{} U\|S_2$
+        \end{center}
+      \end{block}
+    \end{column}
+    \begin{column}{.05\textwidth}
+    \end{column}
+    \begin{column}{.40\textwidth}
+      \uncover<2->{%
+      \begin{block}{}
+        \begin{center}
+          $S_1\DRel{} S_2$
+
+          \vspace{0.5em}
+          $\Updownarrow$
+          \vspace{0.5em}
+
+          $U\|S_1\DBRel{} U\|S_2$
+        \end{center}
+      \end{block}
+    }
+    \end{column}
+    \begin{column}{.05\textwidth}
+    \end{column}
+  \end{columns}
+  \vspace{1em}
+  für alle komponierbaren $U$.
   \end{kor}
 \end{frame}
