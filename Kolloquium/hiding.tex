@@ -14,10 +14,39 @@
         ,x\in X\right\}\right)\backslash \left\{(q,x,q')\mid x\in X\right\}$.
     \end{itemize}
   \end{Def}
-  \visible<2>{%
+  \uncover<2>{%
+  \begin{prop}[Basisrelation bzgl. Internalisierung]
+    Wenn $S_1\QBRel S_2$ gilt, dann folgt daraus, dass auch $S_1/X\QBRel S_2/X$
+    gilt.
+\end{prop}}
+\end{frame}
+
+\begin{frame}
+  \begin{satz}[Präkongruenz bzgl. Internalisierung]
+    Seien $S_1$ und $S_2$ zwei \EIO{}s für die $S_1\QRel S_2$ gilt, somit gilt
+    auch $S_1/X\QRel S_2/X$. Es ist also \QRel{} eine Präkongruenz bezüglich
+    $\cdot /\cdot$. Es gilt für die Sprachen und Traces:
+    \begin{itemize}
+      \item[(i)] $L(S/X) = \left\{w\in (\Sigma\backslash X){}^*\mid \exists w'\in L(S):
+        w'|_{\Sigma\backslash X} = w\right\}$,
+      \item[(ii)] $\ET{}(S/X) = \left\{w\in (\Sigma\backslash X){}^*\mid \exists
+        w'\in \ET{}(S): w'|_{\Sigma\backslash X} = w\right\}$,
+      \item[(iii)] $\EL{}(S/X) = \left\{w\in (\Sigma\backslash X){}^*\mid \exists w'\in
+        \EL(S): w'|_{\Sigma\backslash X} = w\right\}$,
+      \item[(iv)] $\QT{}(S/X) = \left\{w\in (\Sigma\backslash X){}^*\mid \exists w'\in
+        \QT{}(S):w'|_{\Sigma\backslash X}=w\right\}$.
+    \end{itemize}
+  \end{satz}
+\end{frame}
+
+\begin{frame}
   \begin{Def}[Parallelkomposition mit Internalisierung]
     Seinen $S_1$ und $S_2$ komponierbare \EIO{}s, dann ist die
     Parallelkomposition mit Internalisierung definiert als $S_1|S_2 = S_{12}/(
     \Synch(S_1,S_2) \cap O_{12})$.
-\end{Def}}
+  \end{Def}
+  \uncover<2>{%
+  \begin{kor}[Präkongruenz mit Internalisierung]
+    Die Relation \QRel{} ist eine Präkongruenz bezüglich $\cdot |\cdot$.
+\end{kor}}
 \end{frame}
