@@ -44,8 +44,6 @@
         ^*\mid q_0\overset{w}{\Rightarrow}q\in E\right\}$,
       \item \textbf{gekürzte Errortraces}: $\PrET{}(S):=\bigcup\left\{\prune{}(w)\mid w\in
         \StET{}(S)\right\}$,
-      \item \textbf{error-gefluteten Ruhetraces}: $\QT{}(S) := \StQT{}(S)\cup
-        \ET{}(S)$,
       \item \textbf{Input-kritische Traces}: $\MIT{}(S):=\left\{wa\in\Sigma ^*\mid
         q_0\overset{w}{\Rightarrow}q\wedge a\in I\wedge
       q\overset{a}{\not{\hspace{-0.1cm}\rightarrow}}\right\}$,
@@ -214,16 +212,14 @@
     \begin{column}{.05\textwidth}
     \end{column}
     \begin{column}{.42\textwidth}
-      \uncover<3->{%
       \begin{block}{}
         $S_1 \QCRel{} S_2\Leftrightarrow S_1\QRel{} S_2$.
       \end{block}
-    }
     \end{column}
     \begin{column}{.05\textwidth}
     \end{column}
     \begin{column}{.42\textwidth}
-      \uncover<4->{%
+      \uncover<1-2,4->{%
       \begin{block}{}
         $S_1 \DCRel{} S_2\Leftrightarrow S_1\DRel{} S_2$.
       \end{block}
